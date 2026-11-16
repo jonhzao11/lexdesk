@@ -197,6 +197,7 @@ fieldset.disc{border:1px solid var(--line);border-radius:10px;padding:12px 14px;
 <main class="main" id="main" tabindex="-1"></main>
 </div>
 <div id="layer"></div>
+<script src="supabase.js"></script>
 <script>
 /* LEXDESK — conteúdo jurídico (v1). Referências: legislação portuguesa em vigor; confirmar sempre a redação no Diário da República. */
 var DISC = {
@@ -579,6 +580,112 @@ var MINUTAS = [
 
 </script>
 <script>
+/* ---------- SERVIDOR LEXDESK (Supabase): contas, dados e ficheiros ---------- */
+var SB_URL = 'https://cggfztvwcnbmpkkxglhd.supabase.co';
+var SB_KEY = 'sb_publishable_8MGUDrdI2INrA_aXwCQYZA_Tv-fc_3a';
+var SB = null;
+try { if (window.supabase && window.supabase.createClient) SB = window.supabase.createClient(SB_URL, SB_KEY, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } }); } catch (e) { SB = null; }
+
+function sbErr(e) { var x = new Error((e && e.message) || 'erro'); x.code = (e && (e.code || e.statusCode)) || 'erro'; return x; }
+
+/* Camada de documentos com a mesma interface usada pela aplicação (coleções, documentos e escuta de alterações) */
+var SBdb = (function () {
+  var listeners = [], chan = null;
+  function refreshCol(col) { listeners.forEach(function (l) { if (l.col === col || col === '*') l.fetch(); }); }
+  function ensureChannel() {
+    if (chan || !SB) return;
+    chan = SB.channel('docs-' + Math.random().toString(36).slice(2))
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'docs' }, function (p) {
+        var c = (p.new && p.new.col) || (p.old && p.old.col) || '*'; refreshCol(c);
+      }).subscribe();
+  }
+  function Doc(col, id) { this.col = col; this.id = id; }
+  Doc.prototype.set = function (data) {
+    var col = this.col;
+    return SB.from('docs').upsert({ col: col, id: this.id, data: data, updated_at: new Date().toISOString() }, { onConflict: 'col,id' }).then(function (r) { if (r.error) throw sbErr(r.error); refreshCol(col); });
+  };
+  Doc.prototype.update = function (part) {
+    var self = this;
+    return SB.from('docs').select('data').eq('col', self.col).eq('id', self.id).maybeSingle().then(function (r) {
+      if (r.error) throw sbErr(r.error); if (!r.data) throw sbErr({ code: 'not_found' });
+      var d = r.data.data || {}; Object.keys(part).forEach(function (k) { d[k] = part[k]; }); return self.set(d);
+    });
+  };
+  Doc.prototype['delete'] = function () {
+    var col = this.col;
+    return SB.from('docs').delete().eq('col', col).eq('id', this.id).then(function (r) { if (r.error) throw sbErr(r.error); refreshCol(col); });
+  };
+  function Query(col, o) { this.col = col; this.o = o || {}; }
+  Query.prototype.orderBy = function (f, dir) { var o = Object.assign({}, this.o, { f: f, dir: dir || 'asc' }); return new Query(this.col, o); };
+  Query.prototype.limit = function (n) { var o = Object.assign({}, this.o, { n: n }); return new Query(this.col, o); };
+  Query.prototype.doc = function (id) { return new Doc(this.col, id || ('d_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8))); };
+  Query.prototype.onSnapshot = function (cb, err) {
+    var self = this, alive = true, busy = false, again = false;
+    var l = { col: self.col, fetch: function () {
+      if (!alive) return; if (busy) { again = true; return; } busy = true;
+      var q = SB.from('docs').select('id,data').eq('col', self.col);
+      if (self.o.f) q = q.order('data->' + self.o.f, { ascending: self.o.dir !== 'desc' });
+      q = q.limit(self.o.n || 1000);
+      q.then(function (r) {
+        busy = false; if (!alive) return;
+        if (r.error) { if (err) err(sbErr(r.error)); }
+        else cb({ metadata: { fromCache: false }, docs: (r.data || []).map(function (row) { return { id: row.id, data: function () { return row.data; } }; }) });
+        if (again) { again = false; l.fetch(); }
+      }, function (e) { busy = false; if (err) err(sbErr(e)); });
+    } };
+    listeners.push(l); ensureChannel(); l.fetch();
+    return function () { alive = false; listeners = listeners.filter(function (x) { return x !== l; }); };
+  };
+  function parse(path) { var p = path.split('/'); return { col: p.slice(0, -1).join('/'), id: p[p.length - 1] }; }
+  return {
+    collection: function (path) { return new Query(path); },
+    doc: function (path) { var x = parse(path); return new Doc(x.col, x.id); },
+    refreshAll: function () { refreshCol('*'); }
+  };
+})();
+
+/* Conta do utilizador */
+var SBuser = {
+  session: null,
+  id: function () { return SBuser.session ? SBuser.session.user.id : null; },
+  me: function () {
+    var u = SBuser.session && SBuser.session.user; if (!u) return Promise.resolve(null);
+    return SB.from('profiles').select('nome').eq('id', u.id).maybeSingle().then(function (r) { return { name: (r.data && r.data.nome) || (u.user_metadata && u.user_metadata.nome) || u.email }; });
+  },
+  profiles: function (ids) {
+    return SB.from('profiles').select('id,nome').in('id', ids.filter(function (i) { return /^[0-9a-f-]{36}$/.test(i); })).then(function (r) {
+      var o = {}; (r.data || []).forEach(function (p) { o[p.id] = { name: p.nome }; }); return o;
+    });
+  },
+  isOwner: function () { return false; }
+};
+
+/* Ficheiros: bucket público para apontamentos, privado para os workspaces */
+function sbNomeSeguro(n) { return String(n || 'ficheiro').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^A-Za-z0-9._-]+/g, '_').slice(-80); }
+function sbUpload(bucket, file) {
+  var uidv = SBuser.id(); if (!uidv) return Promise.reject(sbErr({ code: 'sem_sessao' }));
+  var ct = file.type || ({ pdf: 'application/pdf', png: 'image/png', jpg: 'image/jpeg', jpeg: 'image/jpeg', webp: 'image/webp', doc: 'application/msword', docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', txt: 'text/plain' })[String(file.name).split('.').pop().toLowerCase()] || '';
+  var path = uidv + '/' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6) + '-' + sbNomeSeguro(file.name);
+  return SB.storage.from(bucket).upload(path, file, { contentType: ct, upsert: false }).then(function (r) {
+    if (r.error) { var m = String(r.error.message || ''); throw sbErr({ code: /size|large/i.test(m) ? 'too_large' : /mime|type/i.test(m) ? 'unsupported_type' : 'erro', message: m }); }
+    return { id: path, contentType: ct, sizeBytes: file.size };
+  });
+}
+var SBassets = {
+  upload: function (file) { return sbUpload('apontamentos', file); },
+  'delete': function (id) { return SB.storage.from('apontamentos').remove([id]); },
+  url: function (id) { return SB.storage.from('apontamentos').getPublicUrl(id).data.publicUrl; }
+};
+var SBws = {
+  upload: function (file) { return sbUpload('workspaces', file); },
+  'delete': function (id) { return SB.storage.from('workspaces').remove([id]); },
+  open: function (id) { return SB.storage.from('workspaces').createSignedUrl(id, 3600).then(function (r) { if (r.error) throw sbErr(r.error); return r.data.signedUrl; }); }
+};
+var FILE_ACCEPT = 'application/pdf,image/png,image/jpeg,image/webp,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+var FILE_RE = /^(application\/pdf|image\/(png|jpeg|webp)|application\/msword|application\/vnd\.openxmlformats-officedocument\.wordprocessingml\.document|text\/plain)$/;
+function mimeDe(file) { return file.type || ({ pdf: 'application/pdf', png: 'image/png', jpg: 'image/jpeg', jpeg: 'image/jpeg', webp: 'image/webp', doc: 'application/msword', docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', txt: 'text/plain' })[String(file.name).split('.').pop().toLowerCase()] || ''; }
+function tipoCurto(t) { t = t || ''; return t.indexOf('pdf') >= 0 ? 'PDF' : t.indexOf('word') >= 0 || t.indexOf('msword') >= 0 ? 'Word' : t.indexOf('image/') === 0 ? 'Imagem' : 'Ficheiro'; }
+
 /* LEXDESK — aplicação (v1, sem IA) */
 (function () {
 'use strict';
@@ -624,7 +731,7 @@ var I = {
 };
 
 var PASTAS = [['01', 'Legislação'], ['02', 'Doutrina e apontamentos'], ['03', 'Jurisprudência'], ['04', 'Trabalhos e documentos']];
-var TIPOS = { nota: 'Nota', link: 'Ligação', ref: 'Referência legal', minuta: 'Minuta' };
+var TIPOS = { nota: 'Nota', link: 'Ligação', ref: 'Referência legal', minuta: 'Minuta', ficheiro: 'Ficheiro' };
 
 /* ---------- armazenamento ---------- */
 var LS_KEY = 'lexdesk_v1';
@@ -663,37 +770,39 @@ Store.cloudFail = function (e) {
   renderSide();
 };
 Store.connect = function () {
-  if (lsGet('lexdesk_sessao') === 'off') { Social.updState = 'offline'; return; }
-  if (!window.claude || typeof window.claude.use !== 'function') { Social.updState = 'offline'; return; }
-  S.connecting = true;
-  Promise.all([window.claude.use('db'), window.claude.use('user')]).then(function (r) {
-    var db = r[0], user = r[1];
-    if (!db || !user) { Social.updState = 'offline'; scheduleRender(); return null; }
-    S.user = user; Store.db = db;
-    if (user.me) { Promise.resolve(user.me()).then(function (me) { if (me && me.name) { S.nomeFull = String(me.name); S.nome = S.nomeFull.split(' ')[0]; scheduleRender(); } }).catch(function () {}); }
-    return Promise.resolve(user.id()).then(function (id) {
-      if (!id) { Social.updState = 'offline'; S.connecting = false; scheduleRender(); return; }
-      Store.uid = id; S.connecting = false; Social.start(); scheduleRender();
-      var col = db.collection('data/users/' + id);
-      var first = true;
-      Store.unsub = col.onSnapshot(function (snap) {
-        if (snap.metadata && snap.metadata.fromCache && first) return;
-        var cloud = {};
-        snap.docs.forEach(function (d) { cloud[d.id] = clone(d.data()); });
-        if (first) {
-          first = false; Store.col = col; Store.mode = 'cloud';
-          // Envia para a conta o que já existia neste navegador e ainda não está lá
-          var pend = Object.keys(Store.data).filter(function (k) { return !cloud[k]; });
-          (function next(i) {
-            if (i >= pend.length) return;
-            col.doc(pend[i]).set(Store.data[pend[i]]).then(function () { next(i + 1); }).catch(Store.cloudFail);
-          })(0);
-          pend.forEach(function (k) { cloud[k] = Store.data[k]; });
-        }
-        Store.data = cloud; Store.saveLocal(); renderSide(); scheduleRender();
-      }, function () { Store.cloudFail(); });
-    });
+  if (!SB) { Social.updState = 'offline'; return; }
+  Store.db = SBdb; S.user = SBuser; Social.start();
+  SB.auth.getSession().then(function (r) {
+    var se = r && r.data && r.data.session;
+    if (se) Store.attach(se); else { S.connecting = false; scheduleRender(); }
   }).catch(function () {});
+  SB.auth.onAuthStateChange(function (ev, se) {
+    if (se && (!Store.uid || Store.uid !== se.user.id)) setTimeout(function () { Store.attach(se); }, 0);
+    else if (se) SBuser.session = se;
+  });
+};
+Store.attach = function (session) {
+  if (Store.uid === session.user.id) return;
+  SBuser.session = session; Store.uid = session.user.id; S.connecting = false;
+  SBuser.me().then(function (me) { if (me && me.name) { S.nomeFull = String(me.name); S.nome = S.nomeFull.split(' ')[0]; scheduleRender(); } }).catch(function () {});
+  SBdb.refreshAll(); scheduleRender();
+  var col = SBdb.collection('data/users/' + Store.uid);
+  var first = true;
+  Store.unsub = col.onSnapshot(function (snap) {
+    var cloud = {};
+    snap.docs.forEach(function (d) { cloud[d.id] = clone(d.data()); });
+    if (first) {
+      first = false; Store.col = col; Store.mode = 'cloud';
+      // Envia para a conta o que já existia neste navegador e ainda não está lá
+      var pend = Object.keys(Store.data).filter(function (k) { return !cloud[k]; });
+      (function next(i) {
+        if (i >= pend.length) return;
+        col.doc(pend[i]).set(Store.data[pend[i]]).then(function () { next(i + 1); }).catch(Store.cloudFail);
+      })(0);
+      pend.forEach(function (k) { cloud[k] = Store.data[k]; });
+    }
+    Store.data = cloud; Store.saveLocal(); renderSide(); scheduleRender();
+  }, function () { Store.cloudFail(); });
 };
 
 /* ---------- estado da interface ---------- */
@@ -872,10 +981,10 @@ function vWorkspace() {
   var w = Store.get(S.wsId);
   var its = Store.all('item').filter(function (i) { return i.wsId === w.id; });
   var q = norm(S.wsQ).trim();
-  var list = its.filter(function (i) { return i.pasta === S.wsTab && (!q || norm(i.titulo + ' ' + (i.texto || '') + ' ' + (i.url || '')).indexOf(q) >= 0); }).sort(function (a, b) { return (b.updatedAt || 0) - (a.updatedAt || 0); });
+  var list = its.filter(function (i) { return i.pasta === S.wsTab && (!q || norm(i.titulo + ' ' + (i.texto || '') + ' ' + (i.url || '') + ' ' + (i.ficheiro ? i.ficheiro.nome : '')).indexOf(q) >= 0); }).sort(function (a, b) { return (b.updatedAt || 0) - (a.updatedAt || 0); });
   var pasta = PASTAS.filter(function (p) { return p[0] === S.wsTab; })[0];
   var h = '<div class="head"><div><span class="crumb"><button data-a="ws-back">Legal Workspaces</button> / ' + esc(w.nome) + '</span><h1>' + esc(w.nome) + '</h1><p class="sub">' + plural(its.length, 'documento', 'documentos') + (w.area ? ' · ' + esc(w.area) : '') + (w.desc ? ' · ' + esc(w.desc) : '') + '</p></div>' +
-    '<div class="row"><button class="btn" data-a="ws-edit">Editar</button><button class="btn danger" data-a="ws-del">Eliminar</button><button class="btn pri" data-a="item-new">' + I.plus + 'Adicionar documento</button></div></div>';
+    '<div class="row"><button class="btn" data-a="ws-edit">Editar</button><button class="btn danger" data-a="ws-del">Eliminar</button><button class="btn" data-a="item-new" data-id="ficheiro">' + I.file + 'Carregar ficheiro</button><button class="btn pri" data-a="item-new">' + I.plus + 'Adicionar documento</button></div></div>';
   h += '<div class="card" style="padding:0 22px 22px"><div class="tabs" role="tablist">' + PASTAS.map(function (p) {
     var n = its.filter(function (i) { return i.pasta === p[0]; }).length;
     return '<button class="tab' + (S.wsTab === p[0] ? ' on' : '') + '" role="tab" aria-selected="' + (S.wsTab === p[0]) + '" data-a="ws-tab" data-id="' + p[0] + '"><b>' + p[0] + '</b>' + p[1] + ' <span class="chip gray" style="padding:2px 8px">' + n + '</span></button>';
@@ -887,20 +996,28 @@ function vWorkspace() {
 function wsList(list, pasta) {
   if (!list.length) return '<div class="empty" style="margin-top:8px"><span>' + (S.wsQ ? 'Nenhum documento corresponde ao filtro.' : 'A pasta “' + pasta[0] + ' — ' + pasta[1] + '” está vazia.') + '</span>' + (S.wsQ ? '' : '<button class="btn" data-a="item-new">' + I.plus + 'Adicionar documento</button>') + '</div>';
   return '<div class="list" style="margin-top:8px">' + list.map(function (i) {
-    var ic = i.tipo === 'link' ? I.link : i.tipo === 'ref' ? I.book : i.tipo === 'minuta' ? I.file : I.note;
-    var resumo = i.tipo === 'link' ? (i.url || '') : (i.texto || '').slice(0, 140);
+    var ic = i.tipo === 'link' ? I.link : i.tipo === 'ref' ? I.book : (i.tipo === 'minuta' || i.tipo === 'ficheiro') ? I.file : I.note;
+    var resumo = i.tipo === 'link' ? (i.url || '') : i.tipo === 'ficheiro' && i.ficheiro ? i.ficheiro.nome + ' · ' + tipoCurto(i.ficheiro.tipo) + ' · ' + tamanho(i.ficheiro.tamanho || 0) + (i.texto ? ' — ' + i.texto.slice(0, 80) : '') : (i.texto || '').slice(0, 140);
     return '<button class="li" data-a="item-open" data-id="' + i.id + '"><span class="ic">' + ic + '</span><span class="tx"><b>' + esc(i.titulo) + '</b><span>' + esc(resumo || 'Sem conteúdo') + '</span></span><span class="chip gray">' + TIPOS[i.tipo] + '</span></button>';
   }).join('') + '</div>';
 }
 function itemForm(it) {
   var tipo = it.tipo || 'nota';
-  return '<div class="seg" role="group" aria-label="Tipo de documento">' + ['nota', 'link', 'ref', 'minuta'].map(function (t) { return '<button type="button" class="' + (tipo === t ? 'on' : '') + '" data-a="item-type" data-id="' + t + '">' + TIPOS[t] + '</button>'; }).join('') + '</div>' +
+  return '<div class="seg" role="group" aria-label="Tipo de documento">' + ['nota', 'link', 'ref', 'minuta', 'ficheiro'].map(function (t) { return '<button type="button" class="' + (tipo === t ? 'on' : '') + '" data-a="item-type" data-id="' + t + '">' + TIPOS[t] + '</button>'; }).join('') + '</div>' +
     '<input type="hidden" id="f-tipo" value="' + tipo + '">' +
     '<label class="f">Título<input class="in" id="f-titulo" value="' + esc(it.titulo) + '" maxlength="200" placeholder="' + (tipo === 'ref' ? 'Ex.: Art. 799.º CC — Presunção de culpa' : tipo === 'link' ? 'Ex.: Acórdão do STJ sobre consentimento informado' : 'Ex.: Apontamentos — aula 7') + '"></label>' +
     '<label class="f">Pasta<select class="in" id="f-pasta">' + PASTAS.map(function (p) { return '<option value="' + p[0] + '"' + ((it.pasta || S.wsTab) === p[0] ? ' selected' : '') + '>' + p[0] + ' — ' + p[1] + '</option>'; }).join('') + '</select></label>' +
+    (tipo === 'ficheiro' ? wsFileField(it) : '') +
     (tipo === 'link' ? '<label class="f">Endereço (URL)<input class="in" id="f-url" type="url" value="' + esc(it.url) + '" placeholder="https://"></label>' : '') +
-    '<label class="f">' + (tipo === 'link' ? 'Notas sobre a fonte' : tipo === 'ref' ? 'Texto ou anotação do artigo' : 'Conteúdo') + '<textarea class="in" id="f-texto" style="min-height:' + (tipo === 'link' ? 100 : 220) + 'px" maxlength="100000">' + esc(it.texto) + '</textarea></label>' +
+    '<label class="f">' + (tipo === 'ficheiro' ? 'Notas (opcional)' : tipo === 'link' ? 'Notas sobre a fonte' : tipo === 'ref' ? 'Texto ou anotação do artigo' : 'Conteúdo') + '<textarea class="in" id="f-texto" style="min-height:' + (tipo === 'link' || tipo === 'ficheiro' ? 100 : 220) + 'px" maxlength="100000">' + esc(it.texto) + '</textarea></label>' +
     (it.id && it.tipo === 'link' && it.url ? '<a href="' + esc(safeUrl(it.url)) + '" target="_blank" rel="noopener" class="btn sm" style="align-self:flex-start">Abrir ligação ' + I.ext + '</a>' : '');
+}
+function wsFileField(it) {
+  var f = it.ficheiro, h = '';
+  if (f) h += '<div class="card" style="flex-direction:row;align-items:center;gap:12px;padding:12px 14px"><span class="ic" style="color:var(--wine)">' + I.file + '</span><span style="flex:1;min-width:0"><b style="word-break:break-word">' + esc(f.nome) + '</b><br><span style="font-size:13px;color:var(--muted)">' + tipoCurto(f.tipo) + ' · ' + tamanho(f.tamanho || 0) + '</span></span>' + (it.id ? '<button type="button" class="btn pri sm" data-a="ws-file-open">Abrir ' + I.ext + '</button>' : '') + '</div>';
+  if (!sessaoAtiva()) return h + '<div class="note row" style="justify-content:space-between;gap:12px"><span>Para carregar ficheiros precisa de iniciar sessão: os ficheiros ficam guardados de forma privada na sua conta.</span><button type="button" class="btn wine sm" data-a="login-open">Iniciar sessão</button></div>';
+  return h + '<label class="f">' + (f ? 'Substituir ficheiro' : 'Ficheiro') + ' (PDF, Word, imagem ou texto, até 20 MB)<input class="in" id="f-file" type="file" accept="' + FILE_ACCEPT + ',text/plain,.txt"></label>' +
+    '<span style="font-size:12px;color:var(--muted)">Os ficheiros dos workspaces são privados: só o próprio utilizador os pode abrir. Para partilhar com a comunidade use a secção Apontamentos.</span>';
 }
 function safeUrl(u) { u = String(u || '').trim(); return /^https?:\/\//i.test(u) ? u : '#'; }
 function openItem(it) {
@@ -1451,7 +1568,7 @@ function vConnect() {
     '<div class="choice"><button class="ch' + (t === 'aprender' ? ' on' : '') + '" data-a="conn-tab" data-id="aprender"><span class="cht">Quero aprender</span><span class="chd">Encontra explicadores e esclarece dúvidas.</span></button>' +
     '<button class="ch' + (t === 'ensinar' ? ' on' : '') + '" data-a="conn-tab" data-id="ensinar"><span class="cht">Quero ensinar</span><span class="chd">Partilha conhecimentos e oferece explicações.</span></button></div></section>';
   var h = hero;
-  if (!shared()) h += '<div class="note"><b>Em breve:</b> a comunidade LEXDESK Connect (explicadores e dúvidas) fica disponível com as contas de utilizador LEXDESK.</div>';
+  if (!shared()) h += '<div class="note row" style="justify-content:space-between;gap:12px"><span><b>Participe na comunidade:</b> para publicar dúvidas, responder ou criar um perfil de explicador precisa de uma conta gratuita.</span><button class="btn wine sm" data-a="login-open" data-id="registo">Criar conta</button></div>';
   if (t === 'inicio') {
     var disp = Social.tut.filter(function (x) { return x.disponivel !== false; }).length;
     h += '<div class="grid">' + kpi('Explicadores disponíveis', disp, 'Estudantes e juristas que oferecem ajuda') + kpi('Dúvidas partilhadas', Social.duv.length, Social.duv.filter(function (d) { return !d.lastAnswerAt; }).length + ' à espera de resposta') + kpi('Áreas', 'Todas', 'Do 1.º ao 4.º ano e prática profissional') + '</div>';
@@ -1619,7 +1736,7 @@ function apStart() {
     Ap.list = snap.docs.map(function (d) { var x = clone(d.data()); x.id = d.id; return x; }); Ap.state = 'ok';
     loadNames(Ap.list.map(function (a) { return a.autor; })); scheduleRender();
   }, function () { Ap.state = 'offline'; scheduleRender(); });
-  window.claude.use('assets').then(function (a) { Ap.assets = a || null; scheduleRender(); }, function () { Ap.assets = null; });
+  Ap.assets = SBassets;
 }
 // Lista comum de cadeiras: plano de referência + cadeiras do próprio utilizador + cadeiras já usadas em apontamentos
 function cadeirasComuns() {
@@ -1639,8 +1756,8 @@ function vApontamentos() {
   var map = cadeirasComuns();
   var base = Ap.list.filter(function (n) { return (!ano || Number(n.ano) === ano) && (!meus || n.autor === Store.uid) && (!minhaInst || (pfi && n.instId === pfi.instId)); });
   var l = base.filter(function (n) { return (!cad || n.cadeira === cad) && (!q || norm(n.titulo + ' ' + n.cadeira + ' ' + n.tipo + ' ' + (n.texto || '') + ' ' + (n.ficheiro ? n.ficheiro.nome : '')).indexOf(q) >= 0); });
-  var h = '<div class="head"><div><h1>Apontamentos</h1><p class="sub">Apontamentos partilhados pela comunidade, organizados por cadeira.</p></div><button class="btn wine" data-a="ap-new"' + (shared() ? '' : ' disabled') + '>' + I.plus + 'Partilhar apontamentos</button></div>';
-  if (!shared()) h += '<div class="note"><b>Em breve:</b> a partilha de apontamentos entre utilizadores fica disponível com as contas de utilizador LEXDESK. Por agora pode guardar os seus apontamentos nos Legal Workspaces.</div>';
+  var h = '<div class="head"><div><h1>Apontamentos</h1><p class="sub">Apontamentos partilhados pela comunidade, organizados por cadeira.</p></div><button class="btn wine" data-a="ap-new">' + I.plus + 'Partilhar apontamentos</button></div>';
+  if (!shared()) h += '<div class="note row" style="justify-content:space-between;gap:12px"><span><b>Quer partilhar os seus apontamentos?</b> Pode consultar e descarregar livremente; para publicar texto ou ficheiros (PDF, Word ou imagem) precisa de uma conta gratuita.</span><button class="btn wine sm" data-a="login-open" data-id="registo">Criar conta</button></div>';
   h += '<div class="row" style="justify-content:space-between"><div class="tabs" role="tablist" style="border:0">' + [0, 1, 2, 3, 4].map(function (a) {
     return '<button class="tab' + (ano === a ? ' on' : '') + '" role="tab" aria-selected="' + (ano === a) + '" data-a="ap-ano" data-id="' + a + '">' + (a ? a + '.º ano' : 'Todos os anos') + '</button>';
   }).join('') + '</div><div class="row"><label class="search">' + I.search + '<span class="sr">Pesquisar apontamentos</span><input type="search" placeholder="Pesquisar apontamentos…" value="' + esc(S.apQ || '') + '" data-in="apq"></label><label class="check" style="min-height:34px;font-size:13px"><input type="checkbox" data-a="ap-meus"' + (meus ? ' checked' : '') + '>Só os meus</label>' + (pfi && pfi.instId ? '<label class="check" style="min-height:34px;font-size:13px"><input type="checkbox" data-a="ap-inst"' + (minhaInst ? ' checked' : '') + '>Da minha instituição</label>' : '') + '</div></div>';
@@ -1656,17 +1773,17 @@ function vApontamentos() {
 }
 function apList(l) {
   if (Ap.state === 'loading' && shared()) return '<div class="empty">A carregar apontamentos…</div>';
-  if (!l.length) return '<div class="empty"><span>Ainda não há apontamentos aqui.</span>' + (shared() ? '<button class="btn" data-a="ap-new">' + I.plus + 'Seja o primeiro a partilhar</button>' : '') + '</div>';
+  if (!l.length) return '<div class="empty"><span>Ainda não há apontamentos aqui.</span>' + '<button class="btn" data-a="ap-new">' + I.plus + 'Seja o primeiro a partilhar</button>' + '</div>';
   return l.map(function (n) {
-    return '<button class="li" data-a="ap-open" data-id="' + esc(n.id) + '"><span class="ic" style="background:var(--wine-soft);color:var(--wine)">' + (n.ficheiro ? I.file : I.note) + '</span><span class="tx"><b>' + esc(n.titulo) + '</b><span>' + esc(n.cadeira) + (n.ano ? ' · ' + n.ano + '.º ano' : '') + ' · ' + esc(nome(n.autor)) + (instById(n.instId) ? ' · ' + esc(instById(n.instId).nome) : '') + ' · ' + quando(n.createdAt) + '</span></span><span class="chip gray">' + esc(n.tipo) + '</span>' + (n.ficheiro ? '<span class="chip wine">' + esc((n.ficheiro.tipo || '').indexOf('pdf') >= 0 ? 'PDF' : 'Ficheiro') + '</span>' : '') + '</button>';
+    return '<button class="li" data-a="ap-open" data-id="' + esc(n.id) + '"><span class="ic" style="background:var(--wine-soft);color:var(--wine)">' + (n.ficheiro ? I.file : I.note) + '</span><span class="tx"><b>' + esc(n.titulo) + '</b><span>' + esc(n.cadeira) + (n.ano ? ' · ' + n.ano + '.º ano' : '') + ' · ' + esc(nome(n.autor)) + (instById(n.instId) ? ' · ' + esc(instById(n.instId).nome) : '') + ' · ' + quando(n.createdAt) + '</span></span><span class="chip gray">' + esc(n.tipo) + '</span>' + (n.ficheiro ? '<span class="chip wine">' + tipoCurto(n.ficheiro.tipo) + '</span>' : '') + '</button>';
   }).join('');
 }
 function vApontamento(n) {
-  var f = n.ficheiro, url = f ? '/_blob/' + encodeURIComponent(f.id) : '';
+  var f = n.ficheiro, url = f ? SBassets.url(f.id) : '';
   var h = '<div class="head"><div><span class="crumb"><button data-a="ap-back">Apontamentos</button> / ' + esc(n.cadeira) + '</span><h1>' + esc(n.titulo) + '</h1><p class="sub">' + esc(n.cadeira) + (n.ano ? ' · ' + n.ano + '.º ano' : '') + ' · ' + esc(n.tipo) + ' · partilhado por ' + esc(nome(n.autor)) + ' ' + quando(n.createdAt) + '</p></div>' +
     '<div class="row"><button class="btn" data-a="ap-ws">' + I.plus + 'Guardar num workspace</button>' + (canEditAp(n) ? '<button class="btn" data-a="ap-edit">Editar</button><button class="btn danger" data-a="ap-del">Eliminar</button>' : '') + '</div></div>';
-  if (f) h += '<div class="card" style="flex-direction:row;align-items:center;gap:14px;flex-wrap:wrap"><span class="ic" style="width:44px;height:44px;border-radius:8px;background:var(--wine-soft);color:var(--wine);display:flex;align-items:center;justify-content:center">' + I.file + '</span><span style="flex:1;min-width:0"><b>' + esc(f.nome) + '</b><br><span style="font-size:13px;color:var(--muted)">' + esc(f.tipo || '') + (f.tamanho ? ' · ' + tamanho(f.tamanho) : '') + '</span></span><a class="btn pri sm" href="' + url + '" target="_blank" rel="noopener">Abrir ficheiro ' + I.ext + '</a></div>' +
-    ((f.tipo || '').indexOf('image/') === 0 ? '<img src="' + url + '" alt="' + esc(n.titulo) + '" style="max-width:100%;border-radius:12px;border:1px solid var(--line)">' : '');
+  if (f) h += '<div class="card" style="flex-direction:row;align-items:center;gap:14px;flex-wrap:wrap"><span class="ic" style="width:44px;height:44px;border-radius:8px;background:var(--wine-soft);color:var(--wine);display:flex;align-items:center;justify-content:center">' + I.file + '</span><span style="flex:1;min-width:0"><b>' + esc(f.nome) + '</b><br><span style="font-size:13px;color:var(--muted)">' + esc(f.tipo || '') + (f.tamanho ? ' · ' + tamanho(f.tamanho) : '') + '</span></span><a class="btn pri sm" href="' + esc(url) + '" target="_blank" rel="noopener">' + (tipoCurto(f.tipo) === 'Word' ? 'Descarregar' : 'Abrir ficheiro') + ' ' + I.ext + '</a></div>' +
+    ((f.tipo || '').indexOf('image/') === 0 ? '<img src="' + esc(url) + '" alt="' + esc(n.titulo) + '" style="max-width:100%;border-radius:12px;border:1px solid var(--line)">' : '');
   if (n.texto) h += '<article class="card"><div class="aptxt">' + esc(n.texto) + '</div></article>';
   else if (!f) h += '<div class="empty">Este apontamento não tem conteúdo.</div>';
   return h;
@@ -1680,7 +1797,7 @@ function apForm(n) {
     '<label class="f">Título<input class="in" id="ap-tit" value="' + esc(n.titulo) + '" maxlength="160" placeholder="Ex.: Resumo — Pressupostos processuais"></label>' +
     '<label class="f">Tipo<select class="in" id="ap-tipo">' + TIPOS_AP.map(function (t) { return '<option' + (n.tipo === t ? ' selected' : '') + '>' + t + '</option>'; }).join('') + '</select></label>' +
     '<label class="f">Texto (opcional se anexar ficheiro)<textarea class="in" id="ap-txt" style="min-height:200px" maxlength="60000" placeholder="Escreva ou cole aqui os seus apontamentos.">' + esc(n.texto) + '</textarea></label>' +
-    (Ap.assets ? '<label class="f">Ficheiro (PDF ou imagem, até 20 MB)<input class="in" id="ap-file" type="file" accept="application/pdf,image/png,image/jpeg,image/webp"></label>' + (n.ficheiro ? '<span style="font-size:13px;color:var(--muted)">Ficheiro atual: ' + esc(n.ficheiro.nome) + '. Escolha outro para o substituir.</span>' : '')
+    (Ap.assets ? '<label class="f">Ficheiro (PDF, Word ou imagem, até 20 MB)<input class="in" id="ap-file" type="file" accept="' + FILE_ACCEPT + '"></label>' + (n.ficheiro ? '<span style="font-size:13px;color:var(--muted)">Ficheiro atual: ' + esc(n.ficheiro.nome) + '. Escolha outro para o substituir.</span>' : '')
       : '<span style="font-size:13px;color:var(--muted)">O envio de ficheiros não está disponível para a sua conta nesta vista. Pode partilhar os apontamentos em texto.</span>') +
     '<label class="check" style="font-size:13px"><input type="checkbox" id="ap-ok"' + (n.id ? ' checked' : '') + '>Confirmo que os apontamentos são da minha autoria e não contêm dados pessoais de terceiros.</label>';
 }
@@ -1695,7 +1812,7 @@ var A4 = {
   'ap-cad': function (el) { S.apCad = el.dataset.id; render(); },
   'ap-meus': function (el) { S.apMeus = el.checked; render(); },
   'ap-inst': function (el) { S.apInst = el.checked; render(); },
-  'ap-new': function () { if (!shared()) return; openApForm({ tipo: 'Resumo' }); },
+  'ap-new': function () { if (!shared()) { toast('Inicie sessão para partilhar apontamentos.'); A6['login-open']({ dataset: {} }); return; } openApForm({ tipo: 'Resumo' }); },
   'ap-open': function (el) { S.apId = el.dataset.id; go('apontamentos'); },
   'ap-back': function () { S.apId = null; render(); },
   'ap-edit': function () { var n = Ap.list.filter(function (x) { return x.id === S.apId; })[0]; if (n) openApForm(n); },
@@ -1708,10 +1825,11 @@ var A4 = {
     if (!n.titulo) { toast('Indique um título.'); $('#ap-tit').focus(); return; }
     if (!n.texto.trim() && !file && !n.ficheiro) { toast('Escreva o texto ou anexe um ficheiro.'); return; }
     if (!$('#ap-ok').checked) { toast('Confirme que os apontamentos são da sua autoria.'); return; }
-    if (file && !/^(application\/pdf|image\/(png|jpeg|webp))$/.test(file.type)) { toast('Use um ficheiro PDF ou uma imagem (PNG, JPG ou WEBP).'); return; }
+    if (file && (!FILE_RE.test(mimeDe(file)) || mimeDe(file) === 'text/plain')) { toast('Use um ficheiro PDF, Word ou uma imagem (PNG, JPG ou WEBP).'); return; }
     if (file && file.size > 20 * 1048576) { toast('O ficheiro tem mais de 20 MB.'); return; }
     el.disabled = true; el.textContent = file ? 'A enviar ficheiro…' : 'A publicar…';
-    var up = file ? Ap.assets.upload(file).then(function (r) { n.ficheiro = { id: r.id, nome: file.name, tipo: r.contentType, tamanho: r.sizeBytes }; }) : Promise.resolve();
+    var antigo = file && n.ficheiro ? n.ficheiro.id : null;
+    var up = file ? Ap.assets.upload(file).then(function (r) { n.ficheiro = { id: r.id, nome: file.name, tipo: r.contentType, tamanho: r.sizeBytes }; if (antigo) Promise.resolve(Ap.assets.delete(antigo)).catch(function () {}); }) : Promise.resolve();
     up.then(function () {
       var id = n.id || uid('ap'), now = Date.now();
       var pf1 = perfil(); var doc = { instId: n.instId || (pf1 && pf1.instId) || '', titulo: n.titulo, cadeira: n.cadeira, ano: n.ano, tipo: n.tipo, texto: n.texto, ficheiro: n.ficheiro || null, autor: n.autor || Store.uid, createdAt: n.createdAt || now, updatedAt: now };
@@ -1719,7 +1837,7 @@ var A4 = {
     }).catch(function (e) {
       el.disabled = false; el.textContent = 'Publicar';
       var c = e && e.code;
-      toast(c === 'unsupported_type' ? 'Tipo de ficheiro não suportado. Use PDF ou imagem.' : c === 'too_large' ? 'O ficheiro é demasiado grande.' : c === 'quota_or_state' ? 'O espaço de armazenamento está cheio.' : c === 'invalid_argument' ? 'Não tem permissão para publicar.' : 'Não foi possível publicar. Tente novamente.');
+      toast(c === 'unsupported_type' ? 'Tipo de ficheiro não suportado. Use PDF, Word ou imagem.' : c === 'too_large' ? 'O ficheiro é demasiado grande.' : c === 'quota_or_state' ? 'O espaço de armazenamento está cheio.' : c === 'invalid_argument' ? 'Não tem permissão para publicar.' : 'Não foi possível publicar. Tente novamente.');
     });
   },
   'ap-del': function () {
@@ -1728,7 +1846,7 @@ var A4 = {
   'ap-del-ok': function () {
     var n = Ap.list.filter(function (x) { return x.id === S.apId; })[0]; if (!n) return closeModal();
     Store.db.doc('apontamentos/' + n.id).delete().then(function () {
-      if (n.ficheiro && Ap.assets && n.autor === Store.uid) Ap.assets.delete(n.ficheiro.id).catch(function () {});
+      if (n.ficheiro && Ap.assets && n.autor === Store.uid) Promise.resolve(Ap.assets.delete(n.ficheiro.id)).catch(function () {});
       closeModal(); S.apId = null; toast('Apontamentos eliminados.'); render();
     }, sharedFail);
   },
@@ -1866,51 +1984,83 @@ var A5 = {
   }
 };
 
-/* ---------- CONTA E SESSÃO ---------- */
+/* ---------- CONTA E SESSÃO (contas LEXDESK reais) ---------- */
 function sessaoAtiva() { return !!Store.uid; }
 function vTopbar() {
-  if (!window.claude) return '';
+  if (!SB) return '';
   if (sessaoAtiva()) {
     var n = S.nomeFull || 'A minha conta', ini = n.split(' ').map(function (x) { return x.charAt(0); }).slice(0, 2).join('').toUpperCase() || 'U';
     return '<div class="topbar"><button class="acct" data-a="conta-menu" aria-label="A minha conta"><span class="av">' + esc(ini) + '</span><span style="text-align:left"><b>' + esc(n) + '</b><span class="s">Sessão iniciada</span></span></button></div>';
   }
-  return '<div class="topbar">' + (S.connecting ? '<span style="font-size:13px;color:var(--muted)">A iniciar sessão…</span>' : '') + '<button class="btn wine sm" data-a="login-open">Iniciar sessão</button></div>';
+  return '<div class="topbar"><button class="btn sm" data-a="login-open" data-id="registo">Criar conta</button><button class="btn wine sm" data-a="login-open">Iniciar sessão</button></div>';
 }
-function loginBody() {
-  return '<div class="login"><span class="mark logo">' + I.logo + '</span><div><h2 style="font-size:24px;padding:0;border:0">Iniciar sessão no LEXDESK</h2><p class="sub" style="font-size:14px">Use a sua conta para guardar o seu trabalho e participar na comunidade.</p></div>' +
-    '<ul><li>Workspaces, cadeiras, calendário e horário sincronizados em qualquer dispositivo.</li><li>Partilha de apontamentos e acesso ao LEXDESK Connect.</li><li>Atualidade jurídica atualizada diariamente.</li></ul>' +
-    '<button class="btn wine" data-a="login-go" style="width:100%">Continuar com a minha conta</button>' +
-    '<button class="btn" data-a="close" style="width:100%">Continuar sem sessão</button>' +
-    '<p style="margin:0;font-size:12px;color:var(--muted);line-height:1.5">Sem sessão iniciada, os dados ficam guardados apenas neste navegador e as funcionalidades da comunidade ficam indisponíveis.</p></div>';
+function loginBody(modo) {
+  var reg = modo === 'registo';
+  return '<div class="login"><span class="mark logo">' + I.logo + '</span><div><h2 style="font-size:24px;padding:0;border:0">' + (reg ? 'Criar conta LEXDESK' : 'Iniciar sessão no LEXDESK') + '</h2><p class="sub" style="font-size:14px">' + (reg ? 'Gratuito. Guarde o seu trabalho e participe na comunidade.' : 'Use o email e a palavra-passe da sua conta LEXDESK.') + '</p></div>' +
+    '<div class="seg" role="group" aria-label="Modo"><button type="button" class="' + (reg ? '' : 'on') + '" data-a="login-open">Entrar</button><button type="button" class="' + (reg ? 'on' : '') + '" data-a="login-open" data-id="registo">Criar conta</button></div>' +
+    '<div style="display:flex;flex-direction:column;gap:12px;width:100%;text-align:left">' + (reg ? '<label class="f">Nome a mostrar<input class="in" id="lg-nome" maxlength="80" autocomplete="name" placeholder="Ex.: Joana Silva"></label>' : '') +
+    '<label class="f">Email<input class="in" id="lg-email" type="email" autocomplete="email" placeholder="nome@exemplo.pt"></label>' +
+    '<label class="f">Palavra-passe<input class="in" id="lg-pass" type="password" autocomplete="' + (reg ? 'new-password' : 'current-password') + '" placeholder="' + (reg ? 'Mínimo 8 caracteres' : '') + '"></label>' +
+    (reg ? '<label class="check" style="font-size:13px"><input type="checkbox" id="lg-ok">Aceito que os meus dados (nome, email e conteúdos que publicar) sejam tratados pelo LEXDESK para prestar o serviço.</label>' : '') + '</div>' +
+    '<button class="btn wine" data-a="login-go" data-id="' + (reg ? 'registo' : 'entrar') + '" style="width:100%">' + (reg ? 'Criar conta' : 'Entrar') + '</button>' +
+    (reg ? '' : '<button class="btn" data-a="login-reset" style="width:100%">Esqueci-me da palavra-passe</button>') +
+    '<p style="margin:0;font-size:12px;color:var(--muted);line-height:1.5">Sem sessão iniciada pode consultar os apontamentos da comunidade; os seus dados ficam guardados apenas neste navegador.</p></div>';
+}
+function loginMsg(e) {
+  var m = String((e && e.message) || '');
+  if (/invalid login credentials/i.test(m)) return 'Email ou palavra-passe incorretos.';
+  if (/email not confirmed/i.test(m)) return 'Confirme primeiro o seu email (verifique a caixa de correio).';
+  if (/already registered|already exists/i.test(m)) return 'Já existe uma conta com este email. Inicie sessão.';
+  if (/password/i.test(m)) return 'A palavra-passe tem de ter pelo menos 8 caracteres.';
+  if (/rate limit|too many/i.test(m)) return 'Demasiadas tentativas. Aguarde alguns minutos.';
+  if (/email/i.test(m)) return 'Verifique o endereço de email.';
+  return 'Não foi possível concluir. Tente novamente.';
 }
 var A6 = {
-  'login-open': function () { openModal('Iniciar sessão', loginBody(), ''); },
+  'login-open': function (el) {
+    if (!SB) { toast('O servidor de contas não está disponível. Verifique a ligação à internet.'); return; }
+    var modo = el && el.dataset && el.dataset.id === 'registo' ? 'registo' : 'entrar';
+    openModal(modo === 'registo' ? 'Criar conta' : 'Iniciar sessão', loginBody(modo), '');
+    setTimeout(function () { var f = $(modo === 'registo' ? '#lg-nome' : '#lg-email'); if (f) f.focus(); }, 50);
+  },
   'login-go': function (el) {
+    var reg = el.dataset.id === 'registo';
+    var email = $('#lg-email').value.trim(), pass = $('#lg-pass').value, nomeV = reg ? $('#lg-nome').value.trim() : '';
+    if (reg && !nomeV) { toast('Indique o nome a mostrar.'); return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { toast('Indique um email válido.'); return; }
+    if (pass.length < (reg ? 8 : 1)) { toast(reg ? 'A palavra-passe tem de ter pelo menos 8 caracteres.' : 'Indique a palavra-passe.'); return; }
+    if (reg && !$('#lg-ok').checked) { toast('Aceite o tratamento dos dados para criar a conta.'); return; }
+    el.disabled = true; var txt0 = el.textContent; el.textContent = reg ? 'A criar conta…' : 'A entrar…';
     lsSet('lexdesk_sessao', 'on');
-    if (!window.claude || typeof window.claude.use !== 'function') {
-      toast('Para iniciar sessão, abra o LEXDESK através do link da plataforma com a sua conta ativa.'); return;
-    }
-    el.disabled = true; el.textContent = 'A iniciar sessão…';
-    Store.connect();
-    var t0 = Date.now();
-    (function wait() {
-      if (Store.uid) { closeModal(); toast('Sessão iniciada.'); render(); return; }
-      if (Date.now() - t0 > 10000) { el.disabled = false; el.textContent = 'Continuar com a minha conta'; S.connecting = false; toast('Não foi possível iniciar sessão. Confirme que tem sessão iniciada na sua conta e tente novamente.'); return; }
-      setTimeout(wait, 300);
-    })();
+    var p = reg ? SB.auth.signUp({ email: email, password: pass, options: { data: { nome: nomeV }, emailRedirectTo: location.origin + location.pathname } })
+      : SB.auth.signInWithPassword({ email: email, password: pass });
+    p.then(function (r) {
+      el.disabled = false; el.textContent = txt0;
+      if (r.error) { toast(loginMsg(r.error)); return; }
+      if (r.data && r.data.session) { Store.attach(r.data.session); closeModal(); toast(reg ? 'Conta criada. Bem-vindo ao LEXDESK!' : 'Sessão iniciada.'); render(); return; }
+      if (reg) openModal('Confirme o seu email', '<p style="margin:0">Enviámos uma mensagem para <b>' + esc(email) + '</b>. Abra a ligação dessa mensagem para ativar a conta e depois inicie sessão.</p>', '<button class="btn pri" data-a="close">Compreendi</button>');
+    }, function (e) { el.disabled = false; el.textContent = txt0; toast(loginMsg(e)); });
+  },
+  'login-reset': function () {
+    var email = $('#lg-email').value.trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { toast('Escreva primeiro o seu email no campo acima.'); return; }
+    SB.auth.resetPasswordForEmail(email, { redirectTo: location.origin + location.pathname }).then(function (r) {
+      toast(r.error ? loginMsg(r.error) : 'Enviámos instruções para redefinir a palavra-passe.');
+    });
   },
   'conta-menu': function () {
-    var p = perfil();
-    openModal('A minha conta', '<div class="row" style="gap:14px"><span class="av" style="width:52px;height:52px;font-size:18px">' + esc((S.nomeFull || 'U').split(' ').map(function (x) { return x.charAt(0); }).slice(0, 2).join('').toUpperCase()) + '</span><div><b style="font-size:16px">' + esc(S.nomeFull || 'Utilizador LEXDESK') + '</b><div style="font-size:13px;color:var(--muted)">' + (p && p.instId ? esc(perfilResumo(p)) : 'Perfil académico por definir') + '</div></div></div>' +
-      '<div class="note">Sessão iniciada: os seus dados ficam guardados na sua conta e sincronizados entre dispositivos.</div>',
+    var p = perfil(), em = SBuser.session && SBuser.session.user.email;
+    openModal('A minha conta', '<div class="row" style="gap:14px"><span class="av" style="width:52px;height:52px;font-size:18px">' + esc((S.nomeFull || 'U').split(' ').map(function (x) { return x.charAt(0); }).slice(0, 2).join('').toUpperCase()) + '</span><div><b style="font-size:16px">' + esc(S.nomeFull || 'Utilizador LEXDESK') + '</b><div style="font-size:13px;color:var(--muted)">' + esc(em || '') + '</div><div style="font-size:13px;color:var(--muted)">' + (p && p.instId ? esc(perfilResumo(p)) : 'Perfil académico por definir') + '</div></div></div>' +
+      '<div class="note">Sessão iniciada: os seus dados e ficheiros ficam guardados na sua conta e sincronizados entre dispositivos.</div>',
       '<button class="btn danger" data-a="logout" style="margin-right:auto">Terminar sessão</button><button class="btn" data-a="perfil-edit">Perfil académico</button><button class="btn pri" data-a="close">Fechar</button>');
   },
   'logout': function () {
     lsSet('lexdesk_sessao', 'off');
     if (Store.unsub) { try { Store.unsub(); } catch (e) {} }
-    Store.unsub = null; Store.col = null; Store.db = null; Store.uid = null; S.nomeFull = ''; S.nome = '';
+    Store.unsub = null; Store.col = null; Store.uid = null; SBuser.session = null; S.nomeFull = ''; S.nome = '';
     Store.mode = lsSet('lexdesk_probe', '1') ? 'local' : 'memory'; Store.saveLocal();
-    Social.updState = 'offline'; closeModal(); render(); toast('Sessão terminada. Os dados ficam disponíveis neste navegador.');
+    SB.auth.signOut().catch(function () {});
+    closeModal(); render(); toast('Sessão terminada. Os dados ficam disponíveis neste navegador.');
   }
 };
 
@@ -1937,13 +2087,13 @@ var A = {
     openModal('Eliminar workspace', '<p style="margin:0">Vai eliminar <b>' + esc(w.nome) + '</b> e ' + plural(n, 'documento', 'documentos') + '. Esta ação não pode ser desfeita.</p>', '<button class="btn" data-a="close">Cancelar</button><button class="btn danger" data-a="ws-del-ok">Eliminar definitivamente</button>');
   },
   'ws-del-ok': function () {
-    var id = S.wsId; Store.all('item').filter(function (i) { return i.wsId === id; }).forEach(function (i) { Store.del(i.id); });
+    var id = S.wsId; Store.all('item').filter(function (i) { return i.wsId === id; }).forEach(function (i) { if (i.ficheiro && sessaoAtiva()) SBws.delete(i.ficheiro.id).catch(function () {}); Store.del(i.id); });
     Store.del(id); S.wsId = null; closeModal(); render(); toast('Workspace eliminado.');
   },
   'ws-open': function (el) { S.wsId = el.dataset.id; S.wsTab = '01'; S.wsQ = ''; go('workspaces'); },
   'ws-back': function () { S.wsId = null; render(); },
   'ws-tab': function (el) { S.wsTab = el.dataset.id; S.wsQ = ''; render(); },
-  'item-new': function () { openItem({ wsId: S.wsId, pasta: S.wsTab, tipo: S.wsTab === '01' ? 'ref' : S.wsTab === '03' ? 'link' : 'nota', titulo: '', texto: '' }); },
+  'item-new': function (el) { openItem({ wsId: S.wsId, pasta: S.wsTab, tipo: el && el.dataset && el.dataset.id === 'ficheiro' ? 'ficheiro' : S.wsTab === '01' ? 'ref' : S.wsTab === '03' ? 'link' : 'nota', titulo: '', texto: '' }); },
   'item-open': function (el) { var it = Store.get(el.dataset.id); if (it) openItem(it); },
   'item-type': function (el) {
     var it = readItemForm(); it.tipo = el.dataset.id;
@@ -1952,13 +2102,37 @@ var A = {
     var kids = Array.prototype.slice.call(m.children); for (var i = 1; i < kids.length - 1; i++) m.removeChild(kids[i]);
     var acts = m.lastElementChild; while (tmp.firstChild) m.insertBefore(tmp.firstChild, acts);
   },
-  'item-save': function () {
-    var it = readItemForm(); if (!it.titulo) { toast('Indique um título.'); $('#f-titulo').focus(); return; }
+  'item-save': function (el) {
+    var it = readItemForm(), fi = $('#f-file'), file = fi && fi.files && fi.files[0];
+    if (it.tipo === 'ficheiro' && file && !it.titulo) it.titulo = file.name.replace(/\.[^.]+$/, '');
+    if (!it.titulo) { toast('Indique um título.'); $('#f-titulo').focus(); return; }
+    if (it.tipo === 'ficheiro' && !file && !it.ficheiro) { toast(sessaoAtiva() ? 'Escolha o ficheiro a carregar.' : 'Inicie sessão para carregar ficheiros.'); return; }
+    if (file) {
+      if (!FILE_RE.test(mimeDe(file))) { toast('Use um ficheiro PDF, Word, imagem (PNG, JPG, WEBP) ou texto.'); return; }
+      if (file.size > 20 * 1048576) { toast('O ficheiro tem mais de 20 MB.'); return; }
+      el.disabled = true; el.textContent = 'A carregar ficheiro…';
+      var antigo = it.ficheiro ? it.ficheiro.id : null;
+      SBws.upload(file).then(function (r) {
+        it.ficheiro = { id: r.id, nome: file.name, tipo: r.contentType, tamanho: r.sizeBytes };
+        if (antigo) SBws.delete(antigo).catch(function () {});
+        if (!it.id) { it.id = uid('it'); it.kind = 'item'; }
+        Store.put(it); touchWs(it.wsId); closeModal(); if (S.view === 'workspaces' && S.wsId === it.wsId) S.wsTab = it.pasta; toast('Ficheiro carregado.');
+      }).catch(function (e) {
+        el.disabled = false; el.textContent = 'Guardar';
+        toast(e && e.code === 'too_large' ? 'O ficheiro é demasiado grande.' : e && e.code === 'unsupported_type' ? 'Tipo de ficheiro não suportado.' : e && e.code === 'sem_sessao' ? 'Inicie sessão para carregar ficheiros.' : 'Não foi possível carregar o ficheiro. Tente novamente.');
+      });
+      return;
+    }
     if (it.tipo === 'link' && it.url && !/^https?:\/\//i.test(it.url)) it.url = 'https://' + it.url;
     if (!it.id) { it.id = uid('it'); it.kind = 'item'; }
     Store.put(it); touchWs(it.wsId); closeModal(); if (S.view === 'workspaces' && S.wsId === it.wsId) S.wsTab = it.pasta; toast('Documento guardado.');
   },
-  'item-del': function () { var it = S.editItem; Store.del(it.id); touchWs(it.wsId); closeModal(); toast('Documento eliminado.'); },
+  'ws-file-open': function () {
+    var it = S.editItem; if (!it || !it.ficheiro) return;
+    var w = window.open('', '_blank');
+    SBws.open(it.ficheiro.id).then(function (u) { if (w) w.location = u; else location.href = u; }, function () { if (w) w.close(); toast(sessaoAtiva() ? 'Não foi possível abrir o ficheiro.' : 'Inicie sessão para abrir os seus ficheiros.'); });
+  },
+  'item-del': function () { var it = S.editItem; if (it.ficheiro && sessaoAtiva()) SBws.delete(it.ficheiro.id).catch(function () {}); Store.del(it.id); touchWs(it.wsId); closeModal(); toast('Documento eliminado.'); },
   'item-goto': function () { var it = S.editItem; closeModal(); S.wsId = it.wsId; S.wsTab = it.pasta; go('workspaces'); },
   'lib-area': function (el) { S.libArea = el.dataset.id; render(); },
   'lib-toggle': function (el) { S.libOpen[el.dataset.id] = !S.libOpen[el.dataset.id]; $('#liblist').innerHTML = libList(); var b = document.querySelector('[data-a="lib-toggle"][data-id="' + el.dataset.id + '"]'); if (b) b.focus(); },
