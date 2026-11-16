@@ -5039,13 +5039,15 @@ function vBemvindoOla() {
     '<button class="btn gold bv-go bv-cont" data-a="bv-cont">Continuar →</button><button class="bv-skip bv-alt2" data-a="onb-abrir">Alterar perfil</button></div></div>';
 }
 function bvArranque(h0) {
-  if (['termos', 'privacidade', 'legal', 'bemvindo'].indexOf(h0) >= 0 || S.salaConvite) { if (h0 === 'bemvindo') S.bvModo = S.bvModo || 'escolha'; return; }
-  S.bvVolta = VIEWS.indexOf(h0) >= 0 ? h0 : 'painel';
+  if (h0 === 'bemvindo' || S.salaConvite) { if (h0 === 'bemvindo') S.bvModo = S.bvModo || 'escolha'; return; }
+  S.bvVolta = h0 === 'termos' || h0 === 'privacidade' ? 'legal' : VIEWS.indexOf(h0) >= 0 ? h0 : 'painel'; if (S.bvVolta === 'legal') S.legalTab = h0;
   S.bvModo = lsGet('lexdesk_sessao') === 'on' ? 'ola' : 'escolha'; if (S.bvModo === 'ola' && SB) S.connecting = true;
   var p = perfilUser(); ONB = { passo: 1, tipo: S.bvModo === 'escolha' && p ? p.tipo : null, ano: (p && p.ano) || 1, areas: p && p.areas ? p.areas.slice() : [] };
   S.view = 'bemvindo'; try { history.replaceState(null, '', '#bemvindo'); } catch (e) { }
 }
 A['bv-cont'] = function () { go(S.bvVolta && S.bvVolta !== 'bemvindo' ? S.bvVolta : 'painel'); };
+/* Termos: aceites uma única vez, no formulário de criação de conta (sem janela posterior) */
+verificarTermos = function () { };
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
 var VIEW_LBL = { painel: ['Painel', I.grid], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
