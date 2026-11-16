@@ -935,6 +935,17 @@ body.bvp .main{background:radial-gradient(600px 360px at 75% 220px,rgba(200,150,
 .sf-0{color:#C3C8D3;font-size:13px;padding-left:4px}
 .sf-mesbox .calwrap{margin-top:0}
 @media (max-width:900px){.sf-g{grid-template-columns:repeat(7,minmax(92px,1fr));overflow-x:auto;padding-bottom:4px}.sf-acts{margin-left:0;width:100%}}
+/* ----- opção A: calendário e horário lado a lado ----- */
+.oa{display:grid;grid-template-columns:minmax(280px,380px) 1fr;gap:18px;align-items:stretch}
+.oa-c{gap:10px}
+.oa-hd{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.oa-hd h2{margin:0}
+.oa .ch-list{max-height:none;flex:1}
+.oa-px{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);padding-top:8px;border-top:1px solid var(--line,#E6E8EE)}
+.oa-px b{color:var(--ink,#1B2333)}
+.oa-sem{align-self:flex-end;border:0;background:none;color:#7B1E2B;font:600 13px var(--sans);cursor:pointer;padding:2px 0}
+.oa-sem:hover{text-decoration:underline}
+@media (max-width:820px){.oa{grid-template-columns:1fr}}
 
 </style>
 </head>
@@ -5700,6 +5711,37 @@ A['sf-mes'] = sfMesAbrir;
 ['cal-prev', 'cal-next', 'cal-today'].forEach(function (k) {
   var f = A[k]; A[k] = function (el) { var em = !!document.querySelector('#ov .sf-mesbox'); f(el); if (em) sfMesAbrir(); };
 });
+/* ----- opção A: duas colunas compactas ----- */
+function vOpA() {
+  var c = S.cal || (S.cal = { y: new Date().getFullYear(), m: new Date().getMonth() });
+  var D = chDados(), hj = ymd(new Date()), porDia = {};
+  D.ex.forEach(function (e) { (porDia[e.data] = porDia[e.data] || []).push(e); });
+  var first = new Date(c.y, c.m, 1), off = (first.getDay() + 6) % 7, nd = new Date(c.y, c.m + 1, 0).getDate(), cells = '';
+  for (var i = 0; i < off; i++) cells += '<span class="ch-d out" aria-hidden="true"></span>';
+  for (var d = 1; d <= nd; d++) {
+    var k = c.y + '-' + String(c.m + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0'), l = porDia[k] || [];
+    var dots = l.slice(0, 3).map(function (e) { return '<i class="e" style="background:' + cor(e.cadId)[1] + '"></i>'; }).join('');
+    cells += '<button class="ch-d' + (k === hj ? ' today' : '') + (l.length ? ' has' : '') + '" data-a="' + (D.demoE && l.length ? 'demo-ex' : 'cal-day') + '" data-id="' + k + '" aria-label="' + d + ' de ' + MESES[c.m] + (l.length ? ', ' + plural(l.length, 'avaliação', 'avaliações') : '') + '" title="' + esc(l.map(function (e) { return exNome(e) + ' · ' + e.tipo; }).join('\n')) + '">' + d + '<span class="ch-dots">' + dots + '</span></button>';
+  }
+  var mes = MESES[c.m].charAt(0).toUpperCase() + MESES[c.m].slice(1);
+  var px = D.ex.filter(function (e) { return diasAte(e.data) >= 0; })[0];
+  var esq = '<div class="card oa-c" aria-labelledby="cal-h"><div class="oa-hd"><h2 id="cal-h">Calendário' + (D.demoE ? ' <span class="chip gray" style="vertical-align:middle;font-family:var(--sans)">Exemplos</span>' : '') + '</h2><button class="btn sm" data-a="ex-new">' + I.plus + 'Avaliação</button></div>' +
+    '<div class="ch-mh"><button class="icon-btn sm" data-a="cal-prev" aria-label="Mês anterior">‹</button><b>' + mes + ' ' + c.y + '</b><button class="icon-btn sm" data-a="cal-next" aria-label="Mês seguinte">›</button></div>' +
+    '<div class="ch-g">' + ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'].map(function (x) { return '<span class="ch-w">' + x + '</span>'; }).join('') + cells + '</div>' +
+    (px ? '<div class="oa-px"><span class="ch-pd" style="background:' + cor(px.cadId)[1] + '"></span><span>Próxima: <b>' + esc(exNome(px)) + '</b> · ' + faltam(px.data).toLowerCase() + '</span></div>' : '') + '</div>';
+  var hojeD = (new Date().getDay() + 6) % 7; if (S.oaDia == null) S.oaDia = hojeD > 5 ? 0 : hojeD;
+  var dia = S.oaDia, aulas = D.au.filter(function (a) { return a.dia === dia; }).sort(function (a, b) { return minutos(a.ini) - minutos(b.ini); });
+  var lst = aulas.map(function (a) {
+    var co = cor(a.cadId);
+    return '<button class="ch-it" data-a="' + (a.demo ? 'demo-aula' : 'aula-open') + '" data-id="' + a.id + '" style="--c:' + co[1] + ';--b:' + co[0] + '"><span class="ch-h">' + esc(a.ini) + '<small>' + esc(a.fim) + '</small></span><span class="ch-tx"><b>' + esc(exNome(a)) + '</b><span>' + esc(a.tipo) + (a.sala ? ' · ' + esc(a.sala) : '') + '</span></span></button>';
+  }).join('');
+  var dir = '<div class="card oa-c" aria-labelledby="hor-h"><div class="oa-hd"><h2 id="hor-h">Horário' + (D.demoA ? ' <span class="chip gray" style="vertical-align:middle;font-family:var(--sans)">Exemplos</span>' : '') + '</h2><button class="btn sm" data-a="aula-new">' + I.plus + 'Aula</button></div>' +
+    '<div class="ch-dh"><button class="icon-btn sm" data-a="oa-dia" data-id="-1" aria-label="Dia anterior">‹</button><div><b>' + (dia === hojeD ? 'Hoje · ' : '') + DIAS[dia] + (dia < 5 ? '-feira' : '') + '</b><span>' + plural(aulas.length, 'aula', 'aulas') + '</span></div><button class="icon-btn sm" data-a="oa-dia" data-id="1" aria-label="Dia seguinte">›</button></div>' +
+    '<div class="ch-list">' + (lst || '<div class="ch-vazio">Sem aulas neste dia.</div>') + '</div>' +
+    '<button class="lnk oa-sem" data-a="ch-semana">Ver a semana completa →</button></div>';
+  return '<section class="oa">' + esq + dir + '</section>';
+}
+A['oa-dia'] = function (el) { S.oaDia = ((S.oaDia || 0) + Number(el.dataset.id) + 6) % 6; render(); };
 var _painelComporCH = painelCompor;
 painelCompor = function (P, pf) {
   var m = modsAtivos(), vc = m.hidden.indexOf('calendario') < 0, vh = m.hidden.indexOf('horario') < 0;
@@ -5707,7 +5749,7 @@ painelCompor = function (P, pf) {
     var Q = {}; for (var k in P) Q[k] = P[k];
     var ic = m.ordem.indexOf('calendario'), ih = m.ordem.indexOf('horario');
     var alvo = vc && vh ? (ic <= ih ? 'calendario' : 'horario') : vc ? 'calendario' : 'horario';
-    Q.calendario = ''; Q.horario = ''; Q[alvo] = vSemFaixa();
+    Q.calendario = ''; Q.horario = ''; Q[alvo] = vOpA();
     P = Q;
   }
   return _painelComporCH(P, pf);
