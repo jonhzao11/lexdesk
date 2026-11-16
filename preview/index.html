@@ -5483,8 +5483,8 @@ var CM = 'https://thumb.wikimedia.org/wikipedia/commons/thumb/', CP = 'https://c
 var INST_FOTO = {
   fduc: ['b/bd/South_facade_of_Faculdade_de_Direito_da_Universidade_de_Coimbra.jpg', 'Joseolgon', 'CC BY-SA 4.0'],
   fdul: ['4/4e/Faculdade_de_Direito_da_Universidade_de_Lisboa_9274.jpg', 'João Carvalho', 'CC BY-SA 3.0'],
-  uminho: ['c/c2/Escola_de_Direito.jpg', 'PTColaboration', 'CC BY-SA 4.0'],
-  nova: ['b/b2/Faculdade_de_Direito_da_Universidade_Nova_de_Lisboa.jpg', 'EdSantos754', 'CC BY-SA 4.0'],
+  uminho: ['c/c2/Escola_de_Direito.jpg', 'PTColaboration', 'CC BY-SA 4.0', 1],
+  nova: ['b/b2/Faculdade_de_Direito_da_Universidade_Nova_de_Lisboa.jpg', 'EdSantos754', 'CC BY-SA 4.0', 1],
   fdup: ['9/93/Faculty_of_Law_of_the_University_of_Porto.jpg', 'Ayratayrat', 'CC BY-SA 4.0', 1],
   iscte: ['2/2a/ISCTE-Edificio2.jpg', 'Vysotsky', 'CC BY-SA 4.0'],
   'ucp-lx': ['b/bb/UCP_Lisboa_%28Sede%29.jpg', 'Universidade Católica Portuguesa', 'CC BY-SA 4.0'],
@@ -5500,7 +5500,7 @@ function instFotoUrl(f) { var nome = f[0].split('/').pop(); return f[3] ? 'https
 function instFoto(i) {
   var f = INST_FOTO[i.id];
   if (!f) { var ini = i.nome.replace(/Universidade|de|do|da|Instituto|Superior/g, ' ').split(/\s+/).filter(Boolean).map(function (w) { return w.charAt(0); }).join('').slice(0, 3).toUpperCase(); return '<figure class="inst-img sem"><span class="inst-ini">' + esc(ini) + '</span><span class="inst-loc">' + I.pin + ' ' + esc(i.local) + '</span><figcaption>Fotografia ainda não disponível</figcaption></figure>'; }
-  return '<figure class="inst-img"><img src="' + instFotoUrl(f) + '" alt="Edifício: ' + esc(i.nome + (i.uo ? ' — ' + i.uo : '')) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add(\'falhou\')"><figcaption>Foto: <a href="' + CP + f[0].split('/').pop() + '" target="_blank" rel="noopener">' + esc(f[1]) + '</a> · ' + esc(f[2]) + ' · Wikimedia Commons</figcaption></figure>';
+  return '<figure class="inst-img"><img src="' + instFotoUrl(f) + '" alt="Edifício: ' + esc(i.nome + (i.uo ? ' — ' + i.uo : '')) + '" data-o="https://upload.wikimedia.org/wikipedia/commons/' + f[0] + '" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(!this.dataset.r){this.dataset.r=1;this.src=this.dataset.o}else{this.parentNode.classList.add(\'falhou\')}"><figcaption>Foto: <a href="' + CP + f[0].split('/').pop() + '" target="_blank" rel="noopener">' + esc(f[1]) + '</a> · ' + esc(f[2]) + ' · Wikimedia Commons</figcaption></figure>';
 }
 var _instCardsFT = instCards;
 instCards = function (l, p) { if (!l.length) return _instCardsFT(l, p); return l.map(function (i) { return _instCardsFT([i], p).replace(/^(<article[^>]*>)/, '$1' + instFoto(i)); }).join(''); };
