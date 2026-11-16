@@ -574,6 +574,32 @@ ul.muda li::marker{color:var(--wine)}
 .ph{background:#FFE8A3;border-radius:4px;padding:0 4px}
 @media (max-width:900px){.legal{grid-template-columns:1fr}.lg-toc{position:static}.lg-doc{padding:20px}}
 
+/* ===== perfis: onboarding, menu, ferramentas ===== */
+.onb{display:flex;flex-direction:column;gap:14px}
+.onb-q{margin:0;font-family:var(--serif);font-size:22px;font-weight:800;color:var(--navy)}
+.onb-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+.onb-c{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;padding:14px;border-radius:16px;border:1.5px solid var(--line);background:#fff;cursor:pointer;transition:transform .2s var(--ease),border-color .2s,box-shadow .2s;font:inherit;color:inherit}
+.onb-c:hover{transform:translateY(-2px);box-shadow:var(--sh1)}
+.onb-c.on{border-color:var(--violet);background:var(--violet-soft);box-shadow:0 0 0 3px rgba(67,56,202,.15)}
+.onb-c b{font-size:14.5px}.onb-c span:last-child{font-size:12.5px;color:var(--muted);line-height:1.4}
+.onb-e{font-size:26px}
+.onb-prev{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.onb-m{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:#F5F6FA;font-size:14px;font-weight:600}
+.onb-m span{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--wine);color:#fff;font-size:12px}
+.overlay .modal:has(.onb){max-width:760px}
+.navmais{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:0;cursor:pointer;font:inherit;text-align:left}
+.navmais:hover{color:#fff}
+.pz-t{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.pz-t b{font-family:var(--serif);font-size:28px;color:var(--navy);line-height:1.15}
+.ag-d{min-width:48px;height:52px;border-radius:12px;background:var(--wine);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
+.ag-d b{font-size:20px}.ag-d small{font-size:11px;text-transform:uppercase;letter-spacing:.06em;opacity:.85}
+.li.ag{cursor:default}.li.ag.feito{opacity:.6}.li.ag.feito .ag-d{background:#9AA3B5}
+.bib{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px}
+.bib li{font-size:14px;line-height:1.55}.bib li>span:first-child{margin-right:6px}
+.bib li>span.row{display:inline-flex;vertical-align:middle}
+.pt-n{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--violet-soft);color:var(--violet);font-weight:800;flex:0 0 auto}
+button.navlbl.navmais{font-size:10px;padding:6px 10px 4px;color:#6E7591}
+
 </style>
 </head>
 <body>
@@ -1191,7 +1217,7 @@ Store.attach = function (session) {
 };
 
 /* ---------- estado da interface ---------- */
-var VIEWS = ['painel', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
+var VIEWS = ['painel', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
 var S = {
   view: 'painel', wsId: null, wsTab: '01', wsQ: '', q: '',
   libQ: '', libArea: 'Todas', libOpen: { cpc: true },
@@ -1267,6 +1293,11 @@ function render() {
   else if (v === 'mensagens') h = vMensagens();
   else if (v === 'salas') h = vSalas();
   else if (v === 'legal') h = vLegal();
+  else if (v === 'prazos') h = vPrazos();
+  else if (v === 'agenda') h = vAgenda();
+  else if (v === 'dissertacao') h = vDissertacao();
+  else if (v === 'ordem') h = vOrdem();
+  else if (v === 'docente') h = vDocente();
   else if (v === 'apontamentos') h = vApontamentos();
   else if (v === 'instituicoes') h = vInstituicoes();
   else if (v === 'workspaces') h = S.wsId && Store.get(S.wsId) ? vWorkspace() : vWorkspaces();
@@ -1292,19 +1323,19 @@ function vPainel() {
   var data = new Date().toLocaleDateString('pt-PT', { weekday: 'long', day: 'numeric', month: 'long' }); data = data.charAt(0).toUpperCase() + data.slice(1);
   var px0 = exames().filter(function (e) { return diasAte(e.data) >= 0; })[0];
   var pf = perfil();
-  var h = '<section class="hero"><div class="hero-l"><span class="hero-d">' + esc(data) + (pf && pf.instId ? ' · ' + esc(perfilResumo(pf)) : '') + '</span><h1>' + saudacao() + (S.nome ? ', <span class="g">' + esc(S.nome) + '</span>' : '') + '.</h1>' +
+  var P = {}; P.hero = '<section class="hero"><div class="hero-l"><span class="hero-d">' + esc(data) + (pf && pf.instId ? ' · ' + esc(perfilResumo(pf)) : '') + '</span><h1>' + saudacao() + (S.nome ? ', <span class="g">' + esc(S.nome) + '</span>' : '') + '.</h1>' +
     '<p>' + (px0 ? 'A sua próxima avaliação é <b>' + esc(exNome(px0)) + '</b>: ' + faltam(px0.data).toLowerCase() + '.' : 'Estude, pesquise e pratique Direito num só lugar.') + '</p>' +
     '<label class="search hero-s">' + I.search + '<span class="sr">Pesquisar</span><input id="gq" type="search" placeholder="Pesquisar diplomas, artigos…" value="' + esc(S.q) + '" data-in="gq"></label>' +
     '<div class="row">' + (pf && pf.instId ? '' : '<button class="btn wine" data-a="perfil-edit">Definir o meu perfil académico</button>') + '<button class="btn gold" data-go="exames">Iniciar simulação de exame</button><button class="btn ghost" data-a="ws-new">' + I.plus + 'Novo workspace</button></div></div>' +
-    '<div class="hero-orb" aria-hidden="true"><i>' + I.logo + '</i></div></section>' +
-    '<div id="busca"></div>' + vMinhasDisc(pf);
+    '<div class="hero-orb" aria-hidden="true"><i>' + I.logo + '</i></div></section>';
+  P.busca = '<div id="busca"></div>' + vMinhasDisc(pf);
   var taxa = s.tot ? Math.round(100 * s.ok / s.tot) : null;
-  h += '<section class="grid" aria-label="Indicadores">' +
+  P.kpis = '<section class="grid" aria-label="Indicadores">' +
     kpi('Workspaces', s.ws.length, plural(s.items.length, 'documento organizado', 'documentos organizados')) +
     kpi('Questões respondidas', s.tot, taxa == null ? 'Ainda sem simulações' : taxa + '% de respostas certas', taxa != null && taxa >= 50) +
     kpi('Casos práticos resolvidos', s.casosFeitos, 'de ' + CASOS.length + ' disponíveis') +
     (function () { var px = exames().filter(function (e) { return diasAte(e.data) >= 0; })[0]; return px ? kpi('Próxima avaliação', diasAte(px.data) === 0 ? 'Hoje' : diasAte(px.data) + (diasAte(px.data) === 1 ? ' dia' : ' dias'), esc(exNome(px)) + ' · ' + esc(px.tipo)) : kpi('Próxima avaliação', '—', 'Sem datas marcadas'); })() + '</section>';
-  h += vProgresso() + vCalendario() + vHorario() + vDestaquesFaixa();
+  P.progresso = vProgresso(); P.calendario = vCalendario(); P.horario = vHorario(); P.atualidade = vDestaquesFaixa();
   // continuar + progresso
   var cont = recentes.length ? '<div class="list">' + recentes.map(wsRow).join('') + '</div>'
     : '<div class="empty"><span>Ainda não criou nenhum workspace. Um workspace reúne a legislação, os apontamentos, a jurisprudência e os seus trabalhos sobre um tema.</span><button class="btn pri" data-a="ws-new">' + I.plus + 'Criar o primeiro workspace</button></div>';
@@ -1312,19 +1343,19 @@ function vPainel() {
     var d = s.porD[k]; var p = d ? Math.round(100 * d.ok / d.t) : 0;
     return '<div style="display:flex;flex-direction:column;gap:6px"><div class="row" style="justify-content:space-between;font-size:14px"><span style="font-weight:500">' + DISC[k].nome + '</span><span style="color:var(--muted)">' + (d ? p + '% · ' + plural(d.t, 'questão', 'questões') : 'sem dados') + '</span></div><div class="bar" role="img" aria-label="' + DISC[k].nome + ': ' + (d ? p + '% de acerto' : 'sem dados') + '"><i style="width:' + p + '%"></i></div></div>';
   }).join('');
-  h += '<section class="grid2"><div class="card"><div class="row" style="justify-content:space-between"><h2>Continuar onde ficou</h2>' + (s.ws.length ? '<button class="btn sm" data-go="workspaces">Ver todos</button>' : '') + '</div>' + cont + '</div>' +
+  P.continuar = '<section class="grid2"><div class="card"><div class="row" style="justify-content:space-between"><h2>Continuar onde ficou</h2>' + (s.ws.length ? '<button class="btn sm" data-go="workspaces">Ver todos</button>' : '') + '</div>' + cont + '</div>' +
     '<div class="card"><h2>Taxa de acerto por disciplina</h2>' + prog + (s.tot ? '' : '<p class="foot" style="margin:0">Os valores aparecem à medida que faz simulações de exame.</p>') + '</div></section>';
-  h += '<section class="promo"><div style="display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 320px"><span class="eyebrow" style="color:var(--gold)">Mentoria e explicações</span><h2 style="color:#fff;font-size:24px">Learn together. Share knowledge.</h2><p style="margin:0;color:#C3CCDB">Encontre explicadores, esclareça dúvidas ou partilhe o que sabe com outros estudantes de Direito.</p></div><div class="row"><button class="btn gold" data-a="conn-tab" data-id="aprender">Quero aprender</button><button class="btn ghost" data-a="conn-tab" data-id="ensinar">Quero ensinar</button></div></section>';
+  P.mentoria = '<section class="promo"><div style="display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 320px"><span class="eyebrow" style="color:var(--gold)">Mentoria e explicações</span><h2 style="color:#fff;font-size:24px">Learn together. Share knowledge.</h2><p style="margin:0;color:#C3CCDB">Encontre explicadores, esclareça dúvidas ou partilhe o que sabe com outros estudantes de Direito.</p></div><div class="row"><button class="btn gold" data-a="conn-tab" data-id="aprender">Quero aprender</button><button class="btn ghost" data-a="conn-tab" data-id="ensinar">Quero ensinar</button></div></section>';
   // ferramentas + atividade
   var tools = [['exames', 'Simulador de exames', QUESTOES.length + ' questões com explicação e referência legal.'], ['casos', 'Casos práticos', 'Hipóteses com tópicos de correção.'], ['minutas', 'Gerador de minutas', 'Procuração, requerimento, petição inicial e contestação.'], ['biblioteca', 'Biblioteca jurídica', 'Diplomas essenciais e artigos-chave.']];
   var ult = s.at.slice().sort(function (a, b) { return b.createdAt - a.createdAt; }).slice(0, 4);
-  h += '<section class="grid2"><div class="card"><h2>Ferramentas</h2><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">' +
+  P.ferramentas = '<section class="grid2"><div class="card"><h2>Ferramentas</h2><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">' +
     tools.map(function (t) { return '<button class="li" data-go="' + t[0] + '" style="flex-direction:column;align-items:flex-start;gap:6px"><b style="font-size:14px">' + t[1] + '</b><span style="font-size:12px;color:var(--muted);line-height:1.5">' + t[2] + '</span></button>'; }).join('') + '</div></div>' +
     '<div class="card"><h2>Últimas simulações</h2>' + (ult.length ? '<div class="list">' + ult.map(function (a) {
       var p = Math.round(100 * a.correct / a.total);
       return '<div class="li" style="cursor:default"><span class="ic">' + I.check + '</span><span class="tx"><b>' + esc(a.discLabel) + '</b><span>' + quando(a.createdAt) + ' · modo ' + esc(a.mode) + '</span></span><span class="chip ' + (p >= 50 ? 'ok' : 'bad') + '">' + a.correct + '/' + a.total + '</span></div>';
     }).join('') + '</div>' : '<div class="empty"><span>Ainda não fez nenhuma simulação.</span><button class="btn" data-go="exames">Fazer a primeira</button></div>') + '</div></section>';
-  return h;
+  return painelCompor(P, pf);
 }
 function kpi(l, n, s, good) { return '<div class="card kpi" style="gap:6px"><span class="l">' + l + '</span><span class="n"' + (typeof n === 'number' ? ' data-count="' + n + '"' : '') + '>' + n + '</span><span class="s"' + (good ? ' style="color:var(--ok);font-weight:600"' : '') + '>' + s + '</span></div>'; }
 function wsRow(w) {
@@ -4172,8 +4203,471 @@ function legalHash() { var m = location.hash.match(/^#(privacidade|termos)$/); i
 window.addEventListener('hashchange', function () { if (/^#(privacidade|termos)$/.test(location.hash)) { legalHash(); render(); } });
 legalHash();
 
+/* ---------- PERFIS DE UTILIZADOR: pergunta inicial, painel e menu adaptados ---------- */
+I.cal = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>';
+I.hour = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h12M6 22h12M7 2v4l5 6-5 6v4M17 2v4l-5 6 5 6v4"/></svg>';
+I.cap = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5M22 9v6"/></svg>';
+I.pen = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>';
+I.badge = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg>';
+var PERFIS = {
+  lic: { nome: 'Estudante de licenciatura', curto: 'Licenciatura', ic: '🎓', d: 'Horário, exames, cadeiras e simulador em destaque.' },
+  licd: { nome: 'Licenciado/a', curto: 'Licenciado/a', ic: '📜', d: 'A preparar o próximo passo: estágio, mestrado ou concursos.' },
+  mest: { nome: 'Mestrado ou doutoramento', curto: 'Mestrado/Doutoramento', ic: '📚', d: 'Gestor de dissertação, prazos de entrega e investigação.' },
+  estag: { nome: 'Advogado/a estagiário/a', curto: 'Estágio', ic: '⚖️', d: 'Prazos processuais, diligências, minutas e treino para a Ordem.' },
+  prof: { nome: 'Profissional do Direito', curto: 'Profissional', ic: '💼', d: 'Advogado, solicitador, magistrado ou jurista: prazos, agenda e alertas.' },
+  doc: { nome: 'Docente', curto: 'Docente', ic: '👩‍🏫', d: 'Perguntas e casos próprios, salas com alunos e quizzes ao vivo.' },
+  outro: { nome: 'Outro / só estou a explorar', curto: 'Explorar', ic: '🔍', d: 'Acesso a tudo, com o painel completo.' }
+};
+var MODS = {
+  kpis: 'Indicadores de estudo', progresso: 'Gráficos de progresso', calendario: 'Calendário de avaliações', horario: 'Horário semanal', atualidade: 'Atualidade jurídica',
+  prazosag: 'Próximos prazos e diligências', dissertacao: 'Dissertação', ordem: 'Treino para a Ordem', docente: 'Ensino: perguntas e casos', continuar: 'Continuar onde ficou', mentoria: 'Mentoria e explicações', ferramentas: 'Ferramentas e últimas simulações'
+};
+var MOD_PERFIL = {
+  lic: ['kpis', 'progresso', 'calendario', 'horario', 'atualidade', 'continuar', 'mentoria', 'ferramentas'],
+  licd: ['atualidade', 'ordem', 'prazosag', 'continuar', 'mentoria', 'ferramentas'],
+  mest: ['dissertacao', 'atualidade', 'continuar', 'mentoria'],
+  estag: ['prazosag', 'ordem', 'atualidade', 'continuar', 'ferramentas'],
+  prof: ['prazosag', 'atualidade', 'continuar'],
+  doc: ['docente', 'atualidade', 'mentoria'],
+  outro: ['kpis', 'progresso', 'calendario', 'horario', 'atualidade', 'continuar', 'mentoria', 'ferramentas']
+};
+var NAV = { painel: ['Painel', 'grid'], atualidade: ['Atualidade jurídica', 'news'], biblioteca: ['Biblioteca jurídica', 'book'], instituicoes: ['Instituições', 'uni'], workspaces: ['Legal Workspaces', 'folder'], minutas: ['Gerador de minutas', 'file'], cadeiras: ['Cadeiras', 'layers'], apontamentos: ['Apontamentos', 'note'], exames: ['Simulador de exames', 'check'], casos: ['Casos práticos', 'scale'], prazos: ['Contador de prazos', 'hour'], agenda: ['Agenda de diligências', 'cal'], dissertacao: ['Dissertação', 'cap'], ordem: ['Treino para a Ordem', 'badge'], docente: ['Ensino', 'pen'] };
+var COMUN = ['chat', 'mensagens', 'salas', 'connect'];
+var NAV_PERFIL = {
+  lic: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['cadeiras', 'apontamentos', 'exames', 'casos']], ['Trabalho', ['workspaces', 'minutas']]],
+  licd: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Próximo passo', ['ordem', 'prazos', 'minutas', 'workspaces']]],
+  mest: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Investigação', ['dissertacao', 'workspaces', 'apontamentos']]],
+  estag: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Prática', ['prazos', 'agenda', 'minutas', 'workspaces']], ['Preparação', ['ordem', 'casos']]],
+  prof: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Prática', ['prazos', 'agenda', 'minutas', 'workspaces']]],
+  doc: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Ensino', ['docente', 'casos', 'exames']]],
+  outro: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['cadeiras', 'apontamentos', 'exames', 'casos']], ['Trabalho', ['workspaces', 'minutas', 'prazos', 'agenda']]]
+};
+var AREAS_OPC = ['Civil', 'Processo Civil', 'Penal', 'Constitucional', 'Administrativo', 'Comercial', 'Fiscal', 'Laboral', 'Migrações', 'Institucional'];
+
+function perfilUser() { return Store.get('perfil_user') || null; }
+function tipoPerfil() { var p = perfilUser(); return p && PERFIS[p.tipo] ? p.tipo : 'lic'; }
+function guardarPerfilUser(patch) {
+  var p = clone(perfilUser() || { id: 'perfil_user', kind: 'meta', tipo: 'lic', areas: [], hidden: [], ordem: null });
+  Object.keys(patch).forEach(function (k) { p[k] = patch[k]; }); Store.put(p);
+  // sincroniza a situação do perfil público
+  if (sessaoAtiva() && patch.tipo) {
+    var est = p.tipo === 'lic' ? 'ano' + Math.min(4, Math.max(1, p.ano || 1)) : { licd: 'licenciado', mest: 'mestrado', estag: 'estagiario', doc: 'docente' }[p.tipo];
+    if (p.tipo === 'prof' && S.meuPerfil && !S.meuPerfil.estado) est = 'outro';
+    if (est && (!S.meuPerfil || S.meuPerfil.estado !== est)) SB.from('profiles').update({ estado: est }).eq('id', Store.uid).then(function () { if (S.meuPerfil) S.meuPerfil.estado = est; scheduleRender(); });
+  }
+  return p;
+}
+function modsAtivos() {
+  var p = perfilUser(), base = MOD_PERFIL[tipoPerfil()];
+  var ordem = p && p.ordem ? p.ordem.filter(function (m) { return MODS[m]; }) : base.slice();
+  if (!(p && p.ordem)) Object.keys(MODS).forEach(function (m) { if (ordem.indexOf(m) < 0) ordem.push(m); });
+  var hidden = p && p.hidden ? p.hidden : Object.keys(MODS).filter(function (m) { return base.indexOf(m) < 0; });
+  return { ordem: ordem, hidden: hidden };
+}
+
+/* ----- painel composto por módulos ----- */
+function painelCompor(P, pf) {
+  var t = tipoPerfil(), m = modsAtivos(), h = (t === 'lic' || t === 'outro' ? P.hero : heroPerfil(t)) + P.busca;
+  var gen = { prazosag: modPrazos, dissertacao: modDiss, ordem: modOrdem, docente: modDocente };
+  m.ordem.forEach(function (k) { if (m.hidden.indexOf(k) >= 0) return; var x = P[k] != null ? P[k] : (gen[k] ? gen[k]() : ''); h += x; });
+  h += '<div class="row" style="justify-content:center"><button class="btn sm" data-a="painel-pers">' + I.gear + 'Personalizar painel</button><button class="btn sm" data-a="onb-abrir">' + PERFIS[t].ic + ' Perfil: ' + esc(PERFIS[t].curto) + ' · alterar</button></div>';
+  return h;
+}
+function heroPerfil(t) {
+  var data = new Date().toLocaleDateString('pt-PT', { weekday: 'long', day: 'numeric', month: 'long' }); data = data.charAt(0).toUpperCase() + data.slice(1);
+  var sub = {
+    licd: 'Prepare o próximo passo: estágio, mestrado ou concursos.',
+    mest: (function () { var d = Store.get('dissertacao'); return d && d.entrega ? 'Entrega da dissertação: ' + faltam(d.entrega).toLowerCase() + '.' : 'Organize a sua dissertação, prazos e bibliografia num só lugar.'; })(),
+    estag: (function () { var x = proxAgenda()[0]; return x ? 'Próximo: <b>' + esc(x.titulo) + '</b> — ' + faltam(x.data).toLowerCase() + '.' : 'Prazos, diligências e minutas sob controlo.'; })(),
+    prof: (function () { var x = proxAgenda()[0]; return x ? 'Próximo: <b>' + esc(x.titulo) + '</b> — ' + faltam(x.data).toLowerCase() + '.' : 'Atualidade, prazos e agenda num só lugar.'; })(),
+    doc: 'Crie perguntas e casos e use-os ao vivo com as suas turmas.'
+  }[t] || '';
+  var bts = {
+    licd: [['ordem', 'Treinar para a Ordem', 'gold'], ['prazos', 'Calcular um prazo', 'ghost']],
+    mest: [['dissertacao', 'Abrir a dissertação', 'gold'], ['biblioteca', 'Biblioteca jurídica', 'ghost']],
+    estag: [['prazos', 'Calcular um prazo', 'gold'], ['agenda', 'Agenda de diligências', 'ghost']],
+    prof: [['prazos', 'Calcular um prazo', 'gold'], ['agenda', 'Agenda de diligências', 'ghost']],
+    doc: [['docente', 'Criar perguntas e casos', 'gold'], ['salas', 'Salas com alunos', 'ghost']]
+  }[t] || [];
+  return '<section class="hero"><div class="hero-l"><span class="hero-d">' + esc(data) + ' · ' + esc(PERFIS[t].nome) + '</span><h1>' + saudacao() + (S.nome ? ', <span class="g">' + esc(S.nome) + '</span>' : '') + '.</h1><p>' + sub + '</p>' +
+    '<label class="search hero-s">' + I.search + '<span class="sr">Pesquisar</span><input id="gq" type="search" placeholder="Pesquisar diplomas, artigos…" value="' + esc(S.q) + '" data-in="gq"></label>' +
+    '<div class="row">' + bts.map(function (b) { return '<button class="btn ' + b[2] + '" data-go="' + b[0] + '">' + esc(b[1]) + '</button>'; }).join('') + '</div></div><div class="hero-orb" aria-hidden="true"><i>' + I.logo + '</i></div></section>';
+}
+
+/* ----- menu lateral por perfil ----- */
+renderSide = function () {
+  var st = Store.mode === 'cloud' ? ['cloud', 'Guardado na sua conta', 'Os seus dados ficam privados e acessíveis em qualquer dispositivo.'] : Store.mode === 'local' ? ['local', 'Guardado neste navegador', 'Os dados ficam apenas neste dispositivo.'] : ['', 'Sessão temporária', 'Os dados perdem-se ao fechar a página.'];
+  var t = tipoPerfil(), grupos = NAV_PERFIL[t], usados = [];
+  grupos.forEach(function (g) { usados = usados.concat(g[1]); });
+  var mais = Object.keys(NAV).filter(function (k) { return usados.indexOf(k) < 0; });
+  var nb = function (k) { return navBtn(k, NAV[k][0], I[NAV[k][1]]); };
+  var dmb = sessaoAtiva() && dmNaoLidas() ? '<span class="nbadge" style="margin-left:auto">' + dmNaoLidas() + '</span>' : '';
+  var maisAberto = S.navMais || mais.indexOf(S.view) >= 0;
+  $('#side').innerHTML = '<button class="brand nav" data-go="painel" style="padding:0 8px;background:none" aria-label="LEXDESK, ir para o painel"><span class="mark logo">' + I.logo + '</span><span class="word"><b>LEX</b><span>DESK</span></span></button>' +
+    grupos.map(function (g) { return '<div class="navgrp"><span class="navlbl">' + esc(g[0]) + '</span>' + g[1].map(nb).join('') + '</div>'; }).join('') +
+    '<div class="navgrp"><span class="navlbl">Comunidade</span>' + navBtn('chat', 'Chat da comunidade', I.chat) + navBtn('mensagens', 'Mensagens' + dmb, I.mail) + navBtn('salas', 'Salas de estudo', I.door) + navBtn('connect', 'Mentoria e explicações', I.users) + '</div>' +
+    (mais.length ? '<div class="navgrp"><button class="navlbl navmais" data-a="nav-mais" aria-expanded="' + !!maisAberto + '">Mais ferramentas ' + (maisAberto ? '▴' : '▾') + '</button>' + (maisAberto ? mais.map(nb).join('') : '') + '</div>' : '') +
+    '<button class="sideperfil" data-a="onb-abrir"><span class="sp-t">' + PERFIS[t].ic + ' ' + esc(PERFIS[t].nome) + '</span><span class="sp-s">' + (t === 'lic' && perfil() && perfil().instId ? esc(perfilResumo(perfil())) : 'Alterar perfil e áreas') + '</span></button>' +
+    (t === 'lic' ? '<button class="sideperfil" data-a="perfil-edit" style="margin-top:6px"><span class="sp-t">Perfil académico</span><span class="sp-s">Instituição, ano e disciplinas</span></button>' : '') +
+    '<div class="sidefoot" style="margin-top:0"><strong><span class="dot ' + st[0] + '"></span>' + st[1] + '</strong><span>' + st[2] + '</span></div>';
+};
+
+/* ----- pergunta inicial (3 passos) ----- */
+var ONB = { passo: 1, tipo: null, ano: 1, areas: [] };
+function onbAbrir() { var p = perfilUser(); ONB = { passo: 1, tipo: p ? p.tipo : null, ano: (p && p.ano) || 1, areas: p && p.areas ? p.areas.slice() : [] }; onbPintar(); }
+function onbPintar() {
+  var b = '', f = '';
+  if (ONB.passo === 1) {
+    b = '<p class="onb-q">Em que fase está?</p><div class="onb-g">' + Object.keys(PERFIS).map(function (k) { return '<button class="onb-c' + (ONB.tipo === k ? ' on' : '') + '" data-a="onb-tipo" data-id="' + k + '"><span class="onb-e">' + PERFIS[k].ic + '</span><b>' + esc(PERFIS[k].nome) + '</b><span>' + esc(PERFIS[k].d) + '</span></button>'; }).join('') + '</div>' +
+      (ONB.tipo === 'lic' ? '<div class="row" style="gap:8px;align-items:center"><span style="font-size:14px;font-weight:600">Ano:</span>' + [1, 2, 3, 4].map(function (a) { return '<button class="chip ' + (ONB.ano === a ? 'wine' : 'gray') + '" style="border:0;cursor:pointer;min-height:32px;padding:0 14px" data-a="onb-ano" data-id="' + a + '">' + a + '.º</button>'; }).join('') + '</div>' : '');
+    f = '<button class="btn" data-a="onb-saltar" style="margin-right:auto">Saltar</button><button class="btn wine" data-a="onb-seg"' + (ONB.tipo ? '' : ' disabled') + '>Continuar →</button>';
+  } else if (ONB.passo === 2) {
+    b = '<p class="onb-q">Que áreas lhe interessam?</p><p style="margin:0;color:var(--muted);font-size:14px">Personalizam a Atualidade jurídica, o filtro «Para mim», os alertas e os jogos. Pode escolher várias.</p><div class="row" style="gap:8px">' + AREAS_OPC.map(function (a) { return '<button class="chip ' + (ONB.areas.indexOf(a) >= 0 ? 'wine' : 'gray') + '" style="border:0;cursor:pointer;min-height:36px;padding:0 14px;font-size:13px" data-a="onb-area" data-id="' + esc(a) + '" aria-pressed="' + (ONB.areas.indexOf(a) >= 0) + '">' + (ONB.areas.indexOf(a) >= 0 ? '✓ ' : '') + esc(a) + '</button>'; }).join('') + '</div>';
+    f = '<button class="btn" data-a="onb-ant" style="margin-right:auto">← Voltar</button><button class="btn wine" data-a="onb-seg">Continuar →</button>';
+  } else {
+    var mods = MOD_PERFIL[ONB.tipo];
+    b = '<p class="onb-q">Pronto! O seu painel fica assim:</p><div class="onb-prev">' + mods.map(function (m, i) { return '<div class="onb-m"><span>' + (i + 1) + '</span>' + esc(MODS[m]) + '</div>'; }).join('') + '</div><p style="margin:0;color:var(--muted);font-size:13px">Nada é apagado: as outras ferramentas ficam em «Mais ferramentas», no menu. Pode personalizar o painel e mudar de perfil a qualquer momento.</p>';
+    f = '<button class="btn" data-a="onb-ant" style="margin-right:auto">← Voltar</button><button class="btn" data-a="onb-fim" data-id="ajustar">Ajustar módulos</button><button class="btn wine" data-a="onb-fim">Entrar no LEXDESK</button>';
+  }
+  openModal('Bem-vindo ao LEXDESK · passo ' + ONB.passo + ' de 3', '<div class="onb">' + b + '</div>', f);
+}
+function painelPers() {
+  var m = modsAtivos();
+  openModal('Personalizar painel', '<p style="margin:0;font-size:14px;color:var(--muted)">Escolha os módulos e a ordem. O painel adapta-se ao perfil «' + esc(PERFIS[tipoPerfil()].nome) + '».</p><div class="list" style="gap:6px">' + m.ordem.map(function (k, i) {
+    return '<div class="li" style="cursor:default;padding:8px 12px"><label class="check" style="flex:1;min-height:0"><input type="checkbox" data-mod="' + k + '"' + (m.hidden.indexOf(k) < 0 ? ' checked' : '') + '>' + esc(MODS[k]) + '</label><button class="icon-btn" data-a="pp-mv" data-i="' + i + '" data-d="-1" aria-label="Subir">↑</button><button class="icon-btn" data-a="pp-mv" data-i="' + i + '" data-d="1" aria-label="Descer">↓</button></div>';
+  }).join('') + '</div>', '<button class="btn" data-a="pp-repor" style="margin-right:auto">Repor do perfil</button><button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="pp-ok">Guardar</button>');
+  S.ppOrdem = m.ordem.slice();
+}
+var A14 = {
+  'onb-abrir': function () { onbAbrir(); },
+  'onb-tipo': function (el) { ONB.tipo = el.dataset.id; onbPintar(); },
+  'onb-ano': function (el) { ONB.ano = Number(el.dataset.id); onbPintar(); },
+  'onb-area': function (el) { var a = el.dataset.id, i = ONB.areas.indexOf(a); if (i >= 0) ONB.areas.splice(i, 1); else ONB.areas.push(a); onbPintar(); },
+  'onb-seg': function () { if (!ONB.tipo) return; ONB.passo++; onbPintar(); },
+  'onb-ant': function () { ONB.passo--; onbPintar(); },
+  'onb-saltar': function () { lsSet('lexdesk_onb', 'saltado'); if (!perfilUser()) guardarPerfilUser({ tipo: 'outro' }); closeModal(); render(); },
+  'onb-fim': function (el) {
+    var antes = perfilUser(), mudou = !antes || antes.tipo !== ONB.tipo;
+    guardarPerfilUser({ tipo: ONB.tipo, ano: ONB.ano, areas: ONB.areas, hidden: mudou ? null : antes.hidden, ordem: mudou ? null : antes.ordem });
+    lsSet('lexdesk_onb', 'feito'); closeModal(); S.view = 'painel'; render(); window.scrollTo(0, 0);
+    if (el.dataset.id === 'ajustar') painelPers(); else toast('Painel adaptado ao perfil «' + PERFIS[ONB.tipo].nome + '».');
+  },
+  'nav-mais': function () { S.navMais = !S.navMais; renderSide(); },
+  'painel-pers': function () { painelPers(); },
+  'pp-mv': function (el) { var o = S.ppOrdem, i = Number(el.dataset.i), j = i + Number(el.dataset.d); if (j < 0 || j >= o.length) return; var vis = {}; [].forEach.call(document.querySelectorAll('[data-mod]'), function (c) { vis[c.dataset.mod] = c.checked; }); var t = o[i]; o[i] = o[j]; o[j] = t; var p = guardarPerfilUser({ ordem: o.slice(), hidden: o.filter(function (k) { return vis[k] === false; }) }); painelPers(); },
+  'pp-ok': function () { var hid = []; [].forEach.call(document.querySelectorAll('[data-mod]'), function (c) { if (!c.checked) hid.push(c.dataset.mod); }); guardarPerfilUser({ ordem: S.ppOrdem, hidden: hid }); closeModal(); render(); toast('Painel guardado.'); },
+  'pp-repor': function () { guardarPerfilUser({ ordem: null, hidden: null }); closeModal(); render(); toast('Painel reposto.'); }
+};
+Object.keys(A14).forEach(function (k) { A[k] = A14[k]; });
+
+/* ----- primeira visita: pergunta inicial ----- */
+function onbVerificar() {
+  if (perfilUser() || lsGet('lexdesk_onb') || $('#ov')) return;
+  var e = S.meuPerfil && S.meuPerfil.estado, mapa = { ano1: 'lic', ano2: 'lic', ano3: 'lic', ano4: 'lic', mestrado: 'mest', estagiario: 'estag', advogado: 'prof', docente: 'doc', licenciado: 'licd' };
+  onbAbrir();
+  if (e && mapa[e]) { ONB.tipo = mapa[e]; ONB.ano = /^ano/.test(e) ? Number(e.slice(3)) : 1; onbPintar(); }
+}
+setTimeout(function () { if (!sessaoAtiva()) onbVerificar(); }, 1600);
+var _carregarMeuPerfil2 = carregarMeuPerfil;
+carregarMeuPerfil = function () { return _carregarMeuPerfil2().then(function (p) { setTimeout(onbVerificar, 1200); return p; }); };
+
+/* ----- áreas de interesse: «Para mim» e alertas ----- */
+var _meusTemas = meusTemas;
+meusTemas = function () { var p = perfilUser(), extra = []; (p && p.areas || []).forEach(function (a) { extra = extra.concat(AREA_KW[a] || [], [a.toLowerCase()]); }); return _meusTemas() + ' | ' + norm(extra.join(' | ')); };
+var _novas = novas;
+novas = function () { var l = _novas(), p = perfilUser(); if (p && p.areas && p.areas.length && (p.tipo === 'prof' || p.tipo === 'estag' || p.tipo === 'licd')) return l.filter(function (u) { return p.areas.indexOf(u.area) >= 0; }); return l; };
+var _loadUpd = Social.loadUpd;
+Social.loadUpd = function () {
+  var antes = (Social.upd || []).map(function (u) { return u.id; });
+  _loadUpd();
+  setTimeout(function () { var p = perfilUser(); if (!antes.length || !p || !p.areas || !p.areas.length) return; (Social.upd || []).filter(function (u) { return antes.indexOf(u.id) < 0 && p.areas.indexOf(u.area) >= 0; }).slice(0, 2).forEach(function (u) { toast('🔔 Nova atualização em ' + u.area + ': ' + u.titulo.slice(0, 70)); }); }, 2500);
+};
+
+/* ---------- FERRAMENTAS POR PERFIL: prazos, agenda, dissertação, Ordem, ensino ---------- */
+
+/* ===== Calendário judicial ===== */
+function pascoa(y) { var a = y % 19, b = Math.floor(y / 100), c = y % 100, d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30, i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451), mes = Math.floor((h + l - 7 * m + 114) / 31), dia = ((h + l - 7 * m + 114) % 31) + 1; return new Date(y, mes - 1, dia); }
+function somaDias(d, n) { var x = new Date(d.getFullYear(), d.getMonth(), d.getDate()); x.setDate(x.getDate() + n); return x; }
+function feriados(y) {
+  var p = pascoa(y), f = {};
+  [[1, 1, 'Ano Novo'], [4, 25, 'Dia da Liberdade'], [5, 1, 'Dia do Trabalhador'], [6, 10, 'Dia de Portugal'], [8, 15, 'Assunção de Nossa Senhora'], [10, 5, 'Implantação da República'], [11, 1, 'Todos os Santos'], [12, 1, 'Restauração da Independência'], [12, 8, 'Imaculada Conceição'], [12, 25, 'Natal']].forEach(function (x) { f[ymd(new Date(y, x[0] - 1, x[1]))] = x[2]; });
+  f[ymd(somaDias(p, -2))] = 'Sexta-feira Santa'; f[ymd(p)] = 'Páscoa'; f[ymd(somaDias(p, 60))] = 'Corpo de Deus';
+  return f;
+}
+function emFerias(d) {
+  var y = d.getFullYear(), m = d.getMonth() + 1, dia = d.getDate(), p = pascoa(y), t = d.getTime();
+  if ((m === 12 && dia >= 22) || (m === 1 && dia <= 3)) return 'férias judiciais de Natal';
+  if (t >= somaDias(p, -7).getTime() && t <= somaDias(p, 1).getTime()) return 'férias judiciais da Páscoa';
+  if ((m === 7 && dia >= 16) || m === 8) return 'férias judiciais de verão';
+  return '';
+}
+function encerrado(d, o) {
+  var k = ymd(d), w = d.getDay(), f = feriados(d.getFullYear());
+  if (w === 0 || w === 6) return w === 0 ? 'domingo' : 'sábado';
+  if (f[k]) return 'feriado (' + f[k] + ')';
+  if (o.extra.indexOf(k) >= 0) return 'tolerância de ponto / feriado indicado';
+  if (o.carnaval && k === ymd(somaDias(pascoa(d.getFullYear()), -47))) return 'Carnaval (tolerância de ponto)';
+  if (!o.urgente) { var fe = emFerias(d); if (fe) return fe; }
+  return '';
+}
+function calcPrazo(o) {
+  // o: {inicio: Date (dia do evento), dias, dilacao, urgente, carnaval, extra: [ymd]}
+  var total = o.dias + (o.dilacao || 0), suspende = !o.urgente && total < 180, d = new Date(o.inicio), n = 0, log = [], susp = null;
+  while (n < total) {
+    d = somaDias(d, 1);
+    var fe = suspende ? emFerias(d) : '';
+    if (fe) { if (!susp) susp = { de: ymd(d), motivo: fe }; susp.ate = ymd(d); continue; }
+    if (susp) { log.push('Prazo suspenso de ' + dataCurta(susp.de) + ' a ' + dataCurta(susp.ate) + ' (' + susp.motivo + ').'); susp = null; }
+    n++;
+  }
+  var termoNatural = new Date(d), termo = new Date(d), mot;
+  while ((mot = encerrado(termo, o))) { log.push(dataCurta(ymd(termo)) + ': tribunais encerrados (' + mot + ') — o termo passa para o dia útil seguinte.'); termo = somaDias(termo, 1); }
+  var multa = [], x = new Date(termo);
+  while (multa.length < 3) { x = somaDias(x, 1); if (!encerrado(x, o)) multa.push(new Date(x)); }
+  return { termoNatural: termoNatural, termo: termo, multa: multa, log: log };
+}
+var PRESETS = [
+  ['Contestação — ação declarativa comum (CPC)', 30, 'art. 569.º, n.º 1, do CPC'],
+  ['Recurso — prazo geral (CPC)', 30, 'art. 638.º, n.º 1, do CPC'],
+  ['Embargos de executado (CPC)', 20, 'art. 728.º, n.º 1, do CPC'],
+  ['Prazo supletivo geral (CPC)', 10, 'art. 149.º, n.º 1, do CPC'],
+  ['Requerimento de abertura de instrução (CPP)', 20, 'art. 287.º, n.º 1, do CPP'],
+  ['Contestação do arguido (CPP)', 20, 'art. 315.º, n.º 1, do CPP'],
+  ['Recurso — prazo geral (CPP)', 30, 'art. 411.º, n.º 1, do CPP'],
+  ['Prazo supletivo geral (CPP)', 10, 'art. 105.º, n.º 1, do CPP']
+];
+function vPrazos() {
+  var f = S.pz || { ini: ymd(new Date()), dias: 30, dil: 0, urg: false, carn: false, extra: '', preset: 0, nome: PRESETS[0][0] };
+  S.pz = f;
+  var h = '<div class="head"><div><h1>Contador de prazos processuais</h1><p class="sub">Calcula o termo de prazos em dias, segundo a regra da continuidade (art. 138.º do CPC, aplicável ao processo penal pelo art. 104.º, n.º 1, do CPP).</p></div></div>';
+  h += '<div class="note" style="border-color:#F5C26B;background:#FFF8E6"><b>Atenção:</b> ferramenta de apoio. Confirme sempre o prazo no diploma aplicável e no processo. Não considera feriados municipais nem tolerâncias de ponto que não indique abaixo, nem regras especiais (prazos em meses, dilações específicas, Citius fora de horas).</div>';
+  h += '<div class="split"><div class="a card" style="gap:12px"><h2>Dados</h2>' +
+    '<label class="f">Ato<select class="in" id="pz-pre">' + PRESETS.map(function (p, i) { return '<option value="' + i + '"' + (f.preset === i ? ' selected' : '') + '>' + esc(p[0]) + ' — ' + p[1] + ' dias</option>'; }).join('') + '<option value="-1"' + (f.preset === -1 ? ' selected' : '') + '>Outro prazo (indicar os dias)</option></select></label>' +
+    '<div class="row" style="gap:10px;align-items:flex-start"><label class="f" style="flex:1 1 180px">Data da citação ou notificação<input class="in" type="date" id="pz-ini" value="' + esc(f.ini) + '"></label><label class="f" style="flex:1 1 110px">Prazo (dias)<input class="in" type="number" min="1" max="365" id="pz-dias" value="' + f.dias + '"' + (f.preset >= 0 ? ' readonly' : '') + '></label><label class="f" style="flex:1 1 110px">Dilação (dias)<input class="in" type="number" min="0" max="60" id="pz-dil" value="' + f.dil + '"></label></div>' +
+    '<span style="font-size:12px;color:var(--muted)">Indique a data em que a citação ou notificação <b>se considera efetuada</b> (por exemplo, nas notificações eletrónicas, o 3.º dia posterior ao da elaboração ou o primeiro dia útil seguinte — art. 248.º do CPC). O dia do evento não se conta.</span>' +
+    '<label class="check"><input type="checkbox" id="pz-urg"' + (f.urg ? ' checked' : '') + '>Processo urgente (o prazo corre em férias judiciais — ex.: procedimentos cautelares, art. 363.º, n.º 1, do CPC; processos com arguidos presos, art. 103.º do CPP)</label>' +
+    '<label class="check"><input type="checkbox" id="pz-carn"' + (f.carn ? ' checked' : '') + '>Considerar Carnaval como tolerância de ponto (confirme se foi concedida)</label>' +
+    '<label class="f">Outros dias encerrados (feriado municipal, tolerâncias) — datas separadas por vírgulas<input class="in" id="pz-extra" placeholder="AAAA-MM-DD, AAAA-MM-DD" value="' + esc(f.extra) + '"></label>' +
+    '<button class="btn wine" data-a="pz-calc">Calcular</button></div><div class="b" id="pz-res">' + (S.pzRes ? pzRes() : '<div class="card"><div class="empty" style="border:0"><span style="font-size:36px">⏳</span><b>Preencha os dados e clique em «Calcular».</b></div></div>') + '</div></div>';
+  return h;
+}
+function pzRes() {
+  var r = S.pzRes, f = S.pz, n = diasAte(ymd(r.termo));
+  return '<div class="card" style="gap:12px"><span class="eyebrow">Termo do prazo</span><div class="pz-t"><b>' + esc(dataLonga(ymd(r.termo))) + '</b><span class="chip ' + (n < 0 ? 'bad' : n <= 3 ? 'wine' : 'ok') + '">' + (n < 0 ? 'terminou há ' + plural(-n, 'dia', 'dias') : n === 0 ? 'termina hoje' : 'faltam ' + plural(n, 'dia', 'dias')) + '</span></div>' +
+    '<span style="font-size:13px;color:var(--muted)">' + esc(f.nome) + ' · ' + (f.dias + f.dil) + ' dias' + (f.dil ? ' (incluindo ' + f.dil + ' de dilação)' : '') + (f.preset >= 0 ? ' · ' + PRESETS[f.preset][2] : '') + ' · ' + (f.urg ? 'processo urgente' : 'suspende-se em férias judiciais') + '</span>' +
+    (r.log.length ? '<div class="blk" style="gap:4px"><span class="eyebrow">Como foi calculado</span><ul style="margin:0;padding-left:18px;font-size:13.5px">' + r.log.map(function (l) { return '<li>' + esc(l) + '</li>'; }).join('') + '</ul></div>' : '') +
+    '<div class="blk" style="gap:4px"><span class="eyebrow">Com multa (art. 139.º, n.º 5, do CPC)</span><span style="font-size:14px">O ato pode ainda ser praticado nos 3 dias úteis seguintes, mediante pagamento de multa: ' + r.multa.map(function (d, i) { return '<b>' + (i + 1) + '.º</b> ' + esc(dataCurta(ymd(d))); }).join(' · ') + '.</span></div>' +
+    '<div class="row"><button class="btn sm wine" data-a="pz-agenda">' + I.cal + 'Adicionar à agenda</button><button class="btn sm" data-a="pz-copiar">Copiar resumo</button></div></div>';
+}
+function lerPz() {
+  var pre = Number($('#pz-pre').value), f = { preset: pre, ini: $('#pz-ini').value, dias: pre >= 0 ? PRESETS[pre][1] : Math.max(1, Math.min(365, Number($('#pz-dias').value) || 0)), dil: Math.max(0, Math.min(60, Number($('#pz-dil').value) || 0)), urg: $('#pz-urg').checked, carn: $('#pz-carn').checked, extra: $('#pz-extra').value.trim() };
+  f.nome = pre >= 0 ? PRESETS[pre][0] : 'Prazo de ' + f.dias + ' dias'; return f;
+}
+
+/* ===== Agenda de diligências ===== */
+var TIPOS_AG = ['Prazo', 'Julgamento', 'Audiência', 'Diligência', 'Reunião', 'Outro'];
+function proxAgenda() { var hoje = ymd(new Date()); return Store.all('agenda').filter(function (a) { return !a.feito && a.data >= hoje; }).sort(function (a, b) { return (a.data + (a.hora || '')).localeCompare(b.data + (b.hora || '')); }); }
+function vAgenda() {
+  var hoje = ymd(new Date()), all = Store.all('agenda').sort(function (a, b) { return (a.data + (a.hora || '')).localeCompare(b.data + (b.hora || '')); });
+  var prox = all.filter(function (a) { return !a.feito && a.data >= hoje; }), atras = all.filter(function (a) { return !a.feito && a.data < hoje; }), feitos = all.filter(function (a) { return a.feito; }).reverse().slice(0, 20);
+  var row = function (a) { var n = diasAte(a.data); return '<div class="li ag' + (a.feito ? ' feito' : '') + '"><span class="ag-d"><b>' + Number(a.data.slice(8)) + '</b><small>' + ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'].at(Number(a.data.slice(5, 7)) - 1) + '</small></span><span class="tx"><b>' + esc(a.titulo) + ' <span class="chip gray">' + esc(a.tipo) + '</span></b><span>' + (a.hora ? esc(a.hora) + ' · ' : '') + (a.local ? esc(a.local) + ' · ' : '') + (a.feito ? 'concluído' : n === 0 ? '<b style="color:var(--wine)">hoje</b>' : n === 1 ? 'amanhã' : n < 0 ? '<b style="color:var(--bad)">em atraso</b>' : 'daqui a ' + n + ' dias') + '</span></span><button class="btn sm" data-a="ag-feito" data-id="' + a.id + '">' + (a.feito ? 'Reabrir' : '✓ Concluído') + '</button><button class="icon-btn" data-a="ag-edit" data-id="' + a.id + '" aria-label="Editar">' + I.pen + '</button></div>'; };
+  var h = '<div class="head"><div><h1>Agenda de diligências</h1><p class="sub">Julgamentos, audiências, diligências e prazos, com contagem dos dias que faltam.</p></div><div class="row"><button class="btn sm" data-go="prazos">' + I.hour + 'Calcular um prazo</button><button class="btn sm wine" data-a="ag-novo">' + I.plus + 'Novo evento</button></div></div>';
+  h += '<div class="note">Por sigilo profissional (art. 92.º do EOA) e proteção de dados, evite nomes de clientes ou partes: use referências internas (ex.: «Proc. 123/26 — cliente A»).</div>';
+  if (atras.length) h += '<section class="card"><h2>Em atraso</h2><div class="list">' + atras.map(row).join('') + '</div></section>';
+  h += '<section class="card"><h2>Próximos</h2>' + (prox.length ? '<div class="list">' + prox.map(row).join('') + '</div>' : '<div class="empty"><span>Sem eventos marcados.</span><button class="btn" data-a="ag-novo">' + I.plus + 'Adicionar o primeiro</button></div>') + '</section>';
+  if (feitos.length) h += '<section class="card"><h2>Concluídos recentemente</h2><div class="list">' + feitos.map(row).join('') + '</div></section>';
+  return h;
+}
+function agForm(a) {
+  return '<label class="f">Título<input class="in" id="ag-tit" maxlength="140" value="' + esc(a.titulo || '') + '" placeholder="Ex.: Julgamento — Proc. 123/26"></label><div class="row" style="gap:10px;align-items:flex-start"><label class="f" style="flex:1 1 140px">Tipo<select class="in" id="ag-tipo">' + TIPOS_AG.map(function (t) { return '<option' + (a.tipo === t ? ' selected' : '') + '>' + t + '</option>'; }).join('') + '</select></label><label class="f" style="flex:1 1 150px">Data<input class="in" type="date" id="ag-data" value="' + esc(a.data || '') + '"></label><label class="f" style="flex:1 1 110px">Hora<input class="in" type="time" id="ag-hora" value="' + esc(a.hora || '') + '"></label></div><label class="f">Local / tribunal<input class="in" id="ag-local" maxlength="140" value="' + esc(a.local || '') + '" placeholder="Ex.: Juízo Local Cível do Porto, J2"></label><label class="f">Notas<textarea class="in" id="ag-notas" maxlength="1000">' + esc(a.notas || '') + '</textarea></label>';
+}
+
+/* ===== Dissertação ===== */
+var EST_CAP = ['Por fazer', 'Em curso', 'Em revisão', 'Concluído'];
+function diss() { return Store.get('dissertacao') || { id: 'dissertacao', kind: 'meta', titulo: '', orientador: '', entrega: '', metaPalavras: 0, capitulos: [], reunioes: [], prazos: [], biblio: [] }; }
+function dissGuardar(d) { d.updatedAt = Date.now(); Store.put(d); }
+function citar(b, est) {
+  var aut = String(b.autores || '').split(';').map(function (s) { return s.trim(); }).filter(Boolean);
+  if (est === 'apa') {
+    var a = aut.map(function (x) { var p = x.split(','); var ap = p[0].trim().toLowerCase().replace(/(^|[\s-])(\S)/g, function (m, a, b) { return a + b.toUpperCase(); }); return p.length > 1 ? ap + ', ' + p[1].trim().split(/\s+/).filter(function (n) { return /^[A-ZÀ-Ý]/.test(n); }).map(function (n) { return n.charAt(0) + '.'; }).join(' ') : x; });
+    var as = a.length > 1 ? a.slice(0, -1).join(', ') + ', & ' + a.at(-1) : (a[0] || '');
+    if (b.tipo === 'artigo') return as + ' (' + (b.ano || 's.d.') + '). ' + b.titulo + '. <i>' + esc(b.revista || '') + '</i>' + (b.volume ? ', <i>' + esc(b.volume) + '</i>' : '') + (b.numero ? '(' + esc(b.numero) + ')' : '') + (b.paginas ? ', ' + esc(b.paginas) : '') + '.' + (b.url ? ' ' + esc(b.url) : '');
+    if (b.tipo === 'acordao') return esc(b.tribunal || '') + ' (' + (b.ano || 's.d.') + '). <i>Acórdão de ' + esc(b.data || '') + ', processo n.º ' + esc(b.processo || '') + '</i>.' + (b.url ? ' ' + esc(b.url) : '');
+    return as + ' (' + (b.ano || 's.d.') + '). <i>' + esc(b.titulo) + '</i>' + (b.edicao ? ' (' + esc(b.edicao) + '.ª ed.)' : '') + '. ' + esc(b.editora || '') + '.';
+  }
+  var n = aut.map(function (x) { var p = x.split(','); return p.length > 1 ? p[0].trim().toUpperCase() + ', ' + p.slice(1).join(',').trim() : x.toUpperCase(); }).join('; ');
+  if (b.tipo === 'artigo') return n + ' – ' + esc(b.titulo) + '. <i>' + esc(b.revista || '') + '</i>.' + (b.volume ? ' Vol. ' + esc(b.volume) + ',' : '') + (b.numero ? ' n.º ' + esc(b.numero) : '') + ' (' + (b.ano || 's.d.') + ')' + (b.paginas ? ', p. ' + esc(b.paginas) : '') + '.';
+  if (b.tipo === 'acordao') return 'PORTUGAL. ' + esc(b.tribunal || '').toUpperCase() + ' – <i>Acórdão de ' + esc(b.data || '') + '</i>. Processo n.º ' + esc(b.processo || '') + '.' + (b.url ? ' Disponível em: ' + esc(b.url) + '.' : '');
+  return n + ' – <i>' + esc(b.titulo) + '</i>.' + (b.edicao ? ' ' + esc(b.edicao) + '.ª ed.' : '') + ' ' + esc(b.local || 's.l.') + ': ' + esc(b.editora || 's.n.') + ', ' + (b.ano || 's.d.') + '.';
+}
+function vDissertacao() {
+  var d = diss(), tot = d.capitulos.reduce(function (s, c) { return s + (Number(c.palavras) || 0); }, 0), feitos = d.capitulos.filter(function (c) { return c.estado === 3; }).length;
+  var tab = S.dsTab || 'cap', est = S.dsCit || 'np';
+  var h = '<div class="head"><div><h1>Dissertação</h1><p class="sub">' + (d.titulo ? esc(d.titulo) : 'Organize capítulos, prazos, reuniões e bibliografia.') + '</p></div><button class="btn sm" data-a="ds-dados">' + I.pen + 'Dados da dissertação</button></div>';
+  h += '<section class="grid">' + kpi('Palavras escritas', tot, d.metaPalavras ? Math.round(100 * tot / d.metaPalavras) + '% da meta de ' + d.metaPalavras : 'Defina uma meta') + kpi('Capítulos concluídos', feitos, 'de ' + d.capitulos.length) + kpi('Entrega', d.entrega ? (diasAte(d.entrega) >= 0 ? diasAte(d.entrega) + ' dias' : 'Passou') : '—', d.entrega ? dataLonga(d.entrega) : 'Sem data definida') + kpi('Bibliografia', d.biblio.length, 'referências') + '</section>';
+  h += '<div class="seg">' + [['cap', 'Capítulos'], ['prazos', 'Prazos e reuniões'], ['biblio', 'Bibliografia']].map(function (t) { return '<button class="' + (tab === t[0] ? 'on' : '') + '" data-a="ds-tab" data-id="' + t[0] + '">' + t[1] + '</button>'; }).join('') + '</div>';
+  if (tab === 'cap') {
+    h += '<section class="card"><div class="row" style="justify-content:space-between"><h2>Capítulos</h2><button class="btn sm wine" data-a="ds-cap-novo">' + I.plus + 'Capítulo</button></div>' + (d.capitulos.length ? '<div class="list">' + d.capitulos.map(function (c, i) {
+      var p = c.meta ? Math.min(100, Math.round(100 * (Number(c.palavras) || 0) / c.meta)) : 0;
+      return '<div class="li" style="cursor:default;flex-wrap:wrap"><span class="pt-n">' + (i + 1) + '</span><span class="tx" style="min-width:180px"><b>' + esc(c.titulo) + '</b><span>' + (Number(c.palavras) || 0) + (c.meta ? ' / ' + c.meta : '') + ' palavras</span><div class="bar" style="height:6px;margin-top:4px"><i style="width:' + p + '%"></i></div></span><select class="in" style="width:auto;min-height:36px" data-ds-est="' + c.id + '">' + EST_CAP.map(function (e, k) { return '<option value="' + k + '"' + (c.estado === k ? ' selected' : '') + '>' + e + '</option>'; }).join('') + '</select><button class="icon-btn" data-a="ds-cap-edit" data-id="' + c.id + '" aria-label="Editar">' + I.pen + '</button><button class="icon-btn" data-a="ds-mv" data-id="' + c.id + '" data-d="-1" aria-label="Subir">↑</button></div>';
+    }).join('') + '</div>' : '<div class="empty"><span>Ainda sem capítulos. Ex.: Introdução, Enquadramento, Análise jurisprudencial, Conclusões.</span></div>') + '</section>';
+  } else if (tab === 'prazos') {
+    var pz = d.prazos.slice().sort(function (a, b) { return a.data.localeCompare(b.data); }), re = d.reunioes.slice().sort(function (a, b) { return b.data.localeCompare(a.data); });
+    h += '<div class="grid2"><section class="card"><div class="row" style="justify-content:space-between"><h2>Prazos de entrega</h2><button class="btn sm wine" data-a="ds-prazo-novo">' + I.plus + 'Prazo</button></div>' + (pz.length ? '<div class="list">' + pz.map(function (p) { var n = diasAte(p.data); return '<label class="li check" style="cursor:pointer"><input type="checkbox" data-ds-pz="' + p.id + '"' + (p.feito ? ' checked' : '') + '><span class="tx"><b' + (p.feito ? ' style="text-decoration:line-through;opacity:.6"' : '') + '>' + esc(p.titulo) + '</b><span>' + dataLonga(p.data) + (p.feito ? '' : ' · ' + (n >= 0 ? 'faltam ' + n + ' dias' : 'em atraso')) + '</span></span><button class="icon-btn" data-a="ds-del" data-k="prazos" data-id="' + p.id + '" aria-label="Apagar">' + I.trash + '</button></label>'; }).join('') + '</div>' : '<div class="empty"><span>Ex.: entrega do projeto, versão ao orientador, depósito final.</span></div>') + '</section>' +
+      '<section class="card"><div class="row" style="justify-content:space-between"><h2>Reuniões com o orientador</h2><button class="btn sm wine" data-a="ds-reu-novo">' + I.plus + 'Reunião</button></div>' + (re.length ? '<div class="list">' + re.map(function (r) { return '<div class="li" style="cursor:default;align-items:flex-start"><span class="tx"><b>' + dataLonga(r.data) + '</b><span style="white-space:pre-wrap">' + esc(r.notas || '') + '</span></span><button class="icon-btn" data-a="ds-del" data-k="reunioes" data-id="' + r.id + '" aria-label="Apagar">' + I.trash + '</button></div>'; }).join('') + '</div>' : '<div class="empty"><span>Registe o que ficou combinado em cada reunião.</span></div>') + '</section></div>';
+  } else {
+    h += '<section class="card"><div class="row" style="justify-content:space-between"><h2>Bibliografia</h2><div class="row"><div class="seg"><button class="' + (est === 'np' ? 'on' : '') + '" data-a="ds-cit" data-id="np">NP 405</button><button class="' + (est === 'apa' ? 'on' : '') + '" data-a="ds-cit" data-id="apa">APA 7</button></div><button class="btn sm" data-a="ds-bib-copiar">Copiar tudo</button><button class="btn sm wine" data-a="ds-bib-novo">' + I.plus + 'Referência</button></div></div>' +
+      '<span style="font-size:12px;color:var(--muted)">Formatação aproximada das normas NP 405 e APA 7. Confirme sempre as regras exigidas pela sua faculdade.</span>' +
+      (d.biblio.length ? '<ol class="bib">' + d.biblio.slice().sort(function (a, b) { return String(a.autores || a.tribunal || '').localeCompare(String(b.autores || b.tribunal || ''), 'pt'); }).map(function (b) { return '<li><span>' + citar(b, est) + '</span><span class="row" style="gap:2px"><button class="icon-btn" data-a="ds-bib-edit" data-id="' + b.id + '" aria-label="Editar">' + I.pen + '</button><button class="icon-btn" data-a="ds-del" data-k="biblio" data-id="' + b.id + '" aria-label="Apagar">' + I.trash + '</button></span></li>'; }).join('') + '</ol>' : '<div class="empty"><span>Acrescente livros, artigos e acórdãos. As citações são formatadas automaticamente.</span></div>') + '</section>';
+  }
+  return h;
+}
+function bibForm(b) {
+  var t = b.tipo || 'livro', fld = function (id, lbl, v, ph) { return '<label class="f" style="flex:1 1 160px">' + lbl + '<input class="in" id="bb-' + id + '" value="' + esc(v || '') + '" placeholder="' + esc(ph || '') + '"></label>'; };
+  return '<div class="seg">' + [['livro', 'Livro'], ['artigo', 'Artigo'], ['acordao', 'Acórdão']].map(function (x) { return '<button type="button" class="' + (t === x[0] ? 'on' : '') + '" data-a="bb-tipo" data-id="' + x[0] + '">' + x[1] + '</button>'; }).join('') + '</div>' +
+    (t === 'acordao' ? '<div class="row" style="gap:10px">' + fld('tribunal', 'Tribunal', b.tribunal, 'Supremo Tribunal de Justiça') + fld('data', 'Data', b.data, '12 de março de 2024') + '</div><div class="row" style="gap:10px">' + fld('processo', 'Processo n.º', b.processo, '123/20.0T8PRT.P1.S1') + fld('ano', 'Ano', b.ano, '2024') + '</div>' + fld('url', 'Endereço (opcional)', b.url, 'https://www.dgsi.pt/…')
+      : fld('autores', 'Autores (Apelido, Nome; separados por ;)', b.autores, 'VARELA, Antunes; ...') + fld('titulo', 'Título', b.titulo) +
+      (t === 'artigo' ? '<div class="row" style="gap:10px">' + fld('revista', 'Revista', b.revista) + fld('volume', 'Volume', b.volume) + fld('numero', 'N.º', b.numero) + '</div><div class="row" style="gap:10px">' + fld('ano', 'Ano', b.ano) + fld('paginas', 'Páginas', b.paginas, '45-78') + '</div>' + fld('url', 'Endereço / DOI (opcional)', b.url)
+        : '<div class="row" style="gap:10px">' + fld('edicao', 'Edição', b.edicao, '10') + fld('local', 'Local', b.local, 'Coimbra') + fld('editora', 'Editora', b.editora, 'Almedina') + fld('ano', 'Ano', b.ano) + '</div>'));
+}
+function lerBib() { var o = { tipo: S.bbTipo || 'livro' }; ['autores', 'titulo', 'revista', 'volume', 'numero', 'ano', 'paginas', 'url', 'edicao', 'local', 'editora', 'tribunal', 'data', 'processo'].forEach(function (k) { var e = $('#bb-' + k); if (e) o[k] = e.value.trim(); }); return o; }
+
+/* ===== Treino para a Ordem ===== */
+var Q_DEONT = [
+  { id: 'eoa1', d: 'deont', q: 'O dever de segredo profissional do advogado abrange:', o: ['Apenas os factos revelados pelo cliente por escrito', 'Todos os factos cujo conhecimento lhe advenha do exercício das suas funções ou da prestação dos seus serviços', 'Apenas os factos relativos a processos judiciais pendentes', 'Apenas os factos que o cliente peça expressamente para manter em segredo'], a: 1, e: 'O advogado é obrigado a guardar segredo profissional quanto a todos os factos cujo conhecimento lhe advenha do exercício das suas funções ou da prestação dos seus serviços (art. 92.º, n.º 1, do EOA — Lei n.º 145/2015).' },
+  { id: 'eoa2', d: 'deont', q: 'O dever de segredo profissional abrange documentos?', o: ['Não, só abrange factos', 'Sim, abrange documentos ou outras coisas que se relacionem, direta ou indiretamente, com os factos sujeitos a sigilo', 'Só documentos assinados pelo cliente', 'Só documentos entregues em tribunal'], a: 1, e: 'O dever de guardar segredo abrange também documentos ou outras coisas que se relacionem, direta ou indiretamente, com os factos sujeitos a sigilo (art. 92.º, n.º 3, do EOA).' },
+  { id: 'eoa3', d: 'deont', q: 'Em que condições pode o advogado revelar factos sujeitos a segredo profissional?', o: ['Sempre que o cliente o autorize verbalmente', 'Quando seja absolutamente necessário para a defesa da dignidade, direitos e interesses legítimos do próprio advogado ou do cliente, mediante prévia autorização do presidente do conselho regional', 'Sempre que o juiz o ordene, sem mais', 'Nunca, em caso algum'], a: 1, e: 'A revelação só é admitida quando absolutamente necessária para a defesa da dignidade, direitos e interesses legítimos do próprio advogado ou do cliente ou seus representantes, mediante prévia autorização do presidente do conselho regional respetivo (art. 92.º, n.º 4, do EOA).' },
+  { id: 'eoa4', d: 'deont', q: 'Os atos praticados pelo advogado com violação de segredo profissional:', o: ['São plenamente válidos como prova', 'Não podem fazer prova em juízo', 'Só fazem prova se o cliente concordar', 'Fazem prova apenas em processo penal'], a: 1, e: 'Os atos praticados pelo advogado com violação de segredo profissional não podem fazer prova em juízo (art. 92.º, n.º 5, do EOA).' },
+  { id: 'eoa5', d: 'deont', q: 'A obrigação de segredo profissional existe quando o serviço não é remunerado ou o advogado não chegou a aceitar o mandato?', o: ['Não, só existe com mandato aceite e remunerado', 'Sim, existe quer o serviço envolva ou não representação, seja ou não remunerado, e quer o advogado tenha ou não chegado a aceitar o serviço', 'Só se houver procuração junta aos autos', 'Só nos serviços de consulta jurídica'], a: 1, e: 'A obrigação de segredo existe independentemente de haver representação, remuneração ou aceitação do serviço (art. 92.º, n.º 2, do EOA).' }
+];
+var ORDEM_AREAS = [['deont', 'Deontologia profissional'], ['pc', 'Processo Civil'], ['pp', 'Processo Penal']];
+function poolOrdem(a) { return a === 'deont' ? Q_DEONT : QUESTOES.filter(function (q) { return q.d === a; }); }
+function vOrdem() {
+  var T = S.ordT;
+  var h = '<div class="head"><div><h1>Treino para a Ordem</h1><p class="sub">Treino por áreas com perguntas de escolha múltipla, explicação e referência legal.</p></div></div>';
+  h += '<div class="note">Treino de conhecimentos: não reproduz o formato oficial das provas. Consulte as regras de estágio e de avaliação em vigor no <a href="https://portal.oa.pt" target="_blank" rel="noopener">portal da Ordem dos Advogados</a> (o Estatuto foi alterado pela Lei n.º 6/2024).</div>';
+  if (T) {
+    var q = T.qs[T.i], r = T.resp[T.i];
+    if (T.i >= T.qs.length) { var ok = T.resp.filter(function (x, k) { return x === T.qs[k].a; }).length; return h + '<section class="card" style="align-items:center;text-align:center"><span class="eyebrow">Resultado</span><b style="font-family:var(--serif);font-size:48px">' + ok + ' / ' + T.qs.length + '</b><span>' + esc(ORDEM_AREAS.filter(function (x) { return x[0] === T.a; })[0][1]) + '</span><div class="row"><button class="btn" data-a="ord-sair">Voltar</button><button class="btn wine" data-a="ord-ini" data-id="' + T.a + '">Repetir</button></div></section>'; }
+    return h + '<section class="at-q"><span class="eyebrow">' + (T.i + 1) + ' de ' + T.qs.length + '</span><p class="at-qt">' + esc(q.q) + '</p><div class="list" style="gap:8px">' + q.o.map(function (o, k) { var cls = r == null ? '' : k === q.a ? ' right' : k === r ? ' wrong' : ''; return '<button class="opt' + cls + '" data-a="ord-resp" data-i="' + k + '"' + (r != null ? ' disabled' : '') + '><span class="lt">' + 'ABCD'.charAt(k) + '</span>' + esc(o) + '</button>'; }).join('') + '</div>' +
+      (r != null ? '<div class="fb ' + (r === q.a ? 'ok' : 'bad') + '"><b>' + (r === q.a ? 'Certo!' : 'Errado.') + '</b><span>' + esc(q.e) + '</span></div><div class="row" style="justify-content:flex-end"><button class="btn wine" data-a="ord-seg">Seguinte →</button></div>' : '') + '</section><div class="row"><button class="btn sm" data-a="ord-sair">Terminar treino</button></div>';
+  }
+  return h + '<div class="jg-grid">' + ORDEM_AREAS.map(function (x) { var n = poolOrdem(x[0]).length; return '<button class="jg" data-a="ord-ini" data-id="' + x[0] + '"><span class="jg-e">' + (x[0] === 'deont' ? '⚖️' : x[0] === 'pc' ? '📄' : '🔒') + '</span><b>' + x[1] + '</b><span>' + n + ' perguntas</span><span class="chip wine">Treinar</span></button>'; }).join('') + '</div>';
+}
+
+/* ===== Ensino (docentes) ===== */
+function vDocente() {
+  var tab = S.dcTab || 'perg', qs = Store.all('qprop').sort(function (a, b) { return (b.createdAt || 0) - (a.createdAt || 0); }), cs = Store.all('casoprop');
+  var h = '<div class="head"><div><h1>Ensino</h1><p class="sub">Crie perguntas e casos próprios e use-os ao vivo nas salas de estudo com os seus alunos.</p></div><div class="row"><button class="btn sm" data-go="salas">' + I.door + 'Salas de estudo</button></div></div>';
+  h += '<div class="note"><b>Como usar:</b> 1) crie as perguntas ou casos; 2) crie uma sala e partilhe o código com a turma; 3) em «Atividades e jogos», escolha «Quiz ao vivo» ou «Exame em conjunto» com a fonte «As minhas perguntas», ou «Julgamento simulado» com um dos seus casos. No fim do exame pode exportar os resultados (CSV).</div>';
+  h += '<div class="seg">' + [['perg', 'As minhas perguntas (' + qs.length + ')'], ['casos', 'Os meus casos (' + cs.length + ')']].map(function (t) { return '<button class="' + (tab === t[0] ? 'on' : '') + '" data-a="dc-tab" data-id="' + t[0] + '">' + t[1] + '</button>'; }).join('') + '</div>';
+  if (tab === 'perg') h += '<section class="card"><div class="row" style="justify-content:space-between"><h2>Perguntas</h2><button class="btn sm wine" data-a="dc-q-novo">' + I.plus + 'Pergunta</button></div>' + (qs.length ? '<div class="list">' + qs.map(function (q) { return '<div class="li" style="cursor:default;align-items:flex-start"><span class="tx"><b>' + esc(q.q) + '</b><span>Certa: ' + esc(q.o[q.a]) + (q.tema ? ' · ' + esc(q.tema) : '') + '</span></span><button class="icon-btn" data-a="dc-q-edit" data-id="' + q.id + '" aria-label="Editar">' + I.pen + '</button><button class="icon-btn" data-a="dc-del" data-id="' + q.id + '" aria-label="Apagar">' + I.trash + '</button></div>'; }).join('') + '</div>' : '<div class="empty"><span>Crie perguntas de escolha múltipla com 4 opções e explicação.</span></div>') + '</section>';
+  else h += '<section class="card"><div class="row" style="justify-content:space-between"><h2>Casos práticos</h2><button class="btn sm wine" data-a="dc-c-novo">' + I.plus + 'Caso</button></div>' + (cs.length ? '<div class="list">' + cs.map(function (c) { return '<div class="li" style="cursor:default;align-items:flex-start"><span class="tx"><b>' + esc(c.titulo) + '</b><span>' + esc(c.enunciado.slice(0, 140)) + '…</span></span><button class="icon-btn" data-a="dc-c-edit" data-id="' + c.id + '" aria-label="Editar">' + I.pen + '</button><button class="icon-btn" data-a="dc-del" data-id="' + c.id + '" aria-label="Apagar">' + I.trash + '</button></div>'; }).join('') + '</div>' : '<div class="empty"><span>Crie hipóteses com enunciado e tópicos de correção para o julgamento simulado.</span></div>') + '</section>';
+  return h;
+}
+function qForm(q) { q = q || { o: ['', '', '', ''], a: 0 }; return '<label class="f">Pergunta<textarea class="in" id="dq-q" maxlength="400">' + esc(q.q || '') + '</textarea></label>' + [0, 1, 2, 3].map(function (i) { return '<div class="row" style="gap:8px;align-items:center"><input type="radio" name="dq-a" value="' + i + '"' + (q.a === i ? ' checked' : '') + ' aria-label="Opção ' + 'ABCD'.charAt(i) + ' correta"><input class="in" id="dq-o' + i + '" maxlength="200" placeholder="Opção ' + 'ABCD'.charAt(i) + '" value="' + esc(q.o[i] || '') + '" style="flex:1"></div>'; }).join('') + '<span style="font-size:12px;color:var(--muted)">Marque a opção correta.</span><label class="f">Explicação (com referência legal)<textarea class="in" id="dq-e" maxlength="600">' + esc(q.e || '') + '</textarea></label><label class="f">Tema (opcional)<input class="in" id="dq-t" maxlength="80" value="' + esc(q.tema || '') + '"></label>'; }
+function cForm(c) { c = c || {}; return '<label class="f">Título<input class="in" id="dc-t" maxlength="120" value="' + esc(c.titulo || '') + '"></label><label class="f">Enunciado<textarea class="in" id="dc-e" maxlength="3000" style="min-height:160px">' + esc(c.enunciado || '') + '</textarea></label><label class="f">Tópicos de correção (um por linha)<textarea class="in" id="dc-p" maxlength="3000" style="min-height:120px">' + esc((c.topicos || []).join('\n')) + '</textarea></label>'; }
+
+/* ===== módulos do painel ===== */
+function modPrazos() {
+  var l = proxAgenda().slice(0, 5);
+  return '<section class="card"><div class="row" style="justify-content:space-between"><h2>Próximos prazos e diligências</h2><div class="row"><button class="btn sm" data-go="prazos">' + I.hour + 'Calcular prazo</button><button class="btn sm" data-go="agenda">Ver agenda</button></div></div>' +
+    (l.length ? '<div class="list">' + l.map(function (a) { var n = diasAte(a.data); return '<button class="li" data-go="agenda"><span class="ag-d"><b>' + Number(a.data.slice(8)) + '</b><small>' + ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'].at(Number(a.data.slice(5, 7)) - 1) + '</small></span><span class="tx"><b>' + esc(a.titulo) + '</b><span>' + esc(a.tipo) + (a.hora ? ' · ' + esc(a.hora) : '') + '</span></span><span class="chip ' + (n <= 2 ? 'wine' : 'gray') + '">' + (n === 0 ? 'hoje' : n === 1 ? 'amanhã' : n + ' dias') + '</span></button>'; }).join('') + '</div>' : '<div class="empty"><span>Sem prazos nem diligências marcados.</span><button class="btn" data-a="ag-novo">' + I.plus + 'Adicionar à agenda</button></div>') + '</section>';
+}
+function modDiss() {
+  var d = diss(), tot = d.capitulos.reduce(function (s, c) { return s + (Number(c.palavras) || 0); }, 0), p = d.metaPalavras ? Math.min(100, Math.round(100 * tot / d.metaPalavras)) : 0;
+  var prox = d.prazos.filter(function (x) { return !x.feito && diasAte(x.data) >= 0; }).sort(function (a, b) { return a.data.localeCompare(b.data); })[0];
+  return '<section class="card"><div class="row" style="justify-content:space-between"><h2>Dissertação</h2><button class="btn sm" data-go="dissertacao">Abrir</button></div>' + (d.capitulos.length || d.titulo ? '<b>' + esc(d.titulo || 'Sem título') + '</b><div class="bar"><i style="width:' + p + '%"></i></div><span style="font-size:13px;color:var(--muted)">' + tot + ' palavras' + (d.metaPalavras ? ' de ' + d.metaPalavras + ' (' + p + '%)' : '') + ' · ' + d.capitulos.filter(function (c) { return c.estado === 3; }).length + ' de ' + d.capitulos.length + ' capítulos concluídos' + (prox ? ' · próximo prazo: <b>' + esc(prox.titulo) + '</b>, ' + faltam(prox.data).toLowerCase() : '') + '</span>' : '<div class="empty"><span>Defina o título, a data de entrega e os capítulos.</span><button class="btn wine" data-go="dissertacao">Começar</button></div>') + '</section>';
+}
+function modOrdem() { return '<section class="card"><div class="row" style="justify-content:space-between"><h2>Treino para a Ordem</h2><button class="btn sm" data-go="ordem">Abrir</button></div><div class="row">' + ORDEM_AREAS.map(function (x) { return '<button class="btn" data-a="ord-ini" data-id="' + x[0] + '">' + x[1] + '</button>'; }).join('') + '</div></section>'; }
+function modDocente() { var q = Store.all('qprop').length, c = Store.all('casoprop').length; return '<section class="card"><div class="row" style="justify-content:space-between"><h2>Ensino</h2><button class="btn sm" data-go="docente">Abrir</button></div><span>' + plural(q, 'pergunta própria', 'perguntas próprias') + ' · ' + plural(c, 'caso próprio', 'casos próprios') + '</span><div class="row"><button class="btn wine" data-a="dc-q-novo">' + I.plus + 'Nova pergunta</button><button class="btn" data-go="salas">Abrir uma sala com a turma</button></div></section>'; }
+
+/* ===== ações ===== */
+var A15 = {
+  'pz-calc': function () {
+    var f = lerPz(); if (!f.ini) { toast('Indique a data.'); return; }
+    var extra = f.extra ? f.extra.split(/[,;\s]+/).filter(function (x) { return /^\d{4}-\d{2}-\d{2}$/.test(x); }) : [];
+    var p = f.ini.split('-').map(Number); S.pz = f;
+    S.pzRes = calcPrazo({ inicio: new Date(p[0], p[1] - 1, p[2]), dias: f.dias, dilacao: f.dil, urgente: f.urg, carnaval: f.carn, extra: extra }); render();
+  },
+  'pz-agenda': function () { var f = S.pz, r = S.pzRes; Store.put({ id: uid('ag'), kind: 'agenda', tipo: 'Prazo', titulo: 'Termo: ' + f.nome, data: ymd(r.termo), hora: '', local: '', notas: 'Calculado no LEXDESK a partir de ' + dataCurta(f.ini) + ' (' + (f.dias + f.dil) + ' dias). Com multa até ' + dataCurta(ymd(r.multa[2])) + '.' }); toast('Prazo adicionado à agenda.'); },
+  'pz-copiar': function () { var f = S.pz, r = S.pzRes; copiar(f.nome + ' — início: ' + dataCurta(f.ini) + ' — ' + (f.dias + f.dil) + ' dias — termo: ' + dataLonga(ymd(r.termo)) + ' — com multa (art. 139.º, n.º 5, CPC): ' + r.multa.map(function (d) { return dataCurta(ymd(d)); }).join(', ') + '. (Cálculo de apoio: confirmar.)'); },
+  'ag-novo': function () { S.agEd = { tipo: 'Diligência' }; openModal('Novo evento', agForm(S.agEd), '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="ag-ok">Guardar</button>'); },
+  'ag-edit': function (el) { S.agEd = clone(Store.get(el.dataset.id)); openModal('Editar evento', agForm(S.agEd), '<button class="btn danger" data-a="ag-del" style="margin-right:auto">Apagar</button><button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="ag-ok">Guardar</button>'); },
+  'ag-ok': function () { var a = S.agEd; a.titulo = $('#ag-tit').value.trim(); a.tipo = $('#ag-tipo').value; a.data = $('#ag-data').value; a.hora = $('#ag-hora').value; a.local = $('#ag-local').value.trim(); a.notas = $('#ag-notas').value.trim(); if (!a.titulo || !a.data) { toast('Indique o título e a data.'); return; } if (!a.id) { a.id = uid('ag'); a.kind = 'agenda'; } Store.put(a); closeModal(); render(); toast('Evento guardado.'); },
+  'ag-del': function () { Store.del(S.agEd.id); closeModal(); render(); },
+  'ag-feito': function (el) { var a = clone(Store.get(el.dataset.id)); a.feito = !a.feito; Store.put(a); render(); },
+  'ds-tab': function (el) { S.dsTab = el.dataset.id; render(); },
+  'ds-cit': function (el) { S.dsCit = el.dataset.id; render(); },
+  'ds-dados': function () { var d = diss(); openModal('Dados da dissertação', '<label class="f">Título<input class="in" id="dd-t" maxlength="300" value="' + esc(d.titulo) + '"></label><label class="f">Orientador(a)<input class="in" id="dd-o" maxlength="120" value="' + esc(d.orientador) + '"></label><div class="row" style="gap:10px"><label class="f" style="flex:1">Data de entrega<input class="in" type="date" id="dd-e" value="' + esc(d.entrega) + '"></label><label class="f" style="flex:1">Meta de palavras<input class="in" type="number" min="0" id="dd-m" value="' + (d.metaPalavras || '') + '"></label></div>', '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="ds-dados-ok">Guardar</button>'); },
+  'ds-dados-ok': function () { var d = clone(diss()); d.titulo = $('#dd-t').value.trim(); d.orientador = $('#dd-o').value.trim(); d.entrega = $('#dd-e').value; d.metaPalavras = Number($('#dd-m').value) || 0; dissGuardar(d); closeModal(); render(); },
+  'ds-cap-novo': function () { S.dsCap = { estado: 0 }; A15['ds-cap-form'](); },
+  'ds-cap-edit': function (el) { S.dsCap = clone(diss().capitulos.filter(function (c) { return c.id === el.dataset.id; })[0]); A15['ds-cap-form'](); },
+  'ds-cap-form': function () { var c = S.dsCap; openModal(c.id ? 'Editar capítulo' : 'Novo capítulo', '<label class="f">Título<input class="in" id="dc-tt" maxlength="200" value="' + esc(c.titulo || '') + '"></label><div class="row" style="gap:10px"><label class="f" style="flex:1">Palavras escritas<input class="in" type="number" min="0" id="dc-pw" value="' + (c.palavras || 0) + '"></label><label class="f" style="flex:1">Meta (opcional)<input class="in" type="number" min="0" id="dc-mt" value="' + (c.meta || '') + '"></label></div>', (c.id ? '<button class="btn danger" data-a="ds-del" data-k="capitulos" data-id="' + c.id + '" style="margin-right:auto">Apagar</button>' : '') + '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="ds-cap-ok">Guardar</button>'); },
+  'ds-cap-ok': function () { var c = S.dsCap, d = clone(diss()); c.titulo = $('#dc-tt').value.trim(); c.palavras = Number($('#dc-pw').value) || 0; c.meta = Number($('#dc-mt').value) || 0; if (!c.titulo) { toast('Indique o título.'); return; } if (c.id) d.capitulos = d.capitulos.map(function (x) { return x.id === c.id ? c : x; }); else { c.id = uid('cap'); d.capitulos.push(c); } dissGuardar(d); closeModal(); render(); },
+  'ds-mv': function (el) { var d = clone(diss()), i = d.capitulos.findIndex(function (c) { return c.id === el.dataset.id; }); if (i > 0) { var t = d.capitulos[i]; d.capitulos[i] = d.capitulos[i - 1]; d.capitulos[i - 1] = t; dissGuardar(d); render(); } },
+  'ds-prazo-novo': function () { openModal('Novo prazo', '<label class="f">Descrição<input class="in" id="dp-t" maxlength="160" placeholder="Ex.: Entregar o capítulo 2 ao orientador"></label><label class="f">Data<input class="in" type="date" id="dp-d"></label>', '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="ds-prazo-ok">Guardar</button>'); },
+  'ds-prazo-ok': function () { var t = $('#dp-t').value.trim(), dt = $('#dp-d').value; if (!t || !dt) { toast('Indique a descrição e a data.'); return; } var d = clone(diss()); d.prazos.push({ id: uid('dp'), titulo: t, data: dt, feito: false }); dissGuardar(d); closeModal(); render(); },
+  'ds-reu-novo': function () { openModal('Nova reunião', '<label class="f">Data<input class="in" type="date" id="dr-d" value="' + ymd(new Date()) + '"></label><label class="f">O que ficou combinado<textarea class="in" id="dr-n" maxlength="2000" style="min-height:140px"></textarea></label>', '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="ds-reu-ok">Guardar</button>'); },
+  'ds-reu-ok': function () { var dt = $('#dr-d').value; if (!dt) { toast('Indique a data.'); return; } var d = clone(diss()); d.reunioes.push({ id: uid('dr'), data: dt, notas: $('#dr-n').value.trim() }); dissGuardar(d); closeModal(); render(); },
+  'ds-del': function (el) { var d = clone(diss()), k = el.dataset.k; d[k] = d[k].filter(function (x) { return x.id !== el.dataset.id; }); dissGuardar(d); closeModal(); render(); },
+  'ds-bib-novo': function () { S.bbEd = { tipo: 'livro' }; S.bbTipo = 'livro'; openModal('Nova referência', '<div id="bb-f">' + bibForm(S.bbEd) + '</div>', '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="ds-bib-ok">Guardar</button>'); },
+  'ds-bib-edit': function (el) { S.bbEd = clone(diss().biblio.filter(function (b) { return b.id === el.dataset.id; })[0]); S.bbTipo = S.bbEd.tipo; openModal('Editar referência', '<div id="bb-f">' + bibForm(S.bbEd) + '</div>', '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="ds-bib-ok">Guardar</button>'); },
+  'bb-tipo': function (el) { var o = lerBib(); Object.assign(S.bbEd, o); S.bbTipo = S.bbEd.tipo = el.dataset.id; $('#bb-f').innerHTML = bibForm(S.bbEd); },
+  'ds-bib-ok': function () { var o = lerBib(), b = S.bbEd; Object.assign(b, o); if (b.tipo === 'acordao' ? !b.tribunal : !b.titulo) { toast(b.tipo === 'acordao' ? 'Indique o tribunal.' : 'Indique o título.'); return; } var d = clone(diss()); if (b.id) d.biblio = d.biblio.map(function (x) { return x.id === b.id ? b : x; }); else { b.id = uid('bb'); d.biblio.push(b); } dissGuardar(d); closeModal(); render(); },
+  'ds-bib-copiar': function () { var d = diss(), est = S.dsCit || 'np'; var tx = d.biblio.slice().sort(function (a, b) { return String(a.autores || a.tribunal || '').localeCompare(String(b.autores || b.tribunal || ''), 'pt'); }).map(function (b) { var t = document.createElement('div'); t.innerHTML = citar(b, est); return t.textContent; }).join('\n'); copiar(tx); },
+  'ord-ini': function (el) { var a = el.dataset.id, qs = baralhar(poolOrdem(a)).slice(0, 10).map(function (q) { return mcRonda(q); }); if (!qs.length) { toast('Ainda não há perguntas nesta área.'); return; } S.ordT = { a: a, qs: qs, i: 0, resp: [] }; if (S.view !== 'ordem') go('ordem'); else render(); },
+  'ord-resp': function (el) { S.ordT.resp[S.ordT.i] = Number(el.dataset.i); render(); },
+  'ord-seg': function () { S.ordT.i++; render(); window.scrollTo(0, 0); },
+  'ord-sair': function () { S.ordT = null; render(); },
+  'dc-tab': function (el) { S.dcTab = el.dataset.id; render(); },
+  'dc-q-novo': function () { S.dcQ = null; openModal('Nova pergunta', qForm(), '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="dc-q-ok">Guardar</button>'); },
+  'dc-q-edit': function (el) { S.dcQ = clone(Store.get(el.dataset.id)); openModal('Editar pergunta', qForm(S.dcQ), '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="dc-q-ok">Guardar</button>'); },
+  'dc-q-ok': function () { var q = S.dcQ || { id: uid('qp'), kind: 'qprop', d: 'prop', createdAt: Date.now() }; q.q = $('#dq-q').value.trim(); q.o = [0, 1, 2, 3].map(function (i) { return $('#dq-o' + i).value.trim(); }); q.a = Number((document.querySelector('input[name="dq-a"]:checked') || {}).value); q.e = $('#dq-e').value.trim(); q.tema = $('#dq-t').value.trim(); if (!q.q || q.o.some(function (x) { return !x; }) || isNaN(q.a)) { toast('Preencha a pergunta, as 4 opções e marque a correta.'); return; } Store.put(q); closeModal(); if (S.view === 'docente') render(); toast('Pergunta guardada.'); },
+  'dc-c-novo': function () { S.dcC = null; openModal('Novo caso', cForm(), '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="dc-c-ok">Guardar</button>'); },
+  'dc-c-edit': function (el) { S.dcC = clone(Store.get(el.dataset.id)); openModal('Editar caso', cForm(S.dcC), '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="dc-c-ok">Guardar</button>'); },
+  'dc-c-ok': function () { var c = S.dcC || { id: uid('cp'), kind: 'casoprop', createdAt: Date.now() }; c.titulo = $('#dc-t').value.trim(); c.enunciado = $('#dc-e').value.trim(); c.topicos = $('#dc-p').value.split('\n').map(function (x) { return x.trim(); }).filter(Boolean); if (!c.titulo || !c.enunciado) { toast('Indique o título e o enunciado.'); return; } Store.put(c); closeModal(); render(); toast('Caso guardado.'); },
+  'dc-del': function (el) { Store.del(el.dataset.id); render(); },
+  'ex-csv': function () {
+    var a = SL.est.ativ, users = {}; SL.resp.forEach(function (x) { if (x.ronda < 900) { users[x.user_id] = users[x.user_id] || { ok: 0, n: 0 }; users[x.user_id].n++; if (x.pontos > 0) users[x.user_id].ok++; } });
+    var linhas = [['Membro', 'Certas', 'Respondidas', 'Total', 'Nota (0-20)']].concat(Object.keys(users).map(function (u) { var x = users[u]; return [chatNome(u), x.ok, x.n, a.rondas.length, String(Math.round(20 * x.ok / a.rondas.length * 10) / 10).replace('.', ',')]; }));
+    var csv = linhas.map(function (l) { return l.map(function (c) { return '"' + String(c).replace(/"/g, '""') + '"'; }).join(';'); }).join('\n');
+    var b = new Blob(['﻿' + csv], { type: 'text/csv' }), el = document.createElement('a'); el.href = URL.createObjectURL(b); el.download = 'resultados-exame-' + ymd(new Date()) + '.csv'; document.body.appendChild(el); el.click(); setTimeout(function () { el.remove(); }, 300);
+  }
+};
+Object.keys(A15).forEach(function (k) { A[k] = A15[k]; });
+document.addEventListener('change', function (e) {
+  if (e.target.id === 'pz-pre') { var v = Number(e.target.value), d = $('#pz-dias'); if (v >= 0) { d.value = PRESETS[v][1]; d.readOnly = true; } else d.readOnly = false; }
+  if (e.target.dataset && e.target.dataset.dsEst) { var d2 = clone(diss()); d2.capitulos.forEach(function (c) { if (c.id === e.target.dataset.dsEst) c.estado = Number(e.target.value); }); dissGuardar(d2); render(); }
+  if (e.target.dataset && e.target.dataset.dsPz) { var d3 = clone(diss()); d3.prazos.forEach(function (p) { if (p.id === e.target.dataset.dsPz) p.feito = e.target.checked; }); dissGuardar(d3); render(); }
+});
+
+/* ===== integração com as salas: perguntas e casos próprios, exportação ===== */
+var _qPool = qPool;
+qPool = function (d) { if (d === 'prop') return Store.all('qprop'); if (d === 'deont') return Q_DEONT; return _qPool(d); };
+var _cfgDisc = cfgDisc;
+cfgDisc = function () { var n = Store.all('qprop').length; return _cfgDisc().replace('<option value="todas">Todas</option>', '<option value="todas">Todas</option>' + (n ? '<option value="prop">As minhas perguntas (' + n + ')</option>' : '') + '<option value="deont">Deontologia (Ordem)</option>'); };
+var _gerarAtiv = gerarAtiv;
+gerarAtiv = function (tipo, cfg) {
+  var a = _gerarAtiv(tipo, cfg);
+  if (a && tipo === 'julgamento') { var cid = ($('#ac-caso') || {}).value, c = cid ? Store.get(cid) : null, base = CASOS.filter(function (x) { return x.id === a.extra.caso; })[0]; var src = c || base; a.extra.casoObj = { titulo: src.titulo, enunciado: src.enunciado, topicos: src.topicos || [] }; }
+  return a;
+};
+var _atConfig = A['at-config'];
+A['at-config'] = function (el) { _atConfig(el); if (el.dataset.id === 'julgamento' && Store.all('casoprop').length) { var sel = '<label class="f">Caso<select class="in" id="ac-caso"><option value="">Caso aleatório do LEXDESK</option>' + Store.all('casoprop').map(function (c) { return '<option value="' + c.id + '">' + esc(c.titulo) + '</option>'; }).join('') + '</select></label>'; var n = $('#ov .note'); if (n) n.insertAdjacentHTML('afterend', sel); } };
+var _vJulg = vJulg, _vJulgRes = vJulgRes;
+function casoDe(a) { var x = a.extra; return x.casoObj || CASOS.filter(function (c) { return c.id === x.caso; })[0] || CASOS[0]; }
+vJulg = function (a) { var c = casoDe(a), CAS = CASOS; CASOS = [Object.assign({ id: a.extra.caso }, c)]; try { return _vJulg(a); } finally { CASOS = CAS; } };
+vJulgRes = function (a) { var c = casoDe(a), CAS = CASOS; CASOS = [Object.assign({ id: a.extra.caso }, c)]; try { return _vJulgRes(a); } finally { CASOS = CAS; } };
+var _vExameRes = vExameRes;
+vExameRes = function (a) { return _vExameRes(a) + (eHost(a) ? '<div class="row" style="justify-content:flex-end"><button class="btn sm" data-a="ex-csv">Exportar resultados (CSV)</button></div>' : ''); };
+var _termosOk = A['termos-ok'];
+A['termos-ok'] = function (el) { _termosOk(el); setTimeout(onbVerificar, 1500); };
+var _vMinhasDisc = vMinhasDisc;
+vMinhasDisc = function (pf) { var t = tipoPerfil(); return t === 'lic' || t === 'outro' ? _vMinhasDisc(pf) : ''; };
+
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
-var VIEW_LBL = { painel: ['Painel', I.grid], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door] };
+var VIEW_LBL = { painel: ['Painel', I.grid], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
 var isMac = /Mac|iPhone|iPad/.test(navigator.platform || '');
 
 /* ===== animação de entrada e contadores ===== */
