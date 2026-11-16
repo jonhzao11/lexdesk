@@ -5816,6 +5816,143 @@ painelCompor = function (P, pf) {
   return j >= 0 ? h.slice(0, j) + vEstante(pf) + h.slice(j) : h + vEstante(pf);
 };
 
+/* ---------- MODO NOTURNO ---------- */
+/* Gera automaticamente a versão escura de todas as regras CSS (e dos estilos em linha),
+   convertendo as cores segundo o papel de cada propriedade: fundo, texto, contorno. */
+var TEMA = { css: null, obs: null };
+function temaPref() { var v = lsGet('lexdesk_tema'); if (v === 'escuro' || v === 'claro') return v; try { return window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'escuro' : 'claro'; } catch (e) { return 'claro'; } }
+function temaEscuro() { return document.documentElement.classList.contains('dark'); }
+
+/* --- cores --- */
+var TM_ROOT = null;
+function tmVar(nome) { if (!TM_ROOT) TM_ROOT = getComputedStyle(document.documentElement); return TM_ROOT.getPropertyValue(nome).trim(); }
+function tmResolve(v) { var n = 0; while (/var\(--[\w-]+(?:,[^()]*)?\)/.test(v) && n++ < 5) v = v.replace(/var\((--[\w-]+)(?:,([^()]*))?\)/g, function (m, k, fb) { return tmVar(k) || (fb || '').trim() || m; }); return v; }
+function tmHex(h) { h = h.slice(1); if (h.length === 3 || h.length === 4) h = h.split('').map(function (c) { return c + c; }).join(''); return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16), h.length === 8 ? parseInt(h.slice(6, 8), 16) / 255 : 1]; }
+function tmHsl(r, g, b) { r /= 255; g /= 255; b /= 255; var mx = Math.max(r, g, b), mn = Math.min(r, g, b), l = (mx + mn) / 2, h = 0, s = 0; if (mx !== mn) { var d = mx - mn; s = l > .5 ? d / (2 - mx - mn) : d / (mx + mn); h = mx === r ? (g - b) / d + (g < b ? 6 : 0) : mx === g ? (b - r) / d + 2 : (r - g) / d + 4; h /= 6; } return [h, s, l]; }
+function tmRgb(h, s, l) { if (!s) { var v = Math.round(l * 255); return [v, v, v]; } var f = function (p, q, t) { if (t < 0) t += 1; if (t > 1) t -= 1; return t < 1 / 6 ? p + (q - p) * 6 * t : t < .5 ? q : t < 2 / 3 ? p + (q - p) * (2 / 3 - t) * 6 : p; }; var q = l < .5 ? l * (1 + s) : l + s - l * s, p = 2 * l - q; return [f(p, q, h + 1 / 3), f(p, q, h), f(p, q, h - 1 / 3)].map(function (x) { return Math.round(x * 255); }); }
+function tmMap(rgba, papel) {
+  var a = rgba[3], hsl = tmHsl(rgba[0], rgba[1], rgba[2]), h = hsl[0], s = hsl[1], l = hsl[2], nl = l, ns = s;
+  if (a < .6 && papel !== 'fg') return null;                       // véus e sombras translúcidas ficam iguais
+  if (papel === 'bg' || papel === 'fill') {
+    if (l >= .5 && (s < .5 || l > .85)) { nl = l >= .995 ? .125 : Math.min(.26, .155 + (.995 - l) * .32); ns = Math.min(s, .45) * (l > .97 ? .35 : 1); } else return null;
+  } else if (papel === 'bd') {
+    if (l > .6 && (s < .5 || l > .85)) { nl = .17 + (1 - l) * .45; ns = Math.min(s, .35); } else return null;
+  } else { // fg / stroke
+    if (l < .5) { if (s < .35 || l < .16) { nl = .95 - l * .5; ns = Math.min(s, .3) * .6; } else { nl = Math.max(.72, l); ns = Math.min(s, .75); } }
+    else if (papel === 'stroke' && l > .82 && s < .5) { nl = .26; ns = Math.min(s, .3); }
+    else return null;
+  }
+  var c = tmRgb(h, ns, nl);
+  return a < 1 ? 'rgba(' + c.join(',') + ',' + (+a.toFixed(3)) + ')' : '#' + c.map(function (x) { return x.toString(16).padStart(2, '0'); }).join('');
+}
+var TM_COR = /#[0-9a-fA-F]{3,8}\b|rgba?\([^()]*\)|\b(?:white|black)\b/g;
+function tmParse(c) {
+  if (c[0] === '#') return [3, 4, 6, 8].indexOf(c.length - 1) >= 0 ? tmHex(c) : null;
+  if (c === 'white') return [255, 255, 255, 1]; if (c === 'black') return [0, 0, 0, 1];
+  var n = c.replace(/rgba?\(|\)/g, '').split(/[\s,\/]+/).filter(Boolean).map(function (x) { return /%$/.test(x) ? parseFloat(x) / 100 : parseFloat(x); });
+  return n.length >= 3 ? [n[0], n[1], n[2], n.length > 3 ? n[3] : 1] : null;
+}
+function tmValor(v, papel) { var mudou = false; var r = tmResolve(v).replace(TM_COR, function (c) { var p = tmParse(c); if (!p) return c; var m = tmMap(p, papel); if (m == null) return c; mudou = true; return m; }); return mudou ? r : null; }
+function tmPapel(p) {
+  if (p === 'color' || p === 'caret-color' || p.indexOf('text-decoration') === 0 || p === '-webkit-text-fill-color') return 'fg';
+  if (p.indexOf('background') === 0) return 'bg';
+  if (p.indexOf('border') === 0 || p.indexOf('outline') === 0 || p === 'box-shadow' || p === 'column-rule') return 'bd';
+  if (p === '--b') return 'bg';
+  if (p === 'fill') return 'fill'; if (p === 'stroke') return 'stroke';
+  return null;
+}
+function tmDecl(txt) { // divide "a:b;c:d" respeitando parênteses
+  var out = [], prof = 0, ini = 0;
+  for (var i = 0; i <= txt.length; i++) { var ch = txt[i]; if (ch === '(') prof++; else if (ch === ')') prof--; else if ((ch === ';' || i === txt.length) && prof === 0) { var d = txt.slice(ini, i).trim(); ini = i + 1; if (!d) continue; var k = d.indexOf(':'); if (k > 0) out.push([d.slice(0, k).trim().toLowerCase(), d.slice(k + 1).trim()]); } }
+  return out;
+}
+function tmBloco(txt) { // devolve as declarações convertidas
+  var ds = tmDecl(txt), fundoVivo = false, res = [];
+  ds.forEach(function (d) { if (tmPapel(d[0]) === 'bg') { var cs = tmResolve(d[1]).match(TM_COR) || []; cs.forEach(function (c) { var p = tmParse(c); if (p && p[3] >= .6) { var hsl = tmHsl(p[0], p[1], p[2]); if (hsl[2] >= .5 && hsl[1] >= .5 && hsl[2] <= .85) fundoVivo = true; } }); } });
+  ds.forEach(function (d) {
+    var papel = tmPapel(d[0]); if (!papel || d[0].indexOf('-image') > 0 && !/gradient/.test(d[1])) return;
+    if (papel === 'fg' && fundoVivo) { res.push(d[0] + ':' + d[1]); return; } // texto escuro sobre botão dourado, etc.
+    var imp = /!important\s*$/.test(d[1]), v = d[1].replace(/!important\s*$/, '').trim(), n = tmValor(v, papel);
+    if (n != null) { res.mudou = true; res.push(d[0] + ':' + n + (imp ? ' !important' : '')); } else res.push(d[0] + ':' + d[1]);
+  });
+  return res;
+}
+function tmSeletor(sel) {
+  return sel.split(/,(?![^()]*\))/).map(function (x) {
+    x = x.trim(); if (!x) return x;
+    if (/^:root\b/.test(x)) return x.replace(/^:root/, ':where(html.dark)');
+    if (/^html\b/.test(x)) return x.replace(/^html(\.[\w-]+)?/, function (m) { return 'html:where(.dark)' + m.slice(4); });
+    return ':where(html.dark) ' + x;
+  }).join(',');
+}
+function tmRegras(lista) {
+  var out = '';
+  Array.prototype.forEach.call(lista, function (r) {
+    if (r.type === 1) { var ds = tmBloco(r.style.cssText); if (ds.length) out += tmSeletor(r.selectorText) + '{' + ds.join(';') + '}\n'; }
+    else if (r.type === 4) { var dentro = tmRegras(r.cssRules); if (dentro) out += '@media ' + r.media.mediaText + '{' + dentro + '}\n'; }
+    else if (r.type === 12 && r.cssRules) { var d2 = tmRegras(r.cssRules); if (d2) out += '@supports ' + r.conditionText + '{' + d2 + '}\n'; }
+  });
+  return out;
+}
+function tmGerarCSS() {
+  var out = '';
+  Array.prototype.forEach.call(document.styleSheets, function (sh) { if (sh.ownerNode && sh.ownerNode.id === 'tema-escuro') return; try { out += tmRegras(sh.cssRules); } catch (e) { } });
+  out += 'html.dark{color-scheme:dark}\nhtml.dark img:not(.inst-img img){filter:brightness(.92)}\n' +
+    'html.dark body::before{background:radial-gradient(closest-side,rgba(80,120,190,.10),transparent 70%)}html.dark body::after{background:radial-gradient(closest-side,rgba(160,40,60,.10),transparent 70%)}\n' +
+    'html.dark ::-webkit-scrollbar{width:10px;height:10px}html.dark ::-webkit-scrollbar-thumb{background:#2C3448;border-radius:8px}html.dark ::-webkit-scrollbar-track{background:transparent}\n' +
+    'html.dark .ch-it:not(.av),html.dark .sf-p:not(.av){color:color-mix(in srgb,var(--c,currentColor) 40%,#fff)}\n' +
+    'html.dark,html.dark body{background:#0B0E15}\n' +
+    'html.dark .btn.pri{background:#2A3D63;border-color:#3A4F7A;color:#fff}html.dark .btn.pri:hover{background:#34497A}\n' +
+    'html.tema-trans,html.tema-trans *{transition:background-color .35s ease,color .35s ease,border-color .35s ease!important}\n';
+  return out;
+}
+/* --- estilos em linha (gerados no HTML das vistas) --- */
+function tmInline(raiz) {
+  var esc_ = temaEscuro();
+  var els = raiz.querySelectorAll ? raiz.querySelectorAll('[style],svg [fill],svg [stroke]') : [];
+  var todos = raiz.nodeType === 1 && (raiz.hasAttribute('style') || raiz.hasAttribute('fill')) ? [raiz].concat(Array.prototype.slice.call(els)) : els;
+  Array.prototype.forEach.call(todos, function (el) {
+    if (el.closest && el.closest('[data-tm-ignorar]')) return;
+    if (el.hasAttribute('style')) {
+      if (!el.hasAttribute('data-tm-o')) { if (!esc_) return; el.setAttribute('data-tm-o', el.getAttribute('style')); }
+      var o = el.getAttribute('data-tm-o');
+      if (!esc_) { el.setAttribute('style', o); el.removeAttribute('data-tm-o'); }
+      else { var ds = tmBloco(o); el.setAttribute('style', ds.mudou ? o + ';' + ds.join(';') : o); }
+    }
+    ['fill', 'stroke'].forEach(function (at) {
+      if (!el.hasAttribute(at) || el.namespaceURI !== 'http://www.w3.org/2000/svg') return;
+      var k = 'data-tm-' + at;
+      if (!el.hasAttribute(k)) { if (!esc_) return; el.setAttribute(k, el.getAttribute(at)); }
+      var v = el.getAttribute(k);
+      if (!esc_) { el.setAttribute(at, v); el.removeAttribute(k); }
+      else { var n = tmValor(v, at); el.setAttribute(at, n || v); }
+    });
+  });
+}
+function temaAplicar(modo, anim) {
+  var html = document.documentElement;
+  if (!TEMA.css && modo === 'escuro') { var st = document.createElement('style'); st.id = 'tema-escuro'; st.textContent = tmGerarCSS(); document.head.appendChild(st); TEMA.css = st; }
+  if (anim) { html.classList.add('tema-trans'); setTimeout(function () { html.classList.remove('tema-trans'); }, 450); }
+  html.classList.toggle('dark', modo === 'escuro');
+  var mc = document.querySelector('meta[name="theme-color"]'); if (mc) mc.setAttribute('content', modo === 'escuro' ? '#0B0F1A' : '#F5F6FA');
+  tmInline(document.body);
+  if (!TEMA.obs && window.MutationObserver) {
+    TEMA.obs = new MutationObserver(function (ms) { if (!temaEscuro()) return; ms.forEach(function (m) { Array.prototype.forEach.call(m.addedNodes, function (n) { if (n.nodeType === 1) tmInline(n); }); }); });
+    TEMA.obs.observe(document.body, { childList: true, subtree: true });
+  }
+  document.querySelectorAll('.tema-bt').forEach(function (b) { b.innerHTML = temaIcone(); b.setAttribute('aria-label', modo === 'escuro' ? 'Mudar para o modo claro' : 'Mudar para o modo noturno'); b.title = b.getAttribute('aria-label'); });
+}
+function temaIcone() {
+  return temaEscuro()
+    ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>'
+    : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7z"/></svg>';
+}
+function temaBtn() { var e = temaEscuro(); return '<button class="sino tema-bt" data-a="tema" aria-label="' + (e ? 'Mudar para o modo claro' : 'Mudar para o modo noturno') + '" title="' + (e ? 'Mudar para o modo claro' : 'Mudar para o modo noturno') + '">' + temaIcone() + '</button>'; }
+var _vTopbarTM = vTopbar;
+vTopbar = function () { var h = _vTopbarTM(), i = h.indexOf('<button class="sino"'); return i < 0 ? h : h.slice(0, i) + temaBtn() + h.slice(i); };
+A['tema'] = function () { var n = temaEscuro() ? 'claro' : 'escuro'; lsSet('lexdesk_tema', n); temaAplicar(n, true); toast(n === 'escuro' ? 'Modo noturno ativado.' : 'Modo claro ativado.'); };
+try { if (window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () { if (!lsGet('lexdesk_tema')) temaAplicar(temaPref()); }); } catch (e) { }
+
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
 var VIEW_LBL = { painel: ['Painel', I.grid], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
 var isMac = /Mac|iPhone|iPad/.test(navigator.platform || '');
@@ -6054,6 +6191,7 @@ A['item-type'] = function (el, ev) { _itemType(el, ev); fxEnhance(); };
 /* ---------- arranque ---------- */
 Store.loadLocal();
 var h0 = location.hash.replace('#', ''); if (VIEWS.indexOf(h0) >= 0) S.view = h0;
+if (typeof temaAplicar === 'function') temaAplicar(temaPref());
 if (typeof bvArranque === 'function') bvArranque(h0);
 render();
 Store.connect();
