@@ -6,7 +6,7 @@
 <meta name="description" content="LEXDESK — plataforma de estudo e prática jurídica para estudantes de Direito em Portugal.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%237B1E2B%27/%3E%3Cg fill=%27none%27 stroke=%27%23FFFFFF%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M16 7v18M12 25h8M8 11h16M8 11l-3 6a3 3 0 0 0 6 0zM24 11l-3 6a3 3 0 0 0 6 0z%27/%3E%3C/g%3E%3C/svg%3E">
 <title>LEXDESK</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-display:swap;font-weight:200 800;src:url(fonts/plus-jakarta-sans.woff2) format("woff2")}@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-display:swap;font-weight:200 800;src:url(fonts/bricolage-grotesque.woff2) format("woff2")}</style>
 <style>
 :root{--wine:#7B1E2B;--wine2:#5E1520;--wine-soft:#F7E9EB;--navy:#13203A;--navy2:#1B2A45;--navy3:#22324F;--gold:#C9A66B;--gold-soft:#F3ECDF;--bronze:#7A5C2E;--paper:#F5F6F8;--ink:#1A2233;--muted:#5B6577;--line:#E3E6EC;--line2:#DDE1E8;--link:#2F5BA8;--ok:#1E6B4F;--ok-soft:#EAF4EF;--bad:#A8442A;--bad-soft:#FBEDE8;--serif:'Source Serif 4',Georgia,'Times New Roman',serif;--sans:Inter,system-ui,-apple-system,'Segoe UI',sans-serif}
 *{box-sizing:border-box}
@@ -560,6 +560,19 @@ ul.muda li::marker{color:var(--wine)}
 .jd-kb{display:flex;flex-direction:column;gap:6px;align-items:center;width:100%}.jd-k{display:flex;gap:4px}
 .jd-k button{min-width:30px;height:42px;border-radius:8px;border:0;background:#E6E8EF;font:inherit;font-weight:800;cursor:pointer}.jd-k button.w{min-width:48px}.jd-k button.v{background:#0E9F6E;color:#fff}.jd-k button.a{background:#F5B400;color:#fff}.jd-k button.x{background:#8A8FA3;color:#fff}
 .chat-top .avbtn{color:var(--ink);background:none;border:0;cursor:pointer;font:inherit;padding:4px}
+
+/* ===== documentos legais ===== */
+.lnk{background:none;border:0;padding:0;font:inherit;color:var(--link);text-decoration:underline;cursor:pointer}
+.foot .lnk{font-size:inherit}
+.legal{display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px;align-items:start}
+.lg-toc{position:sticky;top:16px;display:flex;flex-direction:column;gap:2px;background:#fff;border-radius:18px;padding:12px;box-shadow:var(--sh1)}
+.lg-toc button{background:none;border:0;text-align:left;font:inherit;font-size:13px;color:var(--muted);padding:6px 8px;border-radius:8px;cursor:pointer}.lg-toc button:hover{background:#F5F6FA;color:var(--ink)}
+.lg-doc{background:#fff;border-radius:24px;padding:28px 34px;box-shadow:var(--sh1);max-width:860px;font-size:15px;line-height:1.7}
+.lg-doc section{scroll-margin-top:16px}.lg-doc h2{font-size:19px;margin:22px 0 6px}.lg-doc p{margin:8px 0}.lg-doc ul{margin:6px 0;padding-left:22px}.lg-doc li{margin:4px 0}
+.lg-resumo{background:var(--grad-soft);border-radius:16px;padding:14px 18px;font-size:14.5px}
+.lgt{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0}.lgt th,.lgt td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}.lgt th{background:#F7F8FB}
+.ph{background:#FFE8A3;border-radius:4px;padding:0 4px}
+@media (max-width:900px){.legal{grid-template-columns:1fr}.lg-toc{position:static}.lg-doc{padding:20px}}
 
 </style>
 </head>
@@ -1178,7 +1191,7 @@ Store.attach = function (session) {
 };
 
 /* ---------- estado da interface ---------- */
-var VIEWS = ['painel', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
+var VIEWS = ['painel', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
 var S = {
   view: 'painel', wsId: null, wsTab: '01', wsQ: '', q: '',
   libQ: '', libArea: 'Todas', libOpen: { cpc: true },
@@ -1253,6 +1266,7 @@ function render() {
   else if (v === 'chat') h = vChat();
   else if (v === 'mensagens') h = vMensagens();
   else if (v === 'salas') h = vSalas();
+  else if (v === 'legal') h = vLegal();
   else if (v === 'apontamentos') h = vApontamentos();
   else if (v === 'instituicoes') h = vInstituicoes();
   else if (v === 'workspaces') h = S.wsId && Store.get(S.wsId) ? vWorkspace() : vWorkspaces();
@@ -1260,7 +1274,7 @@ function render() {
   else if (v === 'exames') h = S.exam ? vExame() : (S.examResult ? vResultado() : vExamesSetup());
   else if (v === 'casos') h = S.caseId ? vCaso() : vCasos();
   else if (v === 'minutas') h = S.minId ? vMinuta() : vMinutas();
-  $('#main').innerHTML = vTopbar() + h + '<p class="foot">O LEXDESK é uma ferramenta de apoio ao estudo e à prática jurídica. Não substitui a consulta da legislação em vigor no Diário da República nem o aconselhamento por advogado.</p>';
+  $('#main').innerHTML = vTopbar() + h + '<p class="foot">O LEXDESK é uma ferramenta de apoio ao estudo e à prática jurídica. Não substitui a consulta da legislação em vigor no Diário da República nem o aconselhamento por advogado. <button class="lnk" data-a="legal-abrir" data-id="privacidade">Política de Privacidade</button> · <button class="lnk" data-a="legal-abrir" data-id="termos">Termos e Condições</button></p>';
   if (v === 'painel') renderBusca();
 }
 
@@ -2373,7 +2387,7 @@ function loginBody(modo) {
     '<label class="f">Email<input class="in" id="lg-email" type="email" autocomplete="email" placeholder="nome@exemplo.pt"></label>' +
     '<label class="f">Palavra-passe<input class="in" id="lg-pass" type="password" autocomplete="' + (reg ? 'new-password' : 'current-password') + '" placeholder="' + (reg ? 'Mínimo 8 caracteres' : '') + '"></label>' +
     (reg ? '<div class="row" style="gap:10px;align-items:flex-start"><label class="f" style="flex:1 1 180px">Situação atual<select class="in" id="lg-est"><option value="">Prefiro não indicar</option>' + EST_OPC.map(function (o) { return '<option value="' + o[0] + '">' + o[1] + '</option>'; }).join('') + '</select></label><label class="f" style="flex:1 1 150px">Tratamento<select class="in" id="lg-gen"><option value="m">Masculino</option><option value="f">Feminino</option><option value="n">Neutro</option></select></label></div>' : '') +
-    (reg ? '<label class="check" style="font-size:13px"><input type="checkbox" id="lg-ok">Aceito que os meus dados (nome, email e conteúdos que publicar) sejam tratados pelo LEXDESK para prestar o serviço.</label>' : '') + '</div>' +
+    (reg ? '<label class="check" style="font-size:13px;align-items:flex-start"><input type="checkbox" id="lg-ok"><span>Tenho pelo menos ' + LEGAL.idade + ' anos, li e aceito os <button type="button" class="lnk" data-a="legal-abrir" data-id="termos">Termos e Condições</button> e tomei conhecimento da <button type="button" class="lnk" data-a="legal-abrir" data-id="privacidade">Política de Privacidade</button>.</span></label>' : '') + '</div>' +
     '<button class="btn wine" data-a="login-go" data-id="' + (reg ? 'registo' : 'entrar') + '" style="width:100%">' + (reg ? 'Criar conta' : 'Entrar') + '</button>' +
     (reg ? '' : '<button class="btn" data-a="login-reset" style="width:100%">Esqueci-me da palavra-passe</button>') +
     '<p style="margin:0;font-size:12px;color:var(--muted);line-height:1.5">Sem sessão iniciada pode consultar os apontamentos da comunidade; os seus dados ficam guardados apenas neste navegador.</p></div>';
@@ -2401,10 +2415,10 @@ var A6 = {
     if (reg && !nomeV) { toast('Indique o nome a mostrar.'); return; }
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { toast('Indique um email válido.'); return; }
     if (pass.length < (reg ? 8 : 1)) { toast(reg ? 'A palavra-passe tem de ter pelo menos 8 caracteres.' : 'Indique a palavra-passe.'); return; }
-    if (reg && !$('#lg-ok').checked) { toast('Aceite o tratamento dos dados para criar a conta.'); return; }
+    if (reg && !$('#lg-ok').checked) { toast('Confirme a idade e a aceitação dos Termos para criar a conta.'); return; }
     el.disabled = true; var txt0 = el.textContent; el.textContent = reg ? 'A criar conta…' : 'A entrar…';
     lsSet('lexdesk_sessao', 'on');
-    var p = reg ? SB.auth.signUp({ email: email, password: pass, options: { data: { nome: nomeV, estado: $('#lg-est').value || null, genero: $('#lg-gen').value }, emailRedirectTo: location.origin + location.pathname } })
+    var p = reg ? SB.auth.signUp({ email: email, password: pass, options: { data: { nome: nomeV, termos_versao: LEGAL.versao, estado: $('#lg-est').value || null, genero: $('#lg-gen').value }, emailRedirectTo: location.origin + location.pathname } })
       : SB.auth.signInWithPassword({ email: email, password: pass });
     p.then(function (r) {
       el.disabled = false; el.textContent = txt0;
@@ -2423,7 +2437,7 @@ var A6 = {
   'conta-menu': function () {
     var p = perfil(), em = SBuser.session && SBuser.session.user.email;
     openModal('A minha conta', '<div class="row" style="gap:14px">' + avHtml(Store.uid, S.nomeFull || 'U', 'pf-av sm') + '<div><b style="font-size:16px">' + esc(S.nomeFull || 'Utilizador LEXDESK') + '</b><div style="font-size:13px;color:var(--muted)">' + esc(em || '') + '</div><div style="font-size:13px;color:var(--muted)">' + (p && p.instId ? esc(perfilResumo(p)) : 'Perfil académico por definir') + '</div></div></div>' +
-      '<div class="note">Sessão iniciada: os seus dados e ficheiros ficam guardados na sua conta e sincronizados entre dispositivos.</div>',
+      '<div class="note">Sessão iniciada: os seus dados e ficheiros ficam guardados na sua conta e sincronizados entre dispositivos.</div><div class="row" style="gap:8px"><button class="btn sm" data-a="dados-exportar">Descarregar os meus dados</button><button class="btn sm" data-a="legal-abrir" data-id="privacidade">Privacidade e termos</button><button class="btn sm danger" data-a="conta-eliminar">Eliminar conta</button></div>',
       '<button class="btn danger" data-a="logout" style="margin-right:auto">Terminar sessão</button><button class="btn" data-a="perfil-ver" data-id="' + Store.uid + '">Ver o meu perfil</button><button class="btn" data-a="perfil-pub-edit">Editar perfil público</button><button class="btn" data-a="perfil-edit">Perfil académico</button><button class="btn pri" data-a="close">Fechar</button>');
   },
   'logout': function () {
@@ -2926,7 +2940,7 @@ function chatErr(e) {
   return 'Não foi possível concluir. Tente novamente.';
 }
 function chatRegras() {
-  openModal('Regras da comunidade', '<ol class="regras">' + REGRAS.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '</ol>' +
+  openModal('Regras da comunidade', '<ol class="regras">' + REGRAS.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '</ol><span style="font-size:13px">Estas regras completam os <button type="button" class="lnk" data-a="legal-abrir" data-id="termos">Termos e Condições</button>.</span>' +
     (Chat.regras ? '<div class="note">Aceitou estas regras em ' + new Date(Chat.regras).toLocaleDateString('pt-PT') + '.</div>' : '<label class="check" style="font-size:14px"><input type="checkbox" id="rg-ok">Li e aceito as regras da comunidade.</label>'),
     Chat.regras ? '<button class="btn pri" data-a="close">Fechar</button>' : '<button class="btn" data-a="close">Agora não</button><button class="btn wine" data-a="chat-regras-ok">Aceitar e entrar no chat</button>');
 }
@@ -4003,6 +4017,160 @@ document.addEventListener('drop', function (e) {
   var a = SL.est.ativ, o = S.ptOrd['pt:' + a.id], from = Number(e.dataTransfer.getData('text/lx-pt')), to = Number(li.dataset.pt), x = o.splice(from, 1)[0]; o.splice(to, 0, x); slPaint();
 });
 document.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && e.target.dataset && e.target.dataset.a === 'erro-clk') { e.preventDefault(); A['erro-clk'](e.target); } });
+
+/* ---------- POLÍTICA DE PRIVACIDADE, TERMOS E CONDIÇÕES, DIREITOS DOS UTILIZADORES ---------- */
+// Preencher antes de divulgar o site:
+var LEGAL = { resp: '[NOME DO RESPONSÁVEL]', email: '[EMAIL DE CONTACTO]', versao: '1.0', data: '16 de novembro de 2026', idade: 16 };
+function lg(t) { return t.replace(/\{RESP\}/g, '<b class="ph">' + esc(LEGAL.resp) + '</b>').replace(/\{EMAIL\}/g, '<b class="ph">' + esc(LEGAL.email) + '</b>'); }
+
+var PRIVACIDADE = [
+  ['1. Quem é o responsável pelo tratamento', '<p>O LEXDESK é uma plataforma de estudo para estudantes de Direito e jovens juristas. O responsável pelo tratamento dos dados pessoais é {RESP}, contactável através do email {EMAIL}.</p><p>Para qualquer questão sobre os seus dados ou para exercer os seus direitos, escreva para esse endereço.</p>'],
+  ['2. Que dados tratamos', '<p><b>Sem conta.</b> Pode usar grande parte do LEXDESK sem conta. Nesse caso, os seus workspaces, cadeiras, calendário, horário e resultados ficam guardados apenas no seu navegador (armazenamento local) e não são enviados para os nossos servidores.</p>' +
+    '<p><b>Com conta</b>, tratamos:</p><ul>' +
+    '<li><b>Dados de registo:</b> email, palavra-passe (guardada de forma cifrada pelo fornecedor de autenticação; nunca temos acesso à palavra-passe em claro), nome a mostrar e data de aceitação destes documentos.</li>' +
+    '<li><b>Perfil público (opcional):</b> situação académica (ex.: «3.º ano»), forma de tratamento, biografia, fotografia, redes sociais e instituição, se decidir mostrá-la.</li>' +
+    '<li><b>Dados de estudo:</b> perfil académico, cadeiras, avaliações, horário, Legal Workspaces e respetivos ficheiros, resultados do simulador e atualidades lidas.</li>' +
+    '<li><b>Conteúdos que publica:</b> apontamentos e ficheiros partilhados, perfil de explicador, dúvidas e respostas em «Mentoria e explicações» e mensagens no chat da comunidade.</li>' +
+    '<li><b>Comunicações privadas:</b> mensagens privadas, contactos aceites ou bloqueados e preferências de privacidade.</li>' +
+    '<li><b>Salas de estudo:</b> salas de que é membro, mensagens, notas, datas e ficheiros do quadro, respostas e pontuações em atividades e jogos, resultados do Juridle.</li>' +
+    '<li><b>Moderação:</b> denúncias que faz ou que visam conteúdos seus (incluindo uma cópia da mensagem denunciada), decisões tomadas e eventuais suspensões.</li>' +
+    '<li><b>Dados técnicos:</b> endereço IP, data e hora dos acessos e dados do navegador, registados pelos fornecedores de alojamento por razões de segurança.</li></ul>' +
+    '<p>Não pedimos nem pretendemos tratar categorias especiais de dados (por exemplo, saúde, religião ou opiniões políticas). Pedimos-lhe que não as publique no seu perfil nem em conteúdos públicos.</p>'],
+  ['3. Para que finalidades e com que fundamento', '<table class="lgt"><thead><tr><th>Finalidade</th><th>Fundamento (RGPD)</th></tr></thead><tbody>' +
+    '<tr><td>Criar e gerir a conta, guardar e sincronizar os seus dados de estudo</td><td>Execução do contrato de utilização (art. 6.º, n.º 1, al. b))</td></tr>' +
+    '<tr><td>Mostrar o seu perfil, apontamentos, mensagens e atividades a outros utilizadores, de acordo com as funcionalidades que usa</td><td>Execução do contrato (art. 6.º, n.º 1, al. b))</td></tr>' +
+    '<tr><td>Segurança do serviço, prevenção de abusos (ex.: limite de envio de mensagens) e registos técnicos</td><td>Interesse legítimo em manter o serviço seguro (art. 6.º, n.º 1, al. f))</td></tr>' +
+    '<tr><td>Tratar denúncias, moderar conteúdos e fundamentar decisões</td><td>Cumprimento de obrigações legais do Regulamento (UE) 2022/2065 — Regulamento dos Serviços Digitais (art. 6.º, n.º 1, al. c)) e interesse legítimo na proteção dos utilizadores (al. f))</td></tr>' +
+    '<tr><td>Responder a pedidos de autoridades e defender direitos em processos</td><td>Obrigação legal e interesse legítimo (art. 6.º, n.º 1, als. c) e f))</td></tr></tbody></table>' +
+    '<p>Não usamos os seus dados para publicidade, não os vendemos e não fazemos perfis para fins comerciais. Não tomamos decisões exclusivamente automatizadas com efeitos jurídicos sobre si (art. 22.º). O único mecanismo automático é o limite de ritmo de envio de mensagens («modo lento»), que apenas atrasa o envio por alguns segundos.</p>'],
+  ['4. Quem tem acesso aos dados', '<ul><li><b>Outros utilizadores</b>, apenas na medida das funcionalidades: o perfil público e o chat da comunidade são visíveis para utilizadores com conta; os apontamentos são públicos; as mensagens privadas só são visíveis para os participantes; o conteúdo das salas só é visível para os seus membros.</li>' +
+    '<li><b>Moderação:</b> os moderadores veem os conteúdos públicos e, nas mensagens privadas e salas, apenas a mensagem concreta que for denunciada.</li>' +
+    '<li><b>Subcontratantes</b> (art. 28.º):<ul><li><b>Supabase Inc.</b> — base de dados, autenticação, armazenamento de ficheiros e envio dos emails da conta. Os dados ficam alojados num centro de dados na União Europeia (Irlanda).</li>' +
+    '<li><b>GitHub Inc.</b> (Microsoft) — alojamento das páginas do site (GitHub Pages). O GitHub regista o endereço IP de quem visita o site, por razões de segurança.</li></ul></li></ul>' +
+    '<p>Ambos os fornecedores têm sede nos Estados Unidos. Sempre que haja transferência ou acesso a partir de fora do Espaço Económico Europeu, esta assenta nas garantias do capítulo V do RGPD, nomeadamente no Quadro de Privacidade de Dados UE-EUA, quando o fornecedor esteja certificado, ou em cláusulas contratuais-tipo aprovadas pela Comissão Europeia.</p>' +
+    '<p>O site não usa ferramentas de estatística, publicidade ou redes sociais de terceiros, e os tipos de letra são servidos pelo próprio site.</p>'],
+  ['5. Durante quanto tempo conservamos os dados', '<ul><li><b>Conta, perfil e dados de estudo:</b> enquanto a conta existir. Ao eliminar a conta, são apagados de imediato da base de dados; cópias de segurança técnicas do fornecedor podem mantê-los por um período curto até serem substituídas.</li>' +
+    '<li><b>Mensagens do chat da comunidade, mensagens privadas e mensagens das salas:</b> 12 meses, sendo depois apagadas automaticamente. Pode apagar as suas mensagens a qualquer momento.</li>' +
+    '<li><b>Respostas em atividades e jogos das salas:</b> 30 dias. <b>Resultados do Juridle:</b> 60 dias.</li>' +
+    '<li><b>Denúncias e decisões de moderação:</b> até 12 meses após a decisão. <b>Suspensões:</b> até 6 meses após terminarem.</li>' +
+    '<li><b>Apontamentos públicos, ficheiros e salas que criou:</b> até os apagar ou eliminar a conta.</li>' +
+    '<li><b>Registos técnicos dos fornecedores:</b> pelos prazos curtos definidos por estes para efeitos de segurança.</li></ul>'],
+  ['6. Os seus direitos', '<p>Nos termos dos arts. 15.º a 21.º do RGPD, tem direito a:</p><ul><li><b>aceder</b> aos seus dados e obter uma cópia;</li><li><b>retificar</b> dados inexatos — pode fazê-lo diretamente no perfil;</li><li><b>apagar</b> os seus dados — use «A minha conta → Eliminar conta», que apaga a conta e os dados associados;</li><li><b>portabilidade</b> — use «A minha conta → Descarregar os meus dados» para obter um ficheiro com os seus dados num formato estruturado (JSON);</li><li><b>limitar</b> o tratamento e <b>opor-se</b> aos tratamentos baseados em interesse legítimo.</li></ul>' +
+    '<p>Para os restantes pedidos, escreva para {EMAIL}. Respondemos no prazo de um mês (art. 12.º, n.º 3).</p>' +
+    '<p>Tem também o direito de apresentar reclamação à <b>Comissão Nacional de Proteção de Dados (CNPD)</b>, em <a href="https://www.cnpd.pt" target="_blank" rel="noopener">www.cnpd.pt</a> (art. 77.º).</p>'],
+  ['7. Idade mínima', '<p>O LEXDESK destina-se a pessoas com pelo menos ' + LEGAL.idade + ' anos. Ao criar conta, declara ter essa idade. Se tomarmos conhecimento de que uma conta pertence a alguém mais novo, eliminá-la-emos.</p>'],
+  ['8. Armazenamento no navegador', '<p>O LEXDESK não usa cookies de publicidade nem de estatística. Usa apenas o armazenamento local do navegador para funcionar: guardar os seus dados de estudo quando não tem sessão iniciada, manter a sessão iniciada e lembrar o jogo do dia do Juridle. Este armazenamento é estritamente necessário ao serviço que pede e pode ser apagado nas definições do navegador (ao fazê-lo, perde os dados não sincronizados com uma conta).</p>'],
+  ['9. Segurança', '<p>Usamos ligações cifradas (HTTPS), palavras-passe cifradas, regras de acesso na base de dados que impedem cada utilizador de ver dados que não lhe pertencem, ficheiros privados acessíveis apenas por ligações temporárias e limites de envio contra abusos. Nenhum sistema é totalmente seguro: use uma palavra-passe forte e exclusiva para o LEXDESK.</p>'],
+  ['10. Alterações', '<p>Podemos atualizar esta política. Quando as alterações forem relevantes, avisaremos no site e, se necessário, pediremos uma nova confirmação. A versão em vigor está sempre disponível nesta página.</p>']
+];
+var TERMOS = [
+  ['1. Objeto', '<p>Estes Termos e Condições regulam a utilização do LEXDESK (o «Serviço»), uma plataforma de apoio ao estudo e à prática jurídica, disponibilizada por {RESP}. Ao criar conta ou usar o Serviço, aceita estes Termos. Leia também a Política de Privacidade.</p>'],
+  ['2. Quem pode usar', '<p>Tem de ter pelo menos ' + LEGAL.idade + ' anos para criar conta. Cada conta é pessoal e intransmissível. Deve indicar dados verdadeiros, manter a palavra-passe em segredo e avisar-nos de qualquer uso indevido.</p>'],
+  ['3. O Serviço', '<p>O Serviço é gratuito e é prestado «tal como está». Podemos acrescentar, alterar ou retirar funcionalidades, e o Serviço pode ter interrupções. Sem conta, os dados ficam apenas no seu navegador e podem perder-se se limpar os dados de navegação.</p>'],
+  ['4. Natureza informativa — não é aconselhamento jurídico', '<p>Os conteúdos do LEXDESK (biblioteca jurídica, atualidade, minutas, simulador, jogos, mentoria e mensagens de outros utilizadores) têm fins de estudo e informação. <b>Não constituem consulta jurídica</b> nem substituem o aconselhamento por advogado ou a leitura da legislação em vigor no Diário da República e das decisões nas fontes oficiais. Apesar do cuidado na sua preparação, podem conter erros ou estar desatualizados.</p>'],
+  ['5. Conteúdos dos utilizadores', '<p>É responsável pelos conteúdos que publica ou envia (apontamentos, ficheiros, mensagens, perfil, dúvidas e respostas). Conserva os direitos sobre esses conteúdos e concede ao LEXDESK uma autorização gratuita, não exclusiva e limitada ao funcionamento do Serviço para os alojar, reproduzir tecnicamente e mostrar aos utilizadores a quem os destina. A autorização cessa quando apaga o conteúdo ou a conta.</p>' +
+    '<p>Só pode partilhar materiais de que seja autor ou que tenha autorização para partilhar, respeitando o Código do Direito de Autor e dos Direitos Conexos. Não partilhe manuais, sebentas, enunciados ou outros materiais protegidos sem autorização.</p>'],
+  ['6. Utilizações proibidas', '<p>Não é permitido usar o LEXDESK para:</p><ul><li>publicar conteúdos ilegais, difamatórios, discriminatórios, de incitamento ao ódio ou à violência;</li><li>assediar, ameaçar ou intimidar outras pessoas;</li><li>divulgar dados pessoais de terceiros, incluindo nomes de partes, testemunhas ou arguidos de processos reais, contactos ou moradas;</li><li>enviar spam, publicidade não solicitada, correntes ou burlas;</li><li>violar direitos de autor ou outros direitos de terceiros;</li><li>cometer fraude académica, por exemplo partilhar respostas durante uma avaliação em curso;</li><li>prestar serviços jurídicos a terceiros como se fosse advogado sem o ser;</li><li>tentar aceder a dados de outros utilizadores, contornar as regras de segurança ou perturbar o funcionamento do Serviço.</li></ul>'],
+  ['7. Comunidade, mensagens privadas, salas e mentoria', '<p>O chat da comunidade, as mensagens privadas e as salas de estudo destinam-se à entreajuda entre estudantes. Aplicam-se as Regras da comunidade apresentadas no chat. Pode bloquear e denunciar outros utilizadores a qualquer momento.</p>' +
+    '<p>Em «Mentoria e explicações», qualquer explicação, preço ou forma de pagamento é acordada <b>diretamente entre os utilizadores</b>. O LEXDESK não é parte nesses acordos, não recebe pagamentos e não garante a qualidade das explicações. Não partilhe dados bancários nas mensagens.</p>'],
+  ['8. Moderação e denúncias', '<p>Nos termos do Regulamento (UE) 2022/2065 (Regulamento dos Serviços Digitais), informamos:</p><ul>' +
+    '<li><b>Denúncias:</b> qualquer pessoa com conta pode denunciar um conteúdo através do botão «Denunciar», indicando o motivo (art. 16.º). Também pode denunciar conteúdos ilegais por email para {EMAIL}, identificando o conteúdo e explicando porque o considera ilegal.</li>' +
+    '<li><b>Análise:</b> as denúncias são analisadas por pessoas (moderadores), de forma diligente e não arbitrária. Não usamos sistemas automáticos para decidir remoções.</li>' +
+    '<li><b>Medidas possíveis:</b> remoção do conteúdo, suspensão temporária do chat e das mensagens (normalmente 7 dias) e, em casos graves ou repetidos, encerramento da conta.</li>' +
+    '<li><b>Fundamentação:</b> quando removemos uma mensagem do chat, o motivo fica visível no seu lugar; nos restantes casos, comunicamos o motivo quando possível (art. 17.º).</li>' +
+    '<li><b>Contestação:</b> se não concordar com uma decisão, pode pedir a sua revisão para {EMAIL}, explicando as suas razões. Mantém o direito de recorrer aos tribunais.</li>' +
+    '<li><b>Limites automáticos:</b> para prevenir abusos, o Serviço limita automaticamente o ritmo de envio de mensagens.</li></ul>'],
+  ['9. Ponto de contacto', '<p>O ponto de contacto único para os utilizadores e para as autoridades (arts. 11.º e 12.º do Regulamento dos Serviços Digitais) é o email {EMAIL}, em português ou inglês.</p>'],
+  ['10. Propriedade intelectual do LEXDESK', '<p>O nome, o logótipo, o design, o código e os conteúdos editoriais do LEXDESK (incluindo perguntas, casos, minutas e ilustrações) pertencem ao responsável pelo Serviço ou aos respetivos titulares. Pode usá-los para o seu estudo pessoal; não os pode copiar em massa nem explorar comercialmente sem autorização. Os textos legais e as decisões judiciais citados são do domínio público e são sempre acompanhados de ligação à fonte oficial.</p>'],
+  ['11. Responsabilidade', '<p>Na medida permitida por lei, o LEXDESK não responde por decisões tomadas com base nos conteúdos do Serviço, por conteúdos publicados por utilizadores, por acordos entre utilizadores, nem por interrupções ou perdas de dados não sincronizados. Esta limitação não se aplica a danos causados com dolo ou culpa grave, nem afasta direitos que a lei lhe reconheça como consumidor.</p>'],
+  ['12. Fim da utilização', '<p>Pode deixar de usar o Serviço e eliminar a conta a qualquer momento em «A minha conta → Eliminar conta». Podemos suspender ou encerrar contas que violem estes Termos ou a lei, nos termos da cláusula 8.</p>'],
+  ['13. Alterações aos Termos', '<p>Podemos alterar estes Termos. Avisaremos das alterações relevantes no site e pediremos a sua aceitação antes de continuar a usar as funcionalidades com conta. Se não concordar, pode eliminar a conta.</p>'],
+  ['14. Lei aplicável e litígios', '<p>Estes Termos regem-se pela lei portuguesa. Em caso de litígio, procuraremos primeiro uma solução amigável através do email {EMAIL}. Na falta de acordo, são competentes os tribunais portugueses nos termos gerais, sem prejuízo das regras imperativas de proteção dos consumidores.</p>']
+];
+
+function vLegal() {
+  var t = S.legalTab === 'termos' ? 'termos' : 'privacidade', docs = t === 'termos' ? TERMOS : PRIVACIDADE;
+  var pend = /^\[/.test(LEGAL.resp) || /^\[/.test(LEGAL.email);
+  var h = '<div class="head"><div><h1>' + (t === 'termos' ? 'Termos e Condições' : 'Política de Privacidade') + '</h1><p class="sub">Versão ' + LEGAL.versao + ' · em vigor desde ' + LEGAL.data + '</p></div><div class="seg"><button class="' + (t === 'privacidade' ? 'on' : '') + '" data-a="legal-tab" data-id="privacidade">Política de Privacidade</button><button class="' + (t === 'termos' ? 'on' : '') + '" data-a="legal-tab" data-id="termos">Termos e Condições</button></div></div>';
+  if (pend) h += '<div class="note" style="border-color:#F5C26B;background:#FFF8E6"><b>Documento em preparação:</b> falta indicar a identidade do responsável e o email de contacto (assinalados a amarelo).</div>';
+  h += '<div class="legal"><nav class="lg-toc" aria-label="Índice">' + docs.map(function (d, i) { return '<button data-a="legal-ir" data-id="lg-' + i + '">' + esc(d[0]) + '</button>'; }).join('') + '</nav><article class="lg-doc">' +
+    (t === 'privacidade' ? '<div class="lg-resumo"><b>Em resumo:</b> usamos os seus dados apenas para fazer funcionar o LEXDESK; não há publicidade nem venda de dados; os dados ficam na União Europeia; pode descarregá-los ou apagar a conta a qualquer momento.</div>' : '<div class="lg-resumo"><b>Em resumo:</b> o LEXDESK é gratuito e serve para estudar; não é aconselhamento jurídico; respeite os outros e os direitos de autor; pode denunciar conteúdos e contestar decisões de moderação.</div>') +
+    docs.map(function (d, i) { return '<section id="lg-' + i + '"><h2>' + esc(d[0]) + '</h2>' + lg(d[1]) + '</section>'; }).join('') + '</article></div>';
+  if (sessaoAtiva()) h += '<section class="card"><h2>Os seus dados</h2><p style="margin:0;font-size:14px;color:var(--muted)">Exerça os seus direitos diretamente aqui.</p><div class="row"><button class="btn" data-a="dados-exportar">Descarregar os meus dados</button><button class="btn danger" data-a="conta-eliminar">Eliminar conta</button></div></section>';
+  return h;
+}
+
+/* ----- aceitação dos termos ----- */
+function termosAceites() { return S.meuPerfil && S.meuPerfil.termos_versao === LEGAL.versao; }
+function verificarTermos() {
+  if (!sessaoAtiva() || !S.meuPerfil || termosAceites() || S.termosPedido || $('#ov')) return;
+  S.termosPedido = true;
+  openModal('Termos e Política de Privacidade', '<p style="margin:0;line-height:1.6">Publicámos os <b>Termos e Condições</b> e a <b>Política de Privacidade</b> do LEXDESK (versão ' + LEGAL.versao + '). Para continuar a usar as funcionalidades com conta, confirme que os leu.</p><div class="row"><button class="btn sm" data-a="legal-abrir" data-id="termos">Ler os Termos</button><button class="btn sm" data-a="legal-abrir" data-id="privacidade">Ler a Política de Privacidade</button></div>' +
+    '<label class="check" style="font-size:14px"><input type="checkbox" id="tm-ok">Tenho pelo menos ' + LEGAL.idade + ' anos, li e aceito os Termos e Condições e tomei conhecimento da Política de Privacidade.</label>',
+    '<button class="btn" data-a="close">Mais tarde</button><button class="btn wine" data-a="termos-ok">Aceitar</button>');
+}
+var _carregarMeuPerfil = carregarMeuPerfil;
+carregarMeuPerfil = function () { return _carregarMeuPerfil().then(function (p) { setTimeout(verificarTermos, 800); return p; }); };
+
+var A13 = {
+  'legal-tab': function (el) { S.legalTab = el.dataset.id; render(); window.scrollTo(0, 0); },
+  'legal-abrir': function (el) { S.legalTab = el.dataset.id; closeModal(); S.termosPedido = false; go('legal'); window.scrollTo(0, 0); },
+  'legal-ir': function (el) { var x = document.getElementById(el.dataset.id); if (x) x.scrollIntoView({ behavior: 'smooth', block: 'start' }); },
+  'termos-ok': function (el) {
+    if (!$('#tm-ok').checked) { toast('Confirme a declaração para continuar.'); return; } el.disabled = true;
+    SB.from('profiles').update({ termos_versao: LEGAL.versao, termos_em: new Date().toISOString() }).eq('id', Store.uid).select('termos_versao,termos_em').single().then(function (r) {
+      el.disabled = false; if (r.error) { toast('Não foi possível registar a aceitação.'); return; }
+      S.meuPerfil.termos_versao = r.data.termos_versao; S.meuPerfil.termos_em = r.data.termos_em; closeModal(); toast('Obrigado! Aceitação registada.');
+    });
+  },
+  'dados-exportar': function (el) {
+    if (!sessaoAtiva()) return; el.disabled = true; var me = Store.uid;
+    var q = function (t, f) { return f(SB.from(t).select('*')).then(function (r) { return r.data || []; }, function () { return []; }); };
+    Promise.all([
+      q('profiles', function (x) { return x.eq('id', me); }),
+      q('docs', function (x) { return x.eq('owner', me); }),
+      q('chat_msgs', function (x) { return x.eq('autor', me); }),
+      q('dm_msgs', function (x) { return x.or('de.eq.' + me + ',para.eq.' + me); }),
+      q('dm_contactos', function (x) { return x.eq('user_id', me); }),
+      q('sala_membros', function (x) { return x.eq('user_id', me); }),
+      q('sala_msgs', function (x) { return x.eq('autor', me); }),
+      q('sala_quadro', function (x) { return x.eq('autor', me); }),
+      q('sala_respostas', function (x) { return x.eq('user_id', me); }),
+      q('juridle', function (x) { return x.eq('user_id', me); }),
+      q('chat_denuncias', function (x) { return x.eq('denunciante', me); }),
+      q('denuncias_privadas', function (x) { return x.eq('denunciante', me); })
+    ]).then(function (r) {
+      var out = { exportado_em: new Date().toISOString(), conta: { id: me, email: SBuser.session.user.email, criada_em: SBuser.session.user.created_at }, perfil: r[0][0] || null, dados_de_estudo_e_publicacoes: r[1], chat_da_comunidade: r[2], mensagens_privadas: r[3], contactos: r[4], salas: r[5], mensagens_nas_salas: r[6], quadro_das_salas: r[7], respostas_em_jogos: r[8], juridle: r[9], denuncias_feitas: r[10].concat(r[11]), dados_no_navegador: Store.data };
+      var b = new Blob([JSON.stringify(out, null, 2)], { type: 'application/json' }), a = document.createElement('a');
+      a.href = URL.createObjectURL(b); a.download = 'lexdesk-os-meus-dados-' + ymd(new Date()) + '.json'; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+      el.disabled = false; toast('Ficheiro com os seus dados descarregado.');
+    });
+  },
+  'conta-eliminar': function () {
+    openModal('Eliminar conta', '<p style="margin:0;line-height:1.6">Esta ação é <b>definitiva</b>. São apagados a sua conta, perfil, dados de estudo sincronizados, ficheiros, apontamentos, mensagens (incluindo as privadas), participação em salas e as <b>salas que criou</b> (para todos os membros).</p><p style="margin:0;line-height:1.6">Se quiser guardar uma cópia, use primeiro «Descarregar os meus dados».</p>' +
+      '<label class="f">Para confirmar, escreva <b>ELIMINAR</b><input class="in" id="ce-txt" autocomplete="off"></label>',
+      '<button class="btn" data-a="close">Cancelar</button><button class="btn danger" data-a="conta-eliminar-ok">Eliminar definitivamente</button>');
+  },
+  'conta-eliminar-ok': function (el) {
+    if ($('#ce-txt').value.trim().toUpperCase() !== 'ELIMINAR') { toast('Escreva ELIMINAR para confirmar.'); return; }
+    el.disabled = true; el.textContent = 'A eliminar…'; var me = Store.uid;
+    var limpa = function (bucket, pasta) { return SB.storage.from(bucket).list(pasta, { limit: 1000 }).then(function (r) { var l = (r.data || []).map(function (f) { return pasta + '/' + f.name; }); return l.length ? SB.storage.from(bucket).remove(l) : null; }, function () {}); };
+    var salasMinhas = SB.from('salas').select('id').eq('dono', me).then(function (r) { return Promise.all((r.data || []).map(function (s) { return limpa('salas', s.id); })); }, function () {});
+    Promise.all([limpa('avatares', me), limpa('workspaces', me), limpa('apontamentos', me), salasMinhas]).then(function () {
+      return SB.from('docs').delete().eq('col', 'apontamentos').eq('owner', me);
+    }).then(function () { return SB.rpc('eliminar_conta'); }).then(function (r) {
+      if (r && r.error) throw r.error;
+      try { Object.keys(localStorage).filter(function (k) { return /^lexdesk|^sb-/.test(k); }).forEach(function (k) { localStorage.removeItem(k); }); } catch (e) {}
+      Store.data = {}; closeModal(); SB.auth.signOut().catch(function () {});
+      Store.uid = null; SBuser.session = null; S.meuPerfil = null; dmStop(); salaSair();
+      openModal('Conta eliminada', '<p style="margin:0">A sua conta e os dados associados foram eliminados. Obrigado por ter usado o LEXDESK.</p>', '<button class="btn pri" data-a="close">Fechar</button>'); go('painel');
+    }).catch(function () { el.disabled = false; el.textContent = 'Eliminar definitivamente'; toast('Não foi possível eliminar a conta. Tente novamente ou contacte-nos.'); });
+  }
+};
+Object.keys(A13).forEach(function (k) { A[k] = A13[k]; });
+function legalHash() { var m = location.hash.match(/^#(privacidade|termos)$/); if (m) { S.view = 'legal'; S.legalTab = m[1]; } }
+window.addEventListener('hashchange', function () { if (/^#(privacidade|termos)$/.test(location.hash)) { legalHash(); render(); } });
+legalHash();
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
 var VIEW_LBL = { painel: ['Painel', I.grid], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door] };
