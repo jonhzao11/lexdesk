@@ -957,7 +957,132 @@ var QUESTOES = [
   { id: 'pn7', d: 'pen', q: 'Em regra, qual é a duração máxima da pena de prisão?', o: ['16 anos', '20 anos', '25 anos', '30 anos'], a: 1,
     e: 'A pena de prisão tem, em regra, a duração máxima de 20 anos. O limite máximo é de 25 anos nos casos previstos na lei (art. 41.º, n.ºs 1 e 2, do CP).' },
   { id: 'pn8', d: 'pen', q: 'Em que artigo do CP está prevista a legítima defesa?', o: ['Art. 31.º', 'Art. 32.º', 'Art. 34.º', 'Art. 35.º'], a: 1,
-    e: 'A legítima defesa está no art. 32.º do CP. O art. 31.º enuncia as causas de exclusão da ilicitude em geral, o art. 34.º o direito de necessidade e o art. 35.º o estado de necessidade desculpante.' }
+    e: 'A legítima defesa está no art. 32.º do CP. O art. 31.º enuncia as causas de exclusão da ilicitude em geral, o art. 34.º o direito de necessidade e o art. 35.º o estado de necessidade desculpante.' },
+  /* ----- novas perguntas (lote 2) ----- */
+  { id: 'pc11', d: 'pc', q: 'Em matéria cível, qual é a alçada dos tribunais judiciais de primeira instância?', o: ['€ 2 500', '€ 5 000', '€ 15 000', '€ 30 000'], a: 1,
+    e: 'Em matéria cível, a alçada dos tribunais de primeira instância é de € 5 000 (art. 44.º, n.º 1, da Lei da Organização do Sistema Judiciário — Lei n.º 62/2013).' },
+  { id: 'pc12', d: 'pc', q: 'Em matéria cível, qual é a alçada dos Tribunais da Relação?', o: ['€ 5 000', '€ 15 000', '€ 30 000', '€ 50 000'], a: 2,
+    e: 'A alçada dos Tribunais da Relação é de € 30 000 (art. 44.º, n.º 1, da LOSJ).' },
+  { id: 'pc13', d: 'pc', q: 'Em regra, o recurso ordinário só é admissível quando:', o: ['A causa tenha qualquer valor e a parte esteja vencida', 'A causa tenha valor superior à alçada do tribunal de que se recorre e a decisão seja desfavorável ao recorrente em valor superior a metade dessa alçada', 'A decisão seja desfavorável ao recorrente em valor superior à alçada do tribunal superior', 'O Ministério Público dê parecer favorável'], a: 1,
+    e: 'Regra da sucumbência: o recurso ordinário só é admissível quando a causa tenha valor superior à alçada do tribunal de que se recorre e a decisão impugnada seja desfavorável ao recorrente em valor superior a metade da alçada desse tribunal (art. 629.º, n.º 1, do CPC).' },
+  { id: 'pc14', d: 'pc', q: 'No processo comum, quantas testemunhas podem, no máximo, ser oferecidas por cada uma das partes (autores ou réus)?', o: ['5', '8', '10', '20'], a: 2,
+    e: 'Os autores não podem oferecer mais de 10 testemunhas para prova dos fundamentos da ação; igual limitação se aplica aos réus que apresentem a mesma contestação (art. 511.º, n.º 1, do CPC).' },
+  { id: 'pc15', d: 'pc', q: 'Qual é o requisito central do procedimento cautelar comum?', o: ['A existência de sentença transitada em julgado', 'Fundado receio de que outrem cause lesão grave e dificilmente reparável ao direito do requerente', 'Prova plena do direito invocado', 'Acordo prévio do requerido'], a: 1,
+    e: 'Pode requerer a providência cautelar adequada quem mostre fundado receio de que outrem, antes de a ação ser proposta ou na pendência dela, cause lesão grave e dificilmente reparável ao seu direito (art. 362.º, n.º 1, do CPC).' },
+  { id: 'pc16', d: 'pc', q: 'As exceções dilatórias:', o: ['Importam a absolvição total ou parcial do pedido', 'Obstam a que o tribunal conheça do mérito da causa e dão lugar à absolvição da instância ou à remessa do processo para outro tribunal', 'São sempre de conhecimento exclusivo a pedido das partes', 'Só podem ser deduzidas em recurso'], a: 1,
+    e: 'As exceções dilatórias obstam a que o tribunal conheça do mérito da causa e dão lugar à absolvição da instância ou à remessa do processo para outro tribunal (art. 576.º, n.º 2, do CPC).' },
+  { id: 'pc17', d: 'pc', q: 'As exceções perentórias:', o: ['Dão lugar à absolvição da instância', 'Importam a absolvição total ou parcial do pedido', 'Implicam sempre a remessa do processo para outro tribunal', 'Suspendem a instância'], a: 1,
+    e: 'As exceções perentórias importam a absolvição total ou parcial do pedido e consistem na invocação de factos que impedem, modificam ou extinguem o efeito jurídico dos factos articulados pelo autor (art. 576.º, n.º 3, do CPC).' },
+  { id: 'pc18', d: 'pc', q: 'Para efeitos de litispendência e caso julgado, repete-se uma causa quando se propõe uma ação idêntica a outra quanto:', o: ['Ao tribunal e ao pedido', 'Aos sujeitos, ao pedido e à causa de pedir', 'Apenas à causa de pedir', 'Aos mandatários e ao valor'], a: 1,
+    e: 'Repete-se a causa quando se propõe uma ação idêntica a outra quanto aos sujeitos, ao pedido e à causa de pedir (art. 581.º, n.º 1, do CPC).' },
+  { id: 'pc19', d: 'pc', q: 'Quando se considera proposta a ação?', o: ['Com a citação do réu', 'Logo que a petição inicial seja recebida na secretaria', 'Com o despacho liminar do juiz', 'Com o pagamento da taxa de justiça pelo réu'], a: 1,
+    e: 'A instância inicia-se pela proposição da ação e esta considera-se proposta logo que a petição inicial seja recebida na secretaria (art. 259.º, n.º 1, do CPC).' },
+  { id: 'pc20', d: 'pc', q: 'Que figura permite dispensar o requerente de uma providência cautelar do ónus de propor a ação principal?', o: ['Inversão do contencioso', 'Revelia operante', 'Apensação de ações', 'Reconvenção'], a: 0,
+    e: 'Mediante requerimento, o juiz pode dispensar o requerente do ónus de propositura da ação principal se a matéria adquirida permitir formar convicção segura acerca da existência do direito acautelado — inversão do contencioso (art. 369.º, n.º 1, do CPC).' },
+  { id: 'pc21', d: 'pc', q: 'Em que artigo do CPC está regulada a audiência prévia?', o: ['Art. 552.º', 'Art. 591.º', 'Art. 607.º', 'Art. 615.º'], a: 1,
+    e: 'A audiência prévia está regulada no art. 591.º do CPC. O art. 552.º trata da petição inicial, o art. 607.º da sentença e o art. 615.º das causas de nulidade da sentença.' },
+  { id: 'pc22', d: 'pc', q: 'Nos processos urgentes, o prazo para interposição de recurso é, em regra, de:', o: ['10 dias', '15 dias', '20 dias', '30 dias'], a: 1,
+    e: 'O prazo de interposição de recurso é de 30 dias, reduzindo-se para 15 dias nos processos urgentes e nos casos previstos no n.º 2 do art. 644.º e no art. 677.º (art. 638.º, n.º 1, do CPC).' },
+
+  { id: 'pp10', d: 'pp', q: 'Não havendo arguidos presos nem sob obrigação de permanência na habitação, qual é o prazo máximo do inquérito?', o: ['6 meses', '8 meses', '12 meses', '18 meses'], a: 1,
+    e: 'O MP encerra o inquérito no prazo máximo de 6 meses se houver arguidos presos ou sob obrigação de permanência na habitação, ou de 8 meses se os não houver (art. 276.º, n.º 1, do CPP).' },
+  { id: 'pp11', d: 'pp', q: 'Havendo arguidos presos, qual é o prazo máximo do inquérito (regra geral)?', o: ['3 meses', '6 meses', '8 meses', '12 meses'], a: 1,
+    e: 'Com arguidos presos ou sob obrigação de permanência na habitação, o prazo máximo do inquérito é de 6 meses, sem prejuízo dos alargamentos previstos (art. 276.º, n.ºs 1 e 2, do CPP).' },
+  { id: 'pp12', d: 'pp', q: 'O arguido tem o direito de não responder a perguntas sobre os factos que lhe forem imputados?', o: ['Não, é obrigado a responder com verdade', 'Sim, e o silêncio não pode ser valorado contra ele', 'Só na fase de julgamento', 'Só com autorização do juiz'], a: 1,
+    e: 'O arguido goza do direito de não responder a perguntas sobre os factos que lhe forem imputados e sobre o conteúdo das declarações que acerca deles prestar (art. 61.º, n.º 1, al. d), do CPP); o silêncio não o pode desfavorecer (art. 343.º, n.º 1).' },
+  { id: 'pp13', d: 'pp', q: 'Em regra, a prisão preventiva extingue-se quando, desde o seu início, tiverem decorrido sem ser deduzida acusação:', o: ['3 meses', '4 meses', '6 meses', '1 ano'], a: 1,
+    e: 'A prisão preventiva extingue-se quando, desde o seu início, tiverem decorrido 4 meses sem que tenha sido deduzida acusação (art. 215.º, n.º 1, al. a), do CPP), sem prejuízo dos prazos alargados dos n.ºs 2 e 3.' },
+  { id: 'pp14', d: 'pp', q: 'Nos crimes particulares em sentido estrito, o procedimento criminal depende:', o: ['Apenas de queixa', 'De queixa, de o ofendido se constituir assistente e de deduzir acusação particular', 'Apenas de denúncia de qualquer pessoa', 'De autorização do juiz de instrução'], a: 1,
+    e: 'Quando o procedimento criminal depender de acusação particular, é necessário que o ofendido se queixe, se constitua assistente e deduza acusação particular (art. 50.º, n.º 1, do CPP).' },
+  { id: 'pp15', d: 'pp', q: 'Nos crimes particulares, findo o inquérito, em que prazo pode o assistente deduzir acusação particular?', o: ['5 dias', '10 dias', '20 dias', '30 dias'], a: 1,
+    e: 'O MP notifica o assistente para que deduza em 10 dias, querendo, acusação particular (art. 285.º, n.º 1, do CPP).' },
+  { id: 'pp16', d: 'pp', q: 'A proibição da reformatio in pejus está consagrada em que artigo do CPP?', o: ['Art. 379.º', 'Art. 399.º', 'Art. 409.º', 'Art. 412.º'], a: 2,
+    e: 'Interposto recurso apenas pelo arguido, pelo MP no exclusivo interesse do arguido, ou por ambos, o tribunal superior não pode modificar, na sua espécie ou medida, as sanções em prejuízo de qualquer dos arguidos (art. 409.º, n.º 1, do CPP).' },
+  { id: 'pp17', d: 'pp', q: 'Em caso de flagrante delito por crime punível com pena de prisão, qualquer pessoa pode proceder à detenção?', o: ['Nunca', 'Sim, se uma autoridade judiciária ou entidade policial não estiver presente nem puder ser chamada em tempo útil', 'Sim, em qualquer circunstância', 'Só se o crime for público e punível com mais de 5 anos'], a: 1,
+    e: 'Em flagrante delito por crime punível com pena de prisão, qualquer pessoa pode proceder à detenção se uma das entidades referidas na al. a) não estiver presente nem puder ser chamada em tempo útil (art. 255.º, n.º 1, al. b), do CPP).' },
+  { id: 'pp18', d: 'pp', q: 'Como adquire o Ministério Público a notícia do crime?', o: ['Apenas por denúncia do ofendido', 'Por conhecimento próprio, por intermédio dos órgãos de polícia criminal ou mediante denúncia', 'Apenas por comunicação do juiz de instrução', 'Apenas através de queixa escrita'], a: 1,
+    e: 'O MP adquire notícia do crime por conhecimento próprio, por intermédio dos órgãos de polícia criminal ou mediante denúncia (art. 241.º do CPP).' },
+  { id: 'pp19', d: 'pp', q: 'Que decisão encerra a fase de instrução?', o: ['Sentença condenatória ou absolutória', 'Despacho de pronúncia ou de não pronúncia', 'Despacho de arquivamento do MP', 'Acórdão do tribunal coletivo'], a: 1,
+    e: 'Encerrado o debate instrutório, o juiz profere despacho de pronúncia ou de não pronúncia (arts. 307.º e 308.º do CPP).' },
+  { id: 'pp20', d: 'pp', q: 'As provas obtidas mediante tortura, coação ou ofensa da integridade física ou moral das pessoas:', o: ['São válidas se confirmadas em julgamento', 'São nulas, não podendo ser utilizadas', 'Podem ser usadas a favor da acusação com autorização judicial', 'São meras irregularidades'], a: 1,
+    e: 'São nulas, não podendo ser utilizadas, as provas obtidas mediante tortura, coação ou, em geral, ofensa da integridade física ou moral das pessoas (art. 126.º, n.º 1, do CPP; art. 32.º, n.º 8, da CRP).' },
+  { id: 'pp21', d: 'pp', q: 'É obrigatória a constituição de arguido quando, correndo inquérito contra pessoa determinada sobre a qual haja suspeita fundada da prática de crime, esta:', o: ['For notificada para pagar uma coima', 'Prestar declarações perante qualquer autoridade judiciária ou órgão de polícia criminal', 'Mudar de residência', 'Constituir advogado'], a: 1,
+    e: 'É obrigatória a constituição de arguido, nomeadamente, quando, correndo inquérito contra pessoa determinada em relação à qual haja suspeita fundada da prática de crime, esta prestar declarações perante qualquer autoridade judiciária ou órgão de polícia criminal (art. 58.º, n.º 1, al. a), do CPP).' },
+
+  { id: 'cv10', d: 'civ', q: 'Em que momento se adquire a personalidade jurídica?', o: ['Com a conceção', 'No momento do nascimento completo e com vida', 'Com o registo do nascimento', 'Aos 18 anos'], a: 1,
+    e: 'A personalidade adquire-se no momento do nascimento completo e com vida (art. 66.º, n.º 1, do CC).' },
+  { id: 'cv11', d: 'civ', q: 'Havendo sinal, se o não cumprimento do contrato for devido a quem o recebeu, o outro contraente tem direito a:', o: ['Exigir apenas a restituição do sinal', 'Exigir o dobro do que prestou', 'Exigir o triplo do que prestou', 'Fazer sua a coisa entregue'], a: 1,
+    e: 'Se quem constitui o sinal deixar de cumprir, o outro contraente pode fazer sua a coisa entregue; se o não cumprimento for de quem recebeu o sinal, tem o outro contraente a faculdade de exigir o dobro do que prestou (art. 442.º, n.º 2, do CC).' },
+  { id: 'cv12', d: 'civ', q: 'Ao contrato-promessa aplicam-se as disposições legais relativas ao contrato prometido, exceto:', o: ['As relativas ao preço', 'As relativas à forma e as que, pela sua razão de ser, não se devam considerar extensivas ao contrato-promessa', 'As relativas à capacidade das partes', 'Nenhuma: aplicam-se todas'], a: 1,
+    e: 'Princípio da equiparação: aplicam-se ao contrato-promessa as disposições relativas ao contrato prometido, exceptuadas as relativas à forma e as que, por sua razão de ser, não se devam considerar extensivas ao contrato-promessa (art. 410.º, n.º 1, do CC).' },
+  { id: 'cv13', d: 'civ', q: 'A doação de coisas imóveis só é válida se for celebrada:', o: ['Por simples escrito particular', 'Por escritura pública ou por documento particular autenticado', 'Verbalmente perante duas testemunhas', 'Por qualquer forma'], a: 1,
+    e: 'A doação de coisas imóveis só é válida se for celebrada por escritura pública ou por documento particular autenticado (art. 947.º, n.º 1, do CC).' },
+  { id: 'cv14', d: 'civ', q: 'Se o declarante for coagido pela força física a emitir a declaração negocial:', o: ['A declaração é anulável', 'A declaração não produz qualquer efeito', 'A declaração é válida mas há direito a indemnização', 'A declaração é ineficaz apenas perante terceiros'], a: 1,
+    e: 'A declaração não produz qualquer efeito se o declarante não tiver a consciência de fazer uma declaração negocial ou for coagido pela força física a emiti-la (art. 246.º do CC).' },
+  { id: 'cv15', d: 'civ', q: 'Os juros convencionais ou legais prescrevem no prazo de:', o: ['1 ano', '3 anos', '5 anos', '20 anos'], a: 2,
+    e: 'Prescrevem no prazo de cinco anos, entre outros, os juros convencionais ou legais, ainda que ilíquidos (art. 310.º, al. d), do CC).' },
+  { id: 'cv16', d: 'civ', q: 'Em que artigo do CC está o princípio geral da responsabilidade civil por factos ilícitos?', o: ['Art. 405.º', 'Art. 483.º', 'Art. 562.º', 'Art. 798.º'], a: 1,
+    e: 'Aquele que, com dolo ou mera culpa, violar ilicitamente o direito de outrem ou qualquer disposição legal destinada a proteger interesses alheios fica obrigado a indemnizar o lesado (art. 483.º, n.º 1, do CC). O art. 798.º trata da responsabilidade contratual.' },
+  { id: 'cv17', d: 'civ', q: 'Nas obrigações pecuniárias, a indemnização pela mora do devedor corresponde:', o: ['Ao dobro da prestação', 'Aos juros a contar do dia da constituição em mora', 'A uma cláusula penal fixada pelo tribunal', 'Aos danos que o credor provar'], a: 1,
+    e: 'Na obrigação pecuniária, a indemnização corresponde aos juros a contar do dia da constituição em mora (art. 806.º, n.º 1, do CC).' },
+  { id: 'cv18', d: 'civ', q: 'O negócio simulado:', o: ['É válido entre as partes', 'É nulo', 'É anulável no prazo de 1 ano', 'É ineficaz apenas perante terceiros de boa-fé'], a: 1,
+    e: 'O negócio simulado é nulo (art. 240.º, n.º 2, do CC).' },
+  { id: 'cv19', d: 'civ', q: 'Em que artigo do CC está consagrado o abuso do direito?', o: ['Art. 227.º', 'Art. 280.º', 'Art. 334.º', 'Art. 762.º'], a: 2,
+    e: 'É ilegítimo o exercício de um direito quando o titular exceda manifestamente os limites impostos pela boa-fé, pelos bons costumes ou pelo fim social ou económico desse direito (art. 334.º do CC).' },
+  { id: 'cv20', d: 'civ', q: 'Em regra, a quem cabe a prova dos factos constitutivos do direito alegado?', o: ['À parte contra quem o direito é invocado', 'Àquele que invocar o direito', 'Ao tribunal, oficiosamente', 'A ambas as partes, em partes iguais'], a: 1,
+    e: 'Àquele que invocar um direito cabe fazer a prova dos factos constitutivos do direito alegado (art. 342.º, n.º 1, do CC).' },
+  { id: 'cv21', d: 'civ', q: 'Em que artigo do CC está prevista a cláusula penal?', o: ['Art. 442.º', 'Art. 810.º', 'Art. 829.º-A', 'Art. 892.º'], a: 1,
+    e: 'As partes podem fixar por acordo o montante da indemnização exigível — cláusula penal (art. 810.º, n.º 1, do CC). O art. 829.º-A prevê a sanção pecuniária compulsória.' },
+
+  { id: 'cn9', d: 'con', q: 'Qual é a duração do mandato do Presidente da República?', o: ['4 anos', '5 anos', '6 anos', '7 anos'], a: 1,
+    e: 'O mandato do Presidente da República tem a duração de cinco anos (art. 128.º, n.º 1, da CRP).' },
+  { id: 'cn10', d: 'con', q: 'São elegíveis para Presidente da República os cidadãos eleitores portugueses de origem maiores de:', o: ['18 anos', '25 anos', '35 anos', '40 anos'], a: 2,
+    e: 'São elegíveis os cidadãos eleitores, portugueses de origem, maiores de 35 anos (art. 122.º da CRP).' },
+  { id: 'cn11', d: 'con', q: 'Segundo a CRP, a Assembleia da República tem:', o: ['Exatamente 230 deputados', 'Um mínimo de 180 e um máximo de 230 deputados', 'Um mínimo de 150 e um máximo de 250 deputados', '200 deputados'], a: 1,
+    e: 'A Assembleia da República tem o mínimo de 180 e o máximo de 230 deputados, nos termos da lei eleitoral (art. 148.º da CRP).' },
+  { id: 'cn12', d: 'con', q: 'As alterações da Constituição são aprovadas por:', o: ['Maioria absoluta dos deputados presentes', 'Maioria de dois terços dos deputados em efetividade de funções', 'Maioria de três quintos dos deputados em efetividade de funções', 'Referendo obrigatório'], a: 1,
+    e: 'As alterações da Constituição são aprovadas por maioria de dois terços dos deputados em efetividade de funções (art. 286.º, n.º 1, da CRP).' },
+  { id: 'cn13', d: 'con', q: 'Quantos juízes compõem o Tribunal Constitucional?', o: ['9', '11', '13', '15'], a: 2,
+    e: 'O Tribunal Constitucional é composto por treze juízes, sendo dez designados pela Assembleia da República e três cooptados por estes (art. 222.º, n.º 1, da CRP).' },
+  { id: 'cn14', d: 'con', q: 'O mandato dos juízes do Tribunal Constitucional tem a duração de:', o: ['6 anos, renovável', '9 anos, não renovável', '9 anos, renovável uma vez', '12 anos, não renovável'], a: 1,
+    e: 'O mandato dos juízes do Tribunal Constitucional tem a duração de nove anos e não é renovável (art. 222.º, n.º 3, da CRP).' },
+  { id: 'cn15', d: 'con', q: 'Em que prazo pode o Presidente da República requerer a apreciação preventiva da constitucionalidade?', o: ['5 dias', '8 dias', '20 dias', '25 dias'], a: 1,
+    e: 'A apreciação preventiva deve ser requerida no prazo de oito dias a contar da data da receção do diploma (art. 278.º, n.º 3, da CRP). O Tribunal pronuncia-se no prazo de 25 dias (n.º 8).' },
+  { id: 'cn16', d: 'con', q: 'O Tribunal Constitucional aprecia e declara com força obrigatória geral a inconstitucionalidade de uma norma que tenha sido julgada inconstitucional em quantos casos concretos?', o: ['Dois', 'Três', 'Cinco', 'Dez'], a: 1,
+    e: 'O Tribunal Constitucional aprecia e declara com força obrigatória geral a inconstitucionalidade de qualquer norma desde que tenha sido por ele julgada inconstitucional em três casos concretos (art. 281.º, n.º 3, da CRP).' },
+  { id: 'cn17', d: 'con', q: 'A declaração do estado de sítio ou do estado de emergência não pode ter duração superior a:', o: ['8 dias', '15 dias', '30 dias', '60 dias'], a: 1,
+    e: 'A declaração do estado de sítio ou do estado de emergência não pode ter duração superior a quinze dias, sem prejuízo de eventuais renovações com salvaguarda do mesmo limite (art. 19.º, n.º 5, da CRP).' },
+  { id: 'cn18', d: 'con', q: 'Se o Presidente da República vetar um decreto da Assembleia da República, esta pode confirmar o voto por:', o: ['Maioria simples', 'Maioria absoluta dos deputados em efetividade de funções', 'Maioria de três quintos dos deputados presentes', 'Unanimidade'], a: 1,
+    e: 'Se a AR confirmar o voto por maioria absoluta dos deputados em efetividade de funções, o PR deve promulgar o diploma no prazo de oito dias (art. 136.º, n.º 2, da CRP), salvo nos casos do n.º 3, que exigem dois terços.' },
+  { id: 'cn19', d: 'con', q: 'As restrições aos direitos, liberdades e garantias devem:', o: ['Ser decididas pelo Governo por decreto-lei', 'Limitar-se ao necessário para salvaguardar outros direitos ou interesses constitucionalmente protegidos', 'Ter efeito retroativo', 'Diminuir o conteúdo essencial dos direitos'], a: 1,
+    e: 'A lei só pode restringir direitos, liberdades e garantias nos casos expressamente previstos na Constituição, devendo as restrições limitar-se ao necessário para salvaguardar outros direitos ou interesses constitucionalmente protegidos (art. 18.º, n.º 2, da CRP — princípio da proporcionalidade).' },
+  { id: 'cn20', d: 'con', q: 'Em que artigo da CRP está consagrada a inviolabilidade da vida humana?', o: ['Art. 13.º', 'Art. 24.º', 'Art. 25.º', 'Art. 27.º'], a: 1,
+    e: 'A vida humana é inviolável (art. 24.º, n.º 1, da CRP). O art. 25.º trata da integridade pessoal e o art. 27.º do direito à liberdade e à segurança.' },
+
+  { id: 'pn9', d: 'pen', q: 'O facto praticado com negligência:', o: ['É sempre punível', 'Só é punível nos casos especialmente previstos na lei', 'Nunca é punível', 'É punível apenas nos crimes contra o património'], a: 1,
+    e: 'Só é punível o facto praticado com dolo ou, nos casos especialmente previstos na lei, com negligência (art. 13.º do CP).' },
+  { id: 'pn10', d: 'pen', q: 'Qual é, em regra, a duração mínima da pena de prisão?', o: ['1 dia', '1 mês', '3 meses', '6 meses'], a: 1,
+    e: 'A pena de prisão tem, em regra, a duração mínima de 1 mês e a duração máxima de 20 anos (art. 41.º, n.º 1, do CP).' },
+  { id: 'pn11', d: 'pen', q: 'A suspensão da execução da pena de prisão é possível quando a pena aplicada não seja superior a:', o: ['2 anos', '3 anos', '5 anos', '8 anos'], a: 2,
+    e: 'O tribunal suspende a execução da pena de prisão aplicada em medida não superior a cinco anos se concluir que a simples censura do facto e a ameaça da prisão realizam de forma adequada as finalidades da punição (art. 50.º, n.º 1, do CP).' },
+  { id: 'pn12', d: 'pen', q: 'O procedimento criminal por crime punível com pena de prisão cujo limite máximo seja superior a 10 anos prescreve, em regra, em:', o: ['5 anos', '10 anos', '15 anos', '20 anos'], a: 2,
+    e: 'O procedimento criminal extingue-se, por prescrição, logo que sobre a prática do crime tiverem decorrido 15 anos, quando se trate de crimes puníveis com pena de prisão cujo limite máximo for superior a 10 anos (art. 118.º, n.º 1, al. a), do CP), sem prejuízo das exceções aí previstas.' },
+  { id: 'pn13', d: 'pen', q: 'Quando as disposições penais vigentes no momento da prática do facto forem diferentes das estabelecidas em leis posteriores, aplica-se:', o: ['Sempre a lei vigente no momento da prática do facto', 'Sempre a lei mais recente', 'O regime que concretamente se mostrar mais favorável ao agente', 'A lei escolhida pelo Ministério Público'], a: 2,
+    e: 'É sempre aplicado o regime que concretamente se mostrar mais favorável ao agente (art. 2.º, n.º 4, do CP; art. 29.º, n.º 4, da CRP).' },
+  { id: 'pn14', d: 'pen', q: 'Com que pena é punido o furto simples (art. 203.º, n.º 1, do CP)?', o: ['Prisão até 1 ano ou multa', 'Prisão até 3 anos ou multa', 'Prisão de 1 a 5 anos', 'Prisão de 2 a 8 anos'], a: 1,
+    e: 'Quem, com ilegítima intenção de apropriação para si ou para outra pessoa, subtrair coisa móvel ou animal alheios é punido com pena de prisão até 3 anos ou com pena de multa (art. 203.º, n.º 1, do CP).' },
+  { id: 'pn15', d: 'pen', q: 'O procedimento criminal pelo crime de furto simples:', o: ['É público', 'Depende de queixa', 'Depende de acusação particular', 'Depende de autorização do Ministério Público'], a: 1,
+    e: 'O procedimento criminal pelo crime de furto simples depende de queixa (art. 203.º, n.º 3, do CP).' },
+  { id: 'pn16', d: 'pen', q: 'A tentativa deixa de ser punível quando o agente:', o: ['Se arrepende depois da consumação', 'Voluntariamente desiste de prosseguir na execução do crime ou impede a consumação', 'Repara o dano antes do julgamento', 'Confessa os factos'], a: 1,
+    e: 'A tentativa deixa de ser punível quando o agente voluntariamente desistir de prosseguir na execução do crime, ou impedir a consumação, ou, não obstante a consumação, impedir a verificação do resultado não compreendido no tipo de crime (art. 24.º, n.º 1, do CP).' },
+  { id: 'pn17', d: 'pen', q: 'Como é punido o cúmplice?', o: ['Com a mesma pena do autor', 'Com a pena fixada para o autor, especialmente atenuada', 'Apenas com pena de multa', 'Não é punido'], a: 1,
+    e: 'É aplicável ao cúmplice a pena fixada para o autor, especialmente atenuada (art. 27.º, n.º 2, do CP).' },
+  { id: 'pn18', d: 'pen', q: 'Se houver excesso dos meios empregados em legítima defesa, por perturbação, medo ou susto não censuráveis, o agente:', o: ['É punido com a pena normal', 'Não é punido', 'É punido com pena de multa', 'É punido com pena especialmente agravada'], a: 1,
+    e: 'Havendo excesso dos meios empregados em legítima defesa, o facto é ilícito, mas a pena pode ser especialmente atenuada; o agente não é punido se o excesso resultar de perturbação, medo ou susto não censuráveis (art. 33.º do CP).' },
+  { id: 'pn19', d: 'pen', q: 'O consentimento exclui a ilicitude do facto quando:', o: ['For dado depois da prática do facto', 'Se referir a interesses jurídicos livremente disponíveis e o facto não ofender os bons costumes', 'For dado por qualquer pessoa presente', 'Se referir à vida'], a: 1,
+    e: 'O consentimento exclui a ilicitude do facto quando se referir a interesses jurídicos livremente disponíveis e o facto não ofender os bons costumes (art. 38.º, n.º 1, do CP).' },
+  { id: 'pn20', d: 'pen', q: 'Com que pena é punida a ofensa à integridade física simples (art. 143.º, n.º 1, do CP)?', o: ['Prisão até 1 ano ou multa', 'Prisão até 3 anos ou multa', 'Prisão de 1 a 5 anos', 'Prisão de 2 a 10 anos'], a: 1,
+    e: 'Quem ofender o corpo ou a saúde de outra pessoa é punido com pena de prisão até 3 anos ou com pena de multa (art. 143.º, n.º 1, do CP).' }
 ];
 
 var CASOS = [
@@ -5093,6 +5218,7 @@ verificarTermos = function () { };
 /* ---------- PERGUNTA DO DIA com ranking individual ---------- */
 var PD = { carregado: false, a_carregar: false, estado: 'idle', d: null, seq: 0, t0: 0, rk: { periodo: 'hoje', lista: null } };
 function pdHoje() { try { return new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Lisbon' }).format(new Date()); } catch (e) { return ymd(new Date()); } }
+function pdPerm(id) { var h = 2166136261, str = id + '|' + (PD.dia || pdHoje()); for (var i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; } var p = [0, 1, 2, 3]; for (var k = 3; k > 0; k--) { h = Math.imul(h ^ (h >>> 15), 2246822519) >>> 0; var j = h % (k + 1), t = p[k]; p[k] = p[j]; p[j] = t; } return p; }
 function pdQ(id) { return QMAP[id] || Q_DEONT.filter(function (q) { return q.id === id; })[0] || null; }
 function pdCarregar() {
   if (PD.a_carregar || !sessaoAtiva() || !SB) return; PD.a_carregar = true;
@@ -5128,9 +5254,9 @@ function vPD() {
   h += (PD.estado === 'ativa' ? '<span class="pd-cr" id="pd-cr">' + pdSeg(Date.now() - PD.t0) + '</span>' : '') + (PD.seq ? '<span class="pd-seq" title="Dias seguidos a responder">🔥 ' + PD.seq + (PD.seq === 1 ? ' dia' : ' dias') + '</span>' : '') + '<button class="pd-lk" data-a="pd-rank">🏆 Ranking</button></div>';
   if (PD.estado === 'idle') return h + '<p class="pd-p">Uma pergunta nova todos os dias, igual para todos. <b>Só tem uma tentativa</b> e o cronómetro começa quando clicar.</p><div class="row"><button class="btn gold" data-a="pd-ini">Começar ⏱</button><span class="pd-reg">Certa: 10 pts · bónus de rapidez até +5</span></div></div>';
   var q = pdQ(PD.d.qid); if (!q) return h + '<p class="pd-p">Pergunta indisponível. Atualize a página.</p></div>';
-  if (PD.estado === 'ativa') return h + '<p class="pd-q">' + esc(q.q) + '</p><div class="pd-o">' + q.o.map(function (o, i) { return '<button data-a="pd-resp" data-i="' + i + '"><span>' + 'ABCD'.charAt(i) + '</span>' + esc(o) + '</button>'; }).join('') + '</div></div>';
+  if (PD.estado === 'ativa') return h + '<p class="pd-q">' + esc(q.q) + '</p><div class="pd-o">' + pdPerm(q.id).map(function (oi, i) { return '<button data-a="pd-resp" data-i="' + oi + '"><span>' + 'ABCD'.charAt(i) + '</span>' + esc(q.o[oi]) + '</button>'; }).join('') + '</div></div>';
   var d = PD.d, c = d.correta != null ? d.correta : q.a;
-  return h + '<p class="pd-q sm">' + esc(q.q) + '</p><div class="pd-res ' + (d.certa ? 'ok' : 'bad') + '"><b>' + (d.certa ? '✓ Certo! +' + d.pontos + ' pontos' : '✗ Errado.') + '</b>' + (d.certa ? '<span>Respondeu em ' + pdSeg(d.ms) + '.</span>' : '<span>A resposta certa era <b>' + 'ABCD'.charAt(c) + ') ' + esc(q.o[c]) + '</b>.</span>') + '</div><p class="pd-e">' + esc(q.e) + '</p><div class="row"><button class="btn gold sm" data-a="pd-rank">Ver ranking de hoje</button><span class="pd-reg">Nova pergunta amanhã à meia-noite.</span></div></div>';
+  return h + '<p class="pd-q sm">' + esc(q.q) + '</p><div class="pd-res ' + (d.certa ? 'ok' : 'bad') + '"><b>' + (d.certa ? '✓ Certo! +' + d.pontos + ' pontos' : '✗ Errado.') + '</b>' + (d.certa ? '<span>Respondeu em ' + pdSeg(d.ms) + '.</span>' : '<span>A resposta certa era <b>' + 'ABCD'.charAt(pdPerm(q.id).indexOf(c)) + ') ' + esc(q.o[c]) + '</b>.</span>') + '</div><p class="pd-e">' + esc(q.e) + '</p><div class="row"><button class="btn gold sm" data-a="pd-rank">Ver ranking de hoje</button><span class="pd-reg">Nova pergunta amanhã à meia-noite.</span></div></div>';
 }
 function pdRankPintar() {
   var R = PD.rk, l = R.lista;

@@ -192,25 +192,25 @@ fieldset.disc{border:1px solid var(--line);border-radius:10px;padding:12px 14px;
 /* ================= TEMA 2026 — «ousado / startup» ================= */
 :root{
   --ink:#0E1222;--muted:#5D6378;--paper:#F5F6FA;--line:#E8EAF1;--line2:#DDE0EA;
-  --navy:#0E1222;--navy2:#171C33;--navy3:#20264A;
+  --navy:#0E1222;--navy2:#16233A;--navy3:#1F3050;
   --wine:#7B1E2B;--wine2:#5E1520;--wine-soft:#F4EEF0;
-  --violet:#4338CA;--violet-soft:#ECEEFC;--gold:#FFB020;--gold-soft:#FFF4DC;--bronze:#9A5B00;
-  --cyan:#06B6D4;--ok:#0E9F6E;--ok-soft:#E3F8EF;--bad:#E5484D;--bad-soft:#FDECEC;--link:#4338CA;
-  --grad:linear-gradient(120deg,#8C1D30 0%,#7B1E2B 38%,#4338CA 100%);
-  --grad-soft:linear-gradient(120deg,#F1F0F7 0%,#E8EBFA 100%);
-  --grad-gold:linear-gradient(120deg,#FFB020,#FF6B35);
+  --violet:#1E3A5F;--violet-soft:#E8EEF5;--gold:#FFB020;--gold-soft:#FFF4DC;--bronze:#9A5B00;
+  --cyan:#06B6D4;--ok:#0E9F6E;--ok-soft:#E3F8EF;--bad:#E5484D;--bad-soft:#FDECEC;--link:#1E3A5F;
+  --grad:linear-gradient(120deg,#8C1D30 0%,#7B1E2B 38%,#1E3A5F 100%);
+  --grad-soft:linear-gradient(120deg,#F2F1EE 0%,#E8EEF5 100%);
+  --grad-gold:linear-gradient(120deg,#F0CF7A,#C8962F);
   --sh1:0 1px 2px rgba(14,18,34,.04),0 4px 14px rgba(14,18,34,.05);
   --sh2:0 2px 6px rgba(14,18,34,.06),0 18px 40px rgba(14,18,34,.10);
-  --glow:0 10px 30px -8px rgba(67,56,202,.40);
+  --glow:0 10px 30px -8px rgba(30,58,95,.40);
   --serif:'Bricolage Grotesque','Plus Jakarta Sans',system-ui,sans-serif;
   --sans:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
   --ease:cubic-bezier(.2,.8,.2,1);
 }
 html,body{background:var(--paper);font-family:var(--sans);-webkit-font-smoothing:antialiased}
-body::before{content:'';position:fixed;inset:-20vh -10vw auto auto;width:60vw;height:60vh;background:radial-gradient(closest-side,rgba(67,56,202,.07),transparent 70%);pointer-events:none;z-index:0}
+body::before{content:'';position:fixed;inset:-20vh -10vw auto auto;width:60vw;height:60vh;background:radial-gradient(closest-side,rgba(30,58,95,.07),transparent 70%);pointer-events:none;z-index:0}
 body::after{content:'';position:fixed;left:20vw;bottom:-25vh;width:55vw;height:55vh;background:radial-gradient(closest-side,rgba(123,30,43,.05),transparent 70%);pointer-events:none;z-index:0}
 .app{position:relative;z-index:1}
-:focus-visible{outline:3px solid rgba(67,56,202,.45);outline-offset:2px}
+:focus-visible{outline:3px solid rgba(30,58,95,.45);outline-offset:2px}
 a{color:var(--link)}
 h1{font-family:var(--serif);font-weight:800;letter-spacing:-.03em;font-size:40px;color:var(--ink)}
 h2{font-family:var(--serif);font-weight:700;letter-spacing:-.02em;font-size:21px;color:var(--ink)}
@@ -220,7 +220,7 @@ h2{font-family:var(--serif);font-weight:700;letter-spacing:-.02em;font-size:21px
 .eyebrow{color:var(--wine);letter-spacing:.14em}
 
 /* barra lateral */
-.side{background:#0B0E1C;width:224px;padding:20px 12px;border-right:1px solid rgba(255,255,255,.04);background-image:radial-gradient(120% 40% at 0% 0%,rgba(123,30,43,.30),transparent 60%),radial-gradient(100% 30% at 100% 100%,rgba(67,56,202,.28),transparent 60%)}
+.side{background:#0B0E1C;width:224px;padding:20px 12px;border-right:1px solid rgba(255,255,255,.04);background-image:radial-gradient(120% 40% at 0% 0%,rgba(123,30,43,.30),transparent 60%),radial-gradient(100% 30% at 100% 100%,rgba(30,58,95,.28),transparent 60%)}
 .mark{background:var(--grad);color:#fff;border-radius:11px;box-shadow:var(--glow)}
 .mark.logo{box-shadow:var(--glow);color:#fff}
 .word{font-family:var(--serif);font-weight:800;letter-spacing:.06em;font-size:19px}.word span{background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800}
@@ -230,7 +230,7 @@ h2{font-family:var(--serif);font-weight:700;letter-spacing:-.02em;font-size:21px
 .nav.on{background:var(--grad);box-shadow:var(--glow);color:#fff}.nav.on svg{color:#fff}
 .brand.nav:hover{transform:none}
 .sidefoot{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
-.sideperfil{background:linear-gradient(135deg,rgba(123,30,43,.30),rgba(67,56,202,.25));border:1px solid rgba(255,255,255,.12)}
+.sideperfil{background:linear-gradient(135deg,rgba(123,30,43,.30),rgba(30,58,95,.25));border:1px solid rgba(255,255,255,.12)}
 .sideperfil:hover{border-color:rgba(255,176,32,.6)}
 .kbtn{display:flex;align-items:center;gap:8px;width:100%;min-height:38px;padding:0 10px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#AEB3C7;font:inherit;font-size:13px;cursor:pointer}
 .kbtn:hover{border-color:rgba(255,255,255,.25);color:#fff}
@@ -269,8 +269,8 @@ button.card:hover,.dcard:hover,.li:hover{transform:translateY(-2px);box-shadow:v
 
 /* formulários */
 .in,.search{border-radius:12px;border-color:var(--line2);transition:border-color .2s,box-shadow .2s}
-.in:focus{outline:none;border-color:var(--violet);box-shadow:0 0 0 4px rgba(67,56,202,.12)}
-.search{border-radius:12px;min-height:40px}.search:focus-within{border-color:var(--violet);box-shadow:0 0 0 4px rgba(67,56,202,.12)}
+.in:focus{outline:none;border-color:var(--violet);box-shadow:0 0 0 4px rgba(30,58,95,.12)}
+.search{border-radius:12px;min-height:40px}.search:focus-within{border-color:var(--violet);box-shadow:0 0 0 4px rgba(30,58,95,.12)}
 .seg{border-radius:14px;background:#EEF0F5}.seg button{border-radius:10px}.seg button.on{box-shadow:var(--sh1);color:var(--wine)}
 .tab.on{color:var(--wine);border-bottom:3px solid var(--wine)}
 .tab b{font-family:var(--serif);color:var(--violet)}
@@ -279,7 +279,7 @@ button.card:hover,.dcard:hover,.li:hover{transform:translateY(-2px);box-shadow:v
 
 /* hero */
 .hero{background:#0B0E1C;border:0;border-radius:28px;padding:34px 36px;box-shadow:0 30px 60px -30px rgba(14,18,34,.55);isolation:isolate}
-.hero::before{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(600px 300px at var(--mx,80%) var(--my,10%),rgba(123,30,43,.70),transparent 60%),radial-gradient(500px 320px at 10% 120%,rgba(67,56,202,.60),transparent 60%),radial-gradient(400px 260px at 100% 100%,rgba(255,176,32,.25),transparent 60%);transition:background .2s}
+.hero::before{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(600px 300px at var(--mx,80%) var(--my,10%),rgba(123,30,43,.70),transparent 60%),radial-gradient(500px 320px at 10% 120%,rgba(30,58,95,.60),transparent 60%),radial-gradient(400px 260px at 100% 100%,rgba(255,176,32,.25),transparent 60%);transition:background .2s}
 .hero::after{content:'';position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:36px 36px;mask-image:linear-gradient(180deg,rgba(0,0,0,.7),transparent)}
 .hero h1{font-size:52px;line-height:1.02;color:#fff}
 .hero h1 .g{background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -287,13 +287,13 @@ button.card:hover,.dcard:hover,.li:hover{transform:translateY(-2px);box-shadow:v
 .hero-d{color:#A8AEC8;text-transform:uppercase;letter-spacing:.14em;font-size:11px;font-weight:700}
 .hero-s{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:#D9DCEB;backdrop-filter:blur(8px)}
 .hero-s input{color:#fff}.hero-s input::placeholder{color:#AEB3C7}
-.hero-orb{position:absolute;right:40px;top:50%;width:190px;height:190px;margin-top:-95px;border-radius:50%;background:conic-gradient(from 0deg,#8C1D30,#FFB020,#4338CA,#8C1D30);filter:blur(2px);opacity:.9;animation:spin 14s linear infinite;z-index:0}
+.hero-orb{position:absolute;right:40px;top:50%;width:190px;height:190px;margin-top:-95px;border-radius:50%;background:conic-gradient(from 0deg,#8C1D30,#FFB020,#1E3A5F,#8C1D30);filter:blur(2px);opacity:.9;animation:spin 14s linear infinite;z-index:0}
 .hero-orb::after{content:'';position:absolute;inset:14px;border-radius:50%;background:#0B0E1C;display:block}
 .hero-orb i{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;color:#fff;animation:spin 14s linear infinite reverse}
 .hero-orb i svg{width:70px;height:70px}
 @media (max-width:1100px){.hero-orb{display:none}}
 .promo{background:#0B0E1C;border-radius:28px;position:relative;overflow:hidden;isolation:isolate}
-.promo::before{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(500px 240px at 0% 0%,rgba(123,30,43,.65),transparent 60%),radial-gradient(500px 240px at 100% 100%,rgba(67,56,202,.55),transparent 60%)}
+.promo::before{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(500px 240px at 0% 0%,rgba(123,30,43,.65),transparent 60%),radial-gradient(500px 240px at 100% 100%,rgba(30,58,95,.55),transparent 60%)}
 .conn{background:#0B0E1C}
 .ch{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:20px;transition:transform .25s var(--ease),border-color .2s}
 .ch:hover{transform:translateY(-3px);border-color:#FFB020}.ch.on{background:rgba(255,255,255,.12);border-color:#FFB020}
@@ -353,7 +353,7 @@ button.card:hover,.dcard:hover,.li:hover{transform:translateY(-2px);box-shadow:v
 .cdn .it{display:flex;align-items:center;gap:12px}
 .cdn .d{width:54px;height:54px;border-radius:16px;background:var(--grad);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;flex:none;box-shadow:var(--glow)}
 .cdn .d b{font-family:var(--serif);font-size:20px;font-weight:800;line-height:1}.cdn .d small{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
-.cdn .it:nth-child(2) .d{background:linear-gradient(120deg,#6366F1,#4338CA);box-shadow:0 10px 30px -8px rgba(67,56,202,.45)}
+.cdn .it:nth-child(2) .d{background:linear-gradient(120deg,#2F5A8A,#1E3A5F);box-shadow:0 10px 30px -8px rgba(30,58,95,.45)}
 .cdn .it:nth-child(3) .d{background:var(--grad-gold);box-shadow:0 10px 30px -8px rgba(255,107,53,.55)}
 .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted)}.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
 .tag-demo{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--violet);background:var(--violet-soft);border-radius:99px;padding:3px 8px}
@@ -375,7 +375,7 @@ button.card:hover,.dcard:hover,.li:hover{transform:translateY(-2px);box-shadow:v
 .cmdk .ft{display:flex;gap:16px;padding:10px 18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
 .cmdk .ft kbd{font-family:var(--sans);font-weight:700;font-size:11px;background:#EEF0F5;border-radius:6px;padding:2px 6px;margin-right:4px;color:var(--ink)}
 .topsearch{display:flex;align-items:center;gap:10px;min-height:40px;padding:0 12px;border-radius:12px;border:1px solid var(--line2);background:rgba(255,255,255,.8);backdrop-filter:blur(6px);color:var(--muted);font:inherit;font-size:13.5px;cursor:pointer;margin-right:auto;min-width:260px;transition:border-color .2s,box-shadow .2s}
-.topsearch:hover{border-color:var(--violet);box-shadow:0 0 0 4px rgba(67,56,202,.1)}
+.topsearch:hover{border-color:var(--violet);box-shadow:0 0 0 4px rgba(30,58,95,.1)}
 .topsearch svg{width:16px;height:16px}.topsearch kbd{margin-left:auto;font-family:var(--sans);font-size:11px;font-weight:700;background:#EEF0F5;border-radius:6px;padding:2px 7px;color:var(--ink)}
 .topbar{justify-content:flex-end}
 
@@ -469,7 +469,7 @@ mark{background:#FFE8A3;color:inherit;border-radius:3px;padding:0 2px}
 .upd-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .upd-bar .seg button .n{font-size:11px;opacity:.6;margin-left:2px}
 .mim{border:1.5px solid var(--violet);color:var(--violet);background:#fff;border-radius:12px;min-height:44px;padding:0 16px;font:inherit;font-weight:800;font-size:13px;cursor:pointer;transition:all .2s}
-.mim.on{background:var(--violet);color:#fff;box-shadow:0 10px 24px -10px rgba(67,56,202,.6)}
+.mim.on{background:var(--violet);color:#fff;box-shadow:0 10px 24px -10px rgba(30,58,95,.6)}
 .faixa{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
 .fx-c{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:16px;background:#fff;padding:0;overflow:hidden;cursor:pointer;text-align:left;font:inherit;color:var(--ink);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
 .fx-c:hover{transform:translateY(-3px);box-shadow:var(--sh2)}.fx-c .capa{border-radius:0}
@@ -580,7 +580,7 @@ ul.muda li::marker{color:var(--wine)}
 .onb-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
 .onb-c{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;padding:14px;border-radius:16px;border:1.5px solid var(--line);background:#fff;cursor:pointer;transition:transform .2s var(--ease),border-color .2s,box-shadow .2s;font:inherit;color:inherit}
 .onb-c:hover{transform:translateY(-2px);box-shadow:var(--sh1)}
-.onb-c.on{border-color:var(--violet);background:var(--violet-soft);box-shadow:0 0 0 3px rgba(67,56,202,.15)}
+.onb-c.on{border-color:var(--violet);background:var(--violet-soft);box-shadow:0 0 0 3px rgba(30,58,95,.15)}
 .onb-c b{font-size:14.5px}.onb-c span:last-child{font-size:12.5px;color:var(--muted);line-height:1.4}
 .onb-e{font-size:26px}
 .onb-prev{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
@@ -599,6 +599,247 @@ ul.muda li::marker{color:var(--wine)}
 .bib li>span.row{display:inline-flex;vertical-align:middle}
 .pt-n{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--violet-soft);color:var(--violet);font-weight:800;flex:0 0 auto}
 button.navlbl.navmais{font-size:10px;padding:6px 10px 4px;color:#6E7591}
+
+/* ===== Painel B: faixa de abertura com a balança + mosaico ===== */
+.hb{position:relative;overflow:hidden;isolation:isolate;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);align-items:center;gap:24px;min-height:280px;padding:36px 40px;border-radius:28px;background:#0F1B2D;box-shadow:0 30px 60px -30px rgba(15,27,45,.6)}
+.hb::before{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(520px 300px at 85% 30%,rgba(200,150,47,.18),transparent 65%),radial-gradient(600px 340px at 0% 100%,rgba(123,30,43,.55),transparent 60%),linear-gradient(135deg,#13233A,#0B1424)}
+.hb::after{content:'';position:absolute;right:0;top:0;bottom:0;width:48%;z-index:-1;opacity:.07;background:repeating-linear-gradient(90deg,#fff 0 2px,transparent 2px 26px);-webkit-mask:linear-gradient(90deg,transparent,#000 40%,#000 70%,transparent);mask:linear-gradient(90deg,transparent,#000 40%,#000 70%,transparent)}
+.hb-l{display:flex;flex-direction:column;gap:14px;min-width:0}
+.hb-d{color:#B9C2D6;text-transform:uppercase;letter-spacing:.14em;font-size:11px;font-weight:700}
+.hb h1{margin:0;font-size:50px;line-height:1.04;color:#fff;letter-spacing:-.02em}
+.hb h1 .g{background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hb p{margin:0;color:#D4DAE7;font-size:16.5px}
+.hb .hero-s{max-width:460px}
+.hb-r{display:flex;justify-content:center;align-items:center}
+.hb-bal{width:100%;max-width:300px;height:auto;filter:drop-shadow(0 18px 30px rgba(0,0,0,.35))}
+.hb-braco{transform-origin:160px 59.5px;animation:hbOsc 7s ease-in-out infinite}
+.hb-prato.e{animation:hbPe 7s ease-in-out infinite}.hb-prato.d{animation:hbPd 7s ease-in-out infinite}
+@keyframes hbOsc{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes hbPe{0%,100%{transform:translateY(5.6px)}50%{transform:translateY(-5.6px)}}
+@keyframes hbPd{0%,100%{transform:translateY(-5.6px)}50%{transform:translateY(5.6px)}}
+@media (prefers-reduced-motion:reduce){.hb-braco,.hb-prato{animation:none}}
+@media (max-width:900px){.hb{grid-template-columns:1fr;padding:28px}.hb-r{display:none}.hb h1{font-size:38px}}
+.bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(150px,auto);gap:16px}
+.bt{position:relative;display:flex;flex-direction:column;gap:4px;padding:20px 22px;border-radius:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--sh1);transition:transform .25s var(--ease),box-shadow .25s}
+.bt:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+.bt-h{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.bt-l{font-size:13px;font-weight:700;color:var(--muted)}
+.bt-n{font-family:var(--serif);font-size:44px;font-weight:800;line-height:1.05;letter-spacing:-.03em;color:var(--navy);margin-top:auto}
+.bt-n.sm{font-size:30px}
+.bt-s{font-size:13px;color:var(--muted)}
+.bt-p{flex:none;border:0;border-radius:99px;padding:6px 12px;font:inherit;font-size:12.5px;font-weight:700;background:#F0F2F6;color:var(--navy);cursor:pointer;transition:background .2s}
+.bt-p:hover{background:#E3E7EE}
+.bt-dest{grid-column:span 2;grid-row:span 2;background:linear-gradient(150deg,#8C1D30,#5E1421 70%,#3E0D16);border:0;color:#fff;padding:26px 28px;gap:6px;box-shadow:0 24px 50px -24px rgba(123,30,43,.7)}
+.bt-dest .bt-l{color:#F3D58A;text-transform:uppercase;letter-spacing:.12em;font-size:11.5px}
+.bt-dest .bt-n{color:#fff;font-size:84px;margin-top:auto}.bt-dest .bt-n.sm{font-size:40px}
+.bt-u{font-size:15px;font-weight:700;color:#F3D58A;margin-top:-6px}
+.bt-t{font-family:var(--serif);font-size:22px;font-weight:800;line-height:1.2;margin-top:8px}
+.bt-dest .bt-s{color:#EBCBD1}
+.bt-dest .row{margin-top:10px}
+.bt-dest .bt-p{background:#fff;color:#7B1E2B}.bt-dest .bt-p:hover{background:#F6E9EC}
+.bt-dest .bt-p.o{background:rgba(255,255,255,.12);color:#fff}
+@media (max-width:1100px){.bento{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.bento{grid-template-columns:1fr}.bt-dest{grid-column:auto;grid-row:auto}}
+
+/* ===== Barra superior horizontal (experimental) ===== */
+body.tn .app{flex-direction:column}
+body.tn .side{position:sticky;top:0;z-index:60;width:100%;height:68px;flex-direction:row;align-items:center;gap:18px;padding:0 24px;overflow:visible;border-right:0;border-bottom:1px solid rgba(255,255,255,.06);background:#0F1B2D;background-image:linear-gradient(90deg,rgba(123,30,43,.35),transparent 30%)}
+body.tn .tn-brand{flex:none}
+body.tn .main{width:100%;max-width:1360px;margin:0 auto;padding:16px 32px 48px;gap:18px}
+body.tn .main>.topbar{position:fixed;top:14px;right:24px;z-index:61;margin:0}
+body.tn .main>.topbar .topsearch{min-width:0;width:200px}
+.tn-bar{display:flex;align-items:center;gap:4px;padding:4px;border-radius:99px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)}
+.tn-b{display:inline-flex;align-items:center;gap:6px;border:0;background:none;color:#D8DDE8;font:inherit;font-size:14px;font-weight:600;padding:8px 14px;border-radius:99px;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.tn-b svg{width:12px;height:12px;opacity:.7;transition:transform .2s}
+.tn-b:hover,.tn-g.open>.tn-b{background:rgba(255,255,255,.08);color:#fff}
+.tn-b.on,.tn-g.on>.tn-b{background:#fff;color:#0F1B2D}
+.tn-g{position:relative}
+.tn-g.open>.tn-b svg{transform:rotate(180deg)}
+.tn-m{display:none;position:absolute;top:calc(100% + 10px);left:0;min-width:250px;padding:8px;border-radius:16px;background:#fff;box-shadow:0 20px 50px -12px rgba(15,27,45,.35),0 0 0 1px rgba(15,27,45,.06);flex-direction:column;gap:2px;z-index:70}
+.tn-g.open>.tn-m{display:flex;animation:tnIn .18s var(--ease)}
+@keyframes tnIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.tn-i{display:flex;align-items:center;gap:10px;width:100%;border:0;background:none;font:inherit;font-size:14px;font-weight:600;color:var(--ink);padding:9px 10px;border-radius:10px;cursor:pointer;text-align:left}
+.tn-i svg{width:18px;height:18px;color:#5D6378;flex:none}
+.tn-i:hover{background:#F2F4F8}.tn-i.on{background:#F6E9EC;color:#7B1E2B}.tn-i.on svg{color:#7B1E2B}
+.tn-i .nbadge{margin-left:6px}
+.tn-sep{height:1px;background:var(--line);margin:6px 4px}
+.tn-st{font-size:12px;color:var(--muted);padding:6px 10px}
+.tn-b .nbadge{margin-left:2px}
+@media (max-width:1250px){body.tn .main>.topbar .topsearch span,body.tn .main>.topbar .topsearch kbd{display:none}body.tn .main>.topbar .topsearch{width:auto}}
+@media (max-width:1050px){body.tn .side{height:auto;flex-wrap:wrap;padding:10px 16px}.tn-bar{overflow-x:auto;max-width:100%}body.tn .main>.topbar{position:static}}
+
+/* painel mais compacto */
+.hb{min-height:0;padding:24px 32px;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}
+.hb h1{font-size:38px}.hb p{font-size:15px}.hb-l{gap:10px}
+.hb-bal{max-width:190px}
+.bento{grid-auto-rows:minmax(104px,auto);gap:12px}
+.bt{padding:14px 18px;border-radius:18px;gap:2px}
+.bt-n{font-size:32px}
+.bt-s{font-size:12.5px}
+.bt-p{padding:5px 10px;font-size:12px}
+.bt-dest{padding:18px 22px}
+.bt-dest .bt-n{font-size:56px}.bt-dest .bt-n.sm{font-size:30px}
+.bt-u{font-size:13px;margin-top:-4px}
+.bt-t{font-size:18px;margin-top:4px}
+.bt-dest .row{margin-top:6px}
+body.tn .side .tn-brand{width:auto;flex:none;margin:0}
+body.tn .main>.topbar .topsearch{width:230px;white-space:nowrap}
+body.tn .main>.topbar .topsearch{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);color:#C9D0DE;box-shadow:none}
+body.tn .main>.topbar .topsearch kbd{background:rgba(255,255,255,.12);color:#E6E9F0}
+body.tn .main>.topbar .topsearch:hover{border-color:rgba(255,255,255,.3)}
+@media (max-width:1050px){body.tn .main>.topbar .topsearch{background:#fff;color:var(--muted);border-color:var(--line2)}}
+
+/* ===== Página de boas-vindas ===== */
+body.bvp .side,body.bvp .main>.topbar,body.bvp .main>.foot{display:none}
+body.bvp .main{max-width:none;padding:0;gap:0;background:#0F1B2D;min-height:100vh}
+.bv-top{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:center;gap:24px;padding:56px max(32px,calc((100% - 1180px)/2)) 120px;color:#fff}
+.bv-top::before{content:none}
+body.bvp .main{background:radial-gradient(600px 360px at 75% 220px,rgba(200,150,47,.20),transparent 65%),radial-gradient(700px 420px at 0% 460px,rgba(123,30,43,.55),transparent 60%),linear-gradient(140deg,#13233A,#0B1424)}
+.bv-top::after{content:'';position:absolute;right:0;top:0;bottom:0;width:50%;z-index:-1;opacity:.06;background:repeating-linear-gradient(90deg,#fff 0 2px,transparent 2px 28px);-webkit-mask:linear-gradient(90deg,transparent,#000 40%,#000 70%,transparent);mask:linear-gradient(90deg,transparent,#000 40%,#000 70%,transparent)}
+.bv-tl{display:flex;flex-direction:column;gap:14px}.bv-top.an .bv-tl{animation:bvIn .7s var(--ease) both}
+.bv-k{color:#F3D58A;text-transform:uppercase;letter-spacing:.2em;font-size:13px;font-weight:700}
+.bv-top h1{margin:0;font-family:var(--serif);font-size:84px;line-height:.95;letter-spacing:-.03em;font-weight:800;color:#fff}
+.bv-top h1 b{background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bv-top p{margin:0;max-width:520px;font-size:18px;line-height:1.55;color:#D4DAE7}
+.bv-tr{display:flex;justify-content:center}.bv-top.an .bv-tr{animation:bvIn .9s .15s var(--ease) both}
+.bv-tr .hb-bal{max-width:320px}
+@keyframes bvIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.bv-sheet{position:relative;margin:-84px auto 0;width:min(1180px,calc(100% - 48px));background:#F5F6FA;border-radius:28px 28px 0 0;padding:36px 40px 28px;display:flex;flex-direction:column;gap:22px;box-shadow:0 -20px 60px -30px rgba(0,0,0,.5);min-height:calc(100vh - 380px)}
+.bv-h h2{margin:4px 0 4px;font-size:32px;color:var(--navy)}.bv-h p{margin:0;color:var(--muted);font-size:14px}
+.bv-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.bv-c{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left;padding:18px;border-radius:18px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font:inherit;color:inherit;box-shadow:var(--sh1);transition:transform .2s var(--ease),border-color .2s,box-shadow .2s}
+.bv-c:hover{transform:translateY(-3px);box-shadow:var(--sh2)}
+.bv-c b{font-size:15.5px;color:var(--navy)}.bv-c>span:last-child{font-size:13px;color:var(--muted);line-height:1.45}
+.bv-i{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:#F2F4F8;color:#1E3A5F;margin-bottom:4px;transition:background .2s,color .2s}
+.bv-i svg{width:22px;height:22px}
+.bv-c.on{border-color:#7B1E2B;box-shadow:0 0 0 4px rgba(123,30,43,.12),var(--sh2)}
+.bv-c.on .bv-i{background:linear-gradient(135deg,#8C1D30,#5E1421);color:#F3D58A}
+.bv-res{display:flex;flex-direction:column;gap:16px;padding:22px;border-radius:20px;background:#fff;border:1px solid var(--line)}
+.bv-ano{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.bv-ano>span{font-weight:700;margin-right:6px}
+.bv-ano button{border:1.5px solid var(--line2);background:#fff;border-radius:99px;padding:8px 16px;font:inherit;font-weight:600;font-size:14px;cursor:pointer}
+.bv-ano button.on{background:#1E3A5F;border-color:#1E3A5F;color:#fff}
+.bv-mods{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.bv-ml{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.bv-m{font-size:13px;font-weight:600;padding:6px 12px;border-radius:99px;background:#F6E9EC;color:#7B1E2B}
+.bv-areas summary{cursor:pointer;font-weight:700;font-size:14px;color:var(--navy)}.bv-areas small{color:var(--muted);font-weight:500}
+.bv-act{display:flex;justify-content:flex-end}
+.bv-go{min-height:52px;padding:0 28px;font-size:16px}
+.bv-f{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--muted);padding-top:6px}
+.bv-f a{color:var(--muted)}
+.bv-skip{border:0;background:none;font:inherit;color:var(--muted);text-decoration:underline;cursor:pointer;padding:0}
+@media (max-width:900px){.bv-top{grid-template-columns:1fr;padding:40px 24px 110px}.bv-tr{display:none}.bv-top h1{font-size:56px}.bv-sheet{padding:26px 20px;width:calc(100% - 24px)}}
+@media (prefers-reduced-motion:reduce){.bv-tl,.bv-tr,.bv-res{animation:none}}
+.bv-acc{position:absolute;top:22px;right:max(24px,calc((100% - 1180px)/2));display:flex;gap:8px}
+.bv-acc .btn.ghost{color:#fff;border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.06)}
+.bv-act.g{flex-direction:column;align-items:stretch;gap:12px}
+.bv-act.g .row{justify-content:flex-end;gap:10px}
+.bv-nota{font-size:13px;color:var(--muted)}
+.bv-sc{margin-right:auto}
+@media (max-width:600px){.bv-acc{position:static;grid-row:1;justify-content:flex-end}.bv-act.g .row{flex-direction:column;align-items:stretch}.bv-sc{margin:0}}
+
+/* ===== Boas-vindas v2: opções ao centro, na vertical ===== */
+.bv{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:0 20px 40px;color:#fff;overflow:hidden}
+.bv::before{content:'';position:absolute;left:50%;top:-10%;width:900px;height:900px;margin-left:-450px;border-radius:50%;background:radial-gradient(closest-side,rgba(200,150,47,.16),transparent 70%);animation:bvGlow 9s ease-in-out infinite;pointer-events:none}
+@keyframes bvGlow{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.08);opacity:1}}
+.bv-hd{position:relative;z-index:2;width:100%;max-width:1180px;display:flex;align-items:center;justify-content:space-between;padding:22px 4px}
+.bv-logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:800;font-size:18px;letter-spacing:.02em;color:#fff}
+.bv-logo b{color:#F0CF7A}.bv-logo .mark{width:34px;height:34px}
+.bv-hd .bv-acc{position:static;display:flex;gap:8px}
+.bv-col{position:relative;z-index:1;width:100%;max-width:640px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;margin-top:8px}
+.bv-bal{width:130px;margin-bottom:-4px}.bv-bal .hb-bal{max-width:130px;filter:drop-shadow(0 12px 22px rgba(0,0,0,.4))}
+.bv .bv-k{color:#F3D58A;text-transform:uppercase;letter-spacing:.22em;font-size:12px;font-weight:700}
+.bv h1{margin:0;font-family:var(--serif);font-size:64px;line-height:.95;font-weight:800;letter-spacing:-.03em;color:#fff}
+.bv h1 b{background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bv-sub{margin:4px 0 14px;font-size:17px;color:#C9D0DE}
+.bv-list{width:100%;display:flex;flex-direction:column;gap:10px;text-align:left}
+.bv-o{border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);backdrop-filter:blur(8px);transition:background .25s,border-color .25s,transform .25s var(--ease),box-shadow .25s;overflow:hidden}
+.bv-o:hover{background:rgba(255,255,255,.09);border-color:rgba(240,207,122,.45);transform:translateX(6px)}
+.bv-ob{width:100%;display:flex;align-items:center;gap:14px;padding:14px 16px;border:0;background:none;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.bv-o .bv-i{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;flex:none;background:rgba(255,255,255,.08);color:#F0CF7A;transition:transform .35s var(--ease),background .25s}
+.bv-o:hover .bv-i{transform:rotate(-6deg) scale(1.06)}
+.bv-o .bv-i svg{width:22px;height:22px}
+.bv-tx{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.bv-tx b{font-size:16px;color:#fff}.bv-tx span{font-size:13px;color:#AEB7C9}
+.bv-ch{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;flex:none;color:#AEB7C9;transition:transform .3s var(--ease),background .25s,color .25s}
+.bv-ch svg{width:12px;height:12px}
+.bv-o:hover .bv-ch{background:rgba(255,255,255,.1);color:#fff;transform:translateX(3px)}
+.bv-o.on{background:linear-gradient(135deg,rgba(140,29,48,.85),rgba(62,13,22,.9));border-color:rgba(240,207,122,.55);box-shadow:0 24px 50px -24px rgba(123,30,43,.9);transform:none}
+.bv-o.on .bv-i{background:linear-gradient(135deg,#F0CF7A,#C8962F);color:#3E0D16}
+.bv-o.on .bv-ch{transform:rotate(90deg);color:#F0CF7A}
+.bv-o.on .bv-tx span{color:#EBCBD1}
+.bv-det{display:flex;flex-direction:column;gap:14px;padding:4px 18px 18px 74px}
+.bv-o.abre .bv-det{animation:bvDet .45s var(--ease) both}
+@keyframes bvDet{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.bv .bv-ano{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.bv .bv-ano>span,.bv .bv-ml{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#F3D58A;margin-right:6px}
+.bv .bv-ano button,.bv-ar button{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);color:#fff;border-radius:99px;padding:6px 14px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s,transform .2s}
+.bv .bv-ano button:hover,.bv-ar button:hover{transform:translateY(-1px);background:rgba(255,255,255,.14)}
+.bv .bv-ano button.on,.bv-ar button.on{background:#F0CF7A;border-color:#F0CF7A;color:#3E0D16}
+.bv .bv-mods{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.bv .bv-m{font-size:12.5px;font-weight:600;padding:5px 11px;border-radius:99px;background:rgba(255,255,255,.12);color:#fff}
+.bv-o.abre .bv-m{animation:bvPop .4s calc(.15s + var(--q) * 60ms) var(--ease) both}
+@keyframes bvPop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+.bv .bv-areas summary{cursor:pointer;font-size:13.5px;font-weight:700;color:#fff}.bv .bv-areas small{color:#EBCBD1;font-weight:500}
+.bv-ar{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.bv-go{align-self:flex-start;min-height:48px;padding:0 24px;font-size:15px}
+.bv-gst{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.bv-alt{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#EBCBD1}
+.bv-alt button{border:0;background:none;color:#fff;font:inherit;font-weight:700;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:0}
+.bv .bv-nota{font-size:12px;color:#EBCBD1}
+.bv .bv-f{width:100%;display:flex;justify-content:space-between;align-items:center;margin-top:18px;font-size:13px;color:#8E98AE}
+.bv .bv-f a,.bv .bv-skip{color:#AEB7C9}
+.bv.an .bv-bal,.bv.an .bv-k,.bv.an h1,.bv.an .bv-sub{animation:bvIn .7s var(--ease) both}
+.bv.an .bv-k{animation-delay:.08s}.bv.an h1{animation-delay:.14s}.bv.an .bv-sub{animation-delay:.2s}
+.bv.an .bv-o{animation:bvIn .55s calc(.28s + var(--i) * 70ms) var(--ease) both}
+.bv.an .bv-f{animation:bvIn .6s .9s var(--ease) both}
+@media (max-width:600px){.bv h1{font-size:46px}.bv-det{padding:4px 16px 16px}.bv-hd .bv-acc .btn{padding:0 10px}.bv-o:hover{transform:none}}
+@media (prefers-reduced-motion:reduce){.bv *,.bv::before{animation:none!important;transition:none!important}}
+.bv-ola .bv-col{margin-top:9vh;gap:12px}
+.bv-bal.big,.bv-bal.big .hb-bal{width:200px;max-width:200px}
+.bv-ola h1{font-size:72px}
+.bv-cont{align-self:center;margin-top:10px;min-height:54px;padding:0 34px;font-size:16px}
+.bv-alt2{margin-top:4px;color:#AEB7C9!important;font-size:13.5px}
+.bv.an .bv-cont{animation:bvIn .6s .32s var(--ease) both}.bv.an .bv-alt2{animation:bvIn .6s .45s var(--ease) both}
+
+/* ===== Faixa compacta + Pergunta do dia ===== */
+.hb.hb2{grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);align-items:stretch;padding:20px 24px 20px 28px;gap:20px}
+.hb2 .hb-l{position:relative;justify-content:center;gap:6px;padding-left:88px}
+.hb-mini{position:absolute;left:0;top:50%;width:72px;margin-top:-36px}.hb-mini .hb-bal{max-width:72px;filter:none}
+.hb2 h1{font-size:32px}.hb2 p{font-size:14.5px}.hb2 .hb-d{font-size:10.5px}
+.pd{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:10px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(240,207,122,.28);color:#fff;backdrop-filter:blur(6px)}
+.pd-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pd-t{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#F3D58A;margin-right:auto}
+.pd-seq{font-size:12.5px;font-weight:800;padding:4px 10px;border-radius:99px;background:rgba(255,140,40,.18);color:#FFC58A}
+.pd-lk{border:0;background:rgba(255,255,255,.1);color:#fff;font:inherit;font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:99px;cursor:pointer}
+.pd-lk:hover{background:rgba(255,255,255,.18)}
+.pd-cr{font-variant-numeric:tabular-nums;font-size:13px;font-weight:800;padding:4px 10px;border-radius:99px;background:#F0CF7A;color:#3E0D16}
+.pd-p{margin:0;font-size:14px;color:#D4DAE7;line-height:1.5}.pd-p b{color:#fff}
+.pd-reg{font-size:12px;color:#AEB7C9}
+.pd-q{margin:0;font-size:15.5px;font-weight:700;line-height:1.4;color:#fff}.pd-q.sm{font-size:13.5px;font-weight:600;color:#D4DAE7}
+.pd-o{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pd-o button{display:flex;align-items:flex-start;gap:8px;text-align:left;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);color:#fff;font:inherit;font-size:13.5px;line-height:1.35;padding:9px 11px;border-radius:12px;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.pd-o button span{flex:none;width:20px;height:20px;border-radius:6px;display:grid;place-items:center;background:rgba(255,255,255,.12);font-size:11px;font-weight:800}
+.pd-o button:hover:not(:disabled){background:rgba(255,255,255,.12);border-color:#F0CF7A;transform:translateY(-1px)}
+.pd-o button.sel{border-color:#F0CF7A;background:rgba(240,207,122,.18)}
+.pd-res{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;font-size:13.5px}
+.pd-res.ok{background:rgba(14,159,110,.22);border:1px solid rgba(52,211,153,.4)}.pd-res.bad{background:rgba(229,72,77,.18);border:1px solid rgba(248,113,113,.4)}
+.pd-res b{font-size:15px}
+.pd-e{margin:0;font-size:12.5px;color:#C9D0DE;line-height:1.5}
+.pd .row{align-items:center;gap:10px}
+.pd-conf{position:absolute;inset:0;pointer-events:none}
+.pd-conf i{position:absolute;top:-10px;width:7px;height:12px;border-radius:2px;animation:pdConf 1.5s ease-in forwards}
+@keyframes pdConf{to{top:110%;opacity:0;transform:rotate(540deg) translateX(20px)}}
+.pd-rk{display:flex;flex-direction:column;gap:6px}
+.pd-rk-l{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;border:1px solid var(--line)}
+.pd-rk-l.eu{background:#F6E9EC;border-color:#E7C3CB}
+.pd-rk-p{width:34px;text-align:center;font-weight:800;font-size:15px}
+.pd-rk-n{display:flex;align-items:center;gap:6px;flex-wrap:wrap;flex:1;min-width:0;font-size:14px}
+.pd-rk-s{font-size:12.5px;color:var(--muted)}
+.pd-rk-pt{min-width:58px;text-align:right;font-family:var(--serif)}
+.pd-rk-sep{text-align:center;color:var(--muted)}
+@media (max-width:1100px){.hb.hb2{grid-template-columns:1fr}}
+@media (max-width:600px){.pd-o{grid-template-columns:1fr}.hb2 .hb-l{padding-left:0}.hb-mini{display:none}}
+@media (prefers-reduced-motion:reduce){.pd-conf{display:none}}
 
 </style>
 </head>
@@ -716,7 +957,132 @@ var QUESTOES = [
   { id: 'pn7', d: 'pen', q: 'Em regra, qual é a duração máxima da pena de prisão?', o: ['16 anos', '20 anos', '25 anos', '30 anos'], a: 1,
     e: 'A pena de prisão tem, em regra, a duração máxima de 20 anos. O limite máximo é de 25 anos nos casos previstos na lei (art. 41.º, n.ºs 1 e 2, do CP).' },
   { id: 'pn8', d: 'pen', q: 'Em que artigo do CP está prevista a legítima defesa?', o: ['Art. 31.º', 'Art. 32.º', 'Art. 34.º', 'Art. 35.º'], a: 1,
-    e: 'A legítima defesa está no art. 32.º do CP. O art. 31.º enuncia as causas de exclusão da ilicitude em geral, o art. 34.º o direito de necessidade e o art. 35.º o estado de necessidade desculpante.' }
+    e: 'A legítima defesa está no art. 32.º do CP. O art. 31.º enuncia as causas de exclusão da ilicitude em geral, o art. 34.º o direito de necessidade e o art. 35.º o estado de necessidade desculpante.' },
+  /* ----- novas perguntas (lote 2) ----- */
+  { id: 'pc11', d: 'pc', q: 'Em matéria cível, qual é a alçada dos tribunais judiciais de primeira instância?', o: ['€ 2 500', '€ 5 000', '€ 15 000', '€ 30 000'], a: 1,
+    e: 'Em matéria cível, a alçada dos tribunais de primeira instância é de € 5 000 (art. 44.º, n.º 1, da Lei da Organização do Sistema Judiciário — Lei n.º 62/2013).' },
+  { id: 'pc12', d: 'pc', q: 'Em matéria cível, qual é a alçada dos Tribunais da Relação?', o: ['€ 5 000', '€ 15 000', '€ 30 000', '€ 50 000'], a: 2,
+    e: 'A alçada dos Tribunais da Relação é de € 30 000 (art. 44.º, n.º 1, da LOSJ).' },
+  { id: 'pc13', d: 'pc', q: 'Em regra, o recurso ordinário só é admissível quando:', o: ['A causa tenha qualquer valor e a parte esteja vencida', 'A causa tenha valor superior à alçada do tribunal de que se recorre e a decisão seja desfavorável ao recorrente em valor superior a metade dessa alçada', 'A decisão seja desfavorável ao recorrente em valor superior à alçada do tribunal superior', 'O Ministério Público dê parecer favorável'], a: 1,
+    e: 'Regra da sucumbência: o recurso ordinário só é admissível quando a causa tenha valor superior à alçada do tribunal de que se recorre e a decisão impugnada seja desfavorável ao recorrente em valor superior a metade da alçada desse tribunal (art. 629.º, n.º 1, do CPC).' },
+  { id: 'pc14', d: 'pc', q: 'No processo comum, quantas testemunhas podem, no máximo, ser oferecidas por cada uma das partes (autores ou réus)?', o: ['5', '8', '10', '20'], a: 2,
+    e: 'Os autores não podem oferecer mais de 10 testemunhas para prova dos fundamentos da ação; igual limitação se aplica aos réus que apresentem a mesma contestação (art. 511.º, n.º 1, do CPC).' },
+  { id: 'pc15', d: 'pc', q: 'Qual é o requisito central do procedimento cautelar comum?', o: ['A existência de sentença transitada em julgado', 'Fundado receio de que outrem cause lesão grave e dificilmente reparável ao direito do requerente', 'Prova plena do direito invocado', 'Acordo prévio do requerido'], a: 1,
+    e: 'Pode requerer a providência cautelar adequada quem mostre fundado receio de que outrem, antes de a ação ser proposta ou na pendência dela, cause lesão grave e dificilmente reparável ao seu direito (art. 362.º, n.º 1, do CPC).' },
+  { id: 'pc16', d: 'pc', q: 'As exceções dilatórias:', o: ['Importam a absolvição total ou parcial do pedido', 'Obstam a que o tribunal conheça do mérito da causa e dão lugar à absolvição da instância ou à remessa do processo para outro tribunal', 'São sempre de conhecimento exclusivo a pedido das partes', 'Só podem ser deduzidas em recurso'], a: 1,
+    e: 'As exceções dilatórias obstam a que o tribunal conheça do mérito da causa e dão lugar à absolvição da instância ou à remessa do processo para outro tribunal (art. 576.º, n.º 2, do CPC).' },
+  { id: 'pc17', d: 'pc', q: 'As exceções perentórias:', o: ['Dão lugar à absolvição da instância', 'Importam a absolvição total ou parcial do pedido', 'Implicam sempre a remessa do processo para outro tribunal', 'Suspendem a instância'], a: 1,
+    e: 'As exceções perentórias importam a absolvição total ou parcial do pedido e consistem na invocação de factos que impedem, modificam ou extinguem o efeito jurídico dos factos articulados pelo autor (art. 576.º, n.º 3, do CPC).' },
+  { id: 'pc18', d: 'pc', q: 'Para efeitos de litispendência e caso julgado, repete-se uma causa quando se propõe uma ação idêntica a outra quanto:', o: ['Ao tribunal e ao pedido', 'Aos sujeitos, ao pedido e à causa de pedir', 'Apenas à causa de pedir', 'Aos mandatários e ao valor'], a: 1,
+    e: 'Repete-se a causa quando se propõe uma ação idêntica a outra quanto aos sujeitos, ao pedido e à causa de pedir (art. 581.º, n.º 1, do CPC).' },
+  { id: 'pc19', d: 'pc', q: 'Quando se considera proposta a ação?', o: ['Com a citação do réu', 'Logo que a petição inicial seja recebida na secretaria', 'Com o despacho liminar do juiz', 'Com o pagamento da taxa de justiça pelo réu'], a: 1,
+    e: 'A instância inicia-se pela proposição da ação e esta considera-se proposta logo que a petição inicial seja recebida na secretaria (art. 259.º, n.º 1, do CPC).' },
+  { id: 'pc20', d: 'pc', q: 'Que figura permite dispensar o requerente de uma providência cautelar do ónus de propor a ação principal?', o: ['Inversão do contencioso', 'Revelia operante', 'Apensação de ações', 'Reconvenção'], a: 0,
+    e: 'Mediante requerimento, o juiz pode dispensar o requerente do ónus de propositura da ação principal se a matéria adquirida permitir formar convicção segura acerca da existência do direito acautelado — inversão do contencioso (art. 369.º, n.º 1, do CPC).' },
+  { id: 'pc21', d: 'pc', q: 'Em que artigo do CPC está regulada a audiência prévia?', o: ['Art. 552.º', 'Art. 591.º', 'Art. 607.º', 'Art. 615.º'], a: 1,
+    e: 'A audiência prévia está regulada no art. 591.º do CPC. O art. 552.º trata da petição inicial, o art. 607.º da sentença e o art. 615.º das causas de nulidade da sentença.' },
+  { id: 'pc22', d: 'pc', q: 'Nos processos urgentes, o prazo para interposição de recurso é, em regra, de:', o: ['10 dias', '15 dias', '20 dias', '30 dias'], a: 1,
+    e: 'O prazo de interposição de recurso é de 30 dias, reduzindo-se para 15 dias nos processos urgentes e nos casos previstos no n.º 2 do art. 644.º e no art. 677.º (art. 638.º, n.º 1, do CPC).' },
+
+  { id: 'pp10', d: 'pp', q: 'Não havendo arguidos presos nem sob obrigação de permanência na habitação, qual é o prazo máximo do inquérito?', o: ['6 meses', '8 meses', '12 meses', '18 meses'], a: 1,
+    e: 'O MP encerra o inquérito no prazo máximo de 6 meses se houver arguidos presos ou sob obrigação de permanência na habitação, ou de 8 meses se os não houver (art. 276.º, n.º 1, do CPP).' },
+  { id: 'pp11', d: 'pp', q: 'Havendo arguidos presos, qual é o prazo máximo do inquérito (regra geral)?', o: ['3 meses', '6 meses', '8 meses', '12 meses'], a: 1,
+    e: 'Com arguidos presos ou sob obrigação de permanência na habitação, o prazo máximo do inquérito é de 6 meses, sem prejuízo dos alargamentos previstos (art. 276.º, n.ºs 1 e 2, do CPP).' },
+  { id: 'pp12', d: 'pp', q: 'O arguido tem o direito de não responder a perguntas sobre os factos que lhe forem imputados?', o: ['Não, é obrigado a responder com verdade', 'Sim, e o silêncio não pode ser valorado contra ele', 'Só na fase de julgamento', 'Só com autorização do juiz'], a: 1,
+    e: 'O arguido goza do direito de não responder a perguntas sobre os factos que lhe forem imputados e sobre o conteúdo das declarações que acerca deles prestar (art. 61.º, n.º 1, al. d), do CPP); o silêncio não o pode desfavorecer (art. 343.º, n.º 1).' },
+  { id: 'pp13', d: 'pp', q: 'Em regra, a prisão preventiva extingue-se quando, desde o seu início, tiverem decorrido sem ser deduzida acusação:', o: ['3 meses', '4 meses', '6 meses', '1 ano'], a: 1,
+    e: 'A prisão preventiva extingue-se quando, desde o seu início, tiverem decorrido 4 meses sem que tenha sido deduzida acusação (art. 215.º, n.º 1, al. a), do CPP), sem prejuízo dos prazos alargados dos n.ºs 2 e 3.' },
+  { id: 'pp14', d: 'pp', q: 'Nos crimes particulares em sentido estrito, o procedimento criminal depende:', o: ['Apenas de queixa', 'De queixa, de o ofendido se constituir assistente e de deduzir acusação particular', 'Apenas de denúncia de qualquer pessoa', 'De autorização do juiz de instrução'], a: 1,
+    e: 'Quando o procedimento criminal depender de acusação particular, é necessário que o ofendido se queixe, se constitua assistente e deduza acusação particular (art. 50.º, n.º 1, do CPP).' },
+  { id: 'pp15', d: 'pp', q: 'Nos crimes particulares, findo o inquérito, em que prazo pode o assistente deduzir acusação particular?', o: ['5 dias', '10 dias', '20 dias', '30 dias'], a: 1,
+    e: 'O MP notifica o assistente para que deduza em 10 dias, querendo, acusação particular (art. 285.º, n.º 1, do CPP).' },
+  { id: 'pp16', d: 'pp', q: 'A proibição da reformatio in pejus está consagrada em que artigo do CPP?', o: ['Art. 379.º', 'Art. 399.º', 'Art. 409.º', 'Art. 412.º'], a: 2,
+    e: 'Interposto recurso apenas pelo arguido, pelo MP no exclusivo interesse do arguido, ou por ambos, o tribunal superior não pode modificar, na sua espécie ou medida, as sanções em prejuízo de qualquer dos arguidos (art. 409.º, n.º 1, do CPP).' },
+  { id: 'pp17', d: 'pp', q: 'Em caso de flagrante delito por crime punível com pena de prisão, qualquer pessoa pode proceder à detenção?', o: ['Nunca', 'Sim, se uma autoridade judiciária ou entidade policial não estiver presente nem puder ser chamada em tempo útil', 'Sim, em qualquer circunstância', 'Só se o crime for público e punível com mais de 5 anos'], a: 1,
+    e: 'Em flagrante delito por crime punível com pena de prisão, qualquer pessoa pode proceder à detenção se uma das entidades referidas na al. a) não estiver presente nem puder ser chamada em tempo útil (art. 255.º, n.º 1, al. b), do CPP).' },
+  { id: 'pp18', d: 'pp', q: 'Como adquire o Ministério Público a notícia do crime?', o: ['Apenas por denúncia do ofendido', 'Por conhecimento próprio, por intermédio dos órgãos de polícia criminal ou mediante denúncia', 'Apenas por comunicação do juiz de instrução', 'Apenas através de queixa escrita'], a: 1,
+    e: 'O MP adquire notícia do crime por conhecimento próprio, por intermédio dos órgãos de polícia criminal ou mediante denúncia (art. 241.º do CPP).' },
+  { id: 'pp19', d: 'pp', q: 'Que decisão encerra a fase de instrução?', o: ['Sentença condenatória ou absolutória', 'Despacho de pronúncia ou de não pronúncia', 'Despacho de arquivamento do MP', 'Acórdão do tribunal coletivo'], a: 1,
+    e: 'Encerrado o debate instrutório, o juiz profere despacho de pronúncia ou de não pronúncia (arts. 307.º e 308.º do CPP).' },
+  { id: 'pp20', d: 'pp', q: 'As provas obtidas mediante tortura, coação ou ofensa da integridade física ou moral das pessoas:', o: ['São válidas se confirmadas em julgamento', 'São nulas, não podendo ser utilizadas', 'Podem ser usadas a favor da acusação com autorização judicial', 'São meras irregularidades'], a: 1,
+    e: 'São nulas, não podendo ser utilizadas, as provas obtidas mediante tortura, coação ou, em geral, ofensa da integridade física ou moral das pessoas (art. 126.º, n.º 1, do CPP; art. 32.º, n.º 8, da CRP).' },
+  { id: 'pp21', d: 'pp', q: 'É obrigatória a constituição de arguido quando, correndo inquérito contra pessoa determinada sobre a qual haja suspeita fundada da prática de crime, esta:', o: ['For notificada para pagar uma coima', 'Prestar declarações perante qualquer autoridade judiciária ou órgão de polícia criminal', 'Mudar de residência', 'Constituir advogado'], a: 1,
+    e: 'É obrigatória a constituição de arguido, nomeadamente, quando, correndo inquérito contra pessoa determinada em relação à qual haja suspeita fundada da prática de crime, esta prestar declarações perante qualquer autoridade judiciária ou órgão de polícia criminal (art. 58.º, n.º 1, al. a), do CPP).' },
+
+  { id: 'cv10', d: 'civ', q: 'Em que momento se adquire a personalidade jurídica?', o: ['Com a conceção', 'No momento do nascimento completo e com vida', 'Com o registo do nascimento', 'Aos 18 anos'], a: 1,
+    e: 'A personalidade adquire-se no momento do nascimento completo e com vida (art. 66.º, n.º 1, do CC).' },
+  { id: 'cv11', d: 'civ', q: 'Havendo sinal, se o não cumprimento do contrato for devido a quem o recebeu, o outro contraente tem direito a:', o: ['Exigir apenas a restituição do sinal', 'Exigir o dobro do que prestou', 'Exigir o triplo do que prestou', 'Fazer sua a coisa entregue'], a: 1,
+    e: 'Se quem constitui o sinal deixar de cumprir, o outro contraente pode fazer sua a coisa entregue; se o não cumprimento for de quem recebeu o sinal, tem o outro contraente a faculdade de exigir o dobro do que prestou (art. 442.º, n.º 2, do CC).' },
+  { id: 'cv12', d: 'civ', q: 'Ao contrato-promessa aplicam-se as disposições legais relativas ao contrato prometido, exceto:', o: ['As relativas ao preço', 'As relativas à forma e as que, pela sua razão de ser, não se devam considerar extensivas ao contrato-promessa', 'As relativas à capacidade das partes', 'Nenhuma: aplicam-se todas'], a: 1,
+    e: 'Princípio da equiparação: aplicam-se ao contrato-promessa as disposições relativas ao contrato prometido, exceptuadas as relativas à forma e as que, por sua razão de ser, não se devam considerar extensivas ao contrato-promessa (art. 410.º, n.º 1, do CC).' },
+  { id: 'cv13', d: 'civ', q: 'A doação de coisas imóveis só é válida se for celebrada:', o: ['Por simples escrito particular', 'Por escritura pública ou por documento particular autenticado', 'Verbalmente perante duas testemunhas', 'Por qualquer forma'], a: 1,
+    e: 'A doação de coisas imóveis só é válida se for celebrada por escritura pública ou por documento particular autenticado (art. 947.º, n.º 1, do CC).' },
+  { id: 'cv14', d: 'civ', q: 'Se o declarante for coagido pela força física a emitir a declaração negocial:', o: ['A declaração é anulável', 'A declaração não produz qualquer efeito', 'A declaração é válida mas há direito a indemnização', 'A declaração é ineficaz apenas perante terceiros'], a: 1,
+    e: 'A declaração não produz qualquer efeito se o declarante não tiver a consciência de fazer uma declaração negocial ou for coagido pela força física a emiti-la (art. 246.º do CC).' },
+  { id: 'cv15', d: 'civ', q: 'Os juros convencionais ou legais prescrevem no prazo de:', o: ['1 ano', '3 anos', '5 anos', '20 anos'], a: 2,
+    e: 'Prescrevem no prazo de cinco anos, entre outros, os juros convencionais ou legais, ainda que ilíquidos (art. 310.º, al. d), do CC).' },
+  { id: 'cv16', d: 'civ', q: 'Em que artigo do CC está o princípio geral da responsabilidade civil por factos ilícitos?', o: ['Art. 405.º', 'Art. 483.º', 'Art. 562.º', 'Art. 798.º'], a: 1,
+    e: 'Aquele que, com dolo ou mera culpa, violar ilicitamente o direito de outrem ou qualquer disposição legal destinada a proteger interesses alheios fica obrigado a indemnizar o lesado (art. 483.º, n.º 1, do CC). O art. 798.º trata da responsabilidade contratual.' },
+  { id: 'cv17', d: 'civ', q: 'Nas obrigações pecuniárias, a indemnização pela mora do devedor corresponde:', o: ['Ao dobro da prestação', 'Aos juros a contar do dia da constituição em mora', 'A uma cláusula penal fixada pelo tribunal', 'Aos danos que o credor provar'], a: 1,
+    e: 'Na obrigação pecuniária, a indemnização corresponde aos juros a contar do dia da constituição em mora (art. 806.º, n.º 1, do CC).' },
+  { id: 'cv18', d: 'civ', q: 'O negócio simulado:', o: ['É válido entre as partes', 'É nulo', 'É anulável no prazo de 1 ano', 'É ineficaz apenas perante terceiros de boa-fé'], a: 1,
+    e: 'O negócio simulado é nulo (art. 240.º, n.º 2, do CC).' },
+  { id: 'cv19', d: 'civ', q: 'Em que artigo do CC está consagrado o abuso do direito?', o: ['Art. 227.º', 'Art. 280.º', 'Art. 334.º', 'Art. 762.º'], a: 2,
+    e: 'É ilegítimo o exercício de um direito quando o titular exceda manifestamente os limites impostos pela boa-fé, pelos bons costumes ou pelo fim social ou económico desse direito (art. 334.º do CC).' },
+  { id: 'cv20', d: 'civ', q: 'Em regra, a quem cabe a prova dos factos constitutivos do direito alegado?', o: ['À parte contra quem o direito é invocado', 'Àquele que invocar o direito', 'Ao tribunal, oficiosamente', 'A ambas as partes, em partes iguais'], a: 1,
+    e: 'Àquele que invocar um direito cabe fazer a prova dos factos constitutivos do direito alegado (art. 342.º, n.º 1, do CC).' },
+  { id: 'cv21', d: 'civ', q: 'Em que artigo do CC está prevista a cláusula penal?', o: ['Art. 442.º', 'Art. 810.º', 'Art. 829.º-A', 'Art. 892.º'], a: 1,
+    e: 'As partes podem fixar por acordo o montante da indemnização exigível — cláusula penal (art. 810.º, n.º 1, do CC). O art. 829.º-A prevê a sanção pecuniária compulsória.' },
+
+  { id: 'cn9', d: 'con', q: 'Qual é a duração do mandato do Presidente da República?', o: ['4 anos', '5 anos', '6 anos', '7 anos'], a: 1,
+    e: 'O mandato do Presidente da República tem a duração de cinco anos (art. 128.º, n.º 1, da CRP).' },
+  { id: 'cn10', d: 'con', q: 'São elegíveis para Presidente da República os cidadãos eleitores portugueses de origem maiores de:', o: ['18 anos', '25 anos', '35 anos', '40 anos'], a: 2,
+    e: 'São elegíveis os cidadãos eleitores, portugueses de origem, maiores de 35 anos (art. 122.º da CRP).' },
+  { id: 'cn11', d: 'con', q: 'Segundo a CRP, a Assembleia da República tem:', o: ['Exatamente 230 deputados', 'Um mínimo de 180 e um máximo de 230 deputados', 'Um mínimo de 150 e um máximo de 250 deputados', '200 deputados'], a: 1,
+    e: 'A Assembleia da República tem o mínimo de 180 e o máximo de 230 deputados, nos termos da lei eleitoral (art. 148.º da CRP).' },
+  { id: 'cn12', d: 'con', q: 'As alterações da Constituição são aprovadas por:', o: ['Maioria absoluta dos deputados presentes', 'Maioria de dois terços dos deputados em efetividade de funções', 'Maioria de três quintos dos deputados em efetividade de funções', 'Referendo obrigatório'], a: 1,
+    e: 'As alterações da Constituição são aprovadas por maioria de dois terços dos deputados em efetividade de funções (art. 286.º, n.º 1, da CRP).' },
+  { id: 'cn13', d: 'con', q: 'Quantos juízes compõem o Tribunal Constitucional?', o: ['9', '11', '13', '15'], a: 2,
+    e: 'O Tribunal Constitucional é composto por treze juízes, sendo dez designados pela Assembleia da República e três cooptados por estes (art. 222.º, n.º 1, da CRP).' },
+  { id: 'cn14', d: 'con', q: 'O mandato dos juízes do Tribunal Constitucional tem a duração de:', o: ['6 anos, renovável', '9 anos, não renovável', '9 anos, renovável uma vez', '12 anos, não renovável'], a: 1,
+    e: 'O mandato dos juízes do Tribunal Constitucional tem a duração de nove anos e não é renovável (art. 222.º, n.º 3, da CRP).' },
+  { id: 'cn15', d: 'con', q: 'Em que prazo pode o Presidente da República requerer a apreciação preventiva da constitucionalidade?', o: ['5 dias', '8 dias', '20 dias', '25 dias'], a: 1,
+    e: 'A apreciação preventiva deve ser requerida no prazo de oito dias a contar da data da receção do diploma (art. 278.º, n.º 3, da CRP). O Tribunal pronuncia-se no prazo de 25 dias (n.º 8).' },
+  { id: 'cn16', d: 'con', q: 'O Tribunal Constitucional aprecia e declara com força obrigatória geral a inconstitucionalidade de uma norma que tenha sido julgada inconstitucional em quantos casos concretos?', o: ['Dois', 'Três', 'Cinco', 'Dez'], a: 1,
+    e: 'O Tribunal Constitucional aprecia e declara com força obrigatória geral a inconstitucionalidade de qualquer norma desde que tenha sido por ele julgada inconstitucional em três casos concretos (art. 281.º, n.º 3, da CRP).' },
+  { id: 'cn17', d: 'con', q: 'A declaração do estado de sítio ou do estado de emergência não pode ter duração superior a:', o: ['8 dias', '15 dias', '30 dias', '60 dias'], a: 1,
+    e: 'A declaração do estado de sítio ou do estado de emergência não pode ter duração superior a quinze dias, sem prejuízo de eventuais renovações com salvaguarda do mesmo limite (art. 19.º, n.º 5, da CRP).' },
+  { id: 'cn18', d: 'con', q: 'Se o Presidente da República vetar um decreto da Assembleia da República, esta pode confirmar o voto por:', o: ['Maioria simples', 'Maioria absoluta dos deputados em efetividade de funções', 'Maioria de três quintos dos deputados presentes', 'Unanimidade'], a: 1,
+    e: 'Se a AR confirmar o voto por maioria absoluta dos deputados em efetividade de funções, o PR deve promulgar o diploma no prazo de oito dias (art. 136.º, n.º 2, da CRP), salvo nos casos do n.º 3, que exigem dois terços.' },
+  { id: 'cn19', d: 'con', q: 'As restrições aos direitos, liberdades e garantias devem:', o: ['Ser decididas pelo Governo por decreto-lei', 'Limitar-se ao necessário para salvaguardar outros direitos ou interesses constitucionalmente protegidos', 'Ter efeito retroativo', 'Diminuir o conteúdo essencial dos direitos'], a: 1,
+    e: 'A lei só pode restringir direitos, liberdades e garantias nos casos expressamente previstos na Constituição, devendo as restrições limitar-se ao necessário para salvaguardar outros direitos ou interesses constitucionalmente protegidos (art. 18.º, n.º 2, da CRP — princípio da proporcionalidade).' },
+  { id: 'cn20', d: 'con', q: 'Em que artigo da CRP está consagrada a inviolabilidade da vida humana?', o: ['Art. 13.º', 'Art. 24.º', 'Art. 25.º', 'Art. 27.º'], a: 1,
+    e: 'A vida humana é inviolável (art. 24.º, n.º 1, da CRP). O art. 25.º trata da integridade pessoal e o art. 27.º do direito à liberdade e à segurança.' },
+
+  { id: 'pn9', d: 'pen', q: 'O facto praticado com negligência:', o: ['É sempre punível', 'Só é punível nos casos especialmente previstos na lei', 'Nunca é punível', 'É punível apenas nos crimes contra o património'], a: 1,
+    e: 'Só é punível o facto praticado com dolo ou, nos casos especialmente previstos na lei, com negligência (art. 13.º do CP).' },
+  { id: 'pn10', d: 'pen', q: 'Qual é, em regra, a duração mínima da pena de prisão?', o: ['1 dia', '1 mês', '3 meses', '6 meses'], a: 1,
+    e: 'A pena de prisão tem, em regra, a duração mínima de 1 mês e a duração máxima de 20 anos (art. 41.º, n.º 1, do CP).' },
+  { id: 'pn11', d: 'pen', q: 'A suspensão da execução da pena de prisão é possível quando a pena aplicada não seja superior a:', o: ['2 anos', '3 anos', '5 anos', '8 anos'], a: 2,
+    e: 'O tribunal suspende a execução da pena de prisão aplicada em medida não superior a cinco anos se concluir que a simples censura do facto e a ameaça da prisão realizam de forma adequada as finalidades da punição (art. 50.º, n.º 1, do CP).' },
+  { id: 'pn12', d: 'pen', q: 'O procedimento criminal por crime punível com pena de prisão cujo limite máximo seja superior a 10 anos prescreve, em regra, em:', o: ['5 anos', '10 anos', '15 anos', '20 anos'], a: 2,
+    e: 'O procedimento criminal extingue-se, por prescrição, logo que sobre a prática do crime tiverem decorrido 15 anos, quando se trate de crimes puníveis com pena de prisão cujo limite máximo for superior a 10 anos (art. 118.º, n.º 1, al. a), do CP), sem prejuízo das exceções aí previstas.' },
+  { id: 'pn13', d: 'pen', q: 'Quando as disposições penais vigentes no momento da prática do facto forem diferentes das estabelecidas em leis posteriores, aplica-se:', o: ['Sempre a lei vigente no momento da prática do facto', 'Sempre a lei mais recente', 'O regime que concretamente se mostrar mais favorável ao agente', 'A lei escolhida pelo Ministério Público'], a: 2,
+    e: 'É sempre aplicado o regime que concretamente se mostrar mais favorável ao agente (art. 2.º, n.º 4, do CP; art. 29.º, n.º 4, da CRP).' },
+  { id: 'pn14', d: 'pen', q: 'Com que pena é punido o furto simples (art. 203.º, n.º 1, do CP)?', o: ['Prisão até 1 ano ou multa', 'Prisão até 3 anos ou multa', 'Prisão de 1 a 5 anos', 'Prisão de 2 a 8 anos'], a: 1,
+    e: 'Quem, com ilegítima intenção de apropriação para si ou para outra pessoa, subtrair coisa móvel ou animal alheios é punido com pena de prisão até 3 anos ou com pena de multa (art. 203.º, n.º 1, do CP).' },
+  { id: 'pn15', d: 'pen', q: 'O procedimento criminal pelo crime de furto simples:', o: ['É público', 'Depende de queixa', 'Depende de acusação particular', 'Depende de autorização do Ministério Público'], a: 1,
+    e: 'O procedimento criminal pelo crime de furto simples depende de queixa (art. 203.º, n.º 3, do CP).' },
+  { id: 'pn16', d: 'pen', q: 'A tentativa deixa de ser punível quando o agente:', o: ['Se arrepende depois da consumação', 'Voluntariamente desiste de prosseguir na execução do crime ou impede a consumação', 'Repara o dano antes do julgamento', 'Confessa os factos'], a: 1,
+    e: 'A tentativa deixa de ser punível quando o agente voluntariamente desistir de prosseguir na execução do crime, ou impedir a consumação, ou, não obstante a consumação, impedir a verificação do resultado não compreendido no tipo de crime (art. 24.º, n.º 1, do CP).' },
+  { id: 'pn17', d: 'pen', q: 'Como é punido o cúmplice?', o: ['Com a mesma pena do autor', 'Com a pena fixada para o autor, especialmente atenuada', 'Apenas com pena de multa', 'Não é punido'], a: 1,
+    e: 'É aplicável ao cúmplice a pena fixada para o autor, especialmente atenuada (art. 27.º, n.º 2, do CP).' },
+  { id: 'pn18', d: 'pen', q: 'Se houver excesso dos meios empregados em legítima defesa, por perturbação, medo ou susto não censuráveis, o agente:', o: ['É punido com a pena normal', 'Não é punido', 'É punido com pena de multa', 'É punido com pena especialmente agravada'], a: 1,
+    e: 'Havendo excesso dos meios empregados em legítima defesa, o facto é ilícito, mas a pena pode ser especialmente atenuada; o agente não é punido se o excesso resultar de perturbação, medo ou susto não censuráveis (art. 33.º do CP).' },
+  { id: 'pn19', d: 'pen', q: 'O consentimento exclui a ilicitude do facto quando:', o: ['For dado depois da prática do facto', 'Se referir a interesses jurídicos livremente disponíveis e o facto não ofender os bons costumes', 'For dado por qualquer pessoa presente', 'Se referir à vida'], a: 1,
+    e: 'O consentimento exclui a ilicitude do facto quando se referir a interesses jurídicos livremente disponíveis e o facto não ofender os bons costumes (art. 38.º, n.º 1, do CP).' },
+  { id: 'pn20', d: 'pen', q: 'Com que pena é punida a ofensa à integridade física simples (art. 143.º, n.º 1, do CP)?', o: ['Prisão até 1 ano ou multa', 'Prisão até 3 anos ou multa', 'Prisão de 1 a 5 anos', 'Prisão de 2 a 10 anos'], a: 1,
+    e: 'Quem ofender o corpo ou a saúde de outra pessoa é punido com pena de prisão até 3 anos ou com pena de multa (art. 143.º, n.º 1, do CP).' }
 ];
 
 var CASOS = [
@@ -1217,7 +1583,7 @@ Store.attach = function (session) {
 };
 
 /* ---------- estado da interface ---------- */
-var VIEWS = ['painel', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
+var VIEWS = ['painel', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
 var S = {
   view: 'painel', wsId: null, wsTab: '01', wsQ: '', q: '',
   libQ: '', libArea: 'Todas', libOpen: { cpc: true },
@@ -1293,6 +1659,7 @@ function render() {
   else if (v === 'mensagens') h = vMensagens();
   else if (v === 'salas') h = vSalas();
   else if (v === 'legal') h = vLegal();
+  else if (v === 'bemvindo') h = vBemvindo();
   else if (v === 'prazos') h = vPrazos();
   else if (v === 'agenda') h = vAgenda();
   else if (v === 'dissertacao') h = vDissertacao();
@@ -3100,10 +3467,10 @@ var CAPA_ICON = {
 };
 var CAPA_BG = {
   legislacao: 'linear-gradient(135deg,#7B1E2B 0%,#3B0D16 100%)',
-  tribunais: 'linear-gradient(135deg,#312E81 0%,#0E1222 100%)',
-  tc: 'linear-gradient(135deg,#0E1222 0%,#4338CA 120%)',
+  tribunais: 'linear-gradient(135deg,#1E3A5F 0%,#0E1222 100%)',
+  tc: 'linear-gradient(135deg,#0E1222 0%,#1E3A5F 120%)',
   tjue: 'linear-gradient(135deg,#1E3A8A 0%,#0B0E1C 100%)',
-  novidades: 'linear-gradient(135deg,#8C1D30 0%,#4338CA 100%)'
+  novidades: 'linear-gradient(135deg,#8C1D30 0%,#1E3A5F 100%)'
 };
 var CAT_CURTA = { legislacao: 'Legislação', tribunais: 'Tribunais superiores', tc: 'Tribunal Constitucional', tjue: 'Tribunal de Justiça da UE', novidades: 'Novidade' };
 
@@ -3468,7 +3835,7 @@ A['dp-rej'] = function (el) { SB.rpc('moderar_privada', { p_den: Number(el.datas
 I.door = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a2 2 0 0 1 2-2h9l5 3v15"/><path d="M2 21h20M14 12h.01"/></svg>';
 I.timer = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg>';
 I.game = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="11" rx="5"/><path d="M7 11v3M5.5 12.5h3M15 12h.01M18 13h.01"/></svg>';
-var SALA_COR = { wine: 'linear-gradient(135deg,#7B1E2B,#3B0D16)', indigo: 'linear-gradient(135deg,#4338CA,#1E1B4B)', gold: 'linear-gradient(135deg,#F59E0B,#9A3412)', teal: 'linear-gradient(135deg,#0F766E,#134E4A)', slate: 'linear-gradient(135deg,#334155,#0F172A)' };
+var SALA_COR = { wine: 'linear-gradient(135deg,#7B1E2B,#3B0D16)', indigo: 'linear-gradient(135deg,#1E3A5F,#0F1E33)', gold: 'linear-gradient(135deg,#F59E0B,#9A3412)', teal: 'linear-gradient(135deg,#0F766E,#134E4A)', slate: 'linear-gradient(135deg,#334155,#0F172A)' };
 var SL = { list: null, cur: null, membros: [], msgs: [], quadro: [], est: {}, resp: [], subs: [], pres: null, online: {}, tab: 'ativ', draft: '', id: null };
 
 function salasLoad() {
@@ -4666,6 +5033,292 @@ A['termos-ok'] = function (el) { _termosOk(el); setTimeout(onbVerificar, 1500); 
 var _vMinhasDisc = vMinhasDisc;
 vMinhasDisc = function (pf) { var t = tipoPerfil(); return t === 'lic' || t === 'outro' ? _vMinhasDisc(pf) : ''; };
 
+/* ---------- PAINEL B (experimental): faixa de abertura com a balança + mosaico de indicadores ---------- */
+function balancaSVG() {
+  return '<svg class="hb-bal" viewBox="0 0 320 260" aria-hidden="true"><defs>' +
+    '<linearGradient id="hbL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3D58A"/><stop offset=".55" stop-color="#C8962F"/><stop offset="1" stop-color="#8A6418"/></linearGradient>' +
+    '<radialGradient id="hbG" cx=".5" cy=".4" r=".6"><stop offset="0" stop-color="#C8962F" stop-opacity=".28"/><stop offset="1" stop-color="#C8962F" stop-opacity="0"/></radialGradient></defs>' +
+    '<circle cx="160" cy="125" r="112" fill="url(#hbG)"/>' +
+    '<g fill="url(#hbL)">' +
+    '<path d="M110 246h100l-8-14H118z"/><rect x="128" y="222" width="64" height="10" rx="3"/>' +
+    '<rect x="155" y="58" width="10" height="166" rx="4"/>' +
+    '<circle cx="160" cy="50" r="11"/><path d="M160 22l6 14h-12z"/>' +
+    '</g>' +
+    '<g class="hb-braco"><rect x="48" y="56" width="224" height="7" rx="3.5" fill="url(#hbL)"/><circle cx="52" cy="59.5" r="6" fill="url(#hbL)"/><circle cx="268" cy="59.5" r="6" fill="url(#hbL)"/></g>' +
+    '<g class="hb-prato e"><path d="M52 64L20 150M52 64l32 86" stroke="#D8B25A" stroke-width="1.6" fill="none"/><path d="M10 150h84a42 18 0 0 1-84 0z" fill="url(#hbL)"/></g>' +
+    '<g class="hb-prato d"><path d="M268 64l-32 86M268 64l32 86" stroke="#D8B25A" stroke-width="1.6" fill="none"/><path d="M226 150h84a42 18 0 0 1-84 0z" fill="url(#hbL)"/></g>' +
+    '</svg>';
+}
+function hbDestaque() {
+  var c = [], hoje = ymd(new Date());
+  var ag = proxAgenda()[0]; if (ag) c.push({ data: ag.data, tit: ag.titulo, tipo: ag.tipo, go: 'agenda', bt: 'Abrir agenda' });
+  var ex = exames().filter(function (e) { return diasAte(e.data) >= 0; })[0]; if (ex) c.push({ data: ex.data, tit: exNome(ex), tipo: ex.tipo, go: 'cadeiras', bt: 'Ver avaliações' });
+  var d = Store.get('dissertacao');
+  if (d) { (d.prazos || []).filter(function (p) { return !p.feito && p.data >= hoje; }).forEach(function (p) { c.push({ data: p.data, tit: p.titulo, tipo: 'Dissertação', go: 'dissertacao', bt: 'Abrir dissertação' }); }); if (d.entrega && d.entrega >= hoje) c.push({ data: d.entrega, tit: 'Entrega da dissertação', tipo: 'Dissertação', go: 'dissertacao', bt: 'Abrir dissertação' }); }
+  c.sort(function (a, b) { return a.data.localeCompare(b.data); });
+  var x = c[0];
+  if (!x) return '<div class="bt bt-dest"><span class="bt-l">Em destaque</span><b class="bt-n sm">Nada urgente</b><span class="bt-s">Não tem prazos, avaliações nem entregas marcados. Acrescente-os para os ver aqui.</span><div class="row"><button class="bt-p" data-a="ag-novo">Adicionar à agenda</button><button class="bt-p o" data-go="cadeiras">Marcar avaliação</button></div></div>';
+  var n = diasAte(x.data);
+  return '<div class="bt bt-dest"><span class="bt-l">Em destaque · ' + esc(x.tipo) + '</span><b class="bt-n"' + (n > 1 ? ' data-count="' + n + '"' : '') + '>' + (n === 0 ? 'Hoje' : n === 1 ? 'Amanhã' : n) + '</b>' + (n > 1 ? '<span class="bt-u">dias</span>' : '') + '<span class="bt-t">' + esc(x.tit) + '</span><span class="bt-s">' + esc(dataLonga(x.data)) + '</span><div class="row"><button class="bt-p" data-go="' + x.go + '">' + esc(x.bt) + ' →</button></div></div>';
+}
+function bt(l, n, s, go, bl, act) {
+  return '<div class="bt"><div class="bt-h"><span class="bt-l">' + l + '</span><button class="bt-p" ' + (act ? 'data-a="' + act + '"' : 'data-go="' + go + '"') + '>' + bl + '</button></div><b class="bt-n"' + (typeof n === 'number' ? ' data-count="' + n + '"' : '') + '>' + n + '</b><span class="bt-s">' + s + '</span></div>';
+}
+function hbTiles(t) {
+  var s = stats(), taxa = s.tot ? Math.round(100 * s.ok / s.tot) : null, nov = novas().length;
+  var hojeD = (new Date().getDay() + 6) % 7, aulas = Store.all('aula').filter(function (a) { return a.dia === hojeD; });
+  var sem = function (tipo) { var lim = ymd(new Date(Date.now() + 7 * 864e5)); return proxAgenda().filter(function (a) { return a.data <= lim && (tipo ? a.tipo === tipo : a.tipo !== 'Prazo'); }).length; };
+  var T = {
+    aulas: function () { return bt('Aulas hoje', aulas.length, aulas.length ? 'Primeira às ' + esc(aulas.sort(function (a, b) { return a.ini.localeCompare(b.ini); })[0].ini) : 'Hoje não tem aulas', 'painel', 'Horário', 'hb-hor'); },
+    quest: function () { return bt('Questões respondidas', s.tot, taxa == null ? 'Ainda sem simulações' : taxa + '% de respostas certas', 'exames', 'Simular'); },
+    casos: function () { return bt('Casos resolvidos', s.casosFeitos, 'de ' + CASOS.length + ' disponíveis', 'casos', 'Praticar'); },
+    ws: function () { return bt('Workspaces', s.ws.length, plural(s.items.length, 'documento', 'documentos'), 'workspaces', 'Abrir'); },
+    atual: function () { return bt('Atualidade nova', nov, nov ? 'publicações por ler' : 'Está em dia', 'atualidade', 'Ler'); },
+    prazos: function () { return bt('Prazos em 7 dias', sem('Prazo'), 'a terminar esta semana', 'prazos', 'Calcular'); },
+    dilig: function () { return bt('Diligências em 7 dias', sem(), 'julgamentos, audiências e reuniões', 'agenda', 'Agenda'); },
+    palavras: function () { var d = Store.get('dissertacao'), tot = d ? d.capitulos.reduce(function (x, c) { return x + (Number(c.palavras) || 0); }, 0) : 0; return bt('Palavras escritas', tot, d && d.metaPalavras ? Math.round(100 * tot / d.metaPalavras) + '% da meta' : 'Defina uma meta', 'dissertacao', 'Escrever'); },
+    biblio: function () { var d = Store.get('dissertacao'); return bt('Bibliografia', d ? d.biblio.length : 0, 'referências organizadas', 'dissertacao', 'Citar'); },
+    qprop: function () { return bt('Perguntas próprias', Store.all('qprop').length, 'para usar nas salas', 'docente', 'Criar'); },
+    cprop: function () { return bt('Casos próprios', Store.all('casoprop').length, 'para o julgamento simulado', 'docente', 'Criar'); }
+  };
+  var L = { lic: ['aulas', 'quest', 'casos', 'ws'], outro: ['quest', 'casos', 'ws', 'atual'], licd: ['quest', 'casos', 'atual', 'ws'], mest: ['palavras', 'biblio', 'atual', 'ws'], estag: ['prazos', 'dilig', 'quest', 'atual'], prof: ['prazos', 'dilig', 'atual', 'ws'], doc: ['qprop', 'cprop', 'atual', 'ws'] }[t] || ['quest', 'casos', 'ws', 'atual'];
+  return L.map(function (k) { return T[k](); }).join('');
+}
+function heroB(t) {
+  var data = new Date().toLocaleDateString('pt-PT', { weekday: 'long', day: 'numeric', month: 'long' }); data = data.charAt(0).toUpperCase() + data.slice(1);
+  var hojeD = (new Date().getDay() + 6) % 7, na = Store.all('aula').filter(function (a) { return a.dia === hojeD; }).length, ag = proxAgenda().filter(function (a) { return a.data === ymd(new Date()); }).length;
+  var frase = t === 'lic' || t === 'outro' ? (na ? 'Hoje tem ' + plural(na, 'aula', 'aulas') + '.' : 'Hoje não tem aulas. Bom dia para adiantar matéria.') : (t === 'estag' || t === 'prof') ? (ag ? 'Hoje tem ' + plural(ag, 'compromisso', 'compromissos') + ' na agenda.' : 'Sem compromissos para hoje na agenda.') : t === 'mest' ? 'Um capítulo de cada vez.' : t === 'doc' ? 'Prepare a próxima aula com perguntas e casos próprios.' : 'Estude, pesquise e pratique Direito num só lugar.';
+  return '<section class="hb"><div class="hb-l"><span class="hb-d">' + esc(data) + ' · ' + esc(PERFIS[t].nome) + '</span><h1>' + saudacao() + (S.nome ? ', <span class="g">' + esc(S.nome.split(' ')[0]) + '</span>' : '') + '</h1><p>' + frase + '</p>' +
+    '<label class="search hero-s">' + I.search + '<span class="sr">Pesquisar</span><input id="gq" type="search" placeholder="Pesquisar diplomas, artigos…" value="' + esc(S.q) + '" data-in="gq"></label></div><div class="hb-r">' + balancaSVG() + '</div></section>';
+}
+var _painelComporA = painelCompor;
+painelCompor = function (P, pf) {
+  var t = tipoPerfil(), m = modsAtivos();
+  var h = heroB(t) + '<section class="bento" aria-label="Indicadores">' + hbDestaque() + hbTiles(t) + '</section>' + P.busca;
+  var gen = { prazosag: modPrazos, dissertacao: modDiss, ordem: modOrdem, docente: modDocente };
+  m.ordem.forEach(function (k) { if (k === 'kpis' || m.hidden.indexOf(k) >= 0) return; h += P[k] != null ? P[k] : (gen[k] ? gen[k]() : ''); });
+  h += '<div class="row" style="justify-content:center"><button class="btn sm" data-a="painel-pers">' + I.gear + 'Personalizar painel</button><button class="btn sm" data-a="onb-abrir">' + PERFIS[t].ic + ' Perfil: ' + esc(PERFIS[t].curto) + ' · alterar</button></div>';
+  return h;
+};
+A['hb-hor'] = function () { var e = document.getElementById('hor-h'); if (e) e.scrollIntoView({ behavior: 'smooth', block: 'start' }); else go('cadeiras'); };
+
+/* ----- barra de navegação horizontal superior (experimental) ----- */
+renderSide = function () {
+  document.body.classList.add('tn');
+  var st = Store.mode === 'cloud' ? 'Guardado na sua conta' : Store.mode === 'local' ? 'Guardado neste navegador' : 'Sessão temporária';
+  var t = tipoPerfil(), grupos = NAV_PERFIL[t].map(function (g) { return [g[0], g[1].slice()]; }), usados = [];
+  grupos.forEach(function (g) { usados = usados.concat(g[1]); });
+  var mais = Object.keys(NAV).filter(function (k) { return usados.indexOf(k) < 0; });
+  if (grupos[0][0] === 'Geral') { grupos[0][0] = 'Consulta'; grupos[0][1] = grupos[0][1].filter(function (k) { return k !== 'painel'; }); }
+  var dmn = sessaoAtiva() ? dmNaoLidas() : 0;
+  var item = function (k, lbl, ic) { return '<button class="tn-i' + (S.view === k ? ' on' : '') + '" data-go="' + k + '"' + (S.view === k ? ' aria-current="page"' : '') + '>' + ic + '<span>' + lbl + '</span></button>'; };
+  var nb = function (k) { return item(k, esc(NAV[k][0]), I[NAV[k][1]]); };
+  var grupo = function (nome, itens, html, badge, extra) {
+    var on = itens.indexOf(S.view) >= 0;
+    return '<div class="tn-g' + (on ? ' on' : '') + '"><button class="tn-b" aria-haspopup="true">' + esc(nome) + (badge ? '<span class="nbadge">' + badge + '</span>' : '') + '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="tn-m" role="menu">' + html + (extra || '') + '</div></div>';
+  };
+  var com = ['chat', 'mensagens', 'salas', 'connect'];
+  $('#side').innerHTML = '<button class="brand nav tn-brand" data-go="painel" aria-label="LEXDESK, ir para o painel"><span class="mark logo">' + I.logo + '</span><span class="word"><b>LEX</b><span>DESK</span></span></button>' +
+    '<div class="tn-bar">' +
+    '<button class="tn-b' + (S.view === 'painel' ? ' on' : '') + '" data-go="painel">Painel</button>' +
+    grupos.filter(function (g) { return g[1].length; }).map(function (g) { return grupo(g[0], g[1], g[1].map(nb).join('')); }).join('') +
+    grupo('Comunidade', com, item('chat', 'Chat da comunidade', I.chat) + item('mensagens', 'Mensagens' + (dmn ? ' <span class="nbadge">' + dmn + '</span>' : ''), I.mail) + item('salas', 'Salas de estudo', I.door) + item('connect', 'Mentoria e explicações', I.users), dmn) +
+    grupo('Mais', mais, mais.map(nb).join(''), 0, '<div class="tn-sep"></div><button class="tn-i" data-a="onb-abrir">' + I.gear + '<span>' + PERFIS[t].ic + ' Perfil: ' + esc(PERFIS[t].curto) + ' · alterar</span></button>' + (t === 'lic' ? '<button class="tn-i" data-a="perfil-edit">' + I.cap + '<span>Perfil académico</span></button>' : '') + '<span class="tn-st">' + st + '</span>') +
+    '</div>';
+};
+document.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('.tn-b[aria-haspopup]'); [].forEach.call(document.querySelectorAll('.tn-g.open'), function (g) { if (!b || g !== b.parentNode) g.classList.remove('open'); }); if (b) b.parentNode.classList.toggle('open'); });
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') [].forEach.call(document.querySelectorAll('.tn-g.open'), function (g) { g.classList.remove('open'); }); });
+
+/* ---------- PÁGINA DE BOAS-VINDAS: escolha do grau académico ---------- */
+var BV_ICON = {
+  lic: '<path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11.5V16c0 1.5 2.2 3 5 3s5-1.5 5-3v-4.5"/><path d="M21 9v5"/>',
+  licd: '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/><circle cx="17" cy="17" r="2.5"/>',
+  mest: '<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5z"/><path d="M4 19a2 2 0 0 1 2-2h13"/><path d="M9 7h6"/>',
+  estag: '<path d="M12 3v18M6 21h12M4 7h16"/><path d="M4 7l-2.5 6a3 3 0 0 0 5 0L4 7zM20 7l-2.5 6a3 3 0 0 0 5 0L20 7z"/>',
+  prof: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/>',
+  doc: '<path d="M3 4h18v12H3z"/><path d="M8 20l4-4 4 4M7 9h6M7 12h10"/>',
+  outro: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>'
+};
+function bvIc(k) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + BV_ICON[k] + '</svg>'; }
+function vBemvindo() {
+  if (!ONB.anoDef && S.meuPerfil && /^ano\d$/.test(S.meuPerfil.estado || '')) { ONB.ano = Number(S.meuPerfil.estado.slice(3)); ONB.anoDef = true; }
+  if (S.bvModo === 'ola' && !sessaoAtiva() && !S.connecting) S.bvModo = 'escolha';
+  if (S.bvModo === 'ola') return vBemvindoOla();
+  var t = ONB.tipo, nome = S.nome ? S.nome.split(' ')[0] : '', an = !S.bvAnim, abre = S.bvUlt !== t; S.bvAnim = true; S.bvUlt = t;
+  var saud = S.meuPerfil && S.meuPerfil.genero === 'f' ? 'Bem-vinda' : S.meuPerfil && S.meuPerfil.genero === 'm' ? 'Bem-vindo' : 'Bem-vindo/a';
+  var h = '<div class="bv' + (an ? ' an' : '') + '">';
+  h += '<header class="bv-hd"><span class="bv-logo"><span class="mark logo">' + I.logo + '</span><span><b>LEX</b>DESK</span></span>' + (sessaoAtiva() ? '' : '<div class="bv-acc"><button class="btn ghost sm" data-a="bv-conta" data-id="entrar">Iniciar sessão</button><button class="btn gold sm" data-a="bv-conta" data-id="registo">Criar conta</button></div>') + '</header>';
+  h += '<div class="bv-col"><div class="bv-bal">' + balancaSVG() + '</div><span class="bv-k">' + saud + ' ao</span><h1><b>LEX</b>DESK</h1><p class="bv-sub">' + (nome ? 'Olá, ' + esc(nome) + '. ' : '') + 'Em que fase está? Adaptamos tudo a si.</p>';
+  h += '<div class="bv-list" role="list">' + Object.keys(PERFIS).map(function (k, n) {
+    var on = t === k, x = '<div class="bv-o' + (on ? ' on' : '') + (on && abre ? ' abre' : '') + '" role="listitem" style="--i:' + n + '"><button class="bv-ob" data-a="onb-tipo" data-id="' + k + '" aria-expanded="' + on + '"><span class="bv-i">' + bvIc(k) + '</span><span class="bv-tx"><b>' + esc(PERFIS[k].nome) + '</b><span>' + esc(PERFIS[k].d) + '</span></span><span class="bv-ch" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M4.5 3l3 3-3 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></button>';
+    if (on) {
+      x += '<div class="bv-det">' +
+        (k === 'lic' ? '<div class="bv-ano"><span>Ano</span>' + [1, 2, 3, 4].map(function (a) { return '<button class="' + (ONB.ano === a ? 'on' : '') + '" data-a="onb-ano" data-id="' + a + '">' + (a === 1 ? '1.º · Caloiro/a' : a + '.º') + '</button>'; }).join('') + '</div>' : '') +
+        (sessaoAtiva() ? '<button class="btn gold bv-go" data-a="onb-fim">Entrar no painel →</button>'
+          : '<div class="bv-gst"><button class="btn gold bv-go" data-a="bv-conta" data-id="registo">Criar conta e entrar →</button><div class="bv-alt"><button data-a="bv-conta" data-id="entrar">Já tenho conta</button><span>·</span><button data-a="onb-fim">Continuar sem conta</button></div><span class="bv-nota">Sem conta, os dados ficam apenas neste navegador.</span></div>') +
+        '</div>';
+    }
+    return x + '</div>';
+  }).join('') + '</div>';
+  h += '<div class="bv-f"><button class="bv-skip" data-a="onb-saltar">Saltar por agora</button><span><a href="#termos">Termos</a> · <a href="#privacidade">Privacidade</a></span></div></div></div>';
+  return h;
+}
+onbAbrir = function () { S.bvModo = 'escolha'; var p = perfilUser(); ONB = { passo: 1, tipo: p ? p.tipo : null, ano: (p && p.ano) || 1, areas: p && p.areas ? p.areas.slice() : [] }; S.bvAnim = false; S.bvUlt = undefined; S.bvVolta = S.view !== 'bemvindo' ? S.view : 'painel'; closeModal(); go('bemvindo'); };
+onbPintar = function () { var y = window.scrollY; render(); window.scrollTo(0, y); };
+var _onbSaltar = A['onb-saltar'];
+A['onb-saltar'] = function (el) { _onbSaltar(el); go(S.bvVolta && S.bvVolta !== 'bemvindo' ? S.bvVolta : 'painel'); };
+var _onbFim = A['onb-fim'];
+A['onb-fim'] = function (el) { if (!ONB.tipo) { toast('Escolha a sua fase.'); return; } _onbFim(el); if (location.hash !== '#painel') location.hash = '#painel'; };
+var _renderSideBV = renderSide;
+renderSide = function () { document.body.classList.toggle('bvp', S.view === 'bemvindo'); _renderSideBV(); };
+var _onbTipo = A['onb-tipo'];
+A['onb-tipo'] = function (el) { if (S.view === 'bemvindo' && ONB.tipo === el.dataset.id) { ONB.tipo = null; onbPintar(); return; } _onbTipo(el); if (S.view !== 'bemvindo') return; var r = document.querySelector('.bv-o.on'); if (r) setTimeout(function () { var b = r.getBoundingClientRect(); if (b.bottom > window.innerHeight || b.top < 0) r.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 260); };
+
+/* ----- entrada pública: conta a partir da página de boas-vindas ----- */
+var BV_EST = { licd: 'licenciado', mest: 'mestrado', estag: 'estagiario', prof: 'advogado', doc: 'docente', outro: 'outro' };
+A['bv-conta'] = function (el) {
+  if (ONB.tipo) lsSet('lexdesk_onb_pend', JSON.stringify({ tipo: ONB.tipo, ano: ONB.ano, areas: ONB.areas }));
+  A['login-open'](el);
+  if (el.dataset.id === 'registo' && ONB.tipo) setTimeout(function () { var s = $('#lg-est'); if (s) s.value = ONB.tipo === 'lic' ? 'ano' + Math.min(4, ONB.ano || 1) : BV_EST[ONB.tipo]; }, 60);
+};
+var _carregarMeuPerfilBV = carregarMeuPerfil;
+carregarMeuPerfil = function () {
+  return _carregarMeuPerfilBV().then(function (p) {
+    var pend = null; try { pend = JSON.parse(lsGet('lexdesk_onb_pend') || 'null'); } catch (e) { }
+    if (pend) { try { localStorage.removeItem('lexdesk_onb_pend'); } catch (e) { } }
+    setTimeout(function () {
+      if (pend && pend.tipo && !perfilUser()) { guardarPerfilUser(pend); lsSet('lexdesk_onb', 'feito'); }
+      if (S.view === 'bemvindo' && perfilUser()) { go('painel'); toast('Sessão iniciada. Painel adaptado ao perfil «' + PERFIS[perfilUser().tipo].nome + '».'); }
+    }, 900);
+    return p;
+  });
+};
+
+/* ----- aparece sempre ao abrir o site ----- */
+function vBemvindoOla() {
+  var an = !S.bvAnim; S.bvAnim = true;
+  var p = perfilUser(), t = p && PERFIS[p.tipo] ? p.tipo : null, g = S.meuPerfil && S.meuPerfil.genero;
+  var saud = g === 'f' ? 'Bem-vinda de volta' : g === 'm' ? 'Bem-vindo de volta' : 'Bem-vindo/a de volta';
+  return '<div class="bv bv-ola' + (an ? ' an' : '') + '"><header class="bv-hd"><span class="bv-logo"><span class="mark logo">' + I.logo + '</span><span><b>LEX</b>DESK</span></span></header>' +
+    '<div class="bv-col"><div class="bv-bal big">' + balancaSVG() + '</div><span class="bv-k">' + saud + '</span><h1>' + (S.nome ? '<b>' + esc(S.nome) + '</b>' : '<b>LEX</b>DESK') + '</h1>' +
+    '<p class="bv-sub">' + (t ? 'O seu painel de ' + esc(PERFIS[t].curto.toLowerCase()) + ' está pronto.' : 'O seu painel está pronto.') + '</p>' +
+    '<button class="btn gold bv-go bv-cont" data-a="bv-cont">Continuar →</button><button class="bv-skip bv-alt2" data-a="onb-abrir">Alterar perfil</button></div></div>';
+}
+function bvArranque(h0) {
+  if (h0 === 'bemvindo' || S.salaConvite) { if (h0 === 'bemvindo') S.bvModo = S.bvModo || 'escolha'; return; }
+  S.bvVolta = h0 === 'termos' || h0 === 'privacidade' ? 'legal' : VIEWS.indexOf(h0) >= 0 ? h0 : 'painel'; if (S.bvVolta === 'legal') S.legalTab = h0;
+  S.bvModo = lsGet('lexdesk_sessao') === 'on' ? 'ola' : 'escolha'; if (S.bvModo === 'ola' && SB) S.connecting = true;
+  var p = perfilUser(); ONB = { passo: 1, tipo: S.bvModo === 'escolha' && p ? p.tipo : null, ano: (p && p.ano) || 1, areas: p && p.areas ? p.areas.slice() : [] };
+  S.view = 'bemvindo'; try { history.replaceState(null, '', '#bemvindo'); } catch (e) { }
+}
+A['bv-cont'] = function () { go(S.bvVolta && S.bvVolta !== 'bemvindo' ? S.bvVolta : 'painel'); };
+/* Termos: aceites uma única vez, no formulário de criação de conta (sem janela posterior) */
+verificarTermos = function () { };
+
+/* ---------- PERGUNTA DO DIA com ranking individual ---------- */
+var PD = { carregado: false, a_carregar: false, estado: 'idle', d: null, seq: 0, t0: 0, rk: { periodo: 'hoje', lista: null } };
+function pdHoje() { try { return new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Lisbon' }).format(new Date()); } catch (e) { return ymd(new Date()); } }
+function pdPerm(id) { var h = 2166136261, str = id + '|' + (PD.dia || pdHoje()); for (var i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; } var p = [0, 1, 2, 3]; for (var k = 3; k > 0; k--) { h = Math.imul(h ^ (h >>> 15), 2246822519) >>> 0; var j = h % (k + 1), t = p[k]; p[k] = p[j]; p[j] = t; } return p; }
+function pdQ(id) { return QMAP[id] || Q_DEONT.filter(function (q) { return q.id === id; })[0] || null; }
+function pdCarregar() {
+  if (PD.a_carregar || !sessaoAtiva() || !SB) return; PD.a_carregar = true;
+  var hoje = pdHoje();
+  Promise.all([
+    SB.from('pd_respostas').select('dia,qid,visto_em,respondido_em,opcao,certa,ms,pontos').eq('user_id', Store.uid).eq('dia', hoje).maybeSingle(),
+    SB.rpc('pd_sequencia')
+  ]).then(function (r) {
+    PD.a_carregar = false; PD.carregado = true; PD.dia = hoje;
+    var row = r[0] && r[0].data; PD.seq = (r[1] && r[1].data) || 0;
+    if (row && row.respondido_em) { PD.estado = 'feita'; PD.d = { qid: row.qid, opcao: row.opcao, certa: row.certa, ms: row.ms, pontos: row.pontos, correta: row.certa ? row.opcao : null }; }
+    else if (row) { PD.estado = 'ativa'; PD.d = { qid: row.qid }; PD.t0 = new Date(row.visto_em).getTime(); pdTick(); }
+    else PD.estado = 'idle';
+    pdPintar();
+  }, function () { PD.a_carregar = false; });
+}
+function pdIniciar(silencioso) {
+  return SB.rpc('pd_iniciar').then(function (r) {
+    if (r.error) { if (!silencioso) toast('Não foi possível abrir a pergunta. Tente novamente.'); return; }
+    var x = r.data; PD.dia = x.dia;
+    if (x.respondida) { PD.estado = 'feita'; PD.d = x; }
+    else { PD.estado = 'ativa'; PD.d = x; PD.t0 = Date.now(); pdTick(); }
+    pdPintar();
+  });
+}
+function pdTick() { clearInterval(PD.iv); PD.iv = setInterval(function () { var e = document.getElementById('pd-cr'); if (!e || PD.estado !== 'ativa') { if (PD.estado !== 'ativa') clearInterval(PD.iv); return; } e.textContent = pdSeg(Date.now() - PD.t0); }, 250); }
+function pdSeg(ms) { var s = Math.max(0, Math.floor(ms / 1000)); return s < 60 ? s + ' s' : Math.floor(s / 60) + ' min ' + (s % 60) + ' s'; }
+function pdPintar() { var e = document.getElementById('pd'); if (e) e.outerHTML = vPD(); }
+function vPD() {
+  var h = '<div class="pd" id="pd"><div class="pd-h"><span class="pd-t">⚖️ Pergunta do dia</span>';
+  if (!sessaoAtiva()) return h + '</div><p class="pd-p">Uma pergunta nova todos os dias, igual para todos. Responda depressa e suba no ranking.</p><div class="row"><button class="btn gold sm" data-a="login-open" data-id="registo">Criar conta para participar</button><button class="pd-lk" data-a="login-open" data-id="entrar">Já tenho conta</button></div></div>';
+  if (!PD.carregado || PD.dia !== pdHoje()) { if (PD.dia && PD.dia !== pdHoje()) { PD.carregado = false; PD.estado = 'idle'; } setTimeout(pdCarregar, 0); return h + '</div><p class="pd-p">A carregar…</p></div>'; }
+  h += (PD.estado === 'ativa' ? '<span class="pd-cr" id="pd-cr">' + pdSeg(Date.now() - PD.t0) + '</span>' : '') + (PD.seq ? '<span class="pd-seq" title="Dias seguidos a responder">🔥 ' + PD.seq + (PD.seq === 1 ? ' dia' : ' dias') + '</span>' : '') + '<button class="pd-lk" data-a="pd-rank">🏆 Ranking</button></div>';
+  if (PD.estado === 'idle') return h + '<p class="pd-p">Uma pergunta nova todos os dias, igual para todos. <b>Só tem uma tentativa</b> e o cronómetro começa quando clicar.</p><div class="row"><button class="btn gold" data-a="pd-ini">Começar ⏱</button><span class="pd-reg">Certa: 10 pts · bónus de rapidez até +5</span></div></div>';
+  var q = pdQ(PD.d.qid); if (!q) return h + '<p class="pd-p">Pergunta indisponível. Atualize a página.</p></div>';
+  if (PD.estado === 'ativa') return h + '<p class="pd-q">' + esc(q.q) + '</p><div class="pd-o">' + pdPerm(q.id).map(function (oi, i) { return '<button data-a="pd-resp" data-i="' + oi + '"><span>' + 'ABCD'.charAt(i) + '</span>' + esc(q.o[oi]) + '</button>'; }).join('') + '</div></div>';
+  var d = PD.d, c = d.correta != null ? d.correta : q.a;
+  return h + '<p class="pd-q sm">' + esc(q.q) + '</p><div class="pd-res ' + (d.certa ? 'ok' : 'bad') + '"><b>' + (d.certa ? '✓ Certo! +' + d.pontos + ' pontos' : '✗ Errado.') + '</b>' + (d.certa ? '<span>Respondeu em ' + pdSeg(d.ms) + '.</span>' : '<span>A resposta certa era <b>' + 'ABCD'.charAt(pdPerm(q.id).indexOf(c)) + ') ' + esc(q.o[c]) + '</b>.</span>') + '</div><p class="pd-e">' + esc(q.e) + '</p><div class="row"><button class="btn gold sm" data-a="pd-rank">Ver ranking de hoje</button><span class="pd-reg">Nova pergunta amanhã à meia-noite.</span></div></div>';
+}
+function pdRankPintar() {
+  var R = PD.rk, l = R.lista;
+  var corpo = '<div class="seg" style="align-self:flex-start">' + [['hoje', 'Hoje'], ['semana', 'Esta semana'], ['sempre', 'Sempre']].map(function (x) { return '<button class="' + (R.periodo === x[0] ? 'on' : '') + '" data-a="pd-rank-p" data-id="' + x[0] + '">' + x[1] + '</button>'; }).join('') + '</div>';
+  if (!l) corpo += '<p style="margin:0;color:var(--muted)">A carregar…</p>';
+  else if (!l.length) corpo += '<div class="empty"><span>Ainda ninguém respondeu' + (R.periodo === 'hoje' ? ' hoje' : '') + '. Seja o primeiro!</span></div>';
+  else corpo += '<div class="pd-rk">' + l.map(function (r) {
+    Social.prof[r.user_id] = Social.prof[r.user_id] || { nome: r.nome, estado: r.estado, avatar_url: r.avatar_url };
+    var med = r.pos == 1 ? '🥇' : r.pos == 2 ? '🥈' : r.pos == 3 ? '🥉' : r.pos + '.º';
+    return (r.pos > 10 ? '<div class="pd-rk-sep">…</div>' : '') + '<div class="pd-rk-l' + (r.eu ? ' eu' : '') + '"><span class="pd-rk-p">' + med + '</span>' + avHtml(r.user_id, r.nome) + '<span class="pd-rk-n"><b>' + esc(r.nome || 'Membro LEXDESK') + (r.eu ? ' (eu)' : '') + '</b>' + estadoChip(r.user_id) + '</span><span class="pd-rk-s">' + r.certas + ' ' + (r.certas == 1 ? 'certa' : 'certas') + (R.periodo === 'hoje' && r.ms != null ? ' · ' + pdSeg(r.ms) : '') + '</span><b class="pd-rk-pt">' + r.pontos + ' pts</b></div>';
+  }).join('') + '</div>';
+  corpo += '<p style="margin:0;font-size:12px;color:var(--muted)">10 pontos por resposta certa, mais um bónus de rapidez: +5 (menos de 10 s), +3 (menos de 20 s) ou +1 (menos de 40 s). Em caso de empate, conta o número de respostas certas e depois o tempo.</p>';
+  openModal('🏆 Ranking da pergunta do dia', corpo, '<button class="btn" data-a="close">Fechar</button>');
+}
+function pdRankCarregar() { PD.rk.lista = null; pdRankPintar(); SB.rpc('pd_ranking', { periodo: PD.rk.periodo }).then(function (r) { PD.rk.lista = (r && r.data) || []; if ($('#ov')) pdRankPintar(); }); }
+var A16 = {
+  'pd-ini': function (el) { el.disabled = true; pdIniciar(); },
+  'pd-resp': function (el) {
+    if (PD.respondendo) return; PD.respondendo = true;
+    [].forEach.call(document.querySelectorAll('.pd-o button'), function (b) { b.disabled = true; }); el.classList.add('sel');
+    SB.rpc('pd_responder', { p_opcao: Number(el.dataset.i) }).then(function (r) {
+      PD.respondendo = false;
+      if (r.error) { toast('Não foi possível registar a resposta. Tente novamente.'); [].forEach.call(document.querySelectorAll('.pd-o button'), function (b) { b.disabled = false; }); return; }
+      PD.estado = 'feita'; PD.d = Object.assign({ qid: PD.d.qid }, r.data); clearInterval(PD.iv);
+      SB.rpc('pd_sequencia').then(function (s) { PD.seq = (s && s.data) || PD.seq; pdPintar(); });
+      pdPintar(); if (r.data.certa) fxConfete && fxConfete();
+    });
+  },
+  'pd-rank': function () { if (!sessaoAtiva()) { A['login-open']({ dataset: { id: 'registo' } }); return; } pdRankCarregar(); },
+  'pd-rank-p': function (el) { PD.rk.periodo = el.dataset.id; pdRankCarregar(); }
+};
+Object.keys(A16).forEach(function (k) { A[k] = A16[k]; });
+var fxConfete = window.fxConfete || function () {
+  var c = document.createElement('div'); c.className = 'pd-conf'; for (var i = 0; i < 26; i++) { var s = document.createElement('i'); s.style.left = (Math.random() * 100) + '%'; s.style.background = ['#F0CF7A', '#C8962F', '#8C1D30', '#fff'][i % 4]; s.style.animationDelay = (Math.random() * .3) + 's'; s.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)'; c.appendChild(s); }
+  var pd = document.getElementById('pd'); if (pd) { pd.appendChild(c); setTimeout(function () { c.remove(); }, 1800); }
+};
+/* ao terminar sessão, limpar o estado */
+
+/* ----- faixa compacta com a pergunta do dia ----- */
+heroB = function (t) {
+  var data = new Date().toLocaleDateString('pt-PT', { weekday: 'long', day: 'numeric', month: 'long' }); data = data.charAt(0).toUpperCase() + data.slice(1);
+  var hojeD = (new Date().getDay() + 6) % 7, na = Store.all('aula').filter(function (a) { return a.dia === hojeD; }).length, ag = proxAgenda().filter(function (a) { return a.data === ymd(new Date()); }).length;
+  var frase = t === 'lic' || t === 'outro' ? (na ? 'Hoje tem ' + plural(na, 'aula', 'aulas') + '.' : 'Hoje não tem aulas.') : (t === 'estag' || t === 'prof') ? (ag ? 'Hoje tem ' + plural(ag, 'compromisso', 'compromissos') + ' na agenda.' : 'Sem compromissos para hoje.') : t === 'mest' ? 'Um capítulo de cada vez.' : t === 'doc' ? 'Prepare a próxima aula.' : '';
+  return '<section class="hb hb2"><div class="hb-l"><div class="hb-mini">' + balancaSVG() + '</div><span class="hb-d">' + esc(data) + ' · ' + esc(PERFIS[t].nome) + '</span><h1>' + saudacao() + (S.nome ? ', <span class="g">' + esc(S.nome.split(' ')[0]) + '</span>' : '') + '</h1><p>' + frase + '</p></div>' + vPD() + '</section>';
+};
+
+/* ----- coerência entre o perfil do painel e a situação no perfil público ----- */
+function sincronizarEstado() {
+  var p = perfilUser(); if (!sessaoAtiva() || !p || !p.tipo || !S.meuPerfil) return;
+  var ano = p.ano || (perfil() && perfil().ano) || 1;
+  var est = p.tipo === 'lic' ? 'ano' + Math.min(4, Math.max(1, ano)) : { licd: 'licenciado', mest: 'mestrado', estag: 'estagiario', prof: 'advogado', doc: 'docente', outro: S.meuPerfil.estado || 'outro' }[p.tipo];
+  if (p.tipo === 'prof' && ['advogado'].indexOf(S.meuPerfil.estado) < 0 && S.meuPerfil.estado) est = S.meuPerfil.estado === 'outro' ? 'outro' : 'advogado';
+  if (est && S.meuPerfil.estado !== est) SB.from('profiles').update({ estado: est }).eq('id', Store.uid).then(function (r) { if (!r.error) { S.meuPerfil.estado = est; scheduleRender(); } });
+}
+var _guardarPerfilUserPD = guardarPerfilUser;
+guardarPerfilUser = function (patch) {
+  if (patch && patch.tipo === 'lic' && !patch.ano && perfil() && perfil().ano) patch.ano = perfil().ano;
+  var r = _guardarPerfilUserPD(patch); setTimeout(sincronizarEstado, 300); return r;
+};
+var _carregarMeuPerfilPD = carregarMeuPerfil;
+carregarMeuPerfil = function () { return _carregarMeuPerfilPD().then(function (p) { setTimeout(sincronizarEstado, 1500); PD.carregado = false; PD.a_carregar = false; scheduleRender(); return p; }); };
+
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
 var VIEW_LBL = { painel: ['Painel', I.grid], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
 var isMac = /Mac|iPhone|iPad/.test(navigator.platform || '');
@@ -4709,7 +5362,7 @@ vTopbar = function () {
 /* ===== gráficos de progresso no painel ===== */
 function svgRing(pct) {
   var r = 70, c = 2 * Math.PI * r, off = c * (1 - pct / 100);
-  return '<svg viewBox="0 0 170 170" aria-hidden="true"><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8C1D30"/><stop offset=".5" stop-color="#7B1E2B"/><stop offset="1" stop-color="#4338CA"/></linearGradient></defs>' +
+  return '<svg viewBox="0 0 170 170" aria-hidden="true"><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8C1D30"/><stop offset=".5" stop-color="#7B1E2B"/><stop offset="1" stop-color="#1E3A5F"/></linearGradient></defs>' +
     '<circle cx="85" cy="85" r="' + r + '" fill="none" stroke="#EEF0F5" stroke-width="16"/>' +
     '<circle class="fg" cx="85" cy="85" r="' + r + '" fill="none" stroke="url(#rg)" stroke-width="16" stroke-linecap="round" stroke-dasharray="' + c.toFixed(1) + '" stroke-dashoffset="' + off.toFixed(1) + '" style="--len:' + c.toFixed(1) + ';--off:' + off.toFixed(1) + '"/></svg>';
 }
@@ -4723,7 +5376,7 @@ function svgLine(vals, labels) {
     var tx = Math.min(Math.max(x(i), 60), W - 60);
     return '<g class="pt"><circle cx="' + x(i) + '" cy="' + y(v) + '" r="5" fill="#fff" stroke="#7B1E2B" stroke-width="3"/><g class="tt"><rect x="' + (tx - 52) + '" y="' + (y(v) - 40) + '" width="104" height="26" rx="8" fill="#0E1222"/><text x="' + tx + '" y="' + (y(v) - 23) + '" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">' + v + '% · ' + esc(labels[i] || '') + '</text></g><circle cx="' + x(i) + '" cy="' + y(v) + '" r="16" fill="transparent"/></g>';
   }).join('');
-  return '<svg class="chart" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" role="img" aria-label="Evolução da taxa de acerto nas últimas simulações"><defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#8C1D30"/><stop offset="1" stop-color="#4338CA"/></linearGradient><linearGradient id="la" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7B1E2B" stop-opacity=".22"/><stop offset="1" stop-color="#4338CA" stop-opacity="0"/></linearGradient></defs>' + grid +
+  return '<svg class="chart" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" role="img" aria-label="Evolução da taxa de acerto nas últimas simulações"><defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#8C1D30"/><stop offset="1" stop-color="#1E3A5F"/></linearGradient><linearGradient id="la" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7B1E2B" stop-opacity=".22"/><stop offset="1" stop-color="#1E3A5F" stop-opacity="0"/></linearGradient></defs>' + grid +
     '<path d="' + area + '" fill="url(#la)"/><path class="l" d="' + d + '" fill="none" stroke="url(#lg)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="--len:1400" stroke-dasharray="1400"/>' + pts + '</svg>';
 }
 function vProgresso() {
@@ -4904,6 +5557,7 @@ A['item-type'] = function (el, ev) { _itemType(el, ev); fxEnhance(); };
 /* ---------- arranque ---------- */
 Store.loadLocal();
 var h0 = location.hash.replace('#', ''); if (VIEWS.indexOf(h0) >= 0) S.view = h0;
+if (typeof bvArranque === 'function') bvArranque(h0);
 render();
 Store.connect();
 })();
