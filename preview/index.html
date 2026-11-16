@@ -488,6 +488,79 @@ ul.muda li::marker{color:var(--wine)}
 .sino:hover{transform:translateY(-1px);box-shadow:var(--sh1)}
 .sino-n{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;border-radius:99px;background:var(--grad-gold);color:#2A1600;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0 5px;border:2px solid #fff;animation:pop .3s var(--ease) both}
 
+/* ===== mensagens privadas ===== */
+.nbadge{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;border-radius:99px;background:var(--grad-gold);color:#2A1600;font-size:11px;font-weight:800}
+.dm{display:grid;grid-template-columns:320px minmax(0,1fr);gap:16px;height:calc(100vh - 210px);min-height:520px}
+.dm-side{background:#fff;border:1px solid rgba(14,18,34,.06);border-radius:22px;box-shadow:var(--sh1);padding:12px;display:flex;flex-direction:column;gap:8px;min-height:0}
+.dm-list{overflow:auto;display:flex;flex-direction:column;gap:4px;flex:1}
+.dm-c{display:flex;align-items:center;gap:10px;padding:10px;border:0;border-radius:14px;background:none;text-align:left;font:inherit;color:inherit;cursor:pointer;width:100%}
+.dm-c:hover{background:#F5F6FA}.dm-c.on{background:var(--grad-soft)}
+.dm-c .tx{flex:1;min-width:0;display:flex;flex-direction:column}.dm-c .tx b{font-size:14px}.dm-c .tx>span{font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dm-t{font-size:11px;color:var(--muted)}
+.dm-main{background:#fff;border:1px solid rgba(14,18,34,.06);border-radius:22px;box-shadow:var(--sh1);display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.bub{display:flex;align-items:flex-end;gap:6px;margin:3px 8px;max-width:78%;position:relative}
+.bub.me{align-self:flex-end;flex-direction:row-reverse}
+.bub-t{background:#F1F2F7;border-radius:18px 18px 18px 6px;padding:9px 13px;font-size:14.5px;line-height:1.5;overflow-wrap:anywhere}
+.bub.me .bub-t{background:var(--grad);color:#fff;border-radius:18px 18px 6px 18px}.bub.me .bub-t a{color:#fff}
+.bub-h{display:block;font-size:10px;opacity:.6;margin-top:2px;text-align:right}
+.bub-a{display:none}.bub:hover .bub-a,.bub:focus-within .bub-a{display:flex}.bub-a .icon-btn{width:26px;height:26px;border:0}
+.bub-lida{align-self:flex-end;font-size:11px;color:var(--muted);margin:0 12px 6px}
+@media (max-width:900px){.dm{grid-template-columns:1fr;height:auto}.dm-main{height:70vh}}
+/* ===== salas de estudo ===== */
+.sala-hero{border-radius:28px;padding:26px 30px;color:#fff;display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;box-shadow:0 30px 60px -30px rgba(14,18,34,.55);position:relative;overflow:hidden;isolation:isolate}
+.sala-hero::after{content:'';position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:30px 30px}
+.sala-hero h1{color:#fff;font-size:38px}.sala-hero .crumb{color:rgba(255,255,255,.75)}.sala-sub{color:rgba(255,255,255,.8);font-size:14px}
+.sala{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:start}
+.sala-main{display:flex;flex-direction:column;gap:14px;min-width:0}
+.sala-side{display:flex;flex-direction:column;gap:14px;position:sticky;top:16px}
+.sala-chat{height:min(520px,60vh);padding:16px;gap:8px}.sala-chat .chat-list{padding:0}
+.smsg{position:relative;padding:6px 8px;border-radius:10px;font-size:13.5px;line-height:1.45}.smsg:hover{background:#F7F8FB}.smsg .t{font-size:10.5px;color:var(--muted)}.smsg.me b .nm{color:var(--wine)}
+.smsg .sa{position:absolute;right:4px;top:2px;display:none;gap:2px}.smsg:hover .sa{display:flex}.smsg .sa .icon-btn{width:24px;height:24px;border:0}
+.pomo{align-items:center;gap:10px;padding:16px}.pomo>.row:first-child{width:100%}
+.pomo-r{position:relative;width:130px;height:130px}.pomo-r svg{width:100%;height:100%}.pomo-r b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:30px;font-weight:800;letter-spacing:-.02em}
+.cor-b{display:inline-block;width:34px;height:34px;border-radius:10px}
+.convite{display:flex;flex-direction:column;align-items:center;gap:4px;padding:18px;border-radius:18px;background:var(--grad-soft)}.convite span{font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.1em}.convite b{font-family:var(--serif);font-size:42px;letter-spacing:.18em;color:var(--wine)}
+.qd{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.qd-i{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:14px}.qd-i:first-of-type{border-top:0}
+.qd-i.nota{background:#FFF8E6;border:0;border-radius:12px;padding:10px 12px;margin-bottom:6px}
+@media (max-width:1100px){.sala{grid-template-columns:1fr}.sala-side{position:static}}
+/* ===== atividades e jogos ===== */
+.jg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.jg{display:flex;flex-direction:column;gap:6px;align-items:flex-start;text-align:left;padding:18px;border-radius:20px;border:1px solid rgba(14,18,34,.06);background:#fff;box-shadow:var(--sh1);cursor:pointer;font:inherit;color:var(--ink);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.jg:hover{transform:translateY(-4px) rotate(-.4deg);box-shadow:var(--sh2)}.jg b{font-family:var(--serif);font-size:17px;font-weight:800}.jg>span:not(.chip):not(.jg-e){font-size:12.5px;color:var(--muted);line-height:1.5;flex:1}
+.jg-e{font-size:30px;line-height:1}
+.at-head{display:flex;align-items:center;gap:12px;background:#fff;border-radius:18px;padding:14px 16px;box-shadow:var(--sh1)}
+.at-timer{min-width:56px;height:56px;border-radius:16px;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:24px;font-weight:800;box-shadow:var(--glow)}
+.at-q{background:#fff;border-radius:22px;padding:22px;box-shadow:var(--sh1);display:flex;flex-direction:column;gap:12px}
+.at-qt{margin:0;font-family:var(--serif);font-size:21px;font-weight:700;line-height:1.35;letter-spacing:-.01em}
+.vf-b{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.opt.big{justify-content:center;min-height:72px;font-size:18px;font-weight:800}.opt.obj{color:var(--bad);border-color:#F6C7C9}
+.opt.sel{border:2px solid var(--violet);background:var(--violet-soft)}
+.placar{display:flex;flex-direction:column;gap:6px;background:#fff;border-radius:18px;padding:12px;box-shadow:var(--sh1)}
+.pl-r{display:flex;align-items:center;gap:10px;padding:6px 8px;border-radius:12px;font-size:14px}.pl-r.me{background:var(--grad-soft)}.pl-r .av{width:30px;height:30px;font-size:11px}
+.pl-p{width:24px;font-weight:800;color:var(--muted);text-align:center}
+.podio{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:end;max-width:560px;margin:10px auto 0}
+.pd-c{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}.pd-c span{font-size:13px;color:var(--muted)}
+.pd-b{width:100%;border-radius:16px 16px 6px 6px;background:var(--grad);display:flex;align-items:flex-start;justify-content:center;padding-top:10px;font-size:30px;animation:growY .8s var(--ease) both;transform-origin:bottom}
+.pd-c.p1 .pd-b{height:150px;background:var(--grad-gold)}.pd-c.p2 .pd-b{height:110px}.pd-c.p3 .pd-b{height:80px;background:linear-gradient(120deg,#9A5B00,#7B1E2B)}
+.pt-l{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.pt-l li{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:#fff;border:1px solid var(--line);box-shadow:var(--sh1);cursor:grab;font-size:14px}.pt-l li .icon-btn{width:30px;height:30px}
+.pt-n{width:26px;height:26px;border-radius:8px;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex:none}
+.erro-t{background:#fff;border-radius:18px;padding:22px;box-shadow:var(--sh1);font-family:'Times New Roman',Georgia,serif;font-size:17px;line-height:1.9}
+.eseg{cursor:pointer;border-radius:4px;transition:background .15s}.eseg:hover{background:#FFF1C2}.eseg.ok{background:#D9F5E8;text-decoration:line-through;text-decoration-color:var(--ok)}.eseg.no{background:#FDECEC}.eseg.falta{background:#FFE3E3;outline:2px dashed var(--bad)}
+.ecorr{display:inline-block;font-family:var(--sans);font-size:12px;font-weight:700;color:var(--ok);background:var(--ok-soft);border-radius:8px;padding:2px 8px;margin:0 4px}
+.bingo{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.bg-c{aspect-ratio:1;border-radius:14px;border:1px solid var(--line);background:#fff;font:inherit;font-size:12px;font-weight:700;padding:6px;cursor:pointer;line-height:1.25;transition:transform .15s}
+.bg-c:hover{transform:scale(1.03)}.bg-c.cham{border:2px solid var(--gold)}.bg-c.on{background:var(--grad);color:#fff;border-color:transparent}
+.julg-f{display:flex;flex-wrap:wrap;gap:6px}.julg-f span{font-size:12px;font-weight:700;padding:6px 10px;border-radius:99px;background:#EEF0F5;color:var(--muted)}.julg-f span.on{background:var(--grad);color:#fff}.julg-f span.ok{background:var(--ok-soft);color:var(--ok)}
+.jd{display:flex;flex-direction:column;gap:6px;align-items:center;margin:6px 0}
+.jd-r{display:flex;gap:6px}
+.jd-c{width:52px;height:52px;border-radius:12px;border:2px solid var(--line2);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:26px;font-weight:800;background:#fff}
+.jd-c.typ{border-color:#9AA0B4;animation:pop .15s ease}.jd-c.v{background:#0E9F6E;border-color:#0E9F6E;color:#fff}.jd-c.a{background:#F5B400;border-color:#F5B400;color:#fff}.jd-c.x{background:#8A8FA3;border-color:#8A8FA3;color:#fff}
+.jd-kb{display:flex;flex-direction:column;gap:6px;align-items:center;width:100%}.jd-k{display:flex;gap:4px}
+.jd-k button{min-width:30px;height:42px;border-radius:8px;border:0;background:#E6E8EF;font:inherit;font-weight:800;cursor:pointer}.jd-k button.w{min-width:48px}.jd-k button.v{background:#0E9F6E;color:#fff}.jd-k button.a{background:#F5B400;color:#fff}.jd-k button.x{background:#8A8FA3;color:#fff}
+.chat-top .avbtn{color:var(--ink);background:none;border:0;cursor:pointer;font:inherit;padding:4px}
+
 </style>
 </head>
 <body>
@@ -1084,7 +1157,7 @@ Store.attach = function (session) {
   if (Store.uid === session.user.id) return;
   SBuser.session = session; Store.uid = session.user.id; S.connecting = false;
   SBuser.me().then(function (me) { if (me && me.name) { S.nomeFull = String(me.name); S.nome = S.nomeFull.split(' ')[0]; scheduleRender(); } }).catch(function () {});
-  SBdb.refreshAll(); carregarMeuPerfil(); scheduleRender();
+  SBdb.refreshAll(); carregarMeuPerfil(); dmStart(); if (S.salaConvite) { var sc = S.salaConvite; S.salaConvite = null; setTimeout(function () { salaPorCodigo(sc); }, 300); } scheduleRender();
   var col = SBdb.collection('data/users/' + Store.uid);
   var first = true;
   Store.unsub = col.onSnapshot(function (snap) {
@@ -1105,7 +1178,7 @@ Store.attach = function (session) {
 };
 
 /* ---------- estado da interface ---------- */
-var VIEWS = ['painel', 'instituicoes', 'atualidade', 'connect', 'chat', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
+var VIEWS = ['painel', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
 var S = {
   view: 'painel', wsId: null, wsTab: '01', wsQ: '', q: '',
   libQ: '', libArea: 'Todas', libOpen: { cpc: true },
@@ -1164,7 +1237,7 @@ function renderSide() {
     '<div class="navgrp"><span class="navlbl">Geral</span>' + navBtn('painel', 'Painel', I.grid) + navBtn('atualidade', 'Atualidade jurídica', I.news) + navBtn('biblioteca', 'Biblioteca jurídica', I.book) + navBtn('instituicoes', 'Instituições', I.uni) + '</div>' +
     '<div class="navgrp"><span class="navlbl">Trabalho</span>' + navBtn('workspaces', 'Legal Workspaces', I.folder) + navBtn('minutas', 'Gerador de minutas', I.file) + '</div>' +
     '<div class="navgrp"><span class="navlbl">Estudo</span>' + navBtn('cadeiras', 'Cadeiras', I.layers) + navBtn('apontamentos', 'Apontamentos', I.note) + navBtn('exames', 'Simulador de exames', I.check) + navBtn('casos', 'Casos práticos', I.scale) + '</div>' +
-    '<div class="navgrp"><span class="navlbl">Comunidade</span>' + navBtn('chat', 'Chat da comunidade', I.chat) + navBtn('connect', 'LEXDESK Connect', I.users) + '</div>' +
+    '<div class="navgrp"><span class="navlbl">Comunidade</span>' + navBtn('chat', 'Chat da comunidade', I.chat) + navBtn('mensagens', 'Mensagens' + (sessaoAtiva() && dmNaoLidas() ? '<span class="nbadge" style="margin-left:auto">' + dmNaoLidas() + '</span>' : ''), I.mail) + navBtn('salas', 'Salas de estudo', I.door) + navBtn('connect', 'Mentoria e explicações', I.users) + '</div>' +
     (function () { var p = perfil(); return '<button class="sideperfil" data-a="perfil-edit">' + (p && p.instId ? '<span class="sp-t">' + esc(instById(p.instId) ? instById(p.instId).nome : '') + '</span><span class="sp-s">' + esc((p.curso || 'Licenciatura em Direito').replace('Licenciatura em ', '')) + ' · ' + p.ano + '.º ano</span>' : '<span class="sp-t">Definir perfil académico</span><span class="sp-s">Instituição, ano e disciplinas</span>') + '</button>'; })() +
     '<div class="sidefoot" style="margin-top:0"><strong><span class="dot ' + st[0] + '"></span>' + st[1] + '</strong><span>' + st[2] + '</span></div>';
 }
@@ -1178,6 +1251,8 @@ function render() {
   else if (v === 'atualidade') h = vAtualidade2();
   else if (v === 'connect') h = vConnect();
   else if (v === 'chat') h = vChat();
+  else if (v === 'mensagens') h = vMensagens();
+  else if (v === 'salas') h = vSalas();
   else if (v === 'apontamentos') h = vApontamentos();
   else if (v === 'instituicoes') h = vInstituicoes();
   else if (v === 'workspaces') h = S.wsId && Store.get(S.wsId) ? vWorkspace() : vWorkspaces();
@@ -1225,7 +1300,7 @@ function vPainel() {
   }).join('');
   h += '<section class="grid2"><div class="card"><div class="row" style="justify-content:space-between"><h2>Continuar onde ficou</h2>' + (s.ws.length ? '<button class="btn sm" data-go="workspaces">Ver todos</button>' : '') + '</div>' + cont + '</div>' +
     '<div class="card"><h2>Taxa de acerto por disciplina</h2>' + prog + (s.tot ? '' : '<p class="foot" style="margin:0">Os valores aparecem à medida que faz simulações de exame.</p>') + '</div></section>';
-  h += '<section class="promo"><div style="display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 320px"><span class="eyebrow" style="color:var(--gold)">LEXDESK Connect</span><h2 style="color:#fff;font-size:24px">Learn together. Share knowledge.</h2><p style="margin:0;color:#C3CCDB">Encontre explicadores, esclareça dúvidas ou partilhe o que sabe com outros estudantes de Direito.</p></div><div class="row"><button class="btn gold" data-a="conn-tab" data-id="aprender">Quero aprender</button><button class="btn ghost" data-a="conn-tab" data-id="ensinar">Quero ensinar</button></div></section>';
+  h += '<section class="promo"><div style="display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 320px"><span class="eyebrow" style="color:var(--gold)">Mentoria e explicações</span><h2 style="color:#fff;font-size:24px">Learn together. Share knowledge.</h2><p style="margin:0;color:#C3CCDB">Encontre explicadores, esclareça dúvidas ou partilhe o que sabe com outros estudantes de Direito.</p></div><div class="row"><button class="btn gold" data-a="conn-tab" data-id="aprender">Quero aprender</button><button class="btn ghost" data-a="conn-tab" data-id="ensinar">Quero ensinar</button></div></section>';
   // ferramentas + atividade
   var tools = [['exames', 'Simulador de exames', QUESTOES.length + ' questões com explicação e referência legal.'], ['casos', 'Casos práticos', 'Hipóteses com tópicos de correção.'], ['minutas', 'Gerador de minutas', 'Procuração, requerimento, petição inicial e contestação.'], ['biblioteca', 'Biblioteca jurídica', 'Diplomas essenciais e artigos-chave.']];
   var ult = s.at.slice().sort(function (a, b) { return b.createdAt - a.createdAt; }).slice(0, 4);
@@ -1856,10 +1931,10 @@ function updList(l) {
   }).join('');
 }
 
-/* ----- LEXDESK Connect ----- */
+/* ----- Mentoria e explicações ----- */
 function vConnect() {
   var t = S.connTab || 'inicio';
-  var hero = '<section class="hero conn"><div style="display:flex;flex-direction:column;gap:10px;max-width:640px"><span class="eyebrow" style="color:var(--gold)">LEXDESK Connect</span><h1 style="color:#fff;font-size:40px">Learn together. Share knowledge.</h1><p style="margin:0;color:#C3CCDB;font-size:17px">Uma comunidade para aprender e ensinar Direito.</p></div>' +
+  var hero = '<section class="hero conn"><div style="display:flex;flex-direction:column;gap:10px;max-width:640px"><span class="eyebrow" style="color:var(--gold)">Mentoria e explicações</span><h1 style="color:#fff;font-size:40px">Learn together. Share knowledge.</h1><p style="margin:0;color:#C3CCDB;font-size:17px">Uma comunidade para aprender e ensinar Direito.</p></div>' +
     '<div class="choice"><button class="ch' + (t === 'aprender' ? ' on' : '') + '" data-a="conn-tab" data-id="aprender"><span class="cht">Quero aprender</span><span class="chd">Encontra explicadores e esclarece dúvidas.</span></button>' +
     '<button class="ch' + (t === 'ensinar' ? ' on' : '') + '" data-a="conn-tab" data-id="ensinar"><span class="cht">Quero ensinar</span><span class="chd">Partilha conhecimentos e oferece explicações.</span></button></div></section>';
   var h = hero;
@@ -1992,11 +2067,12 @@ var A3 = {
   'tut-del': function () { Store.db.doc('tutores/' + Store.uid).delete().then(function () { toast('Perfil removido.'); }, sharedFail); },
   'tut-contact': function (el) {
     var x = Social.tut.filter(function (t) { return t.id === el.dataset.id; })[0]; if (!x) return;
-    var msg = 'Olá! Encontrei o seu perfil no LEXDESK Connect e gostaria de marcar uma explicação de [CADEIRA]. A minha disponibilidade é [DIAS/HORAS]. Obrigado(a)!';
+    var msg = 'Olá! Encontrei o seu perfil em «Mentoria e explicações» do LEXDESK e gostaria de marcar uma explicação de [CADEIRA]. A minha disponibilidade é [DIAS/HORAS]. Obrigado(a)!';
     openModal('Pedir explicação a ' + nome(x.id), '<div class="note"><b>Contacto indicado pelo explicador</b><br>' + (x.contacto ? esc(x.contacto) : 'O explicador ainda não indicou um contacto público.') + '</div><label class="f">Mensagem sugerida<textarea class="in" id="t-msg" style="min-height:110px">' + esc(msg) + '</textarea></label>',
-      '<button class="btn" data-a="close">Fechar</button><button class="btn pri" data-a="tut-copy">Copiar mensagem</button>');
+      '<button class="btn" data-a="close">Fechar</button><button class="btn" data-a="tut-copy">Copiar mensagem</button>' + (sessaoAtiva() && x.id !== Store.uid ? '<button class="btn wine" data-a="tut-dm" data-id="' + esc(x.id) + '">' + I.mail + 'Enviar por mensagem privada</button>' : ''));
   },
   'tut-copy': function () { copiar($('#t-msg').value); },
+  'tut-dm': function (el) { var t = $('#t-msg').value; DM.draft[el.dataset.id] = t; dmAbrir(el.dataset.id); },
   'duv-new': function () {
     openModal('Colocar uma dúvida', '<label class="f">Cadeira ou área<input class="in" id="d-area" maxlength="80" placeholder="Ex.: Processo Penal"></label><label class="f">Título<input class="in" id="d-tit" maxlength="160" placeholder="Ex.: Quando é que a instrução é obrigatória?"></label><label class="f">Descrição<textarea class="in" id="d-txt" maxlength="4000" style="min-height:140px" placeholder="Explique a dúvida. Não inclua dados pessoais de terceiros."></textarea></label>',
       '<button class="btn" data-a="close">Cancelar</button><button class="btn pri" data-a="duv-save">Publicar</button>');
@@ -2353,7 +2429,7 @@ var A6 = {
   'logout': function () {
     lsSet('lexdesk_sessao', 'off');
     if (Store.unsub) { try { Store.unsub(); } catch (e) {} }
-    Store.unsub = null; Store.col = null; Store.uid = null; SBuser.session = null; S.meuPerfil = null; S.nomeFull = ''; S.nome = '';
+    Store.unsub = null; Store.col = null; Store.uid = null; SBuser.session = null; S.meuPerfil = null; dmStop(); salaSair(); SL.list = null; S.salaId = null; S.nomeFull = ''; S.nome = '';
     Store.mode = lsSet('lexdesk_probe', '1') ? 'local' : 'memory'; Store.saveLocal();
     SB.auth.signOut().catch(function () {});
     closeModal(); render(); toast('Sessão terminada. Os dados ficam disponíveis neste navegador.');
@@ -2596,7 +2672,7 @@ function perfilVer(id) {
       '<div class="pf-top">' + avHtml(p.id, p.nome, 'pf-av') + '<div style="min-width:0"><h2 style="font-size:26px">' + esc(p.nome) + '</h2><div class="row" style="gap:6px;margin-top:6px">' + (est ? '<span class="est big">' + esc(est) + '</span>' : '') + (p.inst_nome ? '<span class="chip gray">' + I.uni + esc(p.inst_nome) + '</span>' : '') + '</div><span style="font-size:12px;color:var(--muted);display:block;margin-top:6px">Membro do LEXDESK desde ' + esc(membro) + '</span></div></div>' +
       (p.bio ? '<div class="pf-bio">' + esc(p.bio).replace(/\n/g, '<br>') + '</div>' : '<div class="note">' + (p.id === Store.uid ? 'Ainda não escreveu a sua biografia.' : 'Este membro ainda não escreveu uma biografia.') + '</div>') +
       (links ? '<div class="row" style="gap:8px">' + links + '</div>' : ''),
-      p.id === Store.uid ? '<button class="btn" data-a="close">Fechar</button><button class="btn wine" data-a="perfil-pub-edit">Editar perfil</button>' : '<button class="btn pri" data-a="close">Fechar</button>');
+      p.id === Store.uid ? '<button class="btn" data-a="close">Fechar</button><button class="btn wine" data-a="perfil-pub-edit">Editar perfil</button>' : '<button class="btn" data-a="close">Fechar</button><button class="btn wine" data-a="dm-com" data-id="' + esc(p.id) + '">' + I.mail + 'Enviar mensagem</button>');
   });
 }
 
@@ -2679,7 +2755,7 @@ I.send = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="cu
 
 var CANAIS = [
   ['geral', 'Geral', 'Conversa geral da comunidade LEXDESK.', 'Comunidade'],
-  ['duvidas', 'Dúvidas rápidas', 'Perguntas curtas sobre matéria. Para dúvidas desenvolvidas, use o LEXDESK Connect.', 'Comunidade'],
+  ['duvidas', 'Dúvidas rápidas', 'Perguntas curtas sobre matéria. Para dúvidas desenvolvidas, use «Mentoria e explicações».', 'Comunidade'],
   ['exames', 'Exames', 'Datas, épocas, preparação e partilha de experiências de avaliação.', 'Comunidade'],
   ['carreira', 'Estágio e carreira', 'Estágio da Ordem, mestrados, concursos e saídas profissionais.', 'Comunidade'],
   ['offtopic', 'Off-topic', 'Conversa livre, sem relação com o Direito.', 'Comunidade'],
@@ -3141,8 +3217,795 @@ function updHash() { var m = location.hash.match(/^#atualidade\/([a-z0-9-]+)$/);
 window.addEventListener('hashchange', function () { if (updHash()) render(); });
 updHash();
 
+/* ---------- MENSAGENS PRIVADAS ---------- */
+I.mail = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>';
+I.gear = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>';
+var DM = { msgs: [], cont: {}, sub: null, ok: false, conv: null, tab: 'conversas', draft: {}, pref: 'todos' };
+
+function dmStart() {
+  if (!SB || !sessaoAtiva() || DM.ok === Store.uid) return;
+  DM.ok = Store.uid; var me = Store.uid;
+  SB.from('dm_msgs').select('*').or('de.eq.' + me + ',para.eq.' + me).order('id', { ascending: false }).limit(1000).then(function (r) {
+    DM.msgs = (r.data || []).reverse(); loadNames(DM.msgs.map(function (m) { return m.de === me ? m.para : m.de; })); renderSide(); if (S.view === 'mensagens') dmPaint(); else scheduleRender();
+  });
+  SB.from('dm_contactos').select('outro,estado').then(function (r) { DM.cont = {}; (r.data || []).forEach(function (c) { DM.cont[c.outro] = c.estado; }); if (S.view === 'mensagens') render(); });
+  SB.from('profiles').select('dm_pref').eq('id', me).maybeSingle().then(function (r) { if (r.data) DM.pref = r.data.dm_pref; });
+  DM.sub = SB.channel('dm-' + Math.random().toString(36).slice(2)).on('postgres_changes', { event: '*', schema: 'public', table: 'dm_msgs' }, function (p) {
+    var m = p.new && p.new.id ? p.new : null;
+    if (p.eventType === 'INSERT' && m) {
+      if (DM.msgs.some(function (x) { return x.id === m.id; })) return;
+      DM.msgs.push(m); var outro = m.de === Store.uid ? m.para : m.de;
+      if (!Social.names[outro]) loadNames([outro]);
+      if (m.para === Store.uid) {
+        if (S.view === 'mensagens' && DM.conv === m.de && document.visibilityState === 'visible') dmMarcarLidas(m.de);
+        else if (DM.cont[m.de] !== 'bloqueado') toast('Nova mensagem de ' + chatNome(m.de) + '.');
+      }
+      renderSide(); if (S.view === 'mensagens') dmPaint(true);
+    } else if (p.eventType === 'UPDATE' && m) { for (var i = 0; i < DM.msgs.length; i++) if (DM.msgs[i].id === m.id) DM.msgs[i] = m; if (S.view === 'mensagens') dmPaint(); renderSide(); }
+    else if (p.eventType === 'DELETE') { var o = p.old || {}; DM.msgs = DM.msgs.filter(function (x) { return x.id !== o.id; }); if (S.view === 'mensagens') dmPaint(); }
+  }).subscribe();
+}
+function dmStop() { if (DM.sub) { try { SB.removeChannel(DM.sub); } catch (e) {} } DM = { msgs: [], cont: {}, sub: null, ok: false, conv: null, tab: 'conversas', draft: {}, pref: 'todos' }; }
+function dmOutro(m) { return m.de === Store.uid ? m.para : m.de; }
+function dmConversas() {
+  var by = {};
+  DM.msgs.forEach(function (m) { var o = dmOutro(m); var c = by[o] || (by[o] = { id: o, last: null, nao: 0, enviei: false }); c.last = m; if (m.para === Store.uid && !m.lida_em) c.nao++; if (m.de === Store.uid) c.enviei = true; });
+  return Object.keys(by).map(function (k) { var c = by[k]; c.estado = DM.cont[k]; c.pedido = c.estado !== 'aceite' && !c.enviei; return c; })
+    .filter(function (c) { return c.estado !== 'bloqueado'; }).sort(function (a, b) { return b.last.id - a.last.id; });
+}
+function dmNaoLidas() { return dmConversas().reduce(function (s, c) { return s + c.nao; }, 0); }
+function dmMarcarLidas(outro) {
+  var ids = DM.msgs.filter(function (m) { return m.de === outro && m.para === Store.uid && !m.lida_em; }).map(function (m) { return m.id; });
+  if (!ids.length) return; var agora = new Date().toISOString();
+  DM.msgs.forEach(function (m) { if (ids.indexOf(m.id) >= 0) m.lida_em = agora; });
+  SB.from('dm_msgs').update({ lida_em: agora }).in('id', ids).then(function () { renderSide(); });
+}
+
+/* ----- vista ----- */
+function vMensagens() {
+  var h = '<div class="head"><div><h1>Mensagens</h1><p class="sub">Conversas privadas com outros membros do LEXDESK.</p></div>';
+  if (!sessaoAtiva()) return h + '</div><section class="promo"><div style="display:flex;flex-direction:column;gap:8px;flex:1 1 320px;min-width:0"><h2 style="color:#fff;font-size:26px">Fale em privado com colegas e explicadores</h2><p style="margin:0;color:#CDD1E4">As mensagens privadas estão disponíveis para utilizadores com conta.</p></div><div class="row"><button class="btn gold" data-a="login-open" data-id="registo">Criar conta</button><button class="btn ghost" data-a="login-open">Iniciar sessão</button></div></section>';
+  h += '<div class="row"><button class="btn sm" data-a="dm-pref">' + I.gear + 'Privacidade</button><button class="btn sm wine" data-a="dm-nova">' + I.plus + 'Nova mensagem</button></div></div>';
+  var cs = dmConversas(), np = cs.filter(function (c) { return c.pedido; }).length;
+  var lista = cs.filter(function (c) { return DM.tab === 'pedidos' ? c.pedido : !c.pedido; });
+  h += '<div class="dm"><aside class="dm-side"><div class="seg" style="width:100%"><button class="' + (DM.tab === 'conversas' ? 'on' : '') + '" data-a="dm-tab" data-id="conversas" style="flex:1">Conversas</button><button class="' + (DM.tab === 'pedidos' ? 'on' : '') + '" data-a="dm-tab" data-id="pedidos" style="flex:1">Pedidos' + (np ? ' <span class="nbadge">' + np + '</span>' : '') + '</button></div>' +
+    (DM.tab === 'pedidos' ? '<span style="font-size:12px;color:var(--muted);padding:4px 6px">Mensagens de pessoas com quem ainda não falou. Só ficam visíveis para o remetente como lidas depois de as aceitar.</span>' : '') +
+    '<div class="dm-list">' + (lista.length ? lista.map(function (c) {
+      var n = chatNome(c.id);
+      return '<button class="dm-c' + (DM.conv === c.id ? ' on' : '') + '" data-a="dm-abrir" data-id="' + esc(c.id) + '">' + avHtml(c.id, n) + '<span class="tx"><b>' + esc(n) + ' ' + estadoChip(c.id) + '</b><span>' + (c.last.de === Store.uid ? 'Eu: ' : '') + esc(c.last.texto.slice(0, 60)) + '</span></span>' + (c.nao ? '<span class="nbadge">' + c.nao + '</span>' : '<span class="dm-t">' + chatHora(c.last.created_at) + '</span>') + '</button>';
+    }).join('') : '<div class="empty" style="margin:8px 0">' + (DM.tab === 'pedidos' ? 'Não tem pedidos de mensagem.' : 'Ainda não tem conversas. Clique em «Nova mensagem» ou abra o perfil de um colega.') + '</div>') + '</div></aside>' +
+    '<section class="dm-main">' + (DM.conv ? dmThreadHtml() : '<div class="empty" style="margin:auto;border:0"><span style="font-size:40px">✉️</span><b>Escolha uma conversa</b><span>Ou comece uma nova a partir do perfil de qualquer membro.</span></div>') + '</section></div>';
+  return h;
+}
+function dmThreadHtml() {
+  var o = DM.conv, n = chatNome(o), c = dmConversas().filter(function (x) { return x.id === o; })[0];
+  var h = '<div class="chat-top"><button class="row avbtn" style="gap:10px;border-radius:12px" data-a="perfil-ver" data-id="' + esc(o) + '">' + avHtml(o, n) + '<span style="text-align:left"><b style="font-size:16px">' + esc(n) + '</b> ' + estadoChip(o) + '</span></button><div class="row" style="gap:6px"><button class="btn sm danger" data-a="dm-bloquear" data-id="' + esc(o) + '">Bloquear</button></div></div>';
+  if (c && c.pedido) h += '<div class="chat-block" style="border-top:0;border-bottom:1px solid var(--line)"><b>' + esc(n) + ' quer enviar-lhe mensagens.</b><div class="row"><button class="btn sm wine" data-a="dm-aceitar" data-id="' + esc(o) + '">Aceitar</button><button class="btn sm danger" data-a="dm-bloquear" data-id="' + esc(o) + '">Bloquear</button></div><span>Se aceitar, a conversa passa para «Conversas». Pode denunciar qualquer mensagem.</span></div>';
+  h += '<div class="chat-list" id="dmlist" role="log" aria-live="polite"></div>';
+  h += '<div class="chat-comp"><textarea id="dm-in" class="in" rows="1" maxlength="2000" placeholder="Escreva uma mensagem a ' + esc(n) + '… (Enter para enviar)" aria-label="Mensagem privada"></textarea><button class="btn wine" data-a="dm-enviar" aria-label="Enviar">' + I.send + '</button></div>';
+  return h;
+}
+function dmPaint(force) {
+  var box = $('#dmlist'); if (!box || !DM.conv) return;
+  var o = DM.conv, l = DM.msgs.filter(function (m) { return dmOutro(m) === o; });
+  var near = box.scrollHeight - box.scrollTop - box.clientHeight < 120;
+  if (!l.length) { box.innerHTML = '<div class="empty" style="margin:auto;border:0">Diga olá a ' + esc(chatNome(o)) + ' 👋</div>'; return; }
+  var h = '', lastDay = '', ultimaMinha = null;
+  l.forEach(function (m) { if (m.de === Store.uid) ultimaMinha = m; });
+  l.forEach(function (m) {
+    var t = new Date(m.created_at).getTime(), day = chatDia(t), mine = m.de === Store.uid;
+    if (day !== lastDay) { h += '<div class="chat-day"><span>' + esc(day) + '</span></div>'; lastDay = day; }
+    h += '<div class="bub' + (mine ? ' me' : '') + '"><div class="bub-t">' + chatTexto(m.texto) + '<span class="bub-h">' + chatHora(t) + '</span></div>' +
+      '<div class="bub-a">' + (mine ? '<button class="icon-btn" data-a="dm-apagar" data-id="' + m.id + '" title="Apagar" aria-label="Apagar mensagem">' + I.trash + '</button>' : '<button class="icon-btn" data-a="dm-denunciar" data-id="' + m.id + '" title="Denunciar" aria-label="Denunciar mensagem">' + I.flag + '</button>') + '</div></div>';
+    if (ultimaMinha && m.id === ultimaMinha.id && m.lida_em) h += '<div class="bub-lida">Lida ' + chatHora(m.lida_em) + '</div>';
+  });
+  box.innerHTML = h; if (force || near) box.scrollTop = box.scrollHeight;
+}
+function dmAfterRender() {
+  if (S.view !== 'mensagens' || !sessaoAtiva()) return;
+  dmStart(); dmPaint(true);
+  var i = $('#dm-in'); if (i) { i.value = DM.draft[DM.conv] || ''; i.style.height = 'auto'; i.style.height = Math.min(160, i.scrollHeight) + 'px'; }
+}
+function dmAbrir(id) {
+  if (!sessaoAtiva()) { A['login-open']({ dataset: {} }); return; }
+  if (id === Store.uid) { toast('Não pode enviar mensagens a si próprio.'); return; }
+  DM.conv = id; var c = dmConversas().filter(function (x) { return x.id === id; })[0]; DM.tab = c && c.pedido ? 'pedidos' : 'conversas';
+  if (!Social.names[id]) loadNames([id]);
+  closeModal(); if (S.view !== 'mensagens') go('mensagens'); else render();
+  if (!(c && c.pedido)) dmMarcarLidas(id);
+  setTimeout(function () { var i = $('#dm-in'); if (i) i.focus(); }, 60);
+}
+document.addEventListener('input', function (e) { if (e.target.id === 'dm-in') { DM.draft[DM.conv] = e.target.value; e.target.style.height = 'auto'; e.target.style.height = Math.min(160, e.target.scrollHeight) + 'px'; } });
+document.addEventListener('keydown', function (e) { if (e.target.id === 'dm-in' && e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); A['dm-enviar']($('[data-a="dm-enviar"]')); } });
+
+function dmErr(e) {
+  var m = String((e && (e.message || e.details)) || '');
+  if (/modo_lento/.test(m)) return 'Está a enviar mensagens demasiado depressa.';
+  if (/row-level security|violates/.test(m)) return 'Esta pessoa não está a aceitar mensagens suas neste momento.';
+  if (/duplicate|unique/.test(m)) return 'Já tinha denunciado esta mensagem.';
+  if (/propria_mensagem/.test(m)) return 'Não pode denunciar as suas próprias mensagens.';
+  return 'Não foi possível concluir. Tente novamente.';
+}
+function dmContacto(outro, estado) {
+  DM.cont[outro] = estado;
+  return SB.from('dm_contactos').upsert({ user_id: Store.uid, outro: outro, estado: estado });
+}
+
+var A10 = {
+  'dm-tab': function (el) { DM.tab = el.dataset.id; render(); },
+  'dm-abrir': function (el) { dmAbrir(el.dataset.id); },
+  'dm-com': function (el) { dmAbrir(el.dataset.id); },
+  'dm-enviar': function (el) {
+    var inp = $('#dm-in'); if (!inp || !DM.conv) return; var t = inp.value.trim(); if (!t) return;
+    var o = DM.conv; if (el) el.disabled = true;
+    var pre = DM.cont[o] === 'aceite' ? Promise.resolve() : dmContacto(o, 'aceite');
+    pre.then(function () { return SB.from('dm_msgs').insert({ para: o, texto: t }).select().single(); }).then(function (r) {
+      if (el) el.disabled = false; if (r.error) { toast(dmErr(r.error)); return; }
+      inp.value = ''; DM.draft[o] = ''; inp.style.height = 'auto';
+      if (!DM.msgs.some(function (x) { return x.id === r.data.id; })) DM.msgs.push(r.data);
+      if (DM.tab === 'pedidos') { DM.tab = 'conversas'; render(); } else dmPaint(true);
+      inp = $('#dm-in'); if (inp) inp.focus();
+    });
+  },
+  'dm-aceitar': function (el) { dmContacto(el.dataset.id, 'aceite').then(function () { DM.tab = 'conversas'; dmMarcarLidas(el.dataset.id); render(); toast('Pedido aceite.'); }); },
+  'dm-bloquear': function (el) {
+    S.dmBloq = el.dataset.id;
+    openModal('Bloquear ' + chatNome(el.dataset.id), '<p style="margin:0;line-height:1.6">Esta pessoa deixa de lhe poder enviar mensagens privadas e a conversa desaparece da sua lista. Não é avisada do bloqueio. Pode desbloquear mais tarde em «Privacidade».</p>', '<button class="btn" data-a="close">Cancelar</button><button class="btn danger" data-a="dm-bloquear-ok">Bloquear</button>');
+  },
+  'dm-bloquear-ok': function () { var o = S.dmBloq; dmContacto(o, 'bloqueado').then(function () { if (DM.conv === o) DM.conv = null; closeModal(); render(); renderSide(); toast('Utilizador bloqueado.'); }); },
+  'dm-desbloquear': function (el) { var o = el.dataset.id; delete DM.cont[o]; SB.from('dm_contactos').delete().eq('user_id', Store.uid).eq('outro', o).then(function () { A10['dm-pref'](); render(); toast('Utilizador desbloqueado.'); }); },
+  'dm-apagar': function (el) { var id = Number(el.dataset.id); SB.from('dm_msgs').delete().eq('id', id).then(function (r) { if (r.error) { toast(dmErr(r.error)); return; } DM.msgs = DM.msgs.filter(function (m) { return m.id !== id; }); dmPaint(); toast('Mensagem apagada.'); }); },
+  'dm-denunciar': function (el) {
+    S.denPriv = { origem: 'dm', id: Number(el.dataset.id) };
+    openModal('Denunciar mensagem', motivoSelect('dp-mot') + '<label class="f">Explicação (opcional)<textarea class="in" id="dp-det" maxlength="1000"></textarea></label><span style="font-size:12px;color:var(--muted)">A moderação vê apenas esta mensagem, não a conversa completa. Considere também bloquear o remetente.</span>', '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="den-priv-ok">Enviar denúncia</button>');
+  },
+  'den-priv-ok': function (el) {
+    el.disabled = true; var d = S.denPriv;
+    SB.rpc('denunciar_privada', { p_origem: d.origem, p_ref: d.id, p_motivo: $('#dp-mot').value, p_detalhes: $('#dp-det').value || '' }).then(function (r) {
+      el.disabled = false; if (r.error) { toast(dmErr(r.error)); return; } closeModal(); toast('Denúncia enviada à moderação.');
+    });
+  },
+  'dm-pref': function () {
+    var bl = Object.keys(DM.cont).filter(function (k) { return DM.cont[k] === 'bloqueado'; }); loadNames(bl);
+    openModal('Privacidade das mensagens', '<fieldset class="disc"><legend>Quem me pode enviar mensagens</legend>' + [['todos', 'Todos os membros do LEXDESK', 'Pessoas novas aparecem em «Pedidos».'], ['salas', 'Só membros das minhas salas de estudo', 'E pessoas com quem já conversei.'], ['ninguem', 'Ninguém', 'Só pessoas com quem já conversei.']].map(function (o) {
+      return '<label class="check" style="align-items:flex-start;min-height:0;padding:6px 0"><input type="radio" name="dmp" value="' + o[0] + '"' + (DM.pref === o[0] ? ' checked' : '') + '><span><b>' + o[1] + '</b><br><span style="font-size:12px;color:var(--muted)">' + o[2] + '</span></span></label>';
+    }).join('') + '</fieldset>' +
+      '<fieldset class="disc"><legend>Utilizadores bloqueados</legend>' + (bl.length ? bl.map(function (k) { return '<div class="row" style="justify-content:space-between;padding:4px 0"><span>' + esc(chatNome(k)) + '</span><button class="btn sm" data-a="dm-desbloquear" data-id="' + esc(k) + '">Desbloquear</button></div>'; }).join('') : '<span style="font-size:13px;color:var(--muted)">Não bloqueou ninguém.</span>') + '</fieldset>',
+      '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="dm-pref-ok">Guardar</button>');
+  },
+  'dm-pref-ok': function () {
+    var v = (document.querySelector('input[name="dmp"]:checked') || {}).value || 'todos';
+    SB.from('profiles').update({ dm_pref: v }).eq('id', Store.uid).then(function (r) { if (r.error) { toast(dmErr(r.error)); return; } DM.pref = v; closeModal(); toast('Preferência guardada.'); });
+  },
+  'dm-nova': function () {
+    openModal('Nova mensagem', '<label class="search" style="max-width:none">' + I.search + '<input id="dm-q" type="search" placeholder="Procurar membro pelo nome…" autocomplete="off"></label><div class="list" id="dm-res" style="gap:6px"><span style="font-size:13px;color:var(--muted)">Escreva pelo menos 2 letras.</span></div>', '<button class="btn" data-a="close">Fechar</button>');
+  }
+};
+Object.keys(A10).forEach(function (k) { A[k] = A10[k]; });
+var dmQT;
+document.addEventListener('input', function (e) {
+  if (e.target.id !== 'dm-q') return; clearTimeout(dmQT); var q = e.target.value.trim();
+  dmQT = setTimeout(function () {
+    var box = $('#dm-res'); if (!box) return;
+    if (q.length < 2) { box.innerHTML = '<span style="font-size:13px;color:var(--muted)">Escreva pelo menos 2 letras.</span>'; return; }
+    SB.from('profiles').select('id,nome,estado,genero,avatar_url').ilike('nome', '%' + q.replace(/[%_,()]/g, '') + '%').neq('id', Store.uid).limit(12).then(function (r) {
+      var l = r.data || []; l.forEach(function (p) { Social.prof[p.id] = p; Social.names[p.id] = p.nome; });
+      box.innerHTML = l.length ? l.map(function (p) { return '<button class="li" data-a="dm-com" data-id="' + esc(p.id) + '" style="padding:10px">' + avHtml(p.id, p.nome) + '<span class="tx"><b>' + esc(p.nome) + '</b><span>' + esc(estadoTxt(p.estado, p.genero) || 'Membro LEXDESK') + '</span></span></button>'; }).join('') : '<span style="font-size:13px;color:var(--muted)">Nenhum membro encontrado.</span>';
+    });
+  }, 250);
+});
+
+/* ----- painel de moderação: inclui denúncias de mensagens privadas e salas ----- */
+var _modPanel = chatModPanel;
+A['chat-mod'] = function () {
+  SB.from('denuncias_privadas').select('*').eq('estado', 'pendente').order('created_at').limit(100).then(function (r) {
+    var l = S.denPrivList = r.data || [];
+    if (!l.length) { _modPanel(); return; }
+    loadNames(l.map(function (d) { return d.msg_autor; }));
+    openModal('Moderação', '<div class="seg"><button data-a="mod-pub">Chat público</button><button class="on">Privadas e salas (' + l.length + ')</button></div><div class="list">' + l.map(function (d) {
+      return '<div class="card" style="padding:16px;gap:8px;border-radius:16px"><div class="row" style="justify-content:space-between"><span class="chip wine">' + esc(MOTIVOS[d.motivo] || d.motivo) + '</span><span style="font-size:12px;color:var(--muted)">' + (d.origem === 'dm' ? 'Mensagem privada' : 'Sala de estudo') + ' · ' + quando(new Date(d.created_at).getTime()) + '</span></div><div class="note"><b>' + esc(chatNome(d.msg_autor)) + ':</b> ' + chatTexto(d.msg_texto) + '</div>' + (d.detalhes ? '<span style="font-size:13px"><b>Explicação:</b> ' + esc(d.detalhes) + '</span>' : '') +
+        '<div class="row"><button class="btn sm danger" data-a="dp-rm" data-id="' + d.id + '">Apagar mensagem</button><button class="btn sm danger" data-a="dp-rm" data-sus="1" data-id="' + d.id + '">Apagar e suspender 7 dias</button><button class="btn sm" data-a="dp-rej" data-id="' + d.id + '">Rejeitar</button></div></div>';
+    }).join('') + '</div>', '<button class="btn pri" data-a="close">Fechar</button>');
+  });
+};
+A['mod-pub'] = function () { _modPanel(); };
+A['dp-rm'] = function (el) {
+  var d = (S.denPrivList || []).filter(function (x) { return String(x.id) === el.dataset.id; })[0]; if (!d) return; var sus = el.dataset.sus === '1';
+  SB.rpc('moderar_privada', { p_den: d.id, p_remover: true, p_decisao: MOTIVOS[d.motivo] + (sus ? ' · autor suspenso 7 dias' : '') }).then(function (r) {
+    if (r.error) { toast(chatErr(r.error)); return; }
+    var p = sus ? SB.from('chat_suspensoes').upsert({ user_id: d.msg_autor, ate: new Date(Date.now() + 7 * 864e5).toISOString(), motivo: MOTIVOS[d.motivo], por: Store.uid }) : Promise.resolve();
+    p.then(function () { toast('Mensagem apagada.'); A['chat-mod'](); });
+  });
+};
+A['dp-rej'] = function (el) { SB.rpc('moderar_privada', { p_den: Number(el.dataset.id), p_remover: false, p_decisao: 'Sem violação das regras' }).then(function () { toast('Denúncia rejeitada.'); A['chat-mod'](); }); };
+
+/* ---------- SALAS DE ESTUDO PRIVADAS ---------- */
+I.door = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a2 2 0 0 1 2-2h9l5 3v15"/><path d="M2 21h20M14 12h.01"/></svg>';
+I.timer = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg>';
+I.game = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="11" rx="5"/><path d="M7 11v3M5.5 12.5h3M15 12h.01M18 13h.01"/></svg>';
+var SALA_COR = { wine: 'linear-gradient(135deg,#7B1E2B,#3B0D16)', indigo: 'linear-gradient(135deg,#4338CA,#1E1B4B)', gold: 'linear-gradient(135deg,#F59E0B,#9A3412)', teal: 'linear-gradient(135deg,#0F766E,#134E4A)', slate: 'linear-gradient(135deg,#334155,#0F172A)' };
+var SL = { list: null, cur: null, membros: [], msgs: [], quadro: [], est: {}, resp: [], subs: [], pres: null, online: {}, tab: 'ativ', draft: '', id: null };
+
+function salasLoad() {
+  if (!SB || !sessaoAtiva()) return;
+  SB.from('salas').select('*, sala_membros(count)').order('created_at', { ascending: false }).then(function (r) { SL.list = r.data || []; if (S.view === 'salas' && !S.salaId) render(); });
+}
+function salaEntrar(id) {
+  salaSair(); SL.id = id; SL.cur = null; SL.membros = []; SL.msgs = []; SL.quadro = []; SL.est = {}; SL.resp = []; SL.tab = 'ativ';
+  SB.from('salas').select('*').eq('id', id).maybeSingle().then(function (r) { if (!r.data) { toast('Não tem acesso a esta sala.'); S.salaId = null; render(); return; } SL.cur = r.data; render(); });
+  SB.from('sala_membros').select('*').eq('sala_id', id).then(function (r) { SL.membros = r.data || []; loadNames(SL.membros.map(function (m) { return m.user_id; })); slPaint(); });
+  SB.from('sala_msgs').select('*').eq('sala_id', id).order('id', { ascending: false }).limit(150).then(function (r) { SL.msgs = (r.data || []).reverse(); loadNames(SL.msgs.map(function (m) { return m.autor; })); slChatPaint(true); });
+  SB.from('sala_quadro').select('*').eq('sala_id', id).order('created_at', { ascending: false }).then(function (r) { SL.quadro = r.data || []; if (SL.tab === 'quadro') slPaint(); });
+  SB.from('sala_estado').select('*').eq('sala_id', id).maybeSingle().then(function (r) { SL.est = r.data || {}; slRespLoad(); slPaint(); });
+  var f = 'sala_id=eq.' + id;
+  var ch = SB.channel('sala-db-' + id + '-' + Math.random().toString(36).slice(2, 6))
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'sala_msgs', filter: f }, function (p) {
+      if (p.eventType === 'INSERT') { if (!SL.msgs.some(function (x) { return x.id === p.new.id; })) { SL.msgs.push(p.new); if (!Social.names[p.new.autor]) loadNames([p.new.autor]); slChatPaint(); } }
+      else if (p.eventType === 'DELETE') { SL.msgs = SL.msgs.filter(function (x) { return x.id !== (p.old || {}).id; }); slChatPaint(); }
+    })
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'sala_quadro', filter: f }, function () { SB.from('sala_quadro').select('*').eq('sala_id', id).order('created_at', { ascending: false }).then(function (r) { SL.quadro = r.data || []; if (SL.tab === 'quadro') slPaint(); }); })
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'sala_estado', filter: f }, function (p) { var antes = SL.est.ativ && SL.est.ativ.id; SL.est = p.new || SL.est; if (!SL.est.ativ || SL.est.ativ.id !== antes) slRespLoad(); slPaint(); })
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'sala_respostas', filter: f }, function (p) { if (SL.est.ativ && p.new.ativ_id === SL.est.ativ.id && !SL.resp.some(function (x) { return x.user_id === p.new.user_id && x.ronda === p.new.ronda; })) { SL.resp.push(p.new); slPaint(); slAutoRevelar(); } })
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'sala_membros', filter: f }, function () { SB.from('sala_membros').select('*').eq('sala_id', id).then(function (r) { SL.membros = r.data || []; if (!SL.membros.some(function (m) { return m.user_id === Store.uid; })) { toast('Já não é membro desta sala.'); S.salaId = null; salaSair(); render(); return; } loadNames(SL.membros.map(function (m) { return m.user_id; })); slPaint(); }); })
+    .subscribe();
+  SL.subs.push(ch);
+  var pr = SB.channel('sala-on-' + id, { config: { presence: { key: Store.uid } } });
+  pr.on('presence', { event: 'sync' }, function () { var st = pr.presenceState(); SL.online = {}; Object.keys(st).forEach(function (k) { SL.online[k] = 1; }); slPaintOnline(); })
+    .subscribe(function (s) { if (s === 'SUBSCRIBED') pr.track({ t: Date.now() }); });
+  SL.pres = pr;
+  clearInterval(SL.tick); SL.tick = setInterval(slTick, 500);
+}
+function salaSair() { SL.subs.forEach(function (c) { try { SB.removeChannel(c); } catch (e) {} }); SL.subs = []; if (SL.pres) { try { SL.pres.untrack(); SB.removeChannel(SL.pres); } catch (e) {} SL.pres = null; } clearInterval(SL.tick); SL.id = null; }
+function slRespLoad() { var a = SL.est.ativ; SL.resp = []; if (!a) return; SB.from('sala_respostas').select('*').eq('ativ_id', a.id).then(function (r) { SL.resp = r.data || []; slPaint(); }); }
+function eAdminSala() { return SL.membros.some(function (m) { return m.user_id === Store.uid && m.papel === 'admin'; }); }
+function slSetEstado(patch) { var o = {}; Object.keys(patch).forEach(function (k) { o[k] = patch[k]; SL.est[k] = patch[k]; }); o.updated_at = new Date().toISOString(); slPaint(); return SB.from('sala_estado').update(o).eq('sala_id', SL.id).then(function (r) { if (r.error) toast('Não foi possível atualizar a sala.'); }); }
+
+/* ----- vistas ----- */
+function vSalas() {
+  var h = '<div class="head"><div><h1>Salas de estudo</h1><p class="sub">Salas privadas para estudar em grupo: chat, quadro partilhado, Pomodoro, quizzes ao vivo, exames em conjunto e mini-jogos jurídicos.</p></div>';
+  if (!sessaoAtiva()) return h + '</div><section class="promo"><div style="display:flex;flex-direction:column;gap:8px;flex:1 1 320px;min-width:0"><h2 style="color:#fff;font-size:26px">Estude com os seus colegas</h2><p style="margin:0;color:#CDD1E4">As salas de estudo estão disponíveis para utilizadores com conta.</p></div><div class="row"><button class="btn gold" data-a="login-open" data-id="registo">Criar conta</button><button class="btn ghost" data-a="login-open">Iniciar sessão</button></div></section>';
+  if (S.salaId) return vSala();
+  h += '<div class="row"><button class="btn sm" data-a="sala-codigo">Entrar com código</button><button class="btn sm wine" data-a="sala-nova">' + I.plus + 'Criar sala</button></div></div>';
+  if (SL.list === null) { salasLoad(); return h + '<div class="empty">A carregar as suas salas…</div>'; }
+  if (!SL.list.length) return h + '<div class="card"><div class="empty" style="border:0"><span style="font-size:40px">📚</span><b>Ainda não está em nenhuma sala</b><span>Crie uma sala e convide os colegas com o código, ou entre numa sala com o código que lhe enviaram.</span><div class="row"><button class="btn" data-a="sala-codigo">Entrar com código</button><button class="btn wine" data-a="sala-nova">' + I.plus + 'Criar a primeira sala</button></div></div></div>';
+  return h + '<div class="ugrid">' + SL.list.map(function (s) {
+    var n = s.sala_membros && s.sala_membros[0] ? s.sala_membros[0].count : 1;
+    return '<button class="ucard" data-a="sala-abrir" data-id="' + s.id + '"><div class="capa sm" style="background:' + (SALA_COR[s.cor] || SALA_COR.wine) + '"><svg class="capa-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1">' + I.door.replace(/^<svg[^>]*>|<\/svg>$/g, '') + '</svg><span class="capa-k">' + esc(s.cadeira || 'Sala de estudo') + '</span><span class="capa-n">' + esc(s.nome) + '</span></div><span class="ub"><span class="row" style="gap:6px"><span class="chip gray">' + plural(n, 'membro', 'membros') + ' de ' + s.max_membros + '</span><span class="chip">Código ' + esc(s.codigo) + '</span></span></span></button>';
+  }).join('') + '</div>';
+}
+function vSala() {
+  var s = SL.cur; if (!s) return '<div class="empty">A abrir a sala…</div>';
+  var adm = eAdminSala();
+  var h = '<section class="sala-hero" style="background:' + (SALA_COR[s.cor] || SALA_COR.wine) + '"><div><span class="crumb"><button data-a="sala-voltar" style="color:#fff">Salas de estudo</button></span><h1>' + esc(s.nome) + '</h1><span class="sala-sub">' + (s.cadeira ? esc(s.cadeira) + ' · ' : '') + plural(SL.membros.length, 'membro', 'membros') + ' · <span id="sl-on">' + Object.keys(SL.online).length + ' online</span></span></div>' +
+    '<div class="row"><button class="btn ghost sm" data-a="sala-convite">' + I.link + 'Convidar · ' + esc(s.codigo) + '</button>' + (adm ? '<button class="btn ghost sm" data-a="sala-gerir">' + I.gear + 'Gerir</button>' : '') + '<button class="btn ghost sm" data-a="sala-sair">Sair</button></div></section>';
+  h += '<div class="sala"><div class="sala-main"><div class="seg">' + [['ativ', 'Atividades e jogos'], ['quadro', 'Quadro'], ['membros', 'Membros'], ['juridle', 'Juridle']].map(function (t) { return '<button class="' + (SL.tab === t[0] ? 'on' : '') + '" data-a="sala-tab" data-id="' + t[0] + '">' + t[1] + '</button>'; }).join('') + '</div><div id="sl-body"></div></div>' +
+    '<aside class="sala-side"><div class="card pomo" id="sl-pomo"></div><div class="card sala-chat"><h2 style="font-size:16px">Chat da sala</h2><div class="chat-list" id="slchat"></div><div class="chat-comp" style="padding:8px 0 0;border:0"><textarea id="sl-in" class="in" rows="1" maxlength="2000" placeholder="Mensagem para a sala…" aria-label="Mensagem para a sala"></textarea><button class="btn wine" data-a="sl-enviar" aria-label="Enviar">' + I.send + '</button></div></div></aside></div>';
+  return h;
+}
+function slPaint() {
+  if (S.view !== 'salas' || !S.salaId) return;
+  var b = $('#sl-body'); if (!b) return;
+  var a = SL.est.ativ;
+  if (SL.tab === 'ativ') b.innerHTML = a ? vAtiv(a) : vCatalogo();
+  else if (SL.tab === 'quadro') b.innerHTML = vQuadro();
+  else if (SL.tab === 'membros') b.innerHTML = vMembros();
+  else if (SL.tab === 'juridle') b.innerHTML = vJuridleSala();
+  slPomoPaint(); fxEnhance();
+}
+function slPaintOnline() { var e = $('#sl-on'); if (e) e.textContent = Object.keys(SL.online).length + ' online'; if (SL.tab === 'membros') slPaint(); }
+function slChatPaint(force) {
+  var box = $('#slchat'); if (!box) return; var near = box.scrollHeight - box.scrollTop - box.clientHeight < 100;
+  box.innerHTML = SL.msgs.length ? SL.msgs.map(function (m) {
+    var mine = m.autor === Store.uid, n = chatNome(m.autor);
+    return '<div class="smsg' + (mine ? ' me' : '') + '"><b>' + perfilLink(m.autor, mine ? 'Eu' : n) + '</b> <span class="t">' + chatHora(m.created_at) + '</span><div>' + chatTexto(m.texto) + '</div>' +
+      '<span class="sa">' + (mine || eAdminSala() ? '<button class="icon-btn" data-a="sl-apagar" data-id="' + m.id + '" aria-label="Apagar">' + I.trash + '</button>' : '') + (!mine ? '<button class="icon-btn" data-a="sl-denunciar" data-id="' + m.id + '" aria-label="Denunciar">' + I.flag + '</button>' : '') + '</span></div>';
+  }).join('') : '<div class="empty" style="border:0;margin:auto">Sem mensagens. Diga olá à sala!</div>';
+  if (force || near) box.scrollTop = box.scrollHeight;
+}
+function salaAfterRender() {
+  if (S.view !== 'salas' || !S.salaId) { if (SL.id) salaSair(); return; }
+  if (!sessaoAtiva()) return;
+  if (SL.id !== S.salaId) salaEntrar(S.salaId);
+  slPaint(); slChatPaint(true);
+  var i = $('#sl-in'); if (i) i.value = SL.draft || '';
+}
+document.addEventListener('input', function (e) { if (e.target.id === 'sl-in') { SL.draft = e.target.value; e.target.style.height = 'auto'; e.target.style.height = Math.min(120, e.target.scrollHeight) + 'px'; } });
+document.addEventListener('keydown', function (e) { if (e.target.id === 'sl-in' && e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); A['sl-enviar']($('[data-a="sl-enviar"]')); } });
+
+/* ----- Pomodoro partilhado ----- */
+function slPomoPaint() {
+  var box = $('#sl-pomo'); if (!box) return; var p = SL.est.pomodoro;
+  var rest = p ? Math.max(0, Math.round((new Date(p.fim).getTime() - Date.now()) / 1000)) : 0;
+  var mm = String(Math.floor(rest / 60)).padStart(2, '0'), ss = String(rest % 60).padStart(2, '0');
+  var tot = p ? (p.fase === 'estudo' ? 25 : 5) * 60 : 1, pct = p ? 1 - rest / tot : 0, C = 2 * Math.PI * 44;
+  box.innerHTML = '<div class="row" style="justify-content:space-between"><h2 style="font-size:16px">' + I.timer + ' Pomodoro</h2>' + (p ? '<span class="chip ' + (p.fase === 'estudo' ? 'wine' : 'ok') + '">' + (p.fase === 'estudo' ? 'Estudo' : 'Pausa') + '</span>' : '') + '</div>' +
+    '<div class="pomo-r"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="none" stroke="#EEF0F5" stroke-width="8"/><circle cx="50" cy="50" r="44" fill="none" stroke="' + (p && p.fase === 'pausa' ? '#0E9F6E' : '#7B1E2B') + '" stroke-width="8" stroke-linecap="round" stroke-dasharray="' + C.toFixed(1) + '" stroke-dashoffset="' + (C * (1 - pct)).toFixed(1) + '" transform="rotate(-90 50 50)"/></svg><b id="pomo-t">' + (p ? mm + ':' + ss : '25:00') + '</b></div>' +
+    '<div class="row" style="justify-content:center">' + (p ? '<button class="btn sm" data-a="pomo-stop">Parar</button>' : '<button class="btn sm wine" data-a="pomo-start" data-id="estudo">Começar 25 min</button><button class="btn sm" data-a="pomo-start" data-id="pausa">Pausa 5 min</button>') + '</div>' +
+    '<span style="font-size:11px;color:var(--muted);text-align:center">Sincronizado para todos os membros da sala.</span>';
+}
+function slTick() {
+  var p = SL.est.pomodoro;
+  if (p) {
+    var rest = Math.round((new Date(p.fim).getTime() - Date.now()) / 1000);
+    if (rest <= 0 && !SL.pomoFeito) {
+      SL.pomoFeito = p.fim; toast(p.fase === 'estudo' ? '⏰ Fim do bloco de estudo! Pausa de 5 minutos.' : '⏰ Fim da pausa! De volta ao estudo.');
+      if (eAdminSala() || Object.keys(SL.online).sort()[0] === Store.uid) slSetEstado({ pomodoro: { fase: p.fase === 'estudo' ? 'pausa' : 'estudo', fim: new Date(Date.now() + (p.fase === 'estudo' ? 5 : 25) * 60000).toISOString() } });
+    } else if (rest > 0) { SL.pomoFeito = null; var t = $('#pomo-t'); if (t) { slPomoPaint(); } }
+  }
+  var a = SL.est.ativ; if (a && a.estado === 'ronda' && a.inicio) { var tt = $('#at-timer'); if (tt) { var r = ativRestante(a); tt.textContent = r; if (r <= 0 && !SL.tempoFim) { SL.tempoFim = a.id + a.idx; slPaint(); slAutoRevelar(); } } }
+}
+
+/* ----- quadro, membros ----- */
+function vQuadro() {
+  var datas = SL.quadro.filter(function (q) { return q.tipo === 'data'; }).sort(function (a, b) { return String(a.data).localeCompare(String(b.data)); });
+  var notas = SL.quadro.filter(function (q) { return q.tipo === 'nota'; }), fich = SL.quadro.filter(function (q) { return q.tipo === 'ficheiro'; });
+  var del = function (q) { return q.autor === Store.uid || eAdminSala() ? '<button class="icon-btn" data-a="qd-apagar" data-id="' + q.id + '" aria-label="Apagar">' + I.trash + '</button>' : ''; };
+  return '<div class="row" style="justify-content:flex-end"><button class="btn sm" data-a="qd-novo" data-id="nota">' + I.note + 'Nota</button><button class="btn sm" data-a="qd-novo" data-id="data">' + I.clock + 'Data</button><button class="btn sm wine" data-a="qd-novo" data-id="ficheiro">' + I.file + 'Ficheiro</button></div>' +
+    '<div class="qd"><div class="card"><h2 style="font-size:16px">Datas do grupo</h2>' + (datas.length ? datas.map(function (q) { var n = diasAte(q.data); return '<div class="qd-i"><span class="cdn"><span class="it"><span class="d" style="width:46px;height:46px"><b style="font-size:16px">' + (n >= 0 ? n : '✓') + '</b><small>' + (n >= 0 ? 'dias' : 'feito') + '</small></span></span></span><span style="flex:1;min-width:0"><b>' + esc(q.texto) + '</b><br><span style="font-size:12px;color:var(--muted)">' + dataLonga(q.data) + '</span></span>' + del(q) + '</div>'; }).join('') : '<span style="font-size:13px;color:var(--muted)">Sem datas. Adicione exames e entregas do grupo.</span>') + '</div>' +
+    '<div class="card"><h2 style="font-size:16px">Notas fixadas</h2>' + (notas.length ? notas.map(function (q) { return '<div class="qd-i nota"><span style="flex:1;min-width:0;white-space:pre-wrap">' + chatTexto(q.texto) + '<br><span style="font-size:11px;color:var(--muted)">' + esc(chatNome(q.autor)) + ' · ' + quando(new Date(q.created_at).getTime()) + '</span></span>' + del(q) + '</div>'; }).join('') : '<span style="font-size:13px;color:var(--muted)">Sem notas.</span>') + '</div>' +
+    '<div class="card"><h2 style="font-size:16px">Ficheiros partilhados</h2>' + (fich.length ? fich.map(function (q) { return '<div class="qd-i"><span class="ic" style="color:var(--wine)">' + I.file + '</span><span style="flex:1;min-width:0"><b>' + esc(q.texto) + '</b><br><span style="font-size:12px;color:var(--muted)">' + tipoCurto(q.ficheiro && q.ficheiro.tipo) + ' · ' + tamanho((q.ficheiro && q.ficheiro.tamanho) || 0) + ' · ' + esc(chatNome(q.autor)) + '</span></span><button class="btn sm" data-a="qd-abrir" data-id="' + q.id + '">Abrir</button>' + del(q) + '</div>'; }).join('') : '<span style="font-size:13px;color:var(--muted)">Sem ficheiros. Arraste um ficheiro para aqui ou use o botão «Ficheiro».</span>') + '</div></div>';
+}
+function vMembros() {
+  var adm = eAdminSala();
+  return '<div class="card"><div class="list" style="gap:8px">' + SL.membros.slice().sort(function (a, b) { return (b.papel === 'admin') - (a.papel === 'admin'); }).map(function (m) {
+    var n = chatNome(m.user_id), on = SL.online[m.user_id];
+    return '<div class="li" style="cursor:default"><button class="avbtn" data-a="perfil-ver" data-id="' + m.user_id + '">' + avHtml(m.user_id, n) + '</button><span class="tx"><b>' + perfilLink(m.user_id, n) + ' ' + estadoChip(m.user_id) + '</b><span>' + (m.papel === 'admin' ? 'Administrador · ' : '') + (on ? '<span style="color:var(--ok);font-weight:700">● online</span>' : 'offline') + '</span></span>' +
+      (m.user_id !== Store.uid ? '<button class="btn sm" data-a="dm-com" data-id="' + m.user_id + '">' + I.mail + 'Mensagem</button>' : '') +
+      (adm && m.user_id !== Store.uid ? (m.papel !== 'admin' ? '<button class="btn sm" data-a="sm-admin" data-id="' + m.user_id + '">Tornar admin</button>' : '') + '<button class="btn sm danger" data-a="sm-expulsar" data-id="' + m.user_id + '">Remover</button>' : '') + '</div>';
+  }).join('') + '</div></div>';
+}
+
+/* ----- ações da sala ----- */
+function slErr(e) {
+  var m = String((e && (e.message || e.details)) || '');
+  if (/codigo_invalido/.test(m)) return 'Código inválido. Confirme o código da sala.';
+  if (/sala_cheia/.test(m)) return 'Esta sala já está cheia (máximo de 12 membros).';
+  if (/limite_salas/.test(m)) return 'Atingiu o limite de 10 salas criadas.';
+  if (/modo_lento/.test(m)) return 'Está a enviar mensagens demasiado depressa.';
+  if (/suspenso/.test(m)) return 'A sua conta está suspensa.';
+  return 'Não foi possível concluir. Tente novamente.';
+}
+var A11 = {
+  'sala-nova': function () {
+    openModal('Criar sala de estudo', '<label class="f">Nome da sala<input class="in" id="sn-nome" maxlength="60" placeholder="Ex.: Grupo de Processo Penal"></label><label class="f">Cadeira (opcional)<input class="in" id="sn-cad" maxlength="100" placeholder="Ex.: Direito Processual Penal"></label>' +
+      '<fieldset class="disc"><legend>Cor</legend><div class="row">' + Object.keys(SALA_COR).map(function (c, i) { return '<label class="check" style="min-height:0"><input type="radio" name="sn-cor" value="' + c + '"' + (i === 0 ? ' checked' : '') + '><span class="cor-b" style="background:' + SALA_COR[c] + '"></span></label>'; }).join('') + '</div></fieldset><span style="font-size:12px;color:var(--muted)">A sala é privada: só entra quem tiver o código de convite. Máximo de 12 membros.</span>',
+      '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="sala-nova-ok">Criar sala</button>');
+  },
+  'sala-nova-ok': function (el) {
+    var n = $('#sn-nome').value.trim(); if (n.length < 2) { toast('Indique o nome da sala.'); return; } el.disabled = true;
+    SB.rpc('criar_sala', { p_nome: n, p_cadeira: $('#sn-cad').value.trim(), p_cor: (document.querySelector('input[name="sn-cor"]:checked') || {}).value || 'wine' }).then(function (r) {
+      el.disabled = false; if (r.error) { toast(slErr(r.error)); return; } closeModal(); SL.list = null; S.salaId = r.data.id; render(); toast('Sala criada! Partilhe o código ' + r.data.codigo + ' com os colegas.');
+    });
+  },
+  'sala-codigo': function () { openModal('Entrar numa sala', '<label class="f">Código de convite<input class="in" id="sc-cod" maxlength="6" placeholder="Ex.: K7M2QX" style="text-transform:uppercase;font-size:22px;letter-spacing:.2em;font-weight:800;text-align:center"></label>', '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="sala-codigo-ok">Entrar</button>'); },
+  'sala-codigo-ok': function (el) { var c = $('#sc-cod').value.trim().toUpperCase(); if (c.length !== 6) { toast('O código tem 6 caracteres.'); return; } salaPorCodigo(c, el); },
+  'sala-abrir': function (el) { S.salaId = el.dataset.id; render(); window.scrollTo(0, 0); },
+  'sala-voltar': function () { S.salaId = null; salaSair(); SL.list = null; render(); },
+  'sala-tab': function (el) { SL.tab = el.dataset.id; render(); },
+  'sala-convite': function () {
+    var s = SL.cur, url = location.origin + location.pathname + '#sala/' + s.codigo;
+    openModal('Convidar para «' + s.nome + '»', '<div class="convite"><span>Código da sala</span><b>' + esc(s.codigo) + '</b></div><label class="f">Ligação de convite<input class="in" readonly value="' + esc(url) + '" onclick="this.select()"></label><span style="font-size:12px;color:var(--muted)">Quem tiver o código ou a ligação pode entrar (é preciso conta LEXDESK). Partilhe apenas com quem quer na sala.</span>', '<button class="btn" data-a="close">Fechar</button><button class="btn wine" data-a="sala-convite-copiar">Copiar ligação</button>');
+  },
+  'sala-convite-copiar': function () { copiar(location.origin + location.pathname + '#sala/' + SL.cur.codigo); toast('Ligação copiada.'); },
+  'sala-gerir': function () {
+    var s = SL.cur;
+    openModal('Gerir sala', '<label class="f">Nome<input class="in" id="sg-nome" maxlength="60" value="' + esc(s.nome) + '"></label><label class="f">Cadeira<input class="in" id="sg-cad" maxlength="100" value="' + esc(s.cadeira || '') + '"></label><fieldset class="disc"><legend>Cor</legend><div class="row">' + Object.keys(SALA_COR).map(function (c) { return '<label class="check" style="min-height:0"><input type="radio" name="sg-cor" value="' + c + '"' + (s.cor === c ? ' checked' : '') + '><span class="cor-b" style="background:' + SALA_COR[c] + '"></span></label>'; }).join('') + '</div></fieldset>',
+      (s.dono === Store.uid ? '<button class="btn danger" data-a="sala-apagar" style="margin-right:auto">Apagar sala</button>' : '') + '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="sala-gerir-ok">Guardar</button>');
+  },
+  'sala-gerir-ok': function () { var u = { nome: $('#sg-nome').value.trim(), cadeira: $('#sg-cad').value.trim() || null, cor: (document.querySelector('input[name="sg-cor"]:checked') || {}).value }; SB.from('salas').update(u).eq('id', SL.id).then(function (r) { if (r.error) { toast(slErr(r.error)); return; } Object.keys(u).forEach(function (k) { SL.cur[k] = u[k]; }); closeModal(); render(); toast('Sala atualizada.'); }); },
+  'sala-apagar': function () { openModal('Apagar sala', '<p style="margin:0">A sala, o chat, o quadro e os resultados são apagados para todos os membros. Esta ação não pode ser desfeita.</p>', '<button class="btn" data-a="close">Cancelar</button><button class="btn danger" data-a="sala-apagar-ok">Apagar definitivamente</button>'); },
+  'sala-apagar-ok': function () {
+    var id = SL.id, fs = SL.quadro.filter(function (q) { return q.ficheiro; }).map(function (q) { return q.ficheiro.id; });
+    (fs.length ? SB.storage.from('salas').remove(fs) : Promise.resolve()).then(function () { return SB.from('salas').delete().eq('id', id); }).then(function (r) { if (r && r.error) { toast(slErr(r.error)); return; } closeModal(); S.salaId = null; salaSair(); SL.list = null; render(); toast('Sala apagada.'); });
+  },
+  'sala-sair': function () { openModal('Sair da sala', '<p style="margin:0">Deixa de ter acesso a esta sala. Para voltar, precisa de um novo convite.</p>', '<button class="btn" data-a="close">Cancelar</button><button class="btn danger" data-a="sala-sair-ok">Sair</button>'); },
+  'sala-sair-ok': function () {
+    var adm = SL.membros.filter(function (m) { return m.papel === 'admin'; });
+    if (eAdminSala() && adm.length === 1 && SL.membros.length > 1) { toast('Antes de sair, torne outro membro administrador.'); return; }
+    SB.from('sala_membros').delete().eq('sala_id', SL.id).eq('user_id', Store.uid).then(function (r) { if (r.error) { toast(slErr(r.error)); return; } closeModal(); S.salaId = null; salaSair(); SL.list = null; render(); toast('Saiu da sala.'); });
+  },
+  'sm-admin': function (el) { SB.from('sala_membros').update({ papel: 'admin' }).eq('sala_id', SL.id).eq('user_id', el.dataset.id).then(function (r) { if (r.error) toast(slErr(r.error)); else toast('Novo administrador definido.'); }); },
+  'sm-expulsar': function (el) { SB.from('sala_membros').delete().eq('sala_id', SL.id).eq('user_id', el.dataset.id).then(function (r) { if (r.error) toast(slErr(r.error)); else toast('Membro removido da sala.'); }); },
+  'sl-enviar': function (el) {
+    var i = $('#sl-in'); if (!i) return; var t = i.value.trim(); if (!t) return; if (el) el.disabled = true;
+    SB.from('sala_msgs').insert({ sala_id: SL.id, texto: t }).select().single().then(function (r) {
+      if (el) el.disabled = false; if (r.error) { toast(slErr(r.error)); return; }
+      i.value = ''; SL.draft = ''; i.style.height = 'auto'; if (!SL.msgs.some(function (x) { return x.id === r.data.id; })) { SL.msgs.push(r.data); slChatPaint(true); } i.focus();
+    });
+  },
+  'sl-apagar': function (el) { var id = Number(el.dataset.id); SB.from('sala_msgs').delete().eq('id', id).then(function (r) { if (r.error) toast(slErr(r.error)); else { SL.msgs = SL.msgs.filter(function (m) { return m.id !== id; }); slChatPaint(); } }); },
+  'sl-denunciar': function (el) { S.denPriv = { origem: 'sala', id: Number(el.dataset.id) }; openModal('Denunciar mensagem', motivoSelect('dp-mot') + '<label class="f">Explicação (opcional)<textarea class="in" id="dp-det" maxlength="1000"></textarea></label>', '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="den-priv-ok">Enviar denúncia</button>'); },
+  'pomo-start': function (el) { var f = el.dataset.id; SL.pomoFeito = null; slSetEstado({ pomodoro: { fase: f, fim: new Date(Date.now() + (f === 'estudo' ? 25 : 5) * 60000).toISOString(), por: Store.uid } }); },
+  'pomo-stop': function () { slSetEstado({ pomodoro: null }); },
+  'qd-novo': function (el) {
+    var t = el.dataset.id;
+    if (t === 'ficheiro') { openModal('Partilhar ficheiro na sala', '<label class="f">Ficheiro (PDF, Word, imagem ou texto, até 20 MB)<input class="in" id="qd-file" type="file" accept="' + FILE_ACCEPT + ',text/plain,.txt"></label><span style="font-size:12px;color:var(--muted)">Partilhe apenas materiais da sua autoria ou que possa partilhar. O ficheiro só é visível para os membros da sala.</span>', '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="qd-ok" data-id="ficheiro">Carregar</button>'); return; }
+    openModal(t === 'data' ? 'Adicionar data' : 'Adicionar nota', '<label class="f">' + (t === 'data' ? 'Descrição' : 'Nota') + '<' + (t === 'data' ? 'input class="in" id="qd-txt" maxlength="120" placeholder="Ex.: Frequência de Processo Penal">' : 'textarea class="in" id="qd-txt" maxlength="500" placeholder="Ex.: Ler os arts. 141.º a 143.º do CPP para quinta-feira"></textarea>') + '</label>' + (t === 'data' ? '<label class="f">Data<input class="in" id="qd-data" type="date"></label>' : ''), '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="qd-ok" data-id="' + t + '">Adicionar</button>');
+  },
+  'qd-ok': function (el) {
+    var t = el.dataset.id;
+    if (t === 'ficheiro') {
+      var f = $('#qd-file').files[0]; if (!f) { toast('Escolha um ficheiro.'); return; }
+      if (!FILE_RE.test(mimeDe(f)) || f.size > 20 * 1048576) { toast('Use PDF, Word, imagem ou texto, até 20 MB.'); return; }
+      el.disabled = true; el.textContent = 'A carregar…';
+      var path = SL.id + '/' + Date.now().toString(36) + '-' + sbNomeSeguro(f.name);
+      SB.storage.from('salas').upload(path, f, { contentType: mimeDe(f) }).then(function (r) {
+        if (r.error) throw r.error;
+        return SB.from('sala_quadro').insert({ sala_id: SL.id, tipo: 'ficheiro', texto: f.name.slice(0, 200), ficheiro: { id: path, tipo: mimeDe(f), tamanho: f.size } });
+      }).then(function (r) { if (r.error) throw r.error; closeModal(); toast('Ficheiro partilhado com a sala.'); }).catch(function () { el.disabled = false; el.textContent = 'Carregar'; toast('Não foi possível carregar o ficheiro.'); });
+      return;
+    }
+    var txt = $('#qd-txt').value.trim(), d = t === 'data' ? $('#qd-data').value : null;
+    if (!txt) { toast('Escreva o texto.'); return; } if (t === 'data' && !d) { toast('Indique a data.'); return; }
+    SB.from('sala_quadro').insert({ sala_id: SL.id, tipo: t, texto: txt, data: d }).then(function (r) { if (r.error) toast(slErr(r.error)); else closeModal(); });
+  },
+  'qd-apagar': function (el) {
+    var q = SL.quadro.filter(function (x) { return String(x.id) === el.dataset.id; })[0]; if (!q) return;
+    (q.ficheiro ? SB.storage.from('salas').remove([q.ficheiro.id]) : Promise.resolve()).then(function () { return SB.from('sala_quadro').delete().eq('id', q.id); }).then(function () { SL.quadro = SL.quadro.filter(function (x) { return x.id !== q.id; }); slPaint(); });
+  },
+  'qd-abrir': function (el) {
+    var q = SL.quadro.filter(function (x) { return String(x.id) === el.dataset.id; })[0]; if (!q) return; var w = window.open('', '_blank');
+    SB.storage.from('salas').createSignedUrl(q.ficheiro.id, 3600).then(function (r) { if (r.error) { if (w) w.close(); toast('Não foi possível abrir.'); return; } if (w) w.location = r.data.signedUrl; else location.href = r.data.signedUrl; });
+  }
+};
+Object.keys(A11).forEach(function (k) { A[k] = A11[k]; });
+function salaPorCodigo(c, el) {
+  if (!sessaoAtiva()) { toast('Inicie sessão para entrar na sala.'); A['login-open']({ dataset: {} }); return; }
+  if (el) el.disabled = true;
+  SB.rpc('entrar_sala', { p_codigo: c }).then(function (r) {
+    if (el) el.disabled = false; if (r.error) { toast(slErr(r.error)); return; }
+    closeModal(); SL.list = null; S.salaId = r.data; go('salas'); toast('Bem-vindo à sala!');
+  });
+}
+// ligação de convite: #sala/CODIGO
+function salaHash() { var m = location.hash.match(/^#sala\/([A-Za-z0-9]{6})$/); if (!m) return; var c = m[1].toUpperCase(); try { history.replaceState(null, '', '#salas'); } catch (e) {} S.view = 'salas'; var tentar = function (n) { if (sessaoAtiva()) salaPorCodigo(c); else if (n > 0) setTimeout(function () { tentar(n - 1); }, 700); else { S.salaConvite = c; toast('Inicie sessão para entrar na sala ' + c + '.'); } }; tentar(8); }
+window.addEventListener('hashchange', salaHash); salaHash();
+
+/* ---------- ATIVIDADES EM GRUPO E MINI-JOGOS JURÍDICOS ---------- */
+var JOGOS = [
+  ['quiz', '🎯', 'Quiz ao vivo', 'Todos respondem à mesma pergunta ao mesmo tempo. Pontos por acerto e rapidez, com pódio no fim.', 'Estudo'],
+  ['exame', '📝', 'Exame em conjunto', 'As mesmas perguntas e o mesmo cronómetro para todos. No fim, comparam-se notas e as perguntas mais falhadas.', 'Estudo'],
+  ['duelo', '⚔️', 'Duelo de artigos', 'Um tema aparece no ecrã: ganha quem indicar primeiro o artigo certo (ou o contrário).', 'Jogos'],
+  ['objecao', '✋', 'Objeção!', 'Um colega faz uma afirmação jurídica. Se estiver errada, carregue em «Objeção!» depressa. Objeções sem razão tiram pontos.', 'Jogos'],
+  ['vf', '⚡', 'Verdadeiro ou falso relâmpago', '8 segundos por afirmação. Respostas certas seguidas multiplicam os pontos.', 'Jogos'],
+  ['competente', '🏛️', 'Quem é competente?', 'Leia o caso e escolha o tribunal ou juízo competente (LOSJ, ETAF).', 'Jogos'],
+  ['peticao', '🧩', 'Monta a petição', 'Ponha as partes da petição inicial pela ordem certa (art. 552.º do CPC), contra o relógio.', 'Jogos'],
+  ['jurista', '💼', 'Quem quer ser jurista?', '10 perguntas a subir de valor. Uma resposta errada e está fora! Ajudas: 50/50 e «perguntar à sala».', 'Jogos'],
+  ['erro', '🔎', 'Caça ao erro', 'Um texto jurídico com 3 erros escondidos. Ganha quem os encontrar primeiro. Cliques errados tiram pontos.', 'Jogos'],
+  ['julgamento', '⚖️', 'Julgamento simulado', 'Papéis sorteados (juiz, advogados, Ministério Público), alegações com tempo e votação final da sala.', 'Jogos'],
+  ['bingo', '🎱', 'Bingo jurídico', 'Cartões com conceitos jurídicos. O anfitrião sorteia; faça linha e grite BINGO!', 'Jogos']
+];
+var COMPETENCIA = [
+  { q: 'A propõe contra B uma ação declarativa de processo comum para cobrança de 80.000 €. Onde existe juízo central cível, qual é o juízo competente?', o: ['Juízo central cível', 'Juízo local cível', 'Juízo de comércio', 'Juízo de execução'], a: 0, e: 'Os juízos centrais cíveis julgam as ações declarativas cíveis de processo comum de valor superior a 50.000 € (art. 117.º, n.º 1, al. a), da LOSJ — Lei n.º 62/2013).' },
+  { q: 'A propõe contra B uma ação declarativa de processo comum para cobrança de 20.000 €. Qual é o juízo competente?', o: ['Juízo central cível', 'Juízo local cível', 'Juízo de família e menores', 'Tribunal da Relação'], a: 1, e: 'Abaixo de 50.000 €, a ação cabe ao juízo local cível, que tem competência residual (arts. 117.º e 130.º da LOSJ).' },
+  { q: 'Um trabalhador quer impugnar judicialmente o seu despedimento. Que juízo é competente?', o: ['Juízo local cível', 'Juízo do trabalho', 'Juízo de comércio', 'Tribunal administrativo'], a: 1, e: 'As questões emergentes de relações de trabalho subordinado, incluindo o despedimento, cabem aos juízos do trabalho (art. 126.º da LOSJ).' },
+  { q: 'Um cônjuge quer divorciar-se sem o consentimento do outro. Que juízo é competente?', o: ['Juízo de família e menores', 'Juízo local cível', 'Conservatória do registo civil', 'Juízo central cível'], a: 0, e: 'Os processos de divórcio sem consentimento do outro cônjuge são da competência dos juízos de família e menores (art. 122.º da LOSJ).' },
+  { q: 'Uma sociedade comercial apresenta-se à insolvência. Onde existe juízo de comércio, qual é o competente?', o: ['Juízo de execução', 'Juízo central cível', 'Juízo de comércio', 'Juízo do trabalho'], a: 2, e: 'Compete aos juízos de comércio preparar e julgar os processos de insolvência (art. 128.º, n.º 1, al. a), da LOSJ).' },
+  { q: 'Um credor quer executar uma sentença condenatória numa comarca com juízo de execução. Qual é o competente?', o: ['Juízo de execução', 'Juízo local cível', 'Juízo de comércio', 'Tribunal da Relação'], a: 0, e: 'Os juízos de execução exercem as competências previstas no Código de Processo Civil quanto aos processos de execução (art. 129.º da LOSJ).' },
+  { q: 'Um munícipe quer impugnar um ato administrativo praticado pela câmara municipal. Que jurisdição é competente?', o: ['Tribunais judiciais (juízo local cível)', 'Tribunais administrativos', 'Tribunal Constitucional', 'Julgado de paz'], a: 1, e: 'Os litígios emergentes de relações jurídicas administrativas, como a impugnação de atos administrativos, pertencem à jurisdição administrativa (art. 4.º do ETAF).' },
+  { q: 'Um contribuinte quer impugnar judicialmente a liquidação de IRS. Que tribunal é competente?', o: ['Tribunal tributário', 'Juízo local cível', 'Tribunal de Contas', 'Juízo de comércio'], a: 0, e: 'A impugnação judicial dos atos de liquidação de tributos cabe aos tribunais tributários (art. 49.º do ETAF).' },
+  { q: 'Os pais, separados, não chegam a acordo sobre as responsabilidades parentais do filho menor. Que juízo é competente?', o: ['Juízo local cível', 'Juízo de família e menores', 'Juízo central cível', 'Comissão de proteção de crianças e jovens'], a: 1, e: 'Compete aos juízos de família e menores regular o exercício das responsabilidades parentais (art. 123.º da LOSJ).' },
+  { q: 'Num processo-crime, o arguido requer a abertura da instrução. Onde existe juízo de instrução criminal, quem é competente?', o: ['Juízo central criminal', 'Ministério Público', 'Juízo de instrução criminal', 'Juízo local criminal'], a: 2, e: 'Compete aos juízos de instrução criminal proceder à instrução criminal e decidir quanto à pronúncia (art. 119.º da LOSJ).' }
+];
+var PETICAO = ['Designação do tribunal e do juízo', 'Identificação das partes', 'Domicílio profissional do mandatário', 'Indicação da forma do processo', 'Exposição dos factos essenciais (causa de pedir)', 'Razões de direito', 'Pedido', 'Valor da causa', 'Rol de testemunhas e outros meios de prova'];
+var ERROS = [
+  { titulo: 'Citação do réu', seg: [['Fica V. Ex.ª citado para, no prazo de ', 0], ['20 dias', 1, '30 dias (art. 569.º, n.º 1, do CPC)'], [', contestar a ação declarativa de processo comum que lhe move A, ', 0], ['nos termos do art. 552.º do Código Civil', 1, 'O art. 552.º é do Código de Processo Civil'], ['. Fica advertido de que ', 0], ['a falta de contestação implica a absolvição do réu do pedido', 1, 'A falta de contestação leva a que se considerem confessados os factos articulados pelo autor (art. 567.º, n.º 1, do CPC)'], ['.', 0]] },
+  { titulo: 'Responsabilidade civil', seg: [['Nos termos do ', 0], ['art. 483.º do Código Penal', 1, 'O art. 483.º é do Código Civil'], [', aquele que, com dolo ou mera culpa, violar ilicitamente o direito de outrem fica obrigado a indemnizar o lesado pelos danos resultantes da violação. ', 0], ['Cabe ao lesante provar que não teve culpa', 1, 'É ao lesado que incumbe provar a culpa do autor da lesão, salvo presunção legal (art. 487.º, n.º 1, do CC)'], ['. O direito de indemnização ', 0], ['prescreve no prazo de 5 anos', 1, 'Prescreve no prazo de 3 anos a contar do conhecimento do direito (art. 498.º, n.º 1, do CC)'], [' a contar da data em que o lesado teve conhecimento do direito que lhe compete.', 0]] },
+  { titulo: 'Processo penal', seg: [['O arguido detido ', 0], ['deve ser presente ao juiz no prazo máximo de 72 horas', 1, 'O prazo máximo é de 48 horas (art. 28.º, n.º 1, da CRP; art. 141.º, n.º 1, do CPP)'], [' para primeiro interrogatório judicial. A prisão preventiva pode ser aplicada, nomeadamente, se houver fortes indícios de crime doloso ', 0], ['punível com pena de prisão de máximo superior a 3 anos', 1, 'O limite é superior a 5 anos (art. 202.º, n.º 1, al. a), do CPP)'], ['. Na fase de inquérito, ', 0], ['é o juiz de julgamento quem dirige a investigação', 1, 'O inquérito é dirigido pelo Ministério Público (art. 263.º, n.º 1, do CPP)'], ['.', 0]] },
+  { titulo: 'Direito constitucional', seg: [['A Constituição da República Portuguesa ', 0], ['foi aprovada em 1974', 1, 'Foi aprovada em 2 de abril de 1976'], [' pela Assembleia Constituinte. O Presidente da República ', 0], ['é eleito por um mandato de 4 anos', 1, 'O mandato é de 5 anos (art. 128.º, n.º 1, da CRP)'], [', por sufrágio universal, direto e secreto. A Assembleia da República ', 0], ['tem entre 300 e 350 deputados', 1, 'Tem um mínimo de 180 e um máximo de 230 deputados (art. 148.º da CRP)'], ['.', 0]] }
+];
+var BINGO = ['Dolo', 'Negligência', 'Culpa', 'Nexo de causalidade', 'Ilicitude', 'Dano', 'Prescrição', 'Caducidade', 'Usucapião', 'Posse', 'Hipoteca', 'Penhor', 'Fiança', 'Contrato-promessa', 'Sinal', 'Mora', 'Incumprimento definitivo', 'Enriquecimento sem causa', 'Gestão de negócios', 'Legítima defesa', 'Estado de necessidade', 'Tentativa', 'Comparticipação', 'Reincidência', 'Prisão preventiva', 'Arguido', 'Assistente', 'Inquérito', 'Instrução', 'Acusação', 'Recurso', 'Caso julgado', 'Litispendência', 'Competência', 'Citação', 'Contestação', 'Revelia', 'Providência cautelar', 'Ónus da prova', 'Abuso de direito'];
+var JURIDLE = ['CULPA', 'PRAZO', 'PENAL', 'AUTOR', 'JUIZO', 'LESAO', 'REGRA', 'MULTA', 'PROVA', 'CAUSA', 'CRIME', 'NORMA', 'LEGAL', 'TERMO', 'ABUSO', 'COISA', 'SOCIO', 'VICIO', 'TUTOR', 'RENDA', 'LUCRO', 'FALTA', 'VENDA', 'MORAL', 'PERDA', 'GREVE', 'POSSE', 'PACTO', 'DOLOS', 'ATIVO'].filter(function (w) { return w !== 'DOLOS'; });
+var JURISTA_PTS = [100, 100, 200, 200, 300, 500, 600, 800, 1000, 1200];
+var MC = { quiz: 1, duelo: 1, competente: 1, jurista: 1 }, VFT = { vf: 1, objecao: 1 };
+
+function baralhar(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function seedRnd(s) { var h = 2166136261; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return function () { h += 0x6D2B79F5; var t = h; t = Math.imul(t ^ t >>> 15, t | 1); t ^= t + Math.imul(t ^ t >>> 7, t | 61); return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function qPool(d) { return QUESTOES.filter(function (q) { return !d || d === 'todas' || q.d === d; }); }
+function mcRonda(q) { var idx = baralhar([0, 1, 2, 3].slice(0, q.o.length)); return { q: q.q, o: idx.map(function (i) { return q.o[i]; }), a: idx.indexOf(q.a), e: q.e }; }
+
+/* ----- criação das atividades ----- */
+function gerarAtiv(tipo, cfg) {
+  var a = { id: tipo + '-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5), tipo: tipo, host: Store.uid, idx: 0, estado: 'ronda', inicio: Date.now(), rondas: [], extra: {} };
+  var n = cfg.n || 10, pool = baralhar(qPool(cfg.d));
+  if (tipo === 'quiz') { a.dur = 20; a.rondas = pool.slice(0, n).map(mcRonda); }
+  else if (tipo === 'jurista') { a.dur = 30; a.rondas = pool.slice(0, 10).map(mcRonda); }
+  else if (tipo === 'exame') { a.dur = (cfg.min || 15) * 60; a.rondas = pool.slice(0, n).map(mcRonda); a.fim = Date.now() + a.dur * 1000; }
+  else if (tipo === 'vf' || tipo === 'objecao') {
+    a.dur = tipo === 'vf' ? 8 : 12;
+    a.rondas = pool.slice(0, n).map(function (q) { var certo = Math.random() < 0.5, i = certo ? q.a : baralhar([0, 1, 2, 3].filter(function (x) { return x !== q.a && x < q.o.length; }))[0]; return { s: q.q.replace(/\?\s*$/, '') + ' — ' + q.o[i] + '.', v: certo, e: q.e }; });
+  } else if (tipo === 'duelo') {
+    a.dur = 15;
+    var ds = DIPLOMAS.filter(function (d) { return d.arts.length >= 4; });
+    for (var k = 0; k < n; k++) {
+      var d = ds[Math.floor(Math.random() * ds.length)], arts = baralhar(d.arts).slice(0, 4), inv = Math.random() < 0.4;
+      a.rondas.push(inv ? { q: 'De que trata o art. ' + arts[0][0] + ' ' + d.sigla + '?', o: [], a: 0 } : { q: 'Qual é o artigo do ' + d.sigla + ' sobre «' + arts[0][1] + '»?', o: [], a: 0 });
+      var r = a.rondas[a.rondas.length - 1], ord = baralhar([0, 1, 2, 3]);
+      r.o = ord.map(function (i) { return inv ? arts[i][1] : 'Art. ' + arts[i][0]; }); r.a = ord.indexOf(0); r.e = 'Art. ' + arts[0][0] + ' ' + d.sigla + ' — ' + arts[0][1] + '.';
+    }
+  } else if (tipo === 'competente') { a.dur = 25; a.rondas = baralhar(COMPETENCIA).slice(0, Math.min(n, COMPETENCIA.length)).map(mcRonda); }
+  else if (tipo === 'peticao') { a.dur = 90; a.rondas = [{ itens: baralhar(PETICAO) }]; }
+  else if (tipo === 'erro') { a.dur = 120; var t = ERROS[Math.floor(Math.random() * ERROS.length)]; a.rondas = [{ titulo: t.titulo, seg: t.seg }]; }
+  else if (tipo === 'bingo') { a.dur = 0; a.extra = { chamados: [] }; a.rondas = [{}]; }
+  else if (tipo === 'julgamento') {
+    var caso = CASOS[Math.floor(Math.random() * CASOS.length)], on = Object.keys(SL.online).filter(function (u) { return SL.membros.some(function (m) { return m.user_id === u; }); });
+    if (on.indexOf(Store.uid) < 0) on.push(Store.uid);
+    var ps = baralhar(on), papeis = {}, nomes = ['Juiz', 'Advogado do autor', 'Advogado do réu', 'Ministério Público'];
+    ps.forEach(function (u, i) { papeis[u] = nomes[i] || 'Público'; });
+    var fases = [['Apresentação do caso', 'Juiz', 1], ['Alegações do autor', 'Advogado do autor', 3], ['Alegações do réu', 'Advogado do réu', 3]];
+    if (ps.length >= 4) fases.push(['Promoção do Ministério Público', 'Ministério Público', 2]);
+    fases.push(['Votação da sala', 'Todos', 1], ['Sentença', 'Juiz', 2]);
+    a.extra = { caso: caso.id, papeis: papeis, fases: fases }; a.rondas = fases.map(function () { return {}; }); a.dur = fases[0][2] * 60;
+  }
+  if (!a.rondas.length) return null;
+  return a;
+}
+function ativRestante(a) { if (a.tipo === 'exame') return Math.max(0, Math.ceil((a.fim - Date.now()) / 1000)); if (!a.dur) return 0; return Math.max(0, Math.ceil((a.inicio + a.dur * 1000 - Date.now()) / 1000)); }
+function minhaResp(a, r) { return SL.resp.filter(function (x) { return x.user_id === Store.uid && x.ronda === r; })[0]; }
+function respRonda(r) { return SL.resp.filter(function (x) { return x.ronda === r; }); }
+function placar() {
+  var t = {}; SL.resp.forEach(function (x) { if (x.ronda >= 900) return; t[x.user_id] = (t[x.user_id] || 0) + x.pontos; });
+  return Object.keys(t).map(function (u) { return { u: u, p: t[u] }; }).sort(function (a, b) { return b.p - a.p; });
+}
+function eHost(a) { return a.host === Store.uid || eAdminSala(); }
+function presentes() { return Object.keys(SL.online).filter(function (u) { return SL.membros.some(function (m) { return m.user_id === u; }); }); }
+function slAutoRevelar() {
+  var a = SL.est.ativ; if (!a || a.estado !== 'ronda' || a.host !== Store.uid || !(MC[a.tipo] || VFT[a.tipo])) return;
+  var resp = respRonda(a.idx).length, pres = presentes().length || 1, eliminados = a.tipo === 'jurista' ? juristaFora().length : 0;
+  if (resp >= pres - eliminados || ativRestante(a) <= 0) setTimeout(function () { var b = SL.est.ativ; if (b && b.id === a.id && b.idx === a.idx && b.estado === 'ronda') ativSet({ estado: 'revelar' }); }, 600);
+}
+function juristaFora() { var a = SL.est.ativ, fora = {}; SL.resp.forEach(function (x) { if (x.valor && x.valor.ok === false && x.ronda < a.idx + (a.estado === 'revelar' ? 1 : 0)) fora[x.user_id] = 1; }); return Object.keys(fora); }
+function ativSet(patch) { var a = clone(SL.est.ativ); Object.keys(patch).forEach(function (k) { a[k] = patch[k]; }); return slSetEstado({ ativ: a }); }
+function responder(ronda, valor, pontos) {
+  var a = SL.est.ativ; if (!a || minhaResp(a, ronda)) return Promise.resolve();
+  var x = { sala_id: SL.id, ativ_id: a.id, user_id: Store.uid, ronda: ronda, valor: valor, pontos: Math.max(-1000, Math.min(5000, Math.round(pontos))), ms: Date.now() - (a.inicio || Date.now()) };
+  SL.resp.push(x); slPaint(); slAutoRevelar();
+  return SB.from('sala_respostas').insert(x).then(function (r) { if (r.error && !/duplicate/.test(r.error.message)) toast('Não foi possível registar a resposta.'); });
+}
+
+/* ----- catálogo ----- */
+function vCatalogo() {
+  return '<div class="jg-grid">' + JOGOS.map(function (j) { return '<button class="jg" data-a="at-config" data-id="' + j[0] + '"><span class="jg-e">' + j[1] + '</span><b>' + j[2] + '</b><span>' + j[3] + '</span><span class="chip ' + (j[4] === 'Estudo' ? 'wine' : 'gray') + '">' + j[4] + '</span></button>'; }).join('') +
+    '<button class="jg" data-a="sala-tab" data-id="juridle"><span class="jg-e">🔤</span><b>Juridle</b><span>Um termo jurídico de 5 letras por dia, com 6 tentativas. Classificação semanal da sala.</span><span class="chip gray">Diário</span></button></div>' +
+    '<div class="note">As perguntas vêm do banco verificado do simulador e da Biblioteca jurídica do LEXDESK, com referência legal na explicação.</div>';
+}
+function cfgDisc() { return '<label class="f">Disciplina<select class="in" id="ac-d"><option value="todas">Todas</option>' + Object.keys(DISC).map(function (k) { return '<option value="' + k + '">' + esc(DISC[k].nome) + '</option>'; }).join('') + '</select></label>'; }
+
+/* ----- atividade em curso ----- */
+function vAtiv(a) {
+  var j = JOGOS.filter(function (x) { return x[0] === a.tipo; })[0] || ['', '🎲', 'Atividade'], host = eHost(a);
+  var h = '<div class="at-head"><span class="jg-e" style="font-size:26px">' + j[1] + '</span><div style="flex:1;min-width:0"><b style="font-size:18px">' + esc(j[2]) + '</b><br><span style="font-size:12px;color:var(--muted)">Iniciado por ' + esc(chatNome(a.host)) + (a.rondas.length > 1 && a.tipo !== 'julgamento' && a.tipo !== 'exame' ? ' · ' + (Math.min(a.idx + 1, a.rondas.length)) + ' de ' + a.rondas.length : '') + '</span></div>' +
+    (a.estado === 'ronda' && (a.dur || a.tipo === 'exame') ? '<span class="at-timer" id="at-timer">' + ativRestante(a) + '</span>' : '') +
+    (host ? '<button class="btn sm danger" data-a="at-fechar">' + (a.estado === 'fim' ? 'Fechar' : 'Terminar') + '</button>' : '') + '</div>';
+  if (a.estado === 'fim') return h + vPodio(a);
+  if (MC[a.tipo] || VFT[a.tipo]) return h + vRondaQ(a);
+  if (a.tipo === 'exame') return h + vExameGrupo(a);
+  if (a.tipo === 'peticao') return h + vPeticao(a);
+  if (a.tipo === 'erro') return h + vErro(a);
+  if (a.tipo === 'bingo') return h + vBingo(a);
+  if (a.tipo === 'julgamento') return h + vJulg(a);
+  return h;
+}
+function vRondaQ(a) {
+  var r = a.rondas[a.idx], mine = minhaResp(a, a.idx), rev = a.estado === 'revelar', tempo = ativRestante(a) <= 0;
+  var fora = a.tipo === 'jurista' && juristaFora().indexOf(Store.uid) >= 0 && !(mine && rev);
+  var h = '<div class="at-q">' + (a.tipo === 'objecao' ? '<span class="eyebrow">Um colega afirma:</span>' : '') + '<p class="at-qt">' + esc(VFT[a.tipo] ? '«' + r.s + '»' : r.q) + '</p>';
+  if (fora) h += '<div class="note">Foi eliminado desta partida. Continue a assistir!</div>';
+  if (VFT[a.tipo]) {
+    var opts = a.tipo === 'vf' ? [['v', 'Verdadeiro'], ['f', 'Falso']] : [['f', 'Objeção!'], ['v', 'Sem objeção']];
+    h += '<div class="vf-b">' + opts.map(function (o) {
+      var cls = rev ? ((o[0] === 'v') === r.v ? ' right' : (mine && mine.valor.r === o[0] ? ' wrong' : '')) : (mine && mine.valor.r === o[0] ? ' sel' : '');
+      return '<button class="opt big' + cls + (o[1] === 'Objeção!' ? ' obj' : '') + '" data-a="at-vf" data-id="' + o[0] + '"' + (mine || rev || tempo ? ' disabled' : '') + '>' + o[1] + '</button>';
+    }).join('') + '</div>';
+  } else {
+    var hide = (S.fifty || {})[a.id + ':' + a.idx] || [];
+    h += '<div class="list" style="gap:8px">' + r.o.map(function (o, i) {
+      if (hide.indexOf(i) >= 0) return '<button class="opt" disabled style="opacity:.3"><span class="lt">' + 'ABCD'.charAt(i) + '</span>—</button>';
+      var cls = rev ? (i === r.a ? ' right' : (mine && mine.valor.i === i ? ' wrong' : '')) : (mine && mine.valor.i === i ? ' sel' : '');
+      var dist = a.tipo === 'jurista' && (S.askRoom || {})[a.id + ':' + a.idx] ? ' <span class="tg">' + respRonda(a.idx).filter(function (x) { return x.user_id !== Store.uid && x.valor.i === i; }).length + ' votos</span>' : '';
+      return '<button class="opt' + cls + '" data-a="at-mc" data-i="' + i + '"' + (mine || rev || tempo || fora ? ' disabled' : '') + '><span class="lt">' + 'ABCD'.charAt(i) + '</span>' + esc(o) + dist + '</button>';
+    }).join('') + '</div>';
+    if (a.tipo === 'jurista' && !mine && !rev && !fora) { var aj = S.ajudas || {}; h += '<div class="row"><button class="btn sm" data-a="at-5050"' + (aj[a.id + '50'] ? ' disabled' : '') + '>50/50</button><button class="btn sm" data-a="at-ask"' + (aj[a.id + 'ask'] ? ' disabled' : '') + '>Perguntar à sala</button><span style="font-size:12px;color:var(--muted)">Valor desta pergunta: ' + JURISTA_PTS[a.idx] + ' pontos</span></div>'; }
+  }
+  var nr = respRonda(a.idx).length, np = presentes().length;
+  if (rev) h += '<div class="fb ' + (mine && mine.pontos > 0 ? 'ok' : 'bad') + '"><b>' + (mine ? (mine.pontos > 0 ? 'Certo! +' + mine.pontos + ' pontos' : (mine.pontos < 0 ? 'Objeção sem razão: ' + mine.pontos + ' pontos' : 'Errado')) : 'Não respondeu') + '</b>' + (r.e ? '<span>' + esc(r.e) + '</span>' : '') + '</div>';
+  else h += '<span style="font-size:12px;color:var(--muted)">' + nr + ' de ' + np + ' responderam' + (tempo ? ' · tempo esgotado' : '') + '</span>';
+  h += '</div>';
+  if (rev) h += vPlacar(5);
+  if (eHost(a)) h += '<div class="row" style="justify-content:flex-end">' + (!rev ? '<button class="btn sm" data-a="at-revelar">Revelar resposta</button>' : (a.idx + 1 < a.rondas.length && !(a.tipo === 'jurista' && juristaFora().length >= presentes().length) ? '<button class="btn sm wine" data-a="at-seguinte">Pergunta seguinte →</button>' : '<button class="btn sm wine" data-a="at-fim">Ver resultados finais</button>')) + '</div>';
+  return h;
+}
+function vPlacar(n) {
+  var p = placar().slice(0, n || 10);
+  if (!p.length) return '';
+  return '<div class="placar">' + p.map(function (x, i) { return '<div class="pl-r' + (x.u === Store.uid ? ' me' : '') + '"><span class="pl-p">' + (i + 1) + '</span>' + avHtml(x.u, chatNome(x.u)) + '<span style="flex:1">' + esc(x.u === Store.uid ? 'Eu' : chatNome(x.u)) + '</span><b>' + x.p + '</b></div>'; }).join('') + '</div>';
+}
+function vPodio(a) {
+  var p = placar(), top = p.slice(0, 3), ord = [1, 0, 2];
+  var h = '<div class="podio">' + ord.map(function (i) { var x = top[i]; if (!x) return '<div class="pd-c"></div>'; return '<div class="pd-c p' + (i + 1) + '">' + avHtml(x.u, chatNome(x.u), 'pf-av sm') + '<b>' + esc(x.u === Store.uid ? 'Eu' : chatNome(x.u)) + '</b><span>' + x.p + ' pts</span><div class="pd-b">' + ['🥇', '🥈', '🥉'][i] + '</div></div>'; }).join('') + '</div>';
+  if (a.tipo === 'exame') h = vExameRes(a);
+  if (a.tipo === 'julgamento') h = vJulgRes(a);
+  return h + (a.tipo !== 'julgamento' && a.tipo !== 'exame' ? vPlacar(12) : '') + (eHost(a) ? '<div class="row" style="justify-content:flex-end"><button class="btn sm" data-a="at-fechar">Voltar às atividades</button><button class="btn sm wine" data-a="at-config" data-id="' + a.tipo + '">Jogar outra vez</button></div>' : '');
+}
+
+/* ----- exame em conjunto ----- */
+function vExameGrupo(a) {
+  var i = S.exG && S.exG.id === a.id ? S.exG.i : 0, fim = ativRestante(a) <= 0, entregue = minhaResp(a, 900);
+  if (fim || entregue) return '<div class="note">' + (entregue ? 'Entregou o exame. ' : 'O tempo terminou. ') + 'A aguardar que ' + (eHost(a) ? 'termine' : 'o anfitrião termine') + ' para ver os resultados (' + respRonda(900).length + ' entregaram).</div>' + (eHost(a) ? '<div class="row" style="justify-content:flex-end"><button class="btn sm wine" data-a="at-fim">Ver resultados</button></div>' : '');
+  var r = a.rondas[i], mine = minhaResp(a, i), feitas = SL.resp.filter(function (x) { return x.user_id === Store.uid && x.ronda < 900; }).length;
+  return '<div class="qnav" style="grid-template-columns:repeat(10,minmax(0,1fr))">' + a.rondas.map(function (q, k) { return '<button class="' + (minhaResp(a, k) ? 'done' : '') + (k === i ? ' cur' : '') + '" data-a="ex-ir" data-i="' + k + '">' + (k + 1) + '</button>'; }).join('') + '</div>' +
+    '<div class="at-q"><p class="at-qt">' + (i + 1) + '. ' + esc(r.q) + '</p><div class="list" style="gap:8px">' + r.o.map(function (o, k) { return '<button class="opt' + (mine && mine.valor.i === k ? ' sel' : '') + '" data-a="ex-resp" data-i="' + k + '"' + (mine ? ' disabled' : '') + '><span class="lt">' + 'ABCD'.charAt(k) + '</span>' + esc(o) + '</button>'; }).join('') + '</div></div>' +
+    '<div class="row" style="justify-content:space-between"><span style="font-size:13px;color:var(--muted)">' + feitas + ' de ' + a.rondas.length + ' respondidas · as respostas não podem ser alteradas</span><div class="row"><button class="btn sm" data-a="ex-ir" data-i="' + Math.max(0, i - 1) + '">← Anterior</button><button class="btn sm" data-a="ex-ir" data-i="' + Math.min(a.rondas.length - 1, i + 1) + '">Seguinte →</button><button class="btn sm wine" data-a="ex-entregar">Entregar</button></div></div>';
+}
+function vExameRes(a) {
+  var users = {}; SL.resp.forEach(function (x) { if (x.ronda < 900) { users[x.user_id] = (users[x.user_id] || 0) + (x.pontos > 0 ? 1 : 0); } });
+  var tot = a.rondas.length, lst = Object.keys(users).map(function (u) { return { u: u, n: users[u] }; }).sort(function (x, y) { return y.n - x.n; });
+  var media = lst.length ? lst.reduce(function (s, x) { return s + x.n; }, 0) / lst.length : 0;
+  var falh = a.rondas.map(function (r, k) { var rs = respRonda(k); return { k: k, r: r, pct: rs.length ? Math.round(100 * rs.filter(function (x) { return x.pontos > 0; }).length / rs.length) : 0, n: rs.length }; }).filter(function (x) { return x.n; }).sort(function (x, y) { return x.pct - y.pct; }).slice(0, 3);
+  return '<div class="grid2"><div class="card"><h2 style="font-size:16px">Notas (0–20)</h2>' + lst.map(function (x) { return '<div class="pl-r' + (x.u === Store.uid ? ' me' : '') + '">' + avHtml(x.u, chatNome(x.u)) + '<span style="flex:1">' + esc(x.u === Store.uid ? 'Eu' : chatNome(x.u)) + '</span><b>' + String(Math.round(20 * x.n / tot * 10) / 10).replace('.', ',') + ' val.</b><span style="font-size:12px;color:var(--muted)">' + x.n + '/' + tot + '</span></div>'; }).join('') + '<div class="note">Média do grupo: <b>' + String(Math.round(20 * media / tot * 10) / 10).replace('.', ',') + ' valores</b></div></div>' +
+    '<div class="card"><h2 style="font-size:16px">Perguntas mais falhadas</h2>' + falh.map(function (x) { return '<div class="blk" style="gap:4px"><b style="font-size:14px">' + (x.k + 1) + '. ' + esc(x.r.q) + '</b><span style="font-size:12px;color:var(--bad);font-weight:700">' + x.pct + '% de acerto</span><span style="font-size:13px">Resposta certa: <b>' + esc(x.r.o[x.r.a]) + '</b></span><span style="font-size:12.5px;color:var(--muted)">' + esc(x.r.e || '') + '</span></div>'; }).join('') + '</div></div>';
+}
+
+/* ----- monta a petição ----- */
+function vPeticao(a) {
+  var mine = minhaResp(a, 0), key = 'pt:' + a.id; S.ptOrd = S.ptOrd || {}; var ord = S.ptOrd[key] || (S.ptOrd[key] = a.rondas[0].itens.slice());
+  if (mine) {
+    return '<div class="fb ' + (mine.valor.certos === PETICAO.length ? 'ok' : 'bad') + '"><b>' + mine.valor.certos + ' de ' + PETICAO.length + ' na posição certa · ' + mine.pontos + ' pontos</b><span>Ordem correta (art. 552.º, n.º 1, als. a) a f), e n.º 6, do CPC):</span><ol style="margin:4px 0 0;padding-left:20px">' + PETICAO.map(function (p) { return '<li>' + esc(p) + '</li>'; }).join('') + '</ol></div>' + vPlacar(10) + (eHost(a) ? '<div class="row" style="justify-content:flex-end"><button class="btn sm wine" data-a="at-fim">Ver pódio</button></div>' : '');
+  }
+  return '<p style="margin:0;font-size:14px">Arraste (ou use as setas) para pôr as partes da <b>petição inicial</b> pela ordem correta.</p><ol class="pt-l" id="pt-l">' + ord.map(function (p, i) { return '<li draggable="true" data-pt="' + i + '"><span class="pt-n">' + (i + 1) + '</span><span style="flex:1">' + esc(p) + '</span><button class="icon-btn" data-a="pt-mv" data-i="' + i + '" data-d="-1" aria-label="Subir">↑</button><button class="icon-btn" data-a="pt-mv" data-i="' + i + '" data-d="1" aria-label="Descer">↓</button></li>'; }).join('') + '</ol><div class="row" style="justify-content:flex-end"><button class="btn wine" data-a="pt-ok"' + (ativRestante(a) <= 0 ? ' disabled' : '') + '>Entregar</button></div>';
+}
+
+/* ----- caça ao erro ----- */
+function vErro(a) {
+  var r = a.rondas[0], meus = SL.resp.filter(function (x) { return x.user_id === Store.uid; }), achados = meus.filter(function (x) { return x.valor.ok; }).map(function (x) { return x.ronda; });
+  var nerr = r.seg.filter(function (s) { return s[1]; }).length, acabou = achados.length >= nerr || ativRestante(a) <= 0;
+  var h = '<p style="margin:0;font-size:14px">Texto: <b>' + esc(r.titulo) + '</b>. Clique nas passagens com erros jurídicos (' + achados.length + ' de ' + nerr + ' encontrados). Cada clique errado tira 100 pontos.</p><div class="erro-t">' + r.seg.map(function (s, i) {
+    var ach = achados.indexOf(i) >= 0, ja = meus.some(function (x) { return x.ronda === i; });
+    if (!s[0].trim() || s[0].length < 3) return esc(s[0]);
+    return '<span class="eseg' + (ach ? ' ok' : ja ? ' no' : '') + (acabou && s[1] && !ach ? ' falta' : '') + '" role="button" tabindex="0" data-a="erro-clk" data-i="' + i + '">' + esc(s[0]) + '</span>' + (ach || (acabou && s[1]) ? '<span class="ecorr">✔ ' + esc(s[2]) + '</span>' : '');
+  }).join('') + '</div>';
+  if (acabou) h += vPlacar(10) + (eHost(a) ? '<div class="row" style="justify-content:flex-end"><button class="btn sm wine" data-a="at-fim">Ver pódio</button></div>' : '');
+  return h;
+}
+
+/* ----- bingo ----- */
+function bingoCartao(a, u) { var rnd = seedRnd(a.id + u), l = BINGO.slice(); for (var i = l.length - 1; i > 0; i--) { var j = Math.floor(rnd() * (i + 1)); var t = l[i]; l[i] = l[j]; l[j] = t; } return l.slice(0, 16); }
+function bingoLinha(m) { var L = []; for (var i = 0; i < 4; i++) { L.push([0, 1, 2, 3].map(function (k) { return i * 4 + k; })); L.push([0, 1, 2, 3].map(function (k) { return k * 4 + i; })); } L.push([0, 5, 10, 15], [3, 6, 9, 12]); return L.some(function (l) { return l.every(function (x) { return m[x]; }); }); }
+function vBingo(a) {
+  var c = bingoCartao(a, Store.uid), ch = a.extra.chamados || [], key = 'bg:' + a.id; S.bgM = S.bgM || {}; var m = S.bgM[key] || (S.bgM[key] = {});
+  var venc = SL.resp.filter(function (x) { return x.ronda === 0; }).sort(function (x, y) { return x.ms - y.ms; });
+  var h = '<div class="split"><div class="a"><div class="bingo">' + c.map(function (t, i) { return '<button class="bg-c' + (m[i] ? ' on' : '') + (ch.indexOf(t) >= 0 ? ' cham' : '') + '" data-a="bg-marca" data-i="' + i + '">' + esc(t) + '</button>'; }).join('') + '</div>' +
+    '<button class="btn wine" data-a="bg-bingo" style="width:100%;margin-top:10px"' + (bingoLinha(m) && !minhaResp(a, 0) ? '' : ' disabled') + '>BINGO!</button></div>' +
+    '<div class="b card" style="gap:8px"><b>Conceitos sorteados (' + ch.length + ')</b>' + (ch.length ? '<div class="row" style="gap:6px">' + ch.slice().reverse().map(function (t, i) { return '<span class="chip ' + (i === 0 ? 'wine' : 'gray') + '">' + esc(t) + '</span>'; }).join('') + '</div>' : '<span style="font-size:13px;color:var(--muted)">O anfitrião ainda não sorteou nenhum conceito.</span>') +
+    (eHost(a) ? '<button class="btn sm wine" data-a="bg-sortear" style="align-self:flex-start">Sortear conceito</button>' : '') +
+    (venc.length ? '<div class="fb ok"><b>🎉 BINGO de ' + venc.map(function (x) { return esc(chatNome(x.user_id)); }).join(', ') + '</b></div>' : '') + '<span style="font-size:12px;color:var(--muted)">Marque no seu cartão os conceitos sorteados (ou os que ouvir na aula). Só valem linhas com conceitos já sorteados.</span></div></div>';
+  return h;
+}
+
+/* ----- julgamento simulado ----- */
+function vJulg(a) {
+  var x = a.extra, caso = CASOS.filter(function (c) { return c.id === x.caso; })[0] || CASOS[0], f = x.fases[a.idx], meu = x.papeis[Store.uid] || 'Público';
+  var h = '<div class="blk"><span class="eyebrow">Caso: ' + esc(caso.titulo) + '</span><p style="font-size:14.5px">' + esc(caso.enunciado) + '</p></div>' +
+    '<div class="row" style="gap:6px">' + Object.keys(x.papeis).map(function (u) { return '<span class="chip ' + (u === Store.uid ? 'wine' : 'gray') + '">' + esc(x.papeis[u]) + ': ' + esc(u === Store.uid ? 'Eu' : chatNome(u)) + '</span>'; }).join('') + '</div>' +
+    '<div class="julg-f">' + x.fases.map(function (fz, i) { return '<span class="' + (i === a.idx ? 'on' : i < a.idx ? 'ok' : '') + '">' + esc(fz[0]) + '</span>'; }).join('') + '</div>' +
+    '<div class="at-q"><span class="eyebrow">Fase atual</span><p class="at-qt">' + esc(f[0]) + '</p><span>' + (f[1] === 'Todos' ? 'Todos os membros (exceto o juiz) votam.' : 'Tem a palavra: <b>' + esc(f[1]) + '</b>. Use o chat da sala para intervir.') + (meu === f[1] ? ' <span class="chip wine">É a sua vez!</span>' : '') + '</span>';
+  if (f[0] === 'Votação da sala') {
+    var vt = respRonda(a.idx), mv = minhaResp(a, a.idx);
+    h += meu === 'Juiz' ? '<span style="font-size:13px;color:var(--muted)">Como juiz, não vota.</span>' : '<div class="vf-b">' + [['proc', 'Procedente'], ['improc', 'Improcedente']].map(function (o) { return '<button class="opt big' + (mv && mv.valor.v === o[0] ? ' sel' : '') + '" data-a="jg-voto" data-id="' + o[0] + '"' + (mv ? ' disabled' : '') + '>' + o[1] + '</button>'; }).join('') + '</div>';
+    h += '<span style="font-size:13px">Votos: Procedente ' + vt.filter(function (v) { return v.valor.v === 'proc'; }).length + ' · Improcedente ' + vt.filter(function (v) { return v.valor.v === 'improc'; }).length + '</span>';
+  }
+  h += '</div>';
+  if (eHost(a)) h += '<div class="row" style="justify-content:flex-end">' + (a.idx + 1 < x.fases.length ? '<button class="btn sm wine" data-a="at-seguinte">Fase seguinte →</button>' : '<button class="btn sm wine" data-a="at-fim">Encerrar julgamento</button>') + '</div>';
+  return h;
+}
+function vJulgRes(a) {
+  var x = a.extra, caso = CASOS.filter(function (c) { return c.id === x.caso; })[0] || CASOS[0], vi = x.fases.findIndex(function (f) { return f[0] === 'Votação da sala'; }), vt = respRonda(vi);
+  return '<div class="fb ok"><b>Resultado da votação: Procedente ' + vt.filter(function (v) { return v.valor.v === 'proc'; }).length + ' · Improcedente ' + vt.filter(function (v) { return v.valor.v === 'improc'; }).length + '</b></div>' +
+    '<div class="learn"><span class="eyebrow">Tópicos de correção do caso</span><ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:14px">' + caso.topicos.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></div>';
+}
+
+/* ----- Juridle ----- */
+function diaJ() { return ymd(new Date()); }
+function palavraDia() { var d = Math.floor((hoje0().getTime() - new Date(2026, 0, 1).getTime()) / 864e5); return JURIDLE[((d % JURIDLE.length) + JURIDLE.length) % JURIDLE.length]; }
+function jdEstado() { try { var s = JSON.parse(lsGet('lexdesk_juridle') || '{}'); return s.dia === diaJ() ? s : { dia: diaJ(), t: [] }; } catch (e) { return { dia: diaJ(), t: [] }; } }
+function jdCor(g, w) { var r = ['x', 'x', 'x', 'x', 'x'], rest = {}; for (var i = 0; i < 5; i++) { if (g[i] === w[i]) r[i] = 'v'; else rest[w[i]] = (rest[w[i]] || 0) + 1; } for (i = 0; i < 5; i++) { if (r[i] !== 'v' && rest[g[i]]) { r[i] = 'a'; rest[g[i]]--; } } return r; }
+function vJuridle() {
+  var st = jdEstado(), w = palavraDia(), ganhou = st.t.indexOf(w) >= 0, acabou = ganhou || st.t.length >= 6;
+  var rows = ''; for (var i = 0; i < 6; i++) { var g = st.t[i] || (i === st.t.length && !acabou ? (S.jdIn || '').padEnd(5, ' ') : '     '), c = st.t[i] ? jdCor(g, w) : []; rows += '<div class="jd-r">' + g.split('').map(function (ch, k) { return '<span class="jd-c ' + (c[k] || (ch.trim() ? 'typ' : '')) + '">' + esc(ch.trim()) + '</span>'; }).join('') + '</div>'; }
+  var kb = ['QWERTYUIOP', 'ASDFGHJKL', '⏎ZXCVBNM⌫'].map(function (l) { return '<div class="jd-k">' + l.split('').map(function (ch) { var cl = ''; st.t.forEach(function (g) { var c = jdCor(g, w); for (var k = 0; k < 5; k++) if (g[k] === ch) { if (c[k] === 'v') cl = 'v'; else if (c[k] === 'a' && cl !== 'v') cl = 'a'; else if (!cl) cl = 'x'; } }); return '<button class="' + cl + (ch === '⏎' || ch === '⌫' ? ' w' : '') + '" data-a="jd-k" data-id="' + ch + '">' + ch + '</button>'; }).join('') + '</div>'; }).join('');
+  return '<div class="jd">' + rows + '</div>' + (acabou ? '<div class="fb ' + (ganhou ? 'ok' : 'bad') + '"><b>' + (ganhou ? 'Acertou em ' + st.t.length + ' tentativa' + (st.t.length > 1 ? 's' : '') + '!' : 'Não foi desta. A palavra era ' + w + '.') + '</b><span>Volte amanhã para um novo termo.</span></div>' : '<div class="jd-kb">' + kb + '</div>') +
+    '<span style="font-size:12px;color:var(--muted);text-align:center;display:block">Verde: letra certa no sítio certo · Amarelo: letra existe noutra posição · Sem acentos.</span>';
+}
+function vJuridleSala() {
+  var seg = new Date(hoje0()); seg.setDate(seg.getDate() - ((seg.getDay() + 6) % 7));
+  if (!SL.jdRank || SL.jdRank.sala !== SL.id || Date.now() - SL.jdRank.t > 30000) {
+    SL.jdRank = { sala: SL.id, t: Date.now(), l: null };
+    SB.from('juridle').select('*').in('user_id', SL.membros.map(function (m) { return m.user_id; })).gte('dia', ymd(seg)).then(function (r) { SL.jdRank.l = r.data || []; if (SL.tab === 'juridle') slPaint(); });
+  }
+  var l = SL.jdRank.l || [], t = {}; l.forEach(function (x) { var p = x.ganhou ? 7 - x.tentativas : 0; t[x.user_id] = t[x.user_id] || { p: 0, j: 0 }; t[x.user_id].p += p; t[x.user_id].j++; });
+  var rk = Object.keys(t).map(function (u) { return { u: u, p: t[u].p, j: t[u].j }; }).sort(function (a, b) { return b.p - a.p; });
+  return '<div class="split"><div class="a card" style="align-items:center">' + '<h2 style="font-size:18px">🔤 Juridle de hoje</h2>' + vJuridle() + '</div><div class="b card"><h2 style="font-size:16px">Classificação da semana</h2>' + (rk.length ? rk.map(function (x, i) { return '<div class="pl-r' + (x.u === Store.uid ? ' me' : '') + '"><span class="pl-p">' + (i + 1) + '</span>' + avHtml(x.u, chatNome(x.u)) + '<span style="flex:1">' + esc(x.u === Store.uid ? 'Eu' : chatNome(x.u)) + '</span><span style="font-size:12px;color:var(--muted)">' + x.j + ' dia' + (x.j > 1 ? 's' : '') + '</span><b>' + x.p + '</b></div>'; }).join('') : '<span style="font-size:13px;color:var(--muted)">Ainda ninguém jogou esta semana.</span>') + '<span style="font-size:12px;color:var(--muted)">Pontos por dia: 6 se acertar à primeira, 1 à sexta.</span></div></div>';
+}
+function jdTecla(ch) {
+  var st = jdEstado(), w = palavraDia(); if (st.t.indexOf(w) >= 0 || st.t.length >= 6) return;
+  S.jdIn = S.jdIn || '';
+  if (ch === '⌫' || ch === 'Backspace') S.jdIn = S.jdIn.slice(0, -1);
+  else if (ch === '⏎' || ch === 'Enter') {
+    if (S.jdIn.length < 5) { toast('A palavra tem 5 letras.'); return; }
+    st.t.push(S.jdIn); S.jdIn = ''; lsSet('lexdesk_juridle', JSON.stringify(st));
+    var fim = S.jdIn === w || st.t.indexOf(w) >= 0 || st.t.length >= 6;
+    if (fim && sessaoAtiva()) { SB.from('juridle').insert({ dia: st.dia, tentativas: st.t.length, ganhou: st.t.indexOf(w) >= 0 }).then(function () { if (SL.jdRank) SL.jdRank.t = 0; slPaint(); }); }
+  } else if (/^[A-Za-z]$/.test(ch) && S.jdIn.length < 5) S.jdIn += ch.toUpperCase();
+  slPaint();
+}
+document.addEventListener('keydown', function (e) { if (S.view === 'salas' && SL.tab === 'juridle' && !$('#ov') && !/INPUT|TEXTAREA/.test((document.activeElement || {}).tagName || '') && !e.ctrlKey && !e.metaKey) { if (/^[A-Za-z]$/.test(e.key) || e.key === 'Enter' || e.key === 'Backspace') { e.preventDefault(); jdTecla(e.key); } } });
+
+/* ----- ações ----- */
+var A12 = {
+  'at-config': function (el) {
+    var t = el.dataset.id, j = JOGOS.filter(function (x) { return x[0] === t; })[0];
+    if (SL.est.ativ && SL.est.ativ.estado !== 'fim' && !eHost(SL.est.ativ)) { toast('Já há uma atividade em curso nesta sala.'); return; }
+    var body = '<p style="margin:0;line-height:1.6">' + esc(j[3]) + '</p>';
+    if (t === 'quiz' || t === 'vf' || t === 'objecao') body += cfgDisc() + '<label class="f">Número de perguntas<select class="in" id="ac-n"><option>5</option><option selected>10</option><option>15</option></select></label>';
+    if (t === 'jurista') body += cfgDisc();
+    if (t === 'exame') body += cfgDisc() + '<div class="row" style="gap:10px"><label class="f" style="flex:1">Perguntas<select class="in" id="ac-n"><option>10</option><option selected>20</option><option>30</option></select></label><label class="f" style="flex:1">Duração<select class="in" id="ac-min"><option value="10">10 min</option><option value="20" selected>20 min</option><option value="30">30 min</option></select></label></div>';
+    if (t === 'duelo' || t === 'competente') body += '<label class="f">Número de rondas<select class="in" id="ac-n"><option>5</option><option selected>8</option><option>10</option></select></label>';
+    if (t === 'julgamento') body += '<div class="note">Os papéis são sorteados entre os membros online agora (' + presentes().length + '). Com 4 ou mais, há Ministério Público.</div>';
+    openModal(j[1] + ' ' + j[2], body, '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="at-iniciar" data-id="' + t + '">Iniciar para a sala</button>');
+  },
+  'at-iniciar': function (el) {
+    var t = el.dataset.id, cfg = { d: ($('#ac-d') || {}).value, n: Number(($('#ac-n') || {}).value) || 10, min: Number(($('#ac-min') || {}).value) || 20 };
+    var a = gerarAtiv(t, cfg); if (!a) { toast('Não há perguntas suficientes para esta escolha.'); return; }
+    closeModal(); SL.resp = []; SL.tab = 'ativ'; S.exG = null; slSetEstado({ ativ: a });
+    SB.from('sala_msgs').insert({ sala_id: SL.id, texto: '▶️ Iniciei «' + (JOGOS.filter(function (x) { return x[0] === t; })[0] || [])[2] + '». Abram o separador «Atividades e jogos»!' }).then(function () {});
+  },
+  'at-mc': function (el) {
+    var a = SL.est.ativ, r = a.rondas[a.idx], i = Number(el.dataset.i), ok = i === r.a, rest = ativRestante(a);
+    var p = !ok ? 0 : a.tipo === 'jurista' ? JURISTA_PTS[a.idx] : Math.round(500 + 500 * rest / a.dur);
+    responder(a.idx, { i: i, ok: ok }, p);
+  },
+  'at-vf': function (el) {
+    var a = SL.est.ativ, r = a.rondas[a.idx], v = el.dataset.id === 'v', ok = v === r.v, p = 0;
+    if (a.tipo === 'vf') { var seq = 0; for (var k = a.idx - 1; k >= 0; k--) { var m = minhaResp(a, k); if (m && m.valor.ok) seq++; else break; } p = ok ? 100 * (1 + Math.min(seq, 4)) : 0; }
+    else p = ok ? (v ? 200 : Math.round(400 + 400 * ativRestante(a) / a.dur)) : (v ? 0 : -200);
+    responder(a.idx, { r: el.dataset.id, ok: ok }, p);
+  },
+  'at-5050': function () { var a = SL.est.ativ, r = a.rondas[a.idx]; S.ajudas = S.ajudas || {}; S.ajudas[a.id + '50'] = 1; S.fifty = S.fifty || {}; S.fifty[a.id + ':' + a.idx] = baralhar([0, 1, 2, 3].filter(function (i) { return i !== r.a; })).slice(0, 2); slPaint(); },
+  'at-ask': function () { var a = SL.est.ativ; S.ajudas = S.ajudas || {}; S.ajudas[a.id + 'ask'] = 1; S.askRoom = S.askRoom || {}; S.askRoom[a.id + ':' + a.idx] = 1; slPaint(); toast('Veja ao lado de cada opção quantos colegas já a escolheram.'); },
+  'at-revelar': function () { ativSet({ estado: 'revelar' }); },
+  'at-seguinte': function () { var a = SL.est.ativ; SL.tempoFim = null; var n = a.idx + 1, p = { idx: n, estado: 'ronda', inicio: Date.now() }; if (a.tipo === 'julgamento') p.dur = a.extra.fases[n][2] * 60; ativSet(p); },
+  'at-fim': function () { ativSet({ estado: 'fim' }); },
+  'at-fechar': function () { slSetEstado({ ativ: null }); SL.resp = []; },
+  'ex-ir': function (el) { S.exG = { id: SL.est.ativ.id, i: Number(el.dataset.i) }; slPaint(); },
+  'ex-resp': function (el) { var a = SL.est.ativ, i = S.exG && S.exG.id === a.id ? S.exG.i : 0, r = a.rondas[i], k = Number(el.dataset.i); responder(i, { i: k, ok: k === r.a }, k === r.a ? 1 : 0).then(function () { if (i + 1 < a.rondas.length && !minhaResp(a, i + 1)) { S.exG = { id: a.id, i: i + 1 }; slPaint(); } }); },
+  'ex-entregar': function () { var a = SL.est.ativ, f = SL.resp.filter(function (x) { return x.user_id === Store.uid && x.ronda < 900; }).length; if (f < a.rondas.length && !confirm('Ainda tem ' + (a.rondas.length - f) + ' perguntas por responder. Entregar mesmo assim?')) return; responder(900, { entregue: true }, 0); },
+  'pt-mv': function (el) { var a = SL.est.ativ, key = 'pt:' + a.id, o = S.ptOrd[key], i = Number(el.dataset.i), j = i + Number(el.dataset.d); if (j < 0 || j >= o.length) return; var t = o[i]; o[i] = o[j]; o[j] = t; slPaint(); },
+  'pt-ok': function () { var a = SL.est.ativ, o = S.ptOrd['pt:' + a.id], c = o.filter(function (p, i) { return PETICAO[i] === p; }).length; responder(0, { certos: c, ordem: o }, c * 100 + (c === PETICAO.length ? Math.round(5 * ativRestante(a)) : 0)); },
+  'erro-clk': function (el) {
+    var a = SL.est.ativ, i = Number(el.dataset.i), s = a.rondas[0].seg[i];
+    if (SL.resp.some(function (x) { return x.user_id === Store.uid && x.ronda === i; })) return;
+    var nerr = a.rondas[0].seg.filter(function (z) { return z[1]; }).length, ach = SL.resp.filter(function (x) { return x.user_id === Store.uid && x.valor.ok; }).length;
+    if (ach >= nerr || ativRestante(a) <= 0) return;
+    responder(i, { ok: !!s[1] }, s[1] ? 300 + Math.round(2 * ativRestante(a)) : -100); if (!s[1]) toast('Essa passagem está correta. −100 pontos.');
+  },
+  'bg-marca': function (el) { var a = SL.est.ativ, m = S.bgM['bg:' + a.id], i = Number(el.dataset.i), c = bingoCartao(a, Store.uid); if (!m[i] && (a.extra.chamados || []).indexOf(c[i]) < 0) { toast('Esse conceito ainda não foi sorteado.'); return; } m[i] = !m[i]; slPaint(); },
+  'bg-sortear': function () { var a = SL.est.ativ, ch = (a.extra.chamados || []).slice(), rest = BINGO.filter(function (t) { return ch.indexOf(t) < 0; }); if (!rest.length) { toast('Já saíram todos os conceitos.'); return; } ch.push(rest[Math.floor(Math.random() * rest.length)]); var ex = clone(a.extra); ex.chamados = ch; ativSet({ extra: ex }); },
+  'bg-bingo': function () { var a = SL.est.ativ; responder(0, { bingo: true }, Math.max(100, 1000 - 20 * (a.extra.chamados || []).length)); SB.from('sala_msgs').insert({ sala_id: SL.id, texto: '🎉 BINGO!' }).then(function () {}); },
+  'jg-voto': function (el) { var a = SL.est.ativ; responder(a.idx, { v: el.dataset.id }, 0); },
+  'jd-k': function (el) { jdTecla(el.dataset.id); }
+};
+Object.keys(A12).forEach(function (k) { A[k] = A12[k]; });
+// arrastar para reordenar a petição
+document.addEventListener('dragstart', function (e) { var li = e.target.closest && e.target.closest('[data-pt]'); if (li) { e.dataTransfer.setData('text/lx-pt', li.dataset.pt); li.classList.add('dragging'); } });
+document.addEventListener('dragover', function (e) { var t = e.dataTransfer && e.dataTransfer.types; if (t && [].indexOf.call(t, 'text/lx-pt') >= 0 && e.target.closest && e.target.closest('[data-pt]')) e.preventDefault(); });
+document.addEventListener('drop', function (e) {
+  var t = e.dataTransfer && e.dataTransfer.types; if (!t || [].indexOf.call(t, 'text/lx-pt') < 0) return; var li = e.target.closest && e.target.closest('[data-pt]'); if (!li) return; e.preventDefault();
+  var a = SL.est.ativ, o = S.ptOrd['pt:' + a.id], from = Number(e.dataTransfer.getData('text/lx-pt')), to = Number(li.dataset.pt), x = o.splice(from, 1)[0]; o.splice(to, 0, x); slPaint();
+});
+document.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && e.target.dataset && e.target.dataset.a === 'erro-clk') { e.preventDefault(); A['erro-clk'](e.target); } });
+
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
-var VIEW_LBL = { painel: ['Painel', I.grid], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['LEXDESK Connect', I.users], chat: ['Chat da comunidade', I.chat] };
+var VIEW_LBL = { painel: ['Painel', I.grid], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door] };
 var isMac = /Mac|iPhone|iPad/.test(navigator.platform || '');
 
 /* ===== animação de entrada e contadores ===== */
@@ -3158,7 +4021,7 @@ render = function () {
     countUp(m);
   } else { [].forEach.call(m.querySelectorAll('[data-count]'), function (el) { el.textContent = el.dataset.count + (el.dataset.suf || ''); }); }
   fxEnhance();
-  chatAfterRender();
+  chatAfterRender(); dmAfterRender(); salaAfterRender();
 };
 function countUp(root) {
   [].forEach.call(root.querySelectorAll('[data-count]'), function (el) {
@@ -3239,6 +4102,8 @@ function ckItems(q) {
     [I.plus, 'Novo workspace', 'Criar um Legal Workspace', function () { A['ws-new'](); }],
     [I.file, 'Carregar ficheiro', S.wsId && Store.get(S.wsId) ? 'Para o workspace «' + Store.get(S.wsId).nome + '»' : 'Num Legal Workspace', function () { if (S.view === 'workspaces' && S.wsId) A['item-new']({ dataset: { id: 'ficheiro' } }); else { go('workspaces'); toast('Abra um workspace e use «Carregar ficheiro» ou arraste ficheiros para a página.'); } }],
     [I.note, 'Partilhar apontamentos', 'Publicar texto ou ficheiros para a comunidade', function () { S.apId = null; go('apontamentos'); A['ap-new'](); }],
+    [I.mail, 'Nova mensagem privada', 'Escrever a um membro', function () { go('mensagens'); setTimeout(function () { A['dm-nova'](); }, 50); }],
+    [I.door, 'Criar sala de estudo', 'Sala privada com jogos e quizzes', function () { S.salaId = null; go('salas'); setTimeout(function () { A['sala-nova'](); }, 50); }],
     [I.check, 'Iniciar simulação de exame', QUESTOES.length + ' questões com explicação', function () { S.examResult = null; go('exames'); }],
     [I.uni, 'Definir perfil académico', 'Instituição, ano e disciplinas', function () { A['perfil-edit'](); }],
     sessaoAtiva() ? [I.users, 'Terminar sessão', '', function () { A['logout'](); }] : [I.users, 'Iniciar sessão ou criar conta', 'Sincronize e partilhe', function () { A['login-open']({ dataset: {} }); }]
@@ -3298,6 +4163,7 @@ function dropTarget() {
   var ov = $('#ov');
   if (ov) { var fi = $('#ap-file') || $('#f-file'); return fi ? { kind: 'input', el: fi } : null; }
   if (S.view === 'workspaces' && S.wsId && Store.get(S.wsId)) { var p = PASTAS.filter(function (x) { return x[0] === S.wsTab; })[0]; return { kind: 'ws', t: 'Largue para carregar', s: 'Na pasta ' + p[0] + ' — ' + p[1] + ' de «' + Store.get(S.wsId).nome + '» · PDF, Word, imagem ou texto' }; }
+  if (S.view === 'salas' && S.salaId && SL.tab === 'quadro') return { kind: 'sala', t: 'Largue para partilhar com a sala', s: 'O ficheiro fica no quadro da sala, visível só para os membros' };
   if (S.view === 'apontamentos') return { kind: 'ap', t: 'Largue para partilhar', s: 'Os apontamentos ficam visíveis para a comunidade · PDF, Word ou imagem' };
   return null;
 }
@@ -3319,6 +4185,7 @@ document.addEventListener('drop', function (e) {
   if (!sessaoAtiva()) { toast('Inicie sessão para carregar ficheiros.'); A['login-open']({ dataset: {} }); return; }
   if (t.kind === 'ap') { A['ap-new'](); setTimeout(function () { var fi = $('#ap-file'), tt = $('#ap-tit'); if (fi) setInputFile(fi, files[0]); if (tt && !tt.value) tt.value = files[0].name.replace(/\.[^.]+$/, ''); }, 30); return; }
   if (t.kind === 'ws') wsDropUpload(files);
+  if (t.kind === 'sala') { A['qd-novo']({ dataset: { id: 'ficheiro' } }); setTimeout(function () { var fi = $('#qd-file'); if (fi) setInputFile(fi, files[0]); }, 30); }
 });
 function setInputFile(inp, f) {
   try { var dt = new DataTransfer(); dt.items.add(f); inp.files = dt.files; inp.dispatchEvent(new Event('change', { bubbles: true })); } catch (x) { toast('Não foi possível usar este ficheiro. Use o botão de escolha.'); }
