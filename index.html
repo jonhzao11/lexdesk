@@ -428,6 +428,23 @@ ol.regras{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px
 @media (max-width:1150px){.chat{grid-template-columns:200px minmax(0,1fr)}.chat-on{display:none}}
 @media (max-width:760px){.chat{grid-template-columns:1fr;height:auto}.chat-side{flex-direction:row;flex-wrap:wrap}.chat-side .eyebrow{display:none}.chat-side .cadf{width:auto}.chat-main{height:70vh}}
 
+/* ===== perfis ===== */
+.av.foto{background-size:cover;background-position:center;color:transparent}
+.est{display:inline-flex;align-items:center;font-size:10.5px;font-weight:800;letter-spacing:.02em;padding:2px 8px;border-radius:99px;background:var(--violet-soft);color:var(--violet);white-space:nowrap}
+.est.big{font-size:12px;padding:4px 10px}
+.nm{background:none;border:0;padding:0;font:inherit;font-weight:700;color:inherit;cursor:pointer}.nm:hover{text-decoration:underline;color:var(--wine)}
+.avbtn{background:none;border:0;padding:0;cursor:pointer;border-radius:50%;flex:none}.avbtn:hover .av{box-shadow:0 0 0 3px var(--violet-soft)}
+.on-u{background:none;border:0;width:100%;text-align:left;cursor:pointer;font:inherit;color:inherit;border-radius:10px}.on-u:hover{background:#F5F6FA}
+.pf-top{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.av.pf-av{width:88px;height:88px;font-size:28px;flex:none;box-shadow:0 10px 30px -10px rgba(14,18,34,.4)}
+.av.pf-av.sm{width:56px;height:56px;font-size:18px}
+.pf-bio{font-size:15px;line-height:1.65;background:#F7F8FB;border-radius:14px;padding:14px 16px;white-space:normal;overflow-wrap:anywhere}
+.rede{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:99px;border:1px solid var(--line2);font-size:13px;font-weight:700;color:var(--ink);text-decoration:none;transition:border-color .2s,transform .2s}
+.rede:hover{border-color:var(--violet);color:var(--violet);transform:translateY(-1px)}
+.redes-f{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.msg-h .est{margin-left:2px}
+.acct .av{width:32px;height:32px;font-size:13px}
+
 </style>
 </head>
 <body>
@@ -1024,7 +1041,7 @@ Store.attach = function (session) {
   if (Store.uid === session.user.id) return;
   SBuser.session = session; Store.uid = session.user.id; S.connecting = false;
   SBuser.me().then(function (me) { if (me && me.name) { S.nomeFull = String(me.name); S.nome = S.nomeFull.split(' ')[0]; scheduleRender(); } }).catch(function () {});
-  SBdb.refreshAll(); scheduleRender();
+  SBdb.refreshAll(); carregarMeuPerfil(); scheduleRender();
   var col = SBdb.collection('data/users/' + Store.uid);
   var first = true;
   Store.unsub = col.onSnapshot(function (snap) {
@@ -2020,7 +2037,7 @@ function apList(l) {
 }
 function vApontamento(n) {
   var f = n.ficheiro, url = f ? SBassets.url(f.id) : '';
-  var h = '<div class="head"><div><span class="crumb"><button data-a="ap-back">Apontamentos</button> / ' + esc(n.cadeira) + '</span><h1>' + esc(n.titulo) + '</h1><p class="sub">' + esc(n.cadeira) + (n.ano ? ' · ' + n.ano + '.º ano' : '') + ' · ' + esc(n.tipo) + ' · partilhado por ' + esc(nome(n.autor)) + ' ' + quando(n.createdAt) + '</p></div>' +
+  var h = '<div class="head"><div><span class="crumb"><button data-a="ap-back">Apontamentos</button> / ' + esc(n.cadeira) + '</span><h1>' + esc(n.titulo) + '</h1><p class="sub">' + esc(n.cadeira) + (n.ano ? ' · ' + n.ano + '.º ano' : '') + ' · ' + esc(n.tipo) + ' · partilhado por ' + (sessaoAtiva() ? perfilLink(n.autor, nome(n.autor)) + ' ' + estadoChip(n.autor) : esc(nome(n.autor))) + ' ' + quando(n.createdAt) + '</p></div>' +
     '<div class="row"><button class="btn" data-a="ap-ws">' + I.plus + 'Guardar num workspace</button>' + (canEditAp(n) ? '<button class="btn" data-a="ap-edit">Editar</button><button class="btn danger" data-a="ap-del">Eliminar</button>' : '') + '</div></div>';
   if (f) h += '<div class="card" style="flex-direction:row;align-items:center;gap:14px;flex-wrap:wrap"><span class="ic" style="width:44px;height:44px;border-radius:8px;background:var(--wine-soft);color:var(--wine);display:flex;align-items:center;justify-content:center">' + I.file + '</span><span style="flex:1;min-width:0"><b>' + esc(f.nome) + '</b><br><span style="font-size:13px;color:var(--muted)">' + esc(f.tipo || '') + (f.tamanho ? ' · ' + tamanho(f.tamanho) : '') + '</span></span><a class="btn pri sm" href="' + esc(url) + '" target="_blank" rel="noopener">' + (tipoCurto(f.tipo) === 'Word' ? 'Descarregar' : 'Abrir ficheiro') + ' ' + I.ext + '</a></div>' +
     ((f.tipo || '').indexOf('image/') === 0 ? '<img src="' + esc(url) + '" alt="' + esc(n.titulo) + '" style="max-width:100%;border-radius:12px;border:1px solid var(--line)">' : '');
@@ -2230,7 +2247,7 @@ function vTopbar() {
   if (!SB) return '';
   if (sessaoAtiva()) {
     var n = S.nomeFull || 'A minha conta', ini = n.split(' ').map(function (x) { return x.charAt(0); }).slice(0, 2).join('').toUpperCase() || 'U';
-    return '<div class="topbar"><button class="acct" data-a="conta-menu" aria-label="A minha conta"><span class="av">' + esc(ini) + '</span><span style="text-align:left"><b>' + esc(n) + '</b><span class="s">Sessão iniciada</span></span></button></div>';
+    return '<div class="topbar"><button class="acct" data-a="conta-menu" aria-label="A minha conta">' + avHtml(Store.uid, n) + '<span style="text-align:left"><b>' + esc(n) + '</b><span class="s">' + (S.meuPerfil && estadoTxt(S.meuPerfil.estado, S.meuPerfil.genero) ? esc(estadoTxt(S.meuPerfil.estado, S.meuPerfil.genero)) : 'Sessão iniciada') + '</span></span></button></div>';
   }
   return '<div class="topbar"><button class="btn sm" data-a="login-open" data-id="registo">Criar conta</button><button class="btn wine sm" data-a="login-open">Iniciar sessão</button></div>';
 }
@@ -2241,6 +2258,7 @@ function loginBody(modo) {
     '<div style="display:flex;flex-direction:column;gap:12px;width:100%;text-align:left">' + (reg ? '<label class="f">Nome a mostrar<input class="in" id="lg-nome" maxlength="80" autocomplete="name" placeholder="Ex.: Joana Silva"></label>' : '') +
     '<label class="f">Email<input class="in" id="lg-email" type="email" autocomplete="email" placeholder="nome@exemplo.pt"></label>' +
     '<label class="f">Palavra-passe<input class="in" id="lg-pass" type="password" autocomplete="' + (reg ? 'new-password' : 'current-password') + '" placeholder="' + (reg ? 'Mínimo 8 caracteres' : '') + '"></label>' +
+    (reg ? '<div class="row" style="gap:10px;align-items:flex-start"><label class="f" style="flex:1 1 180px">Situação atual<select class="in" id="lg-est"><option value="">Prefiro não indicar</option>' + EST_OPC.map(function (o) { return '<option value="' + o[0] + '">' + o[1] + '</option>'; }).join('') + '</select></label><label class="f" style="flex:1 1 150px">Tratamento<select class="in" id="lg-gen"><option value="m">Masculino</option><option value="f">Feminino</option><option value="n">Neutro</option></select></label></div>' : '') +
     (reg ? '<label class="check" style="font-size:13px"><input type="checkbox" id="lg-ok">Aceito que os meus dados (nome, email e conteúdos que publicar) sejam tratados pelo LEXDESK para prestar o serviço.</label>' : '') + '</div>' +
     '<button class="btn wine" data-a="login-go" data-id="' + (reg ? 'registo' : 'entrar') + '" style="width:100%">' + (reg ? 'Criar conta' : 'Entrar') + '</button>' +
     (reg ? '' : '<button class="btn" data-a="login-reset" style="width:100%">Esqueci-me da palavra-passe</button>') +
@@ -2272,7 +2290,7 @@ var A6 = {
     if (reg && !$('#lg-ok').checked) { toast('Aceite o tratamento dos dados para criar a conta.'); return; }
     el.disabled = true; var txt0 = el.textContent; el.textContent = reg ? 'A criar conta…' : 'A entrar…';
     lsSet('lexdesk_sessao', 'on');
-    var p = reg ? SB.auth.signUp({ email: email, password: pass, options: { data: { nome: nomeV }, emailRedirectTo: location.origin + location.pathname } })
+    var p = reg ? SB.auth.signUp({ email: email, password: pass, options: { data: { nome: nomeV, estado: $('#lg-est').value || null, genero: $('#lg-gen').value }, emailRedirectTo: location.origin + location.pathname } })
       : SB.auth.signInWithPassword({ email: email, password: pass });
     p.then(function (r) {
       el.disabled = false; el.textContent = txt0;
@@ -2290,14 +2308,14 @@ var A6 = {
   },
   'conta-menu': function () {
     var p = perfil(), em = SBuser.session && SBuser.session.user.email;
-    openModal('A minha conta', '<div class="row" style="gap:14px"><span class="av" style="width:52px;height:52px;font-size:18px">' + esc((S.nomeFull || 'U').split(' ').map(function (x) { return x.charAt(0); }).slice(0, 2).join('').toUpperCase()) + '</span><div><b style="font-size:16px">' + esc(S.nomeFull || 'Utilizador LEXDESK') + '</b><div style="font-size:13px;color:var(--muted)">' + esc(em || '') + '</div><div style="font-size:13px;color:var(--muted)">' + (p && p.instId ? esc(perfilResumo(p)) : 'Perfil académico por definir') + '</div></div></div>' +
+    openModal('A minha conta', '<div class="row" style="gap:14px">' + avHtml(Store.uid, S.nomeFull || 'U', 'pf-av sm') + '<div><b style="font-size:16px">' + esc(S.nomeFull || 'Utilizador LEXDESK') + '</b><div style="font-size:13px;color:var(--muted)">' + esc(em || '') + '</div><div style="font-size:13px;color:var(--muted)">' + (p && p.instId ? esc(perfilResumo(p)) : 'Perfil académico por definir') + '</div></div></div>' +
       '<div class="note">Sessão iniciada: os seus dados e ficheiros ficam guardados na sua conta e sincronizados entre dispositivos.</div>',
-      '<button class="btn danger" data-a="logout" style="margin-right:auto">Terminar sessão</button><button class="btn" data-a="perfil-edit">Perfil académico</button><button class="btn pri" data-a="close">Fechar</button>');
+      '<button class="btn danger" data-a="logout" style="margin-right:auto">Terminar sessão</button><button class="btn" data-a="perfil-ver" data-id="' + Store.uid + '">Ver o meu perfil</button><button class="btn" data-a="perfil-pub-edit">Editar perfil público</button><button class="btn" data-a="perfil-edit">Perfil académico</button><button class="btn pri" data-a="close">Fechar</button>');
   },
   'logout': function () {
     lsSet('lexdesk_sessao', 'off');
     if (Store.unsub) { try { Store.unsub(); } catch (e) {} }
-    Store.unsub = null; Store.col = null; Store.uid = null; SBuser.session = null; S.nomeFull = ''; S.nome = '';
+    Store.unsub = null; Store.col = null; Store.uid = null; SBuser.session = null; S.meuPerfil = null; S.nomeFull = ''; S.nome = '';
     Store.mode = lsSet('lexdesk_probe', '1') ? 'local' : 'memory'; Store.saveLocal();
     SB.auth.signOut().catch(function () {});
     closeModal(); render(); toast('Sessão terminada. Os dados ficam disponíveis neste navegador.');
@@ -2489,6 +2507,131 @@ document.addEventListener('keydown', function (ev) {
   if (ev.key === 'Enter' && ev.target.id === 'f-nome' && $('[data-a="ws-save"]')) { ev.preventDefault(); A['ws-save'](); }
 });
 
+/* ---------- PERFIL PÚBLICO: situação, biografia, fotografia e redes sociais ---------- */
+var EST_OPC = [['ano1', '1.º ano'], ['ano2', '2.º ano'], ['ano3', '3.º ano'], ['ano4', '4.º ano'], ['mestrado', 'Mestrado'], ['licenciado', 'Licenciatura concluída'], ['estagiario', 'Estágio na Ordem dos Advogados'], ['advogado', 'Advocacia'], ['docente', 'Docente'], ['outro', 'Outra situação']];
+var EST_LBL = {
+  ano1: ['Caloiro', 'Caloira', 'Caloiro/a'], ano2: ['2.º ano', '2.º ano', '2.º ano'], ano3: ['3.º ano', '3.º ano', '3.º ano'], ano4: ['4.º ano', '4.º ano', '4.º ano'],
+  mestrado: ['Mestrando', 'Mestranda', 'Mestrando/a'], licenciado: ['Licenciado', 'Licenciada', 'Licenciado/a'],
+  estagiario: ['Advogado estagiário', 'Advogada estagiária', 'Advogado/a estagiário/a'], advogado: ['Advogado', 'Advogada', 'Advogado/a'], docente: ['Docente', 'Docente', 'Docente'], outro: ['', '', '']
+};
+var REDES = [['linkedin', 'LinkedIn', 'https://www.linkedin.com/in/'], ['instagram', 'Instagram', 'https://www.instagram.com/'], ['x', 'X (Twitter)', 'https://x.com/'], ['tiktok', 'TikTok', 'https://www.tiktok.com/@'], ['github', 'GitHub', 'https://github.com/'], ['site', 'Site pessoal', '']];
+Social.prof = Social.prof || {};
+function estadoTxt(e, g) { var l = EST_LBL[e]; if (!l) return ''; return l[g === 'f' ? 1 : g === 'n' ? 2 : 0]; }
+function estadoChip(id) { var p = id === Store.uid && S.meuPerfil ? S.meuPerfil : Social.prof[id]; var t = p ? estadoTxt(p.estado, p.genero) : ''; return t ? '<span class="est">' + esc(t) + '</span>' : ''; }
+function avHtml(id, nomeTxt, cls) {
+  var p = id === Store.uid && S.meuPerfil ? S.meuPerfil : Social.prof[id], u = p && p.avatar_url;
+  return u ? '<span class="av ' + (cls || '') + ' foto" style="background-image:url(\'' + esc(u) + '\')" role="img" aria-label="' + esc(nomeTxt) + '"></span>'
+    : '<span class="av ' + (cls || '') + '">' + esc(String(nomeTxt || '?').split(' ').filter(Boolean).map(function (x) { return x.charAt(0); }).slice(0, 2).join('').toUpperCase() || '?') + '</span>';
+}
+function perfilLink(id, nomeTxt) { return '<button class="nm" data-a="perfil-ver" data-id="' + esc(id) + '">' + esc(nomeTxt) + '</button>'; }
+function normRede(k, v) {
+  v = String(v || '').trim(); if (!v) return '';
+  if (/^https:\/\//i.test(v)) return v;
+  if (/^http:\/\//i.test(v)) return 'https://' + v.slice(7);
+  var r = REDES.filter(function (x) { return x[0] === k; })[0];
+  if (k === 'site') return 'https://' + v.replace(/^\/+/, '');
+  if (/^(www\.)?[a-z0-9-]+\.[a-z]{2,}\//i.test(v)) return 'https://' + v;
+  return r[2] + v.replace(/^@/, '');
+}
+// carrega também a situação e a fotografia de cada utilizador
+SBuser.profiles = function (ids) {
+  ids = ids.filter(function (i) { return /^[0-9a-f-]{36}$/.test(i); });
+  return SB.from('profiles').select(sessaoAtiva() ? 'id,nome,estado,genero,avatar_url' : 'id,nome').in('id', ids).then(function (r) {
+    var o = {}; (r.data || []).forEach(function (p) { o[p.id] = { name: p.nome }; Social.prof[p.id] = p; }); return o;
+  });
+};
+function carregarMeuPerfil() {
+  if (!sessaoAtiva()) { S.meuPerfil = null; return Promise.resolve(null); }
+  return SB.from('profiles').select('id,nome,estado,genero,bio,avatar_url,redes,inst_nome,created_at').eq('id', Store.uid).maybeSingle().then(function (r) { S.meuPerfil = r.data || null; scheduleRender(); return S.meuPerfil; });
+}
+
+/* ----- ver o perfil de outro utilizador ----- */
+function perfilVer(id) {
+  if (!sessaoAtiva()) { toast('Inicie sessão para ver os perfis da comunidade.'); A['login-open']({ dataset: {} }); return; }
+  SB.from('profiles').select('id,nome,estado,genero,bio,avatar_url,redes,inst_nome,created_at').eq('id', id).maybeSingle().then(function (r) {
+    var p = r.data; if (!p) { toast('Perfil não encontrado.'); return; }
+    Social.prof[p.id] = p; Social.names[p.id] = p.nome;
+    var est = estadoTxt(p.estado, p.genero), redes = p.redes || {};
+    var links = REDES.filter(function (x) { return redes[x[0]]; }).map(function (x) { return '<a class="rede" href="' + esc(redes[x[0]]) + '" target="_blank" rel="noopener nofollow ugc">' + esc(x[1]) + ' ' + I.ext + '</a>'; }).join('');
+    var membro = new Date(p.created_at).toLocaleDateString('pt-PT', { month: 'long', year: 'numeric' });
+    openModal(p.id === Store.uid ? 'O meu perfil público' : 'Perfil',
+      '<div class="pf-top">' + avHtml(p.id, p.nome, 'pf-av') + '<div style="min-width:0"><h2 style="font-size:26px">' + esc(p.nome) + '</h2><div class="row" style="gap:6px;margin-top:6px">' + (est ? '<span class="est big">' + esc(est) + '</span>' : '') + (p.inst_nome ? '<span class="chip gray">' + I.uni + esc(p.inst_nome) + '</span>' : '') + '</div><span style="font-size:12px;color:var(--muted);display:block;margin-top:6px">Membro do LEXDESK desde ' + esc(membro) + '</span></div></div>' +
+      (p.bio ? '<div class="pf-bio">' + esc(p.bio).replace(/\n/g, '<br>') + '</div>' : '<div class="note">' + (p.id === Store.uid ? 'Ainda não escreveu a sua biografia.' : 'Este membro ainda não escreveu uma biografia.') + '</div>') +
+      (links ? '<div class="row" style="gap:8px">' + links + '</div>' : ''),
+      p.id === Store.uid ? '<button class="btn" data-a="close">Fechar</button><button class="btn wine" data-a="perfil-pub-edit">Editar perfil</button>' : '<button class="btn pri" data-a="close">Fechar</button>');
+  });
+}
+
+/* ----- editar o meu perfil público ----- */
+function perfilForm(p) {
+  var pa = perfil(), inst = pa && pa.instId && instById(pa.instId) ? instById(pa.instId).nome : '';
+  var est = p.estado || (pa && pa.ano ? 'ano' + Math.min(4, pa.ano) : '');
+  var redes = p.redes || {};
+  return '<div class="pf-top">' + '<span id="pf-prev">' + avHtml(Store.uid, p.nome, 'pf-av') + '</span><div style="display:flex;flex-direction:column;gap:8px"><label class="btn sm" style="cursor:pointer">Escolher fotografia<input type="file" id="pf-foto" accept="image/png,image/jpeg,image/webp" style="display:none"></label>' + (p.avatar_url ? '<button type="button" class="btn sm danger" data-a="pf-foto-rm">Remover fotografia</button>' : '') + '<span style="font-size:12px;color:var(--muted)">PNG, JPG ou WEBP, até 2 MB.</span></div></div>' +
+    '<label class="f">Nome a mostrar<input class="in" id="pf-nome" maxlength="80" value="' + esc(p.nome) + '"></label>' +
+    '<div class="row" style="gap:12px;align-items:flex-start"><label class="f" style="flex:1 1 220px">Situação atual<select class="in" id="pf-est"><option value="">Não indicar</option>' + EST_OPC.map(function (o) { return '<option value="' + o[0] + '"' + (est === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select></label>' +
+    '<label class="f" style="flex:1 1 180px">Forma de tratamento<select class="in" id="pf-gen"><option value="m"' + (p.genero === 'm' || !p.genero ? ' selected' : '') + '>Masculino (ex.: Caloiro)</option><option value="f"' + (p.genero === 'f' ? ' selected' : '') + '>Feminino (ex.: Caloira)</option><option value="n"' + (p.genero === 'n' ? ' selected' : '') + '>Neutra (ex.: Caloiro/a)</option></select></label></div>' +
+    '<div class="note" id="pf-est-prev" style="padding:10px 14px">Aparece junto ao seu nome como: <span class="est"></span></div>' +
+    (inst ? '<label class="check" style="font-size:14px;min-height:36px"><input type="checkbox" id="pf-inst" data-inst="' + esc(inst) + '"' + (p.inst_nome ? ' checked' : '') + '>Mostrar a minha instituição (' + esc(inst) + ')</label>' : '') +
+    '<label class="f">Biografia <span id="pf-bio-n" style="font-weight:400;color:var(--muted)">' + (p.bio || '').length + '/500</span><textarea class="in" id="pf-bio" maxlength="500" placeholder="Fale um pouco sobre si: o que estuda, áreas preferidas, objetivos profissionais…">' + esc(p.bio || '') + '</textarea></label>' +
+    '<fieldset class="disc"><legend>Redes sociais (opcional)</legend><div class="redes-f">' + REDES.map(function (x) { return '<label class="f">' + x[1] + '<input class="in" id="pf-r-' + x[0] + '" value="' + esc(redes[x[0]] || '') + '" placeholder="' + (x[0] === 'site' ? 'https://…' : '@utilizador ou ligação') + '" maxlength="200"></label>'; }).join('') + '</div></fieldset>' +
+    '<span style="font-size:12px;color:var(--muted)">O seu perfil é visível para todos os utilizadores com conta LEXDESK. Partilhe apenas o que quiser tornar público.</span>';
+}
+function pfEstPrev() { var b = $('#pf-est-prev'); if (!b) return; var t = estadoTxt($('#pf-est').value, $('#pf-gen').value); b.style.display = t ? '' : 'none'; $('.est', b).textContent = t; }
+function perfilEditar() {
+  if (!sessaoAtiva()) { A['login-open']({ dataset: {} }); return; }
+  carregarMeuPerfil().then(function (p) {
+    if (!p) { toast('Não foi possível carregar o perfil.'); return; }
+    S.pfFoto = null; S.pfFotoRm = false;
+    openModal('O meu perfil público', perfilForm(p), '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="pf-save">Guardar perfil</button>');
+    pfEstPrev();
+  });
+}
+document.addEventListener('change', function (e) {
+  if (e.target.id === 'pf-est' || e.target.id === 'pf-gen') pfEstPrev();
+  if (e.target.id === 'pf-foto') {
+    var f = e.target.files && e.target.files[0]; if (!f) return;
+    if (!/^image\/(png|jpeg|webp)$/.test(f.type)) { toast('Use uma imagem PNG, JPG ou WEBP.'); return; }
+    if (f.size > 2 * 1048576) { toast('A fotografia tem mais de 2 MB.'); return; }
+    S.pfFoto = f; S.pfFotoRm = false; var u = URL.createObjectURL(f);
+    $('#pf-prev').innerHTML = '<span class="av pf-av foto" style="background-image:url(\'' + u + '\')"></span>';
+  }
+});
+document.addEventListener('input', function (e) { if (e.target.id === 'pf-bio') { var n = $('#pf-bio-n'); if (n) n.textContent = e.target.value.length + '/500'; } });
+
+var A8 = {
+  'perfil-ver': function (el) { perfilVer(el.dataset.id); },
+  'perfil-pub-edit': function () { perfilEditar(); },
+  'pf-foto-rm': function () { S.pfFotoRm = true; S.pfFoto = null; $('#pf-prev').innerHTML = '<span class="av pf-av">' + esc(String($('#pf-nome').value || '?').charAt(0).toUpperCase()) + '</span>'; toast('A fotografia será removida ao guardar.'); },
+  'pf-save': function (el) {
+    var p = S.meuPerfil || {}, nomeV = $('#pf-nome').value.trim();
+    if (!nomeV) { toast('Indique o nome a mostrar.'); return; }
+    var redes = {}, erro = '';
+    REDES.forEach(function (x) { var v = normRede(x[0], $('#pf-r-' + x[0]).value); if (v) { if (!/^https:\/\/[^\s<>"]+$/.test(v) || v.length > 200) erro = x[1]; redes[x[0]] = v; } });
+    if (erro) { toast('Verifique a ligação de ' + erro + '.'); return; }
+    var ci = $('#pf-inst');
+    var upd = { nome: nomeV, estado: $('#pf-est').value || null, genero: $('#pf-gen').value, bio: $('#pf-bio').value.trim() || null, redes: redes, inst_nome: ci && ci.checked ? ci.dataset.inst : null };
+    el.disabled = true; el.textContent = 'A guardar…';
+    var antiga = p.avatar_url ? p.avatar_url.split('/avatares/')[1] : null;
+    var passo = Promise.resolve();
+    if (S.pfFoto) {
+      var f = S.pfFoto, path = Store.uid + '/' + Date.now().toString(36) + '.' + (f.type === 'image/png' ? 'png' : f.type === 'image/webp' ? 'webp' : 'jpg');
+      passo = SB.storage.from('avatares').upload(path, f, { contentType: f.type }).then(function (r) { if (r.error) throw r.error; upd.avatar_url = SB.storage.from('avatares').getPublicUrl(path).data.publicUrl; });
+    } else if (S.pfFotoRm) upd.avatar_url = null;
+    passo.then(function () { return SB.from('profiles').update(upd).eq('id', Store.uid).select('id,nome,estado,genero,bio,avatar_url,redes,inst_nome,created_at').single(); }).then(function (r) {
+      if (r.error) throw r.error;
+      if (antiga && (S.pfFoto || S.pfFotoRm)) SB.storage.from('avatares').remove([antiga]).catch(function () {});
+      S.meuPerfil = r.data; Social.prof[Store.uid] = r.data; Social.names[Store.uid] = r.data.nome; S.nomeFull = r.data.nome; S.nome = r.data.nome.split(' ')[0];
+      if (typeof Chat !== 'undefined' && Chat.pres) { try { Chat.presNome = r.data.nome; Chat.pres.track({ nome: r.data.nome }); } catch (x) {} }
+      closeModal(); render(); toast('Perfil guardado.');
+    }).catch(function (e) {
+      el.disabled = false; el.textContent = 'Guardar perfil';
+      var m = String((e && e.message) || ''); toast(/ligacao_invalida/.test(m) ? 'Uma das ligações das redes sociais não é válida.' : /size|large/i.test(m) ? 'A fotografia é demasiado grande.' : 'Não foi possível guardar o perfil.');
+    });
+  }
+};
+Object.keys(A8).forEach(function (k) { A[k] = A8[k]; });
+
 /* ---------- CHAT DA COMUNIDADE (versão 1) ---------- */
 I.chat = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4"/></svg>';
 I.flag = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V4M4 4h12l-2 4 2 4H4"/></svg>';
@@ -2622,8 +2765,8 @@ function chatPaint(forceBottom) {
       if (mine || Chat.mod) acts += '<button class="icon-btn" data-a="chat-del" data-id="' + m.id + '" title="Apagar" aria-label="Apagar mensagem">' + I.trash + '</button>';
       if (Chat.mod && !mine) acts += '<button class="icon-btn" data-a="chat-mod-rm" data-id="' + m.id + '" title="Remover (moderação)" aria-label="Remover por moderação">' + I.shield + '</button>';
     }
-    h += '<div class="msg' + (cont ? ' cont' : '') + (mine ? ' mine' : '') + '">' + (cont ? '<span class="msg-t2">' + chatHora(t) + '</span>' : '<span class="av msg-av">' + esc(chatIni(nome)) + '</span>') +
-      '<div class="msg-b">' + (cont ? '' : '<div class="msg-h"><b>' + esc(nome) + '</b><span>' + chatHora(t) + '</span></div>') +
+    h += '<div class="msg' + (cont ? ' cont' : '') + (mine ? ' mine' : '') + '">' + (cont ? '<span class="msg-t2">' + chatHora(t) + '</span>' : '<button class="avbtn" data-a="perfil-ver" data-id="' + m.autor + '" aria-label="Ver perfil de ' + esc(nome) + '">' + avHtml(m.autor, nome, 'msg-av') + '</button>') +
+      '<div class="msg-b">' + (cont ? '' : '<div class="msg-h"><b>' + perfilLink(m.autor, nome) + '</b>' + estadoChip(m.autor) + '<span>' + chatHora(t) + '</span></div>') +
       (m.removido ? '<div class="msg-x">Mensagem removida pela moderação' + (m.removido_motivo ? ' — motivo: ' + esc(m.removido_motivo) : '') + '.</div>' : '<div class="msg-t">' + chatTexto(m.texto) + '</div>') +
       '</div>' + (acts ? '<div class="msg-a">' + acts + '</div>' : '') + '</div>';
     prev = m;
@@ -2635,7 +2778,8 @@ function chatPaintOnline() {
   var box = $('#chat-online'); if (!box) return;
   var ids = Object.keys(Chat.online);
   box.innerHTML = '<span class="chat-cnt"><i></i>' + plural(ids.length, 'pessoa', 'pessoas') + '</span>' + ids.sort(function (a, b) { return a === Store.uid ? -1 : b === Store.uid ? 1 : String(Chat.online[a]).localeCompare(Chat.online[b], 'pt'); }).slice(0, 60).map(function (k) {
-    return '<div class="on-u"><span class="av">' + esc(chatIni(Chat.online[k])) + '</span><span>' + esc(Chat.online[k]) + (k === Store.uid ? ' (eu)' : '') + '</span></div>';
+    if (!Social.prof[k] && k !== Store.uid) loadNames([k]);
+    return '<button class="on-u" data-a="perfil-ver" data-id="' + esc(k) + '">' + avHtml(k, Chat.online[k]) + '<span>' + esc(Chat.online[k]) + (k === Store.uid ? ' (eu)' : '') + '</span></button>';
   }).join('');
 }
 function chatAfterRender() {
