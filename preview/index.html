@@ -641,6 +641,54 @@ button.navlbl.navmais{font-size:10px;padding:6px 10px 4px;color:#6E7591}
 @media (max-width:1100px){.bento{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){.bento{grid-template-columns:1fr}.bt-dest{grid-column:auto;grid-row:auto}}
 
+/* ===== Barra superior horizontal (experimental) ===== */
+body.tn .app{flex-direction:column}
+body.tn .side{position:sticky;top:0;z-index:60;width:100%;height:68px;flex-direction:row;align-items:center;gap:18px;padding:0 24px;overflow:visible;border-right:0;border-bottom:1px solid rgba(255,255,255,.06);background:#0F1B2D;background-image:linear-gradient(90deg,rgba(123,30,43,.35),transparent 30%)}
+body.tn .tn-brand{flex:none}
+body.tn .main{width:100%;max-width:1360px;margin:0 auto;padding:16px 32px 48px;gap:18px}
+body.tn .main>.topbar{position:fixed;top:14px;right:24px;z-index:61;margin:0}
+body.tn .main>.topbar .topsearch{min-width:0;width:200px}
+.tn-bar{display:flex;align-items:center;gap:4px;padding:4px;border-radius:99px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)}
+.tn-b{display:inline-flex;align-items:center;gap:6px;border:0;background:none;color:#D8DDE8;font:inherit;font-size:14px;font-weight:600;padding:8px 14px;border-radius:99px;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.tn-b svg{width:12px;height:12px;opacity:.7;transition:transform .2s}
+.tn-b:hover,.tn-g.open>.tn-b{background:rgba(255,255,255,.08);color:#fff}
+.tn-b.on,.tn-g.on>.tn-b{background:#fff;color:#0F1B2D}
+.tn-g{position:relative}
+.tn-g.open>.tn-b svg{transform:rotate(180deg)}
+.tn-m{display:none;position:absolute;top:calc(100% + 10px);left:0;min-width:250px;padding:8px;border-radius:16px;background:#fff;box-shadow:0 20px 50px -12px rgba(15,27,45,.35),0 0 0 1px rgba(15,27,45,.06);flex-direction:column;gap:2px;z-index:70}
+.tn-g.open>.tn-m{display:flex;animation:tnIn .18s var(--ease)}
+@keyframes tnIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.tn-i{display:flex;align-items:center;gap:10px;width:100%;border:0;background:none;font:inherit;font-size:14px;font-weight:600;color:var(--ink);padding:9px 10px;border-radius:10px;cursor:pointer;text-align:left}
+.tn-i svg{width:18px;height:18px;color:#5D6378;flex:none}
+.tn-i:hover{background:#F2F4F8}.tn-i.on{background:#F6E9EC;color:#7B1E2B}.tn-i.on svg{color:#7B1E2B}
+.tn-i .nbadge{margin-left:6px}
+.tn-sep{height:1px;background:var(--line);margin:6px 4px}
+.tn-st{font-size:12px;color:var(--muted);padding:6px 10px}
+.tn-b .nbadge{margin-left:2px}
+@media (max-width:1250px){body.tn .main>.topbar .topsearch span,body.tn .main>.topbar .topsearch kbd{display:none}body.tn .main>.topbar .topsearch{width:auto}}
+@media (max-width:1050px){body.tn .side{height:auto;flex-wrap:wrap;padding:10px 16px}.tn-bar{overflow-x:auto;max-width:100%}body.tn .main>.topbar{position:static}}
+
+/* painel mais compacto */
+.hb{min-height:0;padding:24px 32px;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}
+.hb h1{font-size:38px}.hb p{font-size:15px}.hb-l{gap:10px}
+.hb-bal{max-width:190px}
+.bento{grid-auto-rows:minmax(104px,auto);gap:12px}
+.bt{padding:14px 18px;border-radius:18px;gap:2px}
+.bt-n{font-size:32px}
+.bt-s{font-size:12.5px}
+.bt-p{padding:5px 10px;font-size:12px}
+.bt-dest{padding:18px 22px}
+.bt-dest .bt-n{font-size:56px}.bt-dest .bt-n.sm{font-size:30px}
+.bt-u{font-size:13px;margin-top:-4px}
+.bt-t{font-size:18px;margin-top:4px}
+.bt-dest .row{margin-top:6px}
+body.tn .side .tn-brand{width:auto;flex:none;margin:0}
+body.tn .main>.topbar .topsearch{width:230px;white-space:nowrap}
+body.tn .main>.topbar .topsearch{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);color:#C9D0DE;box-shadow:none}
+body.tn .main>.topbar .topsearch kbd{background:rgba(255,255,255,.12);color:#E6E9F0}
+body.tn .main>.topbar .topsearch:hover{border-color:rgba(255,255,255,.3)}
+@media (max-width:1050px){body.tn .main>.topbar .topsearch{background:#fff;color:var(--muted);border-color:var(--line2)}}
+
 </style>
 </head>
 <body>
@@ -4775,6 +4823,33 @@ painelCompor = function (P, pf) {
   return h;
 };
 A['hb-hor'] = function () { var e = document.getElementById('hor-h'); if (e) e.scrollIntoView({ behavior: 'smooth', block: 'start' }); else go('cadeiras'); };
+
+/* ----- barra de navegação horizontal superior (experimental) ----- */
+renderSide = function () {
+  document.body.classList.add('tn');
+  var st = Store.mode === 'cloud' ? 'Guardado na sua conta' : Store.mode === 'local' ? 'Guardado neste navegador' : 'Sessão temporária';
+  var t = tipoPerfil(), grupos = NAV_PERFIL[t].map(function (g) { return [g[0], g[1].slice()]; }), usados = [];
+  grupos.forEach(function (g) { usados = usados.concat(g[1]); });
+  var mais = Object.keys(NAV).filter(function (k) { return usados.indexOf(k) < 0; });
+  if (grupos[0][0] === 'Geral') { grupos[0][0] = 'Consulta'; grupos[0][1] = grupos[0][1].filter(function (k) { return k !== 'painel'; }); }
+  var dmn = sessaoAtiva() ? dmNaoLidas() : 0;
+  var item = function (k, lbl, ic) { return '<button class="tn-i' + (S.view === k ? ' on' : '') + '" data-go="' + k + '"' + (S.view === k ? ' aria-current="page"' : '') + '>' + ic + '<span>' + lbl + '</span></button>'; };
+  var nb = function (k) { return item(k, esc(NAV[k][0]), I[NAV[k][1]]); };
+  var grupo = function (nome, itens, html, badge, extra) {
+    var on = itens.indexOf(S.view) >= 0;
+    return '<div class="tn-g' + (on ? ' on' : '') + '"><button class="tn-b" aria-haspopup="true">' + esc(nome) + (badge ? '<span class="nbadge">' + badge + '</span>' : '') + '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="tn-m" role="menu">' + html + (extra || '') + '</div></div>';
+  };
+  var com = ['chat', 'mensagens', 'salas', 'connect'];
+  $('#side').innerHTML = '<button class="brand nav tn-brand" data-go="painel" aria-label="LEXDESK, ir para o painel"><span class="mark logo">' + I.logo + '</span><span class="word"><b>LEX</b><span>DESK</span></span></button>' +
+    '<div class="tn-bar">' +
+    '<button class="tn-b' + (S.view === 'painel' ? ' on' : '') + '" data-go="painel">Painel</button>' +
+    grupos.filter(function (g) { return g[1].length; }).map(function (g) { return grupo(g[0], g[1], g[1].map(nb).join('')); }).join('') +
+    grupo('Comunidade', com, item('chat', 'Chat da comunidade', I.chat) + item('mensagens', 'Mensagens' + (dmn ? ' <span class="nbadge">' + dmn + '</span>' : ''), I.mail) + item('salas', 'Salas de estudo', I.door) + item('connect', 'Mentoria e explicações', I.users), dmn) +
+    grupo('Mais', mais, mais.map(nb).join(''), 0, '<div class="tn-sep"></div><button class="tn-i" data-a="onb-abrir">' + I.gear + '<span>' + PERFIS[t].ic + ' Perfil: ' + esc(PERFIS[t].curto) + ' · alterar</span></button>' + (t === 'lic' ? '<button class="tn-i" data-a="perfil-edit">' + I.cap + '<span>Perfil académico</span></button>' : '') + '<span class="tn-st">' + st + '</span>') +
+    '</div>';
+};
+document.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('.tn-b[aria-haspopup]'); [].forEach.call(document.querySelectorAll('.tn-g.open'), function (g) { if (!b || g !== b.parentNode) g.classList.remove('open'); }); if (b) b.parentNode.classList.toggle('open'); });
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') [].forEach.call(document.querySelectorAll('.tn-g.open'), function (g) { g.classList.remove('open'); }); });
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
 var VIEW_LBL = { painel: ['Painel', I.grid], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
