@@ -393,6 +393,41 @@ button.card:hover,.dcard:hover,.li:hover{transform:translateY(-2px);box-shadow:v
 .fdrop b{color:var(--ink)}
 @media (max-width:900px){.side{width:100%}.hero h1{font-size:38px}h1{font-size:32px}.topsearch{min-width:0;flex:1}}
 
+/* ===== chat da comunidade ===== */
+.chat{display:grid;grid-template-columns:220px minmax(0,1fr) 210px;gap:16px;height:calc(100vh - 210px);min-height:520px}
+.chat-side,.chat-on{background:#fff;border:1px solid rgba(14,18,34,.06);border-radius:22px;box-shadow:var(--sh1);padding:12px;overflow:auto;display:flex;flex-direction:column;gap:2px}
+.chat-side .hash{color:var(--muted);margin-right:6px;font-weight:700}.chat-side .cadf.on .hash{color:var(--wine)}
+.chat-main{background:#fff;border:1px solid rgba(14,18,34,.06);border-radius:22px;box-shadow:var(--sh1);display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.chat-top{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.chat-top b{font-family:var(--serif);font-size:18px;font-weight:800;letter-spacing:-.01em;display:block}.chat-top span{font-size:12.5px;color:var(--muted)}
+.chat-list{flex:1;overflow-y:auto;padding:12px 8px 12px 12px;display:flex;flex-direction:column}
+.chat-day{display:flex;align-items:center;gap:12px;margin:14px 8px 6px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.chat-day::before,.chat-day::after{content:'';flex:1;height:1px;background:var(--line)}
+.msg{display:flex;gap:12px;padding:6px 10px;border-radius:12px;position:relative;align-items:flex-start;animation:rise .25s var(--ease) both}
+.msg:hover{background:#F7F8FB}
+.msg.cont{padding-top:1px;padding-bottom:1px}
+.msg-av{width:38px;height:38px;font-size:13px;margin-top:2px}
+.msg.mine .msg-av{background:var(--grad-gold);color:#2A1600}
+.msg-t2{width:38px;flex:none;font-size:10px;color:transparent;text-align:right;padding-top:4px}.msg:hover .msg-t2{color:var(--muted)}
+.msg-b{flex:1;min-width:0}
+.msg-h{display:flex;align-items:baseline;gap:8px}.msg-h b{font-size:14px}.msg-h span{font-size:11px;color:var(--muted)}
+.msg-t{font-size:14.5px;line-height:1.55;word-wrap:break-word;overflow-wrap:anywhere}.msg-t a{word-break:break-all}
+.msg-x{font-size:13px;font-style:italic;color:var(--muted)}
+.msg-a{position:absolute;right:8px;top:-12px;display:none;gap:4px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:3px;box-shadow:var(--sh1)}
+.msg:hover .msg-a,.msg:focus-within .msg-a{display:flex}
+.msg-a .icon-btn{width:28px;height:28px;border:0}
+.chat-comp{display:flex;gap:10px;align-items:flex-end;padding:12px 14px;border-top:1px solid var(--line)}
+.chat-comp textarea{min-height:46px;max-height:160px;resize:none;line-height:1.45;padding:12px 14px}
+.chat-comp .btn{min-height:46px;width:52px;padding:0}
+.chat-block{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:14px 18px;border-top:1px solid var(--line);background:#FAFAFC;font-size:13.5px}
+.chat-block span{color:var(--muted);width:100%}
+.chat-cnt{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--ok);margin:6px 4px 10px}.chat-cnt i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(14,159,110,.15)}
+.on-u{display:flex;align-items:center;gap:10px;padding:6px 4px;font-size:13px;min-width:0}.on-u span:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.on-u .av{width:28px;height:28px;font-size:11px;position:relative}.on-u .av::after{content:'';position:absolute;right:-1px;bottom:-1px;width:9px;height:9px;border-radius:50%;background:var(--ok);border:2px solid #fff}
+ol.regras{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:14px;line-height:1.55}
+@media (max-width:1150px){.chat{grid-template-columns:200px minmax(0,1fr)}.chat-on{display:none}}
+@media (max-width:760px){.chat{grid-template-columns:1fr;height:auto}.chat-side{flex-direction:row;flex-wrap:wrap}.chat-side .eyebrow{display:none}.chat-side .cadf{width:auto}.chat-main{height:70vh}}
+
 </style>
 </head>
 <body>
@@ -1010,7 +1045,7 @@ Store.attach = function (session) {
 };
 
 /* ---------- estado da interface ---------- */
-var VIEWS = ['painel', 'instituicoes', 'atualidade', 'connect', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
+var VIEWS = ['painel', 'instituicoes', 'atualidade', 'connect', 'chat', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
 var S = {
   view: 'painel', wsId: null, wsTab: '01', wsQ: '', q: '',
   libQ: '', libArea: 'Todas', libOpen: { cpc: true },
@@ -1069,7 +1104,7 @@ function renderSide() {
     '<div class="navgrp"><span class="navlbl">Geral</span>' + navBtn('painel', 'Painel', I.grid) + navBtn('atualidade', 'Atualidade jurídica', I.news) + navBtn('biblioteca', 'Biblioteca jurídica', I.book) + navBtn('instituicoes', 'Instituições', I.uni) + '</div>' +
     '<div class="navgrp"><span class="navlbl">Trabalho</span>' + navBtn('workspaces', 'Legal Workspaces', I.folder) + navBtn('minutas', 'Gerador de minutas', I.file) + '</div>' +
     '<div class="navgrp"><span class="navlbl">Estudo</span>' + navBtn('cadeiras', 'Cadeiras', I.layers) + navBtn('apontamentos', 'Apontamentos', I.note) + navBtn('exames', 'Simulador de exames', I.check) + navBtn('casos', 'Casos práticos', I.scale) + '</div>' +
-    '<div class="navgrp"><span class="navlbl">Comunidade</span>' + navBtn('connect', 'LEXDESK Connect', I.users) + '</div>' +
+    '<div class="navgrp"><span class="navlbl">Comunidade</span>' + navBtn('chat', 'Chat da comunidade', I.chat) + navBtn('connect', 'LEXDESK Connect', I.users) + '</div>' +
     (function () { var p = perfil(); return '<button class="sideperfil" data-a="perfil-edit">' + (p && p.instId ? '<span class="sp-t">' + esc(instById(p.instId) ? instById(p.instId).nome : '') + '</span><span class="sp-s">' + esc((p.curso || 'Licenciatura em Direito').replace('Licenciatura em ', '')) + ' · ' + p.ano + '.º ano</span>' : '<span class="sp-t">Definir perfil académico</span><span class="sp-s">Instituição, ano e disciplinas</span>') + '</button>'; })() +
     '<div class="sidefoot" style="margin-top:0"><strong><span class="dot ' + st[0] + '"></span>' + st[1] + '</strong><span>' + st[2] + '</span></div>';
 }
@@ -1082,6 +1117,7 @@ function render() {
   else if (v === 'cadeiras') h = vCadeiras();
   else if (v === 'atualidade') h = vAtualidade();
   else if (v === 'connect') h = vConnect();
+  else if (v === 'chat') h = vChat();
   else if (v === 'apontamentos') h = vApontamentos();
   else if (v === 'instituicoes') h = vInstituicoes();
   else if (v === 'workspaces') h = S.wsId && Store.get(S.wsId) ? vWorkspace() : vWorkspaces();
@@ -2453,8 +2489,288 @@ document.addEventListener('keydown', function (ev) {
   if (ev.key === 'Enter' && ev.target.id === 'f-nome' && $('[data-a="ws-save"]')) { ev.preventDefault(); A['ws-save'](); }
 });
 
+/* ---------- CHAT DA COMUNIDADE (versão 1) ---------- */
+I.chat = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4"/></svg>';
+I.flag = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V4M4 4h12l-2 4 2 4H4"/></svg>';
+I.trash = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>';
+I.shield = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>';
+I.send = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>';
+
+var CANAIS = [
+  ['geral', 'Geral', 'Conversa geral da comunidade LEXDESK.', 'Comunidade'],
+  ['duvidas', 'Dúvidas rápidas', 'Perguntas curtas sobre matéria. Para dúvidas desenvolvidas, use o LEXDESK Connect.', 'Comunidade'],
+  ['exames', 'Exames', 'Datas, épocas, preparação e partilha de experiências de avaliação.', 'Comunidade'],
+  ['carreira', 'Estágio e carreira', 'Estágio da Ordem, mestrados, concursos e saídas profissionais.', 'Comunidade'],
+  ['offtopic', 'Off-topic', 'Conversa livre, sem relação com o Direito.', 'Comunidade'],
+  ['civil', 'Direito Civil', 'Teoria Geral, Obrigações, Reais, Família e Sucessões.', 'Áreas do Direito'],
+  ['proc-civil', 'Processo Civil', 'Processo declarativo, executivo e procedimentos cautelares.', 'Áreas do Direito'],
+  ['penal', 'Penal e Processo Penal', 'Direito Penal, Processo Penal e Prática Judiciária penal.', 'Áreas do Direito'],
+  ['constitucional', 'Constitucional', 'Direito Constitucional e Direitos Fundamentais.', 'Áreas do Direito'],
+  ['administrativo', 'Administrativo', 'Direito Administrativo e Contencioso Administrativo.', 'Áreas do Direito'],
+  ['comercial', 'Comercial e Societário', 'Direito Comercial, das Sociedades e da Insolvência.', 'Áreas do Direito'],
+  ['trabalho', 'Trabalho', 'Direito do Trabalho e da Segurança Social.', 'Áreas do Direito']
+];
+var MOTIVOS = { ofensivo: 'Linguagem ofensiva ou discriminatória', assedio: 'Assédio ou ameaças', spam: 'Spam ou publicidade', dados_pessoais: 'Dados pessoais de terceiros', direitos_autor: 'Violação de direitos de autor', ilegal: 'Outro conteúdo ilegal', outro: 'Outro motivo' };
+var REGRAS = [
+  'Trate todos com respeito. Não são permitidos insultos, discriminação, assédio ou ameaças.',
+  'Não partilhe dados pessoais de terceiros — por exemplo, nomes de partes, testemunhas ou arguidos de processos reais, contactos ou moradas.',
+  'Não partilhe manuais, sebentas ou outros materiais protegidos por direitos de autor sem autorização.',
+  'Sem spam, publicidade ou correntes. Use o canal adequado ao tema.',
+  'O chat é um espaço de estudo entre colegas: as mensagens não constituem consulta jurídica nem substituem o aconselhamento por advogado.',
+  'Pode denunciar qualquer mensagem que viole estas regras ou a lei. A moderação analisa as denúncias e pode remover mensagens e suspender contas, indicando sempre o motivo.',
+  'As mensagens ficam visíveis para todos os utilizadores com conta e são apagadas automaticamente ao fim de 12 meses. Pode apagar as suas mensagens a qualquer momento.'
+];
+var Chat = { canal: 'geral', msgs: {}, loading: {}, sub: null, pres: null, online: {}, mod: false, regras: null, susp: null, info: false, pend: 0, draft: {} };
+function chatCanal(id) { return CANAIS.filter(function (c) { return c[0] === id; })[0] || CANAIS[0]; }
+function chatNome(id) { return id === Store.uid ? (S.nomeFull || 'Eu') : (Social.names[id] || 'Membro LEXDESK'); }
+function chatIni(n) { return String(n || '?').split(' ').filter(Boolean).map(function (x) { return x.charAt(0); }).slice(0, 2).join('').toUpperCase() || '?'; }
+function chatHora(t) { return new Date(t).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' }); }
+function chatDia(t) { var d = new Date(t), h = hoje0(), dd = new Date(d); dd.setHours(0, 0, 0, 0); var n = Math.round((h - dd) / 864e5); return n === 0 ? 'Hoje' : n === 1 ? 'Ontem' : d.toLocaleDateString('pt-PT', { weekday: 'long', day: 'numeric', month: 'long' }); }
+function chatTexto(t) {
+  return esc(t).replace(/(https?:\/\/[^\s<]+[^\s<.,;:!?)\]])/g, '<a href="$1" target="_blank" rel="noopener nofollow ugc">$1</a>').replace(/\n/g, '<br>');
+}
+
+/* ----- ligação ao servidor ----- */
+function chatInit() {
+  if (!SB || !sessaoAtiva() || Chat.info === Store.uid) return;
+  Chat.info = Store.uid;
+  SB.from('moderadores').select('user_id').eq('user_id', Store.uid).maybeSingle().then(function (r) { Chat.mod = !!(r.data); if (Chat.mod) chatPend(); scheduleRender(); });
+  SB.from('profiles').select('chat_regras_em').eq('id', Store.uid).maybeSingle().then(function (r) { Chat.regras = r.data ? r.data.chat_regras_em : null; scheduleRender(); if (!Chat.regras && S.view === 'chat') chatRegras(); });
+  SB.from('chat_suspensoes').select('ate,motivo').eq('user_id', Store.uid).maybeSingle().then(function (r) { Chat.susp = r.data && (!r.data.ate || new Date(r.data.ate) > new Date()) ? r.data : null; scheduleRender(); });
+}
+function chatSubscribe() {
+  if (Chat.sub || !SB) return;
+  Chat.sub = SB.channel('chat-msgs-' + Math.random().toString(36).slice(2)).on('postgres_changes', { event: '*', schema: 'public', table: 'chat_msgs' }, function (p) {
+    var m = p.new && p.new.id ? p.new : null, o = p.old || {};
+    if (p.eventType === 'INSERT' && m) chatAdd(m);
+    else if (p.eventType === 'UPDATE' && m) { var l = Chat.msgs[m.canal]; if (l) for (var i = 0; i < l.length; i++) if (l[i].id === m.id) l[i] = m; if (m.canal === Chat.canal) chatPaint(); }
+    else if (p.eventType === 'DELETE') { Object.keys(Chat.msgs).forEach(function (c) { Chat.msgs[c] = Chat.msgs[c].filter(function (x) { return x.id !== o.id; }); }); chatPaint(); }
+  }).subscribe();
+}
+function chatAdd(m) {
+  var l = Chat.msgs[m.canal]; if (!l) return;
+  if (l.some(function (x) { return x.id === m.id; })) return;
+  l.push(m); l.sort(function (a, b) { return a.id - b.id; });
+  if (!Social.names[m.autor]) loadNames([m.autor]);
+  if (m.canal === Chat.canal) chatPaint(true);
+}
+function chatPresence() {
+  if (Chat.pres || !SB || !sessaoAtiva()) return;
+  var ch = SB.channel('chat-online', { config: { presence: { key: Store.uid } } });
+  ch.on('presence', { event: 'sync' }, function () {
+    var st = ch.presenceState(), o = {};
+    Object.keys(st).forEach(function (k) { var x = st[k] && st[k][0]; if (x) o[k] = x.nome || 'Membro LEXDESK'; });
+    Chat.online = o; chatPaintOnline();
+  }).subscribe(function (s) { if (s === 'SUBSCRIBED') { Chat.presNome = S.nomeFull || 'Membro LEXDESK'; ch.track({ nome: Chat.presNome }); } });
+  Chat.pres = ch;
+}
+function chatLeave() {
+  if (Chat.pres) { try { Chat.pres.untrack(); SB.removeChannel(Chat.pres); } catch (e) {} Chat.pres = null; Chat.online = {}; }
+  if (Chat.sub) { try { SB.removeChannel(Chat.sub); } catch (e) {} Chat.sub = null; Chat.msgs = {}; }
+}
+function chatLoad(canal) {
+  if (Chat.msgs[canal] || Chat.loading[canal]) return;
+  Chat.loading[canal] = true;
+  SB.from('chat_msgs').select('id,canal,autor,texto,removido,removido_motivo,created_at').eq('canal', canal).order('id', { ascending: false }).limit(150).then(function (r) {
+    Chat.loading[canal] = false;
+    if (r.error) { Chat.msgs[canal] = []; chatPaint(); toast('Não foi possível carregar as mensagens.'); return; }
+    Chat.msgs[canal] = (r.data || []).reverse();
+    loadNames(Chat.msgs[canal].map(function (m) { return m.autor; }));
+    if (canal === Chat.canal) chatPaint(true);
+  });
+}
+function chatPend() {
+  SB.from('chat_denuncias').select('id', { count: 'exact', head: true }).eq('estado', 'pendente').then(function (r) { Chat.pend = r.count || 0; var b = $('#chat-modbtn'); if (b) b.innerHTML = I.shield + 'Moderação' + (Chat.pend ? ' <span class="chip wine">' + Chat.pend + '</span>' : ''); });
+}
+
+/* ----- vista ----- */
+function vChat() {
+  var h = '<div class="head"><div><h1>Chat da comunidade</h1><p class="sub">Converse em tempo real com estudantes de Direito de todo o país.</p></div>';
+  if (!SB) return h + '</div><div class="note">O chat não está disponível sem ligação à internet.</div>';
+  if (!sessaoAtiva()) return h + '</div><section class="promo"><div style="display:flex;flex-direction:column;gap:8px;flex:1 1 320px;min-width:0"><span class="eyebrow" style="color:#FFC65C">Só para membros</span><h2 style="color:#fff;font-size:26px">Entre na conversa</h2><p style="margin:0;color:#CDD1E4">O chat está aberto a todos os utilizadores com conta LEXDESK. É gratuito e demora menos de um minuto.</p></div><div class="row"><button class="btn gold" data-a="login-open" data-id="registo">Criar conta</button><button class="btn ghost" data-a="login-open">Iniciar sessão</button></div></section>';
+  h += '<div class="row">' + (Chat.mod ? '<button class="btn sm" id="chat-modbtn" data-a="chat-mod">' + I.shield + 'Moderação' + (Chat.pend ? ' <span class="chip wine">' + Chat.pend + '</span>' : '') + '</button>' : '') + '<button class="btn sm" data-a="chat-regras">Regras da comunidade</button></div></div>';
+  var grupos = {}; CANAIS.forEach(function (c) { (grupos[c[3]] = grupos[c[3]] || []).push(c); });
+  var cn = chatCanal(Chat.canal);
+  h += '<div class="chat"><aside class="chat-side" aria-label="Canais">' + Object.keys(grupos).map(function (g) {
+    return '<span class="eyebrow" style="padding:6px 10px">' + g + '</span>' + grupos[g].map(function (c) { return '<button class="cadf' + (c[0] === Chat.canal ? ' on' : '') + '" data-a="chat-canal" data-id="' + c[0] + '"><span><span class="hash">#</span>' + esc(c[1]) + '</span></button>'; }).join('');
+  }).join('') + '</aside>' +
+    '<section class="chat-main" aria-label="Canal ' + esc(cn[1]) + '"><div class="chat-top"><div><b># ' + esc(cn[1]) + '</b><span>' + esc(cn[2]) + '</span></div></div>' +
+    '<div class="chat-list" id="chatlist" role="log" aria-live="polite"></div>' + chatComposer() + '</section>' +
+    '<aside class="chat-on" aria-label="Utilizadores online"><span class="eyebrow">Online agora</span><div id="chat-online"></div></aside></div>';
+  return h;
+}
+function chatComposer() {
+  if (Chat.susp) return '<div class="chat-block"><b>A sua conta está suspensa no chat' + (Chat.susp.ate ? ' até ' + new Date(Chat.susp.ate).toLocaleDateString('pt-PT') : '') + '.</b><span>Motivo: ' + esc(Chat.susp.motivo) + '. Pode continuar a ler as mensagens.</span></div>';
+  if (Chat.regras === null) return '<div class="chat-block"><b>Antes de escrever, leia e aceite as regras da comunidade.</b><button class="btn wine sm" data-a="chat-regras">Ler as regras</button></div>';
+  return '<div class="chat-comp"><textarea id="chat-in" class="in" rows="1" maxlength="2000" placeholder="Escreva no #' + esc(chatCanal(Chat.canal)[1]) + '…  (Enter para enviar, Shift+Enter para mudar de linha)" aria-label="Mensagem"></textarea><button class="btn wine" data-a="chat-send" aria-label="Enviar">' + I.send + '</button></div>';
+}
+function chatPaint(forceBottom) {
+  var box = $('#chatlist'); if (!box) return;
+  var l = Chat.msgs[Chat.canal];
+  var nearBottom = box.scrollHeight - box.scrollTop - box.clientHeight < 120;
+  if (!l) { box.innerHTML = '<div class="empty" style="margin:auto">A carregar mensagens…</div>'; return; }
+  if (!l.length) { box.innerHTML = '<div class="empty" style="margin:auto"><b>Ainda não há mensagens em #' + esc(chatCanal(Chat.canal)[1]) + '.</b><span>Seja o primeiro a dizer olá.</span></div>'; return; }
+  var h = '', lastDay = '', prev = null;
+  l.forEach(function (m) {
+    var t = new Date(m.created_at).getTime(), day = chatDia(t);
+    if (day !== lastDay) { h += '<div class="chat-day"><span>' + esc(day) + '</span></div>'; lastDay = day; prev = null; }
+    var cont = prev && prev.autor === m.autor && t - new Date(prev.created_at).getTime() < 5 * 60000;
+    var mine = m.autor === Store.uid, nome = chatNome(m.autor);
+    var acts = '';
+    if (!m.removido) {
+      if (!mine) acts += '<button class="icon-btn" data-a="chat-rep" data-id="' + m.id + '" title="Denunciar" aria-label="Denunciar mensagem">' + I.flag + '</button>';
+      if (mine || Chat.mod) acts += '<button class="icon-btn" data-a="chat-del" data-id="' + m.id + '" title="Apagar" aria-label="Apagar mensagem">' + I.trash + '</button>';
+      if (Chat.mod && !mine) acts += '<button class="icon-btn" data-a="chat-mod-rm" data-id="' + m.id + '" title="Remover (moderação)" aria-label="Remover por moderação">' + I.shield + '</button>';
+    }
+    h += '<div class="msg' + (cont ? ' cont' : '') + (mine ? ' mine' : '') + '">' + (cont ? '<span class="msg-t2">' + chatHora(t) + '</span>' : '<span class="av msg-av">' + esc(chatIni(nome)) + '</span>') +
+      '<div class="msg-b">' + (cont ? '' : '<div class="msg-h"><b>' + esc(nome) + '</b><span>' + chatHora(t) + '</span></div>') +
+      (m.removido ? '<div class="msg-x">Mensagem removida pela moderação' + (m.removido_motivo ? ' — motivo: ' + esc(m.removido_motivo) : '') + '.</div>' : '<div class="msg-t">' + chatTexto(m.texto) + '</div>') +
+      '</div>' + (acts ? '<div class="msg-a">' + acts + '</div>' : '') + '</div>';
+    prev = m;
+  });
+  box.innerHTML = h;
+  if (forceBottom || nearBottom) box.scrollTop = box.scrollHeight;
+}
+function chatPaintOnline() {
+  var box = $('#chat-online'); if (!box) return;
+  var ids = Object.keys(Chat.online);
+  box.innerHTML = '<span class="chat-cnt"><i></i>' + plural(ids.length, 'pessoa', 'pessoas') + '</span>' + ids.sort(function (a, b) { return a === Store.uid ? -1 : b === Store.uid ? 1 : String(Chat.online[a]).localeCompare(Chat.online[b], 'pt'); }).slice(0, 60).map(function (k) {
+    return '<div class="on-u"><span class="av">' + esc(chatIni(Chat.online[k])) + '</span><span>' + esc(Chat.online[k]) + (k === Store.uid ? ' (eu)' : '') + '</span></div>';
+  }).join('');
+}
+function chatAfterRender() {
+  if (S.view !== 'chat' || !sessaoAtiva()) { if (Chat.pres || Chat.sub) chatLeave(); if (!sessaoAtiva()) { Chat.info = false; Chat.mod = false; Chat.regras = null; Chat.susp = null; } return; }
+  if (!SB) return;
+  chatInit(); chatSubscribe(); chatPresence(); chatLoad(Chat.canal);
+  if (Chat.pres && Chat.presNome && S.nomeFull && Chat.presNome !== S.nomeFull) { Chat.presNome = S.nomeFull; try { Chat.pres.track({ nome: S.nomeFull }); } catch (e) {} }
+  chatPaint(true); chatPaintOnline();
+  var inp = $('#chat-in');
+  if (inp) {
+    inp.value = Chat.draft[Chat.canal] || '';
+    inp.style.height = 'auto'; inp.style.height = Math.min(160, inp.scrollHeight) + 'px';
+  }
+}
+document.addEventListener('input', function (e) {
+  if (e.target.id !== 'chat-in') return;
+  Chat.draft[Chat.canal] = e.target.value; e.target.style.height = 'auto'; e.target.style.height = Math.min(160, e.target.scrollHeight) + 'px';
+});
+document.addEventListener('keydown', function (e) {
+  if (e.target.id === 'chat-in' && e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); A['chat-send']($('[data-a="chat-send"]')); }
+});
+
+function chatErr(e) {
+  var m = String((e && (e.message || e.details)) || '');
+  if (/modo_lento/.test(m)) return 'Está a enviar mensagens demasiado depressa. Aguarde uns segundos.';
+  if (/suspenso/.test(m)) return 'A sua conta está suspensa no chat.';
+  if (/regras_por_aceitar/.test(m)) return 'Aceite primeiro as regras da comunidade.';
+  if (/duplicate|unique/.test(m)) return 'Já tinha denunciado esta mensagem.';
+  if (/propria_mensagem/.test(m)) return 'Não pode denunciar as suas próprias mensagens.';
+  return 'Não foi possível concluir. Tente novamente.';
+}
+function chatRegras() {
+  openModal('Regras da comunidade', '<ol class="regras">' + REGRAS.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '</ol>' +
+    (Chat.regras ? '<div class="note">Aceitou estas regras em ' + new Date(Chat.regras).toLocaleDateString('pt-PT') + '.</div>' : '<label class="check" style="font-size:14px"><input type="checkbox" id="rg-ok">Li e aceito as regras da comunidade.</label>'),
+    Chat.regras ? '<button class="btn pri" data-a="close">Fechar</button>' : '<button class="btn" data-a="close">Agora não</button><button class="btn wine" data-a="chat-regras-ok">Aceitar e entrar no chat</button>');
+}
+function chatFind(id) { id = Number(id); var l = Chat.msgs[Chat.canal] || []; for (var i = 0; i < l.length; i++) if (l[i].id === id) return l[i]; return null; }
+function motivoSelect(id) { return '<label class="f">Motivo<select class="in" id="' + id + '">' + Object.keys(MOTIVOS).map(function (k) { return '<option value="' + k + '">' + MOTIVOS[k] + '</option>'; }).join('') + '</select></label>'; }
+
+var A7 = {
+  'chat-canal': function (el) { Chat.canal = el.dataset.id; render(); var i = $('#chat-in'); if (i) i.focus(); },
+  'chat-regras': function () { chatRegras(); },
+  'chat-regras-ok': function (el) {
+    if (!$('#rg-ok').checked) { toast('Confirme que leu e aceita as regras.'); return; }
+    el.disabled = true;
+    SB.from('profiles').update({ chat_regras_em: new Date().toISOString() }).eq('id', Store.uid).then(function (r) {
+      el.disabled = false; if (r.error) { toast(chatErr(r.error)); return; }
+      Chat.regras = new Date().toISOString(); closeModal(); render(); toast('Bem-vindo ao chat da comunidade!'); var i = $('#chat-in'); if (i) i.focus();
+    });
+  },
+  'chat-send': function (el) {
+    var inp = $('#chat-in'); if (!inp) return; var t = inp.value.trim();
+    if (!t) { inp.focus(); return; }
+    if (t.length > 2000) { toast('A mensagem tem mais de 2000 caracteres.'); return; }
+    if (el) el.disabled = true;
+    SB.from('chat_msgs').insert({ canal: Chat.canal, texto: t }).select('id,canal,autor,texto,removido,removido_motivo,created_at').single().then(function (r) {
+      if (el) el.disabled = false;
+      if (r.error) { toast(chatErr(r.error)); return; }
+      inp.value = ''; Chat.draft[Chat.canal] = ''; inp.style.height = 'auto'; inp.focus();
+      chatAdd(r.data);
+    });
+  },
+  'chat-del': function (el) {
+    var m = chatFind(el.dataset.id); if (!m) return; S.chatDel = m.id;
+    openModal('Apagar mensagem', '<p style="margin:0">A mensagem é apagada definitivamente para todos os utilizadores.</p><div class="note">' + chatTexto(m.texto.slice(0, 400)) + '</div>', '<button class="btn" data-a="close">Cancelar</button><button class="btn danger" data-a="chat-del-ok">Apagar</button>');
+  },
+  'chat-del-ok': function () {
+    var id = S.chatDel;
+    SB.from('chat_msgs').delete().eq('id', id).then(function (r) {
+      if (r.error) { toast(chatErr(r.error)); return; }
+      Object.keys(Chat.msgs).forEach(function (c) { Chat.msgs[c] = Chat.msgs[c].filter(function (x) { return x.id !== id; }); });
+      closeModal(); chatPaint(); toast('Mensagem apagada.');
+    });
+  },
+  'chat-rep': function (el) {
+    var m = chatFind(el.dataset.id); if (!m) return; S.chatRep = m.id;
+    openModal('Denunciar mensagem', '<div class="note"><b>' + esc(chatNome(m.autor)) + ':</b> ' + chatTexto(m.texto.slice(0, 400)) + '</div>' + motivoSelect('rp-mot') +
+      '<label class="f">Explicação (opcional)<textarea class="in" id="rp-det" maxlength="1000" placeholder="Explique, se necessário, porque considera que a mensagem viola as regras ou a lei."></textarea></label>' +
+      '<span style="font-size:12px;color:var(--muted)">A denúncia é analisada pela moderação. O autor da mensagem não fica a saber quem a denunciou.</span>',
+      '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="chat-rep-ok">Enviar denúncia</button>');
+  },
+  'chat-rep-ok': function (el) {
+    el.disabled = true;
+    SB.from('chat_denuncias').insert({ msg_id: S.chatRep, msg_texto: '-', motivo: $('#rp-mot').value, detalhes: $('#rp-det').value.trim() || null }).then(function (r) {
+      el.disabled = false; if (r.error) { toast(chatErr(r.error)); return; }
+      closeModal(); toast('Denúncia enviada. Obrigado por ajudar a manter a comunidade segura.');
+    });
+  },
+  'chat-mod-rm': function (el) {
+    var m = chatFind(el.dataset.id); if (!m) return; S.chatModMsg = m;
+    openModal('Remover mensagem (moderação)', '<div class="note"><b>' + esc(chatNome(m.autor)) + ':</b> ' + chatTexto(m.texto.slice(0, 400)) + '</div>' + motivoSelect('md-mot') +
+      '<label class="check" style="font-size:14px"><input type="checkbox" id="md-sus">Suspender também o autor do chat durante 7 dias</label><span style="font-size:12px;color:var(--muted)">O motivo fica visível no lugar da mensagem, como exige o Regulamento dos Serviços Digitais (art. 17.º).</span>',
+      '<button class="btn" data-a="close">Cancelar</button><button class="btn danger" data-a="chat-mod-rm-ok">Remover</button>');
+  },
+  'chat-mod-rm-ok': function (el) {
+    var m = S.chatModMsg, mot = MOTIVOS[$('#md-mot').value], sus = $('#md-sus').checked; el.disabled = true;
+    chatModerar(m.id, m.autor, mot, sus, null).then(function () { closeModal(); toast('Mensagem removida.'); }, function (e) { el.disabled = false; toast(chatErr(e)); });
+  },
+  'chat-mod': function () { chatModPanel(); },
+  'den-rm': function (el) {
+    var d = (S.denList || []).filter(function (x) { return String(x.id) === el.dataset.id; })[0]; if (!d) return;
+    var sus = el.dataset.sus === '1';
+    chatModerar(d.msg_id, d.msg_autor, MOTIVOS[d.motivo], sus, d.id).then(function () { toast(sus ? 'Mensagem removida e autor suspenso por 7 dias.' : 'Mensagem removida.'); chatModPanel(); }, function (e) { toast(chatErr(e)); });
+  },
+  'den-rej': function (el) {
+    SB.from('chat_denuncias').update({ estado: 'rejeitada', decisao: 'Sem violação das regras', decidido_por: Store.uid, decidido_em: new Date().toISOString() }).eq('id', Number(el.dataset.id)).then(function (r) {
+      if (r.error) { toast(chatErr(r.error)); return; } toast('Denúncia rejeitada.'); chatModPanel();
+    });
+  }
+};
+function chatModerar(msgId, autor, motivo, suspender, denId) {
+  var ps = [];
+  if (msgId) ps.push(SB.from('chat_msgs').update({ removido: true, removido_motivo: motivo }).eq('id', msgId).then(function (r) { if (r.error) throw r.error; }));
+  if (denId) ps.push(SB.from('chat_denuncias').update({ estado: 'removida', decisao: motivo + (suspender ? ' · autor suspenso 7 dias' : ''), decidido_por: Store.uid, decidido_em: new Date().toISOString() }).eq('id', denId).then(function (r) { if (r.error) throw r.error; }));
+  else if (msgId) ps.push(SB.from('chat_denuncias').update({ estado: 'removida', decisao: motivo, decidido_por: Store.uid, decidido_em: new Date().toISOString() }).eq('msg_id', msgId).eq('estado', 'pendente').then(function () {}));
+  if (suspender && autor) ps.push(SB.from('chat_suspensoes').upsert({ user_id: autor, ate: new Date(Date.now() + 7 * 864e5).toISOString(), motivo: motivo, por: Store.uid }).then(function (r) { if (r.error) throw r.error; }));
+  return Promise.all(ps).then(function () { chatPend(); });
+}
+function chatModPanel() {
+  SB.from('chat_denuncias').select('*').eq('estado', 'pendente').order('created_at', { ascending: true }).limit(100).then(function (r) {
+    if (r.error) { toast(chatErr(r.error)); return; }
+    var l = S.denList = r.data || []; Chat.pend = l.length; chatPend();
+    loadNames(l.map(function (d) { return d.msg_autor; }).concat(l.map(function (d) { return d.denunciante; })));
+    var body = l.length ? '<div class="list">' + l.map(function (d) {
+      return '<div class="card" style="padding:16px;gap:8px;border-radius:16px"><div class="row" style="justify-content:space-between"><span class="chip wine">' + esc(MOTIVOS[d.motivo] || d.motivo) + '</span><span style="font-size:12px;color:var(--muted)">#' + esc(chatCanal(d.canal)[1]) + ' · ' + quando(new Date(d.created_at).getTime()) + '</span></div>' +
+        '<div class="note"><b>' + esc(chatNome(d.msg_autor)) + ':</b> ' + chatTexto(d.msg_texto) + '</div>' + (d.detalhes ? '<span style="font-size:13px"><b>Explicação:</b> ' + esc(d.detalhes) + '</span>' : '') +
+        '<div class="row"><button class="btn sm danger" data-a="den-rm" data-id="' + d.id + '">Remover mensagem</button><button class="btn sm danger" data-a="den-rm" data-sus="1" data-id="' + d.id + '">Remover e suspender 7 dias</button><button class="btn sm" data-a="den-rej" data-id="' + d.id + '">Rejeitar denúncia</button></div></div>';
+    }).join('') + '</div>' : '<div class="empty"><b>Não há denúncias pendentes.</b><span>Bom trabalho — a comunidade está tranquila.</span></div>';
+    openModal('Moderação — denúncias pendentes', body, '<button class="btn pri" data-a="close">Fechar</button>');
+  });
+}
+Object.keys(A7).forEach(function (k) { A[k] = A7[k]; });
+
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
-var VIEW_LBL = { painel: ['Painel', I.grid], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['LEXDESK Connect', I.users] };
+var VIEW_LBL = { painel: ['Painel', I.grid], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['LEXDESK Connect', I.users], chat: ['Chat da comunidade', I.chat] };
 var isMac = /Mac|iPhone|iPad/.test(navigator.platform || '');
 
 /* ===== animação de entrada e contadores ===== */
@@ -2470,6 +2786,7 @@ render = function () {
     countUp(m);
   } else { [].forEach.call(m.querySelectorAll('[data-count]'), function (el) { el.textContent = el.dataset.count + (el.dataset.suf || ''); }); }
   fxEnhance();
+  chatAfterRender();
 };
 function countUp(root) {
   [].forEach.call(root.querySelectorAll('[data-count]'), function (el) {

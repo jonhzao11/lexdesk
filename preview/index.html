@@ -2561,7 +2561,7 @@ function chatPresence() {
     var st = ch.presenceState(), o = {};
     Object.keys(st).forEach(function (k) { var x = st[k] && st[k][0]; if (x) o[k] = x.nome || 'Membro LEXDESK'; });
     Chat.online = o; chatPaintOnline();
-  }).subscribe(function (s) { if (s === 'SUBSCRIBED') ch.track({ nome: S.nomeFull || 'Membro LEXDESK' }); });
+  }).subscribe(function (s) { if (s === 'SUBSCRIBED') { Chat.presNome = S.nomeFull || 'Membro LEXDESK'; ch.track({ nome: Chat.presNome }); } });
   Chat.pres = ch;
 }
 function chatLeave() {
@@ -2639,9 +2639,10 @@ function chatPaintOnline() {
   }).join('');
 }
 function chatAfterRender() {
-  if (S.view !== 'chat') { if (Chat.pres || Chat.sub) chatLeave(); return; }
-  if (!SB || !sessaoAtiva()) return;
+  if (S.view !== 'chat' || !sessaoAtiva()) { if (Chat.pres || Chat.sub) chatLeave(); if (!sessaoAtiva()) { Chat.info = false; Chat.mod = false; Chat.regras = null; Chat.susp = null; } return; }
+  if (!SB) return;
   chatInit(); chatSubscribe(); chatPresence(); chatLoad(Chat.canal);
+  if (Chat.pres && Chat.presNome && S.nomeFull && Chat.presNome !== S.nomeFull) { Chat.presNome = S.nomeFull; try { Chat.pres.track({ nome: S.nomeFull }); } catch (e) {} }
   chatPaint(true); chatPaintOnline();
   var inp = $('#chat-in');
   if (inp) {
