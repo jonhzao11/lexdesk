@@ -908,6 +908,33 @@ body.bvp .main{background:radial-gradient(600px 360px at 75% 220px,rgba(200,150,
 .modal.modal-wide{max-width:min(980px,94vw);width:94vw}
 .ch-sem{max-height:70vh;overflow:auto}
 @media (max-width:760px){.ch-wrap{grid-template-columns:1fr}.ch-cal{padding-right:0;border-right:0;border-bottom:1px solid var(--line,#E6E8EE);padding-bottom:12px}}
+/* ----- semana em faixa ----- */
+.sf{gap:12px;padding-top:18px;padding-bottom:18px}
+.sf-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.sf-top h2{margin:0}
+.sf-nav{display:flex;align-items:center;gap:6px}
+.sf-mes{border:1px solid #E1E4EB;background:#fff;border-radius:999px;padding:5px 12px;font:600 13px var(--sans);color:var(--navy);cursor:pointer}
+.sf-mes:hover{background:#F4F6FA}
+.sf-nav .lnk{border:0;background:none;color:#7B1E2B;font:600 12px var(--sans);cursor:pointer}
+.sf-acts{margin-left:auto;display:flex;align-items:center;gap:8px}
+.sf-prox{font-size:12.5px;color:var(--muted);margin-right:6px}
+.sf-prox b{color:#7B1E2B}
+.sf-g{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.sf-c{display:flex;flex-direction:column;gap:6px;padding:8px;border-radius:14px;background:#F6F7FA;min-height:96px;min-width:0}
+.sf-c.fds{background:#FAFAFC}
+.sf-c.hoje{background:#fff;box-shadow:inset 0 0 0 1.5px #C9A45C,0 8px 20px -14px rgba(15,27,45,.4)}
+.sf-h{display:flex;align-items:baseline;justify-content:space-between;padding:0 2px}
+.sf-h span{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.sf-h b{font-family:var(--serif);font-size:17px;color:var(--navy)}
+.sf-c.hoje .sf-h b{color:#7B1E2B}
+.sf-ps{display:flex;flex-direction:column;gap:4px;min-width:0}
+.sf-p{display:block;width:100%;text-align:left;border:0;border-left:3px solid;border-radius:7px;padding:3px 6px;font:500 11.5px/1.3 var(--sans);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;transition:transform .15s}
+.sf-p b{font-weight:700;margin-right:4px}
+.sf-p:hover{transform:translateY(-1px)}
+.sf-p.av{background:#B23A48;color:#fff;border-left-color:#7B1E2B}
+.sf-0{color:#C3C8D3;font-size:13px;padding-left:4px}
+.sf-mesbox .calwrap{margin-top:0}
+@media (max-width:900px){.sf-g{grid-template-columns:repeat(7,minmax(92px,1fr));overflow-x:auto;padding-bottom:4px}.sf-acts{margin-left:0;width:100%}}
 
 </style>
 </head>
@@ -5642,6 +5669,37 @@ A['ch-semana'] = function () {
   openModal('Horário semanal', h, '<button class="btn" data-a="close">Fechar</button>');
   var m = document.querySelector('#ov .modal'); if (m) m.classList.add('modal-wide');
 };
+/* ----- opção C: semana em faixa ----- */
+function sfSegunda() { var d = hoje0(); d.setDate(d.getDate() - ((d.getDay() + 6) % 7) + 7 * (S.sfOff || 0)); return d; }
+function sfCurto(n) { return n.replace(/^Direito (d[aoe]s? )?/, '').replace(/^Teoria Geral do Direito Civil/, 'TGDC'); }
+function vSemFaixa() {
+  var D = chDados(), seg = sfSegunda(), hj = ymd(new Date()), cols = '';
+  var fim = new Date(seg); fim.setDate(fim.getDate() + 6);
+  for (var i = 0; i < 7; i++) {
+    var d = new Date(seg); d.setDate(d.getDate() + i);
+    var k = ymd(d), x = chDoDia(k, D);
+    var pills = x.avs.map(function (e) { return '<button class="sf-p av" data-a="' + (e.demo ? 'demo-ex' : 'ex-open') + '" data-id="' + e.id + '" title="' + esc(exNome(e)) + ' · ' + esc(e.tipo) + (e.hora ? ' · ' + esc(e.hora) : '') + '"><b>' + (e.hora ? esc(e.hora) : esc(e.tipo)) + '</b>' + esc(sfCurto(exNome(e))) + '</button>'; })
+      .concat(x.aulas.map(function (a) { var co = cor(a.cadId); return '<button class="sf-p" data-a="' + (a.demo ? 'demo-aula' : 'aula-open') + '" data-id="' + a.id + '" style="background:' + co[0] + ';color:' + co[1] + ';border-color:' + co[1] + '" title="' + esc(exNome(a)) + ' · ' + esc(a.ini) + '–' + esc(a.fim) + (a.sala ? ' · ' + esc(a.sala) : '') + '"><b>' + esc(a.ini) + '</b>' + esc(sfCurto(exNome(a))) + '</button>'; })).join('');
+    cols += '<div class="sf-c' + (k === hj ? ' hoje' : '') + (i > 4 ? ' fds' : '') + '"><div class="sf-h"><span>' + ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'][i] + '</span><b>' + d.getDate() + '</b></div><div class="sf-ps">' + (pills || '<span class="sf-0">—</span>') + '</div></div>';
+  }
+  var rot = seg.getMonth() === fim.getMonth() ? seg.getDate() + '–' + fim.getDate() + ' ' + MESES[fim.getMonth()] : seg.getDate() + ' ' + MESES[seg.getMonth()].slice(0, 3) + ' – ' + fim.getDate() + ' ' + MESES[fim.getMonth()].slice(0, 3);
+  var px = D.ex.filter(function (e) { return diasAte(e.data) >= 0; })[0];
+  return '<section class="card sf" aria-labelledby="hor-h"><div class="sf-top"><h2 id="hor-h">' + (S.sfOff ? (S.sfOff === 1 ? 'Próxima semana' : S.sfOff === -1 ? 'Semana passada' : 'Semana') : 'Esta semana') + ' + ((D.demoE || D.demoA) ? ' <span class="chip gray" style="vertical-align:middle;font-family:var(--sans)">Exemplos</span>' : '') + '</h2>' +
+    '<div class="sf-nav"><button class="icon-btn sm" data-a="sf-sem" data-id="-1" aria-label="Semana anterior">‹</button><button class="sf-mes" data-a="sf-mes" title="Abrir o calendário do mês">' + rot + ' ▾</button><button class="icon-btn sm" data-a="sf-sem" data-id="1" aria-label="Semana seguinte">›</button>' + (S.sfOff ? '<button class="lnk" data-a="sf-hoje">Hoje</button>' : '') + '</div>' +
+    '<div class="sf-acts">' + (px ? '<span class="sf-prox">Próxima: <b>' + esc(sfCurto(exNome(px))) + '</b> · ' + faltam(px.data).toLowerCase() + '</span>' : '') + '<button class="btn sm" data-a="aula-new">' + I.plus + 'Aula</button><button class="btn sm" data-a="ex-new">' + I.plus + 'Avaliação</button></div></div>' +
+    '<div class="sf-g">' + cols + '</div></section>';
+}
+A['sf-sem'] = function (el) { S.sfOff = (S.sfOff || 0) + Number(el.dataset.id); render(); };
+A['sf-hoje'] = function () { S.sfOff = 0; render(); };
+function sfMesAbrir() {
+  var h = vCalendario().replace('<section class="card" aria-labelledby="cal-h">', '<div class="sf-mesbox">').replace(/<\/section>$/, '</div>').replace(/<h2 id="cal-h">[\s\S]*?<\/h2>/, '<span></span>');
+  openModal('Calendário de avaliações', h, '<button class="btn" data-a="close">Fechar</button>');
+  var m = document.querySelector('#ov .modal'); if (m) m.classList.add('modal-wide');
+}
+A['sf-mes'] = sfMesAbrir;
+['cal-prev', 'cal-next', 'cal-today'].forEach(function (k) {
+  var f = A[k]; A[k] = function (el) { var em = !!document.querySelector('#ov .sf-mesbox'); f(el); if (em) sfMesAbrir(); };
+});
 var _painelComporCH = painelCompor;
 painelCompor = function (P, pf) {
   var m = modsAtivos(), vc = m.hidden.indexOf('calendario') < 0, vh = m.hidden.indexOf('horario') < 0;
@@ -5649,7 +5707,7 @@ painelCompor = function (P, pf) {
     var Q = {}; for (var k in P) Q[k] = P[k];
     var ic = m.ordem.indexOf('calendario'), ih = m.ordem.indexOf('horario');
     var alvo = vc && vh ? (ic <= ih ? 'calendario' : 'horario') : vc ? 'calendario' : 'horario';
-    Q.calendario = ''; Q.horario = ''; Q[alvo] = vCalHor();
+    Q.calendario = ''; Q.horario = ''; Q[alvo] = vSemFaixa();
     P = Q;
   }
   return _painelComporCH(P, pf);
