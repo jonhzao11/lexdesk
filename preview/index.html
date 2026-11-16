@@ -841,6 +841,18 @@ body.bvp .main{background:radial-gradient(600px 360px at 75% 220px,rgba(200,150,
 @media (max-width:600px){.pd-o{grid-template-columns:1fr}.hb2 .hb-l{padding-left:0}.hb-mini{display:none}}
 @media (prefers-reduced-motion:reduce){.pd-conf{display:none}}
 
+/* ===== fotografias das instituições ===== */
+.inst-img{position:relative;margin:-22px -22px 4px;height:170px;border-radius:21px 21px 0 0;overflow:hidden;background:linear-gradient(135deg,#13233A,#0B1424)}
+.inst-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease)}
+.card:hover .inst-img img{transform:scale(1.04)}
+.inst-img figcaption{position:absolute;right:8px;bottom:8px;font-size:10.5px;color:#fff;background:rgba(11,20,36,.62);padding:3px 8px;border-radius:99px;backdrop-filter:blur(4px);max-width:calc(100% - 16px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.inst-img figcaption a{color:#fff;text-decoration:underline}
+.inst-img.sem{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:radial-gradient(300px 160px at 80% 20%,rgba(200,150,47,.25),transparent 70%),linear-gradient(135deg,#7B1E2B,#13233A)}
+.inst-ini{font-family:var(--serif);font-size:44px;font-weight:800;color:#F3D58A;letter-spacing:.04em}
+.inst-loc{display:flex;align-items:center;gap:4px;font-size:12.5px;color:#E6E9F0}.inst-loc svg{width:14px;height:14px}
+.inst-img.falhou img{display:none}
+.card.minha .inst-img{box-shadow:inset 0 -3px 0 #8C1D30}
+
 </style>
 </head>
 <body>
@@ -5465,6 +5477,33 @@ A['cad-plano-inst'] = function () {
 };
 var _perfilFormPL2 = perfilForm;
 perfilForm = function (p) { var h = _perfilFormPL2(p); return PLANOS[p.instId] ? h.replace('<datalist id="pf-catalogo">', '<button type="button" class="btn sm" data-a="cad-plano-inst" style="margin-top:8px">Importar o plano completo (1.º a 4.º ano) para «Cadeiras»</button><datalist id="pf-catalogo">') : h; };
+
+/* ----- fotografias dos edifícios (Wikimedia Commons, licenças livres, com crédito) ----- */
+var CM = 'https://thumb.wikimedia.org/wikipedia/commons/thumb/', CP = 'https://commons.wikimedia.org/wiki/File:';
+var INST_FOTO = {
+  fduc: ['b/bd/South_facade_of_Faculdade_de_Direito_da_Universidade_de_Coimbra.jpg', 'Joseolgon', 'CC BY-SA 4.0'],
+  fdul: ['4/4e/Faculdade_de_Direito_da_Universidade_de_Lisboa_9274.jpg', 'João Carvalho', 'CC BY-SA 3.0'],
+  uminho: ['c/c2/Escola_de_Direito.jpg', 'PTColaboration', 'CC BY-SA 4.0'],
+  nova: ['b/b2/Faculdade_de_Direito_da_Universidade_Nova_de_Lisboa.jpg', 'EdSantos754', 'CC BY-SA 4.0'],
+  fdup: ['9/93/Faculty_of_Law_of_the_University_of_Porto.jpg', 'Ayratayrat', 'CC BY-SA 4.0', 1],
+  iscte: ['2/2a/ISCTE-Edificio2.jpg', 'Vysotsky', 'CC BY-SA 4.0'],
+  'ucp-lx': ['b/bb/UCP_Lisboa_%28Sede%29.jpg', 'Universidade Católica Portuguesa', 'CC BY-SA 4.0'],
+  'ucp-porto': ['b/b5/UCP_Campus_Foz_%28Porto%29.jpg', 'Universidade Católica Portuguesa', 'CC BY-SA 4.0'],
+  'lusofona-lx': ['4/4e/Edif%C3%ADcio_da_Universidade_Lus%C3%B3fona_9222.jpg', 'João Carvalho', 'CC BY-SA 3.0'],
+  'lusofona-porto': ['7/70/Edificio_ulp.JPG', 'Ulporto', 'Domínio público'],
+  'lusiada-lx': ['6/61/Universidade_Lusiada_Jardim.jpg', 'TostaMista23', 'CC BY-SA 4.0'],
+  autonoma: ['4/4b/Universidade_Aut%C3%B3noma_de_Lisboa.jpg', 'João P. M. Lima', 'Domínio público'],
+  europeia: ['7/76/Universidade_Europeia_em_Lisboa.jpg', 'Joehawkins', 'CC BY-SA 4.0'],
+  ismat: ['3/3f/Instituto_Superior_Manuel_Teixeira_Gomes_-_Portimao%2C_Portugal_-_29.01.2025.jpg', 'Bextrel', 'CC BY 4.0']
+};
+function instFotoUrl(f) { var nome = f[0].split('/').pop(); return f[3] ? 'https://upload.wikimedia.org/wikipedia/commons/' + f[0] : CM + f[0] + '/960px-' + nome; }
+function instFoto(i) {
+  var f = INST_FOTO[i.id];
+  if (!f) { var ini = i.nome.replace(/Universidade|de|do|da|Instituto|Superior/g, ' ').split(/\s+/).filter(Boolean).map(function (w) { return w.charAt(0); }).join('').slice(0, 3).toUpperCase(); return '<figure class="inst-img sem"><span class="inst-ini">' + esc(ini) + '</span><span class="inst-loc">' + I.pin + ' ' + esc(i.local) + '</span><figcaption>Fotografia ainda não disponível</figcaption></figure>'; }
+  return '<figure class="inst-img"><img src="' + instFotoUrl(f) + '" alt="Edifício: ' + esc(i.nome + (i.uo ? ' — ' + i.uo : '')) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add(\'falhou\')"><figcaption>Foto: <a href="' + CP + f[0].split('/').pop() + '" target="_blank" rel="noopener">' + esc(f[1]) + '</a> · ' + esc(f[2]) + ' · Wikimedia Commons</figcaption></figure>';
+}
+var _instCardsFT = instCards;
+instCards = function (l, p) { if (!l.length) return _instCardsFT(l, p); return l.map(function (i) { return _instCardsFT([i], p).replace(/^(<article[^>]*>)/, '$1' + instFoto(i)); }).join(''); };
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
 var VIEW_LBL = { painel: ['Painel', I.grid], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
