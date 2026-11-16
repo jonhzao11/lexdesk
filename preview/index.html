@@ -984,6 +984,18 @@ body.bvp .main{background:radial-gradient(600px 360px at 75% 220px,rgba(200,150,
 .est-b.vazio{cursor:default;border-radius:4px 4px 2px 2px;background:repeating-linear-gradient(135deg,#E8DFCD 0 6px,#EFE7D7 6px 12px);box-shadow:inset 0 0 0 1px #DDD2BC}
 .est-b.vazio:hover{width:var(--w);transform:none}
 @media (prefers-reduced-motion:reduce){.est-b,.est-b>.sp,.est-b>.cv{transition:none}}
+/* ----- faixa do topo compacta ----- */
+.hband.hb2{padding:12px 18px 12px 22px;gap:16px;border-radius:20px;align-items:center;box-shadow:0 18px 40px -26px rgba(15,27,45,.6)}
+.hb2 .hb-l{gap:2px;padding-left:62px}
+.hb-mini{width:50px;margin-top:-25px}.hb-mini .hb-bal{max-width:50px}
+.hb2 h1{font-size:25px;line-height:1.1}.hb2 .hb-l p{font-size:13px}.hb2 .hb-d{font-size:9.5px;letter-spacing:.12em}
+.hb2 .pd{padding:10px 14px;gap:5px;border-radius:14px}
+.hb2 .pd-t{font-size:11px}
+.hb2 .pd-p.sm{font-size:12.5px;line-height:1.4;color:#C3CBDB}
+.pd-go{padding:5px 14px;min-height:0;font-size:13px}
+.hb2 .pd-q{font-size:14.5px}
+.hb2 .pd-o button{padding:7px 10px;font-size:13px}
+@media (max-width:600px){.hb2 .hb-l{padding-left:0}}
 
 </style>
 </head>
@@ -5396,7 +5408,7 @@ function vPD() {
   if (!sessaoAtiva()) return h + '</div><p class="pd-p">Uma pergunta nova todos os dias, igual para todos. Responda depressa e suba no ranking.</p><div class="row"><button class="btn gold sm" data-a="login-open" data-id="registo">Criar conta para participar</button><button class="pd-lk" data-a="login-open" data-id="entrar">Já tenho conta</button></div></div>';
   if (!PD.carregado || PD.dia !== pdHoje()) { if (PD.dia && PD.dia !== pdHoje()) { PD.carregado = false; PD.estado = 'idle'; } setTimeout(pdCarregar, 0); return h + '</div><p class="pd-p">A carregar…</p></div>'; }
   h += (PD.estado === 'ativa' ? '<span class="pd-cr" id="pd-cr">' + pdSeg(Date.now() - PD.t0) + '</span>' : '') + (PD.seq ? '<span class="pd-seq" title="Dias seguidos a responder">🔥 ' + PD.seq + (PD.seq === 1 ? ' dia' : ' dias') + '</span>' : '') + '<button class="pd-lk" data-a="pd-rank">🏆 Ranking</button></div>';
-  if (PD.estado === 'idle') return h + '<p class="pd-p">Uma pergunta nova todos os dias, igual para todos. <b>Só tem uma tentativa</b> e o cronómetro começa quando clicar.</p><div class="row"><button class="btn gold" data-a="pd-ini">Começar ⏱</button><span class="pd-reg">Certa: 10 pts · bónus de rapidez até +5</span></div></div>';
+  if (PD.estado === 'idle') return h.replace('<button class="pd-lk" data-a="pd-rank">', '<button class="btn gold sm pd-go" data-a="pd-ini">Começar ⏱</button><button class="pd-lk" data-a="pd-rank">') + '<p class="pd-p sm">Uma pergunta nova por dia, igual para todos. <b>Só uma tentativa</b> · certa: 10 pts + bónus de rapidez até +5.</p></div>';
   var q = pdQ(PD.d.qid); if (!q) return h + '<p class="pd-p">Pergunta indisponível. Atualize a página.</p></div>';
   if (PD.estado === 'ativa') return h + '<p class="pd-q">' + esc(q.q) + '</p><div class="pd-o">' + pdPerm(q.id).map(function (oi, i) { return '<button data-a="pd-resp" data-i="' + oi + '"><span>' + 'ABCD'.charAt(i) + '</span>' + esc(q.o[oi]) + '</button>'; }).join('') + '</div></div>';
   var d = PD.d, c = d.correta != null ? d.correta : q.a;
