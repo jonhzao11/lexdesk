@@ -853,6 +853,9 @@ body.bvp .main{background:radial-gradient(600px 360px at 75% 220px,rgba(200,150,
 .inst-img.falhou img{display:none}
 .card.minha .inst-img{box-shadow:inset 0 -3px 0 #8C1D30}
 
+.inst-cred{font-size:12px;color:var(--muted)}.inst-cred summary{cursor:pointer;font-weight:600}.inst-cred ul{margin:6px 0 0;padding-left:18px;columns:2;column-gap:24px}.inst-cred a{color:var(--muted)}
+@media (max-width:700px){.inst-cred ul{columns:1}}
+
 </style>
 </head>
 <body>
@@ -5494,16 +5497,25 @@ var INST_FOTO = {
   'lusiada-lx': ['6/61/Universidade_Lusiada_Jardim.jpg', 'TostaMista23', 'CC BY-SA 4.0'],
   autonoma: ['4/4b/Universidade_Aut%C3%B3noma_de_Lisboa.jpg', 'João P. M. Lima', 'Domínio público'],
   europeia: ['7/76/Universidade_Europeia_em_Lisboa.jpg', 'Joehawkins', 'CC BY-SA 4.0'],
+  upt: ['upt.jpg', '', '', 'local'],
+  'lusiada-norte': ['lusiada-norte.jpg', '', '', 'local'],
   ismat: ['3/3f/Instituto_Superior_Manuel_Teixeira_Gomes_-_Portimao%2C_Portugal_-_29.01.2025.jpg', 'Bextrel', 'CC BY 4.0']
 };
-function instFotoUrl(f) { var nome = f[0].split('/').pop(); if (f[3] === 2) return 'https://commons.wikimedia.org/w/thumb.php?f=' + nome + '&w=960'; return f[3] ? 'https://upload.wikimedia.org/wikipedia/commons/' + f[0] : CM + f[0] + '/960px-' + nome; }
+function instFotoUrl(f) { if (f[3] === 'local') return 'img/' + f[0]; var nome = f[0].split('/').pop(); if (f[3] === 2) return 'https://commons.wikimedia.org/w/thumb.php?f=' + nome + '&w=960'; return f[3] ? 'https://upload.wikimedia.org/wikipedia/commons/' + f[0] : CM + f[0] + '/960px-' + nome; }
 function instFoto(i) {
   var f = INST_FOTO[i.id];
   if (!f) { var ini = i.nome.replace(/Universidade|de|do|da|Instituto|Superior/g, ' ').split(/\s+/).filter(Boolean).map(function (w) { return w.charAt(0); }).join('').slice(0, 3).toUpperCase(); return '<figure class="inst-img sem"><span class="inst-ini">' + esc(ini) + '</span><span class="inst-loc">' + I.pin + ' ' + esc(i.local) + '</span><figcaption>Fotografia ainda não disponível</figcaption></figure>'; }
-  return '<figure class="inst-img"><img src="' + instFotoUrl(f) + '" alt="Edifício: ' + esc(i.nome + (i.uo ? ' — ' + i.uo : '')) + '" data-o="https://upload.wikimedia.org/wikipedia/commons/' + f[0] + '" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(!this.dataset.r){this.dataset.r=1;this.src=this.dataset.o}else{this.parentNode.classList.add(\'falhou\')}"><figcaption>Foto: <a href="' + CP + f[0].split('/').pop() + '" target="_blank" rel="noopener">' + esc(f[1]) + '</a> · ' + esc(f[2]) + ' · Wikimedia Commons</figcaption></figure>';
+  return '<figure class="inst-img"><img src="' + instFotoUrl(f) + '" alt="Edifício: ' + esc(i.nome + (i.uo ? ' — ' + i.uo : '')) + '"' + (f[3] === 'local' ? '' : ' data-o="https://upload.wikimedia.org/wikipedia/commons/' + f[0] + '"') + ' loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.o&&!this.dataset.r){this.dataset.r=1;this.src=this.dataset.o}else{this.parentNode.classList.add(\'falhou\')}"></figure>';
 }
 var _instCardsFT = instCards;
 instCards = function (l, p) { if (!l.length) return _instCardsFT(l, p); return l.map(function (i) { return _instCardsFT([i], p).replace(/^(<article[^>]*>)/, '$1' + instFoto(i)); }).join(''); };
+
+/* créditos reunidos no fim da página (exigidos pelas licenças Creative Commons) */
+var _vInstFT = vInstituicoes;
+vInstituicoes = function () {
+  var cred = Object.keys(INST_FOTO).filter(function (k) { return INST_FOTO[k][3] !== 'local' && instById(k); }).map(function (k) { var f = INST_FOTO[k]; return '<li>' + esc(instById(k).nome + (instById(k).uo ? ' — ' + instById(k).uo : '')) + ': <a href="' + CP + f[0].split('/').pop() + '" target="_blank" rel="noopener">' + esc(f[1]) + '</a>, ' + esc(f[2]) + '</li>'; }).join('');
+  return _vInstFT() + '<details class="inst-cred"><summary>Créditos das fotografias</summary><p>Fotografias da Wikimedia Commons, usadas ao abrigo das respetivas licenças livres:</p><ul>' + cred + '</ul></details>';
+};
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
 var VIEW_LBL = { painel: ['Painel', I.grid], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
