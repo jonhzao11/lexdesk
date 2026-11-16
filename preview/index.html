@@ -855,10 +855,13 @@ body.bvp .main{background:radial-gradient(600px 360px at 75% 220px,rgba(200,150,
 
 .inst-cred{font-size:12px;color:var(--muted)}.inst-cred summary{cursor:pointer;font-weight:600}.inst-cred ul{margin:6px 0 0;padding-left:18px;columns:2;column-gap:24px}.inst-cred a{color:var(--muted)}
 @media (max-width:700px){.inst-cred ul{columns:1}}
-.bt-dest.com-foto{isolation:isolate;overflow:hidden}
-.bt-bg{position:absolute;inset:-24px;z-index:-1;background-size:cover;background-position:center;filter:blur(5px) saturate(.85);opacity:.5;transform:scale(1.05);transition:opacity .4s}
-.bt-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(150deg,rgba(140,29,48,.72),rgba(94,20,33,.82) 60%,rgba(62,13,22,.92))}
-.bt-dest.com-foto:hover .bt-bg{opacity:.6}
+.bt-dest.com-foto{isolation:isolate;overflow:hidden;background:#1a1a1a;box-shadow:0 24px 50px -24px rgba(0,0,0,.55)}
+.bt-bg{position:absolute;inset:-6px;z-index:-1;background-size:cover;background-position:center;filter:blur(1.5px);transform:scale(1.02);transition:transform .5s}
+.bt-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.25) 55%,rgba(0,0,0,.72) 100%)}
+.bt-dest.com-foto:hover .bt-bg{transform:scale(1.05)}
+.bt-dest.com-foto .bt-s{color:#f2f2f2}
+.bt-dest.com-foto .bt-n,.bt-dest.com-foto .bt-s,.bt-dest.com-foto .bt-l{text-shadow:0 1px 8px rgba(0,0,0,.55)}
+.bt-dest.com-foto .bt-p.o{background:rgba(0,0,0,.35);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.35)}
 
 </style>
 </head>
