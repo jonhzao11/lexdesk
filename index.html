@@ -445,6 +445,49 @@ ol.regras{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px
 .msg-h .est{margin-left:2px}
 .acct .av{width:32px;height:32px;font-size:13px}
 
+/* ===== atualidade jurídica 2.0 ===== */
+.capa{position:relative;overflow:hidden;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:16px 18px;min-height:130px;border-radius:16px 16px 0 0;isolation:isolate}
+.capa::after{content:'';position:absolute;inset:0;background:radial-gradient(260px 160px at 85% 10%,rgba(255,176,32,.28),transparent 60%),linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:auto,22px 22px,22px 22px;z-index:-1}
+.capa-ic{position:absolute;right:-8px;top:-6px;width:120px;height:120px;color:rgba(255,255,255,.22);z-index:-1;transition:transform .5s var(--ease)}
+.capa-k{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.capa-n{font-family:var(--serif);font-weight:800;font-size:26px;letter-spacing:-.02em;line-height:1.05;margin-top:4px}
+.capa.sm{min-height:96px;padding:12px 14px;border-radius:14px}.capa.sm .capa-n{font-size:20px}.capa.sm .capa-ic{width:90px;height:90px}
+.capa.lg{min-height:220px;border-radius:24px;padding:26px 30px}.capa.lg .capa-n{font-size:46px}.capa.lg .capa-ic{width:240px;height:240px;right:10px;top:-20px}
+.capa.xs{min-height:52px;width:52px;flex:none;padding:0;border-radius:12px}.capa.xs .capa-k,.capa.xs .capa-n{display:none}.capa.xs .capa-ic{width:34px;height:34px;right:9px;top:9px;color:rgba(255,255,255,.85)}
+.ugrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+.ucard{display:flex;flex-direction:column;border:1px solid rgba(14,18,34,.06);border-radius:20px;background:#fff;box-shadow:var(--sh1);overflow:hidden;cursor:pointer;text-align:left;font:inherit;color:var(--ink);padding:0;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.ucard:hover{transform:translateY(-4px);box-shadow:var(--sh2)}.ucard:hover .capa-ic{transform:scale(1.08) rotate(-4deg)}
+.ucard.big{grid-column:span 2}.ucard.big .capa{min-height:170px}.ucard.big .capa-n{font-size:34px}
+@media (max-width:700px){.ucard.big{grid-column:auto}}
+.ub{display:flex;flex-direction:column;gap:8px;padding:16px 18px 18px;flex:1}
+.ut{font-family:var(--serif);font-weight:700;font-size:17px;line-height:1.3;letter-spacing:-.01em}
+.ur{font-size:13.5px;color:#4A5165;line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ucard.big .ur{-webkit-line-clamp:4}
+.um{font-size:12px;color:var(--muted);margin-top:auto}
+mark{background:#FFE8A3;color:inherit;border-radius:3px;padding:0 2px}
+.novo{display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--grad-gold);border-radius:99px;padding:3px 8px}
+.upd-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.upd-bar .seg button .n{font-size:11px;opacity:.6;margin-left:2px}
+.mim{border:1.5px solid var(--violet);color:var(--violet);background:#fff;border-radius:12px;min-height:44px;padding:0 16px;font:inherit;font-weight:800;font-size:13px;cursor:pointer;transition:all .2s}
+.mim.on{background:var(--violet);color:#fff;box-shadow:0 10px 24px -10px rgba(67,56,202,.6)}
+.faixa{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.fx-c{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:16px;background:#fff;padding:0;overflow:hidden;cursor:pointer;text-align:left;font:inherit;color:var(--ink);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.fx-c:hover{transform:translateY(-3px);box-shadow:var(--sh2)}.fx-c .capa{border-radius:0}
+.fx-b{display:flex;flex-direction:column;gap:6px;padding:12px 14px 14px}.fx-b b{font-size:14px;line-height:1.35}.fx-b>span:last-child{font-size:12px;color:var(--muted)}.fx-b .novo{align-self:flex-start}
+.upd-det{background:#fff;border-radius:28px;box-shadow:var(--sh1);border:1px solid rgba(14,18,34,.06);overflow:hidden}
+.upd-det>.capa{border-radius:0}
+.upd-body{padding:26px 30px 30px;display:flex;flex-direction:column;gap:16px;max-width:900px}
+.acts{display:flex;flex-wrap:wrap;gap:8px}
+.blk{background:#F7F8FB;border-radius:18px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.blk p{margin:0;font-size:15.5px;line-height:1.65}
+.blk-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+ul.muda{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:15px;line-height:1.55}
+ul.muda li::marker{color:var(--wine)}
+.quiz{background:linear-gradient(#fff,#fff) padding-box,var(--grad) border-box;border:2px solid transparent}
+.sino{position:relative;width:40px;height:40px;border-radius:12px;border:1px solid var(--line2);background:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink);transition:transform .2s var(--ease),box-shadow .2s}
+.sino:hover{transform:translateY(-1px);box-shadow:var(--sh1)}
+.sino-n{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;border-radius:99px;background:var(--grad-gold);color:#2A1600;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0 5px;border:2px solid #fff;animation:pop .3s var(--ease) both}
+
 </style>
 </head>
 <body>
@@ -1132,7 +1175,7 @@ function render() {
   var v = S.view, h = '';
   if (v === 'painel') h = vPainel();
   else if (v === 'cadeiras') h = vCadeiras();
-  else if (v === 'atualidade') h = vAtualidade();
+  else if (v === 'atualidade') h = vAtualidade2();
   else if (v === 'connect') h = vConnect();
   else if (v === 'chat') h = vChat();
   else if (v === 'apontamentos') h = vApontamentos();
@@ -1165,14 +1208,14 @@ function vPainel() {
     '<label class="search hero-s">' + I.search + '<span class="sr">Pesquisar</span><input id="gq" type="search" placeholder="Pesquisar diplomas, artigos…" value="' + esc(S.q) + '" data-in="gq"></label>' +
     '<div class="row">' + (pf && pf.instId ? '' : '<button class="btn wine" data-a="perfil-edit">Definir o meu perfil académico</button>') + '<button class="btn gold" data-go="exames">Iniciar simulação de exame</button><button class="btn ghost" data-a="ws-new">' + I.plus + 'Novo workspace</button></div></div>' +
     '<div class="hero-orb" aria-hidden="true"><i>' + I.logo + '</i></div></section>' +
-    '<div id="busca"></div>' + vMinhasDisc(pf) + vDestaques();
+    '<div id="busca"></div>' + vMinhasDisc(pf);
   var taxa = s.tot ? Math.round(100 * s.ok / s.tot) : null;
   h += '<section class="grid" aria-label="Indicadores">' +
     kpi('Workspaces', s.ws.length, plural(s.items.length, 'documento organizado', 'documentos organizados')) +
     kpi('Questões respondidas', s.tot, taxa == null ? 'Ainda sem simulações' : taxa + '% de respostas certas', taxa != null && taxa >= 50) +
     kpi('Casos práticos resolvidos', s.casosFeitos, 'de ' + CASOS.length + ' disponíveis') +
     (function () { var px = exames().filter(function (e) { return diasAte(e.data) >= 0; })[0]; return px ? kpi('Próxima avaliação', diasAte(px.data) === 0 ? 'Hoje' : diasAte(px.data) + (diasAte(px.data) === 1 ? ' dia' : ' dias'), esc(exNome(px)) + ' · ' + esc(px.tipo)) : kpi('Próxima avaliação', '—', 'Sem datas marcadas'); })() + '</section>';
-  h += vProgresso() + vCalendario() + vHorario();
+  h += vProgresso() + vCalendario() + vHorario() + vDestaquesFaixa();
   // continuar + progresso
   var cont = recentes.length ? '<div class="list">' + recentes.map(wsRow).join('') + '</div>'
     : '<div class="empty"><span>Ainda não criou nenhum workspace. Um workspace reúne a legislação, os apontamentos, a jurisprudência e os seus trabalhos sobre um tema.</span><button class="btn pri" data-a="ws-new">' + I.plus + 'Criar o primeiro workspace</button></div>';
@@ -1758,12 +1801,7 @@ Social.start = function () {
   var db = Store.db; if (!db) { Social.updState = 'offline'; return; }
   apStart();
   var t = setTimeout(function () { if (Social.updState === 'loading') { Social.updState = 'slow'; scheduleRender(); } }, 10000);
-  db.collection('atualizacoes').orderBy('data', 'desc').limit(150).onSnapshot(function (snap) {
-    if (snap.metadata && snap.metadata.fromCache && !snap.docs.length) return;
-    clearTimeout(t);
-    Social.upd = snap.docs.map(function (d) { var x = clone(d.data()); x.id = d.id; return x; });
-    Social.updState = 'ok'; scheduleRender();
-  }, function () { clearTimeout(t); Social.updState = 'offline'; scheduleRender(); });
+  clearTimeout(t); Social.loadUpd();
   db.collection('tutores').limit(500).onSnapshot(function (snap) {
     Social.tut = snap.docs.map(function (d) { var x = clone(d.data()); x.id = d.id; return x; }); loadNames(Social.tut.map(function (x) { return x.id; })); scheduleRender();
   }, function () {});
@@ -2912,6 +2950,196 @@ function chatModPanel() {
   });
 }
 Object.keys(A7).forEach(function (k) { A[k] = A7[k]; });
+
+/* ---------- ATUALIDADE JURÍDICA 2.0: capas, leitura rápida, «Para mim», «Novo» e interações ---------- */
+var AREA_KW = {
+  'Civil': ['civil', 'obrigações', 'reais', 'família', 'sucessões', 'contratos', 'consumo'],
+  'Processo Civil': ['processual civil', 'processo civil', 'executivo', 'prática judiciária', 'insolvência'],
+  'Penal': ['penal', 'prática judiciária'],
+  'Constitucional': ['constitucional', 'fundamentais'],
+  'Administrativo': ['administrativo', 'contencioso', 'finanças públicas'],
+  'Comercial': ['comercial', 'sociedades', 'insolvência', 'consumo'],
+  'Fiscal': ['fiscal', 'finanças públicas'],
+  'Laboral': ['trabalho', 'segurança social'],
+  'Migrações': ['união europeia', 'internacional público', 'fundamentais'],
+  'Institucional': ['união europeia', 'constitucional']
+};
+var AREA_CANAL = { 'Civil': 'civil', 'Processo Civil': 'proc-civil', 'Penal': 'penal', 'Constitucional': 'constitucional', 'Administrativo': 'administrativo', 'Comercial': 'comercial', 'Fiscal': 'comercial', 'Laboral': 'trabalho' };
+var CAPA_ICON = {
+  legislacao: '<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h5M8 17h3"/><circle cx="16.5" cy="16.5" r="2.5"/>',
+  tribunais: '<path d="M13.5 4.5l6 6M10 8l6 6M4 20l7-7M8.5 6.5l9 9M12 3l9 9"/><path d="M3 21h8"/>',
+  tc: '<path d="M3 9l9-5 9 5"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 20h18"/>',
+  tjue: '<g>' + [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(function (i) { var a = i * Math.PI / 6, x = 12 + 8 * Math.cos(a), y = 12 + 8 * Math.sin(a); return '<path d="M' + x.toFixed(2) + ' ' + (y - 1.3).toFixed(2) + 'l.4 .9 1 .1-.75.65.25 1-.9-.55-.9.55.25-1-.75-.65 1-.1z"/>'; }).join('') + '</g>',
+  Fiscal: '<circle cx="12" cy="12" r="8"/><path d="M15 9a4 4 0 1 0 0 6M7 11h6M7 13.5h6"/>',
+  Comercial: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/>',
+  Civil: '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>',
+  Laboral: '<path d="M4 15a8 8 0 0 1 16 0"/><path d="M2 15h20v3H2zM12 7V4M9 7.5l-1-2.5M15 7.5l1-2.5"/>',
+  Penal: '<path d="M12 3v18M7 21h10M5 7h14M5 7l-3 6a3 3 0 0 0 6 0zM19 7l-3 6a3 3 0 0 0 6 0z"/>',
+  def: '<path d="M12 3v18M7 21h10M5 7h14M5 7l-3 6a3 3 0 0 0 6 0zM19 7l-3 6a3 3 0 0 0 6 0z"/>'
+};
+var CAPA_BG = {
+  legislacao: 'linear-gradient(135deg,#7B1E2B 0%,#3B0D16 100%)',
+  tribunais: 'linear-gradient(135deg,#312E81 0%,#0E1222 100%)',
+  tc: 'linear-gradient(135deg,#0E1222 0%,#4338CA 120%)',
+  tjue: 'linear-gradient(135deg,#1E3A8A 0%,#0B0E1C 100%)',
+  novidades: 'linear-gradient(135deg,#8C1D30 0%,#4338CA 100%)'
+};
+var CAT_CURTA = { legislacao: 'Legislação', tribunais: 'Tribunais superiores', tc: 'Tribunal Constitucional', tjue: 'Tribunal de Justiça da UE', novidades: 'Novidade' };
+
+/* ----- dados ----- */
+Social.loadUpd = function () {
+  if (!SB) return;
+  SB.from('atualizacoes').select('*').order('data', { ascending: false, nullsFirst: false }).limit(200).then(function (r) {
+    if (r.error) { Social.updState = 'offline'; scheduleRender(); return; }
+    Social.upd = (r.data || []).map(function (u) { u.createdAt = new Date(u.created_at).getTime(); u.data = u.data || ''; return u; });
+    Social.updState = 'ok'; scheduleRender();
+  });
+  if (!Social.updSub) Social.updSub = SB.channel('atualidade').on('postgres_changes', { event: '*', schema: 'public', table: 'atualizacoes' }, function () { clearTimeout(Social.updT); Social.updT = setTimeout(Social.loadUpd, 800); }).subscribe();
+};
+function updById(id) { return updates().filter(function (u) { return u.id === id; })[0]; }
+function lidas() { return (Store.get('upd_lidas') || {}).ids || {}; }
+function marcarLida(id) { var m = clone(Store.get('upd_lidas') || { id: 'upd_lidas', kind: 'meta', ids: {} }); if (m.ids[id]) return; m.ids[id] = Date.now(); Store.put(m); }
+function eNova(u) { if (lidas()[u.id]) return false; var d = u.data ? (hoje0() - parseYmd(u.data)) / 864e5 : 99; return d <= 14 || (u.createdAt && Date.now() - u.createdAt < 3 * 864e5 && d <= 45); }
+function novas() { return updates().filter(eNova); }
+function meusTemas() { var n = cads().map(function (c) { return c.nome; }); var p = perfil(); if (p && p.disciplinas) n = n.concat(p.disciplinas); return norm(n.join(' | ')); }
+function paraMim(u, temas) { var kw = AREA_KW[u.area] || []; return kw.some(function (k) { return temas.indexOf(norm(k)) >= 0; }); }
+function vigorTxt(u) { if (!u.vigor) return ''; var n = diasAte(u.vigor); return n > 1 ? 'Entra em vigor daqui a ' + n + ' dias' : n === 1 ? 'Entra em vigor amanhã' : n === 0 ? 'Entra hoje em vigor' : 'Em vigor desde ' + dataCurta(u.vigor); }
+function numeroCurto(u) {
+  if (u.numero) return u.numero;
+  var h = String(u.titulo || '').split(' — ')[0], m;
+  if ((m = h.match(/^Decreto-Lei n\.º (\S+)/))) return 'DL ' + m[1];
+  if ((m = h.match(/^Lei n\.º (\S+)/))) return 'Lei ' + m[1];
+  if ((m = h.match(/^Acórdão do (?:Tribunal Constitucional|TC) n\.º (\S+)/))) return 'Ac. TC ' + m[1];
+  if ((m = h.match(/^AUJ do STJ n\.º (\S+)/))) return 'AUJ STJ ' + m[1];
+  if ((m = h.match(/processo (C-\d+\/\d+)/))) return 'TJUE ' + m[1];
+  return u.cat === 'novidades' ? u.area : CAT_CURTA[u.cat];
+}
+function marca(txt, q) {
+  var t = esc(txt); if (!q) return t;
+  var nq = norm(q), src = String(txt), nn = norm(src), out = '', i = 0, k;
+  if (nn.length !== src.length) return t;
+  while ((k = nn.indexOf(nq, i)) >= 0) { out += esc(src.slice(i, k)) + '<mark>' + esc(src.slice(k, k + nq.length)) + '</mark>'; i = k + nq.length; }
+  return out + esc(src.slice(i));
+}
+function capa(u, cls) {
+  var ic = CAPA_ICON[u.cat === 'novidades' ? u.area : u.cat] || CAPA_ICON[u.area] || CAPA_ICON.def;
+  return '<div class="capa ' + (cls || '') + '" style="background:' + (CAPA_BG[u.cat] || CAPA_BG.novidades) + '" aria-hidden="true"><svg class="capa-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">' + ic + '</svg>' +
+    '<span class="capa-k">' + esc(CAT_CURTA[u.cat] || 'Atualidade') + '</span><span class="capa-n">' + esc(numeroCurto(u)) + '</span></div>';
+}
+
+/* ----- painel: faixa de destaques ----- */
+function vDestaquesFaixa() {
+  var all = updates(), t = meusTemas();
+  var l = all.filter(function (u) { return paraMim(u, t); }).concat(all).filter(function (u, i, a) { return a.indexOf(u) === i; }).slice(0, 3);
+  if (!l.length) return '';
+  var nn = novas().length;
+  return '<section class="card" aria-labelledby="faixa-h"><div class="row" style="justify-content:space-between"><div><h2 id="faixa-h">Atualidade jurídica</h2><span style="font-size:13px;color:var(--muted)">' + (nn ? plural(nn, 'novidade por ler', 'novidades por ler') + ' · ' : '') + 'destaques escolhidos para si</span></div><button class="btn sm" data-go="atualidade">Ver tudo</button></div>' +
+    '<div class="faixa">' + l.map(function (u) { return '<button class="fx-c" data-a="upd-ver" data-id="' + esc(u.id) + '">' + capa(u, 'sm') + '<span class="fx-b">' + (eNova(u) ? '<span class="novo">Novo</span>' : '') + '<b>' + esc(u.titulo) + '</b><span>' + esc(u.fonte) + (u.data ? ' · ' + dataCurta(u.data) : '') + '</span></span></button>'; }).join('') + '</div></section>';
+}
+
+/* ----- página da Atualidade ----- */
+function vAtualidade2() {
+  if (S.updSel && updById(S.updSel)) return vUpdDetalhe(updById(S.updSel));
+  var f = S.updCat || 'todas', a = S.updArea || 'todas', q = (S.updQ || '').trim(), nq = norm(q), mim = !!S.updMim, t = meusTemas();
+  var all = updates();
+  var base = all.filter(function (u) { return (!mim || paraMim(u, t)); });
+  var l = base.filter(function (u) { return (f === 'todas' || u.cat === f) && (a === 'todas' || u.area === a) && (!nq || norm(u.titulo + ' ' + u.resumo + ' ' + u.area + ' ' + (u.numero || '') + ' ' + (u.muda || []).join(' ')).indexOf(nq) >= 0); });
+  var areas = all.map(function (u) { return u.area; }).filter(function (x, i, arr) { return x && arr.indexOf(x) === i; }).sort();
+  var nn = novas().length;
+  var h = '<div class="head"><div><h1>Atualidade Jurídica</h1><p class="sub">Legislação, tribunais superiores, Tribunal Constitucional, TJUE e novidades por área — explicadas em 30 segundos.</p></div><div class="row">' + (nn ? '<button class="btn sm" data-a="upd-lidas">Marcar ' + nn + ' como lidas</button>' : '') + '<span class="chip gray" role="status">' + (Social.updState === 'ok' ? 'Atualizada diariamente' : Social.updState === 'loading' ? 'A carregar…' : 'Seleção verificada') + '</span></div></div>';
+  h += '<div class="upd-bar"><div class="seg" role="tablist" aria-label="Categoria">' + [['todas', 'Todas']].concat(Object.keys(CATS).map(function (k) { return [k, CATS[k][0]]; })).map(function (c) {
+    var n = c[0] === 'todas' ? base.length : base.filter(function (u) { return u.cat === c[0]; }).length;
+    return '<button role="tab" aria-selected="' + (f === c[0]) + '" class="' + (f === c[0] ? 'on' : '') + '" data-a="upd-cat" data-id="' + c[0] + '">' + c[1] + ' <span class="n">' + n + '</span></button>';
+  }).join('') + '</div>' +
+    '<button class="mim' + (mim ? ' on' : '') + '" data-a="upd-mim" aria-pressed="' + mim + '" title="Mostrar primeiro o que diz respeito às suas cadeiras">✦ Para mim</button></div>';
+  h += '<div class="row" style="justify-content:space-between"><div class="row" style="gap:6px"><span class="eyebrow" style="margin-right:4px">Área</span>' + ['todas'].concat(areas).map(function (x) { return '<button class="chip ' + (a === x ? 'wine' : 'gray') + '" style="border:0;cursor:pointer;min-height:30px" data-a="upd-area" data-id="' + esc(x) + '" aria-pressed="' + (a === x) + '">' + (x === 'todas' ? 'Todas' : esc(x)) + '</button>'; }).join('') + '</div>' +
+    '<label class="search">' + I.search + '<span class="sr">Pesquisar</span><input type="search" placeholder="Pesquisar por tema, diploma ou tribunal…" value="' + esc(S.updQ || '') + '" data-in="updq2"></label></div>';
+  if (mim && !t.replace(/[\s|]/g, '')) h += '<div class="note row" style="justify-content:space-between"><span>Para personalizar, indique as cadeiras que frequenta no seu perfil académico.</span><button class="btn sm wine" data-a="perfil-edit">Definir perfil académico</button></div>';
+  h += '<div id="updgrid">' + updGrid(l, q) + '</div>';
+  h += '<div class="note">As imagens são ilustrações do LEXDESK. Cada atualização tem ligação à fonte; confirme sempre o texto integral na fonte oficial antes de o citar.</div>';
+  return h;
+}
+function updGrid(l, q) {
+  if (!l.length) return '<div class="empty">Sem atualizações para estes filtros.</div>';
+  return '<div class="ugrid">' + l.map(function (u, i) {
+    var vg = vigorTxt(u);
+    return '<button class="ucard' + (i === 0 && !q ? ' big' : '') + '" data-a="upd-ver" data-id="' + esc(u.id) + '">' + capa(u) +
+      '<span class="ub"><span class="row" style="gap:6px">' + (eNova(u) ? '<span class="novo">Novo</span>' : '') + '<span class="chip gray">' + esc(u.area) + '</span>' + (vg ? '<span class="chip gold">' + esc(vg) + '</span>' : '') + '</span>' +
+      '<b class="ut">' + marca(u.titulo, q) + '</b><span class="ur">' + marca(u.resumo, q) + '</span>' +
+      '<span class="um">' + esc(u.fonte) + (u.data ? ' · ' + dataCurta(u.data) : '') + (u.pergunta ? ' · <span style="color:var(--violet);font-weight:700">Pergunta de exame</span>' : '') + '</span></span></button>';
+  }).join('') + '</div>';
+}
+function vUpdDetalhe(u) {
+  marcarLida(u.id);
+  var vg = vigorTxt(u), muda = Array.isArray(u.muda) ? u.muda : [];
+  var h = '<div class="head"><div><span class="crumb"><button data-a="upd-back">Atualidade jurídica</button> / ' + esc(CAT_CURTA[u.cat] || '') + '</span></div></div>';
+  h += '<article class="upd-det">' + capa(u, 'lg') + '<div class="upd-body">' +
+    '<div class="row" style="gap:6px">' + catChip(u) + '<span class="chip gray">' + esc(u.area) + '</span>' + (vg ? '<span class="chip gold">' + esc(vg) + '</span>' : '') + '</div>' +
+    '<h1 style="font-size:32px">' + esc(u.titulo) + '</h1><span style="color:var(--muted);font-size:13px">' + esc(u.fonte) + (u.data ? ' · ' + dataLonga(u.data) : '') + '</span>' +
+    '<div class="acts"><button class="btn sm" data-a="upd-save" data-id="' + esc(u.id) + '">' + I.folder + 'Guardar num workspace</button><button class="btn sm" data-a="upd-chat" data-id="' + esc(u.id) + '">' + I.chat + 'Discutir no chat</button>' + (u.pergunta ? '<button class="btn sm" data-a="upd-quiz-go">' + I.check + 'Pergunta de exame</button>' : '') + '<button class="btn sm" data-a="upd-share" data-id="' + esc(u.id) + '">' + I.link + 'Partilhar</button><a class="btn sm wine" href="' + esc(safeUrl(u.url)) + '" target="_blank" rel="noopener">Ler na fonte oficial ' + I.ext + '</a></div>' +
+    '<div class="blk"><span class="eyebrow">Em 30 segundos</span><p>' + esc(u.resumo) + '</p></div>' +
+    (muda.length ? '<div class="blk"><span class="eyebrow">' + (u.cat === 'legislacao' || u.cat === 'novidades' ? 'O que muda' : 'O que foi decidido') + '</span><ul class="muda">' + muda.slice(0, 3).map(function (m) { return '<li>' + esc(m) + '</li>'; }).join('') + '</ul></div>' : '') +
+    '<div class="blk-row">' + (u.publico ? '<div class="blk sm"><span class="eyebrow">A quem interessa</span><p>' + esc(u.publico) + '</p></div>' : '') +
+    (u.vigor ? '<div class="blk sm"><span class="eyebrow">Entrada em vigor</span><p><b>' + dataLonga(u.vigor) + '</b><br><span style="color:var(--muted)">' + esc(vg) + '</span></p></div>' : '') +
+    (!muda.length && !u.publico ? '<div class="blk sm"><span class="eyebrow">Em atualização</span><p style="color:var(--muted)">A análise detalhada desta atualização («O que muda», «A quem interessa») está a ser preparada.</p></div>' : '') + '</div>' +
+    (u.pergunta ? vQuiz(u) : '') + '</div></article>';
+  var outras = updates().filter(function (x) { return x.id !== u.id && (x.area === u.area || x.cat === u.cat); }).slice(0, 3);
+  if (outras.length) h += '<section class="card"><h2>Relacionadas</h2><div class="faixa">' + outras.map(function (x) { return '<button class="fx-c" data-a="upd-ver" data-id="' + esc(x.id) + '">' + capa(x, 'sm') + '<span class="fx-b"><b>' + esc(x.titulo) + '</b><span>' + esc(x.fonte) + (x.data ? ' · ' + dataCurta(x.data) : '') + '</span></span></button>'; }).join('') + '</div></section>';
+  return h;
+}
+function vQuiz(u) {
+  var p = u.pergunta, r = (S.updQuiz || {})[u.id];
+  if (!p || !Array.isArray(p.opcoes)) return '';
+  return '<div class="blk quiz" id="upd-quiz"><span class="eyebrow">Pergunta de exame</span><p style="font-weight:600">' + esc(p.q) + '</p><div class="list" style="gap:8px">' + p.opcoes.map(function (o, i) {
+    var cls = r == null ? '' : i === p.certa ? ' right' : i === r ? ' wrong' : '';
+    return '<button class="opt' + cls + '" data-a="upd-quiz" data-id="' + esc(u.id) + '" data-i="' + i + '"' + (r != null ? ' disabled' : '') + '><span class="lt">' + 'ABCD'.charAt(i) + '</span>' + esc(o) + '</button>';
+  }).join('') + '</div>' + (r != null ? '<div class="fb ' + (r === p.certa ? 'ok' : 'bad') + '"><b>' + (r === p.certa ? 'Resposta certa.' : 'Resposta errada — a correta é a ' + 'ABCD'.charAt(p.certa) + '.') + '</b>' + (p.expl ? '<span>' + esc(p.expl) + '</span>' : '') + '</div>' : '') + '</div>';
+}
+
+/* ----- sino de novidades ----- */
+function sinoBtn() { var n = novas().length; return '<button class="sino" data-a="upd-sino" aria-label="Novidades jurídicas' + (n ? ': ' + n + ' por ler' : '') + '"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>' + (n ? '<span class="sino-n">' + (n > 9 ? '9+' : n) + '</span>' : '') + '</button>'; }
+var _vTopbar2 = vTopbar;
+vTopbar = function () { var h = _vTopbar2(); var i = h.lastIndexOf('<button class="acct"'); if (i < 0) i = h.lastIndexOf('<button class="btn sm" data-a="login-open"'); return i < 0 ? h : h.slice(0, i) + sinoBtn() + h.slice(i); };
+
+var A9 = {
+  'upd-ver': function (el) { S.updSel = el.dataset.id; closeModal(); if (S.view !== 'atualidade') go('atualidade'); else { render(); window.scrollTo(0, 0); } },
+  'upd-open': function (el) { A9['upd-ver'](el); },
+  'upd-back': function () { S.updSel = null; render(); },
+  'upd-mim': function () { S.updMim = !S.updMim; render(); },
+  'upd-cat': function (el) { S.updCat = el.dataset.id; render(); },
+  'upd-area': function (el) { S.updArea = el.dataset.id; render(); },
+  'upd-lidas': function () { var m = clone(Store.get('upd_lidas') || { id: 'upd_lidas', kind: 'meta', ids: {} }); updates().forEach(function (u) { if (!m.ids[u.id]) m.ids[u.id] = Date.now(); }); Store.put(m); closeModal(); render(); toast('Todas as novidades marcadas como lidas.'); },
+  'upd-sino': function () {
+    var l = updates().slice(0, 8);
+    openModal('Novidades jurídicas', '<div class="list" style="gap:8px">' + l.map(function (u) { return '<button class="li" data-a="upd-ver" data-id="' + esc(u.id) + '" style="padding:10px">' + capa(u, 'xs') + '<span class="tx"><b>' + esc(u.titulo) + '</b><span>' + esc(u.fonte) + (u.data ? ' · ' + dataCurta(u.data) : '') + '</span></span>' + (eNova(u) ? '<span class="novo">Novo</span>' : '') + '</button>'; }).join('') + '</div>',
+      (novas().length ? '<button class="btn" data-a="upd-lidas" style="margin-right:auto">Marcar todas como lidas</button>' : '') + '<button class="btn pri" data-a="upd-all">Ver tudo</button>');
+  },
+  'upd-all': function () { closeModal(); S.updSel = null; go('atualidade'); },
+  'upd-quiz-go': function () { var q = $('#upd-quiz'); if (q) q.scrollIntoView({ behavior: 'smooth', block: 'center' }); },
+  'upd-quiz': function (el) { S.updQuiz = S.updQuiz || {}; S.updQuiz[el.dataset.id] = Number(el.dataset.i); var y = window.scrollY; render(); window.scrollTo(0, y); var u = updById(el.dataset.id); toast(Number(el.dataset.i) === u.pergunta.certa ? 'Certo!' : 'Não foi desta — veja a explicação.'); },
+  'upd-share': function (el) {
+    var u = updById(el.dataset.id), url = location.origin + location.pathname + '#atualidade/' + u.id;
+    if (navigator.share) { navigator.share({ title: u.titulo, text: u.resumo, url: url }).catch(function () {}); return; }
+    copiar(url); toast('Ligação copiada.');
+  },
+  'upd-chat': function (el) {
+    var u = updById(el.dataset.id); if (!u) return;
+    if (!sessaoAtiva()) { toast('Inicie sessão para participar no chat.'); A['login-open']({ dataset: {} }); return; }
+    var c = AREA_CANAL[u.area] || 'geral';
+    Chat.canal = c; Chat.draft[c] = '📌 ' + u.titulo + ' — ' + location.origin + location.pathname + '#atualidade/' + u.id + '\n';
+    S.updSel = null; go('chat'); setTimeout(function () { var i = $('#chat-in'); if (i) { i.focus(); i.setSelectionRange(i.value.length, i.value.length); } }, 300);
+  }
+};
+Object.keys(A9).forEach(function (k) { A[k] = A9[k]; });
+document.addEventListener('input', function (e) {
+  if (!e.target.dataset || e.target.dataset.in !== 'updq2') return;
+  S.updQ = e.target.value; var f = S.updCat || 'todas', a = S.updArea || 'todas', q = S.updQ.trim(), nq = norm(q), t = meusTemas();
+  $('#updgrid').innerHTML = updGrid(updates().filter(function (u) { return (!S.updMim || paraMim(u, t)) && (f === 'todas' || u.cat === f) && (a === 'todas' || u.area === a) && (!nq || norm(u.titulo + ' ' + u.resumo + ' ' + u.area + ' ' + (u.numero || '') + ' ' + (u.muda || []).join(' ')).indexOf(nq) >= 0); }), q);
+});
+// ligação direta: #atualidade/<id>
+function updHash() { var m = location.hash.match(/^#atualidade\/([a-z0-9-]+)$/); if (m) { S.view = 'atualidade'; S.updSel = m[1]; return true; } return false; }
+window.addEventListener('hashchange', function () { if (updHash()) render(); });
+updHash();
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
 var VIEW_LBL = { painel: ['Painel', I.grid], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['LEXDESK Connect', I.users], chat: ['Chat da comunidade', I.chat] };
