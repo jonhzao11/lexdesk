@@ -946,6 +946,31 @@ body.bvp .main{background:radial-gradient(600px 360px at 75% 220px,rgba(200,150,
 .oa-sem{align-self:flex-end;border:0;background:none;color:#7B1E2B;font:600 13px var(--sans);cursor:pointer;padding:2px 0}
 .oa-sem:hover{text-decoration:underline}
 @media (max-width:820px){.oa{grid-template-columns:1fr}}
+/* ----- estante das disciplinas ----- */
+.est{display:flex;flex-direction:column;align-items:stretch;text-align:left;gap:4px;padding:14px 20px 16px;border-radius:22px;background:linear-gradient(180deg,#FBF8F2,#F4EEE2);border:1px solid #ECE3D0}
+.est-hd{width:100%;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.est-hd>div{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.est-hd b{font-family:var(--serif);font-size:18px;color:var(--navy)}
+.est-hd span{font-size:12.5px;color:#8A7B62}
+.est-hd .lnk{border:0;background:none;color:#7B1E2B;font:600 13px var(--sans);cursor:pointer}
+.est-prat{position:relative}
+.est-l{display:flex;align-items:flex-end;justify-content:flex-start;gap:5px;padding:14px 16px 0;overflow-x:auto;overflow-y:hidden;min-height:0;scrollbar-width:thin}
+.est-b{flex:0 0 auto;position:relative;width:var(--w);height:var(--h);border:0;border-radius:4px 4px 2px 2px;cursor:pointer;color:#F3E3B5;
+  background:linear-gradient(90deg,rgba(0,0,0,.28),rgba(255,255,255,.08) 18%,rgba(255,255,255,0) 40%,rgba(0,0,0,.18)),var(--c);
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.15),2px 0 4px -2px rgba(0,0,0,.35);transform-origin:bottom center;transition:transform .25s var(--ease,ease),box-shadow .25s}
+.est-b::before,.est-b::after{content:'';position:absolute;left:4px;right:4px;height:2px;background:#C9A45C;opacity:.85;box-shadow:0 4px 0 #C9A45C}
+.est-b::before{top:10px}.est-b::after{bottom:14px}
+.est-b span{position:absolute;top:20px;bottom:24px;left:0;right:0;display:block;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;line-height:var(--w);font:600 10.5px var(--sans);line-height:var(--w);letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.est-b:hover,.est-b:focus-visible{transform:translateY(-8px) rotate(-2deg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.15),0 14px 18px -10px rgba(0,0,0,.45);z-index:2}
+.est-b.vazio{cursor:default;background:repeating-linear-gradient(135deg,#E8DFCD 0 6px,#EFE7D7 6px 12px);box-shadow:inset 0 0 0 1px #DDD2BC}
+.est-b.vazio::before,.est-b.vazio::after{display:none}
+.est-b.vazio:hover{transform:none}
+.est-add{align-self:center;margin-left:14px}
+.est-tabua{height:12px;margin:0 -4px;border-radius:3px;background:linear-gradient(180deg,#9B7448,#7A5530 60%,#5E3F22);box-shadow:0 8px 14px -8px rgba(60,35,10,.55)}
+.est-dica{font-size:12px;color:#8A7B62}
+.est-r{display:flex;align-items:center;gap:14px}
+.est-b::before{top:8px}.est-b::after{bottom:11px}
+@media (max-width:700px){.est-r .est-dica{display:none}}
 
 </style>
 </head>
@@ -5742,6 +5767,25 @@ function vOpA() {
   return '<section class="oa">' + esq + dir + '</section>';
 }
 A['oa-dia'] = function (el) { S.oaDia = ((S.oaDia || 0) + Number(el.dataset.id) + 6) % 6; render(); };
+/* ----- As minhas disciplinas: estante de livros ----- */
+var EST_COR = ['#7B1E2B', '#1E3A5F', '#1E5A46', '#6B4A2B', '#1F5F6E', '#5A2A4F', '#4F5A2A', '#3A3F4B', '#8A5A1F', '#2E4A7A'];
+function estHash(t) { var h = 0; String(t).split('').forEach(function (c) { h = (h * 31 + c.charCodeAt(0)) >>> 0; }); return h; }
+function estCurto(n) {
+  n = String(n).replace(/^Teoria Geral do Direito Civil/, 'TGDC').replace(/^Introdução ao Estudo do Direito/, 'IED').replace(/^Direito Internacional Público/, 'DIP').replace(/^Direito Internacional Privado/, 'DIPr').replace(/^Direito da União Europeia/, 'Direito da UE').replace(/^Introdução ao Direito/, 'Introd. ao Direito').replace(/^História do Direito/, 'Hist. do Direito').replace(/^Metodologia da Investigação/, 'Metodologia').replace(/^Direito Constitucional$/, 'Constitucional');
+  return /^Direito (d[aoe]s? )?\S/.test(n) && n.split(' ').length > 2 ? n.replace(/^Direito (d[aoe]s? )?/, '') : n;
+}
+function vEstante(pf) {
+  if (!pf || !pf.instId) return vMinhasDisc(pf);
+  var d = pf.disciplinas || [];
+  var livros = d.map(function (x, i) {
+    var h = estHash(x), alt = 138 + (h % 5) * 5, larg = 34 + (h >> 3) % 3 * 3, c = EST_COR[(h + i) % EST_COR.length];
+    return '<button class="est-b" data-a="disc-ap" data-id="' + esc(x) + '" title="' + esc(x) + ' — ver apontamentos" style="--h:' + alt + 'px;--w:' + larg + 'px;--c:' + c + '"><span>' + esc(estCurto(x)) + '</span></button>';
+  }).join('');
+  if (!d.length) livros = [0, 1, 2, 3, 4].map(function (i) { return '<span class="est-b vazio" style="--h:' + (128 + i * 7 % 23) + 'px;--w:34px"></span>'; }).join('') + '<button class="btn sm est-add" data-a="perfil-edit">' + I.plus + 'Escolher disciplinas</button>';
+  return '<section class="est" aria-label="As minhas disciplinas"><div class="est-hd"><div><b>As minhas disciplinas</b><span>' + pf.ano + '.º ano · ' + esc(instCurta(pf)) + '</span></div><div class="est-r">' + (d.length ? '<span class="est-dica">Clique num livro para ver os apontamentos</span>' : '') + '<button class="lnk" data-a="perfil-edit">Editar</button></div></div>' +
+    '<div class="est-prat"><div class="est-l">' + livros + '</div><div class="est-tabua" aria-hidden="true"></div></div>' +
+    '</section>';
+}
 var _painelComporCH = painelCompor;
 painelCompor = function (P, pf) {
   var m = modsAtivos(), vc = m.hidden.indexOf('calendario') < 0, vh = m.hidden.indexOf('horario') < 0;
@@ -5752,7 +5796,10 @@ painelCompor = function (P, pf) {
     Q.calendario = ''; Q.horario = ''; Q[alvo] = vOpA();
     P = Q;
   }
-  return _painelComporCH(P, pf);
+  var R = {}; for (var k2 in P) R[k2] = P[k2]; R.busca = '<div id="busca"></div>';
+  var h = _painelComporCH(R, pf), marca = '<div class="row" style="justify-content:center"><button class="btn sm" data-a="painel-pers">';
+  var j = h.lastIndexOf(marca);
+  return j >= 0 ? h.slice(0, j) + vEstante(pf) + h.slice(j) : h + vEstante(pf);
 };
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
