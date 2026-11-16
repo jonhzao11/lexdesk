@@ -5305,19 +5305,19 @@ heroB = function (t) {
 
 /* ----- coerência entre o perfil do painel e a situação no perfil público ----- */
 function sincronizarEstado() {
-  var p = perfilUser(); if (!sessaoAtiva() || !p || !p.tipo || !S.meuPerfil) return;
-  var ano = p.ano || (perfil() && perfil().ano) || 1;
-  var est = p.tipo === 'lic' ? 'ano' + Math.min(4, Math.max(1, ano)) : { licd: 'licenciado', mest: 'mestrado', estag: 'estagiario', prof: 'advogado', doc: 'docente', outro: S.meuPerfil.estado || 'outro' }[p.tipo];
-  if (p.tipo === 'prof' && ['advogado'].indexOf(S.meuPerfil.estado) < 0 && S.meuPerfil.estado) est = S.meuPerfil.estado === 'outro' ? 'outro' : 'advogado';
-  if (est && S.meuPerfil.estado !== est) SB.from('profiles').update({ estado: est }).eq('id', Store.uid).then(function (r) { if (!r.error) { S.meuPerfil.estado = est; scheduleRender(); } });
+  // a situação escolhida no perfil público (registo ou «Editar perfil») prevalece: o painel adapta-se a ela
+  var e = S.meuPerfil && S.meuPerfil.estado; if (!sessaoAtiva() || !e) return;
+  var mapa = { licenciado: 'licd', mestrado: 'mest', estagiario: 'estag', advogado: 'prof', docente: 'doc' }, tipo = /^ano\d$/.test(e) ? 'lic' : mapa[e];
+  if (!tipo) return;
+  var p = perfilUser(), ano = tipo === 'lic' ? Number(e.slice(3)) : (p && p.ano) || 1;
+  if (!p || p.tipo !== tipo || (tipo === 'lic' && p.ano !== ano)) { S.syncEst = true; _guardarPerfilUserPD({ tipo: tipo, ano: ano, hidden: p && p.tipo === tipo ? p.hidden : null, ordem: p && p.tipo === tipo ? p.ordem : null }); S.syncEst = false; lsSet('lexdesk_onb', 'feito'); renderSide(); scheduleRender(); }
 }
 var _guardarPerfilUserPD = guardarPerfilUser;
-guardarPerfilUser = function (patch) {
-  if (patch && patch.tipo === 'lic' && !patch.ano && perfil() && perfil().ano) patch.ano = perfil().ano;
-  var r = _guardarPerfilUserPD(patch); setTimeout(sincronizarEstado, 300); return r;
-};
+guardarPerfilUser = function (patch) { return _guardarPerfilUserPD(patch); };
 var _carregarMeuPerfilPD = carregarMeuPerfil;
 carregarMeuPerfil = function () { return _carregarMeuPerfilPD().then(function (p) { setTimeout(sincronizarEstado, 1500); PD.carregado = false; PD.a_carregar = false; scheduleRender(); return p; }); };
+var _pfSave = A['pf-save'];
+A['pf-save'] = function (el) { var antes = S.meuPerfil && S.meuPerfil.estado; _pfSave(el); var n = 0, iv = setInterval(function () { n++; if ((S.meuPerfil && S.meuPerfil.estado) !== antes) { clearInterval(iv); sincronizarEstado(); } else if (n > 40) clearInterval(iv); }, 250); };
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
 var VIEW_LBL = { painel: ['Painel', I.grid], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
