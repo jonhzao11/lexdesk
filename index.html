@@ -5839,7 +5839,7 @@ function vProgresso() {
   var mx = Math.max.apply(null, hrs.concat([1])), hojeD = (new Date().getDay() + 6) % 7, tot = hrs.reduce(function (a, b) { return a + b; }, 0);
   var c4 = '<div class="card" style="grid-column:span 2"><div class="row" style="justify-content:space-between"><h2>Semana de aulas</h2>' + (demoA ? '<span class="tag-demo">Exemplo</span>' : '<span class="chip">' + String(Math.round(tot * 10) / 10).replace('.', ',') + ' h</span>') + '</div><div class="bars">' +
     hrs.map(function (h, i) { return '<div class="bc' + (i === hojeD ? ' hoje' : '') + '"><em>' + (h ? String(Math.round(h * 10) / 10).replace('.', ',') + 'h' : '') + '</em><i style="height:' + Math.max(4, h / mx * 100) + '%;animation-delay:' + (i * 0.06) + 's"></i><span>' + DIAS[i].slice(0, 3) + '</span></div>'; }).join('') + '</div></div>';
-  return '<section class="prog" aria-label="O seu progresso">' + c1 + c2 + c3 + c4 + '</section>';
+  return '<section class="prog" aria-label="O seu progresso">' + c1 + c2 + c3 + '</section>';
 }
 
 /* ===== pesquisa rápida (Ctrl+K) ===== */
