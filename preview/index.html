@@ -801,6 +801,46 @@ body.bvp .main{background:radial-gradient(600px 360px at 75% 220px,rgba(200,150,
 .bv-alt2{margin-top:4px;color:#AEB7C9!important;font-size:13.5px}
 .bv.an .bv-cont{animation:bvIn .6s .32s var(--ease) both}.bv.an .bv-alt2{animation:bvIn .6s .45s var(--ease) both}
 
+/* ===== Faixa compacta + Pergunta do dia ===== */
+.hb.hb2{grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);align-items:stretch;padding:20px 24px 20px 28px;gap:20px}
+.hb2 .hb-l{position:relative;justify-content:center;gap:6px;padding-left:88px}
+.hb-mini{position:absolute;left:0;top:50%;width:72px;margin-top:-36px}.hb-mini .hb-bal{max-width:72px;filter:none}
+.hb2 h1{font-size:32px}.hb2 p{font-size:14.5px}.hb2 .hb-d{font-size:10.5px}
+.pd{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:10px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(240,207,122,.28);color:#fff;backdrop-filter:blur(6px)}
+.pd-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pd-t{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#F3D58A;margin-right:auto}
+.pd-seq{font-size:12.5px;font-weight:800;padding:4px 10px;border-radius:99px;background:rgba(255,140,40,.18);color:#FFC58A}
+.pd-lk{border:0;background:rgba(255,255,255,.1);color:#fff;font:inherit;font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:99px;cursor:pointer}
+.pd-lk:hover{background:rgba(255,255,255,.18)}
+.pd-cr{font-variant-numeric:tabular-nums;font-size:13px;font-weight:800;padding:4px 10px;border-radius:99px;background:#F0CF7A;color:#3E0D16}
+.pd-p{margin:0;font-size:14px;color:#D4DAE7;line-height:1.5}.pd-p b{color:#fff}
+.pd-reg{font-size:12px;color:#AEB7C9}
+.pd-q{margin:0;font-size:15.5px;font-weight:700;line-height:1.4;color:#fff}.pd-q.sm{font-size:13.5px;font-weight:600;color:#D4DAE7}
+.pd-o{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pd-o button{display:flex;align-items:flex-start;gap:8px;text-align:left;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);color:#fff;font:inherit;font-size:13.5px;line-height:1.35;padding:9px 11px;border-radius:12px;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.pd-o button span{flex:none;width:20px;height:20px;border-radius:6px;display:grid;place-items:center;background:rgba(255,255,255,.12);font-size:11px;font-weight:800}
+.pd-o button:hover:not(:disabled){background:rgba(255,255,255,.12);border-color:#F0CF7A;transform:translateY(-1px)}
+.pd-o button.sel{border-color:#F0CF7A;background:rgba(240,207,122,.18)}
+.pd-res{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;font-size:13.5px}
+.pd-res.ok{background:rgba(14,159,110,.22);border:1px solid rgba(52,211,153,.4)}.pd-res.bad{background:rgba(229,72,77,.18);border:1px solid rgba(248,113,113,.4)}
+.pd-res b{font-size:15px}
+.pd-e{margin:0;font-size:12.5px;color:#C9D0DE;line-height:1.5}
+.pd .row{align-items:center;gap:10px}
+.pd-conf{position:absolute;inset:0;pointer-events:none}
+.pd-conf i{position:absolute;top:-10px;width:7px;height:12px;border-radius:2px;animation:pdConf 1.5s ease-in forwards}
+@keyframes pdConf{to{top:110%;opacity:0;transform:rotate(540deg) translateX(20px)}}
+.pd-rk{display:flex;flex-direction:column;gap:6px}
+.pd-rk-l{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;border:1px solid var(--line)}
+.pd-rk-l.eu{background:#F6E9EC;border-color:#E7C3CB}
+.pd-rk-p{width:34px;text-align:center;font-weight:800;font-size:15px}
+.pd-rk-n{display:flex;align-items:center;gap:6px;flex-wrap:wrap;flex:1;min-width:0;font-size:14px}
+.pd-rk-s{font-size:12.5px;color:var(--muted)}
+.pd-rk-pt{min-width:58px;text-align:right;font-family:var(--serif)}
+.pd-rk-sep{text-align:center;color:var(--muted)}
+@media (max-width:1100px){.hb.hb2{grid-template-columns:1fr}}
+@media (max-width:600px){.pd-o{grid-template-columns:1fr}.hb2 .hb-l{padding-left:0}.hb-mini{display:none}}
+@media (prefers-reduced-motion:reduce){.pd-conf{display:none}}
+
 </style>
 </head>
 <body>
@@ -4976,6 +5016,7 @@ var BV_ICON = {
 };
 function bvIc(k) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + BV_ICON[k] + '</svg>'; }
 function vBemvindo() {
+  if (!ONB.anoDef && S.meuPerfil && /^ano\d$/.test(S.meuPerfil.estado || '')) { ONB.ano = Number(S.meuPerfil.estado.slice(3)); ONB.anoDef = true; }
   if (S.bvModo === 'ola' && !sessaoAtiva() && !S.connecting) S.bvModo = 'escolha';
   if (S.bvModo === 'ola') return vBemvindoOla();
   var t = ONB.tipo, nome = S.nome ? S.nome.split(' ')[0] : '', an = !S.bvAnim, abre = S.bvUlt !== t; S.bvAnim = true; S.bvUlt = t;
@@ -5048,6 +5089,109 @@ function bvArranque(h0) {
 A['bv-cont'] = function () { go(S.bvVolta && S.bvVolta !== 'bemvindo' ? S.bvVolta : 'painel'); };
 /* Termos: aceites uma única vez, no formulário de criação de conta (sem janela posterior) */
 verificarTermos = function () { };
+
+/* ---------- PERGUNTA DO DIA com ranking individual ---------- */
+var PD = { carregado: false, a_carregar: false, estado: 'idle', d: null, seq: 0, t0: 0, rk: { periodo: 'hoje', lista: null } };
+function pdHoje() { try { return new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Lisbon' }).format(new Date()); } catch (e) { return ymd(new Date()); } }
+function pdQ(id) { return QMAP[id] || Q_DEONT.filter(function (q) { return q.id === id; })[0] || null; }
+function pdCarregar() {
+  if (PD.a_carregar || !sessaoAtiva() || !SB) return; PD.a_carregar = true;
+  var hoje = pdHoje();
+  Promise.all([
+    SB.from('pd_respostas').select('dia,qid,visto_em,respondido_em,opcao,certa,ms,pontos').eq('user_id', Store.uid).eq('dia', hoje).maybeSingle(),
+    SB.rpc('pd_sequencia')
+  ]).then(function (r) {
+    PD.a_carregar = false; PD.carregado = true; PD.dia = hoje;
+    var row = r[0] && r[0].data; PD.seq = (r[1] && r[1].data) || 0;
+    if (row && row.respondido_em) { PD.estado = 'feita'; PD.d = { qid: row.qid, opcao: row.opcao, certa: row.certa, ms: row.ms, pontos: row.pontos, correta: row.certa ? row.opcao : null }; }
+    else if (row) { PD.estado = 'ativa'; PD.d = { qid: row.qid }; PD.t0 = new Date(row.visto_em).getTime(); pdTick(); }
+    else PD.estado = 'idle';
+    pdPintar();
+  }, function () { PD.a_carregar = false; });
+}
+function pdIniciar(silencioso) {
+  return SB.rpc('pd_iniciar').then(function (r) {
+    if (r.error) { if (!silencioso) toast('Não foi possível abrir a pergunta. Tente novamente.'); return; }
+    var x = r.data; PD.dia = x.dia;
+    if (x.respondida) { PD.estado = 'feita'; PD.d = x; }
+    else { PD.estado = 'ativa'; PD.d = x; PD.t0 = Date.now(); pdTick(); }
+    pdPintar();
+  });
+}
+function pdTick() { clearInterval(PD.iv); PD.iv = setInterval(function () { var e = document.getElementById('pd-cr'); if (!e || PD.estado !== 'ativa') { if (PD.estado !== 'ativa') clearInterval(PD.iv); return; } e.textContent = pdSeg(Date.now() - PD.t0); }, 250); }
+function pdSeg(ms) { var s = Math.max(0, Math.floor(ms / 1000)); return s < 60 ? s + ' s' : Math.floor(s / 60) + ' min ' + (s % 60) + ' s'; }
+function pdPintar() { var e = document.getElementById('pd'); if (e) e.outerHTML = vPD(); }
+function vPD() {
+  var h = '<div class="pd" id="pd"><div class="pd-h"><span class="pd-t">⚖️ Pergunta do dia</span>';
+  if (!sessaoAtiva()) return h + '</div><p class="pd-p">Uma pergunta nova todos os dias, igual para todos. Responda depressa e suba no ranking.</p><div class="row"><button class="btn gold sm" data-a="login-open" data-id="registo">Criar conta para participar</button><button class="pd-lk" data-a="login-open" data-id="entrar">Já tenho conta</button></div></div>';
+  if (!PD.carregado || PD.dia !== pdHoje()) { if (PD.dia && PD.dia !== pdHoje()) { PD.carregado = false; PD.estado = 'idle'; } setTimeout(pdCarregar, 0); return h + '</div><p class="pd-p">A carregar…</p></div>'; }
+  h += (PD.estado === 'ativa' ? '<span class="pd-cr" id="pd-cr">' + pdSeg(Date.now() - PD.t0) + '</span>' : '') + (PD.seq ? '<span class="pd-seq" title="Dias seguidos a responder">🔥 ' + PD.seq + (PD.seq === 1 ? ' dia' : ' dias') + '</span>' : '') + '<button class="pd-lk" data-a="pd-rank">🏆 Ranking</button></div>';
+  if (PD.estado === 'idle') return h + '<p class="pd-p">Uma pergunta nova todos os dias, igual para todos. <b>Só tem uma tentativa</b> e o cronómetro começa quando clicar.</p><div class="row"><button class="btn gold" data-a="pd-ini">Começar ⏱</button><span class="pd-reg">Certa: 10 pts · bónus de rapidez até +5</span></div></div>';
+  var q = pdQ(PD.d.qid); if (!q) return h + '<p class="pd-p">Pergunta indisponível. Atualize a página.</p></div>';
+  if (PD.estado === 'ativa') return h + '<p class="pd-q">' + esc(q.q) + '</p><div class="pd-o">' + q.o.map(function (o, i) { return '<button data-a="pd-resp" data-i="' + i + '"><span>' + 'ABCD'.charAt(i) + '</span>' + esc(o) + '</button>'; }).join('') + '</div></div>';
+  var d = PD.d, c = d.correta != null ? d.correta : q.a;
+  return h + '<p class="pd-q sm">' + esc(q.q) + '</p><div class="pd-res ' + (d.certa ? 'ok' : 'bad') + '"><b>' + (d.certa ? '✓ Certo! +' + d.pontos + ' pontos' : '✗ Errado.') + '</b>' + (d.certa ? '<span>Respondeu em ' + pdSeg(d.ms) + '.</span>' : '<span>A resposta certa era <b>' + 'ABCD'.charAt(c) + ') ' + esc(q.o[c]) + '</b>.</span>') + '</div><p class="pd-e">' + esc(q.e) + '</p><div class="row"><button class="btn gold sm" data-a="pd-rank">Ver ranking de hoje</button><span class="pd-reg">Nova pergunta amanhã à meia-noite.</span></div></div>';
+}
+function pdRankPintar() {
+  var R = PD.rk, l = R.lista;
+  var corpo = '<div class="seg" style="align-self:flex-start">' + [['hoje', 'Hoje'], ['semana', 'Esta semana'], ['sempre', 'Sempre']].map(function (x) { return '<button class="' + (R.periodo === x[0] ? 'on' : '') + '" data-a="pd-rank-p" data-id="' + x[0] + '">' + x[1] + '</button>'; }).join('') + '</div>';
+  if (!l) corpo += '<p style="margin:0;color:var(--muted)">A carregar…</p>';
+  else if (!l.length) corpo += '<div class="empty"><span>Ainda ninguém respondeu' + (R.periodo === 'hoje' ? ' hoje' : '') + '. Seja o primeiro!</span></div>';
+  else corpo += '<div class="pd-rk">' + l.map(function (r) {
+    Social.prof[r.user_id] = Social.prof[r.user_id] || { nome: r.nome, estado: r.estado, avatar_url: r.avatar_url };
+    var med = r.pos == 1 ? '🥇' : r.pos == 2 ? '🥈' : r.pos == 3 ? '🥉' : r.pos + '.º';
+    return (r.pos > 10 ? '<div class="pd-rk-sep">…</div>' : '') + '<div class="pd-rk-l' + (r.eu ? ' eu' : '') + '"><span class="pd-rk-p">' + med + '</span>' + avHtml(r.user_id, r.nome) + '<span class="pd-rk-n"><b>' + esc(r.nome || 'Membro LEXDESK') + (r.eu ? ' (eu)' : '') + '</b>' + estadoChip(r.user_id) + '</span><span class="pd-rk-s">' + r.certas + ' ' + (r.certas == 1 ? 'certa' : 'certas') + (R.periodo === 'hoje' && r.ms != null ? ' · ' + pdSeg(r.ms) : '') + '</span><b class="pd-rk-pt">' + r.pontos + ' pts</b></div>';
+  }).join('') + '</div>';
+  corpo += '<p style="margin:0;font-size:12px;color:var(--muted)">10 pontos por resposta certa, mais um bónus de rapidez: +5 (menos de 10 s), +3 (menos de 20 s) ou +1 (menos de 40 s). Em caso de empate, conta o número de respostas certas e depois o tempo.</p>';
+  openModal('🏆 Ranking da pergunta do dia', corpo, '<button class="btn" data-a="close">Fechar</button>');
+}
+function pdRankCarregar() { PD.rk.lista = null; pdRankPintar(); SB.rpc('pd_ranking', { periodo: PD.rk.periodo }).then(function (r) { PD.rk.lista = (r && r.data) || []; if ($('#ov')) pdRankPintar(); }); }
+var A16 = {
+  'pd-ini': function (el) { el.disabled = true; pdIniciar(); },
+  'pd-resp': function (el) {
+    if (PD.respondendo) return; PD.respondendo = true;
+    [].forEach.call(document.querySelectorAll('.pd-o button'), function (b) { b.disabled = true; }); el.classList.add('sel');
+    SB.rpc('pd_responder', { p_opcao: Number(el.dataset.i) }).then(function (r) {
+      PD.respondendo = false;
+      if (r.error) { toast('Não foi possível registar a resposta. Tente novamente.'); [].forEach.call(document.querySelectorAll('.pd-o button'), function (b) { b.disabled = false; }); return; }
+      PD.estado = 'feita'; PD.d = Object.assign({ qid: PD.d.qid }, r.data); clearInterval(PD.iv);
+      SB.rpc('pd_sequencia').then(function (s) { PD.seq = (s && s.data) || PD.seq; pdPintar(); });
+      pdPintar(); if (r.data.certa) fxConfete && fxConfete();
+    });
+  },
+  'pd-rank': function () { if (!sessaoAtiva()) { A['login-open']({ dataset: { id: 'registo' } }); return; } pdRankCarregar(); },
+  'pd-rank-p': function (el) { PD.rk.periodo = el.dataset.id; pdRankCarregar(); }
+};
+Object.keys(A16).forEach(function (k) { A[k] = A16[k]; });
+var fxConfete = window.fxConfete || function () {
+  var c = document.createElement('div'); c.className = 'pd-conf'; for (var i = 0; i < 26; i++) { var s = document.createElement('i'); s.style.left = (Math.random() * 100) + '%'; s.style.background = ['#F0CF7A', '#C8962F', '#8C1D30', '#fff'][i % 4]; s.style.animationDelay = (Math.random() * .3) + 's'; s.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)'; c.appendChild(s); }
+  var pd = document.getElementById('pd'); if (pd) { pd.appendChild(c); setTimeout(function () { c.remove(); }, 1800); }
+};
+/* ao terminar sessão, limpar o estado */
+
+/* ----- faixa compacta com a pergunta do dia ----- */
+heroB = function (t) {
+  var data = new Date().toLocaleDateString('pt-PT', { weekday: 'long', day: 'numeric', month: 'long' }); data = data.charAt(0).toUpperCase() + data.slice(1);
+  var hojeD = (new Date().getDay() + 6) % 7, na = Store.all('aula').filter(function (a) { return a.dia === hojeD; }).length, ag = proxAgenda().filter(function (a) { return a.data === ymd(new Date()); }).length;
+  var frase = t === 'lic' || t === 'outro' ? (na ? 'Hoje tem ' + plural(na, 'aula', 'aulas') + '.' : 'Hoje não tem aulas.') : (t === 'estag' || t === 'prof') ? (ag ? 'Hoje tem ' + plural(ag, 'compromisso', 'compromissos') + ' na agenda.' : 'Sem compromissos para hoje.') : t === 'mest' ? 'Um capítulo de cada vez.' : t === 'doc' ? 'Prepare a próxima aula.' : '';
+  return '<section class="hb hb2"><div class="hb-l"><div class="hb-mini">' + balancaSVG() + '</div><span class="hb-d">' + esc(data) + ' · ' + esc(PERFIS[t].nome) + '</span><h1>' + saudacao() + (S.nome ? ', <span class="g">' + esc(S.nome.split(' ')[0]) + '</span>' : '') + '</h1><p>' + frase + '</p></div>' + vPD() + '</section>';
+};
+
+/* ----- coerência entre o perfil do painel e a situação no perfil público ----- */
+function sincronizarEstado() {
+  var p = perfilUser(); if (!sessaoAtiva() || !p || !p.tipo || !S.meuPerfil) return;
+  var ano = p.ano || (perfil() && perfil().ano) || 1;
+  var est = p.tipo === 'lic' ? 'ano' + Math.min(4, Math.max(1, ano)) : { licd: 'licenciado', mest: 'mestrado', estag: 'estagiario', prof: 'advogado', doc: 'docente', outro: S.meuPerfil.estado || 'outro' }[p.tipo];
+  if (p.tipo === 'prof' && ['advogado'].indexOf(S.meuPerfil.estado) < 0 && S.meuPerfil.estado) est = S.meuPerfil.estado === 'outro' ? 'outro' : 'advogado';
+  if (est && S.meuPerfil.estado !== est) SB.from('profiles').update({ estado: est }).eq('id', Store.uid).then(function (r) { if (!r.error) { S.meuPerfil.estado = est; scheduleRender(); } });
+}
+var _guardarPerfilUserPD = guardarPerfilUser;
+guardarPerfilUser = function (patch) {
+  if (patch && patch.tipo === 'lic' && !patch.ano && perfil() && perfil().ano) patch.ano = perfil().ano;
+  var r = _guardarPerfilUserPD(patch); setTimeout(sincronizarEstado, 300); return r;
+};
+var _carregarMeuPerfilPD = carregarMeuPerfil;
+carregarMeuPerfil = function () { return _carregarMeuPerfilPD().then(function (p) { setTimeout(sincronizarEstado, 1500); PD.carregado = false; PD.a_carregar = false; scheduleRender(); return p; }); };
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
 var VIEW_LBL = { painel: ['Painel', I.grid], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
