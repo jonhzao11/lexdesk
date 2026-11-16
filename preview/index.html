@@ -5483,8 +5483,8 @@ var CM = 'https://thumb.wikimedia.org/wikipedia/commons/thumb/', CP = 'https://c
 var INST_FOTO = {
   fduc: ['b/bd/South_facade_of_Faculdade_de_Direito_da_Universidade_de_Coimbra.jpg', 'Joseolgon', 'CC BY-SA 4.0'],
   fdul: ['4/4e/Faculdade_de_Direito_da_Universidade_de_Lisboa_9274.jpg', 'João Carvalho', 'CC BY-SA 3.0'],
-  uminho: ['c/c2/Escola_de_Direito.jpg', 'PTColaboration', 'CC BY-SA 4.0', 1],
-  nova: ['b/b2/Faculdade_de_Direito_da_Universidade_Nova_de_Lisboa.jpg', 'EdSantos754', 'CC BY-SA 4.0', 1],
+  uminho: ['c/c2/Escola_de_Direito.jpg', 'PTColaboration', 'CC BY-SA 4.0', 2],
+  nova: ['b/b2/Faculdade_de_Direito_da_Universidade_Nova_de_Lisboa.jpg', 'EdSantos754', 'CC BY-SA 4.0', 2],
   fdup: ['9/93/Faculty_of_Law_of_the_University_of_Porto.jpg', 'Ayratayrat', 'CC BY-SA 4.0', 1],
   iscte: ['2/2a/ISCTE-Edificio2.jpg', 'Vysotsky', 'CC BY-SA 4.0'],
   'ucp-lx': ['b/bb/UCP_Lisboa_%28Sede%29.jpg', 'Universidade Católica Portuguesa', 'CC BY-SA 4.0'],
@@ -5496,7 +5496,7 @@ var INST_FOTO = {
   europeia: ['7/76/Universidade_Europeia_em_Lisboa.jpg', 'Joehawkins', 'CC BY-SA 4.0'],
   ismat: ['3/3f/Instituto_Superior_Manuel_Teixeira_Gomes_-_Portimao%2C_Portugal_-_29.01.2025.jpg', 'Bextrel', 'CC BY 4.0']
 };
-function instFotoUrl(f) { var nome = f[0].split('/').pop(); return f[3] ? 'https://upload.wikimedia.org/wikipedia/commons/' + f[0] : CM + f[0] + '/960px-' + nome; }
+function instFotoUrl(f) { var nome = f[0].split('/').pop(); if (f[3] === 2) return 'https://commons.wikimedia.org/w/thumb.php?f=' + nome + '&w=960'; return f[3] ? 'https://upload.wikimedia.org/wikipedia/commons/' + f[0] : CM + f[0] + '/960px-' + nome; }
 function instFoto(i) {
   var f = INST_FOTO[i.id];
   if (!f) { var ini = i.nome.replace(/Universidade|de|do|da|Instituto|Superior/g, ' ').split(/\s+/).filter(Boolean).map(function (w) { return w.charAt(0); }).join('').slice(0, 3).toUpperCase(); return '<figure class="inst-img sem"><span class="inst-ini">' + esc(ini) + '</span><span class="inst-loc">' + I.pin + ' ' + esc(i.local) + '</span><figcaption>Fotografia ainda não disponível</figcaption></figure>'; }
