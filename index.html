@@ -1833,7 +1833,7 @@ var A4 = {
     up.then(function () {
       var id = n.id || uid('ap'), now = Date.now();
       var pf1 = perfil(); var doc = { instId: n.instId || (pf1 && pf1.instId) || '', titulo: n.titulo, cadeira: n.cadeira, ano: n.ano, tipo: n.tipo, texto: n.texto, ficheiro: n.ficheiro || null, autor: n.autor || Store.uid, createdAt: n.createdAt || now, updatedAt: now };
-      return Store.db.doc('apontamentos/' + id).set(doc).then(function () { closeModal(); S.apId = id; S.apCad = n.cadeira; toast('Apontamentos publicados.'); go('apontamentos'); });
+      return Store.db.doc('apontamentos/' + id).set(doc).then(function () { var cp = clone(doc); cp.id = id; Ap.list = [cp].concat(Ap.list.filter(function (x) { return x.id !== id; })); closeModal(); S.apId = id; S.apCad = n.cadeira; toast('Apontamentos publicados.'); go('apontamentos'); });
     }).catch(function (e) {
       el.disabled = false; el.textContent = 'Publicar';
       var c = e && e.code;
