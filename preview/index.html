@@ -689,6 +689,47 @@ body.tn .main>.topbar .topsearch kbd{background:rgba(255,255,255,.12);color:#E6E
 body.tn .main>.topbar .topsearch:hover{border-color:rgba(255,255,255,.3)}
 @media (max-width:1050px){body.tn .main>.topbar .topsearch{background:#fff;color:var(--muted);border-color:var(--line2)}}
 
+/* ===== Página de boas-vindas ===== */
+body.bvp .side,body.bvp .main>.topbar,body.bvp .main>.foot{display:none}
+body.bvp .main{max-width:none;padding:0;gap:0;background:#0F1B2D;min-height:100vh}
+.bv-top{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:center;gap:24px;padding:56px max(32px,calc((100% - 1180px)/2)) 120px;color:#fff}
+.bv-top::before{content:none}
+body.bvp .main{background:radial-gradient(600px 360px at 75% 220px,rgba(200,150,47,.20),transparent 65%),radial-gradient(700px 420px at 0% 460px,rgba(123,30,43,.55),transparent 60%),linear-gradient(140deg,#13233A,#0B1424)}
+.bv-top::after{content:'';position:absolute;right:0;top:0;bottom:0;width:50%;z-index:-1;opacity:.06;background:repeating-linear-gradient(90deg,#fff 0 2px,transparent 2px 28px);-webkit-mask:linear-gradient(90deg,transparent,#000 40%,#000 70%,transparent);mask:linear-gradient(90deg,transparent,#000 40%,#000 70%,transparent)}
+.bv-tl{display:flex;flex-direction:column;gap:14px}.bv-top.an .bv-tl{animation:bvIn .7s var(--ease) both}
+.bv-k{color:#F3D58A;text-transform:uppercase;letter-spacing:.2em;font-size:13px;font-weight:700}
+.bv-top h1{margin:0;font-family:var(--serif);font-size:84px;line-height:.95;letter-spacing:-.03em;font-weight:800;color:#fff}
+.bv-top h1 b{background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bv-top p{margin:0;max-width:520px;font-size:18px;line-height:1.55;color:#D4DAE7}
+.bv-tr{display:flex;justify-content:center}.bv-top.an .bv-tr{animation:bvIn .9s .15s var(--ease) both}
+.bv-tr .hb-bal{max-width:320px}
+@keyframes bvIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.bv-sheet{position:relative;margin:-84px auto 0;width:min(1180px,calc(100% - 48px));background:#F5F6FA;border-radius:28px 28px 0 0;padding:36px 40px 28px;display:flex;flex-direction:column;gap:22px;box-shadow:0 -20px 60px -30px rgba(0,0,0,.5);min-height:calc(100vh - 380px)}
+.bv-h h2{margin:4px 0 4px;font-size:32px;color:var(--navy)}.bv-h p{margin:0;color:var(--muted);font-size:14px}
+.bv-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.bv-c{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left;padding:18px;border-radius:18px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font:inherit;color:inherit;box-shadow:var(--sh1);transition:transform .2s var(--ease),border-color .2s,box-shadow .2s}
+.bv-c:hover{transform:translateY(-3px);box-shadow:var(--sh2)}
+.bv-c b{font-size:15.5px;color:var(--navy)}.bv-c>span:last-child{font-size:13px;color:var(--muted);line-height:1.45}
+.bv-i{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:#F2F4F8;color:#1E3A5F;margin-bottom:4px;transition:background .2s,color .2s}
+.bv-i svg{width:22px;height:22px}
+.bv-c.on{border-color:#7B1E2B;box-shadow:0 0 0 4px rgba(123,30,43,.12),var(--sh2)}
+.bv-c.on .bv-i{background:linear-gradient(135deg,#8C1D30,#5E1421);color:#F3D58A}
+.bv-res{display:flex;flex-direction:column;gap:16px;padding:22px;border-radius:20px;background:#fff;border:1px solid var(--line)}
+.bv-ano{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.bv-ano>span{font-weight:700;margin-right:6px}
+.bv-ano button{border:1.5px solid var(--line2);background:#fff;border-radius:99px;padding:8px 16px;font:inherit;font-weight:600;font-size:14px;cursor:pointer}
+.bv-ano button.on{background:#1E3A5F;border-color:#1E3A5F;color:#fff}
+.bv-mods{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.bv-ml{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.bv-m{font-size:13px;font-weight:600;padding:6px 12px;border-radius:99px;background:#F6E9EC;color:#7B1E2B}
+.bv-areas summary{cursor:pointer;font-weight:700;font-size:14px;color:var(--navy)}.bv-areas small{color:var(--muted);font-weight:500}
+.bv-act{display:flex;justify-content:flex-end}
+.bv-go{min-height:52px;padding:0 28px;font-size:16px}
+.bv-f{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--muted);padding-top:6px}
+.bv-f a{color:var(--muted)}
+.bv-skip{border:0;background:none;font:inherit;color:var(--muted);text-decoration:underline;cursor:pointer;padding:0}
+@media (max-width:900px){.bv-top{grid-template-columns:1fr;padding:40px 24px 110px}.bv-tr{display:none}.bv-top h1{font-size:56px}.bv-sheet{padding:26px 20px;width:calc(100% - 24px)}}
+@media (prefers-reduced-motion:reduce){.bv-tl,.bv-tr,.bv-res{animation:none}}
+
 </style>
 </head>
 <body>
@@ -1306,7 +1347,7 @@ Store.attach = function (session) {
 };
 
 /* ---------- estado da interface ---------- */
-var VIEWS = ['painel', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
+var VIEWS = ['painel', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
 var S = {
   view: 'painel', wsId: null, wsTab: '01', wsQ: '', q: '',
   libQ: '', libArea: 'Todas', libOpen: { cpc: true },
@@ -1382,6 +1423,7 @@ function render() {
   else if (v === 'mensagens') h = vMensagens();
   else if (v === 'salas') h = vSalas();
   else if (v === 'legal') h = vLegal();
+  else if (v === 'bemvindo') h = vBemvindo();
   else if (v === 'prazos') h = vPrazos();
   else if (v === 'agenda') h = vAgenda();
   else if (v === 'dissertacao') h = vDissertacao();
@@ -4850,6 +4892,44 @@ renderSide = function () {
 };
 document.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('.tn-b[aria-haspopup]'); [].forEach.call(document.querySelectorAll('.tn-g.open'), function (g) { if (!b || g !== b.parentNode) g.classList.remove('open'); }); if (b) b.parentNode.classList.toggle('open'); });
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape') [].forEach.call(document.querySelectorAll('.tn-g.open'), function (g) { g.classList.remove('open'); }); });
+
+/* ---------- PÁGINA DE BOAS-VINDAS: escolha do grau académico ---------- */
+var BV_ICON = {
+  lic: '<path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11.5V16c0 1.5 2.2 3 5 3s5-1.5 5-3v-4.5"/><path d="M21 9v5"/>',
+  licd: '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/><circle cx="17" cy="17" r="2.5"/>',
+  mest: '<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5z"/><path d="M4 19a2 2 0 0 1 2-2h13"/><path d="M9 7h6"/>',
+  estag: '<path d="M12 3v18M6 21h12M4 7h16"/><path d="M4 7l-2.5 6a3 3 0 0 0 5 0L4 7zM20 7l-2.5 6a3 3 0 0 0 5 0L20 7z"/>',
+  prof: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/>',
+  doc: '<path d="M3 4h18v12H3z"/><path d="M8 20l4-4 4 4M7 9h6M7 12h10"/>',
+  outro: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>'
+};
+function bvIc(k) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + BV_ICON[k] + '</svg>'; }
+function vBemvindo() {
+  var t = ONB.tipo, nome = S.nome ? S.nome.split(' ')[0] : '';
+  var an = !S.bvAnim; S.bvAnim = true;
+  var h = '<section class="bv-top' + (an ? ' an' : '') + '"><div class="bv-tl"><span class="bv-k">Bem-vindo' + (S.meuPerfil && S.meuPerfil.genero === 'f' ? 'a' : '') + ' ao</span><h1><b>LEX</b>DESK</h1><p>' + (nome ? 'Olá, ' + esc(nome) + '. ' : '') + 'A sua plataforma de estudo e prática jurídica. Diga-nos em que fase está e adaptamos tudo a si.</p></div><div class="bv-tr">' + balancaSVG() + '</div></section>';
+  h += '<section class="bv-sheet"><div class="bv-h"><span class="eyebrow">Passo único</span><h2>Em que fase está?</h2><p>Pode mudar a qualquer momento em «Mais» → «Perfil».</p></div><div class="bv-g">' +
+    Object.keys(PERFIS).map(function (k) { return '<button class="bv-c' + (t === k ? ' on' : '') + '" data-a="onb-tipo" data-id="' + k + '" aria-pressed="' + (t === k) + '"><span class="bv-i">' + bvIc(k) + '</span><b>' + esc(PERFIS[k].nome) + '</b><span>' + esc(PERFIS[k].d) + '</span></button>'; }).join('') + '</div>';
+  if (t) {
+    h += '<div class="bv-res">' +
+      (t === 'lic' ? '<div class="bv-ano"><span>Em que ano?</span>' + [1, 2, 3, 4].map(function (a) { return '<button class="' + (ONB.ano === a ? 'on' : '') + '" data-a="onb-ano" data-id="' + a + '">' + (a === 1 ? '1.º · Caloiro/a' : a + '.º ano') + '</button>'; }).join('') + '</div>' : '') +
+      '<div class="bv-mods"><span class="bv-ml">O seu painel vai ter</span>' + MOD_PERFIL[t].map(function (m) { return '<span class="bv-m">' + esc(MODS[m]) + '</span>'; }).join('') + '</div>' +
+      '<details class="bv-areas"' + (ONB.areas.length ? ' open' : '') + '><summary>Escolher áreas de interesse <small>(opcional)</small></summary><div class="row" style="gap:8px;margin-top:10px">' + AREAS_OPC.map(function (a) { return '<button class="chip ' + (ONB.areas.indexOf(a) >= 0 ? 'wine' : 'gray') + '" style="border:0;cursor:pointer;min-height:34px;padding:0 14px;font-size:13px" data-a="onb-area" data-id="' + esc(a) + '" aria-pressed="' + (ONB.areas.indexOf(a) >= 0) + '">' + esc(a) + '</button>'; }).join('') + '</div></details>' +
+      '<div class="bv-act"><button class="btn wine bv-go" data-a="onb-fim">Entrar no painel →</button></div></div>';
+  }
+  h += '<div class="bv-f"><button class="bv-skip" data-a="onb-saltar">Saltar por agora</button><span><a href="#termos">Termos e Condições</a> · <a href="#privacidade">Política de Privacidade</a></span></div></section>';
+  return h;
+}
+onbAbrir = function () { var p = perfilUser(); ONB = { passo: 1, tipo: p ? p.tipo : null, ano: (p && p.ano) || 1, areas: p && p.areas ? p.areas.slice() : [] }; S.bvAnim = false; S.bvVolta = S.view !== 'bemvindo' ? S.view : 'painel'; closeModal(); go('bemvindo'); };
+onbPintar = function () { var y = window.scrollY; render(); window.scrollTo(0, y); };
+var _onbSaltar = A['onb-saltar'];
+A['onb-saltar'] = function (el) { _onbSaltar(el); go(S.bvVolta && S.bvVolta !== 'bemvindo' ? S.bvVolta : 'painel'); };
+var _onbFim = A['onb-fim'];
+A['onb-fim'] = function (el) { if (!ONB.tipo) { toast('Escolha a sua fase.'); return; } _onbFim(el); if (location.hash !== '#painel') location.hash = '#painel'; };
+var _renderSideBV = renderSide;
+renderSide = function () { document.body.classList.toggle('bvp', S.view === 'bemvindo'); _renderSideBV(); };
+var _onbTipo = A['onb-tipo'];
+A['onb-tipo'] = function (el) { _onbTipo(el); if (S.view !== 'bemvindo') return; var r = document.querySelector('.bv-res'); if (r && r.getBoundingClientRect().bottom > window.innerHeight) r.scrollIntoView({ behavior: 'smooth', block: 'end' }); };
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
 var VIEW_LBL = { painel: ['Painel', I.grid], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
