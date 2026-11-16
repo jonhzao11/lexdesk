@@ -794,6 +794,12 @@ body.bvp .main{background:radial-gradient(600px 360px at 75% 220px,rgba(200,150,
 .bv.an .bv-f{animation:bvIn .6s .9s var(--ease) both}
 @media (max-width:600px){.bv h1{font-size:46px}.bv-det{padding:4px 16px 16px}.bv-hd .bv-acc .btn{padding:0 10px}.bv-o:hover{transform:none}}
 @media (prefers-reduced-motion:reduce){.bv *,.bv::before{animation:none!important;transition:none!important}}
+.bv-ola .bv-col{margin-top:9vh;gap:12px}
+.bv-bal.big,.bv-bal.big .hb-bal{width:200px;max-width:200px}
+.bv-ola h1{font-size:72px}
+.bv-cont{align-self:center;margin-top:10px;min-height:54px;padding:0 34px;font-size:16px}
+.bv-alt2{margin-top:4px;color:#AEB7C9!important;font-size:13.5px}
+.bv.an .bv-cont{animation:bvIn .6s .32s var(--ease) both}.bv.an .bv-alt2{animation:bvIn .6s .45s var(--ease) both}
 
 </style>
 </head>
@@ -4970,6 +4976,8 @@ var BV_ICON = {
 };
 function bvIc(k) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + BV_ICON[k] + '</svg>'; }
 function vBemvindo() {
+  if (S.bvModo === 'ola' && !sessaoAtiva() && !S.connecting) S.bvModo = 'escolha';
+  if (S.bvModo === 'ola') return vBemvindoOla();
   var t = ONB.tipo, nome = S.nome ? S.nome.split(' ')[0] : '', an = !S.bvAnim, abre = S.bvUlt !== t; S.bvAnim = true; S.bvUlt = t;
   var saud = S.meuPerfil && S.meuPerfil.genero === 'f' ? 'Bem-vinda' : S.meuPerfil && S.meuPerfil.genero === 'm' ? 'Bem-vindo' : 'Bem-vindo/a';
   var h = '<div class="bv' + (an ? ' an' : '') + '">';
@@ -4980,8 +4988,6 @@ function vBemvindo() {
     if (on) {
       x += '<div class="bv-det">' +
         (k === 'lic' ? '<div class="bv-ano"><span>Ano</span>' + [1, 2, 3, 4].map(function (a) { return '<button class="' + (ONB.ano === a ? 'on' : '') + '" data-a="onb-ano" data-id="' + a + '">' + (a === 1 ? '1.º · Caloiro/a' : a + '.º') + '</button>'; }).join('') + '</div>' : '') +
-        '<div class="bv-mods"><span class="bv-ml">O seu painel</span>' + MOD_PERFIL[k].map(function (m, q) { return '<span class="bv-m" style="--q:' + q + '">' + esc(MODS[m]) + '</span>'; }).join('') + '</div>' +
-        '<details class="bv-areas"' + (ONB.areas.length ? ' open' : '') + '><summary>Áreas de interesse <small>(opcional)</small></summary><div class="bv-ar">' + AREAS_OPC.map(function (a) { var s2 = ONB.areas.indexOf(a) >= 0; return '<button class="' + (s2 ? 'on' : '') + '" data-a="onb-area" data-id="' + esc(a) + '" aria-pressed="' + s2 + '">' + esc(a) + '</button>'; }).join('') + '</div></details>' +
         (sessaoAtiva() ? '<button class="btn gold bv-go" data-a="onb-fim">Entrar no painel →</button>'
           : '<div class="bv-gst"><button class="btn gold bv-go" data-a="bv-conta" data-id="registo">Criar conta e entrar →</button><div class="bv-alt"><button data-a="bv-conta" data-id="entrar">Já tenho conta</button><span>·</span><button data-a="onb-fim">Continuar sem conta</button></div><span class="bv-nota">Sem conta, os dados ficam apenas neste navegador.</span></div>') +
         '</div>';
@@ -4991,7 +4997,7 @@ function vBemvindo() {
   h += '<div class="bv-f"><button class="bv-skip" data-a="onb-saltar">Saltar por agora</button><span><a href="#termos">Termos</a> · <a href="#privacidade">Privacidade</a></span></div></div></div>';
   return h;
 }
-onbAbrir = function () { var p = perfilUser(); ONB = { passo: 1, tipo: p ? p.tipo : null, ano: (p && p.ano) || 1, areas: p && p.areas ? p.areas.slice() : [] }; S.bvAnim = false; S.bvUlt = undefined; S.bvVolta = S.view !== 'bemvindo' ? S.view : 'painel'; closeModal(); go('bemvindo'); };
+onbAbrir = function () { S.bvModo = 'escolha'; var p = perfilUser(); ONB = { passo: 1, tipo: p ? p.tipo : null, ano: (p && p.ano) || 1, areas: p && p.areas ? p.areas.slice() : [] }; S.bvAnim = false; S.bvUlt = undefined; S.bvVolta = S.view !== 'bemvindo' ? S.view : 'painel'; closeModal(); go('bemvindo'); };
 onbPintar = function () { var y = window.scrollY; render(); window.scrollTo(0, y); };
 var _onbSaltar = A['onb-saltar'];
 A['onb-saltar'] = function (el) { _onbSaltar(el); go(S.bvVolta && S.bvVolta !== 'bemvindo' ? S.bvVolta : 'painel'); };
@@ -5000,7 +5006,7 @@ A['onb-fim'] = function (el) { if (!ONB.tipo) { toast('Escolha a sua fase.'); re
 var _renderSideBV = renderSide;
 renderSide = function () { document.body.classList.toggle('bvp', S.view === 'bemvindo'); _renderSideBV(); };
 var _onbTipo = A['onb-tipo'];
-A['onb-tipo'] = function (el) { _onbTipo(el); if (S.view !== 'bemvindo') return; var r = document.querySelector('.bv-o.on'); if (r) setTimeout(function () { var b = r.getBoundingClientRect(); if (b.bottom > window.innerHeight || b.top < 0) r.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 260); };
+A['onb-tipo'] = function (el) { if (S.view === 'bemvindo' && ONB.tipo === el.dataset.id) { ONB.tipo = null; onbPintar(); return; } _onbTipo(el); if (S.view !== 'bemvindo') return; var r = document.querySelector('.bv-o.on'); if (r) setTimeout(function () { var b = r.getBoundingClientRect(); if (b.bottom > window.innerHeight || b.top < 0) r.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 260); };
 
 /* ----- entrada pública: conta a partir da página de boas-vindas ----- */
 var BV_EST = { licd: 'licenciado', mest: 'mestrado', estag: 'estagiario', prof: 'advogado', doc: 'docente', outro: 'outro' };
@@ -5021,6 +5027,25 @@ carregarMeuPerfil = function () {
     return p;
   });
 };
+
+/* ----- aparece sempre ao abrir o site ----- */
+function vBemvindoOla() {
+  var an = !S.bvAnim; S.bvAnim = true;
+  var p = perfilUser(), t = p && PERFIS[p.tipo] ? p.tipo : null, g = S.meuPerfil && S.meuPerfil.genero;
+  var saud = g === 'f' ? 'Bem-vinda de volta' : g === 'm' ? 'Bem-vindo de volta' : 'Bem-vindo/a de volta';
+  return '<div class="bv bv-ola' + (an ? ' an' : '') + '"><header class="bv-hd"><span class="bv-logo"><span class="mark logo">' + I.logo + '</span><span><b>LEX</b>DESK</span></span></header>' +
+    '<div class="bv-col"><div class="bv-bal big">' + balancaSVG() + '</div><span class="bv-k">' + saud + '</span><h1>' + (S.nome ? '<b>' + esc(S.nome) + '</b>' : '<b>LEX</b>DESK') + '</h1>' +
+    '<p class="bv-sub">' + (t ? 'O seu painel de ' + esc(PERFIS[t].curto.toLowerCase()) + ' está pronto.' : 'O seu painel está pronto.') + '</p>' +
+    '<button class="btn gold bv-go bv-cont" data-a="bv-cont">Continuar →</button><button class="bv-skip bv-alt2" data-a="onb-abrir">Alterar perfil</button></div></div>';
+}
+function bvArranque(h0) {
+  if (['termos', 'privacidade', 'legal', 'bemvindo'].indexOf(h0) >= 0 || S.salaConvite) { if (h0 === 'bemvindo') S.bvModo = S.bvModo || 'escolha'; return; }
+  S.bvVolta = VIEWS.indexOf(h0) >= 0 ? h0 : 'painel';
+  S.bvModo = lsGet('lexdesk_sessao') === 'on' ? 'ola' : 'escolha'; if (S.bvModo === 'ola' && SB) S.connecting = true;
+  var p = perfilUser(); ONB = { passo: 1, tipo: S.bvModo === 'escolha' && p ? p.tipo : null, ano: (p && p.ano) || 1, areas: p && p.areas ? p.areas.slice() : [] };
+  S.view = 'bemvindo'; try { history.replaceState(null, '', '#bemvindo'); } catch (e) { }
+}
+A['bv-cont'] = function () { go(S.bvVolta && S.bvVolta !== 'bemvindo' ? S.bvVolta : 'painel'); };
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
 var VIEW_LBL = { painel: ['Painel', I.grid], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
@@ -5260,6 +5285,7 @@ A['item-type'] = function (el, ev) { _itemType(el, ev); fxEnhance(); };
 /* ---------- arranque ---------- */
 Store.loadLocal();
 var h0 = location.hash.replace('#', ''); if (VIEWS.indexOf(h0) >= 0) S.view = h0;
+if (typeof bvArranque === 'function') bvArranque(h0);
 render();
 Store.connect();
 })();
