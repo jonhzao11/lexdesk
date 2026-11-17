@@ -7421,6 +7421,8 @@ function auAtiva() { var s = S.auSess && auSess(S.auSess); return s && !s.fim ? 
 function auAtual() { return auAtiva() || (S.auVer && auSess(S.auVer)) || null; }
 function auT(ms) { ms = Math.max(0, ms || 0); var s = Math.floor(ms / 1000), h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60); s = s % 60; return (h ? h + ':' + String(m).padStart(2, '0') : m) + ':' + String(s).padStart(2, '0'); }
 function auDur(s) { return (s.fim || Date.now()) - s.ini; }
+function auGrava() { return !!(AU.rec && AU.rec.state && AU.rec.state !== 'inactive'); }
+function auTmAttr(t) { return auGrava() ? ' data-tm="' + auT(t) + '"' : ''; }
 function auAgoraT(s) { return s.fim ? auDur(s) : Date.now() - s.ini; }
 var AU_ART = /\bart(?:igo)?s?\.?\s*(\d+)\s*\.?\s*º?(?:\s*-\s*([A-Z]))?(?:,?\s*n\.?\s?º\s*\d+)?(?:,?\s*al(?:ínea)?\.?\s*[a-z]\))?(?:,?\s*(?:do|da|dos|das)?\s*(CRP|CPC|CPP|CC|CP|CT|CSC|CPA|CPTA|LGT|CIRE|CPPT|CIRS|CIVA|ETAF|RGPD|EOA|LOSJ|RCP|LJP))?/gi;
 function auArtigos(txt, dipPadrao) {
@@ -7455,7 +7457,7 @@ function auLimpar(html) {
 }
 function auFolhaHtml(s) {
   if (s.folha != null) return s.folha;
-  return (s.notas || []).map(function (x) { return '<p data-t="' + x.t + '" data-tm="' + auT(x.t) + '"' + (x.tag ? ' data-tag="' + x.tag + '"' : '') + '>' + (x.foto ? '<img data-foto="' + esc(x.foto) + '" alt="Fotografia da aula">' : esc(x.txt).replace(/\n/g, '<br>')) + '</p>'; }).join('');
+  return (s.notas || []).map(function (x) { return '<p data-t="' + x.t + '"' + auTmAttr(x.t) + '' + (x.tag ? ' data-tag="' + x.tag + '"' : '') + '>' + (x.foto ? '<img data-foto="' + esc(x.foto) + '" alt="Fotografia da aula">' : esc(x.txt).replace(/\n/g, '<br>')) + '</p>'; }).join('');
 }
 function auNotasDe(s) {
   var doc = new DOMParser().parseFromString('<div>' + auFolhaHtml(s) + '</div>', 'text/html');
@@ -7467,7 +7469,7 @@ function auCarimbar() {
   var el = auFolhaEl(), s = auAtual(); if (!el || !s) return;
   if (!el.firstChild) el.innerHTML = '<p><br></p>';
   var t = auAgoraT(s);
-  auBlocos(el).forEach(function (b) { if (!b.hasAttribute('data-t') && (b.textContent.trim() || b.querySelector('img'))) { b.setAttribute('data-t', t); b.setAttribute('data-tm', auT(t)); } });
+  auBlocos(el).forEach(function (b) { if (!b.hasAttribute('data-t') && (b.textContent.trim() || b.querySelector('img'))) { b.setAttribute('data-t', t); if (auGrava()) b.setAttribute('data-tm', auT(t)); } });
 }
 var AU_SAVE = null;
 function auGuardarFolha(agora) {
@@ -7506,7 +7508,7 @@ function vAulaSessao(s, vivo) {
   var rec = AU.rec && AU.rec.state, sr = AU.srOn, med = vivo ? [] : auMedia(s.id), segs = med.filter(function (m) { return m.tipo === 'audio'; }), f = S.auFiltro || 'todas';
   var h = '';
   if (vivo) h += '<section class="au-bar"><div class="au-bar-l"><div><b>' + esc(s.cad) + '</b><span>' + new Date(s.ini).toLocaleDateString('pt-PT', { weekday: 'long', day: 'numeric', month: 'long' }) + '</span></div></div>' +
-    '<span class="au-tm" id="au-tm" title="Tempo de aula">' + auT(auDur(s)) + '</span>' +
+    (rec && rec !== 'inactive' ? '<span class="au-tm" id="au-tm" title="Tempo de aula">' + auT(auDur(s)) + '</span>' : '') +
     '<div class="au-ctl">' +
     (rec === 'recording' ? '<button class="au-c rec on" data-a="au-rec-pausa" title="Pausar gravação"><i>⏸</i>A gravar</button><button class="au-c" data-a="au-rec-parar"><i>⏹</i>Parar</button>' : rec === 'paused' ? '<button class="au-c rec" data-a="au-rec-cont"><i>⏺</i>Retomar</button><button class="au-c" data-a="au-rec-parar"><i>⏹</i>Parar</button>' : '<button class="au-c rec" data-a="au-rec"><i>⏺</i>Gravar</button>') +
     '<button class="au-c' + (sr ? ' on' : '') + '" data-a="au-trans"><i>💬</i>' + (sr ? 'A transcrever' : 'Transcrever') + '</button>' +
@@ -7521,7 +7523,7 @@ function vAulaSessao(s, vivo) {
     '<span class="au-sep"></span>' + ['exame', 'duvida', 'artigo', 'def'].map(function (k, i) { return '<button class="au-fb tg" data-a="au-tag" data-id="' + k + '" title="Marcar o parágrafo atual (Ctrl+' + (i + 1) + ')">' + AU_TAGS[k][0] + ' ' + AU_TAGS[k][1] + '</button>'; }).join('') + (vivo ? '<button class="au-fb tg" data-a="au-marca" title="Marcar este momento da aula">🔖 Momento</button>' : '') +
     '<span class="au-sep"></span><div class="au-dl"><button class="au-fb dl" data-a="au-dl-menu">⬇ Descarregar</button><div class="au-dl-m" id="au-dl-m"><button data-a="au-dl" data-id="doc">📄 Word (.doc)</button><button data-a="au-dl" data-id="pdf">🖨 PDF / imprimir</button><button data-a="au-dl" data-id="txt">📝 Texto (.txt)</button></div></div></div>' +
     (vivo ? '' : '<div class="est-ts au-filt">' + [['todas', 'Tudo']].concat(Object.keys(AU_TAGS).map(function (k) { return [k, AU_TAGS[k][0] + ' ' + AU_TAGS[k][1]]; })).map(function (t) { return '<button class="est-t' + (f === t[0] ? ' on' : '') + '" data-a="au-filtro" data-id="' + t[0] + '"><span>' + t[1] + '</span></button>'; }).join('') + '</div>') +
-    '<div class="au-papel"><span class="au-gravado ok" id="au-gravado">Guardado</span><div class="au-folha' + (f !== 'todas' && !vivo ? ' f-' + f : '') + (vivo ? '' : ' rev') + '" id="au-folha" data-sess="' + s.id + '" contenteditable="true" spellcheck="true" lang="pt-PT" data-ph="Comece a escrever… Cada parágrafo fica com o minuto da aula na margem.">' + (auFolhaHtml(s) || '<p><br></p>') + '</div></div></div>' +
+    '<div class="au-papel"><span class="au-gravado ok" id="au-gravado">Guardado</span><div class="au-folha' + (f !== 'todas' && !vivo ? ' f-' + f : '') + (vivo ? '' : ' rev') + '" id="au-folha" data-sess="' + s.id + '" contenteditable="true" spellcheck="true" lang="pt-PT" data-ph="Comece a escrever… Ao gravar, cada parágrafo fica com o minuto da aula na margem.">' + (auFolhaHtml(s) || '<p><br></p>') + '</div></div></div>' +
     '<aside class="au-side">' + '<div class="card au-lei" id="au-lei">' + auLeiHtml() + '</div>' + '<div class="card au-res" id="au-res">' + auResumoHtml(s) + '</div>' +
     (vivo ? '<div class="card au-trans"><div class="row" style="justify-content:space-between"><h2 style="font-size:16px">Transcrição</h2>' + (sr ? '<span class="chip ok">a ouvir</span>' : '') + '</div><div id="au-trans-l" class="au-trans-l">' + auTransHtml() + '</div><span class="au-nota-p">' + (auSrOk() ? 'Usa o reconhecimento de voz do navegador, que pode enviar o áudio ao fornecedor do navegador para ser processado.' : 'O seu navegador não suporta transcrição em direto. Experimente o Google Chrome ou o Microsoft Edge.') + '</span></div><div class="note au-legal">Só grave com autorização do docente e dos presentes. As gravações e fotografias ficam apenas neste dispositivo.</div>' : '') +
     '</aside></div>';
@@ -7604,6 +7606,7 @@ function auSeguirLei(txt, folha) {
 /* ----- edição da folha ----- */
 document.addEventListener('input', function (ev) {
   if (!ev.target || ev.target.id !== 'au-folha') return;
+  if (ev.inputType === 'insertParagraph') { var nb = auBlocoAtual(); if (nb) ['data-t', 'data-tm', 'data-tag'].forEach(function (a) { nb.removeAttribute(a); }); }
   auCarimbar(); auGuardarFolha();
   var b = auBlocoAtual(); clearTimeout(AU.leiT); if (b) AU.leiT = setTimeout(function () { auSeguirLei(b.textContent, true); }, 1100);
   var r = $('#au-res'), s = auAtual(); if (r && s) { clearTimeout(AU.resT); AU.resT = setTimeout(function () { s.notas = auNotasDe({ folha: auLimpar(auFolhaEl().innerHTML) }); r.innerHTML = auResumoHtml(s); }, 900); }
@@ -7631,11 +7634,11 @@ A['au-cmd'] = function (el) {
 A['au-tag'] = function (el) {
   var k = el.dataset.id, f = auFolhaEl(); if (!f) return; var b = auBlocoAtual();
   if (!b) { toast('Coloque o cursor no parágrafo que quer marcar.'); return; }
-  if (!b.hasAttribute('data-t')) { var s = auAtual(), t = auAgoraT(s); b.setAttribute('data-t', t); b.setAttribute('data-tm', auT(t)); }
+  if (!b.hasAttribute('data-t')) { var s = auAtual(), t = auAgoraT(s); b.setAttribute('data-t', t); if (auGrava()) b.setAttribute('data-tm', auT(t)); }
   if (b.getAttribute('data-tag') === k) b.removeAttribute('data-tag'); else b.setAttribute('data-tag', k);
   auGuardarFolha(); var r = $('#au-res'), s2 = auAtual(); if (r && s2) { s2.notas = auNotasDe({ folha: auLimpar(f.innerHTML) }); r.innerHTML = auResumoHtml(s2); }
 };
-A['au-marca'] = function () { var s = auAtiva(); if (!s) return; var t = auAgoraT(s); auInserirBloco('<p data-t="' + t + '" data-tm="' + auT(t) + '" data-tag="marca">🔖 Momento marcado</p>'); toast('🔖 Momento marcado em ' + auT(t) + '.'); };
+A['au-marca'] = function () { var s = auAtiva(); if (!s) return; var t = auAgoraT(s); auInserirBloco('<p data-t="' + t + '"' + auTmAttr(t) + ' data-tag="marca">🔖 Momento marcado</p>'); toast('🔖 Momento marcado em ' + auT(t) + '.'); };
 A['au-dl-menu'] = function () { var m = $('#au-dl-m'); if (m) m.classList.toggle('open'); };
 function auOuvir(t) {
   var s = auSess(S.auVer); if (!s) return;
@@ -7734,14 +7737,14 @@ function auTransIniciar() {
   try { r.start(); toast('💬 Transcrição ligada.'); } catch (x) { } render();
 }
 function auTransParar() { AU.srOn = false; if (AU.sr) { try { AU.sr.stop(); } catch (x) { } AU.sr = null; } }
-A['au-trans-nota'] = function (el) { var x = AU.trans[Number(el.dataset.id)]; if (!x) return; auInserirBloco('<p data-t="' + x.t + '" data-tm="' + auT(x.t) + '">«' + esc(x.txt) + '»</p>'); toast('Excerto acrescentado à folha.'); };
+A['au-trans-nota'] = function (el) { var x = AU.trans[Number(el.dataset.id)]; if (!x) return; auInserirBloco('<p data-t="' + x.t + '"' + auTmAttr(x.t) + '>«' + esc(x.txt) + '»</p>'); toast('Excerto acrescentado à folha.'); };
 /* fotografias */
 document.addEventListener('change', function (ev) {
   if (!ev.target || ev.target.id !== 'au-foto' || !ev.target.files || !ev.target.files[0]) return;
   var f = ev.target.files[0], s = auAtiva(); if (!s) return;
   if (f.size > 15 * 1024 * 1024) { toast('A fotografia é demasiado grande (máximo 15 MB).'); return; }
   var m = { id: uid('ft'), sess: s.id, tipo: 'foto', t: Date.now() - s.ini, blob: f };
-  auDbPut(m).then(function () { (AU.media[s.id] = AU.media[s.id] || []).push(m); AU.carregado[s.id] = true; s.fotos = (s.fotos || 0) + 1; var b = auInserirBloco('<p data-t="' + m.t + '" data-tm="' + auT(m.t) + '"><img data-foto="' + m.id + '" alt="Fotografia da aula"></p>'); if (b) b.querySelector('img').src = auUrl(m); toast('📷 Fotografia guardada neste dispositivo.'); })
+  auDbPut(m).then(function () { (AU.media[s.id] = AU.media[s.id] || []).push(m); AU.carregado[s.id] = true; s.fotos = (s.fotos || 0) + 1; var b = auInserirBloco('<p data-t="' + m.t + '"' + auTmAttr(m.t) + '><img data-foto="' + m.id + '" alt="Fotografia da aula"></p>'); if (b) b.querySelector('img').src = auUrl(m); toast('📷 Fotografia guardada neste dispositivo.'); })
     .catch(function () { toast('Não foi possível guardar a fotografia.'); });
 });
 A['au-foto-ver'] = function (el) { var s = auAtual(); if (!s) return; var m = (AU.media[s.id] || []).filter(function (x) { return x.id === el.dataset.id; })[0]; if (!m) return; openModal('Fotografia da aula', '<img src="' + esc(auUrl(m)) + '" alt="Fotografia da aula" style="max-width:100%;border-radius:14px">', '<button class="btn" data-a="close">Fechar</button>'); var md = document.querySelector('#ov .modal'); if (md) md.classList.add('modal-wide'); };
