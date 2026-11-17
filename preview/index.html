@@ -1425,6 +1425,9 @@ span.rp-util{cursor:default}
 .cm-rp{margin-top:14px}.cm-rp .rp-conta{width:100%}
 .cm-head{padding-bottom:12px}.cm-g{margin-top:10px;gap:5px}.cm-i{padding:8px 12px}.cm-ic{width:30px;height:30px;border-radius:9px}.cm-tx b{font-size:13.5px}.cm-tx span{font-size:12px}.cm-rp{margin-top:10px}.cm-rp .rp-conta{padding-top:8px;padding-bottom:8px}.cm-nota{margin-top:10px}
 .cm-rpc{border:1px solid #F3D58A;background:#FFF8E6;color:#7B1E2B;font-weight:700;cursor:pointer}.cm-rpc:hover{background:#FDEFC8}
+.mp-dc{border:0;background:none;padding:4px 6px;margin:0 -6px;border-radius:8px;text-align:left;font:inherit;color:inherit;cursor:pointer;width:calc(100% + 12px)}
+.mp-dc:hover{background:#F4F6FA}
+.mp-nada{font-size:13px;color:var(--muted)}.mp-nada .lk{border:0;background:none;padding:0;color:#7B1E2B;text-decoration:underline;cursor:pointer;font:inherit}
 
 </style>
 </head>
@@ -1969,7 +1972,7 @@ DISC = {
   pen: { nome: 'Direito Penal', curto: 'Direito Penal', chave: ['direito penal', 'criminal'] },
   adm: { nome: 'Direito Administrativo', curto: 'Administrativo', chave: ['administrativo', 'contencioso administrativo'] },
   com: { nome: 'Direito Comercial e das Sociedades', curto: 'Comercial', chave: ['comercial', 'sociedades', 'insolvência', 'empresarial'] },
-  pc: { nome: 'Direito Processual Civil', curto: 'Processo Civil', chave: ['processual civil', 'processo civil', 'processo executivo', 'prática judiciária'] },
+  pc: { nome: 'Direito Processual Civil', curto: 'Processo Civil', chave: ['processual civil', 'processo civil', 'processo executivo', 'prática judiciária', 'teoria geral do processo', 'processo declarativo'] },
   pp: { nome: 'Direito Processual Penal', curto: 'Processo Penal', chave: ['processual penal', 'processo penal', 'prática judiciária'] },
   civ: { nome: 'Direito Civil', curto: 'Direito Civil', oculta: true }
 };
@@ -2236,7 +2239,7 @@ function discsAtivas() { return Object.keys(DISC).filter(function (k) { return !
     if (k === 'pc') { D.pex = { nome: 'Processo Executivo', curto: 'Processo Executivo', chave: ['processo executivo', 'ação executiva', 'acção executiva'] }; }
   });
   DISC = D;
-  DISC.pc.chave = ['processual civil', 'processo civil', 'prática judiciária'];
+  DISC.pc.chave = ['processual civil', 'processo civil', 'prática judiciária', 'teoria geral do processo', 'processo declarativo'];
   TEMAS.pc = TEMAS.pc.filter(function (t) { return t[0] !== 'exec'; });
   TEMAS.trab = [['fontes', 'Fontes e princípios'], ['contr', 'Contrato de trabalho e modalidades'], ['temp', 'Tempo de trabalho, férias e retribuição'], ['disc', 'Poder disciplinar'], ['cess', 'Cessação do contrato'], ['colet', 'Direito coletivo']];
   TEMAS.fisc = [['princ', 'Princípios e fontes'], ['rel', 'Relação jurídica tributária'], ['proc', 'Procedimento e garantias'], ['cont', 'Contencioso e execução fiscal'], ['imp', 'Impostos em especial']];
@@ -7065,6 +7068,31 @@ A['ad-bib'] = function () {
 };
 
 /* ===== 7. O meu progresso (um só cartão) ===== */
+/* semestre letivo corrente: setembro a janeiro = 1.º; fevereiro a julho = 2.º; agosto prepara o 1.º */
+function semAtual(d) { var m = (d || new Date()).getMonth() + 1; return m >= 2 && m <= 7 ? 2 : 1; }
+function cadParaDisc(nome) {
+  var n = norm(nome), best = null, bl = 0;
+  if (/process|processual/.test(n) && /penal|criminal/.test(n)) return DISC.pp ? 'pp' : null;
+  Object.keys(DISC).forEach(function (k) { if (DISC[k].oculta) return; (DISC[k].chave || []).forEach(function (c) { var cn = norm(c); if (n.indexOf(cn) >= 0 && cn.length > bl) { best = k; bl = cn.length; } }); });
+  return best && discsAtivas().indexOf(best) >= 0 ? best : null;
+}
+function mpCadeiras() {
+  var pf = perfil(); if (!pf || !pf.ano) return null;
+  var ano = pf.ano, sem = semAtual(), semDe = {}, nomes = [];
+  var pl = typeof planoInst === 'function' && pf.instId ? planoInst(pf.instId, ano) : null;
+  if (pl) pl.obr.concat(pl.opc).forEach(function (x) { semDe[x[0]] = x[1]; });
+  var minhas = cads().filter(function (c) { return c.ano === ano; });
+  minhas.forEach(function (c) { semDe[c.nome] = c.sem; });
+  var esc0 = (pf.disciplinas || []).slice();
+  if (esc0.length) nomes = esc0.concat(minhas.map(function (c) { return c.nome; }));
+  else if (minhas.length) nomes = minhas.map(function (c) { return c.nome; });
+  else if (pl) nomes = pl.obr.map(function (x) { return x[0]; });
+  if (!nomes.length) return null;
+  var vistos = {}, l = [];
+  nomes.forEach(function (n) { if (vistos[n]) return; vistos[n] = 1; var sm = semDe[n]; if (sm == null) sm = sem; if (sm === sem || sm === 0) l.push({ n: n, k: cadParaDisc(n) }); });
+  return { ano: ano, sem: sem, l: l };
+}
+A['mp-cad'] = function (el) { var k = el.dataset.id; if (!k) { toast('Ainda não há perguntas para esta cadeira.'); return; } S.examCfg.disc = k; S.examCfg.tema = 'todos'; go('exames'); };
 function vMeuProgresso() {
   var s = stats(), taxa = s.tot ? Math.round(100 * s.ok / s.tot) : 0;
   var at = s.at.slice().sort(function (a, b) { return a.createdAt - b.createdAt; }).slice(-10), demoL = at.length < 2;
@@ -7074,14 +7102,19 @@ function vMeuProgresso() {
     '<div class="mp-n"><span><b>' + s.tot + '</b> questões</span><span><b>' + s.at.length + '</b> simulações</span><span><b>' + s.casosFeitos + '</b> casos</span></div>' +
     (s.tot ? '<span class="chip ' + (taxa >= 50 ? 'ok' : 'wine') + '">' + (taxa >= 70 ? 'Excelente ritmo' : taxa >= 50 ? 'No bom caminho' : 'Há margem para melhorar') + '</span>' : '') + '</div>';
   var graf = '<div class="mp-g"><div class="mp-st">Evolução' + (demoL ? ' <span class="tag-demo">Exemplo</span>' : '') + '</div>' + svgLine(vals, lbls) + '</div>';
-  var dk = discsAtivas().filter(function (k) { return s.porD[k]; }); if (!dk.length) { var mm = typeof estMinhas === 'function' ? estMinhas() : {}; dk = discsAtivas().filter(function (k) { return mm[k]; }); } if (!dk.length) dk = discsAtivas().slice(0, 5); dk = dk.slice(0, 6);
-  var disc = dk.map(function (k) {
-    var d = s.porD[k], p = d ? Math.round(100 * d.ok / d.t) : 0;
-    return '<div class="mp-d"><span class="mp-dn">' + DISC[k].nome + '</span><span class="mp-dv">' + (d ? p + '%' : '—') + '</span><div class="bar"><i style="width:' + p + '%"></i></div></div>';
-  }).join('');
+  var mc = mpCadeiras(), disc;
+  if (mc) {
+    disc = mc.l.length ? mc.l.map(function (c) {
+      var d = c.k ? s.porD[c.k] : null, p = d ? Math.round(100 * d.ok / d.t) : 0;
+      return '<button class="mp-d mp-dc" data-a="mp-cad" data-id="' + (c.k || '') + '" title="' + (c.k ? 'Praticar ' + esc(DISC[c.k].nome) : 'Ainda não há perguntas para esta cadeira') + '"><span class="mp-dn">' + esc(c.n) + '</span><span class="mp-dv">' + (d ? p + '%' : c.k ? '—' : 'sem perguntas') + '</span><div class="bar"><i style="width:' + p + '%"></i></div></button>';
+    }).join('') : '<span class="mp-nada">Não há cadeiras do ' + mc.sem + '.º semestre no seu plano. <button class="lk" data-go="cadeiras">Abrir «Cadeiras»</button></span>';
+  } else {
+    var dk = discsAtivas().filter(function (k) { return s.porD[k]; }); if (!dk.length) dk = discsAtivas().slice(0, 5);
+    disc = dk.map(function (k) { var d = s.porD[k], p = d ? Math.round(100 * d.ok / d.t) : 0; return '<div class="mp-d"><span class="mp-dn">' + DISC[k].nome + '</span><span class="mp-dv">' + (d ? p + '%' : '—') + '</span><div class="bar"><i style="width:' + p + '%"></i></div></div>'; }).join('');
+  }
   var ult = s.at.slice().sort(function (a, b) { return b.createdAt - a.createdAt; }).slice(0, 3);
   var ul = ult.length ? '<div class="mp-u">' + ult.map(function (a) { var p = Math.round(100 * a.correct / a.total); return '<div class="mp-ui"><span>' + esc(a.discLabel) + ' · ' + quando(a.createdAt) + '</span><span class="chip ' + (p >= 50 ? 'ok' : 'bad') + '">' + a.correct + '/' + a.total + '</span></div>'; }).join('') + '</div>' : '';
-  var dir = '<div class="mp-r"><div class="mp-st">Por disciplina</div>' + disc + (ul ? '<div class="mp-st" style="margin-top:6px">Últimas simulações</div>' + ul : '') + '</div>';
+  var dir = '<div class="mp-r"><div class="mp-st">' + (mc ? 'Cadeiras do ' + mc.sem + '.º semestre · ' + mc.ano + '.º ano' : 'Por disciplina') + '</div>' + disc + (ul ? '<div class="mp-st" style="margin-top:6px">Últimas simulações</div>' + ul : '') + '</div>';
   return '<section class="card mp" aria-labelledby="mp-h"><div class="row" style="justify-content:space-between"><h2 id="mp-h">O meu progresso</h2><button class="btn sm' + (s.tot ? '' : ' wine') + '" data-go="exames">' + (s.tot ? 'Nova simulação' : 'Fazer a primeira simulação') + '</button></div>' +
     '<div class="mp-w">' + anel + graf + dir + '</div>' + (s.tot ? '' : '<span class="mp-nota">Os valores aparecem à medida que faz simulações de exame.</span>') + '</section>';
 }
