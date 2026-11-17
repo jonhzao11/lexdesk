@@ -1501,6 +1501,9 @@ span.rp-util{cursor:default}
 .seq-rk-d{font:700 12.5px var(--sans);color:#C2410C}
 .seq-rk-sep{text-align:center;color:var(--muted);font-size:12px;line-height:1}
 .seq-rk-v{margin:0;font-size:12.5px;color:var(--muted)}
+.seq-rk-h{display:flex;align-items:center;justify-content:space-between}
+.seq-rk-mais{border:0;background:none;color:#7B1E2B;font:700 11.5px var(--sans);cursor:pointer;padding:0}
+.seq-rk-d{color:#7B1E2B}.seq-rk-v b{color:#7B1E2B}
 
 </style>
 </head>
@@ -6498,7 +6501,7 @@ function seqTile() {
     var x = new Date(seg); x.setDate(seg.getDate() + i); var k = ymd(x), on = !!q.d[k], fut = k > hk;
     return '<span class="seq-d' + (on ? ' on' : '') + (k === hk ? ' hj' : '') + (fut ? ' fut' : '') + '" title="' + x.toLocaleDateString('pt-PT', { weekday: 'long', day: 'numeric', month: 'long' }) + (on ? ' · estudou' : '') + '"><i>' + (on ? '🔥' : '') + '</i><small>' + l + '</small></span>';
   }).join('');
-  var sub = q.hoje ? 'Hoje já está ✓' + (q.rec > 1 ? ' · recorde ' + q.rec : '') : q.n ? 'Estude hoje para não perder a sequência' : 'Responda a uma pergunta para começar';
+  var falta = 7 - (q.n % 7), sub = q.hoje ? 'Hoje já está ✓ · ' + (falta === 7 ? '+20 RP ganhos!' : 'faltam ' + falta + (falta === 1 ? ' dia' : ' dias') + ' para +20 RP') : q.n ? 'Estude hoje para não perder a sequência' : 'Responda a uma pergunta para começar';
   return '<div class="bt seq big' + (q.hoje ? ' feito' : q.n ? ' risco' : '') + '"><div class="bt-h"><span class="bt-l">Dias seguidos</span><button class="bt-p" data-go="' + (q.hoje ? 'flashcards' : 'exames') + '">' + (q.hoje ? 'Rever' : 'Estudar') + '</button></div>' +
     '<div class="seq-row"><div class="seq-n"><span class="seq-f" aria-hidden="true">🔥</span><b class="bt-n" data-count="' + q.n + '">' + q.n + '</b><span class="seq-u">' + (q.n === 1 ? 'dia' : 'dias') + '</span></div>' +
     '<div class="seq-w" aria-label="Esta semana">' + sem + '</div></div><span class="bt-s">' + sub + '</span>' + seqRankHtml() + '</div>';
@@ -6514,8 +6517,8 @@ function seqRankCarregar(forcar) {
   if (!sessaoAtiva() || !SB) return;
   if (!forcar && SEQR.t && Date.now() - SEQR.t < 300000) return;
   SEQR.t = Date.now();
-  var go = function () { SB.rpc('seq_ranking', { p_limite: 5 }).then(function (r) { SEQR.l = (r && r.data) || []; scheduleRender(); }, function () { SEQR.l = []; }); };
-  if (!SEQR.sync) { SEQR.sync = true; var lim = new Date(); lim.setDate(lim.getDate() - 60); var lk = ymd(lim); seqEnviar(Object.keys(seqDias()).filter(function (k) { return k >= lk; })).then(go); } else go();
+  var go = function () { SB.rpc('rp_ranking', { p_limite: 50 }).then(function (r) { SEQR.l = (r && r.data) || []; scheduleRender(); }, function () { SEQR.l = []; }); };
+  if (!SEQR.sync) { SEQR.sync = true; var lim = new Date(); lim.setDate(lim.getDate() - 60); var lk = ymd(lim); seqEnviar(Object.keys(seqDias()).filter(function (k) { return k >= lk; }).sort()).then(go); } else go();
 }
 var _putSEQ2 = Store.put;
 Store.put = function (o) {
@@ -6525,14 +6528,15 @@ Store.put = function (o) {
   return r;
 };
 function seqRankHtml() {
-  if (!sessaoAtiva()) return '<div class="seq-rk"><span class="seq-rk-t">Ranking da comunidade</span><p class="seq-rk-v">Inicie sessão para comparar a sua sequência com outros estudantes.</p></div>';
+  var cab = '<div class="seq-rk"><div class="seq-rk-h"><span class="seq-rk-t">Ranking da comunidade</span><button class="seq-rk-mais" data-go="reputacao">Ver tudo ›</button></div>';
+  if (!sessaoAtiva()) return cab + '<p class="seq-rk-v">Inicie sessão para entrar no ranking de reputação.</p></div>';
   seqRankCarregar();
   var l = SEQR.l;
-  if (!l) return '<div class="seq-rk"><span class="seq-rk-t">Ranking da comunidade</span><p class="seq-rk-v">A carregar…</p></div>';
-  if (!l.length) return '<div class="seq-rk"><span class="seq-rk-t">Ranking da comunidade</span><p class="seq-rk-v">Ninguém tem uma sequência ativa. Seja o primeiro!</p></div>';
-  var top = l.filter(function (r) { return r.pos <= 5; }).slice(0, 5), eu = l.filter(function (r) { return r.eu; })[0];
-  var linha = function (r) { var med = r.pos === 1 ? '🥇' : r.pos === 2 ? '🥈' : r.pos === 3 ? '🥉' : r.pos + '.'; return '<button class="seq-rk-l' + (r.eu ? ' eu' : '') + '" data-a="perfil-ver" data-id="' + r.user_id + '"><span class="seq-rk-p">' + med + '</span>' + avHtml(r.user_id, r.nome || 'Membro') + '<span class="seq-rk-n">' + esc(r.eu ? 'Eu' : (r.nome || 'Membro')) + '</span><span class="seq-rk-d">🔥 ' + r.dias + '</span></button>'; };
-  return '<div class="seq-rk"><span class="seq-rk-t">Ranking da comunidade</span><div class="seq-rk-ls">' + top.map(linha).join('') + (eu && top.indexOf(eu) < 0 ? '<div class="seq-rk-sep">…</div>' + linha(eu) : '') + '</div>' + (eu ? '' : '<p class="seq-rk-v">Estude hoje para entrar no ranking.</p>') + '</div>';
+  if (!l) return cab + '<p class="seq-rk-v">A carregar…</p></div>';
+  var top = l.slice(0, 5), eu = l.filter(function (r) { return r.eu; })[0];
+  var linha = function (r) { var med = r.pos === 1 ? '🥇' : r.pos === 2 ? '🥈' : r.pos === 3 ? '🥉' : r.pos + '.'; return '<button class="seq-rk-l' + (r.eu ? ' eu' : '') + '" data-a="perfil-ver" data-id="' + r.user_id + '"><span class="seq-rk-p">' + med + '</span>' + avHtml(r.user_id, r.nome || 'Membro') + '<span class="seq-rk-n">' + esc(r.eu ? 'Eu' : (r.nome || 'Membro')) + '</span><span class="seq-rk-d">' + rpFmt(r.total) + ' RP</span></button>'; };
+  return cab + (top.length ? '<div class="seq-rk-ls">' + top.map(linha).join('') + (eu && top.indexOf(eu) < 0 ? '<div class="seq-rk-sep">…</div>' + linha(eu) : '') + '</div>' : '') +
+    '<p class="seq-rk-v">' + (eu ? '' : 'Ainda não tem pontos. ') + 'Cada 7 dias seguidos de estudo valem <b>+20 RP</b>.</p></div>';
 }
 
 /* ---------- PÁGINA DE BOAS-VINDAS: escolha do grau académico ---------- */
@@ -7311,9 +7315,10 @@ var RP_TABELA = [
   ['explicacao', 'Disponibilizar uma explicação', 50, 'Explicações disponibilizadas'],
   ['avaliacao', 'Receber avaliação positiva numa explicação', 15, 'Explicações disponibilizadas'],
   ['novo_membro', 'Ajudar um novo membro', 10, 'Participação na comunidade'],
-  ['desafio', 'Participar num desafio jurídico', 5, 'Participação na comunidade']
+  ['desafio', 'Participar num desafio jurídico', 5, 'Participação na comunidade'],
+  ['sequencia', 'Completar 7 dias seguidos de estudo', 20, 'Participação na comunidade']
 ];
-var RP_TIPO_LBL = { resposta: 'Respondeu a uma dúvida', util: 'Resposta considerada útil', material: 'Partilhou materiais', explicacao: 'Disponibilizou explicações', avaliacao: 'Avaliação positiva como explicador', novo_membro: 'Ajudou um novo membro', desafio: 'Participou na pergunta do dia' };
+var RP_TIPO_LBL = { resposta: 'Respondeu a uma dúvida', util: 'Resposta considerada útil', material: 'Partilhou materiais', explicacao: 'Disponibilizou explicações', avaliacao: 'Avaliação positiva como explicador', novo_membro: 'Ajudou um novo membro', desafio: 'Participou na pergunta do dia', sequencia: '7 dias seguidos de estudo' };
 var RP = { tot: {}, fila: {}, t: null, res: null, rank: null, util: {}, av: {}, avFila: {}, avT: null, ultimo: null };
 
 function rpNivel(p) { p = Number(p) || 0; var i = 0; RP_NIVEIS.forEach(function (n, k) { if (p >= n.min) i = k; }); return { i: i, n: RP_NIVEIS[i], prox: RP_NIVEIS[i + 1] || null }; }
@@ -7411,7 +7416,7 @@ function rpCategorias(t) {
     ['Explicações disponibilizadas', I.users, g('explicacao').p + g('avaliacao').p, g('explicacao').n ? 'Perfil de explicador ativo · ' + plural(g('avaliacao').n, 'recomendação', 'recomendações') : 'Ainda não é explicador'],
     ['Materiais partilhados', I.note, g('material').p, plural(g('material').n, 'publicação', 'publicações')],
     ['Perguntas respondidas', I.chat, g('resposta').p + g('util').p, plural(g('resposta').n, 'resposta', 'respostas') + ' · ' + plural(g('util').n, 'útil', 'úteis')],
-    ['Participação na comunidade', I.door, g('novo_membro').p + g('desafio').p, plural(g('desafio').n, 'desafio', 'desafios') + ' · ' + plural(g('novo_membro').n, 'novo membro ajudado', 'novos membros ajudados')],
+    ['Participação na comunidade', I.door, g('novo_membro').p + g('desafio').p + g('sequencia').p, plural(g('desafio').n, 'desafio', 'desafios') + (g('sequencia').n ? ' · ' + plural(g('sequencia').n, 'semana seguida', 'semanas seguidas') : '') + ' · ' + plural(g('novo_membro').n, 'novo membro ajudado', 'novos membros ajudados')],
     ['Conquistas académicas', I.badge, null, conq.filter(function (c) { return c[2]; }).length + ' de ' + conq.length + ' medalhas']
   ];
 }
