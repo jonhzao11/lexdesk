@@ -1510,6 +1510,41 @@ span.rp-util{cursor:default}
 .cadp-r:hover .cadp-x,.cadp-x:focus{opacity:1}.cadp-x:hover{background:#FBECEE;color:#B42318}
 @media (hover:none){.cadp-x{opacity:.7}}
 .cadp-rep{font-size:13px;color:var(--muted);margin:12px 0 0}.cadp-rep .lk{border:0;background:none;padding:0;color:#7B1E2B;text-decoration:underline;cursor:pointer;font:inherit}
+/* ----- folha ao estilo do Word ----- */
+.au-rib{flex-direction:column;align-items:stretch;gap:2px;padding:6px 8px}
+.au-rib-r{display:flex;flex-wrap:wrap;align-items:center;gap:2px}
+.au-rib-r+.au-rib-r{border-top:1px solid var(--line);padding-top:3px}
+.au-tool2{top:auto;position:relative;margin-top:-4px}
+.au-rib .au-fb{padding:6px 8px;min-width:30px;font-size:13px;line-height:1}
+.au-rib .au-fb sup{font-size:9px}
+.au-sel{height:30px;border:1px solid var(--line);border-radius:8px;background:#fff;font:500 12.5px var(--sans);color:var(--ink);padding:0 6px;cursor:pointer}
+.au-sel-est{width:104px}.au-sel-f{width:132px}.au-sel-t{width:62px}.au-sel-e{width:92px}
+.au-pop{position:relative;display:inline-flex}
+.au-pop-m{display:none;position:absolute;top:calc(100% + 4px);left:0;z-index:30;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 14px 34px -12px rgba(15,23,42,.3);padding:8px}
+.au-pop-m.open{display:grid}
+.au-pal{grid-template-columns:repeat(6,22px);gap:5px}
+.au-pal button{width:22px;height:22px;border-radius:6px;border:1px solid rgba(0,0,0,.12);cursor:pointer;padding:0}
+.au-pal button:hover{transform:scale(1.12)}
+.au-pal-x{background:#fff!important;font:700 11px var(--sans);color:var(--muted)}
+.au-sim{grid-template-columns:repeat(6,auto);gap:4px}
+.au-sim button{border:1px solid var(--line);background:#fff;border-radius:6px;padding:4px 7px;font:600 13px var(--serif);cursor:pointer}.au-sim button:hover{background:#F4F6FA}
+.au-cor{display:inline-flex;align-items:center;gap:2px;position:relative}
+.au-cbar{position:absolute;left:8px;right:22px;bottom:3px;height:3px;border-radius:2px;background:#B91C1C}
+#au-palr-bar{background:#FFF1A8}
+.au-ca{font:800 14px var(--serif)}.au-ra{font:700 12px var(--sans);background:#FFF1A8;padding:0 2px;border-radius:2px}
+.au-lf{font:700 13px var(--serif);text-decoration:line-through}
+.au-zoom{font:600 12px var(--sans);color:var(--muted);min-width:38px;text-align:center}
+.au-est{width:min(820px,calc(100% - 40px));margin:8px auto 0;font:500 12px var(--sans);color:var(--muted);display:flex;justify-content:flex-end}
+.au-folha h2{font:800 24px/1.35 var(--serif);margin:22px 0 10px;color:var(--navy)}
+.au-folha h4{font:700 17px/1.4 var(--serif);margin:14px 0 6px;color:#374151}
+.au-folha blockquote{margin:10px 0 10px 18px;padding:4px 0 4px 14px;border-left:3px solid #C9CEDA;color:#4B5563;font-style:italic}
+.au-folha table{border-collapse:collapse;margin:10px 0;width:100%}
+.au-folha td,.au-folha th{border:1px solid #C9CEDA;padding:6px 8px;vertical-align:top;min-width:40px}
+.au-folha th{background:#F4F6FA;font-weight:700;text-align:left}
+.au-folha hr{border:0;border-top:1px solid #C9CEDA;margin:14px 0}
+.au-folha a{color:#1E4C86;text-decoration:underline}
+.au-folha ol{padding-left:26px}
+.au-papel{flex-direction:column;align-items:center}.au-folha{flex:none}
 
 </style>
 </head>
@@ -7817,14 +7852,21 @@ function auAulaAgora() {
   return prox ? { a: prox, agora: false } : null;
 }
 /* ----- a folha (HTML limpo) ----- */
-var AU_OK_TAGS = { P: 1, H3: 1, UL: 1, OL: 1, LI: 1, B: 1, STRONG: 1, I: 1, EM: 1, U: 1, MARK: 1, BR: 1, IMG: 1, SPAN: 1, DIV: 1 };
+var AU_OK_TAGS = { P: 1, H2: 1, H3: 1, H4: 1, BLOCKQUOTE: 1, UL: 1, OL: 1, LI: 1, B: 1, STRONG: 1, I: 1, EM: 1, U: 1, S: 1, STRIKE: 1, SUB: 1, SUP: 1, MARK: 1, BR: 1, HR: 1, IMG: 1, SPAN: 1, DIV: 1, A: 1, TABLE: 1, THEAD: 1, TBODY: 1, TR: 1, TD: 1, TH: 1 };
+var AU_CSS_OK = ['color', 'background-color', 'font-family', 'font-size', 'text-align', 'line-height', 'margin-left', 'padding-left', 'text-decoration-line', 'font-weight', 'font-style', 'vertical-align'];
 function auLimpar(html) {
   var doc = new DOMParser().parseFromString('<div>' + (html || '') + '</div>', 'text/html'), raiz = doc.body.firstChild;
   (function walk(el) {
     [].slice.call(el.childNodes).forEach(function (n) {
       if (n.nodeType === 3) return;
       if (n.nodeType !== 1 || !AU_OK_TAGS[n.tagName]) { if (n.nodeType === 1 && !/SCRIPT|STYLE|IFRAME|OBJECT/.test(n.tagName)) { walk(n); while (n.firstChild) el.insertBefore(n.firstChild, n); } el.removeChild(n); return; }
+      var st = n.getAttribute('style'), css = '';
+      if (st) { var tmp = doc.createElement('span'); tmp.setAttribute('style', st); AU_CSS_OK.forEach(function (k) { var v = tmp.style.getPropertyValue(k); if (v && !/url\(|expression/i.test(v)) css += k + ':' + v + ';'; }); }
+      var href = n.tagName === 'A' ? n.getAttribute('href') : null, cs = n.getAttribute('colspan');
       [].slice.call(n.attributes).forEach(function (a) { if (!/^(data-t|data-tm|data-tag|data-foto|alt)$/.test(a.name)) n.removeAttribute(a.name); });
+      if (css) n.setAttribute('style', css);
+      if (href && /^(https?:|mailto:)/i.test(href)) { n.setAttribute('href', href); n.setAttribute('target', '_blank'); n.setAttribute('rel', 'noopener'); }
+      if (cs && /^\d+$/.test(cs)) n.setAttribute('colspan', cs);
       if (n.tagName === 'MARK') n.setAttribute('data-x', '1');
       walk(n);
     });
@@ -7840,7 +7882,7 @@ function auNotasDe(s) {
   return [].map.call(doc.querySelectorAll('[data-t]'), function (b) { return { t: Number(b.getAttribute('data-t')) || 0, tag: b.getAttribute('data-tag') || null, txt: (b.innerText || b.textContent || '').trim(), foto: b.querySelector('img[data-foto]') ? b.querySelector('img[data-foto]').getAttribute('data-foto') : null }; }).filter(function (x) { return x.txt || x.foto; });
 }
 function auFolhaEl() { return document.getElementById('au-folha'); }
-function auBlocos(el) { return [].slice.call(el.querySelectorAll(':scope > p, :scope > h3, :scope > div, :scope > ul > li, :scope > ol > li')); }
+function auBlocos(el) { return [].slice.call(el.querySelectorAll(':scope > p, :scope > h2, :scope > h3, :scope > h4, :scope > blockquote, :scope > div, :scope > ul > li, :scope > ol > li')); }
 function auCarimbar() {
   var el = auFolhaEl(), s = auAtual(); if (!el || !s) return;
   if (!el.firstChild) el.innerHTML = '<p><br></p>';
@@ -7853,7 +7895,7 @@ function auGuardarFolha(agora) {
   var fazer = function () {
     var el = auFolhaEl(), s = auAtual(); if (!el || !s || el.getAttribute('data-sess') !== s.id) return;
     var html = auLimpar(el.innerHTML); if (html === s.folha) return;
-    s.folha = html; s.notas = auNotasDe(s); s.updatedAt = Date.now();
+    s.folha = html; s.notas = auNotasDe(s); s.updatedAt = Date.now(); var ce = document.getElementById('au-est'); if (ce) ce.innerHTML = auContagem();
     Store.data[s.id] = s; Store.saveLocal();
     if (Store.mode === 'cloud' && Store.col) Store.col.doc(s.id).set(s).catch(Store.cloudFail);
     var g = $('#au-gravado'); if (g) { g.textContent = 'Guardado'; g.classList.add('ok'); }
@@ -7895,11 +7937,10 @@ function vAulaSessao(s, vivo) {
     (segs.length ? '<div class="card au-grav"><h2 style="font-size:16px">Gravação</h2>' + segs.map(function (m, i) { return '<div class="au-seg"><span>' + (segs.length > 1 ? 'Parte ' + (i + 1) + ' · ' : '') + 'a partir de ' + auT(m.t) + '</span><audio controls preload="metadata" id="aud-' + m.id + '" src="' + auUrl(m) + '"></audio></div>'; }).join('') + '<span class="au-nota-p">Clique no minuto à esquerda de um parágrafo para ouvir a gravação a partir desse momento.</span></div>' : (s.segs || []).length ? '<div class="note">Esta aula foi gravada noutro dispositivo. As gravações ficam guardadas apenas no dispositivo onde foram feitas.</div>' : '');
   var bt = function (cmd, lbl, tit) { return '<button class="au-fb" data-a="au-cmd" data-id="' + cmd + '" title="' + tit + '">' + lbl + '</button>'; };
   h += '<div class="au-grid"><div class="au-main">' +
-    '<div class="au-tool" role="toolbar" aria-label="Formatação">' + bt('bold', '<b>N</b>', 'Negrito (Ctrl+B)') + bt('italic', '<i>I</i>', 'Itálico (Ctrl+I)') + bt('underline', '<u>S</u>', 'Sublinhado (Ctrl+U)') + bt('h3', 'Título', 'Título de secção') + bt('ul', '• Lista', 'Lista') + bt('mark', '<mark>Realce</mark>', 'Realçar texto') +
-    '<span class="au-sep"></span>' + ['exame', 'duvida', 'artigo', 'def'].map(function (k, i) { return '<button class="au-fb tg" data-a="au-tag" data-id="' + k + '" title="Marcar o parágrafo atual (Ctrl+' + (i + 1) + ')">' + AU_TAGS[k][0] + ' ' + AU_TAGS[k][1] + '</button>'; }).join('') + (vivo ? '<button class="au-fb tg" data-a="au-marca" title="Marcar este momento da aula">🔖 Momento</button>' : '') +
+    '<div class="au-tool au-rib" role="toolbar" aria-label="Formatação">' + auRibbon() + '</div><div class="au-tool au-tool2" role="toolbar" aria-label="Marcas e descarregar">' + ['exame', 'duvida', 'artigo', 'def'].map(function (k, i) { return '<button class="au-fb tg" data-a="au-tag" data-id="' + k + '" title="Marcar o parágrafo atual (Ctrl+' + (i + 1) + ')">' + AU_TAGS[k][0] + ' ' + AU_TAGS[k][1] + '</button>'; }).join('') + (vivo ? '<button class="au-fb tg" data-a="au-marca" title="Marcar este momento da aula">🔖 Momento</button>' : '') +
     '<span class="au-sep"></span><div class="au-dl"><button class="au-fb dl" data-a="au-dl-menu">⬇ Descarregar</button><div class="au-dl-m" id="au-dl-m"><button data-a="au-dl" data-id="doc">📄 Word (.doc)</button><button data-a="au-dl" data-id="pdf">🖨 PDF / imprimir</button><button data-a="au-dl" data-id="txt">📝 Texto (.txt)</button></div></div></div>' +
     (vivo ? '' : '<div class="est-ts au-filt">' + [['todas', 'Tudo']].concat(Object.keys(AU_TAGS).map(function (k) { return [k, AU_TAGS[k][0] + ' ' + AU_TAGS[k][1]]; })).map(function (t) { return '<button class="est-t' + (f === t[0] ? ' on' : '') + '" data-a="au-filtro" data-id="' + t[0] + '"><span>' + t[1] + '</span></button>'; }).join('') + '</div>') +
-    '<div class="au-papel"><span class="au-gravado ok" id="au-gravado">Guardado</span><div class="au-folha' + (f !== 'todas' && !vivo ? ' f-' + f : '') + (vivo ? '' : ' rev') + '" id="au-folha" data-sess="' + s.id + '" contenteditable="true" spellcheck="true" lang="pt-PT" data-ph="Comece a escrever… Ao gravar, cada parágrafo fica com o minuto da aula na margem.">' + (auFolhaHtml(s) || '<p><br></p>') + '</div></div></div>' +
+    '<div class="au-papel"><span class="au-gravado ok" id="au-gravado">Guardado</span><div class="au-folha' + (f !== 'todas' && !vivo ? ' f-' + f : '') + (vivo ? '' : ' rev') + '" id="au-folha" data-sess="' + s.id + '" contenteditable="true" spellcheck="true" lang="pt-PT" data-ph="Comece a escrever… Ao gravar, cada parágrafo fica com o minuto da aula na margem.">' + (auFolhaHtml(s) || '<p><br></p>') + '</div><div class="au-est" id="au-est">' + auContagem() + '</div></div></div>' +
     '<aside class="au-side">' + '<div class="card au-lei" id="au-lei">' + auLeiHtml() + '</div>' + '<div class="card au-res" id="au-res">' + auResumoHtml(s) + '</div>' +
     (vivo ? '<div class="card au-trans"><div class="row" style="justify-content:space-between"><h2 style="font-size:16px">Transcrição</h2>' + (sr ? '<span class="chip ok">a ouvir</span>' : '') + '</div><div id="au-trans-l" class="au-trans-l">' + auTransHtml() + '</div><span class="au-nota-p">' + (auSrOk() ? 'Usa o reconhecimento de voz do navegador, que pode enviar o áudio ao fornecedor do navegador para ser processado.' : 'O seu navegador não suporta transcrição em direto. Experimente o Google Chrome ou o Microsoft Edge.') + '</span></div><div class="note au-legal">Só grave com autorização do docente e dos presentes. As gravações e fotografias ficam apenas neste dispositivo.</div>' : '') +
     '</aside></div>';
@@ -8028,7 +8069,7 @@ function auOuvir(t) {
 /* ----- descarregar a folha ----- */
 function auDocHtml(s) {
   var corpo = auLimpar(auFolhaEl() ? auFolhaEl().innerHTML : auFolhaHtml(s)).replace(/<p([^>]*)data-tm="([^"]*)"([^>]*)>/g, '<p$1$3><span class="tm">[$2]</span> ').replace(/<img[^>]*>/g, '<em>[fotografia da aula]</em>');
-  return '<!DOCTYPE html><html lang="pt-PT"><head><meta charset="utf-8"><title>' + esc(s.cad) + '</title><style>body{font-family:Calibri,Arial,sans-serif;font-size:12pt;line-height:1.5;max-width:720px;margin:40px auto;color:#111}h1{font-size:18pt;margin:0}h2{font-size:11pt;color:#666;font-weight:normal;margin:4px 0 24px}h3{font-size:13pt;margin:18px 0 6px}.tm{color:#999;font-size:9pt}mark{background:#fff1a8}p[data-tag="exame"]{border-left:3px solid #c9a45c;padding-left:8px}p[data-tag="duvida"]{border-left:3px solid #b23a48;padding-left:8px}</style></head><body><h1>' + esc(s.cad) + '</h1><h2>Aula de ' + new Date(s.ini).toLocaleDateString('pt-PT', { day: 'numeric', month: 'long', year: 'numeric' }) + ' · apontamentos LEXDESK</h2>' + corpo + '</body></html>';
+  return '<!DOCTYPE html><html lang="pt-PT"><head><meta charset="utf-8"><title>' + esc(s.cad) + '</title><style>body{font-family:Calibri,Arial,sans-serif;font-size:12pt;line-height:1.5;max-width:720px;margin:40px auto;color:#111}h1{font-size:18pt;margin:0}h2.sub{font-size:11pt;color:#666;font-weight:normal;margin:4px 0 24px}h2{font-size:15pt;margin:20px 0 8px}h3{font-size:13pt;margin:18px 0 6px}h4{font-size:12pt;margin:14px 0 4px}blockquote{margin:8px 0 8px 18px;padding-left:12px;border-left:3px solid #bbb;color:#444}table{border-collapse:collapse;margin:8px 0}td,th{border:1px solid #999;padding:4px 8px;vertical-align:top}.tm{color:#999;font-size:9pt}mark{background:#fff1a8}p[data-tag="exame"]{border-left:3px solid #c9a45c;padding-left:8px}p[data-tag="duvida"]{border-left:3px solid #b23a48;padding-left:8px}</style></head><body><h1>' + esc(s.cad) + '</h1><h2 class="sub">Aula de ' + new Date(s.ini).toLocaleDateString('pt-PT', { day: 'numeric', month: 'long', year: 'numeric' }) + ' · apontamentos LEXDESK</h2>' + corpo + '</body></html>';
 }
 function auTexto(s) { return s.cad + ' — aula de ' + new Date(s.ini).toLocaleDateString('pt-PT') + '\n\n' + auNotasDe({ folha: auFolhaEl() ? auLimpar(auFolhaEl().innerHTML) : auFolhaHtml(s) }).filter(function (x) { return x.txt; }).map(function (x) { return '[' + auT(x.t) + '] ' + (x.tag ? AU_TAGS[x.tag][0] + ' ' : '') + x.txt; }).join('\n'); }
 A['au-dl'] = function (el) {
@@ -8164,6 +8205,125 @@ setTimeout(function () {
     else if (!S.auSess) { S.auSess = s.id; auTick(); }
   });
 }, 1500);
+
+/* ----- folha ao estilo do Word: friso de ferramentas ----- */
+var AU_FONTES = [['', 'Predefinida'], ['Calibri, Carlito, Arial, sans-serif', 'Calibri'], ['Arial, Helvetica, sans-serif', 'Arial'], ['"Times New Roman", Times, serif', 'Times New Roman'], ['Georgia, serif', 'Georgia'], ['Garamond, "EB Garamond", serif', 'Garamond'], ['Verdana, sans-serif', 'Verdana'], ['"Courier New", monospace', 'Courier New']];
+var AU_TAMS = [8, 9, 10, 11, 12, 14, 16, 18, 20, 24, 28, 36];
+var AU_CORES = ['#111827', '#4B5563', '#9CA3AF', '#7B1E2B', '#B91C1C', '#C2410C', '#B45309', '#15803D', '#0E7490', '#1D4ED8', '#1E3A8A', '#6D28D9'];
+var AU_REALCES = ['#FFF1A8', '#BBF7D0', '#BAE6FD', '#FBCFE8', '#FED7AA', '#E9D5FF'];
+function auRibbon() {
+  var b = function (c, lbl, tit, v) { return '<button class="au-fb" data-a="au-w" data-id="' + c + '"' + (v != null ? ' data-v="' + v + '"' : '') + ' title="' + tit + '" aria-label="' + tit + '">' + lbl + '</button>'; };
+  var sep = '<span class="au-sep"></span>';
+  var pal = function (id, cores, tit, ic, cmd) { return '<div class="au-pop"><button class="au-fb au-cor" data-a="au-pop" data-id="' + id + '" title="' + tit + '" aria-label="' + tit + '">' + ic + '<i class="au-cbar" id="' + id + '-bar"></i> ▾</button><div class="au-pop-m au-pal" id="' + id + '">' + cores.map(function (c) { return '<button data-a="au-w" data-id="' + cmd + '" data-v="' + c + '" style="background:' + c + '" title="' + c + '"></button>'; }).join('') + (cmd === 'realce' ? '<button class="au-pal-x" data-a="au-w" data-id="realce" data-v="none" title="Sem realce">✕</button>' : '<button class="au-pal-x" data-a="au-w" data-id="cor" data-v="" title="Automática">A</button>') + '</div></div>'; };
+  return '<div class="au-rib-r">' +
+    b('undo', '↶', 'Anular (Ctrl+Z)') + b('redo', '↷', 'Refazer (Ctrl+Y)') + sep +
+    '<select class="au-sel au-sel-est" data-w="estilo" title="Estilo"><option value="p">Normal</option><option value="h2">Título 1</option><option value="h3">Título 2</option><option value="h4">Título 3</option><option value="blockquote">Citação</option></select>' +
+    '<select class="au-sel au-sel-f" data-w="fonte" title="Tipo de letra">' + AU_FONTES.map(function (f) { return '<option value="' + esc(f[0]) + '">' + f[1] + '</option>'; }).join('') + '</select>' +
+    '<select class="au-sel au-sel-t" data-w="tam" title="Tamanho do tipo de letra"><option value="">Tam.</option>' + AU_TAMS.map(function (t) { return '<option value="' + t + '">' + t + '</option>'; }).join('') + '</select>' +
+    b('tamMais', 'A<sup>+</sup>', 'Aumentar tamanho') + b('tamMenos', 'A<sup>−</sup>', 'Diminuir tamanho') + sep +
+    b('bold', '<b>N</b>', 'Negrito (Ctrl+B)') + b('italic', '<i>I</i>', 'Itálico (Ctrl+I)') + b('underline', '<u>S</u>', 'Sublinhado (Ctrl+U)') + b('strikeThrough', '<s>abc</s>', 'Rasurado') + b('superscript', 'x²', 'Superior à linha') + b('subscript', 'x₂', 'Inferior à linha') + sep +
+    pal('au-palc', AU_CORES, 'Cor do tipo de letra', '<b class="au-ca">A</b>', 'cor') + pal('au-palr', AU_REALCES, 'Cor de realce do texto', '<span class="au-ra">ab</span>', 'realce') + b('limpar', '<span class="au-lf">A</span>⌫', 'Limpar toda a formatação') +
+    '</div><div class="au-rib-r">' +
+    b('justifyLeft', auIcAl('l'), 'Alinhar à esquerda') + b('justifyCenter', auIcAl('c'), 'Centrar') + b('justifyRight', auIcAl('r'), 'Alinhar à direita') + b('justifyFull', auIcAl('j'), 'Justificar') + sep +
+    b('insertUnorderedList', '•≡', 'Marcas') + b('insertOrderedList', '1.≡', 'Numeração') + b('outdent', '⇤', 'Diminuir avanço') + b('indent', '⇥', 'Aumentar avanço') +
+    '<select class="au-sel au-sel-e" data-w="espaco" title="Espaçamento entre linhas"><option value="">↕ Espaço</option><option value="1">1,0</option><option value="1.15">1,15</option><option value="1.5">1,5</option><option value="2">2,0</option></select>' + sep +
+    b('link', '🔗', 'Inserir ligação (Ctrl+K)') + b('tabela', '▦', 'Inserir tabela') + b('insertHorizontalRule', '―', 'Linha horizontal') +
+    '<div class="au-pop"><button class="au-fb" data-a="au-pop" data-id="au-ps" title="Inserir símbolo">§ ▾</button><div class="au-pop-m au-sim" id="au-ps">' + ['§', '§§', 'n.º', 'art.º', 'al.', '«»', '—', '…', 'º', 'ª', '€', '±', '→', '≠', '≤', '≥', '✓'].map(function (x) { return '<button data-a="au-w" data-id="simbolo" data-v="' + esc(x) + '">' + esc(x) + '</button>'; }).join('') + '</div></div>' + sep +
+    b('procurar', '🔍', 'Procurar e substituir (Ctrl+H)') + b('zoomMenos', '−', 'Reduzir zoom') + '<span class="au-zoom" id="au-zoom">' + Math.round((S.auZoom || 1) * 100) + '%</span>' + b('zoomMais', '+', 'Aumentar zoom') +
+    '</div>';
+}
+function auIcAl(t) { var w = { l: [14, 10, 14, 8], c: [14, 10, 14, 10], r: [14, 10, 14, 8], j: [14, 14, 14, 14] }[t], y = [3, 6, 9, 12]; return '<svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true">' + w.map(function (len, i) { var x = t === 'c' ? (16 - len) / 2 : t === 'r' ? 15 - len : 1; return '<rect x="' + x + '" y="' + y[i] + '" width="' + len + '" height="1.6" rx=".8" fill="currentColor"/>'; }).join('') + '</svg>'; }
+function auContagem() {
+  var el = auFolhaEl(), t = el ? (el.innerText || '') : '', p = (t.match(/[\wÀ-ÿ§ºª'-]+/g) || []).length;
+  return plural(p, 'palavra', 'palavras') + ' · ' + plural(t.replace(/\s/g, '').length, 'carácter', 'caracteres') + ' · Português (Portugal)';
+}
+/* guardar a seleção da folha, para os menus e listas não a perderem */
+document.addEventListener('selectionchange', function () { var el = auFolhaEl(), sel = window.getSelection(); if (el && sel && sel.rangeCount && el.contains(sel.anchorNode)) AU.rng = sel.getRangeAt(0).cloneRange(); });
+function auRepor() { var el = auFolhaEl(); if (!el) return null; el.focus(); if (AU.rng && el.contains(AU.rng.startContainer)) { var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(AU.rng); } return el; }
+function auFeito() { auCarimbar(); auGuardarFolha(); var r = document.querySelectorAll('.au-pop-m.open'); [].forEach.call(r, function (m) { m.classList.remove('open'); }); }
+function auTam(pt) {
+  var el = auRepor(); if (!el) return; var sel = window.getSelection(); if (!sel || sel.isCollapsed) { toast('Selecione o texto.'); return; }
+  document.execCommand('styleWithCSS', false, false); document.execCommand('fontSize', false, '7');
+  [].forEach.call(el.querySelectorAll('font[size="7"]'), function (f) { var sp = document.createElement('span'); sp.style.fontSize = pt + 'pt'; sp.innerHTML = f.innerHTML; [].forEach.call(sp.querySelectorAll('span'), function (x) { x.style.fontSize = ''; }); f.parentNode.replaceChild(sp, f); });
+  auFeito();
+}
+function auTamAtual() { var sel = window.getSelection(), n = sel && sel.anchorNode; if (!n) return 12; if (n.nodeType === 3) n = n.parentNode; var px = parseFloat(getComputedStyle(n).fontSize) || 16; return Math.round(px * 0.75); }
+A['au-pop'] = function (el) { var m = document.getElementById(el.dataset.id); if (!m) return; var ab = m.classList.contains('open'); [].forEach.call(document.querySelectorAll('.au-pop-m.open'), function (x) { x.classList.remove('open'); }); if (!ab) m.classList.add('open'); };
+A['au-w'] = function (b) {
+  var c = b.dataset.id, v = b.dataset.v, el;
+  if (c === 'zoomMais' || c === 'zoomMenos') { S.auZoom = Math.max(.6, Math.min(1.8, Math.round(((S.auZoom || 1) + (c === 'zoomMais' ? .1 : -.1)) * 10) / 10)); var f0 = auFolhaEl(); if (f0) f0.style.zoom = S.auZoom; var z = $('#au-zoom'); if (z) z.textContent = Math.round(S.auZoom * 100) + '%'; return; }
+  if (c === 'procurar') { auProcurar(); return; }
+  if (c === 'tabela') { auTabelaModal(); return; }
+  if (c === 'link') { auLinkModal(); return; }
+  el = auRepor(); if (!el) return;
+  if (c === 'tamMais' || c === 'tamMenos') { var t = auTamAtual(), i = AU_TAMS.indexOf(t), nx = c === 'tamMais' ? (AU_TAMS.filter(function (x) { return x > t; })[0] || 72) : (AU_TAMS.filter(function (x) { return x < t; }).pop() || 8); auTam(nx); return; }
+  if (c === 'cor') { document.execCommand('styleWithCSS', false, true); document.execCommand('foreColor', false, v || '#1f2430'); var cb = $('#au-palc-bar'); if (cb && v) { cb.style.background = v; AU.cor = v; } auFeito(); return; }
+  if (c === 'realce') { document.execCommand('styleWithCSS', false, true); document.execCommand('hiliteColor', false, v === 'none' ? 'transparent' : v); var rb = $('#au-palr-bar'); if (rb && v !== 'none') rb.style.background = v; auFeito(); return; }
+  if (c === 'limpar') { document.execCommand('removeFormat'); document.execCommand('unlink'); var bl = auBlocoAtual(); if (bl && /^(H2|H3|H4|BLOCKQUOTE)$/.test(bl.tagName)) document.execCommand('formatBlock', false, 'p'); auFeito(); return; }
+  if (c === 'simbolo') { document.execCommand('insertText', false, v === '«»' ? '«»' : v); auFeito(); return; }
+  if (/^justify/.test(c)) document.execCommand('styleWithCSS', false, true);
+  document.execCommand(c, false, null); document.execCommand('styleWithCSS', false, false); auFeito();
+};
+document.addEventListener('change', function (ev) {
+  var t = ev.target; if (!t || !t.dataset || !t.dataset.w || !t.closest('.au-rib')) return;
+  var w = t.dataset.w, v = t.value, el = auRepor(); if (!el) return;
+  if (w === 'estilo') { var bl = auBlocoAtual(); document.execCommand('formatBlock', false, bl && bl.tagName.toLowerCase() === v ? 'p' : v); auFeito(); }
+  else if (w === 'fonte') { document.execCommand('styleWithCSS', false, true); document.execCommand('fontName', false, v || 'inherit'); document.execCommand('styleWithCSS', false, false); auFeito(); }
+  else if (w === 'tam' && v) auTam(Number(v));
+  else if (w === 'espaco' && v) { var sel = window.getSelection(), bs = auBlocos(el).filter(function (x) { return sel.containsNode(x, true); }); if (!bs.length) { var b1 = auBlocoAtual(); if (b1) bs = [b1]; } bs.forEach(function (x) { x.style.lineHeight = v; }); auFeito(); }
+  t.value = t.dataset.w === 'estilo' ? (auBlocoAtual() ? auBlocoAtual().tagName.toLowerCase().replace(/^(?!h2|h3|h4|blockquote).*/, 'p') : 'p') : '';
+});
+/* refletir o estilo do bloco atual no seletor, como no Word */
+document.addEventListener('selectionchange', function () { var s0 = document.querySelector('.au-sel-est'); if (!s0) return; var b = auBlocoAtual(); if (!b) return; var tg = b.tagName.toLowerCase(); s0.value = /^(h2|h3|h4|blockquote)$/.test(tg) ? tg : 'p'; });
+document.addEventListener('mousedown', function (ev) { if (!ev.target.closest || ev.target.closest('.au-pop')) return; [].forEach.call(document.querySelectorAll('.au-pop-m.open'), function (x) { x.classList.remove('open'); }); });
+/* impedir que os botões do friso roubem a seleção */
+document.addEventListener('mousedown', function (ev) { var b = ev.target.closest && ev.target.closest('.au-rib button'); if (b) ev.preventDefault(); });
+document.addEventListener('keydown', function (ev) {
+  if (!auFolhaEl() || !(ev.ctrlKey || ev.metaKey)) return;
+  var k = ev.key.toLowerCase();
+  if (k === 'h' || (k === 'f' && document.activeElement === auFolhaEl())) { ev.preventDefault(); auProcurar(); }
+  else if (k === 'k' && document.activeElement === auFolhaEl()) { ev.preventDefault(); auLinkModal(); }
+  else if (k === 'e' && document.activeElement === auFolhaEl()) { ev.preventDefault(); A['au-w']({ dataset: { id: 'justifyCenter' } }); }
+  else if (k === 'j' && document.activeElement === auFolhaEl()) { ev.preventDefault(); A['au-w']({ dataset: { id: 'justifyFull' } }); }
+});
+function auLinkModal() {
+  var sel = window.getSelection(), txt = sel && !sel.isCollapsed ? String(sel) : '';
+  openModal('Inserir ligação', '<label class="f">Texto a mostrar<input class="in" id="au-lk-t" value="' + esc(txt) + '" placeholder="Ex.: Acórdão do STJ"></label><label class="f">Endereço<input class="in" id="au-lk-u" placeholder="https://"></label>', '<button class="btn" data-a="close">Cancelar</button><button class="btn pri" data-a="au-lk-ok">Inserir</button>');
+  setTimeout(function () { var u = $('#au-lk-u'); if (u) u.focus(); }, 50);
+}
+A['au-lk-ok'] = function () {
+  var u = ($('#au-lk-u').value || '').trim(), t = ($('#au-lk-t').value || '').trim(); if (!u) { toast('Indique o endereço.'); return; }
+  if (!/^(https?:|mailto:)/i.test(u)) u = 'https://' + u; closeModal(); var el = auRepor(); if (!el) return;
+  document.execCommand('insertHTML', false, '<a href="' + esc(u) + '" target="_blank" rel="noopener">' + esc(t || u) + '</a>&nbsp;'); auFeito();
+};
+function auTabelaModal() {
+  openModal('Inserir tabela', '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><label class="f">Colunas<input class="in" id="au-tb-c" type="number" min="1" max="8" value="3"></label><label class="f">Linhas<input class="in" id="au-tb-l" type="number" min="1" max="30" value="3"></label></div><label class="f" style="flex-direction:row;align-items:center;gap:8px"><input type="checkbox" id="au-tb-h" checked> Primeira linha como cabeçalho</label>', '<button class="btn" data-a="close">Cancelar</button><button class="btn pri" data-a="au-tb-ok">Inserir</button>');
+}
+A['au-tb-ok'] = function () {
+  var c = Math.max(1, Math.min(8, Number($('#au-tb-c').value) || 3)), l = Math.max(1, Math.min(30, Number($('#au-tb-l').value) || 3)), h = $('#au-tb-h').checked; closeModal();
+  var row = function (th) { var x = '<tr>'; for (var j = 0; j < c; j++) x += th ? '<th><br></th>' : '<td><br></td>'; return x + '</tr>'; };
+  var html = '<table><tbody>'; for (var i = 0; i < l; i++) html += row(h && i === 0); html += '</tbody></table><p><br></p>';
+  var el = auRepor(); if (!el) return; document.execCommand('insertHTML', false, html); auFeito();
+};
+function auProcurar() {
+  var sel = window.getSelection(), txt = sel && !sel.isCollapsed && auFolhaEl() && auFolhaEl().contains(sel.anchorNode) ? String(sel).slice(0, 80) : '';
+  openModal('Procurar e substituir', '<label class="f">Procurar<input class="in" id="au-pq" value="' + esc(txt) + '"></label><label class="f">Substituir por<input class="in" id="au-ps2"></label><label class="f" style="flex-direction:row;align-items:center;gap:8px"><input type="checkbox" id="au-pm"> Maiúsculas e minúsculas</label><p class="au-pr" id="au-pr" style="margin:0;font-size:13px;color:var(--muted)"></p>',
+    '<button class="btn" data-a="au-pq-ok">Procurar</button><button class="btn" data-a="au-ps-ok">Substituir tudo</button><button class="btn pri" data-a="close">Fechar</button>');
+  setTimeout(function () { var q = $('#au-pq'); if (q) { q.focus(); q.select(); } }, 50);
+}
+function auTextos(el) { var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), l = [], n; while ((n = w.nextNode())) l.push(n); return l; }
+function auRe(q, mm) { return new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), mm ? 'g' : 'gi'); }
+A['au-pq-ok'] = function () {
+  var q = $('#au-pq').value, el = auFolhaEl(); if (!q || !el) return; var re = auRe(q, $('#au-pm').checked), nos = auTextos(el), n = 0, prim = null;
+  nos.forEach(function (t) { var m = t.nodeValue.match(re); if (m) { n += m.length; if (!prim) { re.lastIndex = 0; var i = t.nodeValue.search(re); prim = [t, i, i + q.length]; } } });
+  $('#au-pr').textContent = n ? plural(n, 'ocorrência encontrada', 'ocorrências encontradas') + '.' : 'Não encontrado.';
+  if (prim) { var r = document.createRange(); r.setStart(prim[0], prim[1]); r.setEnd(prim[0], prim[2]); var s0 = window.getSelection(); s0.removeAllRanges(); s0.addRange(r); AU.rng = r.cloneRange(); var b = prim[0].parentNode; if (b && b.scrollIntoView) b.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+};
+A['au-ps-ok'] = function () {
+  var q = $('#au-pq').value, rpl = $('#au-ps2').value, el = auFolhaEl(); if (!q || !el) return; var re = auRe(q, $('#au-pm').checked), n = 0;
+  auTextos(el).forEach(function (t) { var v = t.nodeValue, nv = v.replace(re, function () { n++; return rpl; }); if (nv !== v) t.nodeValue = nv; });
+  $('#au-pr').textContent = n ? plural(n, 'substituição feita', 'substituições feitas') + '.' : 'Não encontrado.'; if (n) auGuardarFolha();
+};
 
 /* ---------- TEXTO INTEGRAL DA LEGISLAÇÃO (versões consolidadas do Diário da República) ---------- */
 var LEI = { meta: null, metaP: null, art: {}, ord: {}, toc: {}, tocP: {} };
