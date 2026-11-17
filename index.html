@@ -1197,6 +1197,35 @@ span.rp-util{cursor:default}
 .rep-m{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;cursor:pointer;font-size:14px}
 .rep-m:has(input:checked){border-color:#7B1E2B;background:#FBF5F6}
 @media (max-width:700px){.est-tot{align-items:flex-start;text-align:left}}
+/* ----- flashcards ----- */
+.fc-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.fc-stats div{display:flex;flex-direction:column;gap:2px;padding:16px 18px;border-radius:18px;background:#fff;border:1px solid var(--line);box-shadow:var(--sh1)}
+.fc-stats div:first-child{background:linear-gradient(135deg,#7B1E2B,#4A0F1A);border-color:transparent}
+.fc-stats div:first-child b,.fc-stats div:first-child span{color:#fff}
+.fc-stats b{font:800 30px/1 var(--serif);color:var(--ink)}.fc-stats span{font-size:12.5px;color:var(--muted)}
+.fc-due{background:#B23A48!important;color:#fff!important}
+.fc-top{display:flex;align-items:center;gap:14px;font:700 13px var(--sans);color:var(--muted)}
+.fc-wrap{perspective:1400px;display:flex;justify-content:center}
+.fc-card{position:relative;width:min(760px,100%);min-height:320px;border:0;padding:0;background:none;cursor:pointer;transform-style:preserve-3d;transition:transform .55s var(--ease,ease)}
+.fc-card.vir{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px 40px;border-radius:24px;backface-visibility:hidden;text-align:center;box-shadow:0 24px 50px -28px rgba(15,27,45,.5)}
+.fc-fr{background:#fff;border:1px solid var(--line)}
+.fc-vs{transform:rotateY(180deg);background:radial-gradient(500px 240px at 50% 0%,rgba(240,207,122,.2),transparent 70%),linear-gradient(135deg,#13233A,#0B1424);color:#fff}
+.fc-tag{font:800 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#9A5B00}
+.fc-vs .fc-tag{color:#F3D58A}
+.fc-q{font:700 22px/1.4 var(--serif);color:var(--ink)}
+.fc-hint{font-size:12.5px;color:var(--muted)}
+.fc-a{font:800 22px/1.35 var(--serif);color:#fff}
+.fc-e{font-size:14.5px;line-height:1.6;color:#C9D0DE;max-width:600px}
+.fc-rate{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;width:min(760px,100%);margin:0 auto}
+.fc-rate.vazio{display:flex;justify-content:center}
+.fc-rate button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px;border-radius:14px;border:1px solid var(--line2);background:#fff;cursor:pointer;font:inherit;transition:transform .15s}
+.fc-rate button:hover{transform:translateY(-2px)}
+.fc-rate button b{font-size:15px}.fc-rate button span{font-size:12px;color:var(--muted)}
+.fc-rate .r0 b{color:#B23A48}.fc-rate .r1 b{color:#9A5B00}.fc-rate .r2 b{color:#1E4C86}.fc-rate .r3 b{color:#0B7A55}
+.fc-fim{align-items:center;text-align:center;gap:10px;padding:40px}
+.fc-ok{font-size:48px}.fc-fim p{margin:0;color:var(--muted)}
+@media (max-width:700px){.fc-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.fc-rate{grid-template-columns:repeat(2,minmax(0,1fr))}.fc-face{padding:24px}.fc-q,.fc-a{font-size:18px}}
 
 </style>
 </head>
@@ -1960,6 +1989,161 @@ var TEMAS = {
 function temaNome(d, t) { var l = TEMAS[d] || []; for (var i = 0; i < l.length; i++) if (l[i][0] === t) return l[i][1]; return ''; }
 function discsAtivas() { return Object.keys(DISC).filter(function (k) { return !DISC[k].oculta && QUESTOES.some(function (q) { return q.d === k; }); }); }
 
+/* ---------- LOTE 5: Trabalho, Fiscal, Internacional Público e Processo Executivo (novembro de 2026) ---------- */
+(function () {
+  var D = {}; Object.keys(DISC).forEach(function (k) {
+    D[k] = DISC[k];
+    if (k === 'adm') { D.trab = { nome: 'Direito do Trabalho', curto: 'Trabalho', chave: ['trabalho', 'laboral'] }; D.fisc = { nome: 'Direito Fiscal', curto: 'Fiscal', chave: ['fiscal', 'tributário', 'finanças públicas'] }; }
+    if (k === 'com') { D.dip = { nome: 'Direito Internacional Público', curto: 'Internacional Público', chave: ['internacional público'] }; }
+    if (k === 'pc') { D.pex = { nome: 'Processo Executivo', curto: 'Processo Executivo', chave: ['processo executivo', 'ação executiva', 'acção executiva'] }; }
+  });
+  DISC = D;
+  DISC.pc.chave = ['processual civil', 'processo civil', 'prática judiciária'];
+  TEMAS.pc = TEMAS.pc.filter(function (t) { return t[0] !== 'exec'; });
+  TEMAS.trab = [['fontes', 'Fontes e princípios'], ['contr', 'Contrato de trabalho e modalidades'], ['temp', 'Tempo de trabalho, férias e retribuição'], ['disc', 'Poder disciplinar'], ['cess', 'Cessação do contrato'], ['colet', 'Direito coletivo']];
+  TEMAS.fisc = [['princ', 'Princípios e fontes'], ['rel', 'Relação jurídica tributária'], ['proc', 'Procedimento e garantias'], ['cont', 'Contencioso e execução fiscal'], ['imp', 'Impostos em especial']];
+  TEMAS.dip = [['fontes', 'Fontes'], ['trat', 'Direito dos tratados'], ['rel', 'Direito Internacional e direito interno'], ['suj', 'Sujeitos e organizações internacionais'], ['paz', 'Uso da força e resolução de litígios'], ['esp', 'Espaços, imunidades e responsabilidade'], ['dh', 'Proteção internacional dos direitos humanos']];
+  TEMAS.pex = [['geral', 'Título e pressupostos'], ['formas', 'Formas do processo e tramitação'], ['opos', 'Oposição e embargos'], ['penh', 'Penhora'], ['venda', 'Concurso de credores e venda'], ['outras', 'Outras execuções e injunção']];
+  QUESTOES.forEach(function (q) { if (q.id === 'pc36') { q.d = 'pex'; q.t = 'geral'; } if (q.id === 'pc37') { q.d = 'pex'; q.t = 'formas'; } });
+
+  function N(d, t, id, q, o, e) { QUESTOES.push({ id: id, d: d, t: t, q: q, o: o, a: 0, e: e }); }
+  var T = 'trab';
+  N(T, 'fontes', 'tr1', 'O Código do Trabalho em vigor foi aprovado por:', ['Lei n.º 7/2009, de 12 de fevereiro', 'Lei n.º 99/2003, de 27 de agosto', 'Decreto-Lei n.º 49408, de 1969', 'Lei n.º 93/2019, de 4 de setembro'], 'O CT de 2009 sucedeu ao CT de 2003; a Lei n.º 93/2019 e a Agenda do Trabalho Digno (Lei n.º 13/2023) introduziram alterações relevantes.');
+  N(T, 'fontes', 'tr2', 'Qual destes é um instrumento de regulamentação coletiva de trabalho negocial?', ['Convenção coletiva', 'Portaria de extensão', 'Portaria de condições de trabalho', 'Decisão de arbitragem obrigatória'], 'Art. 2.º do CT: são negociais a convenção coletiva, o acordo de adesão e a decisão de arbitragem voluntária; são não negociais a portaria de extensão, a portaria de condições de trabalho e a decisão de arbitragem obrigatória ou necessária.');
+  N(T, 'fontes', 'tr3', 'O empregador não pode praticar qualquer discriminação, direta ou indireta, em razão de fatores como a ascendência, idade, sexo ou orientação sexual. Que princípio é este?', ['Igualdade e não discriminação', 'Liberdade contratual', 'Segurança no emprego', 'Tratamento mais favorável'], 'Arts. 24.º e 25.º do CT.');
+  N(T, 'fontes', 'tr4', 'A prática de assédio pelo empregador ou por outro trabalhador:', ['É proibida e constitui contraordenação muito grave', 'É permitida se não houver testemunhas', 'Só é relevante em matéria penal', 'Só é proibida no setor público'], 'Art. 29.º do CT.');
+  N(T, 'fontes', 'tr5', 'Em regra, qual é a idade mínima de admissão para prestar trabalho?', ['16 anos, desde que concluída a escolaridade obrigatória ou matriculado e a frequentar o nível secundário', '14 anos', '18 anos', '15 anos'], 'Art. 68.º, n.º 2, do CT.');
+  N(T, 'contr', 'tr6', 'Segundo o art. 11.º do CT, contrato de trabalho é aquele pelo qual uma pessoa singular se obriga, mediante retribuição, a prestar a sua atividade a outra ou outras pessoas:', ['No âmbito de organização e sob a autoridade destas', 'Com total autonomia técnica e sem horário', 'Apenas por tempo determinado', 'Sem qualquer contrapartida'], 'A subordinação jurídica (autoridade e direção do empregador) é o elemento distintivo face à prestação de serviços.');
+  N(T, 'contr', 'tr7', 'O art. 12.º do CT estabelece:', ['Uma presunção de contrato de trabalho quando se verifiquem algumas características, como o uso de equipamentos do beneficiário ou horário por ele determinado', 'A proibição dos contratos de prestação de serviços', 'Que todos os contratos com retribuição são de trabalho', 'A obrigação de forma escrita para todos os contratos'], 'É a presunção de laboralidade (art. 12.º, n.º 1, do CT).');
+  N(T, 'contr', 'tr8', 'Nos contratos de trabalho por tempo indeterminado, a duração do período experimental é, em regra, de:', ['90 dias', '30 dias', '180 dias', '240 dias'], 'Art. 112.º, n.º 1, alínea a), do CT; é de 180 dias para cargos de complexidade técnica ou especial confiança e para trabalhadores à procura do primeiro emprego e desempregados de longa duração, e de 240 dias para cargos de direção ou quadros superiores.');
+  N(T, 'contr', 'tr9', 'Durante o período experimental, em regra:', ['Qualquer das partes pode denunciar o contrato sem invocação de justa causa nem direito a indemnização, salvo acordo escrito em contrário', 'Só o trabalhador pode denunciar o contrato', 'A denúncia exige sempre processo disciplinar', 'A denúncia dá sempre direito a indemnização'], 'Art. 114.º, n.º 1, do CT; havendo período experimental superior a 60 ou 120 dias, o empregador deve dar aviso prévio de 7 ou 15 dias (n.ºs 2 e 3).');
+  N(T, 'contr', 'tr10', 'O contrato de trabalho a termo resolutivo está sujeito a:', ['Forma escrita, com a indicação do termo e do respetivo motivo justificativo', 'Forma livre', 'Escritura pública', 'Homologação pela ACT'], 'Art. 141.º, n.º 1, do CT.');
+  N(T, 'contr', 'tr11', 'Se faltar a redução a escrito ou a indicação do motivo justificativo do termo, o contrato:', ['Considera-se sem termo', 'É nulo', 'Caduca no fim do período experimental', 'Converte-se em prestação de serviços'], 'Art. 147.º, n.º 1, alínea c), do CT.');
+  N(T, 'contr', 'tr12', 'Após a Lei n.º 93/2019, o contrato de trabalho a termo certo não pode exceder:', ['2 anos', '3 anos', '4 anos', '6 anos'], 'Art. 148.º, n.º 1, alínea b), do CT; o contrato a termo incerto não pode exceder 4 anos (n.º 5).');
+  N(T, 'contr', 'tr13', 'O contrato a termo certo pode ser renovado até:', ['Três vezes, não podendo a duração total das renovações exceder a do período inicial', 'Cinco vezes', 'Sem limite', 'Uma vez'], 'Art. 149.º, n.º 4, do CT.');
+  N(T, 'contr', 'tr14', 'Em caso de transmissão da empresa ou estabelecimento:', ['Transmite-se para o adquirente a posição do empregador nos contratos de trabalho dos respetivos trabalhadores', 'Os contratos caducam automaticamente', 'O adquirente pode escolher os trabalhadores que quer manter', 'Os trabalhadores têm direito a indemnização e cessam funções'], 'Art. 285.º, n.º 1, do CT.');
+  N(T, 'temp', 'tr15', 'Em regra, o período normal de trabalho não pode exceder:', ['8 horas por dia e 40 horas por semana', '9 horas por dia e 45 horas por semana', '7 horas por dia e 35 horas por semana', '10 horas por dia e 50 horas por semana'], 'Art. 203.º, n.º 1, do CT, sem prejuízo dos regimes de adaptabilidade e banco de horas.');
+  N(T, 'temp', 'tr16', 'Na falta de instrumento de regulamentação coletiva, considera-se trabalho noturno o prestado:', ['Entre as 22 horas de um dia e as 7 horas do dia seguinte', 'Entre as 20 e as 6 horas', 'Entre as 0 e as 8 horas', 'Depois das 18 horas'], 'Art. 223.º do CT.');
+  N(T, 'temp', 'tr17', 'Qual é a duração mínima do período anual de férias?', ['22 dias úteis', '20 dias úteis', '25 dias úteis', '30 dias seguidos'], 'Art. 238.º, n.º 1, do CT.');
+  N(T, 'temp', 'tr18', 'No ano da admissão, o trabalhador tem direito a:', ['2 dias úteis de férias por cada mês de duração do contrato, até 20 dias', '22 dias úteis, qualquer que seja a data de admissão', 'Nenhum dia de férias', '1 dia por mês'], 'Art. 239.º, n.º 1, do CT.');
+  N(T, 'temp', 'tr19', 'O subsídio de Natal, de valor igual a um mês de retribuição, deve ser pago:', ['Até 15 de dezembro de cada ano', 'Até 31 de dezembro', 'Com o salário de novembro', 'Até 1 de dezembro'], 'Art. 263.º, n.º 1, do CT.');
+  N(T, 'temp', 'tr20', 'Qual é a duração da licença parental inicial a que a mãe e o pai têm direito, por nascimento de filho, à sua escolha?', ['120 ou 150 dias consecutivos', '90 ou 120 dias', '60 dias', '180 dias, obrigatoriamente'], 'Art. 40.º, n.º 1, do CT, podendo ser acrescida nos termos legais em caso de partilha.');
+  N(T, 'disc', 'tr21', 'O direito de exercer o poder disciplinar prescreve:', ['Um ano após a prática da infração, ou no prazo de prescrição da lei penal se o facto constituir crime', 'Seis meses após a infração', 'Três anos após a infração', 'Nunca'], 'Art. 329.º, n.º 1, do CT.');
+  N(T, 'disc', 'tr22', 'O procedimento disciplinar deve iniciar-se nos:', ['60 dias subsequentes àquele em que o empregador, ou o superior hierárquico com competência disciplinar, teve conhecimento da infração', '30 dias seguintes à infração', '10 dias úteis seguintes ao conhecimento', '6 meses seguintes'], 'Art. 329.º, n.º 2, do CT.');
+  N(T, 'disc', 'tr23', 'Qual destas NÃO é uma sanção disciplinar prevista no CT?', ['Transferência compulsiva para outra empresa', 'Repreensão registada', 'Perda de dias de férias', 'Suspensão do trabalho com perda de retribuição e de antiguidade'], 'Art. 328.º, n.º 1, do CT: repreensão, repreensão registada, sanção pecuniária, perda de dias de férias, suspensão e despedimento sem indemnização ou compensação.');
+  N(T, 'disc', 'tr24', 'Constitui justa causa de despedimento o comportamento culposo do trabalhador que:', ['Pela sua gravidade e consequências, torne imediata e praticamente impossível a subsistência da relação de trabalho', 'Cause qualquer prejuízo ao empregador', 'Consista em três atrasos', 'Desagrade ao empregador'], 'Art. 351.º, n.º 1, do CT.');
+  N(T, 'disc', 'tr25', 'No processo de despedimento por facto imputável ao trabalhador, este dispõe, para consultar o processo e responder à nota de culpa, de:', ['10 dias úteis', '5 dias úteis', '15 dias seguidos', '30 dias'], 'Art. 355.º, n.º 1, do CT.');
+  N(T, 'cess', 'tr26', 'O acordo de revogação do contrato de trabalho deve constar de:', ['Documento assinado por ambas as partes', 'Escritura pública', 'Simples acordo verbal', 'Decisão da ACT'], 'Art. 349.º, n.º 2, do CT.');
+  N(T, 'cess', 'tr27', 'O trabalhador pode fazer cessar o acordo de revogação:', ['Até ao sétimo dia seguinte à data da respetiva celebração, mediante comunicação escrita', 'A todo o tempo', 'Nunca', 'Apenas com autorização judicial'], 'Art. 350.º, n.º 1, do CT, salvo nos casos do n.º 4.');
+  N(T, 'cess', 'tr28', 'Considera-se despedimento coletivo a cessação de contratos promovida pelo empregador, num período de três meses, abrangendo pelo menos:', ['Dois ou cinco trabalhadores, conforme se trate de micro ou pequena empresa ou de média ou grande empresa', 'Dez trabalhadores em qualquer empresa', 'Metade dos trabalhadores', 'Um trabalhador'], 'Art. 359.º, n.º 1, do CT.');
+  N(T, 'cess', 'tr29', 'Em regra, o trabalhador pode denunciar o contrato, independentemente de justa causa, com a antecedência mínima de:', ['30 ou 60 dias, conforme tenha, respetivamente, até dois anos ou mais de dois anos de antiguidade', '15 dias em qualquer caso', '90 dias', 'Não precisa de aviso prévio'], 'Art. 400.º, n.º 1, do CT.');
+  N(T, 'cess', 'tr30', 'Constitui justa causa de resolução do contrato pelo trabalhador, nomeadamente:', ['A falta culposa de pagamento pontual da retribuição', 'A mudança de chefia', 'A contratação de novos trabalhadores', 'O encerramento para férias'], 'Art. 394.º, n.º 2, alínea a), do CT.');
+  N(T, 'cess', 'tr31', 'A ação de impugnação judicial da regularidade e licitude do despedimento, comunicado por escrito, deve ser intentada no prazo de:', ['60 dias', '30 dias', '1 ano', '6 meses'], 'Art. 387.º, n.º 2, do CT.');
+  N(T, 'cess', 'tr32', 'Em substituição da reintegração, o trabalhador ilicitamente despedido pode optar por uma indemnização fixada pelo tribunal entre:', ['15 e 45 dias de retribuição base e diuturnidades por cada ano completo ou fração de antiguidade', '30 e 60 dias por ano', '10 e 20 dias por ano', 'Um mês fixo por ano'], 'Art. 391.º, n.º 1, do CT, não podendo ser inferior a três meses (n.º 3).');
+  N(T, 'cess', 'tr33', 'Os créditos do trabalhador emergentes do contrato, da sua violação ou cessação prescrevem:', ['Decorrido um ano a partir do dia seguinte àquele em que cessou o contrato', 'Em 5 anos', 'Em 20 anos', 'Em 3 meses'], 'Art. 337.º, n.º 1, do CT.');
+  N(T, 'colet', 'tr34', 'Em regra, com que antecedência deve ser feito o aviso prévio de greve?', ['5 dias úteis, ou 10 dias úteis em empresas ou estabelecimentos que se destinem à satisfação de necessidades sociais impreteríveis', '24 horas', '30 dias', 'Não é necessário aviso prévio'], 'Art. 534.º, n.º 1, do CT.');
+  N(T, 'colet', 'tr35', 'O lock-out (paralisação total ou parcial da empresa pelo empregador como meio de pressão) é:', ['Proibido', 'Permitido com aviso prévio', 'Permitido em empresas privadas', 'Permitido após decisão da ACT'], 'Art. 57.º, n.º 4, da CRP e art. 544.º do CT.');
+  N(T, 'colet', 'tr36', 'O direito à greve está consagrado em que artigo da CRP?', ['57.º', '55.º', '53.º', '59.º'], 'Art. 57.º da CRP; a liberdade sindical consta do art. 55.º e a segurança no emprego do art. 53.º.');
+  T = 'fisc';
+  N(T, 'princ', 'fi1', 'Segundo o art. 103.º, n.º 2, da CRP, os impostos são criados por lei, que determina:', ['A incidência, a taxa, os benefícios fiscais e as garantias dos contribuintes', 'Apenas a taxa', 'Apenas a incidência', 'Apenas os prazos de pagamento'], 'É o princípio da legalidade fiscal; a criação de impostos e o sistema fiscal integram a reserva relativa da AR (art. 165.º, n.º 1, alínea i)).');
+  N(T, 'princ', 'fi2', 'Segundo a CRP, ninguém pode ser obrigado a pagar impostos:', ['Que não hajam sido criados nos termos da Constituição, que tenham natureza retroativa ou cuja liquidação e cobrança se não façam nos termos da lei', 'Superiores a 50% do rendimento', 'Sem consentimento expresso', 'Criados há menos de um ano'], 'Art. 103.º, n.º 3, da CRP.');
+  N(T, 'princ', 'fi3', 'O tributo que assenta na prestação concreta de um serviço público, na utilização de um bem do domínio público ou na remoção de um obstáculo jurídico ao comportamento dos particulares designa-se:', ['Taxa', 'Imposto', 'Contribuição especial', 'Coima'], 'Art. 4.º, n.º 2, da LGT.');
+  N(T, 'princ', 'fi4', 'Segundo a LGT, os impostos assentam essencialmente:', ['Na capacidade contributiva, revelada através do rendimento ou da sua utilização e do património', 'Na vontade do contribuinte', 'No número de filhos', 'Na nacionalidade'], 'Art. 4.º, n.º 1, da LGT.');
+  N(T, 'princ', 'fi5', 'Na determinação do sentido das normas fiscais, observam-se:', ['As regras e princípios gerais de interpretação e aplicação das leis', 'Apenas a interpretação literal', 'Sempre a interpretação mais favorável ao Estado', 'Sempre a interpretação mais favorável ao contribuinte'], 'Art. 11.º, n.º 1, da LGT.');
+  N(T, 'princ', 'fi6', 'A Lei Geral Tributária foi aprovada pelo:', ['Decreto-Lei n.º 398/98, de 17 de dezembro', 'Decreto-Lei n.º 433/99, de 26 de outubro', 'Decreto-Lei n.º 442-A/88', 'Lei n.º 15/2002'], 'O DL 433/99 aprovou o CPPT; o DL 442-A/88 aprovou o CIRS.');
+  N(T, 'princ', 'fi7', 'Os benefícios fiscais são:', ['Medidas de caráter excecional instituídas para tutela de interesses públicos extrafiscais relevantes que sejam superiores aos da própria tributação que impedem', 'Reembolsos automáticos de imposto', 'Coimas reduzidas', 'Juros pagos pelo Estado'], 'Art. 2.º, n.º 1, do Estatuto dos Benefícios Fiscais.');
+  N(T, 'rel', 'fi8', 'Em regra, o direito de liquidar os tributos caduca se a liquidação não for validamente notificada ao contribuinte no prazo de:', ['4 anos', '8 anos', '2 anos', '10 anos'], 'Art. 45.º, n.º 1, da LGT, quando a lei não fixar outro.');
+  N(T, 'rel', 'fi9', 'As dívidas tributárias prescrevem, salvo o disposto em lei especial, no prazo de:', ['8 anos', '4 anos', '5 anos', '20 anos'], 'Art. 48.º, n.º 1, da LGT.');
+  N(T, 'rel', 'fi10', 'Os administradores e gerentes respondem pelas dívidas tributárias da sociedade:', ['Subsidiariamente em relação a esta e solidariamente entre si, nos termos do art. 24.º da LGT', 'Sempre a título principal', 'Nunca', 'Apenas se forem sócios'], 'Art. 24.º, n.º 1, da LGT.');
+  N(T, 'rel', 'fi11', 'A responsabilidade subsidiária efetiva-se:', ['Por reversão do processo de execução fiscal, dependendo da fundada insuficiência dos bens do devedor originário', 'Por ação declarativa comum', 'Por simples carta da AT ao gerente', 'Por decisão do Ministro das Finanças'], 'Art. 23.º, n.ºs 1 e 2, da LGT.');
+  N(T, 'rel', 'fi12', 'São ineficazes no âmbito tributário os atos ou negócios jurídicos essencial ou principalmente dirigidos, por meios artificiosos ou fraudulentos, à obtenção de uma vantagem fiscal contrária ao objeto ou finalidade do direito fiscal aplicável. Que figura é esta?', ['Cláusula geral antiabuso', 'Simulação fiscal', 'Elisão permitida', 'Planeamento fiscal legítimo'], 'Art. 38.º, n.º 2, da LGT.');
+  N(T, 'proc', 'fi13', 'Antes da liquidação, os contribuintes têm, em regra, o direito de:', ['Ser ouvidos (direito de audição)', 'Escolher a taxa aplicável', 'Recusar o pagamento', 'Recorrer diretamente ao Tribunal Constitucional'], 'Art. 60.º, n.º 1, alínea a), da LGT.');
+  N(T, 'proc', 'fi14', 'A decisão do procedimento tributário:', ['É sempre fundamentada por meio de sucinta exposição das razões de facto e de direito que a motivaram', 'Dispensa fundamentação', 'Só é fundamentada a pedido', 'Só é fundamentada se for desfavorável ao Estado'], 'Art. 77.º, n.º 1, da LGT.');
+  N(T, 'proc', 'fi15', 'Qual é o prazo para apresentar reclamação graciosa?', ['120 dias', '30 dias', '3 meses', '1 ano'], 'Art. 70.º, n.º 1, do CPPT.');
+  N(T, 'proc', 'fi16', 'Os dirigentes e trabalhadores da AT estão obrigados a guardar sigilo sobre os dados recolhidos sobre a situação tributária dos contribuintes. Que figura é esta?', ['Segredo fiscal', 'Segredo de justiça', 'Sigilo bancário', 'Segredo profissional dos advogados'], 'Art. 64.º da LGT.');
+  N(T, 'proc', 'fi17', 'O domicílio fiscal do sujeito passivo é, salvo disposição em contrário, para as pessoas singulares:', ['O local da residência habitual', 'O local de trabalho', 'O local de nascimento', 'Qualquer local à escolha'], 'Art. 19.º, n.º 1, alínea a), da LGT.');
+  N(T, 'cont', 'fi18', 'Qual é o prazo geral para deduzir impugnação judicial?', ['3 meses', '30 dias', '120 dias', '1 ano'], 'Art. 102.º, n.º 1, do CPPT.');
+  N(T, 'cont', 'fi19', 'A oposição à execução fiscal deve ser deduzida no prazo de:', ['30 dias a contar da citação pessoal', '10 dias', '3 meses', '120 dias'], 'Art. 203.º, n.º 1, alínea a), do CPPT.');
+  N(T, 'cont', 'fi20', 'O processo de execução fiscal é instaurado e tramitado, em regra:', ['Pelos órgãos da administração tributária, sem prejuízo da intervenção do tribunal nas questões jurisdicionais', 'Exclusivamente pelos tribunais judiciais', 'Pelos agentes de execução', 'Pelo Ministério Público'], 'Arts. 103.º da LGT e 149.º e 150.º do CPPT.');
+  N(T, 'cont', 'fi21', 'Em regra, a execução fiscal fica suspensa quando:', ['For prestada garantia ou a penhora garanta a totalidade da quantia exequenda e acrescido, havendo reclamação, impugnação ou oposição', 'O contribuinte o pedir por escrito', 'Passarem 30 dias', 'O contribuinte mudar de domicílio'], 'Art. 169.º do CPPT.');
+  N(T, 'cont', 'fi22', 'O regime da arbitragem em matéria tributária (CAAD) foi aprovado pelo:', ['Decreto-Lei n.º 10/2011', 'Decreto-Lei n.º 398/98', 'Lei n.º 63/2011', 'Decreto-Lei n.º 433/99'], 'O RJAT (DL n.º 10/2011, de 20 de janeiro) permite submeter certos litígios tributários a tribunais arbitrais que funcionam no CAAD.');
+  N(T, 'cont', 'fi23', 'Os prazos de recurso hierárquico das decisões em matéria tributária são, em regra, de:', ['30 dias a contar da notificação do ato', '3 meses', '120 dias', '15 dias'], 'Art. 66.º, n.º 2, do CPPT.');
+  N(T, 'imp', 'fi24', 'No IRS, os rendimentos prediais integram a categoria:', ['F', 'A', 'B', 'E'], 'Art. 1.º, n.º 1, do CIRS: A (trabalho dependente), B (empresariais e profissionais), E (capitais), F (prediais), G (incrementos patrimoniais), H (pensões).');
+  N(T, 'imp', 'fi25', 'Em IRS, os sujeitos passivos casados ou unidos de facto são tributados, em regra:', ['Separadamente, podendo optar pela tributação conjunta', 'Sempre conjuntamente', 'Apenas pelo cônjuge com maior rendimento', 'Pelo agregado, sem opção'], 'Arts. 13.º e 59.º do CIRS (regra da tributação separada desde a reforma de 2015).');
+  N(T, 'imp', 'fi26', 'São sujeitos passivos de IRC, nomeadamente:', ['As sociedades comerciais com sede ou direção efetiva em território português', 'Apenas as pessoas singulares', 'Apenas as entidades públicas', 'Apenas as sociedades cotadas'], 'Art. 2.º, n.º 1, alínea a), do CIRC.');
+  N(T, 'imp', 'fi27', 'Estão sujeitas a IVA, nomeadamente:', ['As transmissões de bens e as prestações de serviços efetuadas em território nacional, a título oneroso, por um sujeito passivo agindo como tal', 'Todas as doações entre particulares', 'Os salários', 'As heranças'], 'Art. 1.º, n.º 1, alínea a), do CIVA.');
+  N(T, 'imp', 'fi28', 'Qual é a taxa normal do IVA no continente?', ['23%', '21%', '22%', '25%'], 'Art. 18.º, n.º 1, alínea c), do CIVA; as Regiões Autónomas têm taxas próprias.');
+  N(T, 'imp', 'fi29', 'O IMI incide sobre:', ['O valor patrimonial tributário dos prédios', 'O preço de venda dos imóveis', 'As rendas recebidas', 'O rendimento do proprietário'], 'Art. 1.º do CIMI.');
+  N(T, 'imp', 'fi30', 'O IMT incide sobre:', ['As transmissões, a título oneroso, do direito de propriedade ou de figuras parcelares desse direito sobre imóveis', 'A propriedade de imóveis, anualmente', 'As doações de dinheiro', 'Os contratos de arrendamento'], 'Art. 2.º, n.º 1, do CIMT.');
+  T = 'dip';
+  N(T, 'fontes', 'di1', 'O art. 38.º do Estatuto do Tribunal Internacional de Justiça enumera, como meios auxiliares para a determinação das regras de direito:', ['As decisões judiciais e a doutrina dos publicistas mais qualificados', 'Os tratados e o costume', 'Os princípios gerais de direito', 'As resoluções da Assembleia Geral'], 'O art. 38.º, n.º 1, enumera as convenções, o costume, os princípios gerais de direito e, como meios auxiliares, as decisões judiciais e a doutrina.');
+  N(T, 'fontes', 'di2', 'Quais são os elementos do costume internacional?', ['Prática geral (elemento material) e convicção de obrigatoriedade (opinio juris)', 'Apenas a prática repetida', 'A aprovação por tratado', 'A ratificação pelos parlamentos'], 'É a «prática geral aceite como sendo o direito» (art. 38.º, n.º 1, alínea b), do Estatuto do TIJ).');
+  N(T, 'fontes', 'di3', 'Segundo a Convenção de Viena sobre o Direito dos Tratados (1969), é nulo o tratado que, no momento da sua conclusão:', ['Seja incompatível com uma norma imperativa de direito internacional geral (jus cogens)', 'Não tenha sido traduzido para todas as línguas', 'Tenha mais de dois Estados partes', 'Não tenha sido aprovado pela ONU'], 'Art. 53.º da Convenção de Viena de 1969.');
+  N(T, 'trat', 'di4', '«Todo o tratado em vigor vincula as partes e deve ser por elas cumprido de boa fé.» Que princípio é este?', ['Pacta sunt servanda', 'Rebus sic stantibus', 'Pacta tertiis nec nocent nec prosunt', 'Jus cogens'], 'Art. 26.º da Convenção de Viena de 1969.');
+  N(T, 'trat', 'di5', 'Uma parte pode invocar as disposições do seu direito interno para justificar o incumprimento de um tratado?', ['Não, sem prejuízo do art. 46.º da Convenção', 'Sim, sempre', 'Sim, se a Constituição o permitir', 'Apenas nos tratados bilaterais'], 'Art. 27.º da Convenção de Viena de 1969.');
+  N(T, 'trat', 'di6', 'Segundo a Convenção de Viena, um tratado deve ser interpretado:', ['De boa fé, segundo o sentido comum atribuível aos seus termos no seu contexto e à luz do seu objeto e fim', 'Sempre de forma restritiva', 'Segundo a vontade do Estado mais forte', 'Apenas pelos trabalhos preparatórios'], 'Art. 31.º, n.º 1, da Convenção de Viena de 1969; os trabalhos preparatórios são meio complementar (art. 32.º).');
+  N(T, 'trat', 'di7', 'A declaração unilateral de um Estado, ao assinar ou ratificar um tratado, pela qual visa excluir ou modificar o efeito jurídico de certas disposições designa-se:', ['Reserva', 'Denúncia', 'Adesão', 'Emenda'], 'Art. 2.º, n.º 1, alínea d), da Convenção de Viena de 1969.');
+  N(T, 'trat', 'di8', 'A alteração fundamental das circunstâncias (rebus sic stantibus) pode ser invocada para extinguir um tratado?', ['Apenas excecionalmente, verificados os requisitos do art. 62.º da Convenção de Viena', 'Sempre', 'Nunca', 'Apenas por decisão do Conselho de Segurança'], 'Art. 62.º da Convenção de Viena de 1969; não pode ser invocada, por exemplo, em tratados que estabeleçam fronteiras.');
+  N(T, 'rel', 'di9', 'Segundo o art. 8.º, n.º 1, da CRP, as normas e os princípios de direito internacional geral ou comum:', ['Fazem parte integrante do direito português', 'Só vigoram após lei da AR', 'Não se aplicam em Portugal', 'Só vigoram se publicados no Diário da República'], 'É a receção automática do direito internacional geral.');
+  N(T, 'rel', 'di10', 'As normas constantes de convenções internacionais regularmente ratificadas ou aprovadas vigoram na ordem interna:', ['Após a sua publicação oficial e enquanto vincularem internacionalmente o Estado português', 'Desde a assinatura', 'Apenas depois de uma lei de transposição', 'Nunca diretamente'], 'Art. 8.º, n.º 2, da CRP.');
+  N(T, 'rel', 'di11', 'A quem compete ratificar os tratados internacionais, depois de devidamente aprovados?', ['Ao Presidente da República', 'Ao Primeiro-Ministro', 'Ao Ministro dos Negócios Estrangeiros', 'Ao Tribunal Constitucional'], 'Art. 135.º, alínea b), da CRP.');
+  N(T, 'suj', 'di12', 'Quais são os elementos tradicionais do Estado como sujeito de Direito Internacional?', ['População permanente, território delimitado e poder político soberano', 'Apenas o reconhecimento pela ONU', 'Língua oficial e moeda própria', 'Exército e Constituição escrita'], 'A Convenção de Montevideu (1933, art. 1.º) acrescenta a capacidade de entrar em relações com outros Estados.');
+  N(T, 'suj', 'di13', 'Segundo a teoria declarativa, o reconhecimento de um Estado:', ['Limita-se a constatar a existência de um Estado que já existe', 'Cria o Estado', 'É obrigatório para todos os Estados', 'Só pode ser feito pela ONU'], 'Para a teoria constitutiva, pelo contrário, é o reconhecimento que confere personalidade internacional.');
+  N(T, 'suj', 'di14', 'A Carta das Nações Unidas foi assinada em:', ['São Francisco, em 1945', 'Genebra, em 1919', 'Nova Iorque, em 1948', 'Haia, em 1907'], 'A Carta foi assinada a 26 de junho de 1945 e entrou em vigor a 24 de outubro de 1945.');
+  N(T, 'suj', 'di15', 'Quantos membros tem o Conselho de Segurança da ONU?', ['15, dos quais 5 permanentes', '10, dos quais 5 permanentes', '20, dos quais 5 permanentes', '15, todos eleitos'], 'Art. 23.º da Carta das Nações Unidas.');
+  N(T, 'suj', 'di16', 'As decisões do Conselho de Segurança sobre questões não processuais exigem:', ['O voto afirmativo de 9 membros, incluindo os votos de todos os membros permanentes', 'Maioria simples', 'Unanimidade dos 15 membros', 'Dois terços da Assembleia Geral'], 'Art. 27.º, n.º 3, da Carta (o chamado direito de veto).');
+  N(T, 'suj', 'di17', 'Qual destes NÃO é um órgão principal das Nações Unidas?', ['O Tribunal Penal Internacional', 'O Conselho Económico e Social', 'O Secretariado', 'O Tribunal Internacional de Justiça'], 'Art. 7.º da Carta; o TPI é uma organização autónoma, criada pelo Estatuto de Roma.');
+  N(T, 'paz', 'di18', 'O art. 2.º, n.º 4, da Carta das Nações Unidas consagra:', ['A proibição da ameaça ou do uso da força contra a integridade territorial ou a independência política de qualquer Estado', 'O direito de veto', 'A liberdade de navegação', 'O direito à autodeterminação económica'], 'As exceções são a legítima defesa (art. 51.º) e as medidas do Conselho de Segurança ao abrigo do Capítulo VII.');
+  N(T, 'paz', 'di19', 'O direito de legítima defesa, individual ou coletiva, está previsto em que artigo da Carta?', ['51.º', '2.º', '39.º', '42.º'], 'Art. 51.º da Carta das Nações Unidas.');
+  N(T, 'paz', 'di20', 'Quantos juízes compõem o Tribunal Internacional de Justiça?', ['15', '9', '12', '21'], 'Art. 3.º, n.º 1, do Estatuto do TIJ. O Tribunal tem sede na Haia.');
+  N(T, 'paz', 'di21', 'Quem pode ser parte em casos contenciosos perante o TIJ?', ['Apenas os Estados', 'Qualquer pessoa', 'As organizações não governamentais', 'As empresas multinacionais'], 'Art. 34.º, n.º 1, do Estatuto do TIJ; a competência depende do consentimento dos Estados (art. 36.º).');
+  N(T, 'esp', 'di22', 'Segundo a Convenção das Nações Unidas sobre o Direito do Mar, a largura do mar territorial não pode ultrapassar:', ['12 milhas marítimas', '24 milhas marítimas', '200 milhas marítimas', '3 milhas marítimas'], 'Art. 3.º da CNUDM; a zona contígua vai até 24 milhas (art. 33.º) e a zona económica exclusiva até 200 milhas (art. 57.º).');
+  N(T, 'esp', 'di23', 'No mar territorial, os navios de todos os Estados gozam do direito de:', ['Passagem inofensiva', 'Pesca livre', 'Exploração dos recursos do subsolo', 'Instalação de bases militares'], 'Art. 17.º da CNUDM.');
+  N(T, 'esp', 'di24', 'Segundo a Convenção de Viena sobre Relações Diplomáticas (1961), os locais da missão diplomática:', ['São invioláveis, não podendo os agentes do Estado acreditador neles penetrar sem o consentimento do chefe de missão', 'São território do Estado acreditante', 'Podem ser revistados pela polícia a todo o tempo', 'Estão sujeitos a penhora'], 'Art. 22.º, n.º 1, da Convenção de Viena de 1961.');
+  N(T, 'esp', 'di25', 'O agente diplomático goza, em relação ao Estado acreditador:', ['De imunidade de jurisdição penal', 'Apenas de imunidade fiscal', 'De nenhuma imunidade', 'De imunidade apenas durante o serviço'], 'Art. 31.º, n.º 1, da Convenção de Viena de 1961.');
+  N(T, 'esp', 'di26', 'Segundo os Artigos da CDI sobre Responsabilidade dos Estados (2001), há facto internacionalmente ilícito quando um comportamento:', ['É atribuível ao Estado e constitui uma violação de uma obrigação internacional desse Estado', 'Causa prejuízo a outro Estado, mesmo que lícito', 'É condenado pela Assembleia Geral', 'É praticado por particulares, em qualquer caso'], 'Art. 2.º dos Artigos sobre Responsabilidade dos Estados por Factos Internacionalmente Ilícitos.');
+  N(T, 'dh', 'di27', 'O Tribunal Penal Internacional foi criado pelo:', ['Estatuto de Roma, de 1998', 'Tratado de Versalhes', 'Carta das Nações Unidas', 'Convenção de Genebra de 1949'], 'O Estatuto de Roma entrou em vigor em 2002; o TPI tem sede na Haia.');
+  N(T, 'dh', 'di28', 'Qual destes crimes NÃO está na competência material do TPI?', ['Tráfico de estupefacientes', 'Genocídio', 'Crimes contra a humanidade', 'Crime de agressão'], 'Art. 5.º do Estatuto de Roma: genocídio, crimes contra a humanidade, crimes de guerra e crime de agressão.');
+  N(T, 'dh', 'di29', 'A jurisdição do TPI é:', ['Complementar das jurisdições penais nacionais', 'Prevalecente sobre todas as jurisdições nacionais', 'Exclusiva para crimes de guerra', 'Apenas consultiva'], 'Princípio da complementaridade (preâmbulo e arts. 1.º e 17.º do Estatuto de Roma).');
+  N(T, 'dh', 'di30', 'Para apresentar uma queixa individual ao Tribunal Europeu dos Direitos Humanos, é necessário, nomeadamente:', ['Esgotar as vias de recurso internas e apresentar a queixa no prazo de 4 meses a contar da decisão interna definitiva', 'Ter autorização do Estado', 'Pagar uma taxa de justiça', 'Ser nacional de um Estado da União Europeia'], 'Art. 35.º, n.º 1, da CEDH, na redação do Protocolo n.º 15 (prazo reduzido de 6 para 4 meses).');
+  T = 'pex';
+  N(T, 'geral', 'px1', 'Quanto ao fim, a execução pode ter por finalidade:', ['O pagamento de quantia certa, a entrega de coisa certa ou a prestação de um facto, quer positivo quer negativo', 'Apenas o pagamento de quantia certa', 'A declaração de um direito', 'A anulação de um contrato'], 'Art. 10.º, n.º 6, do CPC.');
+  N(T, 'geral', 'px2', 'Toda a execução tem por base:', ['Um título, pelo qual se determinam o fim e os limites da ação executiva', 'Uma sentença transitada em julgado, necessariamente', 'Uma confissão do devedor', 'Uma notificação judicial avulsa'], 'Art. 10.º, n.º 5, do CPC.');
+  N(T, 'geral', 'px3', 'A execução principia pelas diligências destinadas a tornar a obrigação:', ['Certa, exigível e líquida, se o não for em face do título', 'Escrita', 'Registada', 'Solidária'], 'Art. 713.º do CPC.');
+  N(T, 'geral', 'px4', 'No processo executivo, a quem cabe, em regra, efetuar todas as diligências do processo, incluindo citações, notificações e penhoras?', ['Ao agente de execução', 'Ao juiz', 'Ao mandatário do exequente', 'À secretaria do tribunal, exclusivamente'], 'Art. 719.º, n.º 1, do CPC, salvo os atos reservados à secretaria ou ao juiz.');
+  N(T, 'geral', 'px5', 'A execução fundada em decisão judicial condenatória corre:', ['Nos próprios autos em que a decisão foi proferida', 'Sempre num tribunal diferente', 'Por apenso a uma nova ação declarativa', 'No serviço de finanças'], 'Art. 85.º, n.º 1, do CPC (com as especialidades dos arts. 626.º e seguintes).');
+  N(T, 'formas', 'px6', 'Qual destas execuções segue a forma sumária?', ['A baseada em requerimento de injunção à qual foi aposta fórmula executória', 'A baseada em qualquer documento autêntico de valor elevado', 'Todas as execuções de sentença', 'A execução para prestação de facto'], 'Art. 550.º, n.º 2, do CPC, que enumera os casos de processo sumário.');
+  N(T, 'formas', 'px7', 'Uma das características do processo sumário de execução é que:', ['A penhora é efetuada antes da citação do executado', 'Não há penhora', 'O executado é sempre ouvido antes da penhora', 'Não admite oposição'], 'No processo sumário, a penhora precede a citação (art. 855.º do CPC).');
+  N(T, 'formas', 'px8', 'O executado pode requerer o pagamento da dívida exequenda em prestações?', ['Sim, por acordo com o exequente, nos termos dos arts. 806.º e seguintes do CPC', 'Nunca', 'Só se a dívida for inferior a 1.000 €', 'Só nas execuções fiscais'], 'É o acordo de pagamento em prestações (art. 806.º do CPC).');
+  N(T, 'opos', 'px9', 'Em regra, o executado pode opor-se à execução por embargos no prazo de:', ['20 dias a contar da citação', '10 dias', '30 dias', '60 dias'], 'Art. 728.º, n.º 1, do CPC.');
+  N(T, 'opos', 'px10', 'A oposição à execução baseada em sentença:', ['Só pode ter os fundamentos taxativamente previstos no art. 729.º do CPC', 'Pode ter qualquer fundamento de defesa', 'Não é admitida', 'Só pode invocar a prescrição'], 'Nas execuções baseadas em sentença, os fundamentos de oposição são limitados (art. 729.º); nas baseadas noutros títulos, pode alegar-se tudo o que seria lícito deduzir como defesa no processo de declaração (art. 731.º).');
+  N(T, 'opos', 'px11', 'Em regra, o recebimento dos embargos de executado suspende o prosseguimento da execução:', ['Se o embargante prestar caução', 'Sempre', 'Nunca', 'Apenas se o exequente concordar'], 'Art. 733.º, n.º 1, alínea a), do CPC, além de outros casos previstos.');
+  N(T, 'opos', 'px12', 'Se a penhora ofender a posse ou qualquer direito incompatível com a realização ou o âmbito da diligência de que seja titular quem não é parte na causa, este pode deduzir:', ['Embargos de terceiro', 'Embargos de executado', 'Reclamação de créditos', 'Oposição à penhora'], 'Art. 342.º, n.º 1, do CPC.');
+  N(T, 'opos', 'px13', 'Os embargos de terceiro devem ser deduzidos:', ['Nos 30 dias subsequentes àquele em que a diligência foi efetuada ou o embargante teve conhecimento da ofensa, mas nunca depois de os bens terem sido judicialmente vendidos ou adjudicados', 'A todo o tempo', 'No prazo de 10 dias a contar da penhora, em qualquer caso', 'Apenas antes da penhora'], 'Art. 344.º, n.º 2, do CPC.');
+  N(T, 'penh', 'px14', 'Em regra, são impenhoráveis:', ['Dois terços da parte líquida dos vencimentos, salários, prestações periódicas de aposentação ou de natureza semelhante', 'Metade dos vencimentos', 'Nenhuma parte dos vencimentos', 'A totalidade dos vencimentos'], 'Art. 738.º, n.º 1, do CPC; a impenhorabilidade tem como limite mínimo, em regra, o montante equivalente a um salário mínimo nacional (n.º 3).');
+  N(T, 'penh', 'px15', 'Qual destes bens é absolutamente impenhorável?', ['Os túmulos', 'Um automóvel', 'Um depósito bancário', 'Um imóvel de habitação secundária'], 'Art. 736.º, alínea e), do CPC.');
+  N(T, 'penh', 'px16', 'A penhora deve começar pelos bens:', ['Cujo valor pecuniário seja de mais fácil realização e se mostre adequado ao montante do crédito do exequente', 'Imóveis, obrigatoriamente', 'Indicados pelo executado, em qualquer caso', 'De maior valor'], 'Art. 751.º, n.º 1, do CPC.');
+  N(T, 'penh', 'px17', 'A penhora de coisas imóveis realiza-se:', ['Por comunicação eletrónica do agente de execução ao serviço de registo competente, valendo como pedido de registo', 'Pela entrega das chaves ao exequente', 'Por despacho do juiz publicado em jornal', 'Por escritura pública'], 'Art. 755.º, n.º 1, do CPC.');
+  N(T, 'penh', 'px18', 'Pela penhora, o exequente adquire:', ['O direito de ser pago com preferência a qualquer outro credor que não tenha garantia real anterior', 'A propriedade dos bens penhorados', 'O direito de usar os bens penhorados', 'Apenas uma expectativa sem preferência'], 'Art. 822.º, n.º 1, do CC.');
+  N(T, 'venda', 'px19', 'Os credores que gozem de garantia real sobre os bens penhorados são citados para:', ['Reclamar os seus créditos na execução', 'Contestar a ação', 'Pagar a dívida do executado', 'Indicar outros bens à penhora'], 'Arts. 786.º, n.º 1, alínea b), e 788.º do CPC.');
+  N(T, 'venda', 'px20', 'Qual destas NÃO é uma modalidade de venda prevista no art. 811.º do CPC?', ['Venda por sorteio', 'Venda mediante propostas em carta fechada', 'Venda por negociação particular', 'Venda em leilão eletrónico'], 'O art. 811.º prevê também a venda em mercados regulamentados, a venda direta, a venda em estabelecimento de leilões e a venda em depósito público.');
+  N(T, 'venda', 'px21', 'Na venda mediante propostas em carta fechada, o valor a anunciar para a venda é igual a:', ['85% do valor base dos bens', '50% do valor base', '100% do valor base', '70% do valor base'], 'Art. 816.º, n.º 2, do CPC.');
+  N(T, 'venda', 'px22', 'O cônjuge que não esteja separado judicialmente de pessoas e bens e os descendentes ou ascendentes do executado podem remir:', ['Todos os bens adjudicados ou vendidos, ou parte deles, pelo preço por que tiver sido feita a adjudicação ou a venda', 'Apenas os imóveis, por metade do preço', 'Nenhum bem', 'Apenas bens de valor inferior a 5.000 €'], 'É o direito de remição (art. 842.º do CPC).');
+  N(T, 'outras', 'px23', 'Na execução para entrega de coisa certa, se a coisa não for encontrada, o exequente pode:', ['Fazer liquidar o seu valor e o prejuízo resultante da falta da entrega, prosseguindo a execução para pagamento de quantia certa', 'Desistir sem qualquer outra possibilidade', 'Pedir a prisão do executado', 'Exigir uma coisa de outro género'], 'Art. 867.º, n.º 1, do CPC.');
+  N(T, 'outras', 'px24', 'Na execução para prestação de facto fungível, se o devedor não a prestar no prazo, o credor pode:', ['Requerer a prestação por outrem à custa do devedor, ou a indemnização do dano sofrido', 'Exigir apenas sanção pecuniária compulsória', 'Requerer a prisão do devedor', 'Nada fazer'], 'Art. 868.º, n.º 1, do CPC.');
+  N(T, 'outras', 'px25', 'O procedimento de injunção destina-se a conferir força executiva a requerimento destinado a exigir:', ['O cumprimento de obrigações pecuniárias emergentes de contratos de valor não superior a 15.000 € ou de transações comerciais', 'A entrega de imóveis', 'O pagamento de indemnizações por acidentes de viação', 'O divórcio sem consentimento'], 'Regime anexo ao DL n.º 269/98 (art. 1.º) e DL n.º 62/2013 quanto às transações comerciais, que não têm limite de valor.');
+})();
+/* baralhar as opções das questões do lote 5 (determinístico) */
+(function () {
+  function h(s) { var x = 2166136261; for (var i = 0; i < s.length; i++) { x ^= s.charCodeAt(i); x = Math.imul(x, 16777619) >>> 0; } return x; }
+  QUESTOES.forEach(function (q) {
+    if (!/^(tr|fi|di|px)\d+$/.test(q.id)) return;
+    var s = h(q.id), idx = [0, 1, 2, 3];
+    for (var i = 3; i > 0; i--) { s = Math.imul(s ^ (s >>> 15), 2246822507) >>> 0; var j = s % (i + 1); var t = idx[i]; idx[i] = idx[j]; idx[j] = t; }
+    q.o = idx.map(function (k) { return q.o[k]; }); q.a = idx.indexOf(0);
+  });
+})();
+
 /* Primeira carga de atualizações (verificadas em 16-11-2026). A partir daqui, são atualizadas diariamente na base de dados do LEXDESK. */
 var UPD_SEED = [
   { id: 'u-dl214-2026', cat: 'legislacao', area: 'Administrativo', data: '2026-11-06',
@@ -2394,7 +2578,7 @@ Store.attach = function (session) {
 };
 
 /* ---------- estado da interface ---------- */
-var VIEWS = ['painel', 'reputacao', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
+var VIEWS = ['painel', 'reputacao', 'flashcards', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
 var S = {
   view: 'painel', wsId: null, wsTab: '01', wsQ: '', q: '',
   libQ: '', libArea: 'Todas', libOpen: { cpc: true },
@@ -2473,6 +2657,7 @@ function render() {
   else if (v === 'bemvindo') h = vBemvindo();
   else if (v === 'prazos') h = vPrazos();
   else if (v === 'reputacao') h = vReputacao();
+  else if (v === 'flashcards') h = vFlashcards();
   else if (v === 'agenda') h = vAgenda();
   else if (v === 'dissertacao') h = vDissertacao();
   else if (v === 'ordem') h = vOrdem();
@@ -5410,16 +5595,16 @@ var MOD_PERFIL = {
   doc: ['docente', 'atualidade', 'mentoria'],
   outro: ['kpis', 'progresso', 'calendario', 'horario', 'atualidade', 'continuar', 'mentoria', 'ferramentas']
 };
-var NAV = { painel: ['Painel', 'grid'], atualidade: ['Atualidade jurídica', 'news'], biblioteca: ['Biblioteca jurídica', 'book'], instituicoes: ['Instituições', 'uni'], workspaces: ['Legal Workspaces', 'folder'], minutas: ['Gerador de minutas', 'file'], cadeiras: ['Cadeiras', 'layers'], apontamentos: ['Apontamentos', 'note'], exames: ['Simulador de exames', 'check'], casos: ['Casos práticos', 'scale'], prazos: ['Contador de prazos', 'hour'], agenda: ['Agenda de diligências', 'cal'], dissertacao: ['Dissertação', 'cap'], ordem: ['Treino para a Ordem', 'badge'], docente: ['Ensino', 'pen'] };
+var NAV = { painel: ['Painel', 'grid'], flashcards: ['Flashcards', 'layers'], atualidade: ['Atualidade jurídica', 'news'], biblioteca: ['Biblioteca jurídica', 'book'], instituicoes: ['Instituições', 'uni'], workspaces: ['Legal Workspaces', 'folder'], minutas: ['Gerador de minutas', 'file'], cadeiras: ['Cadeiras', 'layers'], apontamentos: ['Apontamentos', 'note'], exames: ['Estudar e praticar', 'check'], casos: ['Casos práticos', 'scale'], prazos: ['Contador de prazos', 'hour'], agenda: ['Agenda de diligências', 'cal'], dissertacao: ['Dissertação', 'cap'], ordem: ['Treino para a Ordem', 'badge'], docente: ['Ensino', 'pen'] };
 var COMUN = ['chat', 'mensagens', 'salas', 'connect'];
 var NAV_PERFIL = {
-  lic: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['cadeiras', 'apontamentos', 'exames', 'casos']], ['Trabalho', ['workspaces', 'minutas']]],
+  lic: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos']], ['Trabalho', ['workspaces', 'minutas']]],
   licd: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Próximo passo', ['ordem', 'prazos', 'minutas', 'workspaces']]],
   mest: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Investigação', ['dissertacao', 'workspaces', 'apontamentos']]],
   estag: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Prática', ['prazos', 'agenda', 'minutas', 'workspaces']], ['Preparação', ['ordem', 'casos']]],
   prof: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Prática', ['prazos', 'agenda', 'minutas', 'workspaces']]],
   doc: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Ensino', ['docente', 'casos', 'exames']]],
-  outro: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['cadeiras', 'apontamentos', 'exames', 'casos']], ['Trabalho', ['workspaces', 'minutas', 'prazos', 'agenda']]]
+  outro: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos']], ['Trabalho', ['workspaces', 'minutas', 'prazos', 'agenda']]]
 };
 var AREAS_OPC = ['Civil', 'Processo Civil', 'Penal', 'Constitucional', 'Administrativo', 'Comercial', 'Fiscal', 'Laboral', 'Migrações', 'Institucional'];
 
@@ -6934,6 +7119,89 @@ A['q-rep-env'] = function (el) {
   });
 };
 
+/* ---------- FLASHCARDS COM REPETIÇÃO ESPAÇADA ----------
+   Cada questão gera um cartão: frente = pergunta; verso = resposta certa + explicação.
+   Algoritmo simplificado do tipo SM-2 (intervalos em dias). */
+var FC = { sess: null };
+function fcHoje() { return ymd(new Date()); }
+function fcEst(id) { return Store.get('fc_' + id) || null; }
+function fcCartoes(disc, tema) { return QUESTOES.filter(function (q) { return (!disc || disc === 'todas' || q.d === disc) && (!tema || tema === 'todos' || q.t === tema); }); }
+function fcResumo(disc, tema) {
+  var hj = fcHoje(), due = 0, novos = 0, apr = 0, l = fcCartoes(disc, tema);
+  l.forEach(function (q) { var e = fcEst(q.id); if (!e) novos++; else { if (e.due <= hj) due++; if (e.iv >= 21) apr++; } });
+  return { total: l.length, due: due, novos: novos, apr: apr };
+}
+function fcFila(disc, tema) {
+  var hj = fcHoje(), l = fcCartoes(disc, tema), d = [], n = [];
+  l.forEach(function (q) { var e = fcEst(q.id); if (!e) n.push(q.id); else if (e.due <= hj) d.push(q.id); });
+  d.sort(function (a, b) { return fcEst(a).due.localeCompare(fcEst(b).due); });
+  return d.concat(shuffle(n).slice(0, 15));
+}
+function fcAvaliar(id, nota) { // 0 errei, 1 difícil, 2 bem, 3 fácil
+  var e = fcEst(id) || { id: 'fc_' + id, kind: 'fc', n: 0, iv: 0, ef: 2.5 };
+  if (nota === 0) { e.n = 0; e.iv = 0; e.ef = Math.max(1.3, e.ef - 0.2); }
+  else {
+    if (nota === 1) { e.iv = Math.max(1, Math.round((e.iv || 1) * 1.2)); e.ef = Math.max(1.3, e.ef - 0.15); }
+    else if (nota === 2) { e.iv = e.n === 0 ? 1 : e.n === 1 ? 3 : Math.round(e.iv * e.ef); }
+    else { e.iv = e.n === 0 ? 4 : Math.round(Math.max(e.iv, 1) * e.ef * 1.3); e.ef = e.ef + 0.15; }
+    e.n++;
+  }
+  var d = hoje0(); d.setDate(d.getDate() + e.iv); e.due = ymd(d); e.ult = Date.now();
+  Store.put(e); return e;
+}
+function fcIntervaloTxt(id, nota) {
+  var e = clone(fcEst(id) || { n: 0, iv: 0, ef: 2.5 }), iv;
+  if (nota === 0) return 'hoje';
+  if (nota === 1) iv = Math.max(1, Math.round((e.iv || 1) * 1.2));
+  else if (nota === 2) iv = e.n === 0 ? 1 : e.n === 1 ? 3 : Math.round(e.iv * e.ef);
+  else iv = e.n === 0 ? 4 : Math.round(Math.max(e.iv, 1) * e.ef * 1.3);
+  return iv === 1 ? '1 dia' : iv < 30 ? iv + ' dias' : iv < 365 ? Math.round(iv / 30) + ' meses' : Math.round(iv / 365) + ' anos';
+}
+function vFlashcards() {
+  var c = S.fcCfg || (S.fcCfg = { disc: 'todas', tema: 'todos' });
+  var h = '<div class="head"><div><h1>Flashcards</h1><p class="sub">Repetição espaçada: cada cartão volta no momento certo para não o esquecer. Quanto melhor souber a resposta, mais tarde ele volta.</p></div></div>';
+  if (FC.sess) return h + vFcSessao();
+  var r = fcResumo(c.disc, c.tema), ds = discsAtivas(), temas = c.disc !== 'todas' && TEMAS[c.disc];
+  h += '<section class="fc-stats"><div><b>' + r.due + '</b><span>para rever hoje</span></div><div><b>' + r.novos + '</b><span>cartões novos</span></div><div><b>' + r.apr + '</b><span>bem memorizados</span></div><div><b>' + r.total + '</b><span>cartões nesta seleção</span></div></section>';
+  h += '<div class="card" style="gap:16px"><div style="display:flex;flex-direction:column;gap:8px"><span class="eyebrow">Disciplina</span><div class="est-ts">' + [['todas', 'Todas']].concat(ds.map(function (k) { return [k, DISC[k].curto]; })).map(function (d) {
+    var rr = fcResumo(d[0], 'todos');
+    return '<button class="est-t' + (c.disc === d[0] ? ' on' : '') + '" data-a="fc-disc" data-id="' + d[0] + '"><span>' + esc(d[1]) + '</span>' + (rr.due ? '<em class="fc-due">' + rr.due + '</em>' : '') + '</button>';
+  }).join('') + '</div></div>' +
+    (temas ? '<div style="display:flex;flex-direction:column;gap:8px"><span class="eyebrow">Tema</span><div class="est-ts">' + [['todos', 'Todos os temas']].concat(temas).map(function (t) { return '<button class="est-t' + (c.tema === t[0] ? ' on' : '') + '" data-a="fc-tema" data-id="' + t[0] + '"><span>' + esc(t[1]) + '</span></button>'; }).join('') + '</div></div>' : '') +
+    '<div class="row"><button class="btn pri" data-a="fc-ini"' + (r.due + r.novos ? '' : ' disabled') + '>' + (r.due ? 'Rever ' + r.due + ' cartões' + (r.novos ? ' + novos' : '') : r.novos ? 'Começar com cartões novos' : 'Tudo em dia ✓') + '</button><span style="font-size:12.5px;color:var(--muted)">Cada sessão junta os cartões a rever e até 15 cartões novos.</span></div></div>';
+  h += '<div class="note">Atalhos: <b>espaço</b> vira o cartão; <b>1</b> Errei · <b>2</b> Difícil · <b>3</b> Bem · <b>4</b> Fácil.</div>';
+  return h;
+}
+function vFcSessao() {
+  var s = FC.sess;
+  if (s.i >= s.fila.length) {
+    return '<section class="card fc-fim"><span class="fc-ok">🎉</span><h2>Sessão concluída</h2><p>Reviu ' + plural(s.feitos, 'cartão', 'cartões') + ' · ' + s.certos + ' sabia bem.</p><div class="row" style="justify-content:center"><button class="btn" data-a="fc-sair">Voltar</button>' + (fcFila(S.fcCfg.disc, S.fcCfg.tema).length ? '<button class="btn pri" data-a="fc-ini">Mais uma sessão</button>' : '') + '</div></section>';
+  }
+  var q = QMAP[s.fila[s.i]], vir = s.virado;
+  return '<div class="fc-top"><span>' + (s.i + 1) + ' / ' + s.fila.length + '</span><div class="bar" style="height:6px;flex:1"><i style="width:' + Math.round(100 * s.i / s.fila.length) + '%"></i></div><button class="btn sm" data-a="fc-sair">Terminar</button></div>' +
+    '<div class="fc-wrap"><button class="fc-card' + (vir ? ' vir' : '') + '" data-a="fc-virar" aria-label="Virar o cartão">' +
+    '<span class="fc-face fc-fr"><span class="fc-tag">' + esc(DISC[q.d].curto) + (q.t ? ' · ' + esc(temaNome(q.d, q.t)) : '') + '</span><span class="fc-q">' + esc(q.q) + '</span><span class="fc-hint">Pense na resposta e clique para virar</span></span>' +
+    '<span class="fc-face fc-vs"><span class="fc-tag">Resposta</span><span class="fc-a">' + esc(q.o[q.a]) + '</span><span class="fc-e">' + esc(q.e) + '</span></span></button></div>' +
+    (vir ? '<div class="fc-rate">' + [['Errei', 0, 'r0'], ['Difícil', 1, 'r1'], ['Bem', 2, 'r2'], ['Fácil', 3, 'r3']].map(function (b) { return '<button class="' + b[2] + '" data-a="fc-nota" data-id="' + b[1] + '"><b>' + b[0] + '</b><span>' + fcIntervaloTxt(q.id, b[1]) + '</span></button>'; }).join('') + '</div>' : '<div class="fc-rate vazio"><button class="btn pri" data-a="fc-virar">Mostrar resposta</button></div>') +
+    '<div class="row" style="justify-content:center"><button class="lnk q-rep" data-a="q-reportar" data-id="' + q.id + '">Reportar erro neste cartão</button></div>';
+}
+A['fc-disc'] = function (el) { S.fcCfg.disc = el.dataset.id; S.fcCfg.tema = 'todos'; render(); };
+A['fc-tema'] = function (el) { S.fcCfg.tema = el.dataset.id; render(); };
+A['fc-ini'] = function () { var f = fcFila(S.fcCfg.disc, S.fcCfg.tema); if (!f.length) { toast('Não há cartões para rever agora.'); return; } FC.sess = { fila: f, i: 0, virado: false, feitos: 0, certos: 0 }; render(); };
+A['fc-virar'] = function () { if (!FC.sess) return; FC.sess.virado = !FC.sess.virado; render(); };
+A['fc-nota'] = function (el) {
+  var s = FC.sess; if (!s || !s.virado) return; var n = Number(el.dataset.id), id = s.fila[s.i];
+  fcAvaliar(id, n); s.feitos++; if (n >= 2) s.certos++;
+  if (n === 0) s.fila.push(id); // volta no fim da sessão
+  s.i++; s.virado = false; render();
+};
+A['fc-sair'] = function () { FC.sess = null; render(); };
+document.addEventListener('keydown', function (ev) {
+  if (S.view !== 'flashcards' || !FC.sess || /input|textarea|select/i.test((ev.target && ev.target.tagName) || '') || document.getElementById('ov')) return;
+  if (ev.key === ' ') { ev.preventDefault(); A['fc-virar'](); }
+  else if (FC.sess.virado && /^[1-4]$/.test(ev.key)) { A['fc-nota']({ dataset: { id: String(Number(ev.key) - 1) } }); }
+});
+
 /* ---------- MODO NOTURNO ---------- */
 /* Gera automaticamente a versão escura de todas as regras CSS (e dos estilos em linha),
    convertendo as cores segundo o papel de cada propriedade: fundo, texto, contorno. */
@@ -7072,7 +7340,7 @@ A['tema'] = function () { var n = temaEscuro() ? 'claro' : 'escuro'; lsSet('lexd
 try { if (window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () { if (!lsGet('lexdesk_tema')) temaAplicar(temaPref()); }); } catch (e) { }
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
-var VIEW_LBL = { painel: ['Painel', I.grid], reputacao: ['Reputação', I.badge], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
+var VIEW_LBL = { painel: ['Painel', I.grid], reputacao: ['Reputação', I.badge], flashcards: ['Flashcards', I.layers], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Estudar e praticar', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
 var isMac = /Mac|iPhone|iPad/.test(navigator.platform || '');
 
 /* ===== animação de entrada e contadores ===== */
