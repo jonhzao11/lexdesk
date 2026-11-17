@@ -1472,6 +1472,20 @@ span.rp-util{cursor:default}
 .seq-d{width:21px;min-width:21px}.seq-d i{flex:none}.seq-w{flex:none}
 .seq-w{gap:6px}.seq-d{width:17px;min-width:17px}.seq-d i{width:17px;height:17px;font-size:9px}.seq-d.hj i{outline-offset:1px}
 .oa-pxd small{color:#F3D58A!important;opacity:1}
+/* ----- horário: semana completa no painel ----- */
+.ws-g{display:grid;gap:8px;align-items:start;flex:1}
+.ws-col{display:flex;flex-direction:column;gap:6px;min-width:0;padding:6px;border-radius:12px;background:#F8F9FB;min-height:100%}
+.ws-col.hoje{background:#FBF4F5;box-shadow:inset 0 0 0 1.5px #E6C9CE}
+.ws-h{display:flex;align-items:center;justify-content:space-between;padding:2px 4px 4px;font-size:12.5px}
+.ws-h b{color:var(--ink)}.ws-col.hoje .ws-h b{color:#7B1E2B}
+.ws-h span{font:700 10px var(--sans);text-transform:uppercase;letter-spacing:.08em;color:#fff;background:#7B1E2B;border-radius:6px;padding:2px 6px}
+.ws-a{display:flex;flex-direction:column;gap:1px;text-align:left;border:0;border-left:3px solid var(--c);background:var(--b);border-radius:8px;padding:6px 8px;font:inherit;color:inherit;cursor:pointer;min-width:0}
+.ws-a:hover{filter:brightness(.97)}
+.ws-t{font:700 11px var(--sans);color:var(--c);font-variant-numeric:tabular-nums}
+.ws-a b{font-size:12.5px;line-height:1.25;color:var(--ink);overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.ws-s{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ws-v{font-size:11.5px;color:#A0A7B5;padding:4px}
+@media (max-width:900px){.ws-g{grid-template-columns:1fr!important}}
 
 </style>
 </head>
@@ -7008,16 +7022,15 @@ function vOpA() {
     '<div class="ch-mh"><button class="icon-btn sm" data-a="cal-prev" aria-label="Mês anterior">‹</button><b>' + mes + ' ' + c.y + '</b><button class="icon-btn sm" data-a="cal-next" aria-label="Mês seguinte">›</button></div>' +
     '<div class="ch-g">' + ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'].map(function (x) { return '<span class="ch-w">' + x + '</span>'; }).join('') + cells + '</div>' +
     (pxA ? '<button class="oa-px oa-pxb" data-a="cal-ir" data-id="' + pxA.data + '" title="Mostrar no calendário"><span class="oa-pxd">' + (diasAte(pxA.data) === 0 ? 'Hoje' : diasAte(pxA.data) + '<small>' + (diasAte(pxA.data) === 1 ? 'dia' : 'dias') + '</small>') + '</span><span>Próxima avaliação<b>' + esc(pxA.tipo) + ' · ' + esc(exNome(pxA)) + '</b><small>' + new Date(parseYmd(pxA.data)).toLocaleDateString('pt-PT', { weekday: 'long', day: 'numeric', month: 'long' }) + (pxA.hora ? ' · ' + esc(pxA.hora) : '') + '</small></span></button>' : '') + '</div>';
-  var hojeD = (new Date().getDay() + 6) % 7; if (S.oaDia == null) S.oaDia = hojeD > 5 ? 0 : hojeD;
-  var dia = S.oaDia, aulas = D.au.filter(function (a) { return a.dia === dia; }).sort(function (a, b) { return minutos(a.ini) - minutos(b.ini); });
-  var lst = aulas.map(function (a) {
-    var co = cor(a.cadId);
-    return '<button class="ch-it" data-a="' + (a.demo ? 'demo-aula' : 'aula-open') + '" data-id="' + a.id + '" style="--c:' + co[1] + ';--b:' + co[0] + '"><span class="ch-h">' + esc(a.ini) + '<small>' + esc(a.fim) + '</small></span><span class="ch-tx"><b>' + esc(exNome(a)) + '</b><span>' + esc(a.tipo) + (a.sala ? ' · ' + esc(a.sala) : '') + '</span></span></button>';
-  }).join('');
-  var dir = '<div class="card oa-c" aria-labelledby="hor-h"><div class="oa-hd"><h2 id="hor-h">Horário' + (D.demoA ? ' <span class="chip gray" style="vertical-align:middle;font-family:var(--sans)">Exemplos</span>' : '') + '</h2><button class="btn sm" data-a="aula-new">' + I.plus + 'Aula</button></div>' +
-    '<div class="ch-dh"><button class="icon-btn sm" data-a="oa-dia" data-id="-1" aria-label="Dia anterior">‹</button><div><b>' + (dia === hojeD ? 'Hoje · ' : '') + DIAS[dia] + (dia < 5 ? '-feira' : '') + '</b><span>' + plural(aulas.length, 'aula', 'aulas') + '</span></div><button class="icon-btn sm" data-a="oa-dia" data-id="1" aria-label="Dia seguinte">›</button></div>' +
-    '<div class="ch-list">' + (lst || '<div class="ch-vazio">Sem aulas neste dia.</div>') + '</div>' +
-    '<button class="lnk oa-sem" data-a="ch-semana">Ver a semana completa →</button></div>';
+  var hojeD = (new Date().getDay() + 6) % 7, nDias = D.au.some(function (a) { return a.dia === 5; }) ? 6 : 5, NOMES = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+  var cols = '';
+  for (var di = 0; di < nDias; di++) {
+    var la = D.au.filter(function (a) { return a.dia === di; }).sort(function (a, b) { return minutos(a.ini) - minutos(b.ini); });
+    cols += '<div class="ws-col' + (di === hojeD ? ' hoje' : '') + '"><div class="ws-h"><b>' + NOMES[di] + '</b>' + (di === hojeD ? '<span>Hoje</span>' : '') + '</div>' +
+      (la.length ? la.map(function (a) { var co = cor(a.cadId); return '<button class="ws-a" data-a="' + (a.demo ? 'demo-aula' : 'aula-open') + '" data-id="' + a.id + '" style="--c:' + co[1] + ';--b:' + co[0] + '" title="' + esc(exNome(a) + ' · ' + a.ini + '–' + a.fim + (a.sala ? ' · ' + a.sala : '')) + '"><span class="ws-t">' + esc(a.ini) + '–' + esc(a.fim) + '</span><b>' + esc(sfCurto(exNome(a))) + '</b><span class="ws-s">' + esc(a.tipo || '') + (a.sala ? ' · ' + esc(a.sala) : '') + '</span></button>'; }).join('') : '<span class="ws-v">Sem aulas</span>') + '</div>';
+  }
+  var dir = '<div class="card oa-c oa-hz" aria-labelledby="hor-h"><div class="oa-hd"><h2 id="hor-h">Horário' + (D.demoA ? ' <span class="chip gray" style="vertical-align:middle;font-family:var(--sans)">Exemplos</span>' : '') + '</h2><button class="btn sm" data-a="aula-new">' + I.plus + 'Aula</button></div>' +
+    '<div class="ws-g" style="grid-template-columns:repeat(' + nDias + ',minmax(0,1fr))">' + cols + '</div></div>';
   return '<section class="oa">' + esq + dir + '</section>';
 }
 A['cal-ir'] = function (el) { var d = parseYmd(el.dataset.id); S.cal = { y: d.getFullYear(), m: d.getMonth() }; render(); };
