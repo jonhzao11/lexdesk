@@ -4077,7 +4077,7 @@ var A6 = {
       '<div class="cm-head">' + avHtml(Store.uid, S.nomeFull || 'U', 'pf-av sm') + '<div class="cm-who"><b>' + esc(S.nomeFull || 'Utilizador LEXDESK') + '</b><span>' + esc(em || '') + '</span><span class="cm-chips"><span class="chip gray">' + PERFIS[t].ic + ' ' + esc(PERFIS[t].curto) + '</span>' + (p && p.instId ? '<span class="chip gray">' + esc(perfilResumo(p)) + '</span>' : '') + '</span></div></div>' +
       grp('Perfil', lin('perfil-ver', I.users, 'Ver o meu perfil', 'Como os outros membros o veem') + lin('perfil-pub-edit', I.pen, 'Editar perfil público', 'Nome, fotografia e apresentação')) +
       grp('Estudos', (t === 'lic' || (p && p.instId) ? lin('perfil-edit', I.cap, 'Perfil académico', p && p.instId ? 'Instituição, ano e disciplinas' : 'Por definir: instituição, ano e disciplinas') : '') + lin('onb-abrir', I.gear, 'Tipo de perfil', 'Atual: ' + esc(PERFIS[t].nome) + ' · alterar')) +
-      grp('Dados', lin('dados-exportar', I.file, 'Descarregar os meus dados', 'Cópia de tudo o que guardou no LEXDESK') + lin('conta-eliminar', I.trash, 'Eliminar conta', 'Apaga a conta e os dados de forma definitiva', ' cm-danger')) +
+      grp('Conta', lin('conta-eliminar', I.trash, 'Eliminar conta', 'Apaga a conta e os dados de forma definitiva', ' cm-danger')) +
       '',
       '<button class="btn danger" data-a="logout" style="margin-right:auto">Terminar sessão</button><button class="btn pri" data-a="close">Fechar</button>');
   },
