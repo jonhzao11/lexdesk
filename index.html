@@ -996,6 +996,77 @@ body.bvp .main{background:radial-gradient(600px 360px at 75% 220px,rgba(200,150,
 .hb2 .pd-q{font-size:14.5px}
 .hb2 .pd-o button{padding:7px 10px;font-size:13px}
 @media (max-width:600px){.hb2 .hb-l{padding-left:0}}
+/* ----- primeiros passos ----- */
+.pp{display:flex;flex-direction:column;gap:12px;padding:16px 20px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:var(--sh1)}
+.pp-hd{display:flex;align-items:center;gap:14px}
+.pp-ring{--p:0;flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#C9A45C calc(var(--p)*1%),#ECEEF3 0);position:relative}
+.pp-ring::before{content:'';position:absolute;inset:6px;border-radius:50%;background:#fff}
+.pp-ring b{position:relative;font:800 14px var(--serif);color:var(--navy)}
+.pp-tt{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.pp-tt h2{margin:0;font-size:19px}
+.pp-tt span{font-size:13px;color:var(--muted)}
+.pp-tt span b{color:#7B1E2B}
+.pp-x{border:0;background:none;color:var(--muted);font:600 12.5px var(--sans);cursor:pointer}
+.pp-x:hover{color:#7B1E2B;text-decoration:underline}
+.pp-l{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.pp-i{display:flex;flex-direction:column;gap:8px;padding:12px;border-radius:14px;border:1px solid var(--line);background:#FAFBFD;position:relative;transition:transform .2s var(--ease),box-shadow .2s}
+.pp-i.prox{border-color:#E3C784;background:#FFFBF1;box-shadow:0 10px 24px -16px rgba(154,91,0,.5)}
+.pp-i.ok{opacity:.7}
+.pp-i.ok .pp-tx b{text-decoration:line-through;text-decoration-color:rgba(14,159,110,.5)}
+.pp-n{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:800 12.5px var(--sans);background:#EEF0F5;color:var(--navy)}
+.pp-i.ok .pp-n{background:#0E9F6E;color:#fff}
+.pp-i.prox .pp-n{background:var(--grad-gold);color:#3E0D16}
+.pp-tx{display:flex;flex-direction:column;gap:2px;flex:1}
+.pp-tx b{font-size:13.5px;color:var(--ink);line-height:1.3}
+.pp-tx span{font-size:12px;color:var(--muted);line-height:1.35}
+.pp-i .btn{align-self:flex-start}
+@media (max-width:1000px){.pp-l{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}}
+.pd.pulse{animation:pdPulse 1.5s ease}
+@keyframes pdPulse{0%,100%{box-shadow:none}30%{box-shadow:0 0 0 4px rgba(240,207,122,.6)}}
+/* ----- continuar onde ficou ----- */
+.ct{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:10px 14px;border-radius:16px;background:#fff;border:1px solid var(--line)}
+.ct-t{font:800 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#7B1E2B}
+.ct-l{display:flex;gap:10px;flex:1;flex-wrap:wrap}
+.ct-i{display:flex;align-items:center;gap:10px;flex:1 1 220px;min-width:0;padding:8px 12px;border-radius:12px;border:1px solid var(--line);background:#FAFBFD;cursor:pointer;text-align:left;transition:transform .15s,border-color .15s}
+.ct-i:hover{transform:translateY(-1px);border-color:#C9A45C}
+.ct-ic{flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:#F4EEF0;color:#7B1E2B}
+.ct-tx{display:flex;flex-direction:column;min-width:0;flex:1}
+.ct-tx b{font-size:13.5px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ct-tx span{font-size:12px;color:var(--muted)}
+.ct-go{font:700 12.5px var(--sans);color:#7B1E2B;white-space:nowrap}
+/* ----- artigo do dia ----- */
+.ad{display:flex;border-radius:20px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:var(--sh1)}
+.ad-sel{flex:none;width:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:16px;color:#F3E3B5;background:radial-gradient(120% 90% at 30% 10%,rgba(255,255,255,.12),transparent 60%),linear-gradient(160deg,#7B1E2B,#4A0F1A);position:relative}
+.ad-sel::after{content:'';position:absolute;inset:10px;border:1px solid rgba(201,164,92,.55);border-radius:10px}
+.ad-sig{font:800 28px var(--serif);letter-spacing:.02em}
+.ad-art{font:600 14px var(--sans);opacity:.9}
+.ad-c{flex:1;display:flex;flex-direction:column;gap:6px;padding:16px 20px;min-width:0}
+.ad-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ad-k{font:800 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#9A5B00}
+.ad-dip{font-size:12px;color:var(--muted)}
+.ad-c h2{margin:0;font-size:19px}
+.ad-c p{margin:0;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.ad-act{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:4px}
+.ad-act a.btn{text-decoration:none}
+.ad-nav{margin-left:auto;display:flex;gap:6px}
+.ad-nota{font-size:11.5px;color:var(--muted)}
+@media (max-width:700px){.ad{flex-direction:column}.ad-sel{width:auto;flex-direction:row;padding:12px}.ad-sel::after{display:none}.ad-sig{font-size:22px}}
+/* ----- o meu progresso ----- */
+.mp-w{display:grid;grid-template-columns:200px minmax(0,1.5fr) minmax(0,1fr);gap:22px;align-items:start}
+.mp-anel{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.mp-anel .ring{width:150px;height:150px}
+.mp-n{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;font-size:12px;color:var(--muted)}
+.mp-n b{color:var(--ink);font-size:14px}
+.mp-st{font:800 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.mp-g{min-width:0}
+.mp-r{display:flex;flex-direction:column;gap:7px;min-width:0}
+.mp-d{display:grid;grid-template-columns:1fr auto;gap:3px 8px;font-size:13px}
+.mp-d .bar{grid-column:1/-1}
+.mp-dn{font-weight:600;color:var(--ink)}.mp-dv{color:var(--muted)}
+.mp-u{display:flex;flex-direction:column;gap:5px}
+.mp-ui{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12.5px;color:var(--muted)}
+.mp-nota{font-size:12px;color:var(--muted)}
+@media (max-width:1000px){.mp-w{grid-template-columns:1fr}}
 
 </style>
 </head>
@@ -5826,6 +5897,150 @@ painelCompor = function (P, pf) {
   var h = _painelComporCH(R, pf), marca = '<div class="row" style="justify-content:center"><button class="btn sm" data-a="painel-pers">';
   var j = h.lastIndexOf(marca);
   return j >= 0 ? h.slice(0, j) + vEstante(pf) + h.slice(j) : h + vEstante(pf);
+};
+
+/* ---------- PAINEL: primeiros passos / continuar, artigo do dia, o meu progresso ---------- */
+
+/* ===== 2. Primeiros passos (contas novas) ou Continuar onde ficou ===== */
+function ppPassos() {
+  var s = stats(), pf = perfil(), t = tipoPerfil();
+  if (typeof PD !== 'undefined' && PD.estado === 'feita') lsSet('lexdesk_pp_pd', '1');
+  var acad = t === 'lic' || t === 'outro';
+  return [
+    ['perfil', acad ? 'Definir o perfil académico' : 'Escolher o seu perfil', acad ? 'Instituição, ano e disciplinas.' : 'Já está feito.', acad ? !!(pf && pf.instId) : true, 'perfil-edit', 'Definir'],
+    ['pd', 'Responder à pergunta do dia', 'Uma pergunta por dia, com ranking.', lsGet('lexdesk_pp_pd') === '1', 'pp-pd', 'Responder'],
+    ['sim', 'Fazer uma simulação de exame', 'Cinco perguntas bastam para começar.', s.at.length > 0, 'pp-sim', 'Simular'],
+    ['ava', 'Marcar uma avaliação', 'Frequência, exame ou entrega de trabalho.', Store.all('exame').length > 0, 'ex-new', 'Marcar'],
+    ['ws', 'Criar um workspace', 'Junte legislação, apontamentos e trabalhos.', s.ws.length > 0, 'ws-new', 'Criar']
+  ];
+}
+function vInicio() {
+  var ps = ppPassos(), feitos = ps.filter(function (p) { return p[3]; }).length;
+  if (feitos < ps.length && lsGet('lexdesk_pp_off') !== '1') {
+    var pct = Math.round(100 * feitos / ps.length), prox = ps.filter(function (p) { return !p[3]; })[0];
+    return '<section class="pp" aria-labelledby="pp-h"><div class="pp-hd"><div class="pp-ring" style="--p:' + pct + '"><b>' + feitos + '/' + ps.length + '</b></div><div class="pp-tt"><h2 id="pp-h">Primeiros passos</h2><span>Complete os ' + ps.length + ' passos para tirar o máximo do LEXDESK. Próximo: <b>' + esc(prox[1]) + '</b>.</span></div><button class="lnk pp-x" data-a="pp-off" title="Ocultar os primeiros passos">Ocultar</button></div>' +
+      '<div class="pp-l">' + ps.map(function (p, i) {
+        return '<div class="pp-i' + (p[3] ? ' ok' : '') + (p === prox ? ' prox' : '') + '"><span class="pp-n">' + (p[3] ? '✓' : i + 1) + '</span><span class="pp-tx"><b>' + esc(p[1]) + '</b><span>' + esc(p[2]) + '</span></span>' + (p[3] ? '' : '<button class="btn sm' + (p === prox ? ' gold' : '') + '" data-a="' + p[4] + '">' + p[5] + '</button>') + '</div>';
+      }).join('') + '</div></section>';
+  }
+  // utilizador habitual: continuar onde ficou
+  var s = stats(), itens = [];
+  s.ws.slice().sort(function (a, b) { return (b.updatedAt || 0) - (a.updatedAt || 0); }).slice(0, 2).forEach(function (w) {
+    itens.push('<button class="ct-i" data-a="ws-open" data-id="' + w.id + '"><span class="ct-ic">' + I.folder + '</span><span class="ct-tx"><b>' + esc(w.nome) + '</b><span>Workspace · ' + quando(w.updatedAt || w.createdAt) + '</span></span><span class="ct-go">›</span></button>');
+  });
+  var ua = s.at.slice().sort(function (a, b) { return b.createdAt - a.createdAt; })[0];
+  if (ua) itens.push('<button class="ct-i" data-go="exames"><span class="ct-ic">' + I.check + '</span><span class="ct-tx"><b>Simulação · ' + esc(ua.discLabel) + '</b><span>' + ua.correct + '/' + ua.total + ' certas · ' + quando(ua.createdAt) + '</span></span><span class="ct-go">Repetir ›</span></button>');
+  var px = Store.all('exame').filter(function (e) { return diasAte(e.data) >= 0; }).sort(function (a, b) { return a.data.localeCompare(b.data); })[0];
+  if (px && itens.length < 3) itens.push('<button class="ct-i" data-a="ex-open" data-id="' + px.id + '"><span class="ct-ic">' + I.cal + '</span><span class="ct-tx"><b>' + esc(exNome(px)) + '</b><span>' + esc(px.tipo) + ' · ' + faltam(px.data).toLowerCase() + '</span></span><span class="ct-go">›</span></button>');
+  if (!itens.length) return '';
+  return '<section class="ct" aria-label="Continuar onde ficou"><span class="ct-t">Continuar onde ficou</span><div class="ct-l">' + itens.slice(0, 3).join('') + '</div></section>';
+}
+A['pp-off'] = function () { lsSet('lexdesk_pp_off', '1'); render(); toast('Primeiros passos ocultados.'); };
+A['pp-pd'] = function () { var e = document.getElementById('pd'); if (e) { e.scrollIntoView({ behavior: 'smooth', block: 'center' }); e.classList.add('pulse'); setTimeout(function () { e.classList.remove('pulse'); }, 1600); } };
+A['pp-sim'] = function () { go('exames'); };
+if (!A['ws-open']) A['ws-open'] = function (el) { S.wsId = el.dataset.id; go('workspaces'); };
+
+/* ===== 5. Artigo do dia ===== */
+/* Resumos próprios do LEXDESK (não são o texto legal). */
+var ARTIGOS_DIA = [
+  ['crp', '13.º', 'Princípio da igualdade', 'Todos têm a mesma dignidade social e são iguais perante a lei. Ninguém pode ser privilegiado, beneficiado, prejudicado ou privado de qualquer direito em razão, por exemplo, da ascendência, sexo, língua, religião, convicções políticas, situação económica ou orientação sexual.'],
+  ['crp', '18.º', 'Força jurídica dos direitos, liberdades e garantias', 'Estes preceitos aplicam-se diretamente e vinculam entidades públicas e privadas. Só podem ser restringidos nos casos que a Constituição prevê, na medida do necessário, por lei geral e abstrata, sem efeito retroativo e sem atingir o seu conteúdo essencial.'],
+  ['crp', '20.º', 'Acesso ao direito e tutela jurisdicional efetiva', 'Todos têm acesso ao direito e aos tribunais, e a justiça não pode ser negada por falta de meios económicos. Inclui o direito a uma decisão em prazo razoável e mediante processo equitativo.'],
+  ['crp', '24.º', 'Direito à vida', 'A vida humana é inviolável e em caso algum há pena de morte.'],
+  ['crp', '28.º', 'Prisão preventiva', 'Quem é detido tem de ser apresentado a um juiz no prazo máximo de 48 horas, para apreciação da detenção. A prisão preventiva tem natureza excecional e só se mantém enquanto for necessária.'],
+  ['crp', '29.º', 'Aplicação da lei criminal', 'Só é crime o que uma lei anterior declare como tal (legalidade). A lei penal desfavorável não retroage, mas a mais favorável aplica-se retroativamente. Ninguém pode ser julgado mais do que uma vez pelo mesmo crime (ne bis in idem).'],
+  ['crp', '32.º', 'Garantias de processo criminal', 'O processo criminal assegura todas as garantias de defesa, incluindo o recurso. O arguido presume-se inocente até ao trânsito em julgado da condenação, e são nulas as provas obtidas por tortura, coação ou intromissão abusiva na vida privada.'],
+  ['crp', '203.º', 'Independência dos tribunais', 'Os tribunais são independentes e apenas estão sujeitos à lei.'],
+  ['crp', '278.º', 'Fiscalização preventiva da constitucionalidade', 'O Presidente da República pode pedir ao Tribunal Constitucional que aprecie a constitucionalidade de um diploma antes de o promulgar. O pedido é feito no prazo de oito dias após a receção do diploma.'],
+  ['cc', '9.º', 'Interpretação da lei', 'A interpretação não se fica pela letra: procura reconstituir o pensamento legislativo, atendendo à unidade do sistema e às circunstâncias da lei. Mas esse pensamento tem de ter na letra um mínimo de correspondência verbal, e presume-se que o legislador consagrou as soluções mais acertadas.'],
+  ['cc', '10.º', 'Integração das lacunas da lei', 'Nos casos omissos aplica-se a norma dos casos análogos, ou seja, aqueles em que procedem as mesmas razões. Não havendo caso análogo, o intérprete decide segundo a norma que ele próprio criaria se tivesse de legislar dentro do espírito do sistema.'],
+  ['cc', '66.º', 'Começo da personalidade', 'A personalidade jurídica adquire-se no momento do nascimento completo e com vida. Os direitos que a lei reconhece aos nascituros dependem do seu nascimento.'],
+  ['cc', '219.º', 'Liberdade de forma', 'Em regra, a validade de uma declaração negocial não depende de forma especial; só é preciso respeitar uma forma quando a lei a exige.'],
+  ['cc', '236.º', 'Sentido normal da declaração', 'A declaração vale com o sentido que um declaratário normal, colocado na posição do real declaratário, lhe atribuiria (teoria da impressão do destinatário). Se o declaratário conhecer a vontade real do declarante, vale essa vontade.'],
+  ['cc', '280.º', 'Requisitos do objeto negocial', 'É nulo o negócio cujo objeto seja física ou legalmente impossível, contrário à lei ou indeterminável, bem como o negócio contrário à ordem pública ou ofensivo dos bons costumes.'],
+  ['cc', '286.º', 'Nulidade', 'A nulidade pode ser invocada a todo o tempo por qualquer interessado e pode ser declarada oficiosamente pelo tribunal.'],
+  ['cc', '287.º', 'Anulabilidade', 'Só a podem arguir as pessoas em cujo interesse a lei a estabelece, no ano seguinte à cessação do vício. Enquanto o negócio não estiver cumprido, pode ser arguida sem dependência de prazo.'],
+  ['cc', '309.º', 'Prazo ordinário de prescrição', 'Quando a lei não fixa outro prazo, os direitos prescrevem em 20 anos.'],
+  ['cc', '405.º', 'Liberdade contratual', 'Dentro dos limites da lei, as partes podem fixar livremente o conteúdo dos contratos, celebrar contratos diferentes dos previstos no Código e incluir as cláusulas que entenderem.'],
+  ['cc', '406.º', 'Eficácia dos contratos', 'O contrato deve ser pontualmente cumprido e só se modifica ou extingue por mútuo consentimento ou nos casos previstos na lei (pacta sunt servanda).'],
+  ['cc', '483.º', 'Responsabilidade por factos ilícitos', 'Quem, com dolo ou mera culpa, violar ilicitamente um direito de outrem ou uma norma que proteja interesses alheios fica obrigado a indemnizar os danos causados. Sem culpa, só há obrigação de indemnizar nos casos previstos na lei.'],
+  ['cc', '487.º', 'Culpa', 'Cabe ao lesado provar a culpa do autor da lesão, salvo presunção legal. A culpa aprecia-se pela diligência de um bom pai de família, perante as circunstâncias de cada caso.'],
+  ['cc', '496.º', 'Danos não patrimoniais', 'São indemnizáveis os danos não patrimoniais que, pela sua gravidade, mereçam a tutela do direito. O montante é fixado equitativamente pelo tribunal.'],
+  ['cc', '498.º', 'Prescrição na responsabilidade extracontratual', 'O direito de indemnização prescreve em três anos a contar do momento em que o lesado teve conhecimento do seu direito. Se o facto ilícito for crime com prazo de prescrição mais longo, aplica-se esse prazo.'],
+  ['cc', '562.º', 'Princípio geral da obrigação de indemnizar', 'Quem está obrigado a reparar um dano deve reconstituir a situação que existiria se não se tivesse verificado o evento que obriga à reparação.'],
+  ['cc', '1305.º', 'Conteúdo do direito de propriedade', 'O proprietário goza de modo pleno e exclusivo dos direitos de uso, fruição e disposição das coisas que lhe pertencem, dentro dos limites da lei.'],
+  ['cp', '1.º', 'Princípio da legalidade', 'Só pode ser punido criminalmente o facto descrito e declarado passível de pena por lei anterior ao momento da sua prática.'],
+  ['cp', '13.º', 'Dolo e negligência', 'Só é punível o facto praticado com dolo ou, nos casos especialmente previstos na lei, com negligência.'],
+  ['cp', '14.º', 'Dolo', 'Há dolo direto quando o agente atua com intenção de realizar o facto; dolo necessário quando o representa como consequência necessária da sua conduta; e dolo eventual quando o representa como possível e se conforma com essa realização.'],
+  ['cp', '32.º', 'Legítima defesa', 'Constitui legítima defesa o facto praticado como meio necessário para repelir uma agressão atual e ilícita de interesses juridicamente protegidos do agente ou de terceiro.'],
+  ['cp', '40.º', 'Finalidades das penas', 'As penas e as medidas de segurança visam a proteção de bens jurídicos e a reintegração do agente na sociedade. Em caso algum a pena pode ultrapassar a medida da culpa.'],
+  ['cp', '131.º', 'Homicídio', 'Quem matar outra pessoa é punido com pena de prisão de 8 a 16 anos.'],
+  ['cpc', '3.º', 'Necessidade do pedido e da contradição', 'O tribunal só resolve um conflito se uma das partes o pedir e a outra for chamada a opor-se. Salvo manifesta desnecessidade, o juiz não pode decidir questões sem dar às partes a possibilidade de se pronunciarem (proibição de decisões-surpresa).'],
+  ['cpc', '138.º', 'Regra da continuidade dos prazos', 'O prazo processual é contínuo, mas suspende-se nas férias judiciais (salvo processos urgentes ou prazos de seis meses ou mais). Se terminar num dia em que os tribunais estejam encerrados, passa para o primeiro dia útil seguinte.'],
+  ['cpc', '149.º', 'Regra geral sobre o prazo', 'Na falta de disposição especial, é de 10 dias o prazo para as partes requererem qualquer ato ou diligência, arguirem nulidades, deduzirem incidentes ou exercerem outro poder processual, e também para responderem.'],
+  ['cpc', '552.º', 'Requisitos da petição inicial', 'Na petição o autor designa o tribunal, identifica as partes, indica a forma do processo, expõe os factos essenciais que constituem a causa de pedir e as razões de direito, formula o pedido e declara o valor da causa.'],
+  ['cpc', '569.º', 'Prazo para a contestação', 'O réu pode contestar no prazo de 30 dias a contar da citação.'],
+  ['cpc', '615.º', 'Causas de nulidade da sentença', 'A sentença é nula, entre outros casos, se não especificar os fundamentos de facto e de direito, se os fundamentos estiverem em oposição com a decisão, se houver omissão ou excesso de pronúncia, ou se condenar além do pedido.'],
+  ['cpc', '638.º', 'Prazos de recurso', 'Em regra, o prazo para recorrer é de 30 dias a contar da notificação da decisão; é de 15 dias nos processos urgentes e noutros casos previstos na lei.'],
+  ['cpp', '61.º', 'Direitos e deveres processuais do arguido', 'O arguido tem, entre outros, o direito de estar presente nos atos que lhe digam respeito, de ser ouvido, de não responder a perguntas sobre os factos que lhe são imputados (direito ao silêncio) e de escolher defensor.'],
+  ['cpp', '127.º', 'Livre apreciação da prova', 'Salvo quando a lei dispuser diferentemente, a prova é apreciada segundo as regras da experiência e a livre convicção da entidade competente.'],
+  ['cpp', '262.º', 'Finalidade do inquérito', 'O inquérito é o conjunto de diligências destinadas a investigar a existência de um crime, determinar os seus agentes e a sua responsabilidade e recolher as provas, para decidir se há acusação.'],
+  ['cpp', '283.º', 'Acusação pelo Ministério Público', 'Se houver indícios suficientes de que foi cometido um crime e de quem foi o seu agente, o Ministério Público deduz acusação. Os indícios são suficientes quando deles resulta uma possibilidade razoável de ao arguido vir a ser aplicada uma pena.'],
+  ['cpp', '287.º', 'Requerimento para abertura da instrução', 'A abertura da instrução pode ser requerida no prazo de 20 dias a contar da notificação da acusação ou do arquivamento: pelo arguido, quanto aos factos de que foi acusado, ou pelo assistente, quanto aos factos pelos quais o MP não acusou.'],
+  ['cpp', '411.º', 'Prazo de interposição do recurso', 'Em regra, o prazo para interpor recurso é de 30 dias, contados da notificação da decisão ou do depósito da sentença.']
+];
+function adIndice() {
+  var d = hoje0(), n = Math.floor((d - new Date(2026, 0, 1)) / 864e5);
+  return ((n + (S.adOff || 0)) % ARTIGOS_DIA.length + ARTIGOS_DIA.length) % ARTIGOS_DIA.length;
+}
+function vArtigoDia() {
+  var a = ARTIGOS_DIA[adIndice()], dip = DIPLOMAS.filter(function (x) { return x.id === a[0]; })[0] || {};
+  return '<section class="ad" aria-labelledby="ad-h"><div class="ad-sel"><span class="ad-sig">' + esc(dip.sigla || '') + '</span><span class="ad-art">art. ' + esc(a[1]) + '</span></div>' +
+    '<div class="ad-c"><div class="ad-top"><span class="ad-k">📜 ' + (S.adOff ? 'Artigo' : 'Artigo do dia') + '</span><span class="ad-dip">' + esc(dip.nome || '') + '</span></div>' +
+    '<h2 id="ad-h">' + esc(a[2]) + '</h2><p>' + esc(a[3]) + '</p>' +
+    '<div class="ad-act"><button class="btn sm" data-a="ad-bib">Ver na biblioteca</button>' + (dip.url ? '<a class="btn sm ghost2" href="' + esc(dip.url) + '" target="_blank" rel="noopener">Texto oficial ↗</a>' : '') +
+    '<span class="ad-nav"><button class="icon-btn sm" data-a="ad-mov" data-id="-1" aria-label="Artigo anterior">‹</button><button class="icon-btn sm" data-a="ad-mov" data-id="1" aria-label="Artigo seguinte">›</button></span></div>' +
+    '<span class="ad-nota">Resumo do LEXDESK. Confirme sempre a redação em vigor no texto oficial.</span></div></section>';
+}
+A['ad-mov'] = function (el) { S.adOff = (S.adOff || 0) + Number(el.dataset.id); var e = document.querySelector('.ad'); if (e) e.outerHTML = vArtigoDia(); };
+A['ad-bib'] = function () {
+  var a = ARTIGOS_DIA[adIndice()], dip = DIPLOMAS.filter(function (x) { return x.id === a[0]; })[0];
+  if (!dip) { go('biblioteca'); return; }
+  var art = (dip.arts || []).filter(function (x) { return x[0] === a[1]; })[0];
+  S.libArea = dip.area; S.libQ = art ? art[0] + ' ' + art[1] : ''; S.libOpen = S.libOpen || {}; S.libOpen[dip.id] = true; go('biblioteca');
+};
+
+/* ===== 7. O meu progresso (um só cartão) ===== */
+function vMeuProgresso() {
+  var s = stats(), taxa = s.tot ? Math.round(100 * s.ok / s.tot) : 0;
+  var at = s.at.slice().sort(function (a, b) { return a.createdAt - b.createdAt; }).slice(-10), demoL = at.length < 2;
+  var vals = demoL ? [40, 55, 50, 65, 60, 75, 70, 85] : at.map(function (a) { return Math.round(100 * a.correct / a.total); });
+  var lbls = demoL ? vals.map(function (v, i) { return 'Exemplo ' + (i + 1); }) : at.map(function (a) { return new Date(a.createdAt).toLocaleDateString('pt-PT', { day: 'numeric', month: 'short' }); });
+  var anel = '<div class="mp-anel"><div class="ring">' + svgRing(taxa) + '<div class="v"><b><span data-count="' + taxa + '" data-suf="%">' + taxa + '%</span></b><span>de acerto</span></div></div>' +
+    '<div class="mp-n"><span><b>' + s.tot + '</b> questões</span><span><b>' + s.at.length + '</b> simulações</span><span><b>' + s.casosFeitos + '</b> casos</span></div>' +
+    (s.tot ? '<span class="chip ' + (taxa >= 50 ? 'ok' : 'wine') + '">' + (taxa >= 70 ? 'Excelente ritmo' : taxa >= 50 ? 'No bom caminho' : 'Há margem para melhorar') + '</span>' : '') + '</div>';
+  var graf = '<div class="mp-g"><div class="mp-st">Evolução' + (demoL ? ' <span class="tag-demo">Exemplo</span>' : '') + '</div>' + svgLine(vals, lbls) + '</div>';
+  var disc = Object.keys(DISC).map(function (k) {
+    var d = s.porD[k], p = d ? Math.round(100 * d.ok / d.t) : 0;
+    return '<div class="mp-d"><span class="mp-dn">' + DISC[k].nome + '</span><span class="mp-dv">' + (d ? p + '%' : '—') + '</span><div class="bar"><i style="width:' + p + '%"></i></div></div>';
+  }).join('');
+  var ult = s.at.slice().sort(function (a, b) { return b.createdAt - a.createdAt; }).slice(0, 3);
+  var ul = ult.length ? '<div class="mp-u">' + ult.map(function (a) { var p = Math.round(100 * a.correct / a.total); return '<div class="mp-ui"><span>' + esc(a.discLabel) + ' · ' + quando(a.createdAt) + '</span><span class="chip ' + (p >= 50 ? 'ok' : 'bad') + '">' + a.correct + '/' + a.total + '</span></div>'; }).join('') + '</div>' : '';
+  var dir = '<div class="mp-r"><div class="mp-st">Por disciplina</div>' + disc + (ul ? '<div class="mp-st" style="margin-top:6px">Últimas simulações</div>' + ul : '') + '</div>';
+  return '<section class="card mp" aria-labelledby="mp-h"><div class="row" style="justify-content:space-between"><h2 id="mp-h">O meu progresso</h2><button class="btn sm' + (s.tot ? '' : ' wine') + '" data-go="exames">' + (s.tot ? 'Nova simulação' : 'Fazer a primeira simulação') + '</button></div>' +
+    '<div class="mp-w">' + anel + graf + dir + '</div>' + (s.tot ? '' : '<span class="mp-nota">Os valores aparecem à medida que faz simulações de exame.</span>') + '</section>';
+}
+
+/* ===== composição ===== */
+var _painelComporIN = painelCompor;
+painelCompor = function (P, pf) {
+  var Q = {}; for (var k in P) Q[k] = P[k];
+  Q.progresso = vMeuProgresso();
+  Q.atualidade = vArtigoDia() + (P.atualidade || '');
+  Q.continuar = ''; Q.ferramentas = '';
+  var h = _painelComporIN(Q, pf), i = h.indexOf('<section class="bento"');
+  var ini = vInicio();
+  return i >= 0 ? h.slice(0, i) + ini + h.slice(i) : ini + h;
 };
 
 /* ---------- MODO NOTURNO ---------- */
