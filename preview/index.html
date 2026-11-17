@@ -1405,6 +1405,26 @@ span.rp-util{cursor:default}
 .lei-mod .lei-tx{font-size:15px}
 .au-lei-tx{max-height:340px;overflow:auto;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#FCFCFD;font-size:14px;gap:6px}
 @media (max-width:900px){.lei-grid{grid-template-columns:1fr}.lei-toc{position:static;max-height:300px}.lei-art{padding:20px}}
+/* ----- janela «A minha conta» ----- */
+.cm-head{display:flex;gap:14px;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.cm-who{display:flex;flex-direction:column;gap:2px;min-width:0}
+.cm-who b{font-size:17px;color:var(--ink)}.cm-who>span{font-size:13px;color:var(--muted)}
+.cm-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.cm-g{display:flex;flex-direction:column;gap:6px;margin-top:14px}
+.cm-gt{font:700 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#7B1E2B}
+.cm-l{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.cm-i{display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:0;background:#fff;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.cm-i+.cm-i{border-top:1px solid var(--line)}
+.cm-i:hover{background:#F6F7FA}
+.cm-ic{width:34px;height:34px;flex:none;border-radius:10px;background:#F1F3F8;display:grid;place-items:center;color:var(--navy,#14213D)}
+.cm-ic svg{width:17px;height:17px}
+.cm-tx{display:flex;flex-direction:column;gap:1px;flex:1;min-width:0}.cm-tx b{font-size:14px}.cm-tx span{font-size:12.5px;color:var(--muted)}
+.cm-ch{font-size:20px;color:#A0A7B5}
+.cm-danger .cm-ic{background:#FBECEE;color:#B42318}.cm-danger b{color:#B42318}
+.cm-nota{margin:14px 0 0;font-size:12px;color:var(--muted)}
+.cm-rp{margin-top:14px}.cm-rp .rp-conta{width:100%}
+.cm-head{padding-bottom:12px}.cm-g{margin-top:10px;gap:5px}.cm-i{padding:8px 12px}.cm-ic{width:30px;height:30px;border-radius:9px}.cm-tx b{font-size:13.5px}.cm-tx span{font-size:12px}.cm-rp{margin-top:10px}.cm-rp .rp-conta{padding-top:8px;padding-bottom:8px}.cm-nota{margin-top:10px}
+.cm-rpc{border:1px solid #F3D58A;background:#FFF8E6;color:#7B1E2B;font-weight:700;cursor:pointer}.cm-rpc:hover{background:#FDEFC8}
 
 </style>
 </head>
@@ -4050,10 +4070,16 @@ var A6 = {
     });
   },
   'conta-menu': function () {
-    var p = perfil(), em = SBuser.session && SBuser.session.user.email;
-    openModal('A minha conta', '<div class="row" style="gap:14px">' + avHtml(Store.uid, S.nomeFull || 'U', 'pf-av sm') + '<div><b style="font-size:16px">' + esc(S.nomeFull || 'Utilizador LEXDESK') + '</b><div style="font-size:13px;color:var(--muted)">' + esc(em || '') + '</div><div style="font-size:13px;color:var(--muted)">' + (p && p.instId ? esc(perfilResumo(p)) : 'Perfil académico por definir') + '</div></div></div>' +
-      '<div class="note">Sessão iniciada: os seus dados e ficheiros ficam guardados na sua conta e sincronizados entre dispositivos.</div><div class="row" style="gap:8px"><button class="btn sm" data-a="dados-exportar">Descarregar os meus dados</button><button class="btn sm" data-a="legal-abrir" data-id="privacidade">Privacidade e termos</button><button class="btn sm danger" data-a="conta-eliminar">Eliminar conta</button></div>',
-      '<button class="btn danger" data-a="logout" style="margin-right:auto">Terminar sessão</button><button class="btn" data-a="perfil-ver" data-id="' + Store.uid + '">Ver o meu perfil</button><button class="btn" data-a="perfil-pub-edit">Editar perfil público</button><button class="btn" data-a="perfil-edit">Perfil académico</button><button class="btn" data-a="onb-abrir">Alterar tipo de perfil</button><button class="btn pri" data-a="close">Fechar</button>');
+    var p = perfil(), em = SBuser.session && SBuser.session.user.email, t = tipoPerfil();
+    var lin = function (a, ic, tit, sub, extra) { return '<button class="cm-i' + (extra || '') + '" data-a="' + a + '"' + (a === 'perfil-ver' ? ' data-id="' + Store.uid + '"' : '') + '><span class="cm-ic">' + ic + '</span><span class="cm-tx"><b>' + tit + '</b><span>' + sub + '</span></span><span class="cm-ch" aria-hidden="true">›</span></button>'; };
+    var grp = function (tit, html) { return '<div class="cm-g"><span class="cm-gt">' + tit + '</span><div class="cm-l">' + html + '</div></div>'; };
+    openModal('A minha conta',
+      '<div class="cm-head">' + avHtml(Store.uid, S.nomeFull || 'U', 'pf-av sm') + '<div class="cm-who"><b>' + esc(S.nomeFull || 'Utilizador LEXDESK') + '</b><span>' + esc(em || '') + '</span><span class="cm-chips"><span class="chip gray">' + PERFIS[t].ic + ' ' + esc(PERFIS[t].curto) + '</span>' + (p && p.instId ? '<span class="chip gray">' + esc(perfilResumo(p)) + '</span>' : '') + '</span></div></div>' +
+      grp('Perfil', lin('perfil-ver', I.users, 'Ver o meu perfil', 'Como os outros membros o veem') + lin('perfil-pub-edit', I.pen, 'Editar perfil público', 'Nome, fotografia e apresentação')) +
+      grp('Estudos', (t === 'lic' || (p && p.instId) ? lin('perfil-edit', I.cap, 'Perfil académico', p && p.instId ? 'Instituição, ano e disciplinas' : 'Por definir: instituição, ano e disciplinas') : '') + lin('onb-abrir', I.gear, 'Tipo de perfil', 'Atual: ' + esc(PERFIS[t].nome) + ' · alterar')) +
+      grp('Dados', lin('dados-exportar', I.file, 'Descarregar os meus dados', 'Cópia de tudo o que guardou no LEXDESK') + lin('conta-eliminar', I.trash, 'Eliminar conta', 'Apaga a conta e os dados de forma definitiva', ' cm-danger')) +
+      '',
+      '<button class="btn danger" data-a="logout" style="margin-right:auto">Terminar sessão</button><button class="btn pri" data-a="close">Fechar</button>');
   },
   'logout': function () {
     lsSet('lexdesk_sessao', 'off');
@@ -7247,7 +7273,8 @@ openModal = function (title, body, actions) {
   if (title === 'O meu perfil público' || title === 'Perfil') body = body.replace('<div class="row" style="gap:6px;margin-top:6px">', function (m) { var mm = body.match(/data-id="([0-9a-f-]{36})"/); return m; });
   if (title === 'A minha conta' && sessaoAtiva()) {
     var p = RP.tot[Store.uid], nv = rpNivel(p || 0);
-    body = '<button class="rp-conta n' + nv.i + '" data-a="rp-abrir"><span class="rp-ci">' + nv.n.ic + '</span><span><b>' + esc(nv.n.nome) + '</b><small>' + (p != null ? rpFmt(p) + ' RP · ' : '') + 'Ver a minha reputação →</small></span></button>' + body;
+    var rpb = '<button class="rp-conta n' + nv.i + '" data-a="rp-abrir"><span class="rp-ci">' + nv.n.ic + '</span><span><b>' + esc(nv.n.nome) + '</b><small>' + (p != null ? rpFmt(p) + ' RP · ' : '') + 'Ver a minha reputação →</small></span></button>', k = body.indexOf('<span class="cm-chips">');
+    if (k > 0) { k += '<span class="cm-chips">'.length; body = body.slice(0, k) + '<button class="chip cm-rpc n' + nv.i + '" data-a="rp-abrir" title="Ver a minha reputação">' + nv.n.ic + ' ' + esc(nv.n.nome) + (p != null ? ' · ' + rpFmt(p) + ' RP' : '') + ' →</button>' + body.slice(k); } else body = rpb + body;
   }
   return _openModalRP(title, body, actions);
 };
