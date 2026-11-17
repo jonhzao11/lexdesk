@@ -1439,6 +1439,39 @@ span.rp-util{cursor:default}
 .mp-kt small{font-size:11px;color:var(--muted)}
 .mp-g svg{max-height:170px}
 .mp-r{gap:2px}.mp-dc{padding:3px 6px}.mp-d{font-size:12.5px;gap:2px 8px}.mp-d .bar{height:5px}
+/* ----- Dias seguidos (sequência) ----- */
+.bt.seq{gap:6px}
+.seq-n{display:flex;align-items:baseline;gap:6px}
+.seq-f{font-size:24px;filter:grayscale(1) opacity(.45);transition:filter .3s}
+.bt.seq.feito .seq-f{filter:none;animation:seqf 1.6s ease-in-out infinite}
+.bt.seq .bt-n{color:#C2410C}.bt.seq:not(.feito) .bt-n{color:var(--ink)}
+.seq-u{font-size:13px;color:var(--muted);font-weight:600}
+.seq-w{display:flex;gap:5px}
+.seq-d{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1}
+.seq-d i{width:24px;height:24px;border-radius:50%;background:#F1F2F5;display:grid;place-items:center;font-style:normal;font-size:13px;line-height:1}
+.seq-d.on i{background:linear-gradient(160deg,#FDBA74,#F97316);box-shadow:0 2px 6px rgba(249,115,22,.35)}
+.seq-d.hj i{outline:2px solid #F97316;outline-offset:2px}
+.seq-d.fut i{background:#F7F8FA}
+.seq-d small{font:700 10px var(--sans);color:var(--muted)}.seq-d.hj small{color:#C2410C}
+.bt.seq.risco .bt-s{color:#C2410C;font-weight:600}
+@keyframes seqf{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.12) rotate(-4deg)}}
+@media (prefers-reduced-motion:reduce){.bt.seq.feito .seq-f{animation:none}}
+/* ----- calendário: próxima avaliação ----- */
+.ch-d.prox{background:#7B1E2B!important;color:#fff!important;font-weight:800;box-shadow:0 0 0 2px #F3D58A;position:relative}
+.ch-d.prox::after{content:'';position:absolute;top:-3px;right:-3px;width:9px;height:9px;border-radius:50%;background:#F3D58A;border:2px solid #fff;animation:proxp 2s ease-in-out infinite}
+.ch-d.prox .e{display:none}
+@keyframes proxp{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+.oa-pxb{display:flex;align-items:center;gap:12px;width:100%;border:1px solid #EAD9DC;background:#FBF4F5;border-radius:12px;padding:8px 12px;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.oa-pxb:hover{background:#F7EBED}
+.oa-pxd{flex:none;min-width:48px;height:44px;border-radius:10px;background:#7B1E2B;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font:800 18px/1 var(--sans);box-shadow:0 0 0 2px #F3D58A}
+.oa-pxd small{font:600 10px var(--sans);opacity:.85;margin-top:2px}
+.oa-pxb>span:last-child{display:flex;flex-direction:column;font-size:11px;color:var(--muted);text-transform:none}
+.oa-pxb b{font-size:13.5px;color:var(--ink)}.oa-pxb small{font-size:12px;color:var(--muted)}
+.seq-row{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.bt.seq{gap:2px}.seq-w{gap:3px}.seq-d{flex:none;gap:1px}.seq-d i{width:20px;height:20px;font-size:11px}.seq-d small{font-size:9px}.seq-f{font-size:20px}
+.seq-d{width:21px;min-width:21px}.seq-d i{flex:none}.seq-w{flex:none}
+.seq-w{gap:6px}.seq-d{width:17px;min-width:17px}.seq-d i{width:17px;height:17px;font-size:9px}.seq-d.hj i{outline-offset:1px}
+.oa-pxd small{color:#F3D58A!important;opacity:1}
 
 </style>
 </head>
@@ -6327,11 +6360,12 @@ function hbTiles(t) {
   var sem = function (tipo) { var lim = ymd(new Date(Date.now() + 7 * 864e5)); return proxAgenda().filter(function (a) { return a.data <= lim && (tipo ? a.tipo === tipo : a.tipo !== 'Prazo'); }).length; };
   var T = {
     aulas: function () { return bt('Aulas hoje', aulas.length, aulas.length ? 'Primeira às ' + esc(aulas.sort(function (a, b) { return a.ini.localeCompare(b.ini); })[0].ini) : 'Hoje não tem aulas', 'painel', 'Horário', 'hb-hor'); },
+    seq: function () { return seqTile(); },
     fc: function () { var r = typeof fcResumo === 'function' ? fcResumo('todas') : { due: 0, novos: 0 }; return bt('Flashcards para hoje', r.due, r.due ? plural(r.due, 'cartão por rever', 'cartões por rever') : 'Está em dia · ' + r.novos + ' cartões novos', 'flashcards', r.due ? 'Rever' : 'Começar'); },
     aval: function () { var px = Store.all('exame').filter(function (e) { return diasAte(e.data) >= 0; }).sort(function (a, b) { return a.data.localeCompare(b.data); })[0]; if (!px) return bt('Próxima avaliação', '—', 'Nenhuma frequência ou exame marcado', 'painel', 'Marcar', 'ex-new'); var d = diasAte(px.data); S.hbAval = px.id; return bt('Próxima avaliação', d === 0 ? 'Hoje' : d, (d === 0 ? '' : (d === 1 ? 'dia · ' : 'dias · ')) + esc(px.tipo) + ' de ' + esc(exNome(px)), 'painel', 'Ver', 'hb-aval'); },
     quest: function () { return bt('Questões respondidas', s.tot, taxa == null ? 'Ainda sem simulações' : taxa + '% de respostas certas', 'exames', 'Simular'); },
     casos: function () { return bt('Casos resolvidos', s.casosFeitos, 'de ' + CASOS.length + ' disponíveis', 'casos', 'Praticar'); },
-    ws: function () { return bt('Workspaces', s.ws.length, plural(s.items.length, 'documento', 'documentos'), 'workspaces', 'Abrir'); },
+    ws: function () { return bt(wsEstudante() ? 'Preparar exame' : 'Workspaces', s.ws.length, plural(s.items.length, 'documento', 'documentos'), 'workspaces', 'Abrir'); },
     atual: function () { return bt('Atualidade nova', nov, nov ? 'publicações por ler' : 'Está em dia', 'atualidade', 'Ler'); },
     prazos: function () { return bt('Prazos em 7 dias', sem('Prazo'), 'a terminar esta semana', 'prazos', 'Calcular'); },
     dilig: function () { return bt('Diligências em 7 dias', sem(), 'julgamentos, audiências e reuniões', 'agenda', 'Agenda'); },
@@ -6340,7 +6374,7 @@ function hbTiles(t) {
     qprop: function () { return bt('Perguntas próprias', Store.all('qprop').length, 'para usar nas salas', 'docente', 'Criar'); },
     cprop: function () { return bt('Casos próprios', Store.all('casoprop').length, 'para o julgamento simulado', 'docente', 'Criar'); }
   };
-  var L = { lic: ['aulas', 'aval', 'fc', 'ws'], outro: ['aulas', 'aval', 'fc', 'ws'], licd: ['quest', 'casos', 'atual', 'ws'], mest: ['palavras', 'biblio', 'atual', 'ws'], estag: ['prazos', 'dilig', 'quest', 'atual'], prof: ['prazos', 'dilig', 'atual', 'ws'], doc: ['qprop', 'cprop', 'atual', 'ws'] }[t] || ['quest', 'casos', 'ws', 'atual'];
+  var L = { lic: ['aulas', 'seq', 'fc', 'ws'], outro: ['aulas', 'seq', 'fc', 'ws'], licd: ['quest', 'casos', 'atual', 'ws'], mest: ['palavras', 'biblio', 'atual', 'ws'], estag: ['prazos', 'dilig', 'quest', 'atual'], prof: ['prazos', 'dilig', 'atual', 'ws'], doc: ['qprop', 'cprop', 'atual', 'ws'] }[t] || ['quest', 'casos', 'ws', 'atual'];
   return L.map(function (k) { return T[k](); }).join('');
 }
 function heroB(t) {
@@ -6372,7 +6406,8 @@ renderSide = function () {
   if (grupos[0][0] === 'Geral') { grupos[0][0] = 'Consulta'; grupos[0][1] = grupos[0][1].filter(function (k) { return k !== 'painel'; }); }
   var dmn = sessaoAtiva() ? dmNaoLidas() : 0;
   var item = function (k, lbl, ic) { return '<button class="tn-i' + (S.view === k ? ' on' : '') + '" data-go="' + k + '"' + (S.view === k ? ' aria-current="page"' : '') + '>' + ic + '<span>' + lbl + '</span></button>'; };
-  var nb = function (k) { return item(k, esc(NAV[k][0]), I[NAV[k][1]]); };
+  var nb = function (k) { return item(k, esc(k === 'workspaces' ? wsNome() : NAV[k][0]), I[NAV[k][1]]); };
+  if (typeof VIEW_LBL !== 'undefined' && VIEW_LBL.workspaces) VIEW_LBL.workspaces[0] = wsNome();
   var grupo = function (nome, itens, html, badge, extra) {
     var on = itens.indexOf(S.view) >= 0;
     return '<div class="tn-g' + (on ? ' on' : '') + '"><button class="tn-b" aria-haspopup="true">' + esc(nome) + (badge ? '<span class="nbadge">' + badge + '</span>' : '') + '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="tn-m" role="menu">' + html + (extra || '') + '</div></div>';
@@ -6388,6 +6423,57 @@ renderSide = function () {
 };
 document.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('.tn-b[aria-haspopup]'); [].forEach.call(document.querySelectorAll('.tn-g.open'), function (g) { if (!b || g !== b.parentNode) g.classList.remove('open'); }); if (b) b.parentNode.classList.toggle('open'); });
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape') [].forEach.call(document.querySelectorAll('.tn-g.open'), function (g) { g.classList.remove('open'); }); });
+
+/* ----- «Preparar exame»: nome dos workspaces para estudantes ----- */
+function wsEstudante() { var t = tipoPerfil(); return t === 'lic' || t === 'outro'; }
+function wsNome() { return wsEstudante() ? 'Preparar exame' : 'Legal Workspaces'; }
+var _vWorkspacesPE = vWorkspaces;
+vWorkspaces = function () {
+  var h = _vWorkspacesPE(); if (!wsEstudante()) return h;
+  return h.replace('<h1>Legal Workspaces</h1><p class="sub">Reúna, por tema, a legislação, a doutrina, a jurisprudência e os seus trabalhos.</p>', '<h1>Preparar exame</h1><p class="sub">Uma pasta por exame: reúna a legislação, os apontamentos, a jurisprudência e os exames anteriores de cada cadeira.</p>')
+    .replace(I.plus + 'Novo workspace', I.plus + 'Preparar novo exame').replace('Ainda não tem workspaces', 'Ainda não está a preparar nenhum exame')
+    .replace('Exemplo: “Responsabilidade Civil Médica”', 'Exemplo: “Exame de Direito das Obrigações II”').replace(I.plus + 'Criar workspace', I.plus + 'Preparar um exame');
+};
+var _vWorkspacePE = vWorkspace;
+vWorkspace = function () { var h = _vWorkspacePE(); return wsEstudante() ? h.replace('<button data-a="ws-back">Legal Workspaces</button>', '<button data-a="ws-back">Preparar exame</button>') : h; };
+
+/* ----- Dias seguidos de estudo (estilo Duolingo) ----- */
+var SEQ_KINDS = { attempt: 1, fc: 1, aulasess: 1, 'case': 1, cartao: 1 };
+var _putSEQ = Store.put;
+Store.put = function (o) {
+  var r = _putSEQ.apply(Store, arguments);
+  if (o && SEQ_KINDS[o.kind]) {
+    var h = ymd(new Date()), m = Store.get('estudo_dias');
+    if (!m || !m.dias || !m.dias[h]) { m = m ? clone(m) : { id: 'estudo_dias', kind: 'meta', dias: {} }; m.dias = m.dias || {}; m.dias[h] = 1; _putSEQ.call(Store, m); }
+  }
+  return r;
+};
+function seqDias() {
+  var d = {}, m = Store.get('estudo_dias'); if (m && m.dias) Object.keys(m.dias).forEach(function (k) { d[k] = 1; });
+  Store.all('attempt').forEach(function (a) { if (a.createdAt) d[ymd(new Date(a.createdAt))] = 1; });
+  Store.all('fc').forEach(function (e) { if (e.ult) d[ymd(new Date(e.ult))] = 1; });
+  Store.all('aulasess').forEach(function (s) { if (s.data) d[s.data] = 1; });
+  return d;
+}
+function seqCalc() {
+  var d = seqDias(), dia = hoje0(), hoje = !!d[ymd(dia)], n = 0;
+  if (!hoje) dia.setDate(dia.getDate() - 1);
+  while (d[ymd(dia)]) { n++; dia.setDate(dia.getDate() - 1); }
+  var ks = Object.keys(d).sort(), rec = 0, run = 0, prev = null;
+  ks.forEach(function (k) { var t = parseYmd(k).getTime(); run = prev != null && Math.round((t - prev) / 864e5) === 1 ? run + 1 : 1; prev = t; if (run > rec) rec = run; });
+  return { n: n, hoje: hoje, rec: Math.max(rec, n), d: d };
+}
+function seqTile() {
+  var q = seqCalc(), seg = hoje0(); seg.setDate(seg.getDate() - ((seg.getDay() + 6) % 7));
+  var hk = ymd(new Date()), sem = ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'].map(function (l, i) {
+    var x = new Date(seg); x.setDate(seg.getDate() + i); var k = ymd(x), on = !!q.d[k], fut = k > hk;
+    return '<span class="seq-d' + (on ? ' on' : '') + (k === hk ? ' hj' : '') + (fut ? ' fut' : '') + '" title="' + x.toLocaleDateString('pt-PT', { weekday: 'long', day: 'numeric', month: 'long' }) + (on ? ' · estudou' : '') + '"><i>' + (on ? '🔥' : '') + '</i><small>' + l + '</small></span>';
+  }).join('');
+  var sub = q.hoje ? 'Hoje já está ✓' + (q.rec > 1 ? ' · recorde ' + q.rec : '') : q.n ? 'Estude hoje para não perder a sequência' : 'Responda a uma pergunta para começar';
+  return '<div class="bt seq' + (q.hoje ? ' feito' : q.n ? ' risco' : '') + '"><div class="bt-h"><span class="bt-l">Dias seguidos</span><button class="bt-p" data-go="' + (q.hoje ? 'flashcards' : 'exames') + '">' + (q.hoje ? 'Rever' : 'Estudar') + '</button></div>' +
+    '<div class="seq-row"><div class="seq-n"><span class="seq-f" aria-hidden="true">🔥</span><b class="bt-n" data-count="' + q.n + '">' + q.n + '</b><span class="seq-u">' + (q.n === 1 ? 'dia' : 'dias') + '</span></div>' +
+    '<div class="seq-w" aria-label="Esta semana">' + sem + '</div></div><span class="bt-s">' + sub + '</span></div>';
+}
 
 /* ---------- PÁGINA DE BOAS-VINDAS: escolha do grau académico ---------- */
 var BV_ICON = {
@@ -6908,19 +6994,20 @@ function vOpA() {
   var c = S.cal || (S.cal = { y: new Date().getFullYear(), m: new Date().getMonth() });
   var D = chDados(), hj = ymd(new Date()), porDia = {};
   D.ex.forEach(function (e) { (porDia[e.data] = porDia[e.data] || []).push(e); });
+  var pxA = D.ex.filter(function (e) { return diasAte(e.data) >= 0; }).sort(function (a, b) { return a.data.localeCompare(b.data); })[0];
   var first = new Date(c.y, c.m, 1), off = (first.getDay() + 6) % 7, nd = new Date(c.y, c.m + 1, 0).getDate(), cells = '';
   for (var i = 0; i < off; i++) cells += '<span class="ch-d out" aria-hidden="true"></span>';
   for (var d = 1; d <= nd; d++) {
     var k = c.y + '-' + String(c.m + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0'), l = porDia[k] || [];
     var dots = l.slice(0, 3).map(function (e) { return '<i class="e" style="background:' + cor(e.cadId)[1] + '"></i>'; }).join('');
-    cells += '<button class="ch-d' + (k === hj ? ' today' : '') + (l.length ? ' has' : '') + '" data-a="' + (D.demoE && l.length ? 'demo-ex' : 'cal-day') + '" data-id="' + k + '" aria-label="' + d + ' de ' + MESES[c.m] + (l.length ? ', ' + plural(l.length, 'avaliação', 'avaliações') : '') + '" title="' + esc(l.map(function (e) { return exNome(e) + ' · ' + e.tipo; }).join('\n')) + '">' + d + '<span class="ch-dots">' + dots + '</span></button>';
+    cells += '<button class="ch-d' + (k === hj ? ' today' : '') + (l.length ? ' has' : '') + (pxA && k === pxA.data ? ' prox' : '') + '" data-a="' + (D.demoE && l.length ? 'demo-ex' : 'cal-day') + '" data-id="' + k + '" aria-label="' + d + ' de ' + MESES[c.m] + (l.length ? ', ' + plural(l.length, 'avaliação', 'avaliações') : '') + '" title="' + esc(l.map(function (e) { return exNome(e) + ' · ' + e.tipo; }).join('\n')) + '">' + d + '<span class="ch-dots">' + dots + '</span></button>';
   }
   var mes = MESES[c.m].charAt(0).toUpperCase() + MESES[c.m].slice(1);
   var px = D.ex.filter(function (e) { return diasAte(e.data) >= 0; })[0];
   var esq = '<div class="card oa-c" aria-labelledby="cal-h"><div class="oa-hd"><h2 id="cal-h">Calendário' + (D.demoE ? ' <span class="chip gray" style="vertical-align:middle;font-family:var(--sans)">Exemplos</span>' : '') + '</h2><button class="btn sm" data-a="ex-new">' + I.plus + 'Avaliação</button></div>' +
     '<div class="ch-mh"><button class="icon-btn sm" data-a="cal-prev" aria-label="Mês anterior">‹</button><b>' + mes + ' ' + c.y + '</b><button class="icon-btn sm" data-a="cal-next" aria-label="Mês seguinte">›</button></div>' +
     '<div class="ch-g">' + ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'].map(function (x) { return '<span class="ch-w">' + x + '</span>'; }).join('') + cells + '</div>' +
-    (px ? '<div class="oa-px"><span class="ch-pd" style="background:' + cor(px.cadId)[1] + '"></span><span>Próxima: <b>' + esc(exNome(px)) + '</b> · ' + faltam(px.data).toLowerCase() + '</span></div>' : '') + '</div>';
+    (pxA ? '<button class="oa-px oa-pxb" data-a="cal-ir" data-id="' + pxA.data + '" title="Mostrar no calendário"><span class="oa-pxd">' + (diasAte(pxA.data) === 0 ? 'Hoje' : diasAte(pxA.data) + '<small>' + (diasAte(pxA.data) === 1 ? 'dia' : 'dias') + '</small>') + '</span><span>Próxima avaliação<b>' + esc(pxA.tipo) + ' · ' + esc(exNome(pxA)) + '</b><small>' + new Date(parseYmd(pxA.data)).toLocaleDateString('pt-PT', { weekday: 'long', day: 'numeric', month: 'long' }) + (pxA.hora ? ' · ' + esc(pxA.hora) : '') + '</small></span></button>' : '') + '</div>';
   var hojeD = (new Date().getDay() + 6) % 7; if (S.oaDia == null) S.oaDia = hojeD > 5 ? 0 : hojeD;
   var dia = S.oaDia, aulas = D.au.filter(function (a) { return a.dia === dia; }).sort(function (a, b) { return minutos(a.ini) - minutos(b.ini); });
   var lst = aulas.map(function (a) {
@@ -6933,6 +7020,7 @@ function vOpA() {
     '<button class="lnk oa-sem" data-a="ch-semana">Ver a semana completa →</button></div>';
   return '<section class="oa">' + esq + dir + '</section>';
 }
+A['cal-ir'] = function (el) { var d = parseYmd(el.dataset.id); S.cal = { y: d.getFullYear(), m: d.getMonth() }; render(); };
 A['oa-dia'] = function (el) { S.oaDia = ((S.oaDia || 0) + Number(el.dataset.id) + 6) % 6; render(); };
 /* ----- As minhas disciplinas: estante de livros ----- */
 var EST_COR = ['#7B1E2B', '#1E3A5F', '#1E5A46', '#6B4A2B', '#1F5F6E', '#5A2A4F', '#4F5A2A', '#3A3F4B', '#8A5A1F', '#2E4A7A'];
