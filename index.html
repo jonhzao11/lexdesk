@@ -1545,6 +1545,47 @@ span.rp-util{cursor:default}
 .au-folha a{color:#1E4C86;text-decoration:underline}
 .au-folha ol{padding-left:26px}
 .au-papel{flex-direction:column;align-items:center}.au-folha{flex:none}
+/* ----- Matéria explicada ----- */
+.gu-d{gap:10px}.gu-dh{display:flex;align-items:center;justify-content:space-between}.gu-dh h2{margin:0}
+.gu-ts{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px}
+.gu-t{display:flex;align-items:center;gap:12px;text-align:left;border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;font:inherit;color:inherit;cursor:pointer;transition:border-color .15s,transform .15s}
+.gu-t:hover{border-color:#C9A45C;transform:translateY(-1px)}
+.gu-n{flex:none;width:30px;height:30px;border-radius:50%;background:#F1F3F8;display:grid;place-items:center;font:800 13px var(--sans);color:var(--navy,#14213D)}
+.gu-t.lido .gu-n{background:#E7F6EE;color:#0B7A55}
+.gu-tx{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}.gu-tx b{font-size:14.5px}.gu-tx span{font-size:12.5px;color:var(--muted);line-height:1.35}
+.gu-min{flex:none;font:600 11.5px var(--sans);color:var(--muted)}
+.gu-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;align-items:start}
+.gu-art{display:flex;flex-direction:column;gap:14px;min-width:0}
+.gu-s{gap:10px;padding:24px 28px}.gu-s h2{margin:0 0 4px;font-size:20px}
+.gu-s p{margin:0;font:16px/1.75 var(--serif,Georgia,serif);color:var(--ink)}
+.gu-k{font:800 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#7B1E2B}
+.gu-ideia{background:linear-gradient(135deg,#14213D,#1E3157);color:#fff;border:0}
+.gu-ideia .gu-k{color:#F3D58A}.gu-ideia p{color:#fff;font-size:18px;line-height:1.7}.gu-ideia .lei-lk{color:#F3D58A;text-decoration-color:rgba(243,213,138,.5)}
+.gu-dl{display:grid;grid-template-columns:200px 1fr;gap:10px 18px;margin:0}
+.gu-dl dt{font:700 14px var(--sans);color:#7B1E2B}.gu-dl dd{margin:0;font:15px/1.65 var(--serif,Georgia,serif)}
+.gu-reg{display:flex;flex-direction:column;gap:8px;padding:12px 0;border-top:1px solid var(--line)}.gu-reg:first-of-type{border-top:0;padding-top:0}
+.gu-reg h3{margin:0;font:700 16px var(--sans);color:var(--navy,#14213D)}
+.gu-passos{counter-reset:p;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.gu-passos li{counter-increment:p;position:relative;padding:10px 14px 10px 54px;border-radius:12px;background:#F7F8FB;display:flex;flex-direction:column;gap:2px}
+.gu-passos li::before{content:counter(p);position:absolute;left:14px;top:10px;width:28px;height:28px;border-radius:50%;background:#7B1E2B;color:#fff;display:grid;place-items:center;font:800 13px var(--sans)}
+.gu-passos li:not(:last-child)::after{content:'';position:absolute;left:27px;top:40px;bottom:-12px;width:2px;background:#E6C9CE}
+.gu-passos b{font-size:14.5px}.gu-passos span{font-size:14px;color:#4B5563;line-height:1.55}
+.gu-tw{overflow-x:auto}.gu-tab{border-collapse:collapse;width:100%;font-size:14px}
+.gu-tab th,.gu-tab td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;line-height:1.5}
+.gu-tab thead th{background:#14213D;color:#fff;font-weight:700}.gu-tab tbody th{background:#F7F8FB;font-weight:700;color:var(--navy,#14213D)}
+.gu-lista{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:15px;line-height:1.6}
+.gu-caso{background:#FFF8E6;border:1px solid #F3D58A;border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.gu-res{border:1px solid var(--line);border-radius:12px;padding:12px 16px}.gu-res summary{cursor:pointer;font:700 14px var(--sans);color:#7B1E2B}
+.gu-res[open] summary{margin-bottom:10px}.gu-res p+p{margin-top:10px}
+.gu-err{border-left:4px solid #B42318}.gu-err ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font:15px/1.6 var(--serif,Georgia,serif)}
+.gu-qn{font-family:var(--sans)!important;font-size:14px!important;color:var(--muted)!important}
+.gu-nav{display:flex;justify-content:space-between;gap:10px}
+.gu-side{position:sticky;top:84px;display:flex;flex-direction:column;gap:12px}
+.gu-toc{gap:4px;padding:16px}.gu-toc a{display:block;padding:5px 8px;border-radius:8px;font-size:13.5px;color:var(--ink);text-decoration:none}
+.gu-toc a:hover{background:#F4F6FA}.gu-toc a.on{background:#7B1E2B;color:#fff}
+.gu-arts{display:flex;flex-direction:column;gap:4px;font-size:13.5px}
+.gu-aviso{font-size:11.5px;color:var(--muted);margin:0;line-height:1.5}
+@media (max-width:1000px){.gu-grid{grid-template-columns:1fr}.gu-side{position:static}.gu-dl{grid-template-columns:1fr}.gu-s{padding:18px}}
 
 </style>
 </head>
@@ -2574,6 +2615,1049 @@ var UPD_SEED = [
     fonte: 'ECO', url: 'https://eco.sapo.pt/2026/06/19/chega-tira-o-tapete-ao-governo-e-rejeita-reforma-da-lei-do-trabalho-no-parlamento/' }
 ];
 
+/* Matéria explicada — Direito Constitucional */
+var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
+GUIAS.con = {
+  princ: {
+    sub: 'Dignidade da pessoa humana, Estado de direito democrático, soberania popular, separação de poderes, unitariedade e igualdade.',
+    ideia: 'A Constituição da República Portuguesa assenta em princípios fundamentais que dão sentido a todas as outras normas. Portugal é uma República soberana, baseada na dignidade da pessoa humana e na vontade popular e empenhada na construção de uma sociedade livre, justa e solidária (art. 1.º da CRP), e é um Estado de direito democrático (art. 2.º da CRP).',
+    conceitos: [
+      ['Dignidade da pessoa humana', 'Fundamento de toda a ordem constitucional: o Estado existe para a pessoa e não o contrário (art. 1.º da CRP). Serve de critério de interpretação dos direitos fundamentais.'],
+      ['Estado de direito democrático', 'Baseado na soberania popular, no pluralismo de expressão e organização política democráticas, no respeito e na garantia de efetivação dos direitos e liberdades fundamentais e na separação e interdependência de poderes (art. 2.º da CRP). Dele decorrem os princípios da segurança jurídica, da proteção da confiança e da proporcionalidade.'],
+      ['Soberania e legalidade', 'A soberania, una e indivisível, reside no povo; o Estado subordina-se à Constituição e funda-se na legalidade democrática (art. 3.º da CRP). A validade das leis e dos demais atos do Estado depende da sua conformidade com a Constituição (art. 3.º, n.º 3, da CRP).'],
+      ['Separação e interdependência de poderes', 'Os órgãos de soberania devem observar a separação e a interdependência estabelecidas na Constituição (art. 111.º da CRP). Não é uma separação rígida, mas um sistema de controlos recíprocos.'],
+      ['Estado unitário', 'O Estado é unitário e respeita na sua organização e funcionamento o regime autonómico insular e os princípios da subsidiariedade, da autonomia das autarquias locais e da descentralização democrática da administração pública (art. 6.º da CRP).'],
+      ['Princípio da igualdade', 'Todos os cidadãos têm a mesma dignidade social e são iguais perante a lei; ninguém pode ser privilegiado, beneficiado, prejudicado, privado de qualquer direito ou isento de qualquer dever em razão de ascendência, sexo, raça, língua, território de origem, religião, convicções políticas ou ideológicas, instrução, situação económica, condição social ou orientação sexual (art. 13.º da CRP).']
+    ],
+    regime: [
+      ['Igualdade: o que proíbe e o que permite', 'A igualdade proíbe o arbítrio e as discriminações injustificadas, mas não proíbe todas as diferenciações: obriga a tratar de modo igual o que é igual e de modo diferente o que é diferente, na medida da diferença. Uma diferenciação legislativa é admissível se tiver fundamento material bastante e for proporcional.'],
+      ['Proporcionalidade', 'Decorre do Estado de direito e está expressa, para as restrições de direitos, no art. 18.º, n.º 2, da CRP. Tem três dimensões: adequação (a medida serve o fim), necessidade (não há meio menos lesivo igualmente eficaz) e proporcionalidade em sentido estrito (os benefícios compensam os sacrifícios).'],
+      ['Tarefas fundamentais do Estado', 'O art. 9.º da CRP enumera as tarefas fundamentais do Estado — garantir a independência nacional, os direitos e liberdades fundamentais, a democracia, promover o bem-estar e a qualidade de vida do povo, proteger o património cultural e o ambiente, entre outras. São o programa constitucional que orienta a ação dos poderes públicos.']
+    ],
+    esquema: { tipo: 'lista', itens: [
+      ['Dignidade da pessoa humana', '(art. 1.º da CRP) — fundamento.'],
+      ['Estado de direito democrático', '(art. 2.º da CRP) — segurança jurídica, confiança, proporcionalidade.'],
+      ['Soberania popular e constitucionalidade', '(art. 3.º da CRP) — a Constituição como norma suprema.'],
+      ['Unitariedade e autonomia', '(art. 6.º da CRP) — regiões autónomas e autarquias.'],
+      ['Igualdade', '(art. 13.º da CRP) — proibição do arbítrio e da discriminação.'],
+      ['Separação e interdependência de poderes', '(art. 111.º da CRP).']
+    ] },
+    exemplo: ['Uma lei reduz, com efeitos imediatos, as pensões já atribuídas de todos os pensionistas da função pública, mantendo intactas as do regime geral, sem qualquer justificação na exposição de motivos. Que princípios constitucionais estão em causa?',
+      'Princípio da proteção da confiança (decorrente do Estado de direito, art. 2.º da CRP): os pensionistas confiaram legitimamente na manutenção da pensão atribuída; a afetação só é admissível se houver razões de interesse público que prevaleçam e se a medida for proporcional.',
+      'Princípio da igualdade (art. 13.º da CRP): a diferenciação entre pensionistas da função pública e do regime geral só é admissível se tiver fundamento material bastante. Sem justificação, a medida é arbitrária.',
+      'Princípio da proporcionalidade: seria ainda preciso verificar se a redução era adequada, necessária e equilibrada face ao fim prosseguido. Foi com base nestes princípios que o Tribunal Constitucional apreciou várias medidas do período de assistência financeira.']
+    ,
+    erros: [
+      'Tratar a igualdade como proibição de qualquer diferenciação: proíbe apenas as diferenciações arbitrárias ou desproporcionais.',
+      'Invocar o Estado de direito de forma vaga, sem concretizar o subprincípio aplicável (confiança, segurança jurídica, proporcionalidade).',
+      'Confundir separação de poderes com separação rígida: a CRP fala em separação e interdependência (art. 111.º da CRP).'
+    ],
+    artigos: ['art. 1.º da CRP', 'art. 2.º da CRP', 'art. 3.º da CRP', 'art. 6.º da CRP', 'art. 9.º da CRP', 'art. 13.º da CRP', 'art. 18.º da CRP', 'art. 111.º da CRP']
+  },
+
+  dir: {
+    sub: 'Direitos, liberdades e garantias e direitos sociais; o regime do art. 18.º, restrições, suspensão e acesso ao direito.',
+    ideia: 'A Constituição distingue dois grandes grupos de direitos fundamentais: os direitos, liberdades e garantias (arts. 24.º a 57.º da CRP) e os direitos económicos, sociais e culturais (arts. 58.º a 79.º da CRP). Os primeiros têm um regime reforçado: são diretamente aplicáveis e vinculam entidades públicas e privadas (art. 18.º, n.º 1, da CRP).',
+    conceitos: [
+      ['Direitos, liberdades e garantias', 'Pessoais (vida, integridade, liberdade, garantias de processo criminal…), de participação política e dos trabalhadores. São, em regra, direitos de defesa contra o Estado.'],
+      ['Direitos sociais', 'Saúde (art. 64.º da CRP), educação, habitação, segurança social, trabalho. Exigem prestações do Estado e dependem, em grande medida, da concretização legislativa e dos recursos disponíveis.'],
+      ['Direitos de natureza análoga', 'O regime dos direitos, liberdades e garantias aplica-se aos enunciados no título II e aos direitos fundamentais de natureza análoga, mesmo que estejam fora desse título (art. 17.º da CRP).'],
+      ['Aplicabilidade direta', 'Os preceitos constitucionais respeitantes aos direitos, liberdades e garantias são diretamente aplicáveis e vinculam as entidades públicas e privadas (art. 18.º, n.º 1, da CRP), mesmo sem lei que os concretize.'],
+      ['Cláusula aberta', 'Os direitos fundamentais consagrados na Constituição não excluem quaisquer outros constantes das leis e das regras aplicáveis de direito internacional (art. 16.º, n.º 1, da CRP).']
+    ],
+    regime: [
+      ['Requisitos das leis restritivas (art. 18.º da CRP)', 'A lei só pode restringir os direitos, liberdades e garantias nos casos expressamente previstos na Constituição; as restrições devem limitar-se ao necessário para salvaguardar outros direitos ou interesses constitucionalmente protegidos (art. 18.º, n.º 2, da CRP).', 'As leis restritivas têm de revestir carácter geral e abstrato, não podem ter efeito retroativo nem diminuir a extensão e o alcance do conteúdo essencial dos preceitos constitucionais (art. 18.º, n.º 3, da CRP).', 'Além disso, a restrição de direitos, liberdades e garantias é, em regra, matéria de reserva relativa da Assembleia da República (art. 165.º, n.º 1, alínea b), da CRP): o Governo só pode legislar com autorização legislativa.'],
+      ['Suspensão', 'Os órgãos de soberania não podem, conjunta ou separadamente, suspender o exercício dos direitos, liberdades e garantias, salvo em caso de estado de sítio ou de estado de emergência, declarados na forma prevista na Constituição (art. 19.º, n.º 1, da CRP). Mesmo então, há direitos que nunca podem ser afetados: a vida, a integridade pessoal, a identidade pessoal, a capacidade civil e a cidadania, a não retroatividade da lei criminal, o direito de defesa dos arguidos e a liberdade de consciência e de religião (art. 19.º, n.º 6, da CRP).'],
+      ['Acesso ao direito e tutela jurisdicional efetiva', 'A todos é assegurado o acesso ao direito e aos tribunais para defesa dos seus direitos e interesses legalmente protegidos, não podendo a justiça ser denegada por insuficiência de meios económicos (art. 20.º, n.º 1, da CRP). Todos têm direito a que uma causa em que intervenham seja objeto de decisão em prazo razoável e mediante processo equitativo (art. 20.º, n.º 4, da CRP).'],
+      ['Garantias de processo criminal', 'O processo criminal assegura todas as garantias de defesa, incluindo o recurso (art. 32.º, n.º 1, da CRP); todo o arguido se presume inocente até ao trânsito em julgado da sentença de condenação (art. 32.º, n.º 2, da CRP); são nulas as provas obtidas mediante tortura, coação, ofensa da integridade física ou moral da pessoa, abusiva intromissão na vida privada, no domicílio, na correspondência ou nas telecomunicações (art. 32.º, n.º 8, da CRP).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['A restrição está autorizada pela Constituição?', 'Tem de estar expressamente prevista (art. 18.º, n.º 2, da CRP).'],
+      ['Visa proteger outro direito ou interesse constitucional?', 'Fim legítimo constitucionalmente protegido.'],
+      ['É proporcional?', 'Adequação, necessidade e proporcionalidade em sentido estrito (art. 18.º, n.º 2, da CRP).'],
+      ['Cumpre os requisitos formais da lei restritiva?', 'Generalidade, abstração, não retroatividade (art. 18.º, n.º 3, da CRP).'],
+      ['Respeita o conteúdo essencial?', 'Nunca pode esvaziar o núcleo do direito (art. 18.º, n.º 3, da CRP).'],
+      ['Quem legislou?', 'Assembleia da República ou Governo com autorização legislativa (art. 165.º da CRP).']
+    ] },
+    exemplo: ['O Governo aprova, sem autorização legislativa, um decreto-lei que permite às polícias aceder, sem autorização judicial, aos dados de localização dos telemóveis de qualquer cidadão, para prevenção de qualquer crime. Quid iuris?',
+      'Inconstitucionalidade orgânica: a matéria restringe direitos, liberdades e garantias (reserva da intimidade da vida privada e inviolabilidade das comunicações, arts. 26.º e 34.º da CRP) e integra a reserva relativa da Assembleia da República (art. 165.º, n.º 1, alínea b), da CRP). Sem autorização legislativa, o Governo não podia legislar.',
+      'Inconstitucionalidade material: o art. 34.º, n.º 4, da CRP proíbe toda a ingerência das autoridades públicas nas telecomunicações, salvo os casos previstos na lei em matéria de processo criminal. A medida, aplicável a qualquer cidadão e para prevenção de qualquer crime, sem controlo judicial, viola ainda a proporcionalidade (art. 18.º, n.º 2, da CRP) e possivelmente o conteúdo essencial do direito (art. 18.º, n.º 3, da CRP).']
+    ,
+    erros: [
+      'Esquecer que as restrições têm de estar expressamente previstas na Constituição (art. 18.º, n.º 2, da CRP).',
+      'Aplicar aos direitos sociais o regime de aplicabilidade direta dos direitos, liberdades e garantias, sem mais.',
+      'Esquecer o vício orgânico quando o Governo legisla sobre direitos, liberdades e garantias sem autorização (art. 165.º da CRP).',
+      'Admitir a suspensão de direitos fora do estado de sítio ou de emergência (art. 19.º da CRP).'
+    ],
+    artigos: ['art. 16.º da CRP', 'art. 17.º da CRP', 'art. 18.º da CRP', 'art. 19.º da CRP', 'art. 20.º da CRP', 'art. 26.º da CRP', 'art. 32.º da CRP', 'art. 34.º da CRP', 'art. 64.º da CRP']
+  },
+
+  org: {
+    sub: 'Presidente da República, Assembleia da República, Governo e Tribunais: composição, competências e relações entre si.',
+    ideia: 'São órgãos de soberania o Presidente da República, a Assembleia da República, o Governo e os Tribunais (art. 110.º, n.º 1, da CRP). O sistema de governo português é semipresidencial: o Governo é politicamente responsável perante o Presidente da República e perante a Assembleia da República (art. 190.º da CRP).',
+    conceitos: [
+      ['Presidente da República', 'Representa a República Portuguesa, garante a independência nacional, a unidade do Estado e o regular funcionamento das instituições democráticas (art. 120.º da CRP). É eleito por sufrágio universal, direto e secreto (art. 121.º da CRP), para um mandato de cinco anos (art. 128.º da CRP).'],
+      ['Assembleia da República', 'É a assembleia representativa de todos os cidadãos portugueses (art. 147.º da CRP). Tem competência política e legislativa (art. 161.º da CRP) e de fiscalização (art. 162.º da CRP).'],
+      ['Governo', 'É o órgão de condução da política geral do país e o órgão superior da administração pública (art. 182.º da CRP). O Primeiro-Ministro é nomeado pelo Presidente da República, ouvidos os partidos representados na Assembleia e tendo em conta os resultados eleitorais (art. 187.º da CRP).'],
+      ['Tribunais', 'São os órgãos de soberania com competência para administrar a justiça em nome do povo (art. 202.º da CRP). São independentes e apenas estão sujeitos à lei (art. 203.º da CRP).']
+    ],
+    regime: [
+      ['Promulgação e veto', 'No prazo de 20 dias contados da receção de qualquer decreto da Assembleia da República para ser promulgado como lei, o Presidente deve promulgá-lo ou exercer o direito de veto, solicitando nova apreciação em mensagem fundamentada (art. 136.º, n.º 1, da CRP).', 'Se a Assembleia confirmar o voto por maioria absoluta dos Deputados em efetividade de funções, o Presidente tem de promulgar o diploma no prazo de oito dias (art. 136.º, n.º 2, da CRP) — exige-se maioria de dois terços para certas matérias (art. 136.º, n.º 3, da CRP).', 'Quanto aos decretos do Governo, o Presidente deve promulgá-los ou vetá-los no prazo de 40 dias, e o veto é absoluto: o Governo não pode superá-lo (art. 136.º, n.º 4, da CRP).'],
+      ['Responsabilidade política do Governo', 'O Governo é responsável perante o Presidente da República e a Assembleia da República (art. 190.º da CRP). A Assembleia pode votar moções de censura (art. 194.º da CRP); o Governo pode apresentar moções de confiança (art. 193.º da CRP).', 'Implicam a demissão do Governo, entre outras situações, a rejeição do programa do Governo, a não aprovação de uma moção de confiança ou a aprovação de uma moção de censura por maioria absoluta dos Deputados em efetividade de funções (art. 195.º, n.º 1, da CRP). O Presidente só pode demitir o Governo quando tal se torne necessário para assegurar o regular funcionamento das instituições democráticas, ouvido o Conselho de Estado (art. 195.º, n.º 2, da CRP).'],
+      ['Dissolução da Assembleia', 'Compete ao Presidente da República dissolver a Assembleia da República, ouvidos os partidos nela representados e o Conselho de Estado (art. 133.º, alínea e), da CRP). A Assembleia não pode ser dissolvida nos seis meses posteriores à sua eleição, no último semestre do mandato do Presidente ou durante o estado de sítio ou de emergência (art. 172.º da CRP).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Órgão', 'Função principal', 'Ato típico'], linhas: [
+      ['Presidente da República', 'Garante do regular funcionamento das instituições (art. 120.º da CRP)', 'Promulgação e veto (art. 136.º da CRP); dissolução (art. 133.º da CRP)'],
+      ['Assembleia da República', 'Representação e legislação (arts. 147.º e 161.º da CRP)', 'Leis; moções de censura (art. 194.º da CRP)'],
+      ['Governo', 'Condução da política geral e administração (art. 182.º da CRP)', 'Decretos-leis (art. 198.º da CRP)'],
+      ['Tribunais', 'Administração da justiça (art. 202.º da CRP)', 'Sentenças e acórdãos']
+    ] },
+    exemplo: ['A Assembleia aprova uma lei sobre o regime das associações. O Presidente veta-a, por discordar politicamente. A Assembleia volta a aprovar o mesmo texto com 120 votos favoráveis, em 230 deputados. O Presidente é obrigado a promulgar?',
+      'O veto político do Presidente sobre decretos da Assembleia é suspensivo: pode ser superado pela confirmação parlamentar (art. 136.º, n.º 2, da CRP).',
+      'Em regra, basta a maioria absoluta dos Deputados em efetividade de funções (116 em 230). Os 120 votos são suficientes, e o Presidente tem de promulgar em oito dias.',
+      'Haveria que verificar, contudo, se a matéria cai no art. 136.º, n.º 3, da CRP, que exige dois terços dos Deputados presentes (desde que superior à maioria absoluta) para certas leis orgânicas e outras matérias. O regime das associações políticas e dos partidos, por exemplo, é matéria de lei orgânica e exigiria essa maioria qualificada.']
+    ,
+    erros: [
+      'Dizer que o veto aos decretos do Governo pode ser superado: é absoluto (art. 136.º, n.º 4, da CRP).',
+      'Confundir moção de censura (iniciativa parlamentar) com moção de confiança (iniciativa do Governo).',
+      'Admitir que o Presidente demite o Governo livremente: só para assegurar o regular funcionamento das instituições (art. 195.º, n.º 2, da CRP).',
+      'Esquecer os limites temporais da dissolução da Assembleia (art. 172.º da CRP).'
+    ],
+    artigos: ['art. 110.º da CRP', 'art. 120.º da CRP', 'art. 133.º da CRP', 'art. 136.º da CRP', 'art. 147.º da CRP', 'art. 172.º da CRP', 'art. 182.º da CRP', 'art. 190.º da CRP', 'art. 195.º da CRP', 'art. 202.º da CRP']
+  },
+
+  leg: {
+    sub: 'Atos legislativos, reserva absoluta e relativa da Assembleia, autorizações legislativas e competência do Governo.',
+    ideia: 'São atos legislativos as leis, os decretos-leis e os decretos legislativos regionais (art. 112.º, n.º 1, da CRP). As leis e os decretos-leis têm igual valor, mas há matérias que só a Assembleia da República pode regular — reserva absoluta (art. 164.º da CRP) — e outras em que o Governo só pode legislar com autorização da Assembleia — reserva relativa (art. 165.º da CRP).',
+    conceitos: [
+      ['Reserva absoluta', 'Matérias de competência exclusiva da Assembleia, que não podem ser delegadas no Governo: por exemplo, eleições dos titulares dos órgãos de soberania, referendos, organização e funcionamento do Tribunal Constitucional, estado de sítio e de emergência, aquisição e perda da cidadania (art. 164.º da CRP).'],
+      ['Reserva relativa', 'Matérias de competência da Assembleia, salvo autorização ao Governo: por exemplo, estado e capacidade das pessoas, direitos, liberdades e garantias, definição dos crimes, penas e medidas de segurança e respetivo processo criminal, criação de impostos e sistema fiscal (art. 165.º, n.º 1, da CRP).'],
+      ['Lei de autorização legislativa', 'Tem de definir o objeto, o sentido, a extensão e a duração da autorização (art. 165.º, n.º 2, da CRP). Não pode ser utilizada mais de uma vez, sem prejuízo da sua execução parcelada (art. 165.º, n.º 3, da CRP).'],
+      ['Decreto-lei', 'Ato legislativo do Governo. Pode ser: autónomo, em matérias não reservadas à Assembleia; autorizado, em matérias da reserva relativa; de desenvolvimento, das bases gerais contidas em leis; e, em exclusivo, sobre a organização e funcionamento do próprio Governo (art. 198.º da CRP).']
+    ],
+    regime: [
+      ['Competência legislativa do Governo (art. 198.º da CRP)', 'Compete ao Governo fazer decretos-leis em matérias não reservadas à Assembleia; em matérias de reserva relativa, mediante autorização desta; e de desenvolvimento dos princípios ou das bases gerais dos regimes jurídicos contidos em leis que a eles se circunscrevam (art. 198.º, n.º 1, da CRP). É da exclusiva competência legislativa do Governo a matéria respeitante à sua própria organização e funcionamento (art. 198.º, n.º 2, da CRP).'],
+      ['Apreciação parlamentar de decretos-leis', 'Os decretos-leis, salvo os aprovados no exercício da competência legislativa exclusiva do Governo, podem ser submetidos a apreciação da Assembleia da República, para efeitos de cessação de vigência ou de alteração, a requerimento de dez Deputados, nos trinta dias subsequentes à publicação (art. 169.º, n.º 1, da CRP).'],
+      ['Leis orgânicas e leis reforçadas', 'Revestem a forma de lei orgânica certos atos previstos no art. 166.º, n.º 2, da CRP; são aprovadas, na votação final global, por maioria absoluta dos Deputados em efetividade de funções (art. 168.º, n.º 5, da CRP). As leis de valor reforçado são as que, por força da Constituição, sejam pressuposto normativo necessário de outras leis ou que por outras devam ser respeitadas (art. 112.º, n.º 3, da CRP).'],
+      ['Vícios', 'Um decreto-lei do Governo sobre matéria de reserva absoluta, ou de reserva relativa sem autorização, padece de inconstitucionalidade orgânica. Um decreto-lei autorizado que exceda o sentido ou a extensão da autorização é igualmente inconstitucional (e ilegal, por violação de lei de valor reforçado).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Qual é a matéria?', 'Identificar o tema do diploma.'],
+      ['Está na reserva absoluta?', 'Art. 164.º da CRP → só a Assembleia, por lei.'],
+      ['Está na reserva relativa?', 'Art. 165.º da CRP → a Assembleia, ou o Governo com lei de autorização (objeto, sentido, extensão, duração).'],
+      ['É organização do próprio Governo?', 'Art. 198.º, n.º 2, da CRP → exclusiva do Governo.'],
+      ['Caso contrário', 'Competência concorrencial: Assembleia ou Governo (art. 198.º, n.º 1, alínea a), da CRP).']
+    ] },
+    exemplo: ['O Governo aprova um decreto-lei que cria um novo crime de «perturbação de eventos desportivos», punível com prisão até 2 anos, ao abrigo de uma lei de autorização legislativa que autorizava o Governo a «rever o regime das contraordenações no desporto». Quid iuris?',
+      'A definição de crimes e penas é matéria de reserva relativa da Assembleia (art. 165.º, n.º 1, alínea c), da CRP). O Governo só pode legislar com autorização.',
+      'Há uma autorização, mas o seu objeto é o regime das contraordenações, e não a criação de crimes. O decreto-lei excede o objeto e a extensão da autorização (art. 165.º, n.º 2, da CRP), pelo que é organicamente inconstitucional, na parte em que cria o crime. Seria ainda de verificar a proporcionalidade da incriminação (art. 18.º, n.º 2, da CRP).']
+    ,
+    erros: [
+      'Confundir reserva absoluta (art. 164.º da CRP) com reserva relativa (art. 165.º da CRP).',
+      'Esquecer os quatro elementos obrigatórios da lei de autorização: objeto, sentido, extensão e duração.',
+      'Atribuir às leis da Assembleia valor superior aos decretos-leis: em regra, têm igual valor (art. 112.º, n.º 2, da CRP).',
+      'Admitir apreciação parlamentar de decretos-leis sobre a organização do Governo (art. 169.º, n.º 1, da CRP).'
+    ],
+    artigos: ['art. 112.º da CRP', 'art. 161.º da CRP', 'art. 164.º da CRP', 'art. 165.º da CRP', 'art. 166.º da CRP', 'art. 168.º da CRP', 'art. 169.º da CRP', 'art. 198.º da CRP']
+  },
+
+  fisc: {
+    sub: 'Fiscalização preventiva, sucessiva abstrata e concreta da constitucionalidade, inconstitucionalidade por omissão e efeitos das decisões.',
+    ideia: 'São inconstitucionais as normas que infrinjam o disposto na Constituição ou os princípios nela consignados (art. 277.º, n.º 1, da CRP). O sistema português combina um controlo difuso — todos os tribunais recusam aplicar normas inconstitucionais (art. 204.º da CRP) — com um controlo concentrado no Tribunal Constitucional, que tem a última palavra.',
+    conceitos: [
+      ['Fiscalização preventiva', 'Antes da promulgação: o Presidente da República pode requerer ao Tribunal Constitucional a apreciação preventiva da constitucionalidade de qualquer norma constante de tratado, decreto ou acordo internacional que lhe tenha sido enviado para promulgação ou ratificação (art. 278.º, n.º 1, da CRP), no prazo de oito dias a contar da receção (art. 278.º, n.º 3, da CRP).'],
+      ['Fiscalização sucessiva abstrata', 'Depois da entrada em vigor, independentemente de um caso concreto. Pode ser requerida, entre outros, pelo Presidente da República, pelo Presidente da Assembleia, pelo Primeiro-Ministro, pelo Provedor de Justiça, pelo Procurador-Geral da República ou por um décimo dos Deputados (art. 281.º, n.º 2, da CRP). A declaração tem força obrigatória geral.'],
+      ['Fiscalização concreta', 'No âmbito de um processo judicial. Cabe recurso para o Tribunal Constitucional das decisões dos tribunais que recusem a aplicação de qualquer norma com fundamento na sua inconstitucionalidade, ou que apliquem norma cuja inconstitucionalidade haja sido suscitada durante o processo (art. 280.º, n.º 1, da CRP).'],
+      ['Inconstitucionalidade por omissão', 'Verifica-se quando falta uma medida legislativa necessária para tornar exequíveis as normas constitucionais (art. 283.º da CRP). O Tribunal Constitucional limita-se a verificar a omissão e a dar conhecimento ao órgão legislativo competente.']
+    ],
+    regime: [
+      ['Efeitos da fiscalização preventiva', 'Se o Tribunal Constitucional se pronunciar pela inconstitucionalidade de norma constante de decreto, deve o diploma ser vetado pelo Presidente da República e devolvido ao órgão que o tiver aprovado (art. 279.º, n.º 1, da CRP). A Assembleia pode, ainda assim, confirmar o decreto por maioria de dois terços dos Deputados presentes, desde que superior à maioria absoluta dos Deputados em efetividade de funções (art. 279.º, n.º 2, da CRP).'],
+      ['Efeitos da declaração com força obrigatória geral', 'A declaração de inconstitucionalidade com força obrigatória geral produz efeitos desde a entrada em vigor da norma declarada inconstitucional e determina a repristinação das normas que ela, eventualmente, haja revogado (art. 282.º, n.º 1, da CRP). Ficam ressalvados os casos julgados, salvo decisão em contrário do Tribunal quando a norma respeitar a matéria penal, disciplinar ou de ilícito de mera ordenação social e for de conteúdo menos favorável ao arguido (art. 282.º, n.º 3, da CRP). O Tribunal pode restringir os efeitos por razões de segurança jurídica, equidade ou interesse público de excecional relevo (art. 282.º, n.º 4, da CRP).'],
+      ['Da fiscalização concreta à abstrata', 'O Tribunal Constitucional aprecia e declara, com força obrigatória geral, a inconstitucionalidade de qualquer norma desde que tenha sido por ele julgada inconstitucional em três casos concretos (art. 281.º, n.º 3, da CRP).'],
+      ['Tipos de inconstitucionalidade', 'Material (o conteúdo viola a Constituição), orgânica (o órgão não era competente) e formal (não foi seguido o procedimento ou a forma exigidos).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Modalidade', 'Momento', 'Quem pode pedir', 'Efeito'], linhas: [
+      ['Preventiva', 'Antes da promulgação', 'Presidente da República (e Representantes da República, para diplomas regionais) — art. 278.º da CRP', 'Veto obrigatório (art. 279.º da CRP)'],
+      ['Sucessiva abstrata', 'Depois da entrada em vigor', 'Entidades do art. 281.º, n.º 2, da CRP', 'Força obrigatória geral (art. 282.º da CRP)'],
+      ['Concreta', 'Durante um processo judicial', 'As partes e o Ministério Público, por recurso (art. 280.º da CRP)', 'Efeito apenas no caso concreto'],
+      ['Por omissão', 'Quando falte lei necessária', 'PR, Provedor de Justiça e, em certos casos, presidentes das assembleias regionais (art. 283.º da CRP)', 'Verificação e comunicação ao legislador']
+    ] },
+    exemplo: ['Numa ação de despejo, o inquilino alega que a norma do diploma aplicável que permite o despejo sem audiência prévia é inconstitucional, por violar o direito ao processo equitativo. O juiz aplica a norma e decreta o despejo. O que pode fazer o inquilino?',
+      'Estamos em fiscalização concreta. O inquilino suscitou a questão de inconstitucionalidade durante o processo, de modo processualmente adequado. Esgotados os recursos ordinários, pode recorrer para o Tribunal Constitucional da decisão que aplicou a norma cuja inconstitucionalidade suscitou (art. 280.º, n.º 1, alínea b), da CRP).',
+      'Se o Tribunal Constitucional julgar a norma inconstitucional (por violação do art. 20.º, n.º 4, da CRP), a decisão vale apenas para aquele processo. Se a mesma norma vier a ser julgada inconstitucional em três casos concretos, pode seguir-se uma declaração com força obrigatória geral (art. 281.º, n.º 3, da CRP).']
+    ,
+    erros: [
+      'Atribuir força obrigatória geral às decisões em fiscalização concreta.',
+      'Esquecer que, na fiscalização concreta, a questão tem de ter sido suscitada durante o processo (art. 280.º, n.º 1, alínea b), da CRP).',
+      'Esquecer a repristinação e a ressalva dos casos julgados (art. 282.º da CRP).',
+      'Confundir quem pode pedir a fiscalização preventiva (essencialmente o PR) com quem pode pedir a sucessiva abstrata.'
+    ],
+    artigos: ['art. 204.º da CRP', 'art. 277.º da CRP', 'art. 278.º da CRP', 'art. 279.º da CRP', 'art. 280.º da CRP', 'art. 281.º da CRP', 'art. 282.º da CRP', 'art. 283.º da CRP']
+  },
+
+  rev: {
+    sub: 'Quem pode rever a Constituição, quando e como: limites temporais, formais, materiais e circunstanciais.',
+    ideia: 'A Constituição pode ser alterada, mas só pela Assembleia da República e com limites apertados que garantem a sua estabilidade e identidade. A Assembleia pode rever a Constituição decorridos cinco anos sobre a data da publicação da última lei de revisão ordinária (art. 284.º, n.º 1, da CRP) — é uma constituição rígida.',
+    conceitos: [
+      ['Revisão ordinária', 'Decorridos cinco anos sobre a última revisão ordinária (art. 284.º, n.º 1, da CRP).'],
+      ['Revisão extraordinária', 'A Assembleia pode, contudo, assumir em qualquer momento poderes de revisão extraordinária por maioria de quatro quintos dos Deputados em efetividade de funções (art. 284.º, n.º 2, da CRP).'],
+      ['Iniciativa', 'A iniciativa da revisão compete aos Deputados (art. 285.º, n.º 1, da CRP). Apresentado um projeto, quaisquer outros têm de ser apresentados no prazo de trinta dias (art. 285.º, n.º 2, da CRP).'],
+      ['Aprovação', 'As alterações da Constituição são aprovadas por maioria de dois terços dos Deputados em efetividade de funções (art. 286.º, n.º 1, da CRP).'],
+      ['Promulgação obrigatória', 'O Presidente da República não pode recusar a promulgação da lei de revisão (art. 286.º, n.º 3, da CRP).']
+    ],
+    regime: [
+      ['Limites materiais (art. 288.º da CRP)', 'As leis de revisão têm de respeitar, entre outros: a independência nacional e a unidade do Estado; a forma republicana de governo; a separação das Igrejas do Estado; os direitos, liberdades e garantias dos cidadãos; os direitos dos trabalhadores, das comissões de trabalhadores e das associações sindicais; o sufrágio universal, direto, secreto e periódico; o pluralismo de expressão e organização política; a separação e a interdependência dos órgãos de soberania; a fiscalização da constitucionalidade; a independência dos tribunais; a autonomia das autarquias locais; a autonomia político-administrativa dos arquipélagos dos Açores e da Madeira.'],
+      ['Limites circunstanciais', 'Não pode ser praticado nenhum ato de revisão constitucional na vigência de estado de sítio ou de estado de emergência (art. 289.º da CRP).'],
+      ['Forma', 'As alterações são inseridas no lugar próprio, mediante as substituições, supressões e aditamentos necessários, e a Constituição, no seu novo texto, é publicada conjuntamente com a lei de revisão (art. 287.º da CRP).'],
+      ['A questão da dupla revisão', 'Debate doutrinário: poderia uma revisão alterar primeiro o próprio art. 288.º da CRP, para depois, numa segunda revisão, alterar os princípios que ele protege? A doutrina maioritária entende que os limites materiais protegem a identidade da Constituição e não podem ser contornados por essa via.']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Limite', 'Conteúdo', 'Base legal'], linhas: [
+      ['Temporal', '5 anos desde a última revisão ordinária (ou 4/5 dos Deputados para revisão extraordinária)', 'art. 284.º da CRP'],
+      ['Orgânico', 'Só a Assembleia da República; iniciativa dos Deputados', 'arts. 284.º e 285.º da CRP'],
+      ['Formal', 'Maioria de 2/3 dos Deputados em efetividade de funções; promulgação obrigatória', 'art. 286.º da CRP'],
+      ['Material', 'Princípios identitários que não podem ser suprimidos', 'art. 288.º da CRP'],
+      ['Circunstancial', 'Proibida durante estado de sítio ou de emergência', 'art. 289.º da CRP']
+    ] },
+    exemplo: ['Dois anos depois da última revisão ordinária, um grupo de Deputados quer propor uma revisão para reduzir o mandato do Presidente da República para quatro anos. É possível? E se quisessem instituir uma monarquia?',
+      'Quanto ao momento: ainda não decorreram cinco anos, pelo que só é possível uma revisão extraordinária, se a Assembleia assumir poderes de revisão por maioria de quatro quintos dos Deputados em efetividade de funções (art. 284.º, n.º 2, da CRP). Depois, a alteração exige dois terços (art. 286.º, n.º 1, da CRP), e o Presidente não pode recusar a promulgação (art. 286.º, n.º 3, da CRP).',
+      'Quanto à monarquia: a forma republicana de governo é um limite material de revisão (art. 288.º, alínea b), da CRP). Uma lei de revisão que a suprimisse seria materialmente inconstitucional. A duração do mandato presidencial, pelo contrário, não está protegida pelo art. 288.º da CRP.']
+    ,
+    erros: [
+      'Confundir a maioria para assumir poderes de revisão extraordinária (4/5) com a maioria de aprovação das alterações (2/3).',
+      'Admitir que o Presidente vete uma lei de revisão: a promulgação é obrigatória (art. 286.º, n.º 3, da CRP).',
+      'Esquecer o limite circunstancial (art. 289.º da CRP).',
+      'Tratar como limites materiais matérias que não constam do art. 288.º da CRP.'
+    ],
+    artigos: ['art. 284.º da CRP', 'art. 285.º da CRP', 'art. 286.º da CRP', 'art. 287.º da CRP', 'art. 288.º da CRP', 'art. 289.º da CRP']
+  }
+};
+
+/* Matéria explicada — Direito das Obrigações */
+var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
+GUIAS.obr = {
+  fontes: {
+    sub: 'De onde nascem as obrigações: contratos, negócios unilaterais, gestão de negócios, enriquecimento sem causa e responsabilidade civil.',
+    ideia: 'Obrigação é o vínculo pelo qual uma pessoa (devedor) fica adstrita para com outra (credor) à realização de uma prestação (art. 397.º do CC). As obrigações não surgem do nada: o Código Civil identifica as suas fontes — o contrato, os negócios unilaterais, a gestão de negócios, o enriquecimento sem causa e a responsabilidade civil.',
+    conceitos: [
+      ['Obrigação', 'Relação jurídica em que o credor tem o direito de exigir do devedor uma prestação, e o devedor o dever de a realizar (art. 397.º do CC).'],
+      ['Prestação', 'A conduta devida: dar, fazer ou não fazer. Tem de ser física e legalmente possível, conforme à lei e determinável (arts. 398.º e 400.º do CC).'],
+      ['Obrigação natural', 'Funda-se num mero dever de ordem moral ou social; não é judicialmente exigível, mas o que se prestar espontaneamente não pode ser repetido (arts. 402.º e 403.º do CC). Exemplo: a dívida prescrita paga voluntariamente.'],
+      ['Liberdade contratual', 'As partes podem fixar livremente o conteúdo dos contratos, celebrar contratos diferentes dos previstos na lei e incluir neles as cláusulas que quiserem, dentro dos limites da lei (art. 405.º do CC).'],
+      ['Pontualidade', 'O contrato deve ser cumprido ponto por ponto e só pode modificar-se ou extinguir-se por mútuo consentimento ou nos casos previstos na lei (art. 406.º do CC).']
+    ],
+    regime: [
+      ['1. Contratos', 'É a fonte mais importante. Destacam-se dois contratos preparatórios com regime próprio no capítulo das fontes:', 'Contrato-promessa: convenção pela qual alguém se obriga a celebrar certo contrato (art. 410.º do CC). Aplica-se-lhe o regime do contrato prometido, exceto quanto à forma e às disposições que, pela sua razão de ser, não se devam considerar extensivas. Se o contrato prometido exigir documento, a promessa tem de constar de documento assinado pela parte que se vincula, ou por ambas, se for bilateral (art. 410.º, n.º 2, do CC). Pode ter eficácia real se as partes o declararem e se cumprirem os requisitos do art. 413.º do CC.', 'Pacto de preferência: alguém assume a obrigação de dar preferência a outrem na venda de determinada coisa (art. 414.º do CC).'],
+      ['2. Negócios unilaterais', 'Regra da tipicidade: a promessa unilateral de uma prestação só obriga nos casos previstos na lei (art. 457.º do CC). Os casos típicos são a promessa de cumprimento e o reconhecimento de dívida (art. 458.º do CC), a promessa pública (art. 459.º do CC) e os concursos públicos (art. 463.º do CC).'],
+      ['3. Gestão de negócios', 'Há gestão quando uma pessoa assume a direção de negócio alheio no interesse e por conta do respetivo dono, sem para tal estar autorizada (art. 464.º do CC). O gestor deve conformar-se com o interesse e a vontade, real ou presumível, do dono (art. 465.º do CC). Se a gestão for regular, o dono deve reembolsar o gestor das despesas que fundadamente tenha considerado indispensáveis (art. 468.º do CC).'],
+      ['4. Enriquecimento sem causa', 'Quem, sem causa justificativa, enriquecer à custa de outrem é obrigado a restituir aquilo com que injustamente se locupletou (art. 473.º do CC). Requisitos: (i) enriquecimento; (ii) obtido à custa de outrem; (iii) falta de causa justificativa. É um instituto subsidiário: não há lugar à restituição quando a lei faculte ao empobrecido outro meio de ser indemnizado ou restituído (art. 474.º do CC). O direito prescreve no prazo de três anos (art. 482.º do CC).'],
+      ['5. Responsabilidade civil', 'Fonte de obrigações por excelência fora do contrato: quem viola ilicitamente e com culpa um direito de outrem fica obrigado a indemnizar (art. 483.º do CC). Tem guia próprio neste capítulo.']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Fonte', 'Base legal', 'O que gera'], linhas: [
+      ['Contrato', 'arts. 405.º a 456.º do CC', 'As obrigações acordadas pelas partes'],
+      ['Negócio unilateral', 'arts. 457.º a 463.º do CC', 'Só nos casos típicos previstos na lei'],
+      ['Gestão de negócios', 'arts. 464.º a 472.º do CC', 'Deveres do gestor e reembolso das despesas pelo dono'],
+      ['Enriquecimento sem causa', 'arts. 473.º a 482.º do CC', 'Restituição do enriquecimento injustificado'],
+      ['Responsabilidade civil', 'arts. 483.º a 510.º do CC', 'Obrigação de indemnizar os danos causados']
+    ] },
+    exemplo: ['A transfere por engano 500 € para a conta de B, que nada lhe devia. B recusa devolver, alegando que «o dinheiro está na conta dele». A pode exigir a devolução?',
+      'Sim. Estão preenchidos os requisitos do enriquecimento sem causa (art. 473.º do CC): B enriqueceu (o seu património aumentou 500 €), à custa de A (que empobreceu na mesma medida) e sem causa justificativa (não havia qualquer dívida). O caso corresponde, aliás, à hipótese típica do pagamento indevido (art. 476.º do CC).',
+      'Como A não dispõe de outro meio específico de ser restituído, a subsidiariedade do art. 474.º do CC não impede a ação. A tem três anos para agir, a contar do momento em que teve conhecimento do direito e da pessoa do responsável (art. 482.º do CC).']
+    ,
+    erros: [
+      'Esquecer a subsidiariedade do enriquecimento sem causa (art. 474.º do CC): se houver contrato inválido ou responsabilidade civil aplicável, é por aí que se resolve.',
+      'Tratar a promessa unilateral como vinculativa em geral: vigora a tipicidade do art. 457.º do CC.',
+      'Confundir a forma do contrato-promessa com a do contrato prometido: basta documento assinado (art. 410.º, n.º 2, do CC), não escritura.',
+      'Dizer que a obrigação natural «não existe»: existe, mas não é judicialmente exigível; o que se pagar voluntariamente não se pode repetir.'
+    ],
+    artigos: ['art. 397.º do CC', 'art. 405.º do CC', 'art. 406.º do CC', 'art. 410.º do CC', 'art. 457.º do CC', 'art. 464.º do CC', 'art. 473.º do CC', 'art. 474.º do CC']
+  },
+
+  rc: {
+    sub: 'Os cinco pressupostos da responsabilidade por factos ilícitos, a responsabilidade pelo risco e o cálculo da indemnização.',
+    ideia: 'Quem, com dolo ou mera culpa, violar ilicitamente o direito de outrem ou qualquer disposição legal destinada a proteger interesses alheios fica obrigado a indemnizar o lesado pelos danos resultantes da violação (art. 483.º do CC). Para haver responsabilidade por factos ilícitos têm de verificar-se cinco pressupostos cumulativos: facto voluntário, ilicitude, culpa, dano e nexo de causalidade.',
+    conceitos: [
+      ['Facto voluntário', 'Ação ou omissão dominável pela vontade humana. A omissão só gera responsabilidade quando havia o dever jurídico de praticar o ato omitido (art. 486.º do CC).'],
+      ['Ilicitude', 'Duas modalidades principais: violação de um direito de outrem (sobretudo direitos absolutos — vida, integridade, propriedade) e violação de normas de proteção de interesses alheios (art. 483.º, n.º 1, do CC). Há ainda casos especiais nos arts. 484.º e 485.º do CC.'],
+      ['Culpa', 'Juízo de censura ao agente. Pode ser dolo (intenção) ou negligência (mera culpa). Avalia-se em abstrato, pela diligência de um bom pai de família, em face das circunstâncias de cada caso (art. 487.º, n.º 2, do CC).'],
+      ['Dano', 'Prejuízo sofrido. Patrimonial (danos emergentes e lucros cessantes — art. 564.º do CC) ou não patrimonial, indemnizável quando, pela sua gravidade, mereça a tutela do direito (art. 496.º do CC).'],
+      ['Nexo de causalidade', 'O dano tem de resultar do facto. O CC acolhe a teoria da causalidade adequada: só há obrigação quanto aos danos que o lesado provavelmente não teria sofrido se não fosse a lesão (art. 563.º do CC).'],
+      ['Responsabilidade pelo risco', 'Responsabilidade objetiva, independente de culpa, só nos casos previstos na lei (art. 483.º, n.º 2, do CC) — por exemplo, comitente (art. 500.º do CC) e acidentes com veículos (art. 503.º do CC).']
+    ],
+    regime: [
+      ['Prova da culpa', 'Regra: é ao lesado que incumbe provar a culpa do autor da lesão, salvo havendo presunção legal (art. 487.º, n.º 1, do CC).', 'Presunções de culpa: pessoas obrigadas à vigilância de outrem (art. 491.º do CC), ruína de edifícios ou obras (art. 492.º do CC), danos causados por coisas, animais ou no exercício de atividades perigosas (art. 493.º do CC).'],
+      ['Imputabilidade', 'Não responde quem, no momento do facto, estava incapacitado de entender ou querer, salvo se se colocou culposamente nesse estado; presume-se a falta de imputabilidade nos menores de sete anos (art. 488.º do CC). Ainda assim, pode haver indemnização por motivo de equidade (art. 489.º do CC).'],
+      ['Pluralidade de responsáveis', 'Se forem várias as pessoas responsáveis pelos danos, é solidária a sua responsabilidade (art. 497.º do CC), havendo depois direito de regresso na medida das culpas.'],
+      ['Obrigação de indemnizar', 'Princípio da reconstituição natural: deve reconstituir-se a situação que existiria se não se tivesse verificado o evento (art. 562.º do CC). A indemnização é fixada em dinheiro quando a reconstituição natural não seja possível, não repare integralmente os danos ou seja excessivamente onerosa (art. 566.º do CC) — pela teoria da diferença (art. 566.º, n.º 2, do CC).', 'Mera culpa: a indemnização pode ser fixada equitativamente em montante inferior ao dano (art. 494.º do CC). Culpa do lesado: o tribunal pode reduzir ou excluir a indemnização (art. 570.º do CC).'],
+      ['Prescrição', 'O direito de indemnização prescreve no prazo de três anos a contar da data em que o lesado teve conhecimento do direito que lhe compete, sem prejuízo da prescrição ordinária; se o facto ilícito constituir crime com prazo mais longo, aplica-se este (art. 498.º do CC).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Facto voluntário', 'Ação ou omissão (com dever de agir — art. 486.º do CC).'],
+      ['Ilicitude', 'Violação de direito de outrem ou de norma de proteção (art. 483.º do CC). Excluída por causas de justificação: legítima defesa, ação direta, estado de necessidade, consentimento do lesado (arts. 336.º a 340.º do CC).'],
+      ['Culpa', 'Dolo ou negligência; bitola do bom pai de família (art. 487.º do CC). Verificar se há presunção de culpa.'],
+      ['Dano', 'Patrimonial e/ou não patrimonial (arts. 564.º e 496.º do CC).'],
+      ['Nexo de causalidade', 'Causalidade adequada (art. 563.º do CC).'],
+      ['Indemnização', 'Reconstituição natural ou dinheiro (arts. 562.º e 566.º do CC); reduções dos arts. 494.º e 570.º do CC.']
+    ] },
+    exemplo: ['C, a conduzir distraído com o telemóvel, embate na traseira do carro de D, parado num semáforo. D sofre lesões cervicais, falta 30 dias ao trabalho e o carro fica danificado. Quid iuris?',
+      'Facto voluntário: a condução (ação) de C. Ilicitude: violação de direitos absolutos de D — integridade física e propriedade — e de normas de proteção (Código da Estrada). Culpa: um condutor medianamente diligente, colocado nas circunstâncias, não usaria o telemóvel nem deixaria de guardar a distância de segurança; há pelo menos negligência (art. 487.º, n.º 2, do CC).',
+      'Danos: patrimoniais — reparação do carro (dano emergente) e salários perdidos (lucro cessante, art. 564.º do CC); não patrimoniais — dores e incómodos, com gravidade suficiente (art. 496.º do CC). Nexo de causalidade: o embate é causa adequada destes danos (art. 563.º do CC).',
+      'Conclusão: C constitui-se na obrigação de indemnizar D (art. 483.º do CC). Na prática, a indemnização será paga pela seguradora de responsabilidade civil automóvel. Note-se ainda que, mesmo sem culpa, C responderia pelo risco próprio do veículo (art. 503.º do CC).']
+    ,
+    erros: [
+      'Esquecer um dos cinco pressupostos ou analisá-los fora de ordem: a correção valoriza a análise sistemática.',
+      'Confundir ilicitude com culpa: a ilicitude é um juízo sobre o facto; a culpa é um juízo de censura sobre o agente.',
+      'Apreciar a culpa em concreto (pelas capacidades do próprio agente): o CC manda apreciá-la em abstrato, pelo bom pai de família.',
+      'Invocar responsabilidade pelo risco sem norma que a preveja: é excecional (art. 483.º, n.º 2, do CC).',
+      'Ignorar a culpa do lesado (art. 570.º do CC) quando a hipótese a sugere.'
+    ],
+    artigos: ['art. 483.º do CC', 'art. 486.º do CC', 'art. 487.º do CC', 'art. 493.º do CC', 'art. 496.º do CC', 'art. 497.º do CC', 'art. 498.º do CC', 'art. 562.º do CC', 'art. 563.º do CC', 'art. 566.º do CC']
+  },
+
+  modal: {
+    sub: 'Obrigações solidárias, genéricas, alternativas e pecuniárias; cessão de créditos, sub-rogação e assunção de dívida.',
+    ideia: 'Nem todas as obrigações têm a mesma estrutura: podem ter vários devedores ou credores (solidárias ou conjuntas), objeto indeterminado (genéricas e alternativas) ou objeto em dinheiro (pecuniárias). Além disso, credor e devedor podem mudar sem que a obrigação se extinga: é a transmissão das obrigações.',
+    conceitos: [
+      ['Obrigação solidária', 'Cada devedor responde pela prestação integral e esta a todos libera; ou cada credor tem a faculdade de exigir, por si só, a prestação integral (art. 512.º do CC). Só existe quando resulta da lei ou da vontade das partes (art. 513.º do CC); a regra nas obrigações civis é a conjunção.'],
+      ['Direito de regresso', 'O devedor solidário que satisfizer o direito do credor além da parte que lhe competia tem direito de regresso contra cada um dos condevedores, na parte que a estes compete (art. 524.º do CC).'],
+      ['Obrigação genérica', 'O objeto está determinado apenas quanto ao género (ex.: 100 litros de azeite). Salvo estipulação em contrário, a escolha pertence ao devedor (art. 539.º do CC). Antes da concentração, o risco não passa para o credor (art. 540.º do CC).'],
+      ['Obrigação alternativa', 'Compreende duas ou mais prestações, mas o devedor exonera-se com a que, por escolha, vier a ser designada (art. 543.º do CC). Na falta de estipulação, a escolha pertence ao devedor.'],
+      ['Obrigação pecuniária', 'Tem por objeto uma quantia em dinheiro. Vigora o princípio nominalista: o cumprimento faz-se em moeda com curso legal pelo valor nominal (art. 550.º do CC).']
+    ],
+    regime: [
+      ['Cessão de créditos', 'O credor pode ceder a terceiro uma parte ou a totalidade do crédito, independentemente do consentimento do devedor, desde que a cessão não seja interdita por lei ou convenção e o crédito não esteja ligado à pessoa do credor (art. 577.º do CC).', 'A cessão produz efeitos em relação ao devedor desde que lhe seja notificada ou desde que ele a aceite (art. 583.º do CC). O cedente garante a existência e a exigibilidade do crédito, mas não a solvência do devedor, salvo convenção (art. 587.º do CC).'],
+      ['Sub-rogação', 'O terceiro que cumpre a obrigação fica sub-rogado nos direitos do credor nos casos previstos na lei: sub-rogação pelo credor (art. 589.º do CC), pelo devedor (art. 590.º do CC) ou legal, por exemplo quando o terceiro garantiu o cumprimento ou tinha interesse direto na satisfação do crédito (art. 592.º do CC).'],
+      ['Transmissão singular de dívidas', 'A transmissão a título singular de uma dívida pode verificar-se por contrato entre o antigo e o novo devedor, ratificado pelo credor, ou por contrato entre o novo devedor e o credor; em qualquer caso, só exonera o antigo devedor havendo declaração expressa do credor — caso contrário, fica responsável solidariamente com o novo obrigado (art. 595.º do CC).'],
+      ['Cessão da posição contratual', 'Num contrato com prestações recíprocas, qualquer das partes pode transmitir a terceiro a sua posição contratual, desde que o outro contraente consinta, antes ou depois da celebração do contrato (art. 424.º do CC).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Figura', 'O que se transmite', 'Consentimento necessário'], linhas: [
+      ['Cessão de créditos', 'O crédito (lado ativo)', 'Não é necessário o do devedor; basta notificá-lo (arts. 577.º e 583.º do CC)'],
+      ['Sub-rogação', 'O crédito, para quem cumpre', 'Depende da modalidade (arts. 589.º a 592.º do CC)'],
+      ['Assunção de dívida', 'A dívida (lado passivo)', 'Ratificação do credor; exoneração só com declaração expressa (art. 595.º do CC)'],
+      ['Cessão da posição contratual', 'Toda a posição (créditos e dívidas)', 'Consentimento do outro contraente (art. 424.º do CC)']
+    ] },
+    exemplo: ['E, F e G compram em conjunto, para uso pessoal, um barco por 30 000 €, sem nada acordarem quanto à solidariedade. O vendedor exige os 30 000 € apenas a E. Pode fazê-lo?',
+      'Não. A solidariedade não se presume: só existe quando resulta da lei ou da vontade das partes (art. 513.º do CC). Tratando-se de uma obrigação civil sem estipulação de solidariedade, a obrigação é conjunta, e cada devedor responde apenas pela sua parte — presumivelmente 10 000 €.',
+      'Seria diferente se as partes tivessem estipulado a solidariedade, ou se se tratasse de uma obrigação comercial: nas obrigações comerciais, os codevedores são solidários, salvo estipulação em contrário (art. 100.º do CCom). Nesse caso o vendedor poderia exigir tudo a E, que teria depois direito de regresso contra F e G (art. 524.º do CC).']
+    ,
+    erros: [
+      'Presumir a solidariedade nas obrigações civis: a regra é a conjunção (art. 513.º do CC); nas comerciais, o inverso (art. 100.º do CCom).',
+      'Exigir o consentimento do devedor para a cessão de créditos: basta a notificação para produzir efeitos em relação a ele (art. 583.º do CC).',
+      'Considerar que a assunção de dívida exonera automaticamente o antigo devedor: só com declaração expressa do credor (art. 595.º, n.º 2, do CC).',
+      'Confundir obrigação genérica com alternativa: na genérica escolhe-se dentro de um género; na alternativa escolhe-se entre prestações diferentes.'
+    ],
+    artigos: ['art. 512.º do CC', 'art. 513.º do CC', 'art. 524.º do CC', 'art. 539.º do CC', 'art. 550.º do CC', 'art. 577.º do CC', 'art. 583.º do CC', 'art. 595.º do CC', 'art. 424.º do CC']
+  },
+
+  cumpr: {
+    sub: 'Como se cumpre (quem, a quem, onde e quando) e as outras causas de extinção: dação, consignação, compensação, novação, remissão e confusão.',
+    ideia: 'O cumprimento é a realização voluntária da prestação devida e é o modo normal de extinguir a obrigação. O devedor cumpre quando realiza a prestação a que está vinculado, devendo, tal como o credor, proceder de boa-fé (art. 762.º do CC). Além do cumprimento, a lei prevê outras causas de extinção, que permitem satisfazer o credor por outras vias ou libertar o devedor.',
+    conceitos: [
+      ['Integralidade', 'A prestação deve ser realizada integralmente e não por partes, exceto se outro for o regime convencionado ou imposto por lei ou pelos usos (art. 763.º do CC).'],
+      ['Quem pode cumprir', 'Pode cumprir o devedor ou um terceiro, interessado ou não no cumprimento, salvo se se tiver acordado expressamente que só o devedor pode prestar ou se a substituição prejudicar o credor (art. 767.º do CC).'],
+      ['Lugar', 'Regra supletiva: a prestação deve ser efetuada no lugar do domicílio do devedor (art. 772.º do CC). Nas obrigações pecuniárias, no lugar do domicílio que o credor tiver ao tempo do cumprimento (art. 774.º do CC).'],
+      ['Prazo', 'Na falta de estipulação, o credor tem o direito de exigir a todo o tempo o cumprimento, e o devedor pode a todo o tempo exonerar-se (art. 777.º do CC). O prazo presume-se estabelecido a favor do devedor (art. 779.º do CC).'],
+      ['Imputação', 'Se o devedor tiver várias dívidas do mesmo género ao mesmo credor e a prestação não chegar para todas, cabe-lhe designar a que pretende pagar (art. 783.º do CC).']
+    ],
+    regime: [
+      ['Dação em cumprimento', 'A prestação de coisa diversa da devida só exonera o devedor se o credor der o seu assentimento (art. 837.º do CC). Distingue-se da dação pro solvendo, em que o crédito só se extingue quando for satisfeito e na medida em que o for (art. 840.º do CC).'],
+      ['Consignação em depósito', 'O devedor pode livrar-se da obrigação mediante o depósito da coisa devida quando, sem culpa sua, não puder efetuar a prestação ou não o puder fazer com segurança, por motivo relativo à pessoa do credor, ou quando o credor estiver em mora (art. 841.º do CC).'],
+      ['Compensação', 'Quando duas pessoas sejam reciprocamente credor e devedor, qualquer delas pode livrar-se da sua obrigação por meio de compensação com a obrigação do seu credor, verificados os requisitos: crédito exigível judicialmente e não procedente de exceção; prestações de coisas fungíveis do mesmo género e qualidade (art. 847.º do CC). Torna-se efetiva mediante declaração de uma das partes à outra (art. 848.º do CC). Há créditos que não podem ser extintos por compensação (art. 853.º do CC).'],
+      ['Novação', 'A obrigação extingue-se quando o devedor contrai perante o credor uma nova obrigação em substituição da antiga (novação objetiva) ou quando um novo credor ou devedor é substituído ao antigo (novação subjetiva) — arts. 857.º e 858.º do CC. A vontade de novar tem de ser expressamente manifestada (art. 859.º do CC).'],
+      ['Remissão e confusão', 'Remissão: o credor pode remitir a dívida por contrato com o devedor (art. 863.º do CC) — é sempre um contrato, nunca um ato unilateral. Confusão: extingue-se o crédito e a dívida quando na mesma pessoa se reúnam as qualidades de credor e devedor da mesma obrigação (art. 868.º do CC).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Causa de extinção', 'O credor fica satisfeito?', 'Ideia-chave'], linhas: [
+      ['Cumprimento', 'Sim', 'Realização da prestação devida (art. 762.º do CC)'],
+      ['Dação em cumprimento', 'Sim, com prestação diferente', 'Exige o assentimento do credor (art. 837.º do CC)'],
+      ['Consignação em depósito', 'Sim, através do depósito', 'Quando o credor não quer ou não pode receber (art. 841.º do CC)'],
+      ['Compensação', 'Sim, por via indireta', 'Créditos recíprocos e fungíveis (art. 847.º do CC)'],
+      ['Novação', 'A obrigação é substituída', 'Vontade expressa de novar (art. 859.º do CC)'],
+      ['Remissão', 'Não: renuncia', 'Contrato entre credor e devedor (art. 863.º do CC)'],
+      ['Confusão', 'Não há conflito', 'Credor e devedor na mesma pessoa (art. 868.º do CC)']
+    ] },
+    exemplo: ['H deve 2 000 € a I, por um empréstimo vencido. I deve 1 500 € a H pelo preço de um computador que H lhe vendeu, também já vencido. H quer «acertar as contas». Como?',
+      'Estão reunidos os requisitos da compensação (art. 847.º do CC): H e I são reciprocamente credor e devedor; ambos os créditos são exigíveis judicialmente; as prestações são de dinheiro, coisa fungível do mesmo género.',
+      'H só tem de declarar a I que compensa (art. 848.º do CC). Os créditos extinguem-se na medida correspondente — 1 500 € — e H continua a dever apenas 500 € a I. A compensação opera retroativamente ao momento em que os créditos se tornaram compensáveis (art. 854.º do CC).']
+    ,
+    erros: [
+      'Tratar a compensação como automática: depende de declaração de uma das partes (art. 848.º do CC).',
+      'Chamar remissão a um perdão unilateral do credor: a remissão é um contrato (art. 863.º do CC).',
+      'Esquecer que, nas obrigações pecuniárias, o lugar do cumprimento é o domicílio do credor (art. 774.º do CC), e não o do devedor.',
+      'Confundir dação em cumprimento com dação pro solvendo (art. 840.º do CC).'
+    ],
+    artigos: ['art. 762.º do CC', 'art. 763.º do CC', 'art. 767.º do CC', 'art. 772.º do CC', 'art. 774.º do CC', 'art. 777.º do CC', 'art. 837.º do CC', 'art. 847.º do CC', 'art. 857.º do CC', 'art. 863.º do CC']
+  },
+
+  inc: {
+    sub: 'Impossibilidade do cumprimento, mora do devedor e do credor, incumprimento definitivo, resolução, cláusula penal e execução específica.',
+    ideia: 'Quando a prestação não é realizada como devido, é preciso perguntar: a culpa é do devedor? E a prestação ainda é possível e útil para o credor? Das respostas resulta uma de três situações — impossibilidade, mora ou incumprimento definitivo — cada uma com consequências próprias.',
+    conceitos: [
+      ['Impossibilidade não imputável', 'Se a prestação se torna impossível por causa não imputável ao devedor, a obrigação extingue-se (art. 790.º do CC). Nos contratos bilaterais, o credor fica desobrigado da contraprestação e tem direito, se já a tiver realizado, a exigir a sua restituição (art. 795.º do CC).'],
+      ['Impossibilidade imputável', 'Se a prestação se torna impossível por causa imputável ao devedor, este é responsável como se faltasse culposamente ao cumprimento (art. 801.º do CC); o credor pode resolver o contrato e exigir indemnização.'],
+      ['Mora do devedor', 'Atraso: a prestação, ainda possível, não foi efetuada no tempo devido por causa imputável ao devedor (art. 804.º, n.º 2, do CC). O devedor fica obrigado a reparar os danos causados (art. 804.º, n.º 1, do CC).'],
+      ['Presunção de culpa', 'Incumbe ao devedor provar que a falta de cumprimento ou o cumprimento defeituoso não procede de culpa sua (art. 799.º do CC). É uma diferença fundamental face à responsabilidade extracontratual.'],
+      ['Mora do credor', 'O credor incorre em mora quando, sem motivo justificado, não aceita a prestação que lhe é oferecida nos termos legais ou não pratica os atos necessários ao cumprimento (art. 813.º do CC).']
+    ],
+    regime: [
+      ['Quando começa a mora', 'O devedor só fica constituído em mora depois de ter sido judicial ou extrajudicialmente interpelado para cumprir (art. 805.º, n.º 1, do CC).', 'Há mora independentemente de interpelação: se a obrigação tiver prazo certo; se provier de facto ilícito; ou se o próprio devedor impedir a interpelação (art. 805.º, n.º 2, do CC).'],
+      ['Consequências da mora', 'Nas obrigações pecuniárias, a indemnização corresponde aos juros a contar do dia da constituição em mora (art. 806.º do CC). O devedor em mora passa a responder pelo risco de perda ou deterioração da coisa, ainda que não imputável (art. 807.º do CC).'],
+      ['Da mora ao incumprimento definitivo', 'A mora converte-se em incumprimento definitivo quando o credor perde, em consequência da mora, o interesse que tinha na prestação (apreciado objetivamente) ou quando a prestação não é realizada dentro do prazo que razoavelmente for fixado pelo credor — a interpelação admonitória (art. 808.º do CC).'],
+      ['Meios de reação do credor', 'Exceção de não cumprimento: nos contratos bilaterais, cada contraente pode recusar a sua prestação enquanto o outro não efetuar a que lhe cabe (art. 428.º do CC).', 'Resolução do contrato, perante incumprimento definitivo (arts. 432.º e 801.º, n.º 2, do CC).', 'Execução específica do contrato-promessa: obtenção de sentença que produza os efeitos da declaração negocial do faltoso (art. 830.º do CC).', 'Sinal: se quem constituiu o sinal deixar de cumprir, a outra parte pode fazer sua a coisa entregue; se o incumprimento for de quem o recebeu, pode exigir o dobro (art. 442.º, n.º 2, do CC).'],
+      ['Cláusula penal', 'As partes podem fixar por acordo o montante da indemnização exigível (art. 810.º do CC). O tribunal pode reduzi-la, de acordo com a equidade, quando for manifestamente excessiva (art. 812.º do CC).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['A prestação foi realizada como devido?', 'Se sim, há cumprimento. Se não, continue.'],
+      ['A prestação ainda é possível?', 'Não → impossibilidade: imputável (art. 801.º do CC) ou não imputável (art. 790.º do CC).'],
+      ['O atraso é imputável ao devedor?', 'Sim → mora do devedor (art. 804.º do CC). Verificar a interpelação (art. 805.º do CC). Se a culpa é do credor → mora do credor (art. 813.º do CC).'],
+      ['O credor perdeu o interesse ou fixou prazo admonitório?', 'Sim → incumprimento definitivo (art. 808.º do CC).'],
+      ['Que meios tem o credor?', 'Indemnização, resolução, exceção de não cumprimento, execução específica, sinal, cláusula penal.']
+    ] },
+    exemplo: ['J prometeu vender a K um apartamento, por contrato-promessa com sinal de 20 000 €. Chegada a data marcada, J não comparece na escritura e não dá notícias. K pode desde logo exigir o dobro do sinal?',
+      'Ainda não, em princípio. A data marcada faz J entrar em mora (prazo certo, art. 805.º, n.º 2, alínea a), do CC), mas a mora não é ainda incumprimento definitivo. Para obter o dobro do sinal, a jurisprudência exige, em regra, incumprimento definitivo.',
+      'K deve converter a mora em incumprimento definitivo através de interpelação admonitória: fixar a J um prazo razoável para cumprir, sob pena de considerar o contrato definitivamente incumprido (art. 808.º do CC). Se J não cumprir nesse prazo, K pode resolver o contrato e exigir o dobro do sinal (art. 442.º, n.º 2, do CC).',
+      'Em alternativa, se preferir ficar com o apartamento, K pode pedir a execução específica do contrato-promessa (art. 830.º do CC), desde que não haja convenção em contrário.']
+    ,
+    erros: [
+      'Tratar a mora como incumprimento definitivo: falta a perda objetiva do interesse ou a interpelação admonitória (art. 808.º do CC).',
+      'Esquecer a presunção de culpa do devedor na responsabilidade contratual (art. 799.º do CC).',
+      'Esquecer a interpelação para a constituição em mora nas obrigações sem prazo certo (art. 805.º, n.º 1, do CC).',
+      'Ignorar que o credor tem várias opções e que algumas são alternativas, não cumulativas (por exemplo, resolver ou pedir a execução específica).'
+    ],
+    artigos: ['art. 428.º do CC', 'art. 442.º do CC', 'art. 790.º do CC', 'art. 799.º do CC', 'art. 801.º do CC', 'art. 804.º do CC', 'art. 805.º do CC', 'art. 808.º do CC', 'art. 810.º do CC', 'art. 830.º do CC']
+  },
+
+  garant: {
+    sub: 'Garantia geral (o património do devedor), meios de conservação e garantias especiais: fiança, penhor, hipoteca, privilégios e direito de retenção.',
+    ideia: 'Pelo cumprimento da obrigação respondem todos os bens do devedor suscetíveis de penhora (art. 601.º do CC). É a garantia geral, comum a todos os credores. Para a proteger, a lei dá aos credores meios de conservação do património. E, para se protegerem melhor, os credores podem obter garantias especiais: pessoais (outra pessoa responde) ou reais (certos bens ficam afetos à dívida, com preferência).',
+    conceitos: [
+      ['Garantia geral', 'O património do devedor, no seu conjunto, responde pelas dívidas (art. 601.º do CC). Em regra, os credores concorrem em pé de igualdade (princípio da par conditio creditorum), salvo causas legítimas de preferência (art. 604.º do CC).'],
+      ['Garantia pessoal', 'Um terceiro responde com o seu património pela dívida alheia. A figura típica é a fiança (art. 627.º do CC).'],
+      ['Garantia real', 'Certos bens ficam afetos ao pagamento de um crédito, que é pago com preferência sobre os demais credores pelo seu valor: penhor, hipoteca, privilégios creditórios, direito de retenção, consignação de rendimentos.'],
+      ['Acessoriedade', 'A garantia segue a sorte do crédito garantido: a fiança tem de ter forma igual à exigida para a obrigação principal e não pode exceder a dívida principal (arts. 628.º e 631.º do CC).']
+    ],
+    regime: [
+      ['Meios de conservação da garantia patrimonial', 'Declaração de nulidade: os credores têm legitimidade para invocar a nulidade dos atos praticados pelo devedor (art. 605.º do CC).', 'Sub-rogação do credor ao devedor: o credor pode exercer contra terceiro direitos de conteúdo patrimonial que competem ao devedor e que este não exerça, quando isso seja essencial à satisfação ou garantia do crédito (art. 606.º do CC).', 'Impugnação pauliana: permite reagir contra atos do devedor que diminuam a garantia patrimonial. Requisitos (art. 610.º do CC): crédito anterior ao ato (ou ato doloso para impedir a satisfação de crédito futuro) e impossibilidade, ou agravamento da impossibilidade, de o credor obter a satisfação integral. Se o ato for oneroso, exige-se ainda má-fé do devedor e do terceiro (art. 612.º do CC). Julgada procedente, o credor pode executar os bens no património do terceiro (art. 616.º do CC).', 'Arresto: apreensão judicial de bens do devedor, quando o credor tenha justificado receio de perder a garantia patrimonial do seu crédito (art. 619.º do CC).'],
+      ['Fiança', 'O fiador garante a satisfação do direito de crédito, ficando pessoalmente obrigado perante o credor (art. 627.º do CC). Goza do benefício da excussão: pode recusar o cumprimento enquanto o credor não tiver excutido todos os bens do devedor sem obter a satisfação do seu crédito (art. 638.º do CC). Este benefício não existe, por exemplo, se o fiador lhe tiver renunciado ou se tiver assumido a obrigação de principal pagador (art. 640.º do CC).'],
+      ['Penhor e hipoteca', 'Penhor: recai sobre coisas móveis ou créditos, e só produz efeitos pela entrega da coisa ou de documento que confira a exclusiva disponibilidade dela (arts. 666.º e 669.º do CC).', 'Hipoteca: confere ao credor o direito de ser pago pelo valor de certas coisas imóveis ou equiparadas, pertencentes ao devedor ou a terceiro, com preferência sobre os demais credores que não gozem de privilégio especial ou de prioridade de registo (art. 686.º do CC). Tem de ser registada, sob pena de não produzir efeitos, mesmo entre as partes (art. 687.º do CC). Pode ser legal, judicial ou voluntária (art. 703.º do CC).'],
+      ['Privilégios creditórios e direito de retenção', 'Privilégio creditório: faculdade que a lei concede a certos credores, em atenção à causa do crédito, de serem pagos com preferência, independentemente de registo (art. 733.º do CC).', 'Direito de retenção: o devedor que disponha de um crédito contra o seu credor goza do direito de reter a coisa que deva entregar-lhe, se o crédito resultar de despesas feitas por causa dela ou de danos por ela causados (art. 754.º do CC). O art. 755.º do CC prevê casos especiais, como o do promitente-comprador que obteve a tradição da coisa.']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Garantia', 'Tipo', 'Sobre o quê', 'Nota principal'], linhas: [
+      ['Fiança', 'Pessoal', 'Património do fiador', 'Benefício da excussão (art. 638.º do CC)'],
+      ['Penhor', 'Real', 'Móveis e créditos', 'Exige entrega (art. 669.º do CC)'],
+      ['Hipoteca', 'Real', 'Imóveis e móveis sujeitos a registo', 'Registo constitutivo (art. 687.º do CC)'],
+      ['Privilégio creditório', 'Real (legal)', 'Móveis ou imóveis', 'Resulta da lei, sem registo (art. 733.º do CC)'],
+      ['Direito de retenção', 'Real (legal)', 'Coisa que o credor detém', 'Ligação entre crédito e coisa (art. 754.º do CC)']
+    ] },
+    exemplo: ['L deve 50 000 € a M. Pouco depois de a dívida se vencer, L doa ao filho o único imóvel que tinha, ficando sem bens penhoráveis. M pode reagir?',
+      'Sim, através da impugnação pauliana. O crédito de M é anterior ao ato (art. 610.º, alínea a), do CC) e a doação torna impossível a satisfação integral do crédito, já que L fica sem bens (art. 610.º, alínea b), do CC).',
+      'Como a doação é um ato gratuito, não é necessário provar a má-fé do devedor nem do filho (a exigência de má-fé do art. 612.º do CC vale só para atos onerosos). Procedente a impugnação, M pode executar o imóvel no património do filho, na medida do seu interesse (art. 616.º do CC). Para impedir entretanto a venda do imóvel a terceiros, M pode requerer o arresto (art. 619.º do CC).']
+    ,
+    erros: [
+      'Pensar que a impugnação pauliana anula o ato: o ato mantém-se válido; o credor apenas pode executar o bem no património do terceiro (art. 616.º do CC).',
+      'Exigir má-fé nos atos gratuitos: só é requisito nos atos onerosos (art. 612.º do CC).',
+      'Esquecer que a hipoteca não registada não produz efeitos, nem sequer entre as partes (art. 687.º do CC).',
+      'Atribuir sempre ao fiador o benefício da excussão: não existe quando renunciou a ele ou se obrigou como principal pagador (art. 640.º do CC).'
+    ],
+    artigos: ['art. 601.º do CC', 'art. 604.º do CC', 'art. 606.º do CC', 'art. 610.º do CC', 'art. 612.º do CC', 'art. 619.º do CC', 'art. 627.º do CC', 'art. 638.º do CC', 'art. 686.º do CC', 'art. 754.º do CC']
+  },
+
+  contr: {
+    sub: 'Compra e venda, doação, locação, mútuo, mandato e empreitada: noção, forma, efeitos e os problemas que mais saem em exame.',
+    ideia: 'Os contratos em especial são os contratos típicos regulados no Código Civil. Para cada um, o método é sempre o mesmo: qual é a noção legal, que forma exige, que efeitos produz e o que acontece quando corre mal (vícios, defeitos, incumprimento). A compra e venda é o modelo: o seu regime aplica-se, com adaptações, aos outros contratos onerosos (art. 939.º do CC).',
+    conceitos: [
+      ['Compra e venda', 'Contrato pelo qual se transmite a propriedade de uma coisa, ou outro direito, mediante um preço (art. 874.º do CC). Efeitos essenciais: transmissão do direito, obrigação de entregar a coisa e obrigação de pagar o preço (art. 879.º do CC).'],
+      ['Doação', 'Contrato pelo qual uma pessoa, por espírito de liberalidade e à custa do seu património, dispõe gratuitamente de uma coisa ou de um direito, ou assume uma obrigação, em benefício do outro contraente (art. 940.º do CC).'],
+      ['Locação', 'Contrato pelo qual uma das partes se obriga a proporcionar à outra o gozo temporário de uma coisa, mediante retribuição (art. 1022.º do CC). Diz-se arrendamento quando versa sobre coisa imóvel e aluguer quando incide sobre coisa móvel (art. 1023.º do CC).'],
+      ['Mútuo', 'Contrato pelo qual uma das partes empresta à outra dinheiro ou outra coisa fungível, ficando a segunda obrigada a restituir outro tanto do mesmo género e qualidade (art. 1142.º do CC).'],
+      ['Mandato', 'Contrato pelo qual uma das partes se obriga a praticar um ou mais atos jurídicos por conta da outra (art. 1157.º do CC).'],
+      ['Empreitada', 'Contrato pelo qual uma das partes se obriga em relação à outra a realizar certa obra, mediante um preço (art. 1207.º do CC).']
+    ],
+    regime: [
+      ['Compra e venda: forma e efeito real', 'A venda de imóveis só é válida se for celebrada por escritura pública ou por documento particular autenticado (art. 875.º do CC). A propriedade transmite-se por mero efeito do contrato (art. 408.º do CC) — não é preciso a entrega.', 'Venda de bens alheios: é nula (art. 892.º do CC), mas o vendedor fica obrigado a convalidar o contrato, adquirindo a propriedade da coisa (art. 897.º do CC).'],
+      ['Compra e venda: coisa defeituosa', 'Se a coisa vendida sofrer de vício que a desvalorize ou impeça a realização do fim a que é destinada, ou não tiver as qualidades asseguradas pelo vendedor ou necessárias para esse fim, aplica-se o regime do erro e da anulação, com as adaptações dos artigos seguintes (art. 913.º do CC). O comprador pode exigir a reparação ou a substituição (art. 914.º do CC).', 'Prazos: o comprador deve denunciar o defeito até trinta dias depois de o conhecer e dentro de seis meses após a entrega; tratando-se de imóvel, os prazos são de um e de cinco anos (art. 916.º do CC); a ação caduca findo qualquer desses prazos sem denúncia ou passados seis meses sobre a denúncia (art. 917.º do CC).', 'Atenção: nas vendas de consumo (profissional a consumidor) aplica-se regime especial, mais favorável ao consumidor (Decreto-Lei n.º 84/2021).'],
+      ['Doação', 'A doação de móveis não depende de formalidade alguma se for acompanhada da tradição da coisa; caso contrário, só pode ser feita por escrito (art. 947.º, n.º 2, do CC). A de imóveis exige escritura pública ou documento particular autenticado (art. 947.º, n.º 1, do CC). Pode ser revogada por ingratidão do donatário (art. 970.º do CC).'],
+      ['Mútuo: forma', 'O mútuo de valor superior a 25 000 € só é válido se for celebrado por escritura pública ou por documento particular autenticado; o de valor superior a 2 500 € exige documento assinado pelo mutuário (art. 1143.º do CC). O mútuo civil presume-se oneroso em caso de dúvida (art. 1145.º do CC).'],
+      ['Empreitada: defeitos', 'O dono da obra deve denunciar os defeitos ao empreiteiro dentro dos trinta dias seguintes ao seu descobrimento (art. 1220.º do CC). Pode exigir a eliminação dos defeitos ou, não sendo possível, nova construção (art. 1221.º do CC); depois, a redução do preço ou a resolução (art. 1222.º do CC), e ainda indemnização (art. 1223.º do CC). Nos imóveis destinados a longa duração, o empreiteiro responde durante cinco anos (art. 1225.º do CC).'],
+      ['Mandato', 'O mandato presume-se gratuito, exceto se tiver por objeto atos que o mandatário pratique por profissão; neste caso presume-se oneroso (art. 1158.º do CC). É livremente revogável por qualquer das partes (art. 1170.º do CC), sem prejuízo da indemnização prevista no art. 1172.º do CC.']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Contrato', 'Noção', 'Forma (regra)', 'Questão típica de exame'], linhas: [
+      ['Compra e venda', 'art. 874.º do CC', 'Imóveis: escritura ou documento particular autenticado (art. 875.º do CC)', 'Coisa defeituosa e prazos (arts. 913.º e 916.º do CC)'],
+      ['Doação', 'art. 940.º do CC', 'Móveis sem entrega: escrito; imóveis: escritura (art. 947.º do CC)', 'Revogação por ingratidão (art. 970.º do CC)'],
+      ['Locação', 'art. 1022.º do CC', 'Arrendamento urbano: escrito (art. 1069.º do CC)', 'Obrigações do locatário (art. 1038.º do CC)'],
+      ['Mútuo', 'art. 1142.º do CC', 'Depende do valor (art. 1143.º do CC)', 'Nulidade por falta de forma'],
+      ['Mandato', 'art. 1157.º do CC', 'Livre', 'Revogação e indemnização (arts. 1170.º e 1172.º do CC)'],
+      ['Empreitada', 'art. 1207.º do CC', 'Livre', 'Defeitos da obra (arts. 1220.º e 1225.º do CC)']
+    ] },
+    exemplo: ['N empresta a O, seu amigo, 30 000 €, por simples documento assinado por ambos. Um ano depois, O recusa pagar, alegando que o contrato é inválido. Tem razão? E N fica sem nada?',
+      'O mútuo de valor superior a 25 000 € exige escritura pública ou documento particular autenticado (art. 1143.º do CC). Faltando a forma legal, o contrato é nulo (art. 220.º do CC). O tem razão quanto à invalidade.',
+      'Mas N não fica sem nada: a declaração de nulidade tem efeito retroativo e obriga à restituição de tudo o que tiver sido prestado (art. 289.º do CC). O tem de devolver os 30 000 €. Note-se que, sendo o contrato nulo, N não pode exigir os juros remuneratórios eventualmente acordados.']
+    ,
+    erros: [
+      'Esquecer que, na compra e venda, a propriedade se transmite com o contrato e não com a entrega (art. 408.º do CC).',
+      'Aplicar o regime do Código Civil à venda de consumo, sem referir o regime especial de proteção do consumidor (Decreto-Lei n.º 84/2021).',
+      'Confundir os prazos de denúncia da compra e venda (art. 916.º do CC) com os da empreitada (art. 1220.º do CC).',
+      'Dizer que o mútuo inválido por falta de forma «não obriga a nada»: há sempre restituição (art. 289.º do CC).'
+    ],
+    artigos: ['art. 408.º do CC', 'art. 874.º do CC', 'art. 875.º do CC', 'art. 879.º do CC', 'art. 913.º do CC', 'art. 916.º do CC', 'art. 940.º do CC', 'art. 1022.º do CC', 'art. 1143.º do CC', 'art. 1207.º do CC']
+  }
+};
+
+/* Matéria explicada — Direito Processual Civil */
+var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
+GUIAS.pc = {
+  princ: {
+    sub: 'Os princípios estruturantes do processo civil e os pressupostos processuais: personalidade, capacidade, legitimidade, patrocínio, interesse em agir e competência.',
+    ideia: 'O processo civil serve para resolver litígios de forma justa e eficiente. Os princípios dizem como o processo deve decorrer (com contraditório, igualdade, cooperação, gestão processual); os pressupostos processuais dizem se o tribunal pode conhecer do mérito. Se faltar um pressuposto e não for sanado, o juiz não decide a questão de fundo: absolve o réu da instância (art. 278.º do CPC).',
+    conceitos: [
+      ['Princípio do contraditório', 'O tribunal não pode resolver o conflito sem que a resolução lhe seja pedida por uma das partes e a outra seja devidamente chamada para deduzir oposição; e não pode decidir questões de direito ou de facto sem que as partes tenham tido a possibilidade de sobre elas se pronunciarem — proibição de decisões-surpresa (art. 3.º do CPC).'],
+      ['Princípio dispositivo', 'Às partes cabe alegar os factos essenciais que constituem a causa de pedir e aqueles em que se baseiam as exceções invocadas (art. 5.º, n.º 1, do CPC). O juiz pode ainda considerar os factos instrumentais, complementares ou concretizadores e os notórios, nos termos do art. 5.º, n.º 2, do CPC.'],
+      ['Gestão processual e adequação formal', 'O juiz dirige ativamente o processo, promove as diligências necessárias ao seu andamento célere e recusa o que for impertinente ou dilatório (art. 6.º do CPC); quando a tramitação não se adeque às especificidades da causa, deve adaptá-la (art. 547.º do CPC).'],
+      ['Cooperação e boa-fé', 'Magistrados, mandatários e partes devem cooperar entre si para obter, com brevidade e eficácia, a justa composição do litígio (art. 7.º do CPC), e devem agir de boa-fé (art. 8.º do CPC).'],
+      ['Pressupostos processuais', 'Condições de que depende o conhecimento do mérito: personalidade judiciária (art. 11.º do CPC), capacidade judiciária (art. 15.º do CPC), legitimidade (art. 30.º do CPC), patrocínio judiciário obrigatório (art. 40.º do CPC), interesse em agir e competência do tribunal.']
+    ],
+    regime: [
+      ['Legitimidade', 'O autor é parte legítima quando tem interesse direto em demandar; o réu, quando tem interesse direto em contradizer (art. 30.º, n.º 1, do CPC). Na falta de indicação da lei em contrário, são titulares do interesse relevante os sujeitos da relação controvertida tal como é configurada pelo autor (art. 30.º, n.º 3, do CPC).', 'Litisconsórcio necessário: se a lei ou o negócio exigirem a intervenção de todos os interessados, ou se ela for necessária para que a decisão produza o seu efeito útil normal, a falta de qualquer deles gera ilegitimidade (art. 33.º do CPC). Sanável por intervenção principal provocada.'],
+      ['Patrocínio judiciário obrigatório', 'É obrigatória a constituição de advogado nas causas de competência de tribunais com alçada em que seja admissível recurso ordinário, nas causas em que seja sempre admissível recurso e nos recursos e causas propostas nos tribunais superiores (art. 40.º do CPC).'],
+      ['Competência', 'Internacional: determina se os tribunais portugueses podem julgar (art. 59.º do CPC e regulamentos europeus). Interna, em razão da matéria (art. 64.º do CPC), da hierarquia (art. 67.º do CPC), do valor e do território. Exemplo de regra territorial: a ação destinada a exigir o cumprimento de obrigações é proposta no tribunal do domicílio do réu, podendo o credor optar pelo do lugar do cumprimento quando o réu seja pessoa coletiva ou quando, situando-se o domicílio do credor na área metropolitana de Lisboa ou do Porto, o réu tenha domicílio na mesma área (art. 71.º, n.º 1, do CPC).', 'A incompetência absoluta (por exemplo, infração das regras de competência em razão da matéria ou da hierarquia) é de conhecimento oficioso (arts. 96.º e 97.º do CPC); a incompetência relativa tem regime mais restrito (arts. 102.º e 104.º do CPC).'],
+      ['Exceções dilatórias', 'Obstam a que o tribunal conheça do mérito da causa e dão lugar à absolvição da instância ou à remessa do processo para outro tribunal (art. 576.º, n.º 2, do CPC). A lista exemplificativa consta do art. 577.º do CPC. Em regra, são de conhecimento oficioso (art. 578.º do CPC). O juiz deve providenciar pelo seu suprimento sempre que sejam sanáveis (art. 6.º, n.º 2, do CPC).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Pressuposto', 'Pergunta-chave', 'Base legal'], linhas: [
+      ['Personalidade judiciária', 'Pode ser parte?', 'art. 11.º do CPC'],
+      ['Capacidade judiciária', 'Pode estar por si em juízo?', 'art. 15.º do CPC'],
+      ['Legitimidade', 'Tem interesse direto na relação controvertida, tal como o autor a configura?', 'art. 30.º do CPC'],
+      ['Patrocínio', 'É obrigatório constituir advogado?', 'art. 40.º do CPC'],
+      ['Competência', 'Este tribunal pode julgar a causa?', 'art. 59.º do CPC e seguintes'],
+      ['Interesse em agir', 'O autor precisa realmente da tutela judicial?', 'Pressuposto inominado']
+    ] },
+    exemplo: ['Z, residente em Braga, propõe no Juízo Local Cível de Braga uma ação contra a sociedade «Alfa, Lda.», com sede em Faro, para exigir o pagamento de 4 000 € de um fornecimento que deveria ser pago em Braga. A Alfa contesta, invocando a incompetência territorial. Tem razão?',
+      'A regra do art. 71.º, n.º 1, do CPC manda propor a ação de cumprimento de obrigações no tribunal do domicílio do réu (Faro). Mas a mesma norma permite ao credor optar pelo tribunal do lugar onde a obrigação deveria ser cumprida quando o réu seja pessoa coletiva — é o caso da Alfa, Lda.',
+      'Logo, Z podia escolher Braga, lugar do cumprimento. A exceção de incompetência relativa improcede. Se não houvesse essa opção, a incompetência relativa levaria à remessa do processo para o tribunal competente (art. 105.º, n.º 3, do CPC), e não à absolvição da instância.']
+    ,
+    erros: [
+      'Aferir a legitimidade pela relação material efetivamente provada: afere-se pela relação controvertida tal como o autor a configura (art. 30.º, n.º 3, do CPC).',
+      'Dar sempre a absolvição da instância como consequência da incompetência: a incompetência relativa gera, em regra, a remessa para o tribunal competente.',
+      'Esquecer o dever do juiz de providenciar pelo suprimento das exceções dilatórias sanáveis (art. 6.º, n.º 2, do CPC).',
+      'Ignorar a proibição das decisões-surpresa (art. 3.º, n.º 3, do CPC).'
+    ],
+    artigos: ['art. 3.º do CPC', 'art. 5.º do CPC', 'art. 6.º do CPC', 'art. 7.º do CPC', 'art. 30.º do CPC', 'art. 33.º do CPC', 'art. 40.º do CPC', 'art. 71.º do CPC', 'art. 278.º do CPC', 'art. 577.º do CPC']
+  },
+
+  artic: {
+    sub: 'Petição inicial, citação, contestação, revelia, reconvenção, réplica, audiência prévia e despacho saneador.',
+    ideia: 'O processo declarativo comum começa com a fase dos articulados, em que as partes expõem os factos e os fundamentos jurídicos: a petição inicial do autor, a contestação do réu e, em certos casos, a réplica. A instância inicia-se pela proposição da ação, que se considera feita logo que a petição inicial seja recebida na secretaria (art. 259.º do CPC).',
+    conceitos: [
+      ['Petição inicial', 'Articulado em que o autor propõe a ação. Deve, entre outros elementos, designar o tribunal e o juízo, identificar as partes, indicar a forma do processo, expor os factos essenciais que constituem a causa de pedir e as razões de direito, formular o pedido e declarar o valor da causa (art. 552.º do CPC).'],
+      ['Citação', 'Ato pelo qual se dá conhecimento ao réu de que foi proposta contra ele determinada ação e se chama ao processo para se defender (art. 219.º, n.º 1, do CPC). Em regra, faz-se por carta registada com aviso de receção (art. 228.º do CPC).'],
+      ['Contestação', 'O réu pode contestar no prazo de 30 dias a contar da citação (art. 569.º, n.º 1, do CPC). Pode defender-se por impugnação ou por exceção (art. 571.º do CPC).'],
+      ['Ónus de impugnação', 'O réu deve tomar posição definida perante os factos que constituem a causa de pedir; consideram-se admitidos por acordo os factos que não forem impugnados, salvo as exceções do art. 574.º, n.º 2, do CPC.'],
+      ['Revelia', 'Se o réu não contestar, tendo sido ou devendo considerar-se citado regularmente na sua própria pessoa ou tendo juntado procuração a mandatário judicial no prazo da contestação, consideram-se confessados os factos articulados pelo autor (art. 567.º, n.º 1, do CPC) — revelia operante, salvo as exceções do art. 568.º do CPC.']
+    ],
+    regime: [
+      ['Recusa da petição pela secretaria', 'A secretaria recusa o recebimento da petição inicial quando, por exemplo, não tenha endereço ou esteja endereçada a outro tribunal, omita a identificação das partes, não indique a forma de processo, omita o valor da causa ou não tenha sido comprovado o pagamento da taxa de justiça (art. 558.º do CPC). O autor pode apresentar outra petição no prazo de 10 dias, considerando-se a ação proposta na data da primeira (art. 560.º do CPC).'],
+      ['Defesa do réu', 'Defesa por impugnação: o réu contradiz os factos articulados pelo autor ou afirma que esses factos não podem produzir o efeito jurídico pretendido (art. 571.º, n.º 2, do CPC).', 'Defesa por exceção: o réu alega factos que obstam à apreciação do mérito (exceções dilatórias) ou que servem de causa impeditiva, modificativa ou extintiva do direito invocado pelo autor (exceções perentórias), conduzindo à absolvição total ou parcial do pedido (art. 576.º do CPC).'],
+      ['Reconvenção', 'O réu pode, em reconvenção, deduzir pedidos contra o autor, nos casos previstos no art. 266.º do CPC (por exemplo, quando o pedido emerge do facto jurídico que serve de fundamento à ação ou à defesa). É deduzida discriminadamente na contestação (art. 583.º do CPC).'],
+      ['Réplica', 'Só é admissível para o autor deduzir toda a defesa quanto à matéria da reconvenção e, nas ações de simples apreciação negativa, para impugnar os factos constitutivos alegados pelo réu e alegar os factos impeditivos ou extintivos do direito invocado por este (art. 584.º do CPC). As exceções deduzidas na contestação são respondidas na audiência prévia ou, não havendo lugar a ela, no início da audiência final (art. 3.º, n.º 4, do CPC).'],
+      ['Audiência prévia e saneamento', 'Findos os articulados, o juiz convoca, em regra, a audiência prévia para, entre outras finalidades, tentar a conciliação, facultar às partes a discussão de facto e de direito, proferir despacho saneador e identificar o objeto do litígio e os temas da prova (art. 591.º do CPC). Pode ser dispensada nos casos do art. 593.º do CPC. O despacho saneador destina-se a conhecer das exceções dilatórias e nulidades processuais e, quando possível, do mérito da causa (art. 595.º do CPC).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Petição inicial', 'Requisitos do art. 552.º do CPC; proposição da ação com o recebimento na secretaria (art. 259.º do CPC).'],
+      ['Citação do réu', 'Por carta registada com aviso de receção, em regra (art. 228.º do CPC).'],
+      ['Contestação', '30 dias (art. 569.º do CPC): impugnação, exceção e eventual reconvenção.'],
+      ['Réplica', 'Só nos casos do art. 584.º do CPC.'],
+      ['Audiência prévia', 'Conciliação, saneamento, objeto do litígio e temas da prova (art. 591.º do CPC).'],
+      ['Audiência final', 'Produção de prova, alegações e sentença.']
+    ] },
+    exemplo: ['A propõe ação contra B pedindo a condenação no pagamento de 15 000 € de um empréstimo. B, regularmente citado na sua própria pessoa, não contesta. O juiz deve logo condenar B?',
+      'B está em revelia operante: foi regularmente citado na sua pessoa e não contestou. Consideram-se, por isso, confessados os factos articulados pelo autor (art. 567.º, n.º 1, do CPC).',
+      'Atenção: confessam-se os factos, não o direito. O processo é facultado aos advogados para alegarem por escrito e, em seguida, é proferida sentença, julgando a causa conforme for de direito (art. 567.º, n.º 2, do CPC). Se os factos confessados não bastarem juridicamente para fundar o pedido, ou se o contrato exigisse forma que não está provada documentalmente (art. 568.º, alínea d), do CPC), o pedido pode improceder.']
+    ,
+    erros: [
+      'Dizer que a revelia implica a condenação automática do réu: confessam-se os factos; o juiz aplica o direito (art. 567.º, n.º 2, do CPC).',
+      'Admitir réplica para responder a exceções: hoje a resposta às exceções faz-se na audiência prévia ou no início da audiência final (art. 3.º, n.º 4, do CPC).',
+      'Confundir exceções dilatórias (absolvição da instância) com perentórias (absolvição do pedido).',
+      'Esquecer a possibilidade de apresentar nova petição no prazo de 10 dias após a recusa (art. 560.º do CPC).'
+    ],
+    artigos: ['art. 219.º do CPC', 'art. 259.º do CPC', 'art. 552.º do CPC', 'art. 558.º do CPC', 'art. 567.º do CPC', 'art. 569.º do CPC', 'art. 571.º do CPC', 'art. 574.º do CPC', 'art. 584.º do CPC', 'art. 591.º do CPC']
+  },
+
+  prazos: {
+    sub: 'Como se contam os prazos processuais, prazos perentórios e dilatórios, a multa dos três dias, o justo impedimento e as férias judiciais.',
+    ideia: 'Os prazos são o esqueleto do processo: perder um prazo perentório extingue o direito de praticar o ato. O prazo processual é contínuo, mas suspende-se durante as férias judiciais, salvo nos processos urgentes (art. 138.º, n.º 1, do CPC). Saber contá-los com rigor é uma das competências mais testadas na prática judiciária.',
+    conceitos: [
+      ['Prazo dilatório', 'Difere para certo momento a possibilidade de realização de um ato ou o início da contagem de um outro prazo (art. 139.º, n.º 2, do CPC) — por exemplo, a dilação da citação (art. 245.º do CPC).'],
+      ['Prazo perentório', 'O seu decurso extingue o direito de praticar o ato (art. 139.º, n.º 3, do CPC), salvo justo impedimento ou o pagamento da multa dos três dias úteis.'],
+      ['Continuidade', 'O prazo corre seguido, incluindo sábados, domingos e feriados; só se suspende nas férias judiciais (art. 138.º, n.º 1, do CPC). Quando termine em dia em que os tribunais estejam encerrados, transfere-se para o primeiro dia útil seguinte (art. 138.º, n.º 2, do CPC).'],
+      ['Férias judiciais', 'Decorrem de 22 de dezembro a 3 de janeiro, do domingo de Ramos à segunda-feira de Páscoa e de 16 de julho a 31 de agosto (art. 28.º da Lei da Organização do Sistema Judiciário).'],
+      ['Justo impedimento', 'Evento não imputável à parte nem aos seus representantes ou mandatários que obste à prática atempada do ato (art. 140.º do CPC). A parte deve requerer a prática do ato logo que cesse o impedimento, oferecendo a prova.']
+    ],
+    regime: [
+      ['A multa dos três dias', 'Independentemente de justo impedimento, o ato pode ser praticado dentro dos três primeiros dias úteis subsequentes ao termo do prazo, ficando a sua validade dependente do pagamento imediato de uma multa (art. 139.º, n.º 5, do CPC). O valor aumenta com cada dia: 10 %, 25 % e 40 % da taxa de justiça, com os limites previstos na lei.'],
+      ['Contagem passo a passo', 'O prazo começa a correr no dia seguinte ao do evento que o desencadeia (por exemplo, a notificação). As notificações eletrónicas aos mandatários presumem-se feitas no terceiro dia posterior ao do seu envio ou no primeiro dia útil seguinte a esse, quando o não seja (art. 248.º do CPC). Na citação, ao prazo de defesa acresce, nos casos do art. 245.º do CPC, uma dilação.'],
+      ['Apresentação das peças', 'Os atos processuais das partes que devam ser praticados por escrito são apresentados a juízo por transmissão eletrónica de dados, valendo como data da prática do ato a da respetiva expedição (art. 144.º do CPC).'],
+      ['Prazos mais frequentes', 'Contestação: 30 dias (art. 569.º do CPC). Prazo supletivo para outros atos: 10 dias (art. 149.º do CPC). Recurso: 30 dias, reduzido a 15 dias nos processos urgentes e nos casos do art. 644.º, n.º 2, do CPC (art. 638.º do CPC). Embargos de executado: 20 dias (art. 728.º do CPC).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Identificar o evento', 'Citação, notificação ou outro facto que desencadeia o prazo.'],
+      ['Determinar o início', 'Dia seguinte ao evento; atenção às presunções de notificação (art. 248.º do CPC) e à dilação (art. 245.º do CPC).'],
+      ['Contar seguido', 'Dias corridos, suspendendo nas férias judiciais (art. 138.º do CPC), salvo processos urgentes.'],
+      ['Verificar o último dia', 'Se os tribunais estiverem encerrados, passa para o primeiro dia útil seguinte (art. 138.º, n.º 2, do CPC).'],
+      ['Margem de recurso', 'Até 3 dias úteis com multa (art. 139.º, n.º 5, do CPC) ou justo impedimento (art. 140.º do CPC).']
+    ] },
+    exemplo: ['C é citado pessoalmente, sem dilação, a 1 de julho para contestar uma ação declarativa comum. Até quando pode contestar sem multa?',
+      'O prazo de contestação é de 30 dias (art. 569.º do CPC) e começa a correr no dia seguinte à citação, 2 de julho. Corre seguido até 15 de julho (14 dias).',
+      'De 16 de julho a 31 de agosto há férias judiciais e o prazo suspende-se (art. 138.º, n.º 1, do CPC), porque o processo não é urgente. Retoma a 1 de setembro, faltando 16 dias: termina a 16 de setembro. Se esse dia for sábado, domingo ou feriado, passa para o primeiro dia útil seguinte (art. 138.º, n.º 2, do CPC).',
+      'Depois disso, C ainda pode contestar nos três dias úteis seguintes, pagando a multa do art. 139.º, n.º 5, do CPC.']
+    ,
+    erros: [
+      'Contar apenas dias úteis: o prazo processual é contínuo (art. 138.º, n.º 1, do CPC).',
+      'Esquecer a suspensão nas férias judiciais ou aplicá-la a processos urgentes.',
+      'Esquecer a dilação na citação (art. 245.º do CPC) ou as presunções de notificação (art. 248.º do CPC).',
+      'Confundir prazos processuais (CPC) com prazos substantivos, como a prescrição e a caducidade (art. 279.º do CC).'
+    ],
+    artigos: ['art. 138.º do CPC', 'art. 139.º do CPC', 'art. 140.º do CPC', 'art. 144.º do CPC', 'art. 149.º do CPC', 'art. 245.º do CPC', 'art. 248.º do CPC', 'art. 569.º do CPC', 'art. 638.º do CPC']
+  },
+
+  prova: {
+    sub: 'Ónus da prova, meios de prova (documentos, confissão, perícia, inspeção, testemunhas, declarações de parte) e livre apreciação.',
+    ideia: 'As provas têm por função a demonstração da realidade dos factos (art. 341.º do CC). Quem invoca um direito tem de provar os factos que o constituem; quem se lhe opõe tem de provar os factos impeditivos, modificativos ou extintivos (art. 342.º do CC). A instrução tem por objeto os temas da prova enunciados (art. 410.º do CPC) e o juiz aprecia livremente a maioria das provas.',
+    conceitos: [
+      ['Ónus da prova', 'Regra de decisão: se um facto não ficar provado, a dúvida resolve-se contra a parte a quem o facto aproveita (art. 414.º do CPC). Há inversão do ónus quando haja presunção legal, dispensa ou liberação, ou quando a parte contrária tiver culposamente tornado impossível a prova (art. 344.º do CC).'],
+      ['Prova documental', 'Os documentos destinados a fazer prova dos fundamentos da ação ou da defesa devem ser apresentados com o articulado em que se aleguem os factos; se não forem, podem sê-lo até 20 dias antes da audiência final, mas a parte é condenada em multa, salvo se provar que não os pôde oferecer antes (art. 423.º do CPC).'],
+      ['Confissão', 'Reconhecimento que a parte faz da realidade de um facto que lhe é desfavorável e favorece a parte contrária (art. 352.º do CC). A confissão judicial escrita tem força probatória plena contra o confitente (art. 358.º do CC).'],
+      ['Prova testemunhal', 'Admitida em todos os casos em que não seja direta ou indiretamente afastada (art. 392.º do CC). Os autores não podem oferecer mais de 10 testemunhas para prova dos fundamentos da ação, aplicando-se igual limitação aos réus (art. 511.º do CPC).'],
+      ['Declarações de parte', 'As partes podem requerer a prestação de declarações sobre factos em que tenham intervindo pessoalmente ou de que tenham conhecimento direto, até ao início das alegações orais em 1.ª instância; o tribunal aprecia-as livremente, salvo se constituírem confissão (art. 466.º do CPC).']
+    ],
+    regime: [
+      ['Livre apreciação e prova vinculada', 'O juiz aprecia livremente as provas segundo a sua prudente convicção acerca de cada facto; a livre apreciação não abrange os factos para cuja prova a lei exija formalidade especial, nem os que só possam ser provados por documentos ou estejam plenamente provados, quer por documentos, quer por acordo ou confissão (art. 607.º, n.º 5, do CPC).'],
+      ['Princípio da aquisição processual', 'O tribunal deve tomar em consideração todas as provas produzidas, tenham ou não emanado da parte que devia produzi-las (art. 413.º do CPC).'],
+      ['Prova pericial', 'Tem por fim a perceção ou apreciação de factos por meio de peritos, quando sejam necessários conhecimentos especiais que os julgadores não possuem (art. 388.º do CC). A força probatória das respostas dos peritos é fixada livremente pelo tribunal (art. 389.º do CC).'],
+      ['Documentos em poder da parte contrária', 'Quando se pretenda fazer uso de documento em poder da parte contrária, o interessado requer que ela seja notificada para o apresentar (art. 429.º do CPC); se não o fizer, o tribunal aprecia livremente o valor da recusa para efeitos probatórios, podendo inverter o ónus da prova (arts. 430.º e 417.º do CPC).'],
+      ['Restrições à prova testemunhal', 'Não é admitida prova por testemunhas quando a declaração negocial, por disposição da lei ou estipulação das partes, haja de ser reduzida a escrito ou necessite de ser provada por escrito, nem quando o facto estiver plenamente provado por documento (art. 393.º do CC).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Meio de prova', 'Base legal', 'Valor'], linhas: [
+      ['Documento autêntico', 'art. 371.º do CC', 'Prova plena dos factos atestados pela entidade documentadora'],
+      ['Documento particular', 'art. 376.º do CC', 'Prova plena das declarações do autor, se a autoria estiver reconhecida'],
+      ['Confissão judicial escrita', 'art. 358.º do CC', 'Prova plena contra o confitente'],
+      ['Perícia', 'art. 389.º do CC', 'Livre apreciação'],
+      ['Testemunhas', 'art. 396.º do CC', 'Livre apreciação'],
+      ['Declarações de parte', 'art. 466.º do CPC', 'Livre apreciação, salvo confissão']
+    ] },
+    exemplo: ['D pede a condenação de E a pagar 40 000 € que alega ter-lhe emprestado. Não há qualquer documento; D pretende provar o empréstimo com três testemunhas que assistiram à entrega do dinheiro. Será suficiente?',
+      'O mútuo de valor superior a 25 000 € só é válido se celebrado por escritura pública ou documento particular autenticado (art. 1143.º do CC). A forma é, aqui, requisito de validade.',
+      'Por isso, não é admitida prova testemunhal para provar a celebração do contrato (art. 393.º, n.º 1, do CC), e o contrato, mesmo que se provasse, seria nulo por falta de forma (art. 220.º do CC).',
+      'Contudo, D pode provar a entrega do dinheiro (um facto material, que testemunhas podem confirmar) e pedir a sua restituição com base na nulidade do contrato (art. 289.º do CC). Na prática forense, aliás, é frequente formular esse pedido a título subsidiário.']
+    ,
+    erros: [
+      'Inverter o ónus da prova sem fundamento legal: a regra é a do art. 342.º do CC.',
+      'Admitir prova testemunhal de negócios formais (art. 393.º do CC).',
+      'Considerar que as declarações de parte valem sempre como confissão: só valem como tal se o facto for desfavorável ao declarante.',
+      'Juntar documentos fora de prazo sem invocar a impossibilidade de o fazer antes (art. 423.º do CPC).'
+    ],
+    artigos: ['art. 341.º do CC', 'art. 342.º do CC', 'art. 344.º do CC', 'art. 393.º do CC', 'art. 410.º do CPC', 'art. 413.º do CPC', 'art. 414.º do CPC', 'art. 423.º do CPC', 'art. 466.º do CPC', 'art. 607.º do CPC']
+  },
+
+  sent: {
+    sub: 'Estrutura da sentença, limites da condenação, nulidades, caso julgado formal e material.',
+    ideia: 'A sentença é o ato pelo qual o juiz decide a causa principal (art. 152.º, n.º 2, do CPC). Proferida a sentença, fica esgotado o poder jurisdicional do juiz quanto à matéria da causa (art. 613.º do CPC). Transitada em julgado, a decisão sobre a relação material controvertida fica a ter força obrigatória dentro do processo e fora dele — é o caso julgado material (art. 619.º do CPC).',
+    conceitos: [
+      ['Estrutura da sentença', 'Relatório (identificação das partes e do objeto do litígio), fundamentação (factos provados e não provados e respetiva motivação, e direito aplicável) e decisão (art. 607.º do CPC).'],
+      ['Limites da condenação', 'A sentença não pode condenar em quantidade superior ou em objeto diverso do que se pedir (art. 609.º, n.º 1, do CPC) — princípio do pedido.'],
+      ['Nulidades da sentença', 'É nula a sentença, por exemplo, quando não especifique os fundamentos de facto e de direito, quando os fundamentos estejam em oposição com a decisão, quando o juiz deixe de pronunciar-se sobre questões que devesse apreciar ou conheça de questões de que não podia tomar conhecimento, ou quando condene em quantidade superior ou objeto diverso do pedido (art. 615.º, n.º 1, do CPC).'],
+      ['Caso julgado formal', 'As decisões que recaiam unicamente sobre a relação processual têm força obrigatória apenas dentro do processo (art. 620.º do CPC).'],
+      ['Trânsito em julgado', 'A decisão considera-se transitada em julgado logo que não seja suscetível de recurso ordinário ou de reclamação (art. 628.º do CPC).']
+    ],
+    regime: [
+      ['Questões a resolver', 'O juiz deve resolver todas as questões que as partes tenham submetido à sua apreciação, excetuadas aquelas cuja decisão esteja prejudicada pela solução dada a outras; não pode ocupar-se senão das questões suscitadas pelas partes, salvo se a lei lhe permitir ou impuser o conhecimento oficioso de outras (art. 608.º, n.º 2, do CPC).'],
+      ['Correção da sentença', 'Esgotado o poder jurisdicional, o juiz ainda pode retificar erros materiais (art. 614.º do CPC), suprir nulidades e reformar a sentença nos termos dos arts. 615.º e 616.º do CPC.'],
+      ['A exceção de caso julgado', 'Pressupõe a repetição de uma causa depois de a primeira ter sido decidida por sentença que já não admite recurso ordinário (art. 580.º do CPC). Repete-se a causa quando se propõe uma ação idêntica a outra quanto aos sujeitos, ao pedido e à causa de pedir (art. 581.º do CPC) — a tríplice identidade.', 'Para além desta função negativa (impedir nova decisão), o caso julgado tem uma função positiva (autoridade de caso julgado): a decisão anterior vincula o tribunal noutra ação em que a questão decidida seja prejudicial.'],
+      ['Alcance do caso julgado', 'A sentença constitui caso julgado nos precisos limites e termos em que julga (art. 621.º do CPC).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Identidade', 'Existe quando…', 'Base legal'], linhas: [
+      ['De sujeitos', 'As partes são as mesmas sob o ponto de vista da sua qualidade jurídica', 'art. 581.º, n.º 2, do CPC'],
+      ['De pedido', 'Numa e noutra causa se pretende obter o mesmo efeito jurídico', 'art. 581.º, n.º 3, do CPC'],
+      ['De causa de pedir', 'A pretensão deduzida nas duas ações procede do mesmo facto jurídico', 'art. 581.º, n.º 4, do CPC']
+    ] },
+    exemplo: ['F pediu a condenação de G a pagar 10 000 € de indemnização por danos no seu carro. Na sentença, o juiz condenou G a pagar 12 000 €, porque a prova mostrou que os danos eram maiores. O que pode fazer G?',
+      'A sentença condenou em quantidade superior ao pedido, violando o art. 609.º, n.º 1, do CPC. É, por isso, nula nessa parte (art. 615.º, n.º 1, alínea e), do CPC).',
+      'G pode arguir a nulidade no recurso que interpuser, se a decisão admitir recurso ordinário (art. 615.º, n.º 4, do CPC). O tribunal de recurso, julgando procedente a nulidade, reduz a condenação ao limite do pedido: 10 000 €. A solução para F teria sido ampliar o pedido durante a ação, nos termos do art. 265.º do CPC.']
+    ,
+    erros: [
+      'Confundir caso julgado formal (só dentro do processo) com material (dentro e fora dele).',
+      'Esquecer um dos três elementos da tríplice identidade (art. 581.º do CPC).',
+      'Considerar nula a sentença que decide contra a prova: isso é erro de julgamento, que se ataca pela impugnação da matéria de facto, não pela nulidade do art. 615.º do CPC.',
+      'Confundir trânsito em julgado com proferimento da sentença (art. 628.º do CPC).'
+    ],
+    artigos: ['art. 607.º do CPC', 'art. 608.º do CPC', 'art. 609.º do CPC', 'art. 613.º do CPC', 'art. 615.º do CPC', 'art. 619.º do CPC', 'art. 620.º do CPC', 'art. 628.º do CPC', 'art. 580.º do CPC', 'art. 581.º do CPC']
+  },
+
+  rec: {
+    sub: 'Espécies de recursos, admissibilidade (alçada e sucumbência), prazos, apelação, revista e dupla conforme.',
+    ideia: 'Os recursos permitem que um tribunal superior reaprecie uma decisão judicial. Os recursos ordinários são a apelação (para a Relação) e a revista (para o Supremo); os extraordinários são o recurso para uniformização de jurisprudência e a revisão (art. 627.º, n.º 2, do CPC). A regra de ouro da admissibilidade combina o valor da causa com o valor da sucumbência.',
+    conceitos: [
+      ['Alçada', 'Limite de valor até ao qual um tribunal julga sem possibilidade de recurso ordinário. Em matéria cível, a alçada dos tribunais de 1.ª instância é de 5 000 € e a dos tribunais da Relação é de 30 000 € (art. 44.º da Lei da Organização do Sistema Judiciário).'],
+      ['Regra geral de admissibilidade', 'O recurso ordinário só é admissível quando a causa tenha valor superior à alçada do tribunal de que se recorre e a decisão impugnada seja desfavorável ao recorrente em valor superior a metade da alçada desse tribunal (art. 629.º, n.º 1, do CPC).'],
+      ['Recurso sempre admissível', 'Independentemente do valor, é sempre admissível recurso, por exemplo, com fundamento em violação das regras de competência internacional, em razão da matéria ou da hierarquia, ou ofensa de caso julgado (art. 629.º, n.º 2, do CPC).'],
+      ['Prazo', 'O prazo para a interposição do recurso é de 30 dias e conta-se a partir da notificação da decisão; nos processos urgentes e nos casos do art. 644.º, n.º 2, do CPC, é de 15 dias (art. 638.º, n.º 1, do CPC). Se o recurso tiver por objeto a reapreciação da prova gravada, acrescem 10 dias (art. 638.º, n.º 7, do CPC).'],
+      ['Dupla conforme', 'Não é admitida revista do acórdão da Relação que confirme, sem voto de vencido e sem fundamentação essencialmente diferente, a decisão proferida na 1.ª instância, salvo nos casos de revista excecional (art. 671.º, n.º 3, do CPC; art. 672.º do CPC).']
+    ],
+    regime: [
+      ['Alegações e conclusões', 'O recorrente deve apresentar a sua alegação, na qual conclui, de forma sintética, pela indicação dos fundamentos por que pede a alteração ou anulação da decisão (art. 639.º, n.º 1, do CPC). São as conclusões que delimitam o objeto do recurso.'],
+      ['Impugnação da matéria de facto', 'O recorrente deve especificar, sob pena de rejeição, os concretos pontos de facto que considera incorretamente julgados, os concretos meios probatórios que impunham decisão diversa e a decisão que, no seu entender, deve ser proferida (art. 640.º do CPC). É um dos ónus mais exigentes e mais esquecidos.'],
+      ['Apelação', 'Cabe recurso de apelação, entre outras, da decisão, proferida em 1.ª instância, que ponha termo à causa (art. 644.º, n.º 1, do CPC). O art. 644.º, n.º 2, do CPC enumera as decisões interlocutórias de que cabe apelação autónoma. Em regra, a apelação tem efeito meramente devolutivo (art. 647.º, n.º 1, do CPC).'],
+      ['Revista', 'Cabe revista para o Supremo do acórdão da Relação, proferido sobre decisão da 1.ª instância, que conheça do mérito da causa ou que ponha termo ao processo (art. 671.º, n.º 1, do CPC). O Supremo, em regra, só conhece de matéria de direito.'],
+      ['Revisão', 'A decisão transitada em julgado só pode ser objeto de revisão nos casos taxativos do art. 696.º do CPC — por exemplo, quando se apresente documento de que a parte não tivesse conhecimento e que, por si só, seja suficiente para modificar a decisão.']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['A decisão é recorrível?', 'Valor da causa > alçada do tribunal e sucumbência > metade da alçada (art. 629.º, n.º 1, do CPC), ou caso de recurso sempre admissível (art. 629.º, n.º 2, do CPC).'],
+      ['Que recurso?', 'Apelação para a Relação (art. 644.º do CPC) ou revista para o Supremo (art. 671.º do CPC). Verificar a dupla conforme.'],
+      ['Que prazo?', '30 dias, ou 15 nos casos especiais; +10 dias se houver reapreciação da prova gravada (art. 638.º do CPC).'],
+      ['Que ónus?', 'Alegações com conclusões (art. 639.º do CPC); especificações da impugnação de facto (art. 640.º do CPC).'],
+      ['Que efeito?', 'Em regra, meramente devolutivo (art. 647.º do CPC).']
+    ] },
+    exemplo: ['Numa ação de 4 000 € no Juízo Local Cível, H é condenado a pagar a totalidade. Pode recorrer? E se a ação valesse 8 000 € e H tivesse sido condenado em 2 000 €?',
+      'No primeiro caso, não: o valor da causa (4 000 €) não excede a alçada da 1.ª instância (5 000 €), pelo que não há recurso ordinário (art. 629.º, n.º 1, do CPC), salvo os casos do art. 629.º, n.º 2, do CPC.',
+      'No segundo caso, o valor da causa (8 000 €) excede a alçada, mas a sucumbência de H (2 000 €) não é superior a metade da alçada (2 500 €). Também não há recurso. Se H tivesse sido condenado em 3 000 €, já poderia apelar.']
+    ,
+    erros: [
+      'Esquecer o requisito da sucumbência e olhar apenas para o valor da causa.',
+      'Não formular conclusões, ou formulá-las tão extensas que repetem a alegação (art. 639.º do CPC).',
+      'Impugnar a matéria de facto sem as especificações do art. 640.º do CPC.',
+      'Ignorar a dupla conforme ao admitir a revista (art. 671.º, n.º 3, do CPC).'
+    ],
+    artigos: ['art. 627.º do CPC', 'art. 629.º do CPC', 'art. 638.º do CPC', 'art. 639.º do CPC', 'art. 640.º do CPC', 'art. 644.º do CPC', 'art. 647.º do CPC', 'art. 671.º do CPC', 'art. 672.º do CPC', 'art. 696.º do CPC']
+  },
+
+  caut: {
+    sub: 'Requisitos das providências cautelares, procedimento comum, inversão do contencioso, caducidade e procedimentos especificados.',
+    ideia: 'A justiça demora, e o direito pode perder-se entretanto. As providências cautelares dão uma tutela rápida e provisória: sempre que alguém mostre fundado receio de que outrem cause lesão grave e dificilmente reparável ao seu direito, pode requerer a providência adequada a assegurar a efetividade do direito ameaçado (art. 362.º, n.º 1, do CPC).',
+    conceitos: [
+      ['Fumus boni iuris', 'Aparência do direito: basta a probabilidade séria da sua existência (art. 368.º, n.º 1, do CPC).'],
+      ['Periculum in mora', 'Fundado receio de lesão grave e dificilmente reparável (art. 362.º, n.º 1, do CPC); o receio tem de ser suficientemente fundado (art. 368.º, n.º 1, do CPC).'],
+      ['Proporcionalidade', 'A providência pode ser recusada quando o prejuízo dela resultante para o requerido exceda consideravelmente o dano que com ela o requerente pretende evitar (art. 368.º, n.º 2, do CPC).'],
+      ['Instrumentalidade', 'O procedimento cautelar é sempre dependência de uma causa que tenha por fundamento o direito acautelado, podendo ser instaurado como preliminar ou como incidente da ação (art. 364.º, n.º 1, do CPC).'],
+      ['Contraditório', 'O tribunal ouve o requerido, exceto quando a audiência puser em risco sério o fim ou a eficácia da providência (art. 366.º, n.º 1, do CPC).']
+    ],
+    regime: [
+      ['Inversão do contencioso', 'Mediante requerimento, o juiz pode dispensar o requerente do ónus de propositura da ação principal se a matéria adquirida no procedimento lhe permitir formar convicção segura acerca da existência do direito acautelado e se a natureza da providência for adequada a realizar a composição definitiva do litígio (art. 369.º do CPC). O requerido tem então o ónus de propor a ação, sob pena de a providência se consolidar como definitiva (art. 371.º do CPC).'],
+      ['Caducidade', 'O procedimento extingue-se e a providência caduca, por exemplo, se o requerente não propuser a ação principal no prazo de 30 dias contados da data em que lhe tiver sido notificado o trânsito em julgado da decisão que a ordenou, ou se a ação estiver parada mais de 30 dias por negligência sua (art. 373.º, n.º 1, do CPC).'],
+      ['Responsabilidade do requerente', 'Se a providência for considerada injustificada ou caducar por facto imputável ao requerente, este responde pelos danos culposamente causados ao requerido, quando não tenha agido com a prudência normal (art. 374.º do CPC).'],
+      ['Procedimentos especificados', 'Restituição provisória de posse (art. 377.º do CPC), suspensão de deliberações sociais (art. 380.º do CPC), alimentos provisórios (art. 384.º do CPC), arbitramento de reparação provisória (art. 388.º do CPC), arresto (art. 391.º do CPC), embargo de obra nova (art. 397.º do CPC) e arrolamento (art. 403.º do CPC). O procedimento comum é subsidiário: só se usa quando nenhum especificado se aplique (art. 362.º, n.º 3, do CPC).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Há procedimento especificado?', 'Se sim, usa-se esse (art. 362.º, n.º 3, do CPC); se não, procedimento comum.'],
+      ['Aparência do direito', 'Probabilidade séria (art. 368.º, n.º 1, do CPC).'],
+      ['Periculum in mora', 'Fundado receio de lesão grave e dificilmente reparável (art. 362.º do CPC).'],
+      ['Proporcionalidade', 'O prejuízo para o requerido não pode exceder consideravelmente o dano a evitar (art. 368.º, n.º 2, do CPC).'],
+      ['Depois da decisão', 'Ação principal em 30 dias (art. 373.º do CPC) ou inversão do contencioso (art. 369.º do CPC).']
+    ] },
+    exemplo: ['I deve 80 000 € a J. J descobre que I anunciou a venda da sua única casa e tenciona emigrar. Que providência pode J requerer?',
+      'O meio específico é o arresto: o credor que tenha justificado receio de perder a garantia patrimonial do seu crédito pode requerer o arresto de bens do devedor (art. 391.º do CPC; art. 619.º do CC).',
+      'J tem de alegar e provar sumariamente a probabilidade da existência do crédito e os factos que justificam o receio — a venda anunciada do único bem e a intenção de emigrar (art. 392.º do CPC). O arresto é decretado sem audiência da parte contrária (art. 393.º, n.º 1, do CPC), para não frustrar a sua finalidade. Depois, J tem 30 dias, a contar da notificação do trânsito em julgado da decisão que decretou o arresto, para propor a ação de condenação (art. 373.º do CPC).']
+    ,
+    erros: [
+      'Usar o procedimento cautelar comum quando existe um especificado (art. 362.º, n.º 3, do CPC).',
+      'Exigir prova plena do direito: basta a probabilidade séria.',
+      'Esquecer o prazo de 30 dias para propor a ação principal, sob pena de caducidade (art. 373.º do CPC).',
+      'Esquecer o juízo de proporcionalidade do art. 368.º, n.º 2, do CPC.'
+    ],
+    artigos: ['art. 362.º do CPC', 'art. 364.º do CPC', 'art. 366.º do CPC', 'art. 368.º do CPC', 'art. 369.º do CPC', 'art. 373.º do CPC', 'art. 374.º do CPC', 'art. 377.º do CPC', 'art. 391.º do CPC']
+  }
+};
+
+GUIAS.pex = GUIAS.pex || {};
+GUIAS.pex.geral = {
+    sub: 'Títulos executivos, requisitos da obrigação exequenda, formas de processo, oposição por embargos, penhora e impenhorabilidades.',
+    ideia: 'Na ação executiva, o credor já não discute se tem direito: pede ao tribunal que o realize coercivamente. Por isso, toda a execução tem por base um título, pelo qual se determinam o fim e os limites da ação executiva (art. 10.º, n.º 5, do CPC). Sem título executivo, não há execução.',
+    conceitos: [
+      ['Títulos executivos', 'As sentenças condenatórias; os documentos exarados ou autenticados por notário ou outras entidades com competência para tal, que importem constituição ou reconhecimento de qualquer obrigação; os títulos de crédito, ainda que meros quirógrafos, desde que os factos constitutivos da relação subjacente constem do próprio documento ou sejam alegados no requerimento executivo; e os documentos a que, por disposição especial, seja atribuída força executiva (art. 703.º, n.º 1, do CPC).'],
+      ['Requisitos da obrigação', 'A execução principia pelas diligências destinadas a tornar a obrigação certa, exigível e líquida, se o não for em face do título (art. 713.º do CPC).'],
+      ['Fins da execução', 'Pagamento de quantia certa, entrega de coisa certa ou prestação de facto (art. 10.º, n.º 6, do CPC).'],
+      ['Formas de processo', 'Para pagamento de quantia certa, a execução segue a forma ordinária ou sumária (art. 550.º do CPC). Na sumária, a penhora precede a citação do executado.']
+    ],
+    regime: [
+      ['Oposição à execução', 'O executado pode opor-se à execução por embargos no prazo de 20 dias a contar da citação (art. 728.º, n.º 1, do CPC).', 'Fundada em sentença, a oposição só pode ter os fundamentos taxativos do art. 729.º do CPC (por exemplo, inexistência ou inexequibilidade do título, falta de pressupostos processuais, factos extintivos posteriores ao encerramento da discussão no processo declarativo, provados por documento). Fundada noutro título, pode alegar, além desses, quaisquer fundamentos que seria lícito deduzir como defesa no processo de declaração (art. 731.º do CPC).'],
+      ['Penhora: o que pode ser penhorado', 'Estão sujeitos à execução todos os bens do devedor suscetíveis de penhora que, nos termos da lei substantiva, respondem pela dívida exequenda (art. 735.º, n.º 1, do CPC). Há bens absolutamente impenhoráveis (art. 736.º do CPC) — por exemplo, os bens imprescindíveis a qualquer economia doméstica que se encontrem na residência permanente do executado — e bens relativamente impenhoráveis (art. 737.º do CPC).'],
+      ['Penhora de rendimentos', 'São impenhoráveis dois terços da parte líquida dos vencimentos, salários, prestações periódicas pagas a título de aposentação ou de qualquer outra regalia social, ou de natureza semelhante (art. 738.º, n.º 1, do CPC), com o limite máximo de três salários mínimos e o limite mínimo de um salário mínimo nacional, quando o executado não tenha outro rendimento (art. 738.º, n.º 3, do CPC).'],
+      ['Ordem da penhora', 'A penhora começa pelos bens cujo valor pecuniário seja de mais fácil realização e se mostre adequado ao montante do crédito do exequente (art. 751.º, n.º 1, do CPC).'],
+      ['Embargos de terceiro', 'Se a penhora ofender a posse ou qualquer direito incompatível com a realização ou o âmbito da diligência, de que seja titular quem não é parte na causa, pode o lesado fazê-lo valer, deduzindo embargos de terceiro (art. 342.º do CPC).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Título executivo', 'Qual é e se cumpre os requisitos do art. 703.º do CPC.'],
+      ['Obrigação', 'Certa, exigível e líquida (art. 713.º do CPC).'],
+      ['Requerimento executivo e forma', 'Ordinária ou sumária (art. 550.º do CPC).'],
+      ['Penhora', 'Bens penhoráveis e ordem (arts. 735.º a 751.º do CPC).'],
+      ['Defesa', 'Embargos de executado em 20 dias (art. 728.º do CPC); embargos de terceiro (art. 342.º do CPC).'],
+      ['Pagamento', 'Venda dos bens, adjudicação ou consignação de rendimentos, e pagamento aos credores.']
+    ] },
+    exemplo: ['K ganhou uma ação contra L, que foi condenado a pagar-lhe 20 000 €. L não pagou. K quer penhorar o salário de L, de 1 800 € líquidos mensais. Quanto pode ser penhorado por mês?',
+      'A sentença condenatória é título executivo (art. 703.º, n.º 1, alínea a), do CPC) e a obrigação é certa, exigível e líquida.',
+      'São impenhoráveis dois terços do salário líquido (art. 738.º, n.º 1, do CPC). Logo, em princípio, só um terço é penhorável: 600 € por mês.',
+      'Mas a parte impenhorável (1 200 €) está também sujeita aos limites do art. 738.º, n.º 3, do CPC: não pode ser inferior a um salário mínimo nacional nem superior a três. Como 1 200 € se situa entre esses limites (considerando o salário mínimo em vigor), a penhora mensal é de 600 €. Num salário mais baixo, poderia ser ainda menor, para garantir que o executado fica com, pelo menos, o salário mínimo.']
+    ,
+    erros: [
+      'Instaurar execução sem título executivo, ou com documento particular simples que não seja título de crédito (após a reforma de 2013, deixou de ser título).',
+      'Admitir na oposição a execução fundada em sentença fundamentos que deviam ter sido alegados na ação declarativa (art. 729.º do CPC).',
+      'Esquecer os limites mínimo e máximo da impenhorabilidade dos salários (art. 738.º, n.º 3, do CPC).',
+      'Confundir embargos de executado (art. 728.º do CPC) com embargos de terceiro (art. 342.º do CPC).'
+    ],
+    artigos: ['art. 10.º do CPC', 'art. 342.º do CPC', 'art. 550.º do CPC', 'art. 703.º do CPC', 'art. 713.º do CPC', 'art. 728.º do CPC', 'art. 729.º do CPC', 'art. 735.º do CPC', 'art. 738.º do CPC', 'art. 751.º do CPC']
+  };
+
+/* Matéria explicada — Direito Penal */
+var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
+GUIAS.pen = {
+  lei: {
+    sub: 'Princípio da legalidade, aplicação da lei penal no tempo e no espaço, e o conceito de crime.',
+    ideia: 'Só pode ser punido criminalmente o facto descrito e declarado passível de pena por lei anterior ao momento da sua prática (art. 1.º do CP). O Direito Penal é a ultima ratio: intervém apenas para proteger bens jurídicos fundamentais, e sempre dentro dos limites rigorosos da lei, que protegem o cidadão contra o arbítrio do Estado.',
+    conceitos: [
+      ['Princípio da legalidade', 'Nullum crimen, nulla poena sine lege: o crime e a pena têm de estar previstos em lei prévia, escrita, estrita e certa (art. 1.º do CP e art. 29.º da CRP).'],
+      ['Proibição da analogia', 'Não é permitido o recurso à analogia para qualificar um facto como crime, definir um estado de perigosidade ou determinar a pena ou a medida de segurança (art. 1.º, n.º 3, do CP).'],
+      ['Retroatividade favorável', 'As penas e as medidas de segurança são determinadas pela lei vigente no momento da prática do facto (art. 2.º, n.º 1, do CP); mas aplica-se retroativamente a lei posterior mais favorável ao agente (art. 2.º, n.º 4, do CP).'],
+      ['Bem jurídico', 'O interesse da comunidade ou do indivíduo que a norma penal protege (vida, integridade física, património, honra…). Orienta a interpretação dos tipos.'],
+      ['Conceito analítico de crime', 'Crime é a ação típica, ilícita, culposa e punível. É por esta ordem que se analisa qualquer hipótese prática.']
+    ],
+    regime: [
+      ['Aplicação no tempo', 'O facto é punível segundo a lei em vigor no momento da sua prática (art. 2.º, n.º 1, do CP). O facto considera-se praticado no momento em que o agente atuou ou, no caso de omissão, deveria ter atuado, independentemente do momento em que o resultado se produziu (art. 3.º do CP).', 'Se uma lei nova eliminar o facto do número das infrações, este deixa de ser punível e, havendo condenação, cessa a execução e os seus efeitos penais (art. 2.º, n.º 2, do CP). Se a lei nova for mais favorável, aplica-se ao agente, mesmo que já tenha havido condenação transitada em julgado, com os limites do art. 2.º, n.º 4, do CP.'],
+      ['Aplicação no espaço', 'Princípio da territorialidade: a lei penal portuguesa é aplicável a factos praticados em território português, seja qual for a nacionalidade do agente, e a bordo de navios ou aeronaves portugueses (art. 4.º do CP). O facto considera-se praticado tanto no lugar em que o agente atuou como naquele em que o resultado se produziu (art. 7.º do CP).', 'Há casos de aplicação a factos praticados fora do território nacional (princípios da defesa de interesses nacionais, da nacionalidade e da universalidade) — art. 5.º do CP.'],
+      ['Ação e omissão', 'Quando um tipo legal compreender um certo resultado, o facto abrange não só a ação adequada a produzi-lo como a omissão da ação adequada a evitá-lo, salvo se outra for a intenção da lei (art. 10.º, n.º 1, do CP). A omissão só é punível quando sobre o omitente recair um dever jurídico que pessoalmente o obrigue a evitar o resultado (art. 10.º, n.º 2, do CP) — a posição de garante.']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Ação', 'Há um comportamento humano voluntário (ação ou omissão)?'],
+      ['Tipicidade', 'Preenche um tipo legal de crime — elementos objetivos e subjetivos (dolo ou negligência)?'],
+      ['Ilicitude', 'Existe alguma causa de justificação (art. 31.º do CP)?'],
+      ['Culpa', 'O agente é imputável? Há causa de exclusão da culpa (erro não censurável, estado de necessidade desculpante…)?'],
+      ['Punibilidade', 'Há condições objetivas de punibilidade, causas de isenção ou de extinção da responsabilidade (por exemplo, desistência, prescrição)?']
+    ] },
+    exemplo: ['Em janeiro, P pratica um facto que a lei então punia com prisão até 5 anos. Em junho, antes do julgamento, entra em vigor uma lei que passa a punir o mesmo facto com prisão até 3 anos ou multa. Que lei se aplica?',
+      'A regra é a aplicação da lei vigente no momento da prática do facto (art. 2.º, n.º 1, do CP). Contudo, sendo a lei nova concretamente mais favorável ao agente, é ela que se aplica (art. 2.º, n.º 4, do CP), por força do princípio da aplicação retroativa da lei penal de conteúdo mais favorável, que tem também consagração constitucional (art. 29.º, n.º 4, da CRP).',
+      'O juízo de favorabilidade faz-se em concreto: compara-se o resultado da aplicação de cada uma das leis, em bloco, ao caso, e escolhe-se a que conduz à solução mais favorável. Não se podem combinar partes das duas leis.']
+    ,
+    erros: [
+      'Usar analogia para incriminar ou agravar: é proibido (art. 1.º, n.º 3, do CP). A analogia favorável ao agente não está proibida.',
+      'Aplicar a lei mais favorável «às fatias», misturando regimes: a comparação faz-se em bloco.',
+      'Saltar etapas da análise do crime: a correção espera tipicidade, ilicitude e culpa pela ordem certa.',
+      'Punir a omissão sem identificar o dever de garante (art. 10.º, n.º 2, do CP).'
+    ],
+    artigos: ['art. 1.º do CP', 'art. 2.º do CP', 'art. 3.º do CP', 'art. 4.º do CP', 'art. 5.º do CP', 'art. 7.º do CP', 'art. 10.º do CP', 'art. 29.º da CRP']
+  },
+
+  facto: {
+    sub: 'Tipicidade objetiva e subjetiva: as modalidades do dolo, a negligência e os crimes agravados pelo resultado.',
+    ideia: 'Para haver crime, o comportamento tem de corresponder a um tipo legal. O tipo tem um lado objetivo (a conduta, o resultado, o nexo de imputação) e um lado subjetivo (o dolo ou a negligência). A regra é que só é punível o facto praticado com dolo; o facto negligente só é punido nos casos especialmente previstos na lei (art. 13.º do CP).',
+    conceitos: [
+      ['Dolo direto', 'O agente, representando um facto que preenche um tipo de crime, atua com intenção de o realizar (art. 14.º, n.º 1, do CP).'],
+      ['Dolo necessário', 'O agente representa a realização do facto típico como consequência necessária da sua conduta (art. 14.º, n.º 2, do CP).'],
+      ['Dolo eventual', 'O agente representa a realização do facto como consequência possível da conduta e atua conformando-se com essa realização (art. 14.º, n.º 3, do CP).'],
+      ['Negligência consciente', 'O agente representa como possível a realização do facto, mas atua sem se conformar com ela, confiando que não acontecerá (art. 15.º, alínea a), do CP).'],
+      ['Negligência inconsciente', 'O agente nem sequer chega a representar a possibilidade de realização do facto, por não proceder com o cuidado a que estava obrigado e de que era capaz (art. 15.º, alínea b), do CP).'],
+      ['Imputação objetiva', 'O resultado só é imputado à conduta se esta criou ou aumentou um risco proibido que se concretizou no resultado (teoria da causalidade adequada, acolhida no art. 10.º do CP).']
+    ],
+    regime: [
+      ['Punibilidade da negligência', 'Só é punível o facto praticado com dolo ou, nos casos especialmente previstos na lei, com negligência (art. 13.º do CP). Exemplos: homicídio por negligência (art. 137.º do CP), ofensa à integridade física por negligência (art. 148.º do CP).'],
+      ['A fronteira decisiva: dolo eventual ou negligência consciente?', 'Em ambos o agente representa o resultado como possível. A diferença está na atitude perante esse resultado: no dolo eventual, o agente conforma-se («seja o que for»); na negligência consciente, confia que o resultado não se produzirá. É a distinção mais testada em exame.'],
+      ['Crimes agravados pelo resultado', 'Quando a pena aplicável a um facto for agravada em função da produção de um resultado, a agravação fica sempre condicionada à possibilidade de imputação desse resultado ao agente pelo menos a título de negligência (art. 18.º do CP). Exemplo: ofensa à integridade física agravada pelo resultado morte (art. 147.º do CP).'],
+      ['Erro sobre as circunstâncias do facto', 'O erro sobre elementos de facto ou de direito de um tipo de crime exclui o dolo (art. 16.º, n.º 1, do CP), ficando ressalvada a punibilidade por negligência nos termos gerais (art. 16.º, n.º 3, do CP).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Figura', 'Representa o resultado?', 'Atitude', 'Base legal'], linhas: [
+      ['Dolo direto', 'Sim', 'Quer o resultado', 'art. 14.º, n.º 1, do CP'],
+      ['Dolo necessário', 'Sim, como certo', 'Aceita-o como consequência inevitável', 'art. 14.º, n.º 2, do CP'],
+      ['Dolo eventual', 'Sim, como possível', 'Conforma-se com ele', 'art. 14.º, n.º 3, do CP'],
+      ['Negligência consciente', 'Sim, como possível', 'Confia que não acontece', 'art. 15.º, al. a), do CP'],
+      ['Negligência inconsciente', 'Não', 'Viola o dever de cuidado', 'art. 15.º, al. b), do CP']
+    ] },
+    exemplo: ['Q, para ganhar uma aposta, conduz a 150 km/h numa rua estreita junto a uma escola à hora de saída. Pensa que pode atropelar alguém, mas diz para si mesmo: «se acontecer, paciência». Atropela mortalmente uma criança. Homicídio doloso ou negligente?',
+      'Q representou a morte de alguém como consequência possível da sua conduta. A questão é a sua atitude perante esse resultado. A expressão «se acontecer, paciência» revela que Q se conformou com a possível morte: não confiou que ela não acontecesse, aceitou-a como preço da aposta.',
+      'Há, portanto, dolo eventual (art. 14.º, n.º 3, do CP), e Q comete um crime de homicídio (art. 131.º do CP), e não apenas homicídio por negligência (art. 137.º do CP). Se, pelo contrário, Q tivesse confiado na sua perícia para evitar qualquer atropelamento, haveria negligência consciente (art. 15.º, alínea a), do CP).']
+    ,
+    erros: [
+      'Confundir dolo eventual com negligência consciente: ambos representam o resultado; só o dolo eventual se conforma com ele.',
+      'Punir a negligência sem norma expressa (art. 13.º do CP).',
+      'Esquecer que, nos crimes agravados pelo resultado, o resultado agravante tem de ser imputável pelo menos a título de negligência (art. 18.º do CP).',
+      'Analisar a culpa antes do tipo subjetivo: dolo e negligência são, primeiro, elementos do tipo.'
+    ],
+    artigos: ['art. 10.º do CP', 'art. 13.º do CP', 'art. 14.º do CP', 'art. 15.º do CP', 'art. 16.º do CP', 'art. 18.º do CP', 'art. 131.º do CP', 'art. 137.º do CP']
+  },
+
+  just: {
+    sub: 'Quando o facto típico não é ilícito: legítima defesa, direito de necessidade, conflito de deveres e consentimento.',
+    ideia: 'Um facto que preenche um tipo de crime presume-se ilícito, mas essa presunção cai quando existe uma causa de justificação. O facto não é punível quando a sua ilicitude for excluída pela ordem jurídica considerada na sua totalidade (art. 31.º, n.º 1, do CP). O agente justificado age conforme ao Direito.',
+    conceitos: [
+      ['Legítima defesa', 'Constitui legítima defesa o facto praticado como meio necessário para repelir a agressão atual e ilícita de interesses juridicamente protegidos do agente ou de terceiro (art. 32.º do CP).'],
+      ['Direito de necessidade', 'Não é ilícito o facto praticado como meio adequado para afastar um perigo atual que ameace interesses juridicamente protegidos do agente ou de terceiro, quando se verifiquem os requisitos do art. 34.º do CP, entre os quais a sensível superioridade do interesse a salvaguardar relativamente ao interesse sacrificado.'],
+      ['Conflito de deveres', 'Não é ilícito o facto de quem, em caso de conflito no cumprimento de deveres jurídicos ou de ordens legítimas da autoridade, satisfizer dever ou ordem de valor igual ou superior ao do dever ou ordem que sacrificar (art. 36.º do CP).'],
+      ['Consentimento', 'Exclui a ilicitude quando se refira a interesses jurídicos livremente disponíveis e o facto não ofenda os bons costumes (art. 38.º do CP). O consentimento tem de ser prestado por quem tenha mais de 16 anos e possua o discernimento necessário.'],
+      ['Elemento subjetivo', 'Para haver justificação, o agente tem de conhecer a situação justificante e atuar com essa consciência; se falta o elemento subjetivo, é punível com a pena da tentativa (art. 38.º, n.º 4, do CP, aplicado por analogia favorável às restantes causas).']
+    ],
+    regime: [
+      ['Requisitos da legítima defesa', 'Agressão: atual (em curso ou iminente) e ilícita, de quaisquer interesses juridicamente protegidos. Defesa: meio necessário para repelir a agressão e animus defendendi. Não se exige proporcionalidade entre os bens em confronto, mas sim a necessidade do meio — o menos gravoso entre os eficazes.'],
+      ['Excesso de legítima defesa', 'Se houver excesso dos meios empregados, o facto é ilícito, mas a pena pode ser especialmente atenuada (art. 33.º, n.º 1, do CP). O agente não é punido se o excesso resultar de perturbação, medo ou susto não censuráveis (art. 33.º, n.º 2, do CP).'],
+      ['Direito de necessidade (art. 34.º do CP)', 'Requisitos cumulativos: (a) a situação de perigo não ter sido voluntariamente criada pelo agente, salvo tratando-se de proteger o interesse de terceiro; (b) haver sensível superioridade do interesse a salvaguardar; (c) ser razoável impor ao lesado o sacrifício do seu interesse.'],
+      ['Estado de necessidade desculpante', 'Se o interesse salvaguardado não for sensivelmente superior, o facto continua ilícito, mas pode excluir-se a culpa quando estejam em causa a vida, a integridade física, a honra ou a liberdade e não seja razoável exigir ao agente outro comportamento (art. 35.º do CP). Distingue-o bem do direito de necessidade: um exclui a ilicitude, o outro só a culpa.'],
+      ['Consentimento presumido', 'Equipara-se ao consentimento efetivo quando a situação permite razoavelmente supor que o titular do interesse teria consentido no facto se conhecesse as circunstâncias em que é praticado (art. 39.º do CP).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Causa', 'Situação', 'Requisito decisivo', 'Base legal'], linhas: [
+      ['Legítima defesa', 'Agressão atual e ilícita', 'Necessidade do meio', 'art. 32.º do CP'],
+      ['Direito de necessidade', 'Perigo atual', 'Sensível superioridade do interesse salvo', 'art. 34.º do CP'],
+      ['Conflito de deveres', 'Deveres incompatíveis', 'Cumprir o dever de valor igual ou superior', 'art. 36.º do CP'],
+      ['Consentimento', 'Bem disponível', 'Consentimento livre e esclarecido, maior de 16 anos', 'art. 38.º do CP'],
+      ['Consentimento presumido', 'Titular ausente', 'Suposição razoável de que consentiria', 'art. 39.º do CP']
+    ] },
+    exemplo: ['R é atacado à noite por S, que o ameaça com uma navalha e exige a carteira. R, praticante de artes marciais, desarma S com um golpe no braço e, já com S no chão e desarmado, dá-lhe vários pontapés na cabeça. Quid iuris?',
+      'O golpe no braço é justificado por legítima defesa (art. 32.º do CP): havia agressão atual e ilícita (roubo com arma) e o golpe foi o meio necessário para a repelir.',
+      'Os pontapés posteriores já não o são: com S desarmado e no chão, a agressão cessou — deixou de ser atual. Não estamos sequer perante excesso de legítima defesa (que pressupõe uma agressão ainda em curso), mas perante uma nova agressão, ilícita e punível, por exemplo como ofensa à integridade física (art. 143.º ou art. 144.º do CP, consoante a gravidade). A situação anterior pode, quando muito, relevar na determinação da medida da pena.']
+    ,
+    erros: [
+      'Exigir proporcionalidade dos bens na legítima defesa: o critério é a necessidade do meio.',
+      'Admitir legítima defesa contra uma agressão já terminada: a agressão tem de ser atual.',
+      'Confundir direito de necessidade (exclui a ilicitude, art. 34.º do CP) com estado de necessidade desculpante (exclui a culpa, art. 35.º do CP).',
+      'Aceitar o consentimento para bens indisponíveis, como a vida.'
+    ],
+    artigos: ['art. 31.º do CP', 'art. 32.º do CP', 'art. 33.º do CP', 'art. 34.º do CP', 'art. 35.º do CP', 'art. 36.º do CP', 'art. 38.º do CP', 'art. 39.º do CP']
+  },
+
+  culpa: {
+    sub: 'Imputabilidade, consciência da ilicitude e causas de exclusão da culpa: o juízo de censura sobre o agente.',
+    ideia: 'Um facto típico e ilícito só é crime se o agente puder ser censurado por o ter praticado. A culpa é o juízo de censura dirigido ao agente por ter agido como agiu quando podia e devia ter agido de outra forma. É também o limite da pena: em caso algum a pena pode ultrapassar a medida da culpa (art. 40.º, n.º 2, do CP).',
+    conceitos: [
+      ['Imputabilidade em razão da idade', 'Os menores de 16 anos são inimputáveis (art. 19.º do CP). Aos jovens entre os 12 e os 16 anos aplica-se a Lei Tutelar Educativa.'],
+      ['Imputabilidade em razão de anomalia psíquica', 'É inimputável quem, por força de anomalia psíquica, for incapaz, no momento da prática do facto, de avaliar a ilicitude deste ou de se determinar de acordo com essa avaliação (art. 20.º, n.º 1, do CP). Pode haver imputabilidade diminuída (art. 20.º, n.º 2, do CP).'],
+      ['Actio libera in causa', 'A imputabilidade não é excluída quando a anomalia psíquica tiver sido provocada pelo agente com intenção de praticar o facto (art. 20.º, n.º 4, do CP) — por exemplo, embriagar-se para ganhar coragem.'],
+      ['Erro sobre a ilicitude', 'Age sem culpa quem atuar sem consciência da ilicitude do facto, se o erro lhe não for censurável (art. 17.º, n.º 1, do CP). Se o erro for censurável, é punido com a pena do crime doloso, que pode ser especialmente atenuada (art. 17.º, n.º 2, do CP).'],
+      ['Inexigibilidade', 'Em situações extremas, o Direito não exige comportamento diferente: estado de necessidade desculpante (art. 35.º do CP), excesso asténico de legítima defesa (art. 33.º, n.º 2, do CP), obediência indevida desculpante (art. 37.º do CP).']
+    ],
+    regime: [
+      ['Os dois tipos de erro', 'Erro sobre as circunstâncias do facto (art. 16.º do CP): o agente não sabe o que faz — por exemplo, leva um casaco julgando que é o seu. Exclui o dolo.', 'Erro sobre a ilicitude (art. 17.º do CP): o agente sabe o que faz, mas julga que é permitido. Só exclui a culpa se não for censurável.'],
+      ['Erro sobre os pressupostos de uma causa de justificação', 'Quem julga erradamente estar numa situação que, a existir, excluiria a ilicitude (por exemplo, legítima defesa putativa) beneficia do regime do art. 16.º, n.º 2, do CP: exclui-se o dolo, ficando ressalvada a punição por negligência.'],
+      ['Estado de necessidade desculpante', 'Age sem culpa quem praticar um facto ilícito adequado a afastar um perigo atual e não removível de outro modo, que ameace a vida, a integridade física, a honra ou a liberdade do agente ou de terceiro, quando não for razoável exigir-lhe, segundo as circunstâncias do caso, comportamento diferente (art. 35.º, n.º 1, do CP).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['O agente é imputável?', 'Idade (art. 19.º do CP) e anomalia psíquica (art. 20.º do CP); atenção à actio libera in causa.'],
+      ['Tinha consciência da ilicitude?', 'Se não tinha, o erro era censurável? (art. 17.º do CP).'],
+      ['Era exigível outro comportamento?', 'Estado de necessidade desculpante (art. 35.º do CP), excesso asténico (art. 33.º, n.º 2, do CP), obediência indevida (art. 37.º do CP).'],
+      ['Conclusão', 'Se nada exclui a culpa, o agente é culpado; a medida da culpa limita a pena (art. 40.º, n.º 2, do CP).']
+    ] },
+    exemplo: ['T, imigrante chegado há uma semana, caça numa zona protegida, convencido de que, tal como no seu país, a caça é livre em qualquer terreno não vedado. Comete crime?',
+      'T sabe o que faz (caça), mas desconhece que é proibido: não há erro sobre as circunstâncias do facto, mas sim erro sobre a ilicitude (art. 17.º do CP).',
+      'A questão decisiva é saber se o erro é censurável. Deve ponderar-se se um cidadão médio, na posição de T, teria o dever de se informar antes de caçar num país estrangeiro — atividade fortemente regulada. A tendência será considerar o erro censurável: T é punido com a pena do crime doloso, que pode ser especialmente atenuada (art. 17.º, n.º 2, do CP).',
+      'Se, pelo contrário, T tivesse sido erradamente informado por uma autoridade competente, o erro poderia ser considerado não censurável, e T agiria sem culpa (art. 17.º, n.º 1, do CP).']
+    ,
+    erros: [
+      'Confundir o erro sobre o facto (art. 16.º do CP) com o erro sobre a ilicitude (art. 17.º do CP): o primeiro exclui o dolo; o segundo pode excluir a culpa.',
+      'Considerar inimputável quem se embriagou de propósito para cometer o crime: é a actio libera in causa (art. 20.º, n.º 4, do CP).',
+      'Esquecer que a culpa é limite da pena (art. 40.º, n.º 2, do CP).'
+    ],
+    artigos: ['art. 16.º do CP', 'art. 17.º do CP', 'art. 19.º do CP', 'art. 20.º do CP', 'art. 33.º do CP', 'art. 35.º do CP', 'art. 37.º do CP', 'art. 40.º do CP']
+  },
+
+  tent: {
+    sub: 'O caminho do crime (atos preparatórios, tentativa, consumação), a desistência e as formas de participação: autoria e cumplicidade.',
+    ideia: 'O crime percorre um caminho (iter criminis): decisão, atos preparatórios, atos de execução e consumação. Em regra, só a partir dos atos de execução há punição: há tentativa quando o agente praticar atos de execução de um crime que decidiu cometer, sem que este chegue a consumar-se (art. 22.º do CP). E, quando várias pessoas intervêm, é preciso distinguir quem é autor e quem é cúmplice.',
+    conceitos: [
+      ['Atos preparatórios', 'Não são puníveis, salvo disposição legal em contrário (art. 21.º do CP).'],
+      ['Atos de execução', 'Os que preencherem um elemento constitutivo do tipo, os que forem idóneos a produzir o resultado típico, ou os que, segundo a experiência comum e salvo circunstâncias imprevisíveis, forem de natureza a fazer esperar que se lhes sigam atos destes tipos (art. 22.º, n.º 2, do CP).'],
+      ['Punibilidade da tentativa', 'Salvo disposição em contrário, a tentativa só é punível se ao crime consumado corresponder pena superior a 3 anos de prisão (art. 23.º, n.º 1, do CP), e é punida com a pena do crime consumado especialmente atenuada (art. 23.º, n.º 2, do CP).'],
+      ['Tentativa impossível', 'Não é punível quando for manifesta a inaptidão do meio empregado ou a inexistência do objeto essencial à consumação (art. 23.º, n.º 3, do CP).'],
+      ['Desistência', 'A tentativa deixa de ser punível quando o agente voluntariamente desistir de prosseguir na execução, impedir a consumação ou impedir a verificação do resultado não compreendido no tipo (art. 24.º do CP).']
+    ],
+    regime: [
+      ['Formas de autoria (art. 26.º do CP)', 'Autoria imediata: quem executa o facto por si mesmo.', 'Autoria mediata: quem executa o facto por intermédio de outrem, usando-o como instrumento.', 'Coautoria: quem toma parte direta na execução, por acordo ou juntamente com outro ou outros — decisão conjunta e execução conjunta.', 'Instigação: quem, dolosamente, determina outra pessoa à prática do facto, desde que haja execução ou começo de execução.'],
+      ['Cumplicidade', 'É punível como cúmplice quem, dolosamente e por qualquer forma, prestar auxílio material ou moral à prática por outrem de um facto doloso; a pena é a do autor, especialmente atenuada (art. 27.º do CP). O cúmplice não domina o facto: apenas o facilita.'],
+      ['Comunicabilidade', 'Se a ilicitude ou o grau de ilicitude do facto depender de certas qualidades ou relações especiais do agente, basta, para tornar aplicável a todos os comparticipantes a pena respetiva, que essas qualidades ou relações se verifiquem em qualquer deles (art. 28.º do CP).'],
+      ['Desistência em comparticipação', 'Se vários agentes comparticiparem no facto, não é punível a tentativa daquele que voluntariamente impedir a consumação ou a verificação do resultado, nem a daquele que se esforçar seriamente por impedir uma ou outra (art. 25.º do CP).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Decisão', 'Não punível.'],
+      ['Atos preparatórios', 'Em regra não puníveis (art. 21.º do CP).'],
+      ['Atos de execução', 'Tentativa (art. 22.º do CP), punível se o crime tiver pena superior a 3 anos (art. 23.º do CP). Pode haver desistência (art. 24.º do CP).'],
+      ['Consumação', 'O tipo está integralmente preenchido.'],
+      ['Exaurimento', 'O agente atinge os objetivos que o motivaram (por exemplo, vende o objeto furtado).']
+    ] },
+    exemplo: ['U e V combinam assaltar uma casa. U fica à porta a vigiar e V entra, apodera-se de joias e sai. W, que sabia do plano, emprestou-lhes uma chave mestra a troco de nada. Qual a responsabilidade de cada um?',
+      'U e V são coautores (art. 26.º do CP): houve decisão conjunta e ambos tomaram parte direta na execução, com repartição de tarefas — a vigilância de U é parte essencial do plano e dá-lhe o domínio funcional do facto.',
+      'W não toma parte na execução nem determina os outros a praticar o facto (já estavam decididos). Presta apenas auxílio material doloso: é cúmplice (art. 27.º do CP) e é punido com a pena dos autores, especialmente atenuada.',
+      'O crime em causa será, previsivelmente, furto qualificado (art. 204.º do CP), dado o arrombamento ou o uso de chave falsa e a entrada em habitação.']
+    ,
+    erros: [
+      'Punir a tentativa de crimes com pena até 3 anos sem norma especial: a tentativa de furto simples só é punível porque o art. 203.º, n.º 2, do CP o prevê expressamente.',
+      'Considerar desistência quando o agente para por medo de ser apanhado: a desistência tem de ser voluntária.',
+      'Qualificar como cúmplice quem tem domínio funcional do facto (por exemplo, o vigia num plano conjunto).',
+      'Punir o instigador sem que tenha havido, pelo menos, começo de execução (art. 26.º do CP).'
+    ],
+    artigos: ['art. 21.º do CP', 'art. 22.º do CP', 'art. 23.º do CP', 'art. 24.º do CP', 'art. 25.º do CP', 'art. 26.º do CP', 'art. 27.º do CP', 'art. 28.º do CP']
+  },
+
+  penas: {
+    sub: 'Finalidades das penas, prisão e multa, penas de substituição, determinação da medida da pena e concurso de crimes.',
+    ideia: 'A aplicação de penas visa a proteção de bens jurídicos e a reintegração do agente na sociedade, e em caso algum a pena pode ultrapassar a medida da culpa (art. 40.º do CP). O sistema português dá preferência às penas não privativas da liberdade sempre que estas realizem de forma adequada e suficiente as finalidades da punição (art. 70.º do CP).',
+    conceitos: [
+      ['Pena de prisão', 'Em regra, duração mínima de 1 mês e máxima de 20 anos; o limite máximo é de 25 anos nos casos previstos na lei e nunca pode ser excedido (art. 41.º do CP).'],
+      ['Pena de multa', 'Fixada em dias — em regra, entre 10 e 360 — e cada dia corresponde a uma quantia entre 5 € e 500 €, fixada em função da situação económica e financeira do condenado e dos seus encargos pessoais (art. 47.º do CP).'],
+      ['Penas de substituição', 'Substituem a prisão aplicada: multa (art. 45.º do CP, prisão até 1 ano), suspensão da execução (art. 50.º do CP, prisão até 5 anos), prestação de trabalho a favor da comunidade (art. 58.º do CP, prisão até 2 anos), regime de permanência na habitação (art. 43.º do CP).'],
+      ['Atenuação especial', 'Quando existam circunstâncias anteriores ou posteriores ao crime que diminuam de forma acentuada a ilicitude, a culpa ou a necessidade da pena (art. 72.º do CP), os limites da pena são reduzidos nos termos do art. 73.º do CP.']
+    ],
+    regime: [
+      ['As três operações da determinação da pena', '1.ª — Determinar a moldura penal abstrata do tipo (com eventuais agravações ou atenuações especiais). 2.ª — Escolher a espécie de pena, quando o tipo preveja prisão ou multa em alternativa, preferindo a não privativa da liberdade (art. 70.º do CP). 3.ª — Fixar a medida concreta, em função da culpa do agente e das exigências de prevenção (art. 71.º, n.º 1, do CP), atendendo às circunstâncias do art. 71.º, n.º 2, do CP. Por fim, ponderar a substituição da pena de prisão.'],
+      ['Suspensão da execução da pena de prisão', 'O tribunal suspende a pena de prisão não superior a 5 anos se, atendendo à personalidade do agente, às condições da sua vida, à conduta anterior e posterior ao crime e às circunstâncias deste, concluir que a simples censura do facto e a ameaça da prisão realizam adequada e suficientemente as finalidades da punição (art. 50.º, n.º 1, do CP). Pode ser subordinada a deveres, regras de conduta ou regime de prova.'],
+      ['Concurso de crimes', 'O número de crimes determina-se pelo número de tipos efetivamente cometidos ou de vezes que o mesmo tipo é preenchido (art. 30.º, n.º 1, do CP). No crime continuado, a realização plúrima do mesmo tipo, executada de forma essencialmente homogénea e no quadro da mesma situação exterior que diminua consideravelmente a culpa, constitui um só crime (art. 30.º, n.º 2, do CP).', 'Punição do concurso: quem pratica vários crimes antes de transitar em julgado a condenação por qualquer deles é condenado numa única pena, cujo limite máximo é a soma das penas concretas (não podendo ultrapassar 25 anos de prisão ou 900 dias de multa) e o mínimo a mais elevada delas (art. 77.º do CP).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Moldura abstrata', 'O que prevê o tipo legal? Há agravação ou atenuação especial (arts. 72.º e 73.º do CP)?'],
+      ['Escolha da pena', 'Prisão ou multa? Preferência pela não privativa (art. 70.º do CP).'],
+      ['Medida concreta', 'Culpa e prevenção, geral e especial (art. 71.º do CP).'],
+      ['Substituição', 'Multa (art. 45.º do CP), trabalho (art. 58.º do CP), suspensão (art. 50.º do CP)…'],
+      ['Concurso', 'Se houver vários crimes: pena única (art. 77.º do CP).']
+    ] },
+    exemplo: ['X, de 22 anos, sem antecedentes, é condenado por furto qualificado na pena de 2 anos e 6 meses de prisão. Confessou, mostrou arrependimento e devolveu os objetos. Deve cumprir a pena na prisão?',
+      'A pena concreta (2 anos e 6 meses) é inferior a 5 anos, pelo que a suspensão da execução é legalmente possível (art. 50.º, n.º 1, do CP).',
+      'O juízo de prognose é favorável: X é jovem, não tem antecedentes, confessou, mostrou arrependimento e reparou o dano. É razoável concluir que a censura do facto e a ameaça da prisão bastam para o afastar do crime. O tribunal deverá suspender a execução, podendo subordiná-la, por exemplo, a regime de prova. Note-se que a prestação de trabalho a favor da comunidade já não seria possível, porque a pena excede 2 anos (art. 58.º do CP).']
+    ,
+    erros: [
+      'Inverter a ordem das operações: primeiro a escolha da espécie de pena, depois a medida, depois a substituição.',
+      'Esquecer os limites de cada pena de substituição: 1 ano para a multa, 2 para o trabalho a favor da comunidade, 5 para a suspensão.',
+      'Somar as penas do concurso sem formar a pena única (art. 77.º do CP).',
+      'Fixar a pena acima da medida da culpa (art. 40.º, n.º 2, do CP).'
+    ],
+    artigos: ['art. 40.º do CP', 'art. 41.º do CP', 'art. 45.º do CP', 'art. 47.º do CP', 'art. 50.º do CP', 'art. 58.º do CP', 'art. 70.º do CP', 'art. 71.º do CP', 'art. 72.º do CP', 'art. 77.º do CP']
+  },
+
+  esp: {
+    sub: 'Os crimes mais testados: homicídio e as suas variantes, ofensas à integridade física, crimes contra a honra e crimes contra o património.',
+    ideia: 'A parte especial do Código Penal descreve os crimes em concreto. Para cada um, o método é o mesmo: qual o bem jurídico, quais os elementos objetivos e subjetivos do tipo, que formas agravadas ou privilegiadas existem e se o procedimento depende de queixa. Em exame, o essencial é saber distinguir os tipos vizinhos.',
+    conceitos: [
+      ['Homicídio', 'Quem matar outra pessoa é punido com pena de prisão de 8 a 16 anos (art. 131.º do CP).'],
+      ['Homicídio qualificado', 'Se a morte for produzida em circunstâncias que revelem especial censurabilidade ou perversidade, a pena é de 12 a 25 anos (art. 132.º, n.º 1, do CP). As circunstâncias do n.º 2 são exemplos-padrão: não funcionam automaticamente nem são taxativas.'],
+      ['Homicídio privilegiado', 'Quem matar outra pessoa dominado por compreensível emoção violenta, compaixão, desespero ou motivo de relevante valor social ou moral, que diminuam sensivelmente a sua culpa, é punido com pena de prisão de 1 a 5 anos (art. 133.º do CP).'],
+      ['Ofensa à integridade física', 'Simples (art. 143.º do CP), em regra dependente de queixa; grave, quando resultem os efeitos do art. 144.º do CP (por exemplo, privar de órgão importante ou provocar perigo para a vida); qualificada (art. 145.º do CP); por negligência (art. 148.º do CP).'],
+      ['Furto e roubo', 'Furto: subtração de coisa móvel ou animal alheios, com ilegítima intenção de apropriação (art. 203.º do CP). Roubo: o mesmo, mas por meio de violência contra uma pessoa, ameaça com perigo iminente para a vida ou a integridade física, ou pondo-a na impossibilidade de resistir (art. 210.º do CP).']
+    ],
+    regime: [
+      ['Crimes contra a honra', 'Difamação: dirigir-se a terceiros imputando a outra pessoa um facto ofensivo da sua honra ou consideração (art. 180.º do CP). Injúria: dirigir-se diretamente ao ofendido (art. 181.º do CP). A diferença está no destinatário: na difamação fala-se de alguém a outros; na injúria, fala-se ao próprio. Em regra, o procedimento depende de acusação particular (art. 188.º do CP).'],
+      ['Violência doméstica', 'Pune quem, de modo reiterado ou não, infligir maus tratos físicos ou psíquicos ao cônjuge ou ex-cônjuge, a pessoa com quem mantenha ou tenha mantido relação de namoro ou análoga, a progenitor de descendente comum ou a pessoa particularmente indefesa que com ele coabite (art. 152.º do CP). É crime público.'],
+      ['Crimes contra o património', 'Furto qualificado (art. 204.º do CP): por exemplo, coisa de valor elevado ou subtração mediante arrombamento. Abuso de confiança: apropriação ilegítima de coisa móvel que foi entregue ao agente por título não translativo da propriedade (art. 205.º do CP). Burla: induzir alguém em erro ou engano sobre factos que astuciosamente provocou, determinando-o à prática de atos que causem prejuízo patrimonial, com intenção de enriquecimento ilegítimo (art. 217.º do CP).'],
+      ['Natureza do crime e queixa', 'Distinga sempre: crimes públicos (o MP promove o processo oficiosamente), semipúblicos (dependem de queixa — art. 113.º do CP) e particulares (dependem de queixa e de acusação particular). O furto simples é semipúblico (art. 203.º, n.º 3, do CP); o roubo é público.']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Distinção', 'Critério decisivo'], linhas: [
+      ['Furto × roubo', 'No roubo há violência, ameaça ou colocação na impossibilidade de resistir (art. 210.º do CP)'],
+      ['Furto × abuso de confiança', 'No abuso de confiança, a coisa já estava legitimamente na posse do agente (art. 205.º do CP)'],
+      ['Furto × burla', 'Na burla, é a própria vítima que entrega a coisa, enganada (art. 217.º do CP)'],
+      ['Difamação × injúria', 'Destinatário: terceiros (art. 180.º do CP) ou o próprio ofendido (art. 181.º do CP)'],
+      ['Homicídio qualificado × privilegiado', 'Especial censurabilidade (art. 132.º do CP) × culpa sensivelmente diminuída (art. 133.º do CP)']
+    ] },
+    exemplo: ['Y, funcionário de uma loja, recebe diariamente o dinheiro das vendas para o depositar no banco. Durante um mês, guarda para si parte do dinheiro. Que crime cometeu: furto, abuso de confiança ou burla?',
+      'Não há furto, porque Y não subtraiu o dinheiro: este foi-lhe entregue legitimamente pelo empregador para um fim determinado (depositar no banco), sem lhe transferir a propriedade.',
+      'Também não há burla, porque o dono não foi induzido em erro para lhe entregar o dinheiro: a entrega era normal e lícita.',
+      'Y cometeu abuso de confiança (art. 205.º do CP): apropriou-se ilegitimamente de coisa móvel que lhe foi entregue por título não translativo da propriedade. Como as apropriações se repetiram no mesmo contexto, deve ponderar-se a figura do crime continuado (art. 30.º, n.º 2, do CP).']
+    ,
+    erros: [
+      'Aplicar automaticamente o homicídio qualificado sempre que se verifica uma alínea do art. 132.º, n.º 2, do CP: é preciso demonstrar a especial censurabilidade ou perversidade.',
+      'Confundir furto com abuso de confiança: a diferença está na forma como o agente obteve a coisa.',
+      'Esquecer a natureza do crime (pública, semipública ou particular) e as consequências para a queixa.',
+      'Trocar difamação por injúria.'
+    ],
+    artigos: ['art. 131.º do CP', 'art. 132.º do CP', 'art. 133.º do CP', 'art. 143.º do CP', 'art. 152.º do CP', 'art. 180.º do CP', 'art. 203.º do CP', 'art. 205.º do CP', 'art. 210.º do CP', 'art. 217.º do CP']
+  }
+};
+
+
 </script>
 <script>
 /* LEXDESK — modelos de minutas. Cada modelo: campos e função que gera o texto. */
@@ -2936,7 +4020,7 @@ Store.attach = function (session) {
 };
 
 /* ---------- estado da interface ---------- */
-var VIEWS = ['painel', 'reputacao', 'flashcards', 'aula', 'lei', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
+var VIEWS = ['painel', 'reputacao', 'flashcards', 'aula', 'lei', 'guias', 'guia', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
 var S = {
   view: 'painel', wsId: null, wsTab: '01', wsQ: '', q: '',
   libQ: '', libArea: 'Todas', libOpen: { cpc: true },
@@ -3018,6 +4102,8 @@ function render() {
   else if (v === 'flashcards') h = vFlashcards();
   else if (v === 'aula') h = vAula();
   else if (v === 'lei') h = vLei();
+    else if (v === 'guias') h = vGuias();
+    else if (v === 'guia') h = vGuia();
   else if (v === 'agenda') h = vAgenda();
   else if (v === 'dissertacao') h = vDissertacao();
   else if (v === 'ordem') h = vOrdem();
@@ -5962,16 +7048,16 @@ var MOD_PERFIL = {
   doc: ['docente', 'atualidade', 'mentoria'],
   outro: ['kpis', 'progresso', 'calendario', 'horario', 'atualidade', 'continuar', 'mentoria', 'ferramentas']
 };
-var NAV = { painel: ['Painel', 'grid'], aula: ['Sala de aula', 'aula'], flashcards: ['Flashcards', 'layers'], atualidade: ['Atualidade jurídica', 'news'], biblioteca: ['Biblioteca jurídica', 'book'], instituicoes: ['Instituições', 'uni'], workspaces: ['Legal Workspaces', 'folder'], minutas: ['Gerador de minutas', 'file'], cadeiras: ['Cadeiras', 'layers'], apontamentos: ['Apontamentos', 'note'], exames: ['Estudar e praticar', 'check'], casos: ['Casos práticos', 'scale'], prazos: ['Contador de prazos', 'hour'], agenda: ['Agenda de diligências', 'cal'], dissertacao: ['Dissertação', 'cap'], ordem: ['Treino para a Ordem', 'badge'], docente: ['Ensino', 'pen'] };
+var NAV = { painel: ['Painel', 'grid'], guias: ['Matéria explicada', 'book'], aula: ['Sala de aula', 'aula'], flashcards: ['Flashcards', 'layers'], atualidade: ['Atualidade jurídica', 'news'], biblioteca: ['Biblioteca jurídica', 'book'], instituicoes: ['Instituições', 'uni'], workspaces: ['Legal Workspaces', 'folder'], minutas: ['Gerador de minutas', 'file'], cadeiras: ['Cadeiras', 'layers'], apontamentos: ['Apontamentos', 'note'], exames: ['Estudar e praticar', 'check'], casos: ['Casos práticos', 'scale'], prazos: ['Contador de prazos', 'hour'], agenda: ['Agenda de diligências', 'cal'], dissertacao: ['Dissertação', 'cap'], ordem: ['Treino para a Ordem', 'badge'], docente: ['Ensino', 'pen'] };
 var COMUN = ['chat', 'mensagens', 'salas', 'connect'];
 var NAV_PERFIL = {
-  lic: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos']], ['Trabalho', ['workspaces', 'minutas']]],
+  lic: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos']], ['Trabalho', ['workspaces', 'minutas']]],
   licd: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Próximo passo', ['ordem', 'prazos', 'minutas', 'workspaces']]],
   mest: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Investigação', ['dissertacao', 'workspaces', 'apontamentos']]],
   estag: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Prática', ['prazos', 'agenda', 'minutas', 'workspaces']], ['Preparação', ['ordem', 'casos']]],
   prof: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Prática', ['prazos', 'agenda', 'minutas', 'workspaces']]],
   doc: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Ensino', ['docente', 'casos', 'exames']]],
-  outro: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos']], ['Trabalho', ['workspaces', 'minutas', 'prazos', 'agenda']]]
+  outro: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos']], ['Trabalho', ['workspaces', 'minutas', 'prazos', 'agenda']]]
 };
 var AREAS_OPC = ['Civil', 'Processo Civil', 'Penal', 'Constitucional', 'Administrativo', 'Comercial', 'Fiscal', 'Laboral', 'Migrações', 'Institucional'];
 
@@ -8357,9 +9443,13 @@ function leiFonteNota(dip) { var m = LEI.meta && LEI.meta[dip]; if (m && m.fonte
 var LEI_SIG = { CRP: 'crp', CC: 'cc', CPC: 'cpc', CP: 'cp', CPP: 'cpp', CT: 'ct', CSC: 'csc', CPA: 'cpa', CPTA: 'cpta', ETAF: 'etaf', CCom: 'ccom', LGT: 'lgt', CPPT: 'cppt', CIRS: 'cirs', CIRC: 'circ', CIVA: 'civa', CPT: 'cpt', RGIT: 'rgit', CIS: 'cis', CIMI: 'cimi', CIMT: 'cimt' };
 function leiLinkify(txt) {
   var h = esc(txt || '');
+  h = h.replace(/\b(arts\.\s*)((?:\d+\.?º(?:-[A-Z])?\s*(?:,|\be\b|\ba\b)\s*)+\d+\.?º(?:-[A-Z])?)(\s*(?:do|da)\s+)(CRP|CCom|CC|CPC|CPPT|CPP|CPTA|CPT|CPA|CP|CT|CSC|ETAF|LGT|CIRS|CIRC|CIVA|RGIT|CIS|CIMI|CIMT)\b/g, function (m, a0, lista, mid, sig) {
+    var dip = LEI_SIG[sig]; if (!dip || (LEI.meta && !LEI.meta[dip])) return m;
+    return a0 + lista.replace(/(\d+)\.?º(-[A-Z])?/g, function (x, n, suf) { return '<a href="#" class="lei-lk" data-a="lei-ver" data-id="' + dip + '|' + n + (suf || '') + '" title="Ler o artigo">' + x + '</a>'; }) + mid + sig;
+  });
   return h.replace(/\b(art(?:igo|s)?\.?\s*)(\d+)\.?º(-[A-Z])?((?:,\s*n\.?\s?º[^,;]*?)?(?:,\s*al[^,;]*?)?,?\s*(?:do|da)\s+)(CRP|CCom|CC|CPC|CPPT|CPP|CPTA|CPT|CPA|CP|CT|CSC|ETAF|LGT|CIRS|CIRC|CIVA|RGIT|CIS|CIMI|CIMT)\b/g, function (m, a, n, suf, mid, sig) {
     var dip = LEI_SIG[sig]; if (!dip || (LEI.meta && !LEI.meta[dip])) return m;
-    return '<button class="lei-lk" data-a="lei-ver" data-id="' + dip + '|' + n + (suf || '') + '" title="Ler o artigo">' + m + '</button>';
+    return '<a href="#" class="lei-lk" data-a="lei-ver" data-id="' + dip + '|' + n + (suf || '') + '" title="Ler o artigo">' + m + '</a>';
   });
 }
 A['lei-ver'] = function (el) {
@@ -8422,6 +9512,58 @@ libList = function () {
   return h;
 };
 setTimeout(leiMetaCarregar, 1500);
+
+/* ===== Matéria explicada: guias de estudo por tema ===== */
+var GUIA_ORD = ['obr', 'pen', 'pc', 'pex', 'con'];
+function guiasDe(d) { return (typeof GUIAS !== 'undefined' && GUIAS[d]) || {}; }
+function guiaTem(d, t) { return !!guiasDe(d)[t]; }
+function guiaN(d) { return Object.keys(guiasDe(d)).length; }
+function guiaLidos() { return (Store.get('guias_lidos') || {}).l || {}; }
+function guiaMarcarLido(d, t) { var m = Store.get('guias_lidos') || { id: 'guias_lidos', kind: 'meta', l: {} }; if (m.l && m.l[d + '|' + t]) return; m = clone(m); m.l = m.l || {}; m.l[d + '|' + t] = Date.now(); Store.put(m); }
+function vGuias() {
+  var lid = guiaLidos(), ds = Object.keys(typeof GUIAS !== 'undefined' ? GUIAS : {}).sort(function (a, b) { var ia = GUIA_ORD.indexOf(a), ib = GUIA_ORD.indexOf(b); return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib); });
+  var h = '<div class="head"><div><h1>Matéria explicada</h1><p class="sub">Guias de estudo por tema: a ideia central, o regime com os artigos, um esquema, um exemplo resolvido e os erros que mais tiram valores nos exames.</p></div></div>';
+  if (!ds.length) return h + '<div class="card"><div class="empty">Os guias estão a ser preparados.</div></div>';
+  h += ds.map(function (d) {
+    var G = guiasDe(d), ts = (TEMAS[d] || []).filter(function (t) { return G[t[0]]; }), lidos = ts.filter(function (t) { return lid[d + '|' + t[0]]; }).length;
+    return '<section class="card gu-d"><div class="gu-dh"><h2>' + esc(DISC[d].nome) + '</h2><span class="chip ' + (lidos === ts.length ? 'ok' : 'gray') + '">' + lidos + '/' + ts.length + ' lidos</span></div><div class="gu-ts">' +
+      ts.map(function (t, i) { var g = G[t[0]], li = lid[d + '|' + t[0]]; return '<button class="gu-t' + (li ? ' lido' : '') + '" data-a="guia-abrir" data-id="' + d + '|' + t[0] + '"><span class="gu-n">' + (li ? '✓' : i + 1) + '</span><span class="gu-tx"><b>' + esc(t[1]) + '</b><span>' + esc(g.sub || '') + '</span></span><span class="gu-min">' + guiaMin(g) + ' min</span></button>'; }).join('') + '</div></section>';
+  }).join('');
+  return h;
+}
+function guiaMin(g) { var txt = JSON.stringify(g); return Math.max(3, Math.round(txt.split(/\s+/).length / 180)); }
+A['guia-abrir'] = function (el) { var p = el.dataset.id.split('|'); S.guia = { d: p[0], t: p[1] }; go('guia'); window.scrollTo(0, 0); };
+function vGuia() {
+  var gd = S.guia || {}, d = gd.d, t = gd.t, g = guiasDe(d)[t];
+  if (!g) return '<div class="card"><div class="empty">Guia não encontrado. <button class="lk" data-go="guias">Ver todos os guias</button></div></div>';
+  guiaMarcarLido(d, t);
+  var ts = (TEMAS[d] || []).filter(function (x) { return guiaTem(d, x[0]); }), i = ts.map(function (x) { return x[0]; }).indexOf(t), ant = ts[i - 1], seg = ts[i + 1];
+  var L = function (x) { return typeof leiLinkify === 'function' ? leiLinkify(x) : esc(x); };
+  var qs = QUESTOES.filter(function (q) { return q.d === d && q.t === t; });
+  var h = '<div class="head"><div><span class="crumb"><button data-go="guias">Matéria explicada</button> / ' + esc(DISC[d].nome) + '</span><h1>' + esc(temaNome(d, t)) + '</h1><p class="sub">' + esc(g.sub || '') + ' · ' + guiaMin(g) + ' min de leitura</p></div></div>';
+  h += '<div class="gu-grid"><article class="gu-art">';
+  h += '<section class="card gu-s gu-ideia"><span class="gu-k">Em poucas palavras</span><p>' + L(g.ideia) + '</p></section>';
+  if (g.conceitos) h += '<section class="card gu-s" id="gu-c"><h2>Conceitos-chave</h2><dl class="gu-dl">' + g.conceitos.map(function (c) { return '<dt>' + esc(c[0]) + '</dt><dd>' + L(c[1]) + '</dd>'; }).join('') + '</dl></section>';
+  if (g.regime) h += '<section class="card gu-s" id="gu-r"><h2>Regime jurídico</h2>' + g.regime.map(function (r) { return '<div class="gu-reg"><h3>' + esc(r[0]) + '</h3>' + r.slice(1).map(function (p) { return '<p>' + L(p) + '</p>'; }).join('') + '</div>'; }).join('') + '</section>';
+  if (g.esquema) h += '<section class="card gu-s" id="gu-e"><h2>Esquema</h2>' + guiaEsquema(g.esquema, L) + '</section>';
+  if (g.exemplo) h += '<section class="card gu-s gu-ex" id="gu-x"><h2>Exemplo resolvido</h2><div class="gu-caso"><span class="gu-k">Hipótese</span><p>' + L(g.exemplo[0]) + '</p></div><details class="gu-res"><summary>Ver a resolução</summary>' + g.exemplo.slice(1).map(function (p) { return '<p>' + L(p) + '</p>'; }).join('') + '</details></section>';
+  if (g.erros) h += '<section class="card gu-s gu-err" id="gu-er"><h2>Erros frequentes nos exames</h2><ul>' + g.erros.map(function (e) { return '<li>' + L(e) + '</li>'; }).join('') + '</ul></section>';
+  h += '<section class="card gu-s" id="gu-q"><h2>Teste-se</h2>' + (qs.length ? '<p class="gu-qn">Há ' + plural(qs.length, 'pergunta', 'perguntas') + ' sobre este tema no simulador.</p><div class="row" style="gap:8px;flex-wrap:wrap"><button class="btn pri" data-a="guia-treinar" data-id="' + d + '|' + t + '">Responder às perguntas deste tema</button><button class="btn" data-go="flashcards">Rever em flashcards</button></div>' : '<p class="gu-qn">Ainda não há perguntas sobre este tema.</p>') + '</section>';
+  h += '<nav class="gu-nav">' + (ant ? '<button class="btn" data-a="guia-abrir" data-id="' + d + '|' + ant[0] + '">‹ ' + esc(ant[1]) + '</button>' : '<span></span>') + (seg ? '<button class="btn pri" data-a="guia-abrir" data-id="' + d + '|' + seg[0] + '">' + esc(seg[1]) + ' ›</button>' : '<button class="btn" data-go="guias">Ver todos os guias</button>') + '</nav>';
+  h += '</article><aside class="gu-side"><div class="card gu-toc"><span class="gu-k">Neste guia</span>' +
+    [['gu-c', 'Conceitos-chave', g.conceitos], ['gu-r', 'Regime jurídico', g.regime], ['gu-e', 'Esquema', g.esquema], ['gu-x', 'Exemplo resolvido', g.exemplo], ['gu-er', 'Erros frequentes', g.erros], ['gu-q', 'Teste-se', 1]].filter(function (x) { return x[2]; }).map(function (x) { return '<a href="#" data-a="guia-ir" data-id="' + x[0] + '">' + x[1] + '</a>'; }).join('') +
+    '</div><div class="card gu-toc"><span class="gu-k">' + esc(DISC[d].nome) + '</span>' + ts.map(function (x) { return '<a href="#" data-a="guia-abrir" data-id="' + d + '|' + x[0] + '"' + (x[0] === t ? ' class="on"' : '') + '>' + esc(x[1]) + '</a>'; }).join('') + '</div>' +
+    (g.artigos ? '<div class="card gu-toc"><span class="gu-k">Artigos essenciais</span><div class="gu-arts">' + g.artigos.map(function (a) { return '<span>' + L(a) + '</span>'; }).join('') + '</div></div>' : '') +
+    '<p class="gu-aviso">Guia de estudo do LEXDESK. Não substitui as aulas nem a bibliografia indicada pelo docente. Confirme sempre no texto da lei.</p></aside></div>';
+  return h;
+}
+function guiaEsquema(e, L) {
+  if (e.tipo === 'passos') return '<ol class="gu-passos">' + e.itens.map(function (x) { return '<li><b>' + esc(x[0]) + '</b>' + (x[1] ? '<span>' + L(x[1]) + '</span>' : '') + '</li>'; }).join('') + '</ol>';
+  if (e.tipo === 'tabela') return '<div class="gu-tw"><table class="gu-tab"><thead><tr>' + e.cab.map(function (c) { return '<th>' + esc(c) + '</th>'; }).join('') + '</tr></thead><tbody>' + e.linhas.map(function (l) { return '<tr>' + l.map(function (c, i) { return i ? '<td>' + L(c) + '</td>' : '<th scope="row">' + esc(c) + '</th>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>';
+  return '<ul class="gu-lista">' + e.itens.map(function (x) { return '<li><b>' + esc(x[0]) + '</b> ' + L(x[1] || '') + '</li>'; }).join('') + '</ul>';
+}
+A['guia-ir'] = function (el, ev) { if (ev) ev.preventDefault(); var x = document.getElementById(el.dataset.id); if (x) x.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+A['guia-treinar'] = function (el) { var p = el.dataset.id.split('|'); S.examCfg = S.examCfg || {}; S.examCfg.disc = p[0]; S.examCfg.tema = p[1]; go('exames'); };
 
 /* ---------- MODO NOTURNO ---------- */
 /* Gera automaticamente a versão escura de todas as regras CSS (e dos estilos em linha),
@@ -8561,7 +9703,7 @@ A['tema'] = function () { var n = temaEscuro() ? 'claro' : 'escuro'; lsSet('lexd
 try { if (window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () { if (!lsGet('lexdesk_tema')) temaAplicar(temaPref()); }); } catch (e) { }
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
-var VIEW_LBL = { painel: ['Painel', I.grid], reputacao: ['Reputação', I.badge], flashcards: ['Flashcards', I.layers], aula: ['Sala de aula', I.note], lei: ['Texto integral da lei', I.book], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Estudar e praticar', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
+var VIEW_LBL = { painel: ['Painel', I.grid], guias: ['Matéria explicada', I.book], guia: ['Guia de estudo', I.book], reputacao: ['Reputação', I.badge], flashcards: ['Flashcards', I.layers], aula: ['Sala de aula', I.note], lei: ['Texto integral da lei', I.book], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Estudar e praticar', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
 var isMac = /Mac|iPhone|iPad/.test(navigator.platform || '');
 
 /* ===== animação de entrada e contadores ===== */
