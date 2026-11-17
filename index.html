@@ -862,7 +862,7 @@ body.bvp .main{background:radial-gradient(600px 360px at 75% 220px,rgba(200,150,
 .inst-cred{font-size:12px;color:var(--muted)}.inst-cred summary{cursor:pointer;font-weight:600}.inst-cred ul{margin:6px 0 0;padding-left:18px;columns:2;column-gap:24px}.inst-cred a{color:var(--muted)}
 @media (max-width:700px){.inst-cred ul{columns:1}}
 .bt-dest.com-foto{isolation:isolate;overflow:hidden;background:#1a1a1a;box-shadow:0 24px 50px -24px rgba(0,0,0,.55)}
-.bt-bg{position:absolute;inset:-6px;z-index:-1;background-size:cover;background-position:center;filter:blur(1.5px);transform:scale(1.02);transition:transform .5s}
+.bt-bg{position:absolute;inset:-6px;z-index:-1;background-size:cover;background-position:center;filter:blur(.5px);transform:scale(1.02);transition:transform .5s}
 .bt-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.25) 55%,rgba(0,0,0,.72) 100%)}
 .bt-dest.com-foto:hover .bt-bg{transform:scale(1.05)}
 .bt-dest.com-foto .bt-s{color:#f2f2f2}
@@ -1504,6 +1504,12 @@ span.rp-util{cursor:default}
 .seq-rk-h{display:flex;align-items:center;justify-content:space-between}
 .seq-rk-mais{border:0;background:none;color:#7B1E2B;font:700 11.5px var(--sans);cursor:pointer;padding:0}
 .seq-rk-d{color:#7B1E2B}.seq-rk-v b{color:#7B1E2B}
+.cadp-r{display:flex;align-items:stretch;gap:4px}
+.cadp-r>.li{flex:1;min-width:0}
+.cadp-x{flex:none;width:30px;border:0;background:none;border-radius:8px;color:#A0A7B5;font-size:20px;line-height:1;cursor:pointer;opacity:0;transition:opacity .15s}
+.cadp-r:hover .cadp-x,.cadp-x:focus{opacity:1}.cadp-x:hover{background:#FBECEE;color:#B42318}
+@media (hover:none){.cadp-x{opacity:.7}}
+.cadp-rep{font-size:13px;color:var(--muted);margin:12px 0 0}.cadp-rep .lk{border:0;background:none;padding:0;color:#7B1E2B;text-decoration:underline;cursor:pointer;font:inherit}
 
 </style>
 </head>
@@ -3569,6 +3575,7 @@ var A2 = {
     if (c.nota !== '' && isNaN(c.nota)) { toast('A nota deve ser um número entre 0 e 20.'); return; }
     if (c.nota !== '' && c.estado !== 'Aprovada' && c.nota >= 9.5) c.estado = 'Aprovada';
     if (!c.id) { c.id = uid('cad'); c.kind = 'cad'; c.ordem = 99; }
+    var ant = c.id && Store.get(c.id); if (ant && ant.sem !== c.sem) c.semManual = 1; if (ant) { if (ant.extra) c.extra = ant.extra; if (ant.semManual) c.semManual = 1; }
     Store.put(c); S.ano = c.ano; closeModal(); toast('Cadeira guardada.');
   },
   'cad-del': function () {
@@ -6960,6 +6967,106 @@ hbDestaque = function () {
   var h = _hbDestaqueFT(), p = perfil(), f = p && p.instId && INST_FOTO[p.instId];
   if (!f) return h;
   return h.replace('<div class="bt bt-dest">', '<div class="bt bt-dest com-foto"><span class="bt-bg" aria-hidden="true" style="background-image:url(\'' + instFotoUrl(f) + '\')"></span>');
+};
+
+/* ----- «Cadeiras» a partir do plano de estudos da instituição, com adicionar e retirar ----- */
+function cadInstPlano() { var pf = perfil(); return pf && PLANOS[pf.instId] ? { pf: pf, P: PLANOS[pf.instId], inst: instById(pf.instId) } : null; }
+function cadOcultas() { return meta().cadOcultas || {}; }
+function cadLig(c) { return Store.all('exame').concat(Store.all('aula')).some(function (x) { return x.cadId === c.id; }); }
+function cadDoAno(ctx, ano) {
+  var P = ctx.P, oc = cadOcultas(), docs = cads(), porNome = {}, noPlano = {};
+  docs.forEach(function (c) { (porNome[c.nome] = porNome[c.nome] || []).push(c); });
+  [1, 2, 3, 4].forEach(function (a) { ((P.p || {})[a] || []).forEach(function (x) { noPlano[x[0]] = a; }); });
+  var l = [];
+  ((P.p || {})[ano] || []).forEach(function (x, i) {
+    if (oc[ano + '|' + x[0]]) return;
+    var c = (porNome[x[0]] || [])[0];
+    l.push(c ? Object.assign({}, c, { ano: ano, sem: c.semManual ? c.sem : (x[1] || 1), _pl: 1, _o: i }) : { id: '', nome: x[0], ano: ano, sem: x[1] || 1, estado: 'Por fazer', nota: '', _pl: 1, _v: 1, _o: i });
+  });
+  var esc0 = ctx.pf.ano === ano ? (ctx.pf.disciplinas || []) : [];
+  docs.forEach(function (c) {
+    if (c.ano !== ano || noPlano[c.nome] || oc[ano + '|' + c.nome]) return;
+    if (c.extra || c.ordem === 99 || esc0.indexOf(c.nome) >= 0 || cadLig(c)) l.push(Object.assign({}, c, { _o: 100 + (c.ordem || 0) }));
+  });
+  return l.sort(function (a, b) { return a._o - b._o; });
+}
+var _vCadeirasPL = vCadeiras;
+vCadeiras = function () {
+  var ctx = cadInstPlano(); if (!ctx) return _vCadeirasPL();
+  var ano = S.ano || (S.ano = ctx.pf.ano || 1), m = meta();
+  var h = '<div class="head"><div><h1>Cadeiras</h1><p class="sub">Plano de estudos de ' + esc(ctx.inst.nome) + '. Fonte: ' + esc(ctx.P.fonte || '') + '.</p></div><button class="btn pri" data-a="cadp-add">' + I.plus + 'Adicionar cadeira</button></div>';
+  h += '<div class="tabs" role="tablist">' + [1, 2, 3, 4].map(function (a) {
+    var l = cadDoAno(ctx, a), ap = l.filter(function (c) { return c.estado === 'Aprovada'; }).length;
+    return '<button class="tab' + (ano === a ? ' on' : '') + '" role="tab" aria-selected="' + (ano === a) + '" data-a="ano-tab" data-id="' + a + '"><b>' + a + '.º</b> ano' + (ctx.pf.ano === a ? ' · atual' : '') + ' <span class="chip ' + (ap === l.length && l.length ? 'ok' : 'gray') + '" style="margin-left:4px">' + ap + '/' + l.length + '</span></button>';
+  }).join('') + '</div>';
+  var l = cadDoAno(ctx, ano);
+  var notas = l.filter(function (c) { return c.estado === 'Aprovada' && c.nota !== '' && c.nota != null; }).map(function (c) { return Number(c.nota); });
+  var media = notas.length ? (notas.reduce(function (s, x) { return s + x; }, 0) / notas.length).toFixed(1).replace('.', ',') : '—';
+  var oc = Object.keys(cadOcultas()).filter(function (k) { return k.indexOf(ano + '|') === 0; }).length;
+  h += '<div class="grid">' +
+    '<div class="card kpi" style="gap:6px"><span class="l">Ano letivo</span><span class="n" style="font-size:26px">' + (m.letivo[ano] ? esc(m.letivo[ano]) : '—') + '</span><button class="btn sm" data-a="letivo-edit" style="align-self:flex-start">Definir</button></div>' +
+    kpi('Cadeiras do ' + ano + '.º ano', l.length, ((ctx.P.p || {})[ano] || []).length + ' no plano oficial' + (oc ? ' · ' + oc + ' retirada' + (oc > 1 ? 's' : '') : '')) +
+    kpi('Aprovadas', l.filter(function (c) { return c.estado === 'Aprovada'; }).length, l.filter(function (c) { return c.estado === 'Em curso'; }).length + ' em curso') +
+    kpi('Média do ano', media, notas.length ? 'com base em ' + plural(notas.length, 'nota', 'notas') : 'Sem notas lançadas') + '</div>';
+  h += '<div class="grid2">' + [1, 2].map(function (sem) {
+    var ls = l.filter(function (c) { return (c.sem || 1) === sem || (sem === 1 && c.sem === 0); });
+    return '<div class="card"><h2>' + sem + '.º semestre <span class="chip gray" style="margin-left:6px">' + ls.length + '</span></h2>' + (ls.length ? '<div class="list">' + ls.map(cadRowPL).join('') + '</div>' : '<div class="empty" style="padding:18px">Sem cadeiras neste semestre.</div>') + '</div>';
+  }).join('') + '</div>';
+  if (oc) h += '<p class="cadp-rep">Retirou ' + plural(oc, 'cadeira', 'cadeiras') + ' do plano oficial deste ano. <button class="lk" data-a="cadp-repor" data-id="' + ano + '">Repor o plano oficial</button></p>';
+  return h;
+};
+function cadRowPL(c) {
+  var key = c.ano + '|' + c.nome, row;
+  if (c._v) {
+    var co = ['#F1F3F8', '#5B6478'];
+    row = '<button class="li" data-a="cadp-abrir" data-id="' + esc(key) + '|' + c.sem + '"><span class="ic" style="background:' + co[0] + ';color:' + co[1] + '">' + I.book + '</span><span class="tx"><b>' + esc(c.nome) + '</b><span>Plano oficial · ainda sem aulas nem avaliações</span></span><span class="chip gray">Por fazer</span></button>';
+  } else row = cadRow(c);
+  return '<div class="cadp-r">' + row + '<button class="cadp-x" data-a="cadp-rem" data-id="' + esc(key) + '" title="Retirar do meu plano" aria-label="Retirar ' + esc(c.nome) + ' do meu plano">×</button></div>';
+}
+A['cadp-abrir'] = function (el) {
+  var p = el.dataset.id.split('|'), ano = Number(p[0]), sem = Number(p[p.length - 1]), nome = p.slice(1, -1).join('|');
+  var c = { id: uid('cad'), kind: 'cad', ano: ano, sem: sem, ordem: 0, nome: nome, estado: 'Por fazer', nota: '', docente: '' };
+  Store.put(c); openCad(c);
+};
+A['cadp-rem'] = function (el) {
+  var p = el.dataset.id.split('|'), ano = Number(p[0]), nome = p.slice(1).join('|'), c = cads().filter(function (x) { return x.nome === nome; })[0];
+  var lig = c && cadLig(c);
+  S.cadRem = { ano: ano, nome: nome, id: c ? c.id : '' };
+  openModal('Retirar cadeira', '<p style="margin:0">Retirar <b>' + esc(nome) + '</b> do seu plano do ' + ano + '.º ano?</p>' + (lig ? '<p style="margin:10px 0 0;color:#B42318">As aulas e avaliações desta cadeira também serão apagadas.</p>' : '') + '<p style="margin:10px 0 0;color:var(--muted);font-size:13px">Pode voltar a acrescentá-la em «Adicionar cadeira».</p>',
+    '<button class="btn" data-a="close">Cancelar</button><button class="btn danger" data-a="cadp-rem-ok">Retirar</button>');
+};
+A['cadp-rem-ok'] = function () {
+  var r = S.cadRem; if (!r) return;
+  if (r.id) { Store.all('exame').concat(Store.all('aula')).filter(function (x) { return x.cadId === r.id; }).forEach(function (x) { Store.del(x.id); }); Store.del(r.id); }
+  var m = clone(meta()); m.cadOcultas = m.cadOcultas || {}; m.cadOcultas[r.ano + '|' + r.nome] = 1; Store.put(m);
+  closeModal(); toast('«' + r.nome + '» retirada do seu plano.');
+};
+A['cadp-repor'] = function (el) {
+  var ano = el.dataset.id, m = clone(meta()); m.cadOcultas = m.cadOcultas || {};
+  Object.keys(m.cadOcultas).forEach(function (k) { if (k.indexOf(ano + '|') === 0) delete m.cadOcultas[k]; });
+  Store.put(m); toast('Plano oficial do ' + ano + '.º ano reposto.');
+};
+A['cadp-add'] = function () {
+  var ctx = cadInstPlano(), ano = S.ano || 1, oc = cadOcultas(), vis = {};
+  [1, 2, 3, 4].forEach(function (a) { cadDoAno(ctx, a).forEach(function (c) { vis[c.nome] = 1; }); });
+  var sug = [];
+  [1, 2, 3, 4].forEach(function (a) { ((ctx.P.p || {})[a] || []).concat(((ctx.P.o || {})[a]) || []).forEach(function (x) { if (!vis[x[0]]) sug.push([x[0], a, x[1] || 1]); }); });
+  openModal('Adicionar cadeira',
+    (sug.length ? '<label class="f">Do plano de ' + esc(ctx.inst.nome) + '<select class="in" id="cadp-sug"><option value="">— Escolher —</option>' + sug.map(function (x) { return '<option value="' + esc(x[0]) + '|' + x[1] + '|' + x[2] + '">' + esc(x[0]) + ' (' + x[1] + '.º ano)</option>'; }).join('') + '</select></label><div style="text-align:center;color:var(--muted);font-size:12px;margin:2px 0">ou</div>' : '') +
+    '<label class="f">Outra cadeira (optativa, de outro curso…)<input class="in" id="cadp-nome" list="cadp-cat" maxlength="120" placeholder="Escreva o nome"><datalist id="cadp-cat">' + CATALOGO_DISC.map(function (d) { return '<option value="' + esc(d) + '">'; }).join('') + '</datalist></label>' +
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><label class="f">Ano<select class="in" id="cadp-ano">' + [1, 2, 3, 4].map(function (a) { return '<option value="' + a + '"' + (a === ano ? ' selected' : '') + '>' + a + '.º ano</option>'; }).join('') + '</select></label><label class="f">Semestre<select class="in" id="cadp-sem"><option value="1">1.º semestre</option><option value="2">2.º semestre</option></select></label></div>',
+    '<button class="btn" data-a="close">Cancelar</button><button class="btn pri" data-a="cadp-add-ok">Adicionar</button>');
+  var s = $('#cadp-sug'); if (s) s.onchange = function () { var p = s.value.split('|'); if (p.length > 2) { $('#cadp-ano').value = p[1]; $('#cadp-sem').value = p[2]; $('#cadp-nome').value = ''; } };
+};
+A['cadp-add-ok'] = function () {
+  var s = $('#cadp-sug'), sv = s && s.value ? s.value.split('|')[0] : '', nome = ($('#cadp-nome').value || '').trim() || sv;
+  if (!nome) { toast('Escolha ou escreva o nome da cadeira.'); return; }
+  var ano = Number($('#cadp-ano').value), sem = Number($('#cadp-sem').value), m = clone(meta());
+  if (m.cadOcultas && m.cadOcultas[ano + '|' + nome]) { delete m.cadOcultas[ano + '|' + nome]; Store.put(m); }
+  var c = cads().filter(function (x) { return x.nome === nome; })[0];
+  if (c) { c = clone(c); c.ano = ano; c.sem = sem; c.semManual = 1; c.extra = 1; Store.put(c); }
+  else Store.put({ id: uid('cad'), kind: 'cad', ano: ano, sem: sem, semManual: 1, extra: 1, ordem: 99, nome: nome, estado: ano === (perfil() || {}).ano ? 'Em curso' : 'Por fazer', nota: '', docente: '' });
+  S.ano = ano; closeModal(); toast('«' + nome + '» adicionada ao ' + ano + '.º ano.');
 };
 
 /* ---------- CALENDÁRIO + HORÁRIO LADO A LADO (opção B) ---------- */
