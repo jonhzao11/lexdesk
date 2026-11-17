@@ -1067,6 +1067,71 @@ body.bvp .main{background:radial-gradient(600px 360px at 75% 220px,rgba(200,150,
 .mp-ui{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12.5px;color:var(--muted)}
 .mp-nota{font-size:12px;color:var(--muted)}
 @media (max-width:1000px){.mp-w{grid-template-columns:1fr}}
+/* ----- reputação ----- */
+.rp-chip{display:inline-flex;align-items:center;gap:4px;padding:2px 8px 2px 6px;border-radius:99px;font:700 11px var(--sans);white-space:nowrap;vertical-align:middle;background:#EEF0F5;color:#4A5468;border:1px solid #DFE3EC}
+.rp-chip i{font-style:normal;font-size:11px}
+.rp-chip.big{font-size:12.5px;padding:4px 11px 4px 8px}
+.rp-chip.n1{background:#E8F1FB;color:#1E4C86;border-color:#C9DDF4}
+.rp-chip.n2{background:#F4EEF0;color:#7B1E2B;border-color:#E7C3CB}
+.rp-chip.n3{background:#FFF4DC;color:#8A5300;border-color:#F0D69A}
+.rp-chip.n4{background:linear-gradient(120deg,#F0CF7A,#C8962F);color:#3E0D16;border-color:#C8962F}
+.rp-util{align-self:flex-start;border:1px solid var(--line2);background:#fff;color:var(--muted);font:600 12.5px var(--sans);padding:5px 11px;border-radius:99px;cursor:pointer}
+button.rp-util:hover{border-color:#0E9F6E;color:#0E9F6E}
+.rp-util.on{background:#E3F8EF;border-color:#9FDDC4;color:#0B7A55}
+span.rp-util{cursor:default}
+.rp-rec-b{border:1px solid var(--line2);background:#fff;color:var(--ink);font:600 12.5px var(--sans);padding:6px 12px;border-radius:99px;cursor:pointer}
+.rp-rec-b:hover{border-color:#C9A45C}.rp-rec-b.on{background:#FFF4DC;border-color:#F0D69A;color:#8A5300}
+.rp-rec-n{font-size:12.5px;color:var(--muted)}
+.rp-dica{font-size:12px;color:#8A5300;background:#FFF8E8;border:1px solid #F3E1B0;border-radius:10px;padding:7px 10px}
+.rp-conta{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:10px 14px;border-radius:14px;border:1px solid #F0D69A;background:linear-gradient(120deg,#FFF8E8,#FFFDF7);cursor:pointer}
+.rp-conta b{display:block;font-size:14.5px;color:var(--ink)}.rp-conta small{font-size:12px;color:var(--muted)}
+.rp-ci{flex:none;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-size:18px;background:var(--grad);color:#F3E3B5}
+.rp-ci svg{width:18px;height:18px}
+.rp-hero{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;padding:24px 28px;border-radius:24px;color:#fff;position:relative;overflow:hidden;background:radial-gradient(500px 260px at 90% 20%,rgba(200,150,47,.25),transparent 65%),linear-gradient(135deg,#13233A,#0B1424);box-shadow:0 26px 50px -30px rgba(15,27,45,.7)}
+.rp-med{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;background:var(--grad-gold);box-shadow:0 0 0 6px rgba(240,207,122,.18),0 14px 30px -10px rgba(200,150,47,.6)}
+.rp-med span{font-size:42px;color:#3E0D16;line-height:1}
+.rp-hi{display:flex;flex-direction:column;gap:6px;min-width:0}
+.rp-k{font:800 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#F3D58A}
+.rp-hi h2{margin:0;font-size:30px;color:#fff}
+.rp-hi p{margin:0;color:#C9D0DE;font-size:14px}
+.rp-bar{height:10px;border-radius:99px;background:rgba(255,255,255,.12);overflow:hidden;margin-top:6px;max-width:520px}
+.rp-bar i{display:block;height:100%;border-radius:99px;background:var(--grad-gold);animation:growX 1s var(--ease) both;transform-origin:left}
+@keyframes growX{from{transform:scaleX(0)}to{transform:none}}
+.rp-fal{font-size:13px;color:#C9D0DE}.rp-fal b{color:#F3D58A}
+.rp-num{display:flex;flex-direction:column;align-items:flex-end;text-align:right}
+.rp-num b{font:800 54px/1 var(--serif);background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rp-num span{font:800 13px var(--sans);letter-spacing:.2em;color:#F3D58A}
+.rp-num em{font-style:normal;font-size:12.5px;color:#AEB7C9;margin-top:6px}
+.rp-cats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.rp-cat{display:flex;flex-direction:column;gap:6px;padding:16px;border-radius:18px;background:#fff;border:1px solid var(--line);box-shadow:var(--sh1)}
+.rp-cat .rp-ci{width:34px;height:34px;border-radius:10px;font-size:15px}
+.rp-cn{font-size:12.5px;font-weight:700;color:var(--muted);line-height:1.3}
+.rp-cat>b{font:800 26px var(--serif);color:var(--ink)}.rp-cat>b small{font-size:12px;color:var(--muted)}
+.rp-cd{font-size:12px;color:var(--muted)}
+.rp-conq{display:flex;flex-wrap:wrap;gap:8px}
+.rp-cq{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:99px;font-size:12.5px;border:1px dashed var(--line2);color:var(--muted);filter:grayscale(1);opacity:.65}
+.rp-cq.on{filter:none;opacity:1;border-style:solid;border-color:#F0D69A;background:#FFF8E8;color:#6B4300;font-weight:600}
+.rp-cq i{font-style:normal}
+.rp-hist{display:flex;flex-direction:column}
+.rp-he{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.rp-he:last-child{border-bottom:0}
+.rp-he small{display:block;font-size:11.5px;color:var(--muted)}
+.rp-he b{color:#0B7A55;font-family:var(--serif)}
+.rp-nv{display:flex;flex-direction:column;gap:8px}
+.rp-nl{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:14px;border:1px solid var(--line)}
+.rp-nl.eu{border-color:#C9A45C;background:#FFFBF1;box-shadow:0 8px 20px -14px rgba(154,91,0,.5)}
+.rp-nli{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:16px;background:#EEF0F5;color:#4A5468}
+.rp-nl.n1 .rp-nli{background:#E8F1FB;color:#1E4C86}.rp-nl.n2 .rp-nli{background:#F4EEF0;color:#7B1E2B}.rp-nl.n3 .rp-nli{background:#FFF4DC;color:#8A5300}.rp-nl.n4 .rp-nli{background:var(--grad-gold);color:#3E0D16}
+.rp-nlt{flex:1;display:flex;flex-direction:column;min-width:0}.rp-nlt b{font-size:14px}.rp-nlt span{font-size:12px;color:var(--muted)}
+.rp-nlr{font:700 12.5px var(--sans);color:var(--muted);white-space:nowrap}
+.rp-tab{display:flex;flex-direction:column}
+.rp-tl{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.rp-tl small{display:block;font-size:11.5px;color:var(--muted)}
+.rp-tl b{white-space:nowrap;font-family:var(--serif);color:var(--ink)}
+.rp-tl.alto b{color:#9A5B00}
+.rp-reg{margin:6px 0 0;font-size:12px;color:var(--muted);line-height:1.5}
+@media (max-width:1100px){.rp-cats{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}}
+@media (max-width:760px){.rp-hero{grid-template-columns:1fr;text-align:center;justify-items:center}.rp-num{align-items:center;text-align:center}.rp-bar{width:100%}}
 
 </style>
 </head>
@@ -1810,7 +1875,7 @@ Store.attach = function (session) {
 };
 
 /* ---------- estado da interface ---------- */
-var VIEWS = ['painel', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
+var VIEWS = ['painel', 'reputacao', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
 var S = {
   view: 'painel', wsId: null, wsTab: '01', wsQ: '', q: '',
   libQ: '', libArea: 'Todas', libOpen: { cpc: true },
@@ -1888,6 +1953,7 @@ function render() {
   else if (v === 'legal') h = vLegal();
   else if (v === 'bemvindo') h = vBemvindo();
   else if (v === 'prazos') h = vPrazos();
+  else if (v === 'reputacao') h = vReputacao();
   else if (v === 'agenda') h = vAgenda();
   else if (v === 'dissertacao') h = vDissertacao();
   else if (v === 'ordem') h = vOrdem();
@@ -2633,7 +2699,7 @@ function vDuvidas() {
       return '<div class="card"><span class="crumb"><button data-a="duv-back">Dúvidas da comunidade</button></span><div class="row" style="gap:6px">' + (d.area ? '<span class="chip gold">' + esc(d.area) + '</span>' : '') + '<span style="font-size:13px;color:var(--muted)">' + esc(nome(d.autor)) + ' · ' + quando(d.createdAt) + '</span></div><h2>' + esc(d.titulo) + '</h2><p style="margin:0;white-space:pre-wrap;line-height:1.65">' + esc(d.texto) + '</p>' +
         ((d.autor === Store.uid || (S.user && S.user.isOwner && S.user.isOwner())) ? '<button class="btn sm danger" data-a="duv-del" style="align-self:flex-start">Eliminar dúvida</button>' : '') + '</div>' +
         '<div class="card"><h2>' + plural(rs.length, 'resposta', 'respostas') + '</h2>' + (rs.length ? rs.map(function (r) {
-          return '<div style="border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:6px"><span style="font-size:13px;color:var(--muted)"><b style="color:var(--navy)">' + esc(nome(r.autor)) + '</b> · ' + quando(r.createdAt) + '</span><p style="margin:0;white-space:pre-wrap;line-height:1.65">' + esc(r.texto) + '</p>' + (r.autor === Store.uid ? '<button class="btn sm" data-a="resp-del" data-id="' + esc(r.id) + '" style="align-self:flex-start">Eliminar</button>' : '') + '</div>';
+          return '<div style="border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:6px"><span style="font-size:13px;color:var(--muted)"><b style="color:var(--navy)">' + esc(nome(r.autor)) + '</b> ' + rpChip(r.autor) + ' · ' + quando(r.createdAt) + '</span><p style="margin:0;white-space:pre-wrap;line-height:1.65">' + esc(r.texto) + '</p>' + rpUtilHtml(d, r) + (r.autor === Store.uid ? '<button class="btn sm" data-a="resp-del" data-id="' + esc(r.id) + '" style="align-self:flex-start">Eliminar</button>' : '') + '</div>';
         }).join('') : '<span style="color:var(--muted)">Ainda sem respostas.</span>') +
         '<label class="f">A sua resposta<textarea class="in" id="r-texto" maxlength="4000" placeholder="Responda com fundamentação e indique os artigos aplicáveis."></textarea></label><button class="btn pri" data-a="resp-save" style="align-self:flex-start"' + (shared() ? '' : ' disabled') + '>Publicar resposta</button></div>';
     }
@@ -2738,7 +2804,7 @@ var A3 = {
 };
 
 /* ---------- APONTAMENTOS (partilhados, por cadeira) ---------- */
-var TIPOS_AP = ['Resumo', 'Apontamentos de aula', 'Esquema', 'Casos práticos resolvidos', 'Exame resolvido', 'Outro'];
+var TIPOS_AP = ['Resumo', 'Apontamentos de aula', 'Esquema', 'Casos práticos resolvidos', 'Exame anterior', 'Exame resolvido', 'Outro'];
 var Ap = { list: [], state: 'loading', assets: undefined };
 function apStart() {
   var db = Store.db; if (!db) { Ap.state = 'offline'; return; }
@@ -2805,7 +2871,7 @@ function apForm(n) {
     '<label class="f" id="ap-outra-w" style="display:none">Nome da cadeira<input class="in" id="ap-outra" maxlength="100"></label>' +
     '<label class="f" id="ap-ano-w" style="display:none">Ano<select class="in" id="ap-ano">' + [1, 2, 3, 4].map(function (a) { return '<option value="' + a + '">' + a + '.º ano</option>'; }).join('') + '</select></label>' +
     '<label class="f">Título<input class="in" id="ap-tit" value="' + esc(n.titulo) + '" maxlength="160" placeholder="Ex.: Resumo — Pressupostos processuais"></label>' +
-    '<label class="f">Tipo<select class="in" id="ap-tipo">' + TIPOS_AP.map(function (t) { return '<option' + (n.tipo === t ? ' selected' : '') + '>' + t + '</option>'; }).join('') + '</select></label>' +
+    '<label class="f">Tipo<select class="in" id="ap-tipo">' + TIPOS_AP.map(function (t) { return '<option' + (n.tipo === t ? ' selected' : '') + '>' + t + '</option>'; }).join('') + '</select></label>' + '<span class="rp-dica">⭐ Ganha reputação ao partilhar: +20 RP · resumo original +25 RP · exame anterior +30 RP (mínimo de 150 caracteres ou um ficheiro).</span>' +
     '<label class="f">Texto (opcional se anexar ficheiro)<textarea class="in" id="ap-txt" style="min-height:200px" maxlength="60000" placeholder="Escreva ou cole aqui os seus apontamentos.">' + esc(n.texto) + '</textarea></label>' +
     (Ap.assets ? '<label class="f">Ficheiro (PDF, Word ou imagem, até 20 MB)<input class="in" id="ap-file" type="file" accept="' + FILE_ACCEPT + '"></label>' + (n.ficheiro ? '<span style="font-size:13px;color:var(--muted)">Ficheiro atual: ' + esc(n.ficheiro.nome) + '. Escolha outro para o substituir.</span>' : '')
       : '<span style="font-size:13px;color:var(--muted)">O envio de ficheiros não está disponível para a sua conta nesta vista. Pode partilhar os apontamentos em texto.</span>') +
@@ -3308,7 +3374,7 @@ function perfilVer(id) {
     var links = REDES.filter(function (x) { return redes[x[0]]; }).map(function (x) { return '<a class="rede" href="' + esc(redes[x[0]]) + '" target="_blank" rel="noopener nofollow ugc">' + esc(x[1]) + ' ' + I.ext + '</a>'; }).join('');
     var membro = new Date(p.created_at).toLocaleDateString('pt-PT', { month: 'long', year: 'numeric' });
     openModal(p.id === Store.uid ? 'O meu perfil público' : 'Perfil',
-      '<div class="pf-top">' + avHtml(p.id, p.nome, 'pf-av') + '<div style="min-width:0"><h2 style="font-size:26px">' + esc(p.nome) + '</h2><div class="row" style="gap:6px;margin-top:6px">' + (est ? '<span class="est big">' + esc(est) + '</span>' : '') + (p.inst_nome ? '<span class="chip gray">' + I.uni + esc(p.inst_nome) + '</span>' : '') + '</div><span style="font-size:12px;color:var(--muted);display:block;margin-top:6px">Membro do LEXDESK desde ' + esc(membro) + '</span></div></div>' +
+      '<div class="pf-top">' + avHtml(p.id, p.nome, 'pf-av') + '<div style="min-width:0"><h2 style="font-size:26px">' + esc(p.nome) + '</h2><div class="row" style="gap:6px;margin-top:6px">' + (est ? '<span class="est big">' + esc(est) + '</span>' : '') + (typeof rpChip === 'function' ? rpChip(p.id, true) : '') + (p.inst_nome ? '<span class="chip gray">' + I.uni + esc(p.inst_nome) + '</span>' : '') + '</div><span style="font-size:12px;color:var(--muted);display:block;margin-top:6px">Membro do LEXDESK desde ' + esc(membro) + '</span></div></div>' +
       (p.bio ? '<div class="pf-bio">' + esc(p.bio).replace(/\n/g, '<br>') + '</div>' : '<div class="note">' + (p.id === Store.uid ? 'Ainda não escreveu a sua biografia.' : 'Este membro ainda não escreveu uma biografia.') + '</div>') +
       (links ? '<div class="row" style="gap:8px">' + links + '</div>' : ''),
       p.id === Store.uid ? '<button class="btn" data-a="close">Fechar</button><button class="btn wine" data-a="perfil-pub-edit">Editar perfil</button>' : '<button class="btn" data-a="close">Fechar</button><button class="btn wine" data-a="dm-com" data-id="' + esc(p.id) + '">' + I.mail + 'Enviar mensagem</button>');
@@ -5344,12 +5410,12 @@ renderSide = function () {
     var on = itens.indexOf(S.view) >= 0;
     return '<div class="tn-g' + (on ? ' on' : '') + '"><button class="tn-b" aria-haspopup="true">' + esc(nome) + (badge ? '<span class="nbadge">' + badge + '</span>' : '') + '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="tn-m" role="menu">' + html + (extra || '') + '</div></div>';
   };
-  var com = ['chat', 'mensagens', 'salas', 'connect'];
+  var com = ['chat', 'mensagens', 'salas', 'connect', 'reputacao'];
   $('#side').innerHTML = '<button class="brand nav tn-brand" data-go="painel" aria-label="LEXDESK, ir para o painel"><span class="mark logo">' + I.logo + '</span><span class="word"><b>LEX</b><span>DESK</span></span></button>' +
     '<div class="tn-bar">' +
     '<button class="tn-b' + (S.view === 'painel' ? ' on' : '') + '" data-go="painel">Painel</button>' +
     grupos.filter(function (g) { return g[1].length; }).map(function (g) { return grupo(g[0], g[1], g[1].map(nb).join('')); }).join('') +
-    grupo('Comunidade', com, item('chat', 'Chat da comunidade', I.chat) + item('mensagens', 'Mensagens' + (dmn ? ' <span class="nbadge">' + dmn + '</span>' : ''), I.mail) + item('salas', 'Salas de estudo', I.door) + item('connect', 'Mentoria e explicações', I.users), dmn) +
+    grupo('Comunidade', com, item('chat', 'Chat da comunidade', I.chat) + item('mensagens', 'Mensagens' + (dmn ? ' <span class="nbadge">' + dmn + '</span>' : ''), I.mail) + item('salas', 'Salas de estudo', I.door) + item('connect', 'Mentoria e explicações', I.users) + item('reputacao', 'Reputação', I.badge), dmn) +
     grupo('Mais', mais, mais.map(nb).join(''), 0, '<div class="tn-sep"></div><button class="tn-i" data-a="onb-abrir">' + I.gear + '<span>' + PERFIS[t].ic + ' Perfil: ' + esc(PERFIS[t].curto) + ' · alterar</span></button>' + (t === 'lic' ? '<button class="tn-i" data-a="perfil-edit">' + I.cap + '<span>Perfil académico</span></button>' : '') + '<span class="tn-st">' + st + '</span>') +
     '</div>';
 };
@@ -6040,6 +6106,189 @@ painelCompor = function (P, pf) {
   return _painelComporIN(Q, pf);
 };
 
+/* ---------- SISTEMA DE REPUTAÇÃO (RP) ---------- */
+/* Os pontos são atribuídos no servidor (gatilhos e funções do Supabase); aqui só se mostram. */
+var RP_NIVEIS = [
+  { nome: 'Novato', min: 0, max: 99, desc: 'Primeiros passos na comunidade.', ic: '◆' },
+  { nome: 'Estudioso', min: 100, max: 499, desc: 'Participação ativa e partilha de conhecimento.', ic: '✦' },
+  { nome: 'Jurista em Formação', min: 500, max: 1499, desc: 'Contribuições reconhecidas pelos colegas.', ic: '⚖' },
+  { nome: 'Distinto', min: 1500, max: 3999, desc: 'Membro de referência na comunidade.', ic: '★' },
+  { nome: 'Embaixador LexDesk', min: 4000, max: null, desc: 'Utilizador de elevada reputação e confiança comunitária.', ic: '♛' }
+];
+var RP_TABELA = [
+  ['resposta', 'Responder a uma dúvida', 5, 'Perguntas respondidas'],
+  ['util', 'Resposta considerada útil', 10, 'Perguntas respondidas'],
+  ['material', 'Publicar apontamentos', 20, 'Materiais partilhados'],
+  ['exame', 'Partilhar um exame anterior', 30, 'Materiais partilhados'],
+  ['resumo', 'Criar um resumo original', 25, 'Materiais partilhados'],
+  ['explicacao', 'Disponibilizar uma explicação', 50, 'Explicações disponibilizadas'],
+  ['avaliacao', 'Receber avaliação positiva numa explicação', 15, 'Explicações disponibilizadas'],
+  ['novo_membro', 'Ajudar um novo membro', 10, 'Participação na comunidade'],
+  ['desafio', 'Participar num desafio jurídico', 5, 'Participação na comunidade']
+];
+var RP_TIPO_LBL = { resposta: 'Respondeu a uma dúvida', util: 'Resposta considerada útil', material: 'Partilhou materiais', explicacao: 'Disponibilizou explicações', avaliacao: 'Avaliação positiva como explicador', novo_membro: 'Ajudou um novo membro', desafio: 'Participou na pergunta do dia' };
+var RP = { tot: {}, fila: {}, t: null, res: null, rank: null, util: {}, av: {}, avFila: {}, avT: null, ultimo: null };
+
+function rpNivel(p) { p = Number(p) || 0; var i = 0; RP_NIVEIS.forEach(function (n, k) { if (p >= n.min) i = k; }); return { i: i, n: RP_NIVEIS[i], prox: RP_NIVEIS[i + 1] || null }; }
+function rpFmt(n) { return Number(n || 0).toLocaleString('pt-PT'); }
+function rpPedir(id) {
+  if (!id || RP.tot[id] != null || RP.fila[id] || typeof SB === 'undefined' || !SB) return;
+  RP.fila[id] = 1; clearTimeout(RP.t);
+  RP.t = setTimeout(function () {
+    var ids = Object.keys(RP.fila).filter(function (k) { return RP.fila[k] === 1; }); ids.forEach(function (k) { RP.fila[k] = 2; });
+    if (!ids.length) return;
+    SB.rpc('rp_totais', { p_ids: ids }).then(function (r) { (r && r.data || []).forEach(function (x) { RP.tot[x.user_id] = Number(x.total) || 0; }); ids.forEach(function (k) { if (RP.tot[k] == null) RP.tot[k] = 0; }); scheduleRender(); });
+  }, 120);
+}
+function rpChip(id, grande) {
+  if (!id) return '';
+  if (RP.tot[id] == null) { rpPedir(id); return ''; }
+  var p = RP.tot[id], nv = rpNivel(p);
+  return '<span class="rp-chip n' + nv.i + (grande ? ' big' : '') + '" title="' + esc(nv.n.nome + ' · ' + rpFmt(p) + ' RP') + '"><i>' + nv.n.ic + '</i>' + esc(nv.n.nome) + (grande ? ' · ' + rpFmt(p) + ' RP' : '') + '</span>';
+}
+/* etiqueta de nível junto do estado (chat, rankings, perfis…) */
+var _estadoChipRP = estadoChip;
+estadoChip = function (id) { return _estadoChipRP(id) + rpChip(id); };
+
+/* ----- o meu resumo e avisos de pontos ganhos ----- */
+function rpMeu(avisar) {
+  if (!sessaoAtiva()) return Promise.resolve(null);
+  return SB.rpc('rp_resumo').then(function (r) {
+    var d = r && r.data; if (!d) return null;
+    var antes = RP.ultimo; RP.res = d; RP.ultimo = Number(d.total) || 0; RP.tot[Store.uid] = RP.ultimo;
+    if (avisar && antes != null && RP.ultimo > antes) {
+      var nv0 = rpNivel(antes), nv1 = rpNivel(RP.ultimo);
+      toast(nv1.i > nv0.i ? '🎉 Subiu de nível: ' + nv1.n.nome + '!' : '+' + (RP.ultimo - antes) + ' RP · ' + rpFmt(RP.ultimo) + ' RP no total');
+    }
+    scheduleRender(); return d;
+  });
+}
+function rpDepois() { setTimeout(function () { rpMeu(true); }, 1200); }
+['resp-save', 'ap-save', 'tut-save', 'pd-resp'].forEach(function (k) { var f = A[k]; if (f) A[k] = function (el) { var r = f.apply(this, arguments); rpDepois(); return r; }; });
+var _carregarMeuPerfilRP = carregarMeuPerfil;
+carregarMeuPerfil = function () { var r = _carregarMeuPerfilRP.apply(this, arguments); RP.ultimo = null; setTimeout(function () { rpMeu(false); }, 300); return r; };
+
+/* ----- resposta útil ----- */
+var _openDuvRP = openDuv;
+openDuv = function (id) { _openDuvRP(id); rpUtilCarregar(id); };
+function rpUtilCarregar(id) { if (!SB) return; SB.from('rp_util').select('resposta').eq('duvida_id', id).then(function (r) { RP.util[id] = (r && r.data || []).map(function (x) { return x.resposta; }); scheduleRender(); }); }
+function rpUtilHtml(duv, r) {
+  var k = 'duvidas/' + S.duvId + '/respostas/' + r.id, marcada = (RP.util[S.duvId] || []).indexOf(k) >= 0, souAutor = duv && duv.autor === Store.uid && r.autor !== Store.uid;
+  if (souAutor) return '<button class="rp-util' + (marcada ? ' on' : '') + '" data-a="rp-util" data-id="' + esc(r.id) + '" data-v="' + (marcada ? 0 : 1) + '">' + (marcada ? '✓ Útil' : 'Marcar como útil') + '</button>';
+  return marcada ? '<span class="rp-util on">✓ Considerada útil pelo autor</span>' : '';
+}
+A['rp-util'] = function (el) {
+  var duv = S.duvId, v = el.dataset.v === '1'; el.disabled = true;
+  SB.rpc('rp_marcar_util', { p_duvida: duv, p_resposta: el.dataset.id, p_util: v }).then(function (r) {
+    if (r.error) { toast(/própria/.test(r.error.message) ? 'Não pode marcar a sua própria resposta.' : 'Não foi possível marcar a resposta.'); el.disabled = false; return; }
+    toast(v ? 'Resposta marcada como útil. O autor ganhou +10 RP.' : 'Marcação retirada.'); rpUtilCarregar(duv);
+  });
+};
+
+/* ----- recomendar explicadores ----- */
+function rpAvPedir(id) {
+  if (!id || RP.av[id] || RP.avFila[id] || !SB) return; RP.avFila[id] = 1; clearTimeout(RP.avT);
+  RP.avT = setTimeout(function () {
+    var ids = Object.keys(RP.avFila).filter(function (k) { return RP.avFila[k] === 1; }); ids.forEach(function (k) { RP.avFila[k] = 2; });
+    SB.rpc('rp_tutores_avals', { p_ids: ids }).then(function (r) { (r && r.data || []).forEach(function (x) { RP.av[x.tutor] = { total: Number(x.total) || 0, eu: !!x.eu }; }); scheduleRender(); });
+  }, 120);
+}
+function rpRecomendar(id) {
+  var a = RP.av[id]; if (!a) rpAvPedir(id); a = a || { total: 0, eu: false };
+  var meu = id === Store.uid;
+  return '<div class="rp-rec">' + (meu ? '<span class="rp-rec-n">👍 ' + plural(a.total, 'recomendação', 'recomendações') + '</span>' :
+    '<button class="rp-rec-b' + (a.eu ? ' on' : '') + '" data-a="rp-rec" data-id="' + esc(id) + '" data-v="' + (a.eu ? 0 : 1) + '" title="Recomende este explicador se já teve uma boa explicação com ele">👍 ' + (a.eu ? 'Recomendado' : 'Recomendar') + (a.total ? ' · ' + a.total : '') + '</button>') + '</div>';
+}
+A['rp-rec'] = function (el) {
+  if (!sessaoAtiva()) { toast('Inicie sessão para recomendar.'); return; }
+  var id = el.dataset.id, v = el.dataset.v === '1'; el.disabled = true;
+  SB.rpc('rp_avaliar_tutor', { p_tutor: id, p_positiva: v }).then(function (r) {
+    if (r.error) { toast('Não foi possível registar a recomendação.'); el.disabled = false; return; }
+    RP.av[id] = { total: Number(r.data && r.data.total) || 0, eu: v }; delete RP.tot[id];
+    toast(v ? 'Obrigado! O explicador ganhou +15 RP.' : 'Recomendação retirada.'); scheduleRender();
+  });
+};
+var _tutCardRP = tutCard;
+tutCard = function (x) {
+  var h = _tutCardRP(x);
+  h = h.replace('<b style="font-size:16px;color:var(--navy)">' + esc(nome(x.id)) + '</b>', '<b style="font-size:16px;color:var(--navy)">' + esc(nome(x.id)) + '</b> ' + rpChip(x.id));
+  var i = h.lastIndexOf('<button class="btn pri sm" data-a="tut-contact"');
+  return i >= 0 ? h.slice(0, i) + '<div class="row" style="justify-content:space-between;align-items:center;gap:8px">' + h.slice(i).replace(/<\/div>$/, '') + rpRecomendar(x.id) + '</div></div>' : h;
+};
+
+/* ----- página Reputação ----- */
+function rpCategorias(t) {
+  var g = function (k) { return t[k] || { n: 0, p: 0 }; };
+  var conq = rpConquistas(t);
+  return [
+    ['Explicações disponibilizadas', I.users, g('explicacao').p + g('avaliacao').p, g('explicacao').n ? 'Perfil de explicador ativo · ' + plural(g('avaliacao').n, 'recomendação', 'recomendações') : 'Ainda não é explicador'],
+    ['Materiais partilhados', I.note, g('material').p, plural(g('material').n, 'publicação', 'publicações')],
+    ['Perguntas respondidas', I.chat, g('resposta').p + g('util').p, plural(g('resposta').n, 'resposta', 'respostas') + ' · ' + plural(g('util').n, 'útil', 'úteis')],
+    ['Participação na comunidade', I.door, g('novo_membro').p + g('desafio').p, plural(g('desafio').n, 'desafio', 'desafios') + ' · ' + plural(g('novo_membro').n, 'novo membro ajudado', 'novos membros ajudados')],
+    ['Conquistas académicas', I.badge, null, conq.filter(function (c) { return c[2]; }).length + ' de ' + conq.length + ' medalhas']
+  ];
+}
+function rpConquistas(t) {
+  var n = function (k) { return (t[k] || { n: 0 }).n; }, s = stats();
+  return [
+    ['🎓', 'Primeira simulação', s.at.length >= 1],
+    ['📚', 'Estudante dedicado · 10 simulações', s.at.length >= 10],
+    ['🎯', 'Precisão · 80% de acerto (mín. 50 questões)', s.tot >= 50 && s.ok / s.tot >= .8],
+    ['⚖️', 'Desafiante · 7 perguntas do dia', n('desafio') >= 7],
+    ['🗓️', 'Assíduo · 30 perguntas do dia', n('desafio') >= 30],
+    ['✍️', 'Primeira partilha de materiais', n('material') >= 1],
+    ['💡', 'Resposta útil', n('util') >= 1],
+    ['🤝', 'Mentor · ajudou 5 novos membros', n('novo_membro') >= 5],
+    ['👍', 'Explicador recomendado · 5 recomendações', n('avaliacao') >= 5]
+  ];
+}
+function vReputacao() {
+  var h = '<div class="head"><div><h1>Reputação</h1><p class="sub">Contribua para a comunidade e ganhe pontos de reputação (RP). Explicações e materiais de qualidade valem mais do que simples publicações.</p></div></div>';
+  if (!sessaoAtiva()) return h + '<div class="card"><div class="empty"><b style="font-size:16px">Crie conta para começar a ganhar reputação</b><span>Responda a dúvidas, partilhe apontamentos e disponibilize explicações para subir de nível.</span><button class="btn wine" data-a="login-open" data-id="registo">Criar conta</button></div></div>' + rpTabelas();
+  if (!RP.res) { rpMeu(false); if (!RP.rank) rpRank(); return h + '<div class="card"><p style="margin:0;color:var(--muted)">A carregar a sua reputação…</p></div>'; }
+  if (!RP.rank) rpRank();
+  var d = RP.res, tot = Number(d.total) || 0, nv = rpNivel(tot), t = d.tipos || {};
+  var pct = nv.prox ? Math.round(100 * (tot - nv.n.min) / (nv.prox.min - nv.n.min)) : 100;
+  h += '<section class="rp-hero n' + nv.i + '"><div class="rp-med"><span>' + nv.n.ic + '</span></div><div class="rp-hi"><span class="rp-k">O seu nível</span><h2>' + esc(nv.n.nome) + '</h2><p>' + esc(nv.n.desc) + '</p>' +
+    '<div class="rp-bar"><i style="width:' + pct + '%"></i></div><span class="rp-fal">' + (nv.prox ? 'Faltam <b>' + rpFmt(nv.prox.min - tot) + ' RP</b> para <b>' + esc(nv.prox.nome) + '</b>' : 'Atingiu o nível máximo. Obrigado por tudo o que dá à comunidade!') + '</span></div>' +
+    '<div class="rp-num"><b data-count="' + tot + '">' + rpFmt(tot) + '</b><span>RP</span><em>' + (d.semana ? '+' + rpFmt(d.semana) + ' esta semana' : 'Sem pontos esta semana') + ' · ' + d.posicao + '.º lugar</em></div></section>';
+  h += '<section class="rp-cats">' + rpCategorias(t).map(function (c) { return '<div class="rp-cat"><span class="rp-ci">' + c[1] + '</span><span class="rp-cn">' + c[0] + '</span><b>' + (c[2] == null ? '🏅' : rpFmt(c[2]) + ' <small>RP</small>') + '</b><span class="rp-cd">' + esc(c[3]) + '</span></div>'; }).join('') + '</section>';
+  var conq = rpConquistas(t);
+  h += '<div class="grid2"><div class="card"><h2>Conquistas académicas</h2><div class="rp-conq">' + conq.map(function (c) { return '<span class="rp-cq' + (c[2] ? ' on' : '') + '" title="' + esc(c[1]) + (c[2] ? ' · obtida' : ' · por obter') + '"><i>' + c[0] + '</i>' + esc(c[1]) + '</span>'; }).join('') + '</div></div>' +
+    '<div class="card"><h2>Atividade recente</h2>' + ((d.recentes || []).length ? '<div class="rp-hist">' + d.recentes.map(function (e) { return '<div class="rp-he"><span>' + esc(RP_TIPO_LBL[e.tipo] || e.tipo) + '<small>' + quando(new Date(e.criado_em).getTime()) + '</small></span><b>+' + e.pontos + '</b></div>'; }).join('') + '</div>' : '<div class="empty"><span>Ainda não ganhou pontos. Comece por responder à pergunta do dia (+5 RP) ou a uma dúvida da comunidade (+5 RP).</span><div class="row" style="justify-content:center"><button class="btn sm" data-a="conn-tab" data-id="aprender">Ver dúvidas</button><button class="btn sm wine" data-a="ap-novo-rp">Partilhar apontamentos</button></div></div>') + '</div></div>';
+  h += '<div class="card"><div class="row" style="justify-content:space-between"><h2>Ranking da comunidade</h2><span class="chip gray">Top 10</span></div>' + (RP.rank ? (RP.rank.length ? '<div class="pd-rk">' + RP.rank.map(function (r) {
+    Social.prof[r.user_id] = Social.prof[r.user_id] || { nome: r.nome, estado: r.estado, avatar_url: r.avatar_url }; RP.tot[r.user_id] = Number(r.total);
+    var med = r.pos == 1 ? '🥇' : r.pos == 2 ? '🥈' : r.pos == 3 ? '🥉' : r.pos + '.º';
+    return '<div class="pd-rk-l' + (r.eu ? ' eu' : '') + '"><span class="pd-rk-p">' + med + '</span>' + avHtml(r.user_id, r.nome) + '<span class="pd-rk-n"><b>' + esc(r.nome || 'Membro LEXDESK') + (r.eu ? ' (eu)' : '') + '</b>' + estadoChip(r.user_id) + '</span><b class="pd-rk-pt">' + rpFmt(r.total) + ' RP</b></div>';
+  }).join('') + '</div>' : '<div class="empty"><span>Ainda ninguém tem pontos. Seja o primeiro!</span></div>') : '<p style="margin:0;color:var(--muted)">A carregar…</p>') + '</div>';
+  return h + rpTabelas(nv.i);
+}
+function rpTabelas(atual) {
+  return '<div class="grid2"><div class="card"><h2>Níveis</h2><div class="rp-nv">' + RP_NIVEIS.map(function (n, i) {
+    return '<div class="rp-nl n' + i + (atual === i ? ' eu' : '') + '"><span class="rp-nli">' + n.ic + '</span><span class="rp-nlt"><b>' + esc(n.nome) + '</b><span>' + esc(n.desc) + '</span></span><span class="rp-nlr">' + rpFmt(n.min) + (n.max != null ? ' – ' + rpFmt(n.max) : '+') + ' RP</span></div>';
+  }).join('') + '</div></div>' +
+    '<div class="card"><h2>Como ganhar pontos</h2><div class="rp-tab">' + RP_TABELA.map(function (r) { return '<div class="rp-tl' + (r[2] >= 25 ? ' alto' : '') + '"><span>' + esc(r[1]) + '<small>' + esc(r[3]) + '</small></span><b>+' + r[2] + ' RP</b></div>'; }).join('') + '</div>' +
+    '<p class="rp-reg">Para evitar abusos: as respostas contam até 20 por dia e os materiais até 5 por dia; um apontamento precisa de pelo menos 150 caracteres ou de um ficheiro; não conta responder à própria dúvida nem recomendar o próprio perfil. Se apagar um conteúdo, os pontos correspondentes são retirados.</p></div></div>';
+}
+function rpRank() { if (!SB) return; RP.rank = null; SB.rpc('rp_ranking', { p_limite: 10 }).then(function (r) { RP.rank = (r && r.data) || []; scheduleRender(); }); }
+A['ap-novo-rp'] = function () { go('apontamentos'); setTimeout(function () { A['ap-new'](); }, 60); };
+A['rp-abrir'] = function () { closeModal(); RP.res = null; go('reputacao'); };
+/* perfil público e menu da conta mostram o nível */
+var _perfilVerRP = perfilVer;
+perfilVer = function (id) {
+  if (RP.tot[id] != null || !SB) { _perfilVerRP(id); return; }
+  SB.rpc('rp_totais', { p_ids: [id] }).then(function (r) { var x = r && r.data && r.data[0]; RP.tot[id] = x ? Number(x.total) || 0 : 0; _perfilVerRP(id); }, function () { _perfilVerRP(id); });
+};
+var _openModalRP = openModal;
+openModal = function (title, body, actions) {
+  if (title === 'O meu perfil público' || title === 'Perfil') body = body.replace('<div class="row" style="gap:6px;margin-top:6px">', function (m) { var mm = body.match(/data-id="([0-9a-f-]{36})"/); return m; });
+  if (title === 'A minha conta' && sessaoAtiva()) {
+    var p = RP.tot[Store.uid], nv = rpNivel(p || 0);
+    body = '<button class="rp-conta n' + nv.i + '" data-a="rp-abrir"><span class="rp-ci">' + nv.n.ic + '</span><span><b>' + esc(nv.n.nome) + '</b><small>' + (p != null ? rpFmt(p) + ' RP · ' : '') + 'Ver a minha reputação →</small></span></button>' + body;
+  }
+  return _openModalRP(title, body, actions);
+};
+
 /* ---------- MODO NOTURNO ---------- */
 /* Gera automaticamente a versão escura de todas as regras CSS (e dos estilos em linha),
    convertendo as cores segundo o papel de cada propriedade: fundo, texto, contorno. */
@@ -6178,7 +6427,7 @@ A['tema'] = function () { var n = temaEscuro() ? 'claro' : 'escuro'; lsSet('lexd
 try { if (window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () { if (!lsGet('lexdesk_tema')) temaAplicar(temaPref()); }); } catch (e) { }
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
-var VIEW_LBL = { painel: ['Painel', I.grid], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
+var VIEW_LBL = { painel: ['Painel', I.grid], reputacao: ['Reputação', I.badge], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Simulador de exames', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
 var isMac = /Mac|iPhone|iPad/.test(navigator.platform || '');
 
 /* ===== animação de entrada e contadores ===== */
