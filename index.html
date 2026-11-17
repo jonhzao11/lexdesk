@@ -3,9 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="LEXDESK — plataforma de estudo e prática jurídica para estudantes de Direito em Portugal.">
+<meta name="description" content="LEXDESK: estude e pratique Direito num só lugar. Simulador de exames com base legal, casos práticos, pergunta do dia, apontamentos, mentoria e ferramentas para estudantes de Direito, estagiários e juristas em Portugal.">
+<meta name="keywords" content="Direito, estudantes de Direito, exames de Direito, casos práticos, processo civil, processo penal, Ordem dos Advogados, apontamentos, Portugal">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:title" content="LEXDESK — Estudar e praticar Direito, num só lugar">
+<meta property="og:description" content="Simulador de exames, casos práticos, pergunta do dia, comunidade e ferramentas para estudantes de Direito e jovens juristas em Portugal.">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%237B1E2B%27/%3E%3Cg fill=%27none%27 stroke=%27%23FFFFFF%27 stroke-width=%271.8%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M16 7v18M12 25h8M8 11h16M8 11l-3 6a3 3 0 0 0 6 0zM24 11l-3 6a3 3 0 0 0 6 0z%27/%3E%3C/g%3E%3C/svg%3E">
-<title>LEXDESK</title>
+<title>LEXDESK — Estudar e praticar Direito em Portugal</title>
 <style>@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-display:swap;font-weight:200 800;src:url(fonts/plus-jakarta-sans.woff2) format("woff2")}@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-display:swap;font-weight:200 800;src:url(fonts/bricolage-grotesque.woff2) format("woff2")}</style>
 <style>
 :root{--wine:#7B1E2B;--wine2:#5E1520;--wine-soft:#F7E9EB;--navy:#13203A;--navy2:#1B2A45;--navy3:#22324F;--gold:#C9A66B;--gold-soft:#F3ECDF;--bronze:#7A5C2E;--paper:#F5F6F8;--ink:#1A2233;--muted:#5B6577;--line:#E3E6EC;--line2:#DDE1E8;--link:#2F5BA8;--ok:#1E6B4F;--ok-soft:#EAF4EF;--bad:#A8442A;--bad-soft:#FBEDE8;--serif:'Source Serif 4',Georgia,'Times New Roman',serif;--sans:Inter,system-ui,-apple-system,'Segoe UI',sans-serif}
@@ -1133,6 +1139,41 @@ span.rp-util{cursor:default}
 @media (max-width:1100px){.rp-cats{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}}
 @media (max-width:760px){.rp-hero{grid-template-columns:1fr;text-align:center;justify-items:center}.rp-num{align-items:center;text-align:center}.rp-bar{width:100%}}
 .main>.search,.main>label.search{flex:none;width:100%;max-width:560px;min-height:44px}
+/* ----- apresentação na página de boas-vindas ----- */
+.bv-apr{width:min(1080px,calc(100vw - 40px));display:flex;flex-direction:column;align-items:center;gap:28px;margin-top:56px;text-align:center}
+.bv-apr-hd{display:flex;flex-direction:column;align-items:center;gap:10px;max-width:760px}
+.bv-apr-hd h2{margin:0;font-size:34px;line-height:1.15;color:#fff;letter-spacing:-.02em}
+.bv-apr-hd p{margin:0;color:#C9D0DE;font-size:16px}
+.bv-num{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;width:100%}
+.bv-num div{display:flex;flex-direction:column;gap:4px;padding:16px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(240,207,122,.22)}
+.bv-num b{font:800 34px/1 var(--serif);background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bv-num span{font-size:13px;color:#C9D0DE}
+.bv-feat{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;width:100%;text-align:left}
+.bv-fc{display:flex;flex-direction:column;gap:8px;padding:18px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);transition:transform .25s var(--ease),border-color .25s,background .25s}
+.bv-fc:hover{transform:translateY(-3px);border-color:rgba(240,207,122,.45);background:rgba(255,255,255,.07)}
+.bv-fi{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(240,207,122,.25),rgba(200,150,47,.12));color:#F3D58A}
+.bv-fi svg{width:19px;height:19px}
+.bv-fc b{font-size:15.5px;color:#fff}
+.bv-fc span:last-child{font-size:13px;line-height:1.5;color:#B9C2D6}
+.bv-como,.bv-faq{width:100%;max-width:820px;display:flex;flex-direction:column;gap:14px}
+.bv-como h3,.bv-faq h3{margin:0;font-size:22px;color:#fff}
+.bv-como ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;text-align:left}
+.bv-como li{display:flex;flex-direction:column;gap:6px;padding:16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
+.bv-como li span{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:800 13px var(--sans);background:var(--grad-gold);color:#3E0D16}
+.bv-como li b{color:#fff;font-size:15px}.bv-como li em{font-style:normal;font-size:13px;color:#B9C2D6;line-height:1.5}
+.bv-faq{text-align:left}
+.bv-faq details{border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:0 16px}
+.bv-faq summary{cursor:pointer;list-style:none;padding:14px 0;font-weight:700;color:#fff;display:flex;justify-content:space-between;gap:12px}
+.bv-faq summary::-webkit-details-marker{display:none}
+.bv-faq summary::after{content:'+';color:#F3D58A;font-size:18px;line-height:1;transition:transform .25s}
+.bv-faq details[open] summary::after{transform:rotate(45deg)}
+.bv-faq p{margin:0 0 14px;color:#C9D0DE;font-size:14px;line-height:1.6}
+.bv-faq a{color:#F3D58A}
+.bv-cta{width:100%;max-width:820px;display:flex;flex-direction:column;align-items:center;gap:14px;padding:26px;border-radius:22px;background:radial-gradient(400px 200px at 50% 0%,rgba(240,207,122,.18),transparent 70%),rgba(255,255,255,.04);border:1px solid rgba(240,207,122,.3)}
+.bv-cta b{font:800 24px var(--serif);color:#fff}
+@media (max-width:900px){.bv-num,.bv-feat{grid-template-columns:repeat(2,minmax(0,1fr))}.bv-como ol{grid-template-columns:1fr}.bv-apr-hd h2{font-size:26px}}
+@media (max-width:520px){.bv-feat{grid-template-columns:1fr}}
+.bv-como h3,.bv-faq h3{font-family:var(--serif);font-weight:800;letter-spacing:-.01em}
 
 </style>
 </head>
@@ -1375,7 +1416,168 @@ var QUESTOES = [
   { id: 'pn19', d: 'pen', q: 'O consentimento exclui a ilicitude do facto quando:', o: ['For dado depois da prática do facto', 'Se referir a interesses jurídicos livremente disponíveis e o facto não ofender os bons costumes', 'For dado por qualquer pessoa presente', 'Se referir à vida'], a: 1,
     e: 'O consentimento exclui a ilicitude do facto quando se referir a interesses jurídicos livremente disponíveis e o facto não ofender os bons costumes (art. 38.º, n.º 1, do CP).' },
   { id: 'pn20', d: 'pen', q: 'Com que pena é punida a ofensa à integridade física simples (art. 143.º, n.º 1, do CP)?', o: ['Prisão até 1 ano ou multa', 'Prisão até 3 anos ou multa', 'Prisão de 1 a 5 anos', 'Prisão de 2 a 10 anos'], a: 1,
-    e: 'Quem ofender o corpo ou a saúde de outra pessoa é punido com pena de prisão até 3 anos ou com pena de multa (art. 143.º, n.º 1, do CP).' }
+    e: 'Quem ofender o corpo ou a saúde de outra pessoa é punido com pena de prisão até 3 anos ou com pena de multa (art. 143.º, n.º 1, do CP).' },
+  // ===== Lote 3 (novembro de 2026) =====
+  { id: 'pc23', d: 'pc', q: 'Em que artigo do CPC está consagrado o ónus de alegação das partes (factos essenciais que constituem a causa de pedir e em que se baseiam as exceções)?', o: ['411.º', '5.º', '3.º', '7.º'], a: 1,
+    e: 'Às partes cabe alegar os factos essenciais que constituem a causa de pedir e aqueles em que se baseiam as exceções invocadas (art. 5.º, n.º 1, do CPC). O juiz não está sujeito às alegações das partes no tocante à indagação, interpretação e aplicação das regras de direito (n.º 3).' },
+  { id: 'pc24', d: 'pc', q: '«Na condução e intervenção no processo, devem os magistrados, os mandatários judiciais e as próprias partes cooperar entre si.» Que princípio é este?', o: ['Princípio do dispositivo', 'Princípio da cooperação', 'Princípio da gestão processual', 'Princípio da economia processual'], a: 1,
+    e: 'Trata-se do princípio da cooperação, previsto no art. 7.º do CPC, que visa obter, com brevidade e eficácia, a justa composição do litígio.' },
+  { id: 'pc25', d: 'pc', q: 'O dever de gestão processual do juiz está previsto em que artigo do CPC?', o: ['6.º', '4.º', '8.º', '10.º'], a: 0,
+    e: 'O art. 6.º do CPC impõe ao juiz o dever de dirigir ativamente o processo e providenciar pelo seu andamento célere, promovendo as diligências necessárias e recusando o que for impertinente ou meramente dilatório.' },
+  { id: 'pc26', d: 'pc', q: 'A proibição de decisões-surpresa decorre de que princípio e de que norma do CPC?', o: ['Princípio do dispositivo, art. 5.º', 'Princípio da cooperação, art. 7.º', 'Princípio do contraditório, art. 3.º, n.º 3', 'Princípio da igualdade das partes, art. 4.º'], a: 2,
+    e: 'O juiz deve observar e fazer cumprir o princípio do contraditório, não lhe sendo lícito, salvo caso de manifesta desnecessidade, decidir questões de direito ou de facto sem que as partes tenham tido a possibilidade de sobre elas se pronunciarem (art. 3.º, n.º 3, do CPC).' },
+  { id: 'pc27', d: 'pc', q: 'O ato pelo qual se dá conhecimento ao réu de que foi proposta contra ele determinada ação e se chama ao processo para se defender designa-se:', o: ['Citação', 'Intimação', 'Notificação', 'Convocatória'], a: 0,
+    e: 'É a citação (art. 219.º, n.º 1, do CPC). A notificação serve, em geral, para chamar alguém a juízo ou dar conhecimento de um facto (art. 219.º, n.º 2).' },
+  { id: 'pc28', d: 'pc', q: 'O valor da causa representa:', o: ['O valor dos bens do réu', 'A utilidade económica imediata do pedido', 'A soma dos pedidos do autor e do réu, em qualquer caso', 'O montante das custas do processo'], a: 1,
+    e: 'A toda a causa deve ser atribuído um valor certo, expresso em moeda legal, que representa a utilidade económica imediata do pedido (art. 296.º, n.º 1, do CPC).' },
+  { id: 'pc29', d: 'pc', q: 'Em que caso é obrigatória a constituição de advogado?', o: ['Em todas as causas, qualquer que seja o valor', 'Nas causas de competência de tribunais com alçada em que seja admissível recurso ordinário', 'Apenas nos recursos para o Supremo Tribunal de Justiça', 'Apenas quando o réu seja pessoa coletiva'], a: 1,
+    e: 'É obrigatória a constituição de advogado, entre outros casos, nas causas de competência de tribunais com alçada em que seja admissível recurso ordinário, nas causas em que seja sempre admissível recurso e nos recursos e causas propostas nos tribunais superiores (art. 40.º, n.º 1, do CPC).' },
+  { id: 'pc30', d: 'pc', q: 'Os documentos que não acompanharam o articulado respetivo podem, em regra, ser apresentados:', o: ['Apenas com as alegações de recurso', 'Nunca, sob pena de preclusão', 'Até 20 dias antes da data da audiência final, com condenação em multa (salvo prova de impossibilidade)', 'Até ao encerramento da discussão em 1.ª instância, sem qualquer sanção'], a: 2,
+    e: 'Os documentos devem ser apresentados com o articulado em que se aleguem os factos correspondentes (art. 423.º, n.º 1). Se não o forem, podem sê-lo até 20 dias antes da audiência final, mas a parte é condenada em multa, exceto se provar que os não pôde oferecer com o articulado (n.º 2).' },
+  { id: 'pc31', d: 'pc', q: 'Encerrada a audiência final, em que prazo deve ser proferida a sentença?', o: ['15 dias', '60 dias', '30 dias', '10 dias'], a: 2,
+    e: 'Encerrada a audiência final, o processo é concluso ao juiz para ser proferida sentença no prazo de 30 dias (art. 607.º, n.º 1, do CPC).' },
+  { id: 'pc32', d: 'pc', q: 'A sentença em que o juiz deixe de se pronunciar sobre questões que devesse apreciar é:', o: ['Nula', 'Anulável a requerimento do Ministério Público', 'Inexistente', 'Válida, podendo apenas ser retificada'], a: 0,
+    e: 'A omissão de pronúncia é causa de nulidade da sentença (art. 615.º, n.º 1, alínea d), do CPC).' },
+  { id: 'pc33', d: 'pc', q: 'Quando se considera transitada em julgado uma decisão?', o: ['Logo que seja proferida', 'Logo que não seja suscetível de recurso ordinário ou de reclamação', 'Logo que seja notificada às partes', 'Apenas depois de decorrido o prazo de recurso extraordinário de revisão'], a: 1,
+    e: 'A decisão considera-se transitada em julgado logo que não seja suscetível de recurso ordinário ou de reclamação (art. 628.º do CPC).' },
+  { id: 'pc34', d: 'pc', q: 'Em regra, qual é o efeito do recurso de apelação?', o: ['Suspensivo', 'Meramente devolutivo', 'Suspensivo apenas para o réu', 'Depende sempre de decisão do juiz'], a: 1,
+    e: 'A apelação tem, em regra, efeito meramente devolutivo (art. 647.º, n.º 1, do CPC), salvo nos casos em que a lei lhe atribui efeito suspensivo.' },
+  { id: 'pc35', d: 'pc', q: 'Em regra, não é admitida revista do acórdão da Relação que confirme, sem voto de vencido e sem fundamentação essencialmente diferente, a decisão da 1.ª instância. Como se designa esta figura?', o: ['Reformatio in pejus', 'Revista excecional', 'Dupla conforme', 'Caso julgado formal'], a: 2,
+    e: 'É a dupla conforme (art. 671.º, n.º 3, do CPC). A revista excecional (art. 672.º) é precisamente o meio que, em certos casos, permite ultrapassar este obstáculo.' },
+  { id: 'pc36', d: 'pc', q: 'Qual destes documentos NÃO é, por si só, título executivo no CPC de 2013?', o: ['Documento particular simples assinado pelo devedor a reconhecer uma dívida', 'Sentença condenatória', 'Documento exarado ou autenticado por notário que importe constituição ou reconhecimento de obrigação', 'Título de crédito, ainda que mero quirógrafo, nas condições legais'], a: 0,
+    e: 'O art. 703.º do CPC de 2013 deixou de prever os documentos particulares simples como títulos executivos. São títulos executivos, entre outros, as sentenças condenatórias, os documentos exarados ou autenticados por notário e os títulos de crédito.' },
+  { id: 'pc37', d: 'pc', q: 'O processo comum de execução para pagamento de quantia certa pode seguir a forma:', o: ['Única', 'Ordinária, sumária ou sumaríssima', 'Ordinária ou sumária', 'Especial ou comum'], a: 2,
+    e: 'O processo comum para pagamento de quantia certa é ordinário ou sumário (art. 550.º, n.º 1, do CPC).' },
+  { id: 'pc38', d: 'pc', q: 'O credor que tenha justificado receio de perder a garantia patrimonial do seu crédito pode requerer:', o: ['O arresto', 'A restituição provisória de posse', 'O arrolamento', 'O embargo de obra nova'], a: 0,
+    e: 'É o arresto (art. 391.º, n.º 1, do CPC), que consiste numa apreensão judicial de bens.' },
+  { id: 'pp22', d: 'pp', q: 'Em regra, até quando pode o ofendido requerer a sua constituição como assistente?', o: ['Apenas no momento da apresentação da queixa', 'Até ao encerramento do inquérito', 'Até cinco dias antes do início do debate instrutório ou da audiência de julgamento', 'Até à leitura da sentença'], a: 2,
+    e: 'O assistente pode intervir em qualquer altura do processo, devendo requerer a constituição, em regra, até cinco dias antes do início do debate instrutório ou da audiência de julgamento (art. 68.º, n.º 3, alínea a), do CPP).' },
+  { id: 'pp23', d: 'pp', q: 'Em regra, o direito de queixa extingue-se no prazo de:', o: ['6 meses', '30 dias', '3 meses', '1 ano'], a: 0,
+    e: 'O direito de queixa extingue-se no prazo de seis meses a contar da data em que o titular tiver tido conhecimento do facto e dos seus autores (art. 115.º, n.º 1, do CP).' },
+  { id: 'pp24', d: 'pp', q: 'Nos crimes semipúblicos, até quando pode o queixoso desistir da queixa?', o: ['Não é possível desistir da queixa', 'Até ao fim do inquérito', 'Até à publicação da sentença da 1.ª instância, desde que não haja oposição do arguido', 'Até ao trânsito em julgado, sem limites'], a: 2,
+    e: 'O queixoso pode desistir da queixa, desde que não haja oposição do arguido, até à publicação da sentença da 1.ª instância (art. 116.º, n.º 2, do CP).' },
+  { id: 'pp25', d: 'pp', q: 'Segundo o CPP, o processo penal é, em regra:', o: ['Público, sob pena de nulidade, ressalvadas as exceções previstas na lei', 'Público apenas na fase de julgamento', 'Secreto até à acusação', 'Secreto em todas as fases'], a: 0,
+    e: 'O processo penal é, sob pena de nulidade, público, ressalvadas as exceções previstas na lei (art. 86.º, n.º 1, do CPP).' },
+  { id: 'pp26', d: 'pp', q: 'Com exceção do termo de identidade e residência, quem aplica as medidas de coação?', o: ['O assistente', 'O Ministério Público', 'O órgão de polícia criminal', 'O juiz'], a: 3,
+    e: 'As medidas de coação e de garantia patrimonial, à exceção do termo de identidade e residência, são aplicadas por despacho do juiz (art. 194.º, n.º 1, do CPP), durante o inquérito a requerimento do Ministério Público.' },
+  { id: 'pp27', d: 'pp', q: 'O arquivamento em caso de dispensa de pena (art. 280.º do CPP) pode ser decidido pelo Ministério Público:', o: ['Apenas a pedido do assistente', 'Livremente, sem intervenção de outra entidade', 'Apenas depois do julgamento', 'Com a concordância do juiz de instrução'], a: 3,
+    e: 'Se o processo for por crime relativamente ao qual se encontre expressamente prevista na lei penal a possibilidade de dispensa de pena, o MP, com a concordância do juiz de instrução, pode decidir-se pelo arquivamento, verificados os pressupostos da dispensa (art. 280.º, n.º 1, do CPP).' },
+  { id: 'pp28', d: 'pp', q: 'A suspensão provisória do processo é possível, em regra, quando o crime for punível com:', o: ['Pena de prisão não superior a 5 anos ou com sanção diferente da prisão', 'Qualquer pena', 'Pena de prisão não superior a 3 anos', 'Apenas pena de multa'], a: 0,
+    e: 'Se o crime for punível com pena de prisão não superior a 5 anos ou com sanção diferente da prisão, o MP pode, verificados os demais requisitos e com a concordância do juiz de instrução, determinar a suspensão provisória do processo (art. 281.º, n.º 1, do CPP).' },
+  { id: 'pp29', d: 'pp', q: 'Em regra, por quanto tempo pode durar a suspensão provisória do processo?', o: ['Até 6 meses', 'Até 2 anos', 'Até 1 ano', 'Até 5 anos, em qualquer caso'], a: 1,
+    e: 'A suspensão do processo pode ir até dois anos, salvo nos casos especiais previstos no art. 281.º, em que pode ir até cinco anos (art. 282.º, n.º 1, do CPP).' },
+  { id: 'pp30', d: 'pp', q: 'Em regra, compete ao tribunal coletivo julgar os crimes cuja pena máxima abstratamente aplicável seja:', o: ['Superior a 5 anos de prisão', 'Superior a 8 anos de prisão', 'Superior a 3 anos de prisão', 'Superior a 10 anos de prisão'], a: 0,
+    e: 'Compete ao tribunal coletivo julgar, entre outros, os processos respeitantes a crimes cuja pena máxima, abstratamente aplicável, seja superior a 5 anos de prisão (art. 14.º, n.º 2, alínea b), do CPP), sem prejuízo do disposto no art. 16.º, n.º 3.' },
+  { id: 'pp31', d: 'pp', q: 'Que valor têm, para formar a convicção do tribunal no julgamento, as provas que não tiverem sido produzidas ou examinadas em audiência?', o: ['Valor pleno', 'Valem se constarem do inquérito', 'Valem apenas a favor do arguido', 'Não valem, ressalvadas as exceções previstas na lei'], a: 3,
+    e: 'Não valem em julgamento, nomeadamente para o efeito de formação da convicção do tribunal, quaisquer provas que não tiverem sido produzidas ou examinadas em audiência, ressalvadas as provas contidas em atos processuais cuja leitura seja permitida (art. 355.º do CPP).' },
+  { id: 'pp32', d: 'pp', q: 'Que princípio impõe que, havendo dúvida razoável sobre os factos, o tribunal decida a favor do arguido?', o: ['Princípio da acusação', 'In dubio pro reo', 'Princípio da oportunidade', 'Princípio da oficialidade'], a: 1,
+    e: 'É o princípio in dubio pro reo, corolário da presunção de inocência consagrada no art. 32.º, n.º 2, da CRP.' },
+  { id: 'pp33', d: 'pp', q: 'Tratando-se de sentença, o prazo de recurso conta-se, em regra, a partir:', o: ['Do trânsito em julgado', 'Do respetivo depósito na secretaria', 'Da notificação ao Ministério Público', 'Da leitura em audiência'], a: 1,
+    e: 'O prazo para interposição de recurso conta-se, tratando-se de sentença, do respetivo depósito na secretaria (art. 411.º, n.º 1, alínea b), do CPP).' },
+  { id: 'pp34', d: 'pp', q: 'A providência de habeas corpus contra prisão ilegal é dirigida:', o: ['Ao Tribunal da Relação', 'Ao Tribunal Constitucional', 'Ao Supremo Tribunal de Justiça', 'Ao juiz de instrução que ordenou a prisão'], a: 2,
+    e: 'A petição de habeas corpus em virtude de prisão ilegal é dirigida ao Presidente do Supremo Tribunal de Justiça (art. 222.º do CPP). A CRP impõe que o juiz decida no prazo de oito dias (art. 31.º, n.º 3).' },
+  { id: 'pp35', d: 'pp', q: 'Segundo o art. 57.º do CPP, assume a qualidade de arguido:', o: ['Todo aquele contra quem for deduzida acusação ou requerida instrução num processo penal', 'Apenas quem for condenado', 'Qualquer pessoa ouvida no inquérito', 'Apenas quem for detido'], a: 0,
+    e: 'Assume a qualidade de arguido todo aquele contra quem for deduzida acusação ou requerida instrução num processo penal (art. 57.º, n.º 1, do CPP), sem prejuízo dos casos de constituição de arguido do art. 58.º.' },
+  { id: 'pp36', d: 'pp', q: 'Durante o inquérito, as interceções e gravações de conversações telefónicas dependem de:', o: ['Autorização do órgão de polícia criminal', 'Despacho fundamentado do juiz, a requerimento do Ministério Público', 'Ordem do Ministério Público', 'Consentimento do arguido'], a: 1,
+    e: 'Só podem ser autorizadas durante o inquérito, por despacho fundamentado do juiz de instrução e mediante requerimento do Ministério Público, quanto aos crimes do catálogo legal (art. 187.º, n.º 1, do CPP).' },
+  { id: 'pp37', d: 'pp', q: 'Em regra, a busca em casa habitada só pode ser efetuada:', o: ['Apenas durante o dia, até ao pôr do sol', 'Entre as 7 e as 21 horas', 'Entre as 8 e as 20 horas', 'A qualquer hora'], a: 1,
+    e: 'A busca em casa habitada ou numa sua dependência fechada só pode ser ordenada ou autorizada pelo juiz e efetuada entre as 7 e as 21 horas, sob pena de nulidade, salvas as exceções legais (art. 177.º, n.º 1, do CPP; art. 34.º, n.º 3, da CRP).' },
+  { id: 'cv22', d: 'civ', q: 'A capacidade das pessoas coletivas abrange os direitos e obrigações necessários ou convenientes à prossecução dos seus fins. Que princípio está aqui consagrado?', o: ['Princípio da boa fé', 'Princípio da tipicidade', 'Princípio da autonomia privada', 'Princípio da especialidade'], a: 3,
+    e: 'É o princípio da especialidade (art. 160.º, n.º 1, do CC).' },
+  { id: 'cv23', d: 'civ', q: 'O erro que atinja os motivos determinantes da vontade, quando se refira ao objeto do negócio, torna o negócio:', o: ['Inexistente', 'Ineficaz', 'Nulo', 'Anulável'], a: 3,
+    e: 'O erro sobre o objeto do negócio torna-o anulável, nos termos do art. 247.º, aplicável por remissão do art. 251.º do CC.' },
+  { id: 'cv24', d: 'civ', q: 'O declarante cuja vontade tenha sido determinada por dolo de outrem pode:', o: ['Apenas pedir indemnização', 'Pedir a declaração de nulidade do negócio', 'Anular a declaração', 'Nada, pois o dolo só releva em matéria penal'], a: 2,
+    e: 'O declarante cuja vontade tenha sido determinada por dolo pode anular a declaração (art. 254.º, n.º 1, do CC). O dolo é definido no art. 253.º.' },
+  { id: 'cv25', d: 'civ', q: 'O negócio usurário é:', o: ['Válido mas ineficaz', 'Inexistente', 'Nulo', 'Anulável'], a: 3,
+    e: 'É anulável, por usura, o negócio jurídico quando alguém, explorando a situação de necessidade, inexperiência, ligeireza, dependência, estado mental ou fraqueza de caráter de outrem, obtiver para si ou para terceiro a promessa ou a concessão de benefícios excessivos ou injustificados (art. 282.º, n.º 1, do CC).' },
+  { id: 'cv26', d: 'civ', q: 'O negócio celebrado por uma pessoa, em nome de outrem, sem poderes de representação é, em relação ao representado:', o: ['Nulo', 'Ineficaz, se não for por ele ratificado', 'Plenamente eficaz', 'Anulável'], a: 1,
+    e: 'O negócio que uma pessoa, sem poderes de representação, celebre em nome de outrem é ineficaz em relação a este, se não for por ele ratificado (art. 268.º, n.º 1, do CC).' },
+  { id: 'cv27', d: 'civ', q: 'Quando as partes subordinam a produção dos efeitos do negócio a um acontecimento futuro e incerto, estamos perante:', o: ['Um termo inicial', 'Uma condição suspensiva', 'Uma condição resolutiva', 'Um modo'], a: 1,
+    e: 'Trata-se de condição suspensiva. Se a verificação do acontecimento determinar a resolução dos efeitos, a condição é resolutiva (art. 270.º do CC).' },
+  { id: 'cv28', d: 'civ', q: 'Em regra, os prazos de caducidade:', o: ['Só correm depois de o titular ser notificado', 'Interrompem-se com qualquer comunicação ao devedor', 'Suspendem-se e interrompem-se nos mesmos termos da prescrição', 'Não se suspendem nem se interrompem, senão nos casos em que a lei o determine'], a: 3,
+    e: 'O prazo de caducidade não se suspende nem se interrompe senão nos casos em que a lei o determine (art. 328.º do CC).' },
+  { id: 'cv29', d: 'civ', q: 'Tendo a obrigação prazo certo, quando se constitui o devedor em mora?', o: ['Só depois de interpelação judicial', 'Apenas um mês após o vencimento', 'Independentemente de interpelação, com o vencimento', 'Só depois de interpelação extrajudicial'], a: 2,
+    e: 'Há mora do devedor, independentemente de interpelação, se a obrigação tiver prazo certo (art. 805.º, n.º 2, alínea a), do CC).' },
+  { id: 'cv30', d: 'civ', q: 'Nos contratos bilaterais, sem prazos diferentes para o cumprimento das prestações, cada contraente pode recusar a sua prestação enquanto o outro não efetuar a que lhe cabe. Que figura é esta?', o: ['Direito de retenção', 'Exceção de não cumprimento do contrato', 'Resolução do contrato', 'Compensação'], a: 1,
+    e: 'É a exceção de não cumprimento do contrato (art. 428.º, n.º 1, do CC).' },
+  { id: 'cv31', d: 'civ', q: 'Num contrato bilateral, tornando-se impossível a prestação por causa imputável ao devedor, o credor:', o: ['Só pode exigir o cumprimento', 'Fica obrigado a realizar a contraprestação', 'Pode resolver o contrato, independentemente do direito à indemnização', 'Só pode pedir a redução do preço'], a: 2,
+    e: 'Se a obrigação tiver por fonte um contrato bilateral, o credor, independentemente do direito à indemnização, pode resolver o contrato e, se já tiver realizado a sua prestação, exigir a restituição dela por inteiro (art. 801.º, n.º 2, do CC).' },
+  { id: 'cv32', d: 'civ', q: 'Em que artigo do CC está o princípio geral do enriquecimento sem causa?', o: ['483.º', '405.º', '473.º', '562.º'], a: 2,
+    e: 'Aquele que, sem causa justificativa, enriquecer à custa de outrem é obrigado a restituir aquilo com que injustamente se locupletou (art. 473.º, n.º 1, do CC). A obrigação tem natureza subsidiária (art. 474.º).' },
+  { id: 'cv33', d: 'civ', q: 'Nos acidentes de viação, quem responde pelos danos provenientes dos riscos próprios do veículo, mesmo sem culpa?', o: ['Apenas o proprietário registado', 'Aquele que tiver a direção efetiva do veículo e o utilizar no seu próprio interesse', 'A seguradora, exclusivamente', 'Apenas o condutor'], a: 1,
+    e: 'Responde pelo risco aquele que tiver a direção efetiva de qualquer veículo de circulação terrestre e o utilizar no seu próprio interesse, ainda que por intermédio de comissário (art. 503.º, n.º 1, do CC).' },
+  { id: 'cv34', d: 'civ', q: 'O comitente responde pelos danos que o comissário causar:', o: ['Independentemente de culpa, desde que sobre o comissário recaia também a obrigação de indemnizar e o facto tenha sido praticado no exercício da função', 'Nunca', 'Apenas se o comissário for menor', 'Apenas se tiver culpa na escolha do comissário'], a: 0,
+    e: 'É a responsabilidade do comitente, independente de culpa (art. 500.º, n.ºs 1 e 2, do CC).' },
+  { id: 'cv35', d: 'civ', q: 'Como define o Código Civil a posse?', o: ['A detenção de uma coisa por mera tolerância do proprietário', 'O poder que se manifesta quando alguém atua por forma correspondente ao exercício do direito de propriedade ou de outro direito real', 'O registo de um imóvel em nome de alguém', 'O direito de usar e fruir de uma coisa alheia'], a: 1,
+    e: 'A posse é o poder que se manifesta quando alguém atua por forma correspondente ao exercício do direito de propriedade ou de outro direito real (art. 1251.º do CC).' },
+  { id: 'cv36', d: 'civ', q: 'Não havendo registo do título nem da mera posse, a usucapião de imóveis dá-se, sendo a posse de boa fé, no termo de:', o: ['20 anos', '15 anos', '10 anos', '30 anos'], a: 1,
+    e: 'Nessa situação, a usucapião só pode dar-se no termo de 15 anos, se a posse for de boa fé, e de 20 anos, se for de má fé (art. 1296.º do CC).' },
+  { id: 'cv37', d: 'civ', q: 'Na sucessão legítima, quem integra a primeira classe de sucessíveis?', o: ['Os irmãos e seus descendentes', 'Apenas os descendentes', 'O cônjuge e os ascendentes', 'O cônjuge e os descendentes'], a: 3,
+    e: 'A primeira classe de sucessíveis é composta pelo cônjuge e pelos descendentes (art. 2133.º, n.º 1, alínea a), do CC).' },
+  { id: 'cn21', d: 'con', q: 'A partir de que idade têm os cidadãos direito de sufrágio?', o: ['16 anos', '17 anos', '21 anos', '18 anos'], a: 3,
+    e: 'Têm direito de sufrágio todos os cidadãos maiores de dezoito anos, ressalvadas as incapacidades previstas na lei geral (art. 49.º, n.º 1, da CRP).' },
+  { id: 'cn22', d: 'con', q: 'A quem compete a iniciativa da revisão constitucional?', o: ['Aos Deputados', 'Ao Tribunal Constitucional', 'Ao Presidente da República', 'Ao Governo'], a: 0,
+    e: 'A iniciativa da revisão compete aos Deputados (art. 285.º, n.º 1, da CRP).' },
+  { id: 'cn23', d: 'con', q: 'A Assembleia da República pode assumir, a todo o tempo, poderes de revisão extraordinária por maioria de:', o: ['Maioria absoluta dos Deputados em efetividade de funções', 'Dois terços dos Deputados presentes', 'Quatro quintos dos Deputados em efetividade de funções', 'Três quintos dos Deputados presentes'], a: 2,
+    e: 'A AR pode assumir em qualquer momento poderes de revisão extraordinária por maioria de quatro quintos dos Deputados em efetividade de funções (art. 284.º, n.º 2, da CRP).' },
+  { id: 'cn24', d: 'con', q: 'Qual destas entidades NÃO é órgão de soberania?', o: ['A Assembleia da República', 'Os Tribunais', 'O Governo', 'O Provedor de Justiça'], a: 3,
+    e: 'São órgãos de soberania o Presidente da República, a Assembleia da República, o Governo e os Tribunais (art. 110.º, n.º 1, da CRP). O Provedor de Justiça é um órgão independente (art. 23.º).' },
+  { id: 'cn25', d: 'con', q: 'Qual destas matérias é da reserva absoluta de competência legislativa da Assembleia da República?', o: ['Bases do sistema de ensino', 'Estado e capacidade das pessoas', 'Definição dos crimes, penas e medidas de segurança', 'Eleições dos titulares dos órgãos de soberania'], a: 3,
+    e: 'As eleições dos titulares dos órgãos de soberania são da reserva absoluta (art. 164.º, alínea a), da CRP). As restantes opções pertencem à reserva relativa (art. 165.º).' },
+  { id: 'cn26', d: 'con', q: 'A definição dos crimes, penas, medidas de segurança e respetivos pressupostos integra:', o: ['A reserva absoluta da AR', 'A competência exclusiva do Governo', 'A competência concorrente das regiões autónomas', 'A reserva relativa da AR'], a: 3,
+    e: 'Integra a reserva relativa de competência legislativa da AR, salvo autorização ao Governo (art. 165.º, n.º 1, alínea c), da CRP).' },
+  { id: 'cn27', d: 'con', q: 'As leis de autorização legislativa devem definir:', o: ['O texto integral do futuro decreto-lei', 'Apenas o objeto', 'Apenas a duração', 'O objeto, o sentido, a extensão e a duração da autorização'], a: 3,
+    e: 'As leis de autorização legislativa devem definir o objeto, o sentido, a extensão e a duração da autorização, a qual pode ser prorrogada (art. 165.º, n.º 2, da CRP).' },
+  { id: 'cn28', d: 'con', q: 'Perante quem é responsável o Governo?', o: ['Perante o Tribunal Constitucional', 'Apenas perante a Assembleia da República', 'Perante o Presidente da República e a Assembleia da República', 'Apenas perante o Presidente da República'], a: 2,
+    e: 'O Governo é responsável perante o Presidente da República e a Assembleia da República (art. 190.º da CRP).' },
+  { id: 'cn29', d: 'con', q: 'Implica a demissão do Governo a aprovação de uma moção de censura por:', o: ['Maioria simples dos Deputados presentes', 'Maioria absoluta dos Deputados em efetividade de funções', 'Qualquer grupo parlamentar', 'Dois terços dos Deputados presentes'], a: 1,
+    e: 'Implica a demissão do Governo a aprovação de uma moção de censura por maioria absoluta dos Deputados em efetividade de funções (art. 195.º, n.º 1, alínea f), da CRP).' },
+  { id: 'cn30', d: 'con', q: 'Em que artigo da CRP está consagrado o habeas corpus?', o: ['31.º', '20.º', '32.º', '27.º'], a: 0,
+    e: 'Haverá habeas corpus contra o abuso de poder, por virtude de prisão ou detenção ilegal (art. 31.º, n.º 1, da CRP). O juiz decide no prazo de oito dias (n.º 3).' },
+  { id: 'cn31', d: 'con', q: 'A liberdade de expressão e informação está consagrada em que artigo da CRP?', o: ['35.º', '45.º', '38.º', '37.º'], a: 3,
+    e: 'O art. 37.º da CRP consagra a liberdade de expressão e informação. O art. 38.º trata da liberdade de imprensa e o art. 45.º do direito de reunião e de manifestação.' },
+  { id: 'cn32', d: 'con', q: 'Qual destas entidades NÃO pode requerer a fiscalização abstrata sucessiva da constitucionalidade?', o: ['O Procurador-Geral da República', 'Qualquer cidadão eleitor', 'Um décimo dos Deputados à Assembleia da República', 'O Provedor de Justiça'], a: 1,
+    e: 'A legitimidade consta do art. 281.º, n.º 2, da CRP e inclui, entre outros, o Presidente da República, o Presidente da AR, o Primeiro-Ministro, o Provedor de Justiça, o PGR e um décimo dos Deputados. Os cidadãos não têm legitimidade.' },
+  { id: 'cn33', d: 'con', q: 'Em que artigo da CRP está prevista a inconstitucionalidade por omissão?', o: ['281.º', '283.º', '288.º', '277.º'], a: 1,
+    e: 'A inconstitucionalidade por omissão está prevista no art. 283.º da CRP, a requerimento do Presidente da República, do Provedor de Justiça ou, com fundamento em violação de direitos das regiões autónomas, dos presidentes das assembleias legislativas regionais.' },
+  { id: 'cn34', d: 'con', q: 'Em regra, a declaração de inconstitucionalidade com força obrigatória geral produz efeitos:', o: ['Apenas para o futuro, a partir da publicação', 'Desde a entrada em vigor da norma declarada inconstitucional, determinando a repristinação das normas que ela haja revogado', 'Apenas no caso concreto', 'Só após confirmação pela Assembleia da República'], a: 1,
+    e: 'A declaração produz efeitos desde a entrada em vigor da norma declarada inconstitucional e determina a repristinação das normas que ela, eventualmente, haja revogado (art. 282.º, n.º 1, da CRP), com as ressalvas dos n.ºs 3 e 4.' },
+  { id: 'cn35', d: 'con', q: 'Em que artigo da CRP se afirma que a República Portuguesa é um Estado de direito democrático?', o: ['9.º', '3.º', '2.º', '1.º'], a: 2,
+    e: 'O art. 2.º da CRP define a República Portuguesa como um Estado de direito democrático. O art. 1.º refere-se à República soberana baseada na dignidade da pessoa humana.' },
+  { id: 'cn36', d: 'con', q: 'O direito de resistir a qualquer ordem que ofenda os direitos, liberdades e garantias está previsto em que artigo da CRP?', o: ['22.º', '21.º', '18.º', '20.º'], a: 1,
+    e: 'É o direito de resistência (art. 21.º da CRP). O art. 22.º trata da responsabilidade das entidades públicas.' },
+  { id: 'pn21', d: 'pen', q: 'A comissão de um resultado por omissão só é punível quando sobre o omitente recair:', o: ['Um dever contratual, ainda que vencido', 'Qualquer relação de parentesco com a vítima', 'Um dever jurídico que pessoalmente o obrigue a evitar esse resultado', 'Um mero dever moral de agir'], a: 2,
+    e: 'A comissão de um resultado por omissão só é punível quando sobre o omitente recair um dever jurídico que pessoalmente o obrigue a evitar esse resultado (art. 10.º, n.º 2, do CP).' },
+  { id: 'pn22', d: 'pen', q: 'O erro sobre elementos de facto ou de direito de um tipo de crime:', o: ['Exclui sempre a culpa e a negligência', 'É irrelevante', 'Agrava a pena', 'Exclui o dolo'], a: 3,
+    e: 'O erro sobre elementos de facto ou de direito de um tipo de crime exclui o dolo (art. 16.º, n.º 1, do CP), ficando ressalvada a punibilidade da negligência nos termos gerais (n.º 3).' },
+  { id: 'pn23', d: 'pen', q: 'Age sem culpa quem atuar sem consciência da ilicitude do facto, se:', o: ['O facto for punível com multa', 'O erro lhe não for censurável', 'O erro for censurável', 'Tiver menos de 21 anos'], a: 1,
+    e: 'Age sem culpa quem atuar sem consciência da ilicitude do facto, se o erro lhe não for censurável (art. 17.º, n.º 1, do CP). Se for censurável, o agente é punido com a pena do crime doloso, que pode ser especialmente atenuada (n.º 2).' },
+  { id: 'pn24', d: 'pen', q: 'O direito de necessidade (causa de exclusão da ilicitude) está previsto em que artigo do CP?', o: ['32.º', '34.º', '35.º', '31.º'], a: 1,
+    e: 'O direito de necessidade está no art. 34.º do CP. O art. 35.º prevê o estado de necessidade desculpante, que exclui a culpa.' },
+  { id: 'pn25', d: 'pen', q: 'É punível como coautor quem:', o: ['Presta auxílio material à prática do facto', 'Apenas planeia o crime sem participar', 'Toma parte direta na execução do facto, por acordo ou juntamente com outro ou outros', 'Tem conhecimento do crime e não o denuncia'], a: 2,
+    e: 'É punível como autor quem toma parte direta na execução do facto, por acordo ou juntamente com outro ou outros (art. 26.º do CP). O auxílio material ou moral corresponde à cumplicidade (art. 27.º).' },
+  { id: 'pn26', d: 'pen', q: 'Quem, dolosamente, determinar outra pessoa à prática do facto, desde que haja execução ou começo de execução, é punível como:', o: ['Autor (instigador)', 'Encobridor', 'Não é punível', 'Cúmplice'], a: 0,
+    e: 'O instigador é punível como autor (art. 26.º do CP), desde que haja execução ou começo de execução.' },
+  { id: 'pn27', d: 'pen', q: 'Em regra, os atos preparatórios:', o: ['São punidos como tentativa', 'São punidos com multa', 'Não são puníveis, salvo disposição em contrário', 'São sempre puníveis'], a: 2,
+    e: 'Os atos preparatórios não são puníveis, salvo disposição em contrário (art. 21.º do CP).' },
+  { id: 'pn28', d: 'pen', q: 'A pena de multa é fixada em dias, em regra, com o limite mínimo de 10 dias e o máximo de:', o: ['240 dias', '360 dias', '120 dias', '900 dias'], a: 1,
+    e: 'A pena de multa é fixada em dias, sendo, em regra, o limite mínimo de 10 dias e o máximo de 360 dias (art. 47.º, n.º 1, do CP). Cada dia corresponde a uma quantia entre 5 € e 500 € (n.º 2).' },
+  { id: 'pn29', d: 'pen', q: 'Em regra, a liberdade condicional pode ser concedida quando se encontrar cumprida:', o: ['Metade da pena e no mínimo seis meses', 'Dois terços da pena, em qualquer caso', 'Cinco sextos da pena', 'Um terço da pena e no mínimo três meses'], a: 0,
+    e: 'O tribunal coloca o condenado em liberdade condicional quando se encontrar cumprida metade da pena e no mínimo seis meses, verificados os requisitos do art. 61.º, n.º 2, do CP.' },
+  { id: 'pn30', d: 'pen', q: 'No concurso de crimes, a pena única aplicável tem como limite máximo a soma das penas concretamente aplicadas, não podendo ultrapassar:', o: ['20 anos de prisão', '25 anos de prisão', '16 anos de prisão', '30 anos de prisão'], a: 1,
+    e: 'A pena aplicável tem como limite máximo a soma das penas concretamente aplicadas aos vários crimes, não podendo ultrapassar 25 anos de prisão (art. 77.º, n.º 2, do CP).' },
+  { id: 'pn31', d: 'pen', q: 'Com que pena é punido o homicídio qualificado (art. 132.º do CP)?', o: ['10 a 20 anos de prisão', '16 a 25 anos de prisão', '8 a 16 anos de prisão', '12 a 25 anos de prisão'], a: 3,
+    e: 'O homicídio qualificado é punido com pena de prisão de 12 a 25 anos (art. 132.º, n.º 1, do CP).' },
+  { id: 'pn32', d: 'pen', q: 'Com que pena é punido o roubo simples (art. 210.º, n.º 1, do CP)?', o: ['Prisão de 1 a 8 anos', 'Prisão até 3 anos ou multa', 'Prisão de 3 a 15 anos', 'Prisão de 2 a 10 anos'], a: 0,
+    e: 'O roubo simples é punido com pena de prisão de 1 a 8 anos (art. 210.º, n.º 1, do CP).' },
+  { id: 'pn33', d: 'pen', q: 'Com que pena é punida a burla simples (art. 217.º, n.º 1, do CP)?', o: ['Apenas multa', 'Prisão até 5 anos', 'Prisão de 1 a 5 anos', 'Prisão até 3 anos ou multa'], a: 3,
+    e: 'A burla simples é punida com pena de prisão até 3 anos ou com pena de multa (art. 217.º, n.º 1, do CP).' },
+  { id: 'pn34', d: 'pen', q: 'O crime de violência doméstica (art. 152.º do CP) tem natureza:', o: ['Semipública', 'Pública', 'Contraordenacional', 'Particular'], a: 1,
+    e: 'A violência doméstica é um crime público: o procedimento criminal não depende de queixa nem de acusação particular.' },
+  { id: 'pn35', d: 'pen', q: 'Qual é a diferença entre difamação e injúria?', o: ['A injúria só existe entre funcionários', 'Na injúria, as imputações ou palavras são dirigidas diretamente ao ofendido; na difamação, são dirigidas a terceiros', 'Não há diferença', 'A difamação é sempre escrita e a injúria sempre oral'], a: 1,
+    e: 'Na difamação o agente dirige-se a terceiro (art. 180.º do CP); na injúria dirige-se diretamente ao ofendido (art. 181.º do CP).' },
+  { id: 'pn36', d: 'pen', q: 'O crime continuado pressupõe a realização plúrima do mesmo tipo de crime, executada de forma essencialmente homogénea e:', o: ['Com intervalos superiores a um ano', 'No quadro da solicitação de uma mesma situação exterior que diminua consideravelmente a culpa do agente', 'Apenas em crimes negligentes', 'Contra vítimas diferentes, necessariamente'], a: 1,
+    e: 'É o que dispõe o art. 30.º, n.º 2, do CP. A figura não abrange os crimes que protejam bens eminentemente pessoais (n.º 3).' },
 ];
 
 var CASOS = [
@@ -1394,7 +1596,31 @@ var CASOS = [
   { id: 'caso-con1', d: 'con', titulo: 'Recusa de aplicação de norma',
     enunciado: 'Num processo cível, o juiz recusou aplicar uma norma de um decreto-lei por entender que viola o princípio da igualdade e decidiu a causa sem a aplicar. A parte vencida pretende reagir.',
     perguntas: ['Que tipo de fiscalização da constitucionalidade está em causa?', 'Quem pode recorrer e para que tribunal?', 'O recurso é obrigatório para alguém?'],
-    topicos: ['Fiscalização concreta da constitucionalidade (art. 280.º da CRP; Lei do Tribunal Constitucional).', 'Recurso para o Tribunal Constitucional de decisão que recusa a aplicação de norma com fundamento em inconstitucionalidade (art. 280.º, n.º 1, al. a), da CRP).', 'O recurso é obrigatório para o Ministério Público quando a norma constar de convenção internacional, ato legislativo ou decreto regulamentar (art. 280.º, n.º 3). Um decreto-lei é ato legislativo.', 'Parâmetro invocado: princípio da igualdade (art. 13.º da CRP).'] }
+    topicos: ['Fiscalização concreta da constitucionalidade (art. 280.º da CRP; Lei do Tribunal Constitucional).', 'Recurso para o Tribunal Constitucional de decisão que recusa a aplicação de norma com fundamento em inconstitucionalidade (art. 280.º, n.º 1, al. a), da CRP).', 'O recurso é obrigatório para o Ministério Público quando a norma constar de convenção internacional, ato legislativo ou decreto regulamentar (art. 280.º, n.º 3). Um decreto-lei é ato legislativo.', 'Parâmetro invocado: princípio da igualdade (art. 13.º da CRP).'] },
+  { id: 'caso-pc2', d: 'pc', titulo: 'O devedor que vende tudo',
+    enunciado: 'C é credor de D na quantia de 35.000 €, titulada por sentença ainda não transitada em julgado. C soube por vizinhos que D colocou à venda a única casa de que é proprietário e anunciou que vai emigrar no próximo mês. C quer impedir que o património de D desapareça antes de conseguir cobrar o crédito.',
+    perguntas: ['Que providência cautelar deve C requerer?', 'Que requisitos tem de demonstrar?', 'D é ouvido antes de a providência ser decretada?', 'O que acontece à providência se C não promover a ação ou a execução?'],
+    topicos: ['Providência adequada: arresto, apreensão judicial de bens do devedor (art. 391.º do CPC).', 'Requisitos: probabilidade da existência do crédito e justificado receio de perda da garantia patrimonial (arts. 391.º, n.º 1, e 392.º, n.º 1). O requerente deduz os factos que os demonstram.', 'O arresto é decretado sem audiência da parte contrária (art. 393.º, n.º 1), para não frustrar o seu fim; o requerido pode depois opor-se (art. 372.º).', 'Natureza instrumental: o procedimento caduca, entre outros casos, se o requerente não propuser a ação da qual a providência depende no prazo de 30 dias (art. 373.º, n.º 1, alínea a)).'] },
+  { id: 'caso-pp2', d: 'pp', titulo: 'A queixa retirada',
+    enunciado: 'E desferiu uma bofetada em F durante uma discussão num café, causando-lhe dores e uma pequena escoriação. Quatro meses depois, F apresentou queixa. Já na fase de julgamento, antes da sentença da 1.ª instância, F e E reconciliaram-se e F declarou que desistia da queixa.',
+    perguntas: ['Que crime está em causa e qual a sua natureza?', 'A queixa foi apresentada em tempo?', 'A desistência é admissível? Em que condições?', 'Poderia o Ministério Público ter iniciado o processo sem queixa?'],
+    topicos: ['Ofensa à integridade física simples (art. 143.º, n.º 1, do CP), crime semipúblico: o procedimento depende de queixa (art. 143.º, n.º 2).', 'Prazo de queixa: seis meses a contar do conhecimento do facto e dos autores (art. 115.º, n.º 1, do CP); quatro meses está dentro do prazo.', 'Desistência admissível até à publicação da sentença da 1.ª instância, desde que o arguido não se oponha (art. 116.º, n.º 2, do CP; art. 51.º do CPP).', 'Sem queixa, o MP não tem legitimidade para promover o processo nos crimes semipúblicos (art. 49.º do CPP).'] },
+  { id: 'caso-civ2', d: 'civ', titulo: 'A casa vendida num papel',
+    enunciado: 'G vendeu a H um apartamento por 150.000 €, num documento escrito e assinado por ambos, sem intervenção de notário, advogado ou outra entidade autenticadora. H pagou o preço e passou a habitar o apartamento. Dois anos depois, G pretende reaver o imóvel, alegando que o contrato não é válido.',
+    perguntas: ['Que forma exige a lei para a compra e venda de imóveis?', 'Qual é a consequência da falta de forma?', 'Pode G invocar o vício dois anos depois?', 'Que efeitos tem a declaração do vício quanto ao preço e ao imóvel?'],
+    topicos: ['A compra e venda de bens imóveis só é válida se for celebrada por escritura pública ou por documento particular autenticado (art. 875.º do CC).', 'A inobservância da forma legal gera nulidade (art. 220.º do CC).', 'A nulidade é invocável a todo o tempo por qualquer interessado e pode ser declarada oficiosamente (art. 286.º do CC); discutir eventual abuso do direito (art. 334.º) perante as circunstâncias do caso.', 'Efeito retroativo: deve ser restituído tudo o que tiver sido prestado (art. 289.º, n.º 1), ou seja, o apartamento a G e o preço a H.'] },
+  { id: 'caso-con2', d: 'con', titulo: 'A lei das manifestações',
+    enunciado: 'Um decreto-lei do Governo, aprovado sem lei de autorização, passou a exigir autorização prévia do município para qualquer manifestação em lugar público e proibiu manifestações a menos de 500 metros de edifícios públicos.',
+    perguntas: ['Que direito fundamental está em causa?', 'O Governo tinha competência para aprovar este diploma?', 'As restrições são compatíveis com a CRP?', 'Como pode ser fiscalizada a constitucionalidade do diploma?'],
+    topicos: ['Direito de reunião e de manifestação: reunião pacífica e sem armas, mesmo em lugares abertos ao público, sem necessidade de autorização (art. 45.º da CRP).', 'Direitos, liberdades e garantias são reserva relativa da AR (art. 165.º, n.º 1, alínea b)): sem lei de autorização, há inconstitucionalidade orgânica.', 'Restrições: só nos casos previstos na Constituição, limitadas ao necessário, gerais e abstratas e sem diminuir o conteúdo essencial (art. 18.º, n.ºs 2 e 3); a exigência de autorização contraria diretamente o art. 45.º, n.º 1, e a distância de 500 metros é desproporcionada.', 'Fiscalização: concreta, por qualquer tribunal no caso (arts. 204.º e 280.º), e abstrata sucessiva, a pedido das entidades do art. 281.º, n.º 2.'] },
+  { id: 'caso-pen2', d: 'pen', titulo: 'O assalto à noite',
+    enunciado: 'Às 2 horas da manhã, I entrou na garagem da casa de J armado com uma barra de ferro. J acordou com o barulho, desceu e, ao ver I avançar na sua direção com a barra levantada, atingiu-o com um taco de basebol, causando-lhe uma fratura no braço. Já com I caído e desarmado, J desferiu-lhe ainda vários golpes nas pernas.',
+    perguntas: ['O primeiro golpe de J está justificado?', 'Quais são os requisitos da legítima defesa?', 'Como qualificar os golpes desferidos depois de I estar caído e desarmado?', 'Pode J invocar o excesso de legítima defesa quanto a esses golpes?'],
+    topicos: ['Legítima defesa: facto praticado como meio necessário para repelir agressão atual e ilícita de interesses juridicamente protegidos do agente ou de terceiro (art. 32.º do CP).', 'Primeiro golpe: agressão atual e ilícita, meio necessário, animus defendendi: facto justificado (art. 31.º, n.º 2, alínea a)).', 'Golpes posteriores: a agressão já tinha cessado; sem atualidade não há legítima defesa, nem sequer excesso: há ofensa à integridade física ilícita (art. 143.º ou seguintes).', 'Excesso de legítima defesa (art. 33.º) pressupõe uma situação de legítima defesa em curso com excesso dos meios; discutir a atenuação e o caso de perturbação, medo ou susto não censuráveis.'] },
+  { id: 'caso-civ3', d: 'civ', titulo: 'O acidente com a carrinha da empresa',
+    enunciado: 'K, motorista da empresa L, conduzia a carrinha da empresa em serviço quando embateu no carro de M, que estava parado num semáforo vermelho. M sofreu ferimentos, esteve três meses sem trabalhar e ficou com o carro danificado. A carrinha tinha seguro obrigatório válido.',
+    perguntas: ['Quem pode M responsabilizar e a que título?', 'Há presunção de culpa do condutor?', 'Que danos podem ser indemnizados?', 'Em que prazo deve M exercer o seu direito?'],
+    topicos: ['Responsabilidade por facto ilícito do condutor (art. 483.º) e responsabilidade da empresa como comitente (art. 500.º) e pelo risco, como detentora da direção efetiva do veículo (art. 503.º, n.º 1).', 'Quem conduz por conta de outrem responde pelos danos que causar, salvo se provar que não houve culpa sua (presunção de culpa do art. 503.º, n.º 3, primeira parte).', 'Danos patrimoniais (reparação do carro, salários perdidos) e danos não patrimoniais que, pela gravidade, mereçam a tutela do direito (art. 496.º); reconstituição natural ou indemnização em dinheiro (arts. 562.º e 566.º). A ação pode ser dirigida à seguradora, nos termos do regime do seguro obrigatório.', 'Prescrição: três anos a contar do conhecimento do direito; se o facto constituir crime com prazo mais longo, aplica-se este (art. 498.º, n.ºs 1 e 3).'] }
 ];
 
 var DRE = 'https://diariodarepublica.pt/dr/home';
@@ -5508,6 +5734,44 @@ function bvArranque(h0) {
 A['bv-cont'] = function () { go(S.bvVolta && S.bvVolta !== 'bemvindo' ? S.bvVolta : 'painel'); };
 /* Termos: aceites uma única vez, no formulário de criação de conta (sem janela posterior) */
 verificarTermos = function () { };
+
+/* ----- apresentação do LEXDESK (abaixo das fases) ----- */
+var BV_FEAT = [
+  ['check', 'Simulador de exames', 'Questões de escolha múltipla por cadeira, com correção, explicação e o artigo de referência.'],
+  ['scale', 'Casos práticos', 'Hipóteses com perguntas e tópicos de correção, como nos exames.'],
+  ['hour', 'Pergunta do dia', 'Uma pergunta por dia, igual para todos, com ranking e sequência de dias.'],
+  ['chat', 'Comunidade', 'Dúvidas com respostas, chat por áreas do Direito, mensagens e salas de estudo com jogos.'],
+  ['users', 'Mentoria e explicações', 'Encontre explicadores ou partilhe o que sabe com outros estudantes.'],
+  ['cal', 'Organização académica', 'Calendário de avaliações, horário, cadeiras e apontamentos partilhados.'],
+  ['file', 'Ferramentas profissionais', 'Contador de prazos processuais, agenda de diligências, minutas e treino para a Ordem.'],
+  ['badge', 'Reputação', 'Ganhe pontos ao ajudar colegas e partilhar materiais e suba de Novato a Embaixador.']
+];
+var BV_FAQ = [
+  ['O LEXDESK é gratuito?', 'Sim. Criar conta e usar as funcionalidades atuais do LEXDESK é gratuito.'],
+  ['Preciso de conta para experimentar?', 'Não. Pode continuar sem conta e explorar o site. Com conta, o seu progresso fica guardado e passa a participar na comunidade, na pergunta do dia e no ranking.'],
+  ['Os conteúdos substituem a legislação oficial?', 'Não. São um apoio ao estudo. Confirme sempre a redação em vigor no Diário da República antes de a citar ou aplicar.'],
+  ['O que acontece aos meus dados?', 'São tratados nos termos do RGPD e da nossa <a href="#privacidade">Política de Privacidade</a>. Pode descarregar os seus dados ou eliminar a conta a qualquer momento.'],
+  ['Funciona no telemóvel?', 'Sim. O LEXDESK funciona diretamente no navegador, no computador, no tablet e no telemóvel.']
+];
+function bvApresentacao() {
+  var n = [[QUESTOES.length, 'questões com explicação e base legal'], [CASOS.length, 'casos práticos com tópicos de correção'], [DIPLOMAS.length, 'diplomas essenciais na biblioteca'], [typeof PLANOS !== 'undefined' ? Object.keys(PLANOS).length : 0, 'planos de estudos de faculdades']];
+  return '<section class="bv-apr" aria-labelledby="bv-apr-h">' +
+    '<div class="bv-apr-hd"><span class="bv-k">Porquê o LEXDESK</span><h2 id="bv-apr-h">Tudo o que precisa para estudar e praticar Direito, num só lugar.</h2><p>Do 1.º ano ao exercício da profissão: estudo, ferramentas e uma comunidade feita por e para juristas.</p></div>' +
+    '<div class="bv-num">' + n.filter(function (x) { return x[0]; }).map(function (x) { return '<div><b>' + x[0] + '</b><span>' + x[1] + '</span></div>'; }).join('') + '</div>' +
+    '<div class="bv-feat">' + BV_FEAT.map(function (f, i) { return '<div class="bv-fc" style="--i:' + i + '"><span class="bv-fi">' + (I[f[0]] || '') + '</span><b>' + f[1] + '</b><span>' + f[2] + '</span></div>'; }).join('') + '</div>' +
+    '<div class="bv-como"><h3>Como funciona</h3><ol>' + [['Escolha a sua fase', 'Licenciatura, mestrado, estágio ou profissão: o painel adapta-se a si.'], ['Crie a sua conta grátis', 'Guarde o progresso e entre na comunidade.'], ['Estude, pratique e contribua', 'Simule exames, resolva casos, ajude colegas e ganhe reputação.']].map(function (p, i) { return '<li><span>' + (i + 1) + '</span><b>' + p[0] + '</b><em>' + p[1] + '</em></li>'; }).join('') + '</ol></div>' +
+    '<div class="bv-faq"><h3>Perguntas frequentes</h3>' + BV_FAQ.map(function (f) { return '<details><summary>' + f[0] + '</summary><p>' + f[1] + '</p></details>'; }).join('') + '</div>' +
+    '<div class="bv-cta"><b>Pronto para começar?</b><div class="row" style="justify-content:center;gap:10px"><button class="btn gold" data-a="bv-topo">Escolher a minha fase ↑</button>' + (sessaoAtiva() ? '' : '<button class="btn ghost" data-a="bv-conta" data-id="registo">Criar conta grátis</button>') + '</div></div>' +
+    '</section>';
+}
+A['bv-topo'] = function () { window.scrollTo({ top: 0, behavior: 'smooth' }); };
+var _vBemvindoAPR = vBemvindo;
+vBemvindo = function () {
+  var h = _vBemvindoAPR();
+  if (S.bvModo === 'ola') return h;
+  var i = h.indexOf('<div class="bv-f">');
+  return i < 0 ? h : h.slice(0, i) + bvApresentacao() + h.slice(i);
+};
 
 /* ---------- PERGUNTA DO DIA com ranking individual ---------- */
 var PD = { carregado: false, a_carregar: false, estado: 'idle', d: null, seq: 0, t0: 0, rk: { periodo: 'hoje', lista: null } };
