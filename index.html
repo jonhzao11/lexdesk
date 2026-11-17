@@ -1905,6 +1905,18 @@ var DIPLOMAS = [
   { id: 'civa', sigla: 'CIVA', nome: 'Código do Imposto sobre o Valor Acrescentado', fonte: 'Decreto-Lei n.º 394-B/84, de 26 de dezembro (republicado pelo Decreto-Lei n.º 102/2008)', area: 'Fiscal e tributário',
     url: 'https://diariodarepublica.pt/dr/legislacao-consolidada/decreto-lei/2008-34500675',
     arts: [['1.º', 'Incidência objectiva'], ['2.º', 'Incidência subjectiva'], ['9.º', 'Isenções nas operações internas'], ['16.º', 'Valor tributável nas operações internas'], ['18.º', 'Taxas do imposto'], ['19.º', 'Direito à dedução']] },
+  { id: 'rgit', sigla: 'RGIT', nome: 'Regime Geral das Infrações Tributárias', fonte: 'Lei n.º 15/2001, de 5 de junho (anexo)', area: 'Fiscal e tributário',
+    url: 'https://diariodarepublica.pt/dr/legislacao-consolidada/lei/2001-34474475',
+    arts: [['2.º', 'Conceito e espécies de infracções tributárias'], ['12.º', 'Penas aplicáveis aos crimes tributários'], ['23.º', 'Classificação das contra-ordenações'], ['87.º', 'Burla tributária'], ['103.º', 'Fraude'], ['104.º', 'Fraude qualificada'], ['105.º', 'Abuso de confiança'], ['107.º', 'Abuso de confiança contra a segurança social'], ['114.º', 'Falta de entrega da prestação tributária']] },
+  { id: 'cis', sigla: 'CIS', nome: 'Código do Imposto do Selo', fonte: 'Lei n.º 150/99, de 11 de setembro (anexo I)', area: 'Fiscal e tributário',
+    url: 'https://diariodarepublica.pt/dr/legislacao-consolidada/lei/1999-34540175',
+    arts: [['1.º', 'Incidência objectiva'], ['2.º', 'Incidência subjectiva'], ['5.º', 'Nascimento da obrigação tributária'], ['22.º', 'Taxas']] },
+  { id: 'cimi', sigla: 'CIMI', nome: 'Código do Imposto Municipal sobre Imóveis', fonte: 'Decreto-Lei n.º 287/2003, de 12 de novembro (anexo I)', area: 'Fiscal e tributário',
+    url: 'https://diariodarepublica.pt/dr/legislacao-consolidada/decreto-lei/2003-34499575',
+    arts: [['1.º', 'Incidência'], ['2.º', 'Conceito de prédio'], ['6.º', 'Espécies de prédios urbanos'], ['8.º', 'Sujeito passivo'], ['38.º', 'Determinação do valor patrimonial tributário'], ['112.º', 'Taxas']] },
+  { id: 'cimt', sigla: 'CIMT', nome: 'Código do Imposto Municipal sobre as Transmissões Onerosas de Imóveis', fonte: 'Decreto-Lei n.º 287/2003, de 12 de novembro (anexo II)', area: 'Fiscal e tributário',
+    url: 'https://diariodarepublica.pt/dr/legislacao-consolidada/decreto-lei/2003-34499575',
+    arts: [['1.º', 'Incidência geral'], ['2.º', 'Incidência objectiva e territorial'], ['5.º', 'Nascimento da obrigação tributária'], ['12.º', 'Valor tributável'], ['17.º', 'Taxas']] },
   { id: 'losj', sigla: 'LOSJ', nome: 'Lei da Organização do Sistema Judiciário', fonte: 'Lei n.º 62/2013, de 26 de agosto', area: 'Organização judiciária',
     url: 'https://diariodarepublica.pt/dr/detalhe/lei/62-2013-499514',
     arts: [['28.º', 'Férias judiciais']] },
@@ -7451,7 +7463,7 @@ function auDur(s) { return (s.fim || Date.now()) - s.ini; }
 function auGrava() { return !!(AU.rec && AU.rec.state && AU.rec.state !== 'inactive'); }
 function auTmAttr(t) { return auGrava() ? ' data-tm="' + auT(t) + '"' : ''; }
 function auAgoraT(s) { return s.fim ? auDur(s) : Date.now() - s.ini; }
-var AU_ART = /\bart(?:igo)?s?\.?\s*(\d+)\s*\.?\s*º?(?:\s*-\s*([A-Z]))?(?:,?\s*n\.?\s?º\s*\d+)?(?:,?\s*al(?:ínea)?\.?\s*[a-z]\))?(?:,?\s*(?:do|da|dos|das)?\s*(CRP|CCom|CPPT|CPTA|CPC|CPP|CPT|CPA|CP|CC|CT|CSC|CIRE|CIRS|CIRC|CIVA|ETAF|LGT|RGPD|EOA|LOSJ|RCP|LJP)(?![A-Za-z]))?/gi;
+var AU_ART = /\bart(?:igo)?s?\.?\s*(\d+)\s*\.?\s*º?(?:\s*-\s*([A-Z]))?(?:,?\s*n\.?\s?º\s*\d+)?(?:,?\s*al(?:ínea)?\.?\s*[a-z]\))?(?:,?\s*(?:do|da|dos|das)?\s*(CRP|CCom|CPPT|CPTA|CPC|CPP|CPT|CPA|CP|CC|CT|CSC|CIRE|CIRS|CIRC|CIVA|CIMI|CIMT|CIS|RGIT|ETAF|LGT|RGPD|EOA|LOSJ|RCP|LJP)(?![A-Za-z]))?/gi;
 function auArtigos(txt, dipPadrao) {
   var out = [], m; AU_ART.lastIndex = 0;
   while ((m = AU_ART.exec(txt || ''))) { var sig = (m[3] || dipPadrao || '').toUpperCase(), a = { n: m[1] + (m[2] ? '-' + m[2].toUpperCase() : ''), sig: sig }; a.k = a.n + '|' + sig; if (!out.some(function (x) { return x.k === a.k; })) out.push(a); }
@@ -7845,10 +7857,10 @@ function leiTextoHtml(t) {
 function leiDipInfo(dip) { return DIPLOMAS.filter(function (d) { return d.id === dip; })[0] || { id: dip, sigla: dip.toUpperCase(), nome: dip, url: '#' }; }
 function leiFonteNota(dip) { var m = LEI.meta && LEI.meta[dip]; if (m && m.fonte && m.fonte.indexOf('diariodarepublica.pt') < 0) return 'Versão consolidada não oficial (o Diário da República não publica versão consolidada deste código)' + (m.extraido_em ? ', obtida a ' + new Date(m.extraido_em).toLocaleDateString('pt-PT') : '') + '. Confirme sempre no texto oficial.'; return 'Versão consolidada do Diário da República' + (m && m.extraido_em ? ', obtida a ' + new Date(m.extraido_em).toLocaleDateString('pt-PT') : '') + '. Confirme alterações posteriores no texto oficial.'; }
 /* ligações automáticas nas explicações: «art. 569.º do CPC» abre o artigo */
-var LEI_SIG = { CRP: 'crp', CC: 'cc', CPC: 'cpc', CP: 'cp', CPP: 'cpp', CT: 'ct', CSC: 'csc', CPA: 'cpa', CPTA: 'cpta', ETAF: 'etaf', CCom: 'ccom', LGT: 'lgt', CPPT: 'cppt', CIRS: 'cirs', CIRC: 'circ', CIVA: 'civa', CPT: 'cpt' };
+var LEI_SIG = { CRP: 'crp', CC: 'cc', CPC: 'cpc', CP: 'cp', CPP: 'cpp', CT: 'ct', CSC: 'csc', CPA: 'cpa', CPTA: 'cpta', ETAF: 'etaf', CCom: 'ccom', LGT: 'lgt', CPPT: 'cppt', CIRS: 'cirs', CIRC: 'circ', CIVA: 'civa', CPT: 'cpt', RGIT: 'rgit', CIS: 'cis', CIMI: 'cimi', CIMT: 'cimt' };
 function leiLinkify(txt) {
   var h = esc(txt || '');
-  return h.replace(/\b(art(?:igo|s)?\.?\s*)(\d+)\.?º(-[A-Z])?((?:,\s*n\.?\s?º[^,;]*?)?(?:,\s*al[^,;]*?)?,?\s*(?:do|da)\s+)(CRP|CCom|CC|CPC|CPPT|CPP|CPTA|CPT|CPA|CP|CT|CSC|ETAF|LGT|CIRS|CIRC|CIVA)\b/g, function (m, a, n, suf, mid, sig) {
+  return h.replace(/\b(art(?:igo|s)?\.?\s*)(\d+)\.?º(-[A-Z])?((?:,\s*n\.?\s?º[^,;]*?)?(?:,\s*al[^,;]*?)?,?\s*(?:do|da)\s+)(CRP|CCom|CC|CPC|CPPT|CPP|CPTA|CPT|CPA|CP|CT|CSC|ETAF|LGT|CIRS|CIRC|CIVA|RGIT|CIS|CIMI|CIMT)\b/g, function (m, a, n, suf, mid, sig) {
     var dip = LEI_SIG[sig]; if (!dip || (LEI.meta && !LEI.meta[dip])) return m;
     return '<button class="lei-lk" data-a="lei-ver" data-id="' + dip + '|' + n + (suf || '') + '" title="Ler o artigo">' + m + '</button>';
   });
