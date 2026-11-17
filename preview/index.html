@@ -1428,6 +1428,17 @@ span.rp-util{cursor:default}
 .mp-dc{border:0;background:none;padding:4px 6px;margin:0 -6px;border-radius:8px;text-align:left;font:inherit;color:inherit;cursor:pointer;width:calc(100% + 12px)}
 .mp-dc:hover{background:#F4F6FA}
 .mp-nada{font-size:13px;color:var(--muted)}.mp-nada .lk{border:0;background:none;padding:0;color:#7B1E2B;text-decoration:underline;cursor:pointer;font:inherit}
+/* O meu progresso — versão compacta */
+.mp-w{grid-template-columns:250px minmax(0,1.35fr) minmax(0,1fr);gap:20px}
+.mp-anel{gap:8px}.mp-anel .ring{width:118px;height:118px}
+.mp-k{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
+.mp-kt{display:flex;flex-direction:column;align-items:flex-start;gap:1px;padding:9px 10px;border:1px solid var(--line);border-radius:12px;background:#FAFBFC;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.mp-kt:hover{border-color:#C9CEDA;background:#fff}
+.mp-kt span{font:700 10.5px var(--sans);letter-spacing:.04em;color:var(--muted);line-height:1.25}
+.mp-kt b{font:800 22px var(--sans);color:var(--ink);line-height:1.15}
+.mp-kt small{font-size:11px;color:var(--muted)}
+.mp-g svg{max-height:170px}
+.mp-r{gap:2px}.mp-dc{padding:3px 6px}.mp-d{font-size:12.5px;gap:2px 8px}.mp-d .bar{height:5px}
 
 </style>
 </head>
@@ -6316,6 +6327,8 @@ function hbTiles(t) {
   var sem = function (tipo) { var lim = ymd(new Date(Date.now() + 7 * 864e5)); return proxAgenda().filter(function (a) { return a.data <= lim && (tipo ? a.tipo === tipo : a.tipo !== 'Prazo'); }).length; };
   var T = {
     aulas: function () { return bt('Aulas hoje', aulas.length, aulas.length ? 'Primeira às ' + esc(aulas.sort(function (a, b) { return a.ini.localeCompare(b.ini); })[0].ini) : 'Hoje não tem aulas', 'painel', 'Horário', 'hb-hor'); },
+    fc: function () { var r = typeof fcResumo === 'function' ? fcResumo('todas') : { due: 0, novos: 0 }; return bt('Flashcards para hoje', r.due, r.due ? plural(r.due, 'cartão por rever', 'cartões por rever') : 'Está em dia · ' + r.novos + ' cartões novos', 'flashcards', r.due ? 'Rever' : 'Começar'); },
+    aval: function () { var px = Store.all('exame').filter(function (e) { return diasAte(e.data) >= 0; }).sort(function (a, b) { return a.data.localeCompare(b.data); })[0]; if (!px) return bt('Próxima avaliação', '—', 'Nenhuma frequência ou exame marcado', 'painel', 'Marcar', 'ex-new'); var d = diasAte(px.data); S.hbAval = px.id; return bt('Próxima avaliação', d === 0 ? 'Hoje' : d, (d === 0 ? '' : (d === 1 ? 'dia · ' : 'dias · ')) + esc(px.tipo) + ' de ' + esc(exNome(px)), 'painel', 'Ver', 'hb-aval'); },
     quest: function () { return bt('Questões respondidas', s.tot, taxa == null ? 'Ainda sem simulações' : taxa + '% de respostas certas', 'exames', 'Simular'); },
     casos: function () { return bt('Casos resolvidos', s.casosFeitos, 'de ' + CASOS.length + ' disponíveis', 'casos', 'Praticar'); },
     ws: function () { return bt('Workspaces', s.ws.length, plural(s.items.length, 'documento', 'documentos'), 'workspaces', 'Abrir'); },
@@ -6327,7 +6340,7 @@ function hbTiles(t) {
     qprop: function () { return bt('Perguntas próprias', Store.all('qprop').length, 'para usar nas salas', 'docente', 'Criar'); },
     cprop: function () { return bt('Casos próprios', Store.all('casoprop').length, 'para o julgamento simulado', 'docente', 'Criar'); }
   };
-  var L = { lic: ['aulas', 'quest', 'casos', 'ws'], outro: ['quest', 'casos', 'ws', 'atual'], licd: ['quest', 'casos', 'atual', 'ws'], mest: ['palavras', 'biblio', 'atual', 'ws'], estag: ['prazos', 'dilig', 'quest', 'atual'], prof: ['prazos', 'dilig', 'atual', 'ws'], doc: ['qprop', 'cprop', 'atual', 'ws'] }[t] || ['quest', 'casos', 'ws', 'atual'];
+  var L = { lic: ['aulas', 'aval', 'fc', 'ws'], outro: ['aulas', 'aval', 'fc', 'ws'], licd: ['quest', 'casos', 'atual', 'ws'], mest: ['palavras', 'biblio', 'atual', 'ws'], estag: ['prazos', 'dilig', 'quest', 'atual'], prof: ['prazos', 'dilig', 'atual', 'ws'], doc: ['qprop', 'cprop', 'atual', 'ws'] }[t] || ['quest', 'casos', 'ws', 'atual'];
   return L.map(function (k) { return T[k](); }).join('');
 }
 function heroB(t) {
@@ -6346,6 +6359,7 @@ painelCompor = function (P, pf) {
   h += '<div class="row" style="justify-content:center"><button class="btn sm" data-a="painel-pers">' + I.gear + 'Personalizar painel</button><button class="btn sm" data-a="onb-abrir">' + PERFIS[t].ic + ' Perfil: ' + esc(PERFIS[t].curto) + ' · alterar</button></div>';
   return h;
 };
+A['hb-aval'] = function () { if (S.hbAval && A['ex-open']) A['ex-open']({ dataset: { id: S.hbAval } }); };
 A['hb-hor'] = function () { var e = document.getElementById('hor-h'); if (e) e.scrollIntoView({ behavior: 'smooth', block: 'start' }); else go('cadeiras'); };
 
 /* ----- barra de navegação horizontal superior (experimental) ----- */
@@ -7099,7 +7113,7 @@ function vMeuProgresso() {
   var vals = demoL ? [40, 55, 50, 65, 60, 75, 70, 85] : at.map(function (a) { return Math.round(100 * a.correct / a.total); });
   var lbls = demoL ? vals.map(function (v, i) { return 'Exemplo ' + (i + 1); }) : at.map(function (a) { return new Date(a.createdAt).toLocaleDateString('pt-PT', { day: 'numeric', month: 'short' }); });
   var anel = '<div class="mp-anel"><div class="ring">' + svgRing(taxa) + '<div class="v"><b><span data-count="' + taxa + '" data-suf="%">' + taxa + '%</span></b><span>de acerto</span></div></div>' +
-    '<div class="mp-n"><span><b>' + s.tot + '</b> questões</span><span><b>' + s.at.length + '</b> simulações</span><span><b>' + s.casosFeitos + '</b> casos</span></div>' +
+    '<div class="mp-k"><button class="mp-kt" data-go="exames"><span>Questões respondidas</span><b data-count="' + s.tot + '">' + s.tot + '</b><small>' + plural(s.at.length, 'simulação', 'simulações') + '</small></button><button class="mp-kt" data-go="casos"><span>Casos resolvidos</span><b data-count="' + s.casosFeitos + '">' + s.casosFeitos + '</b><small>de ' + CASOS.length + ' disponíveis</small></button></div>' +
     (s.tot ? '<span class="chip ' + (taxa >= 50 ? 'ok' : 'wine') + '">' + (taxa >= 70 ? 'Excelente ritmo' : taxa >= 50 ? 'No bom caminho' : 'Há margem para melhorar') + '</span>' : '') + '</div>';
   var graf = '<div class="mp-g"><div class="mp-st">Evolução' + (demoL ? ' <span class="tag-demo">Exemplo</span>' : '') + '</div>' + svgLine(vals, lbls) + '</div>';
   var mc = mpCadeiras(), disc;
@@ -7114,7 +7128,7 @@ function vMeuProgresso() {
   }
   var ult = s.at.slice().sort(function (a, b) { return b.createdAt - a.createdAt; }).slice(0, 3);
   var ul = ult.length ? '<div class="mp-u">' + ult.map(function (a) { var p = Math.round(100 * a.correct / a.total); return '<div class="mp-ui"><span>' + esc(a.discLabel) + ' · ' + quando(a.createdAt) + '</span><span class="chip ' + (p >= 50 ? 'ok' : 'bad') + '">' + a.correct + '/' + a.total + '</span></div>'; }).join('') + '</div>' : '';
-  var dir = '<div class="mp-r"><div class="mp-st">' + (mc ? 'Cadeiras do ' + mc.sem + '.º semestre · ' + mc.ano + '.º ano' : 'Por disciplina') + '</div>' + disc + (ul ? '<div class="mp-st" style="margin-top:6px">Últimas simulações</div>' + ul : '') + '</div>';
+  var dir = '<div class="mp-r"><div class="mp-st">' + (mc ? 'Cadeiras do ' + mc.sem + '.º semestre · ' + mc.ano + '.º ano' : 'Por disciplina') + '</div>' + disc + '' + '</div>';
   return '<section class="card mp" aria-labelledby="mp-h"><div class="row" style="justify-content:space-between"><h2 id="mp-h">O meu progresso</h2><button class="btn sm' + (s.tot ? '' : ' wine') + '" data-go="exames">' + (s.tot ? 'Nova simulação' : 'Fazer a primeira simulação') + '</button></div>' +
     '<div class="mp-w">' + anel + graf + dir + '</div>' + (s.tot ? '' : '<span class="mp-nota">Os valores aparecem à medida que faz simulações de exame.</span>') + '</section>';
 }
