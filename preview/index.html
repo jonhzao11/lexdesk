@@ -1486,6 +1486,9 @@ span.rp-util{cursor:default}
 .ws-s{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ws-v{font-size:11.5px;color:#A0A7B5;padding:4px}
 @media (max-width:900px){.ws-g{grid-template-columns:1fr!important}}
+.pd-mini{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:6px}
+.pd-res-c{font:700 13px var(--sans);padding:5px 10px;border-radius:999px}
+.pd-res-c.ok{background:rgba(52,199,123,.18);color:#7EE2A8}.pd-res-c.bad{background:rgba(240,90,90,.18);color:#FFB4B4}
 
 </style>
 </head>
@@ -6642,6 +6645,7 @@ function pdIniciar(silencioso) {
     pdPintar();
   });
 }
+function pdRecolherDepois(ms) { clearTimeout(PD.recT); PD.recT = setTimeout(function () { var e = document.getElementById('pd'); if (e && e.matches(':hover')) { pdRecolherDepois(2500); return; } PD.aberto = false; pdPintar(); }, ms); }
 function pdTick() { clearInterval(PD.iv); PD.iv = setInterval(function () { var e = document.getElementById('pd-cr'); if (!e || PD.estado !== 'ativa') { if (PD.estado !== 'ativa') clearInterval(PD.iv); return; } e.textContent = pdSeg(Date.now() - PD.t0); }, 250); }
 function pdSeg(ms) { var s = Math.max(0, Math.floor(ms / 1000)); return s < 60 ? s + ' s' : Math.floor(s / 60) + ' min ' + (s % 60) + ' s'; }
 function pdPintar() { var e = document.getElementById('pd'); if (e) e.outerHTML = vPD(); }
@@ -6654,7 +6658,8 @@ function vPD() {
   var q = pdQ(PD.d.qid); if (!q) return h + '<p class="pd-p">Pergunta indisponível. Atualize a página.</p></div>';
   if (PD.estado === 'ativa') return h + '<p class="pd-q">' + esc(q.q) + '</p><div class="pd-o">' + pdPerm(q.id).map(function (oi, i) { return '<button data-a="pd-resp" data-i="' + oi + '"><span>' + 'ABCD'.charAt(i) + '</span>' + esc(q.o[oi]) + '</button>'; }).join('') + '</div></div>';
   var d = PD.d, c = d.correta != null ? d.correta : q.a;
-  return h + '<p class="pd-q sm">' + esc(q.q) + '</p><div class="pd-res ' + (d.certa ? 'ok' : 'bad') + '"><b>' + (d.certa ? '✓ Certo! +' + d.pontos + ' pontos' : '✗ Errado.') + '</b>' + (d.certa ? '<span>Respondeu em ' + pdSeg(d.ms) + '.</span>' : '<span>A resposta certa era <b>' + 'ABCD'.charAt(pdPerm(q.id).indexOf(c)) + ') ' + esc(q.o[c]) + '</b>.</span>') + '</div><p class="pd-e">' + leiLinkify(q.e) + '</p><div class="row"><button class="btn gold sm" data-a="pd-rank">Ver ranking de hoje</button><span class="pd-reg">Nova pergunta amanhã à meia-noite.</span></div></div>';
+  if (!PD.aberto) return h + '<div class="pd-mini"><span class="pd-res-c ' + (d.certa ? 'ok' : 'bad') + '">' + (d.certa ? '✓ Certo · +' + d.pontos + ' pontos · ' + pdSeg(d.ms) : '✗ Errado · certa: ' + 'ABCD'.charAt(pdPerm(q.id).indexOf(c))) + '</span><button class="pd-lk" data-a="pd-abrir">Ver explicação</button><span class="pd-reg">Nova pergunta amanhã.</span></div></div>';
+  return h + '<p class="pd-q sm">' + esc(q.q) + '</p><div class="pd-res ' + (d.certa ? 'ok' : 'bad') + '"><b>' + (d.certa ? '✓ Certo! +' + d.pontos + ' pontos' : '✗ Errado.') + '</b>' + (d.certa ? '<span>Respondeu em ' + pdSeg(d.ms) + '.</span>' : '<span>A resposta certa era <b>' + 'ABCD'.charAt(pdPerm(q.id).indexOf(c)) + ') ' + esc(q.o[c]) + '</b>.</span>') + '</div><p class="pd-e">' + leiLinkify(q.e) + '</p><div class="row"><button class="btn gold sm" data-a="pd-rank">Ver ranking de hoje</button><button class="pd-lk" data-a="pd-fechar">Recolher ▴</button><span class="pd-reg">Nova pergunta amanhã à meia-noite.</span></div></div>';
 }
 function pdRankPintar() {
   var R = PD.rk, l = R.lista;
@@ -6671,6 +6676,8 @@ function pdRankPintar() {
 }
 function pdRankCarregar() { PD.rk.lista = null; pdRankPintar(); SB.rpc('pd_ranking', { periodo: PD.rk.periodo }).then(function (r) { PD.rk.lista = (r && r.data) || []; if ($('#ov')) pdRankPintar(); }); }
 var A16 = {
+  'pd-abrir': function () { PD.aberto = true; clearTimeout(PD.recT); pdPintar(); },
+  'pd-fechar': function () { PD.aberto = false; clearTimeout(PD.recT); pdPintar(); },
   'pd-ini': function (el) { el.disabled = true; pdIniciar(); },
   'pd-resp': function (el) {
     if (PD.respondendo) return; PD.respondendo = true;
@@ -6680,7 +6687,7 @@ var A16 = {
       if (r.error) { toast('Não foi possível registar a resposta. Tente novamente.'); [].forEach.call(document.querySelectorAll('.pd-o button'), function (b) { b.disabled = false; }); return; }
       PD.estado = 'feita'; PD.d = Object.assign({ qid: PD.d.qid }, r.data); clearInterval(PD.iv);
       SB.rpc('pd_sequencia').then(function (s) { PD.seq = (s && s.data) || PD.seq; pdPintar(); });
-      pdPintar(); if (r.data.certa) fxConfete && fxConfete();
+      PD.aberto = true; pdPintar(); if (r.data.certa) fxConfete && fxConfete(); pdRecolherDepois(7000);
     });
   },
   'pd-rank': function () { if (!sessaoAtiva()) { A['login-open']({ dataset: { id: 'registo' } }); return; } pdRankCarregar(); },
