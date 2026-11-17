@@ -6036,11 +6036,8 @@ var _painelComporIN = painelCompor;
 painelCompor = function (P, pf) {
   var Q = {}; for (var k in P) Q[k] = P[k];
   Q.progresso = vMeuProgresso();
-  Q.atualidade = vArtigoDia() + (P.atualidade || '');
   Q.continuar = ''; Q.ferramentas = '';
-  var h = _painelComporIN(Q, pf), i = h.indexOf('<section class="bento"');
-  var ini = vInicio();
-  return i >= 0 ? h.slice(0, i) + ini + h.slice(i) : ini + h;
+  return _painelComporIN(Q, pf);
 };
 
 /* ---------- MODO NOTURNO ---------- */
