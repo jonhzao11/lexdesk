@@ -1369,6 +1369,42 @@ span.rp-util{cursor:default}
 .au-papel{position:relative}
 .au-gravado{position:absolute;top:8px;right:16px;margin:0;z-index:1}
 .au-tool{gap:2px}.au-fb{padding:7px 8px}
+/* ----- texto integral da lei ----- */
+.lei-lk{border:0;background:none;padding:0;font:inherit;color:#1E4C86;text-decoration:underline;text-decoration-color:rgba(30,76,134,.35);cursor:pointer;text-align:left}
+.lei-lk:hover{color:#7B1E2B}
+.art .num.lei-lk{font-weight:700}
+.lei-top{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.lei-q{flex:1;min-width:260px}
+.lei-grid{display:grid;grid-template-columns:320px minmax(0,1fr);gap:16px;align-items:start}
+.lei-toc{position:sticky;top:84px;max-height:calc(100vh - 100px);overflow:auto;gap:8px}
+.lei-toc-l details{border-bottom:1px solid var(--line)}
+.lei-toc-l summary{cursor:pointer;padding:8px 2px;font:700 13px/1.35 var(--sans);color:var(--ink);list-style:none}
+.lei-toc-l summary::-webkit-details-marker{display:none}
+.lei-toc-l summary em{font-style:normal;font-weight:600;font-size:11px;color:var(--muted);margin-left:4px}
+.lei-ti{display:block;width:100%;text-align:left;border:0;background:none;padding:5px 8px;border-radius:8px;font:500 12.5px/1.35 var(--sans);color:var(--ink);cursor:pointer}
+.lei-ti b{color:#7B1E2B;font-weight:700}
+.lei-ti:hover{background:#F4F6FA}.lei-ti.on{background:#7B1E2B;color:#fff}.lei-ti.on b{color:#F3D58A}
+.lei-main{display:flex;flex-direction:column;gap:12px;min-width:0}
+.lei-res{gap:4px}
+.lei-ri{display:flex;gap:10px;align-items:baseline;text-align:left;border:0;background:none;padding:6px 8px;border-radius:8px;cursor:pointer;font:inherit;color:inherit}
+.lei-ri:hover{background:#F4F6FA}.lei-ri b{white-space:nowrap;color:#7B1E2B}.lei-ri span{font-size:13.5px}
+.lei-art{gap:10px;padding:28px 32px}
+.lei-sec{font-size:12px;color:var(--muted);line-height:1.4}
+.lei-h{display:flex;align-items:center;gap:12px}
+.lei-h h2{margin:0;font-size:28px}
+.lei-sig{font:800 12px var(--sans);letter-spacing:.1em;padding:4px 9px;border-radius:8px;background:var(--navy,#14213D);color:#F3D58A}
+.lei-ep{margin:0;font:700 17px var(--serif);color:#7B1E2B}
+.lei-tx{display:flex;flex-direction:column;gap:8px;font:16px/1.75 var(--serif,Georgia,serif);color:var(--ink)}
+.lei-tx p{margin:0}.lei-tx p.al{padding-left:22px}
+.lei-bts{gap:8px;border-top:1px solid var(--line);padding-top:12px;margin-top:6px}
+.lei-bts .btn{text-decoration:none}
+.lei-fonte{display:block;font-size:11.5px;color:var(--muted);line-height:1.45}
+.lei-qs{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.lei-qs details{border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:13.5px}
+.lei-qs summary{cursor:pointer;font-weight:600}.lei-qs p{margin:6px 0 0;color:var(--muted);font-size:13px}.lei-qs p b{color:#0B7A55}
+.lei-mod .lei-tx{font-size:15px}
+.au-lei-tx{max-height:340px;overflow:auto;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#FCFCFD;font-size:14px;gap:6px}
+@media (max-width:900px){.lei-grid{grid-template-columns:1fr}.lei-toc{position:static;max-height:300px}.lei-art{padding:20px}}
 
 </style>
 </head>
@@ -2721,7 +2757,7 @@ Store.attach = function (session) {
 };
 
 /* ---------- estado da interface ---------- */
-var VIEWS = ['painel', 'reputacao', 'flashcards', 'aula', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
+var VIEWS = ['painel', 'reputacao', 'flashcards', 'aula', 'lei', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
 var S = {
   view: 'painel', wsId: null, wsTab: '01', wsQ: '', q: '',
   libQ: '', libArea: 'Todas', libOpen: { cpc: true },
@@ -2802,6 +2838,7 @@ function render() {
   else if (v === 'reputacao') h = vReputacao();
   else if (v === 'flashcards') h = vFlashcards();
   else if (v === 'aula') h = vAula();
+  else if (v === 'lei') h = vLei();
   else if (v === 'agenda') h = vAgenda();
   else if (v === 'dissertacao') h = vDissertacao();
   else if (v === 'ordem') h = vOrdem();
@@ -2984,7 +3021,7 @@ function libList() {
     return '<div class="card" id="dip-' + d.id + '" style="gap:12px"><div class="row" style="justify-content:space-between;align-items:flex-start"><div style="display:flex;gap:14px;align-items:flex-start;min-width:0"><span class="mark" style="width:auto;min-width:52px;padding:0 8px;font-size:15px;background:var(--navy);color:var(--gold)">' + d.sigla + '</span><div style="min-width:0"><h2 style="font-size:18px">' + d.nome + '</h2><span style="font-size:13px;color:var(--muted)">' + d.fonte + '</span></div></div>' +
       '<div class="row"><span class="chip gray">' + d.area + '</span><a class="btn sm" href="' + d.url + '" target="_blank" rel="noopener">' + (d.url === DRE ? 'Pesquisar no DR' : 'Texto oficial') + ' ' + I.ext + '</a>' + (d.arts.length ? '<button class="btn sm" data-a="lib-toggle" data-id="' + d.id + '" aria-expanded="' + !!open + '">' + (open ? 'Ocultar artigos' : 'Artigos-chave (' + d.arts.length + ')') + '</button>' : '') + '</div></div>' +
       (open && arts.length ? '<div class="arts">' + arts.map(function (a) {
-        return '<div class="art"><span class="num">Art. ' + a[0] + '</span><span class="ds">' + a[1] + '</span><button class="btn sm" data-a="lib-add" data-id="' + d.id + '|' + a[0] + '" aria-label="Adicionar art. ' + a[0] + ' ' + d.sigla + ' a um workspace">' + I.plus + 'Workspace</button></div>';
+        return '<div class="art">' + (LEI.meta && LEI.meta[d.id] ? '<button class="num lei-lk" data-a="lei-ver" data-id="' + d.id + '|' + a[0].replace('.º', '') + '" title="Ler o artigo">Art. ' + a[0] + '</button>' : '<span class="num">Art. ' + a[0] + '</span>') + '<span class="ds">' + a[1] + '</span><button class="btn sm" data-a="lib-add" data-id="' + d.id + '|' + a[0] + '" aria-label="Adicionar art. ' + a[0] + ' ' + d.sigla + ' a um workspace">' + I.plus + 'Workspace</button></div>';
       }).join('') + '</div>' : '') + '</div>';
   }).join('');
   return out || '<div class="empty">Sem resultados para esta pesquisa.</div>';
@@ -3034,7 +3071,7 @@ function vExame() {
     else if (i === sel) cls += ' sel';
     return '<button class="' + cls + '" role="radio" aria-checked="' + (i === sel) + '" data-a="exam-pick" data-id="' + i + '"' + (conf ? ' disabled' : '') + '><span class="lt">' + 'ABCD'[pos] + '</span><span>' + esc(o) + '</span>' + (tag ? '<span class="tg">' + tag + '</span>' : '') + '</button>';
   }).join('');
-  var fb = conf ? '<div class="fb ' + (sel === q.a ? 'ok' : 'bad') + '" role="status"><b>' + (sel === q.a ? 'Correto.' : 'Ainda não. A resposta certa é a ' + 'ABCD'[ord.indexOf(q.a)] + '.') + '</b><span>' + esc(q.e) + '</span></div>' : '';
+  var fb = conf ? '<div class="fb ' + (sel === q.a ? 'ok' : 'bad') + '" role="status"><b>' + (sel === q.a ? 'Correto.' : 'Ainda não. A resposta certa é a ' + 'ABCD'[ord.indexOf(q.a)] + '.') + '</b><span>' + leiLinkify(q.e) + '</span></div>' : '';
   var last = e.i === e.ids.length - 1;
   var acts = '';
   if (e.mode === 'estudo' && !conf) acts = '<button class="btn pri" data-a="exam-confirm"' + (sel == null ? ' disabled' : '') + '>Confirmar resposta</button>';
@@ -3069,7 +3106,7 @@ function vResultado() {
     var q = QMAP[a.id];
     return '<div style="border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px"><div class="row" style="justify-content:space-between"><span style="font-size:13px;color:var(--muted)">' + (i + 1) + '. ' + DISC[q.d].curto + (q.t ? ' · ' + esc(temaNome(q.d, q.t)) : '') + ' · <button class="lnk q-rep" data-a="q-reportar" data-id="' + q.id + '">Reportar erro</button></span><span class="chip ' + (a.ok ? 'ok' : 'bad') + '">' + (a.ok ? 'Certa' : a.sel == null ? 'Sem resposta' : 'Errada') + '</span></div><b style="font-size:15px">' + esc(q.q) + '</b>' +
       (!a.ok && a.sel != null ? '<span style="font-size:14px;color:var(--bad)">A sua resposta: ' + esc(q.o[a.sel]) + '</span>' : '') +
-      '<span style="font-size:14px;color:var(--ok);font-weight:600">Resposta certa: ' + esc(q.o[q.a]) + '</span><span style="font-size:14px;color:#3A4458;line-height:1.6">' + esc(q.e) + '</span></div>';
+      '<span style="font-size:14px;color:var(--ok);font-weight:600">Resposta certa: ' + esc(q.o[q.a]) + '</span><span style="font-size:14px;color:#3A4458;line-height:1.6">' + leiLinkify(q.e) + '</span></div>';
   }).join('') + '</div></div>';
   return h;
 }
@@ -6435,7 +6472,7 @@ function vPD() {
   var q = pdQ(PD.d.qid); if (!q) return h + '<p class="pd-p">Pergunta indisponível. Atualize a página.</p></div>';
   if (PD.estado === 'ativa') return h + '<p class="pd-q">' + esc(q.q) + '</p><div class="pd-o">' + pdPerm(q.id).map(function (oi, i) { return '<button data-a="pd-resp" data-i="' + oi + '"><span>' + 'ABCD'.charAt(i) + '</span>' + esc(q.o[oi]) + '</button>'; }).join('') + '</div></div>';
   var d = PD.d, c = d.correta != null ? d.correta : q.a;
-  return h + '<p class="pd-q sm">' + esc(q.q) + '</p><div class="pd-res ' + (d.certa ? 'ok' : 'bad') + '"><b>' + (d.certa ? '✓ Certo! +' + d.pontos + ' pontos' : '✗ Errado.') + '</b>' + (d.certa ? '<span>Respondeu em ' + pdSeg(d.ms) + '.</span>' : '<span>A resposta certa era <b>' + 'ABCD'.charAt(pdPerm(q.id).indexOf(c)) + ') ' + esc(q.o[c]) + '</b>.</span>') + '</div><p class="pd-e">' + esc(q.e) + '</p><div class="row"><button class="btn gold sm" data-a="pd-rank">Ver ranking de hoje</button><span class="pd-reg">Nova pergunta amanhã à meia-noite.</span></div></div>';
+  return h + '<p class="pd-q sm">' + esc(q.q) + '</p><div class="pd-res ' + (d.certa ? 'ok' : 'bad') + '"><b>' + (d.certa ? '✓ Certo! +' + d.pontos + ' pontos' : '✗ Errado.') + '</b>' + (d.certa ? '<span>Respondeu em ' + pdSeg(d.ms) + '.</span>' : '<span>A resposta certa era <b>' + 'ABCD'.charAt(pdPerm(q.id).indexOf(c)) + ') ' + esc(q.o[c]) + '</b>.</span>') + '</div><p class="pd-e">' + leiLinkify(q.e) + '</p><div class="row"><button class="btn gold sm" data-a="pd-rank">Ver ranking de hoje</button><span class="pd-reg">Nova pergunta amanhã à meia-noite.</span></div></div>';
 }
 function pdRankPintar() {
   var R = PD.rk, l = R.lista;
@@ -7521,9 +7558,11 @@ function auLeiHtml() {
   var res = typeof ARTIGOS_DIA !== 'undefined' ? ARTIGOS_DIA.filter(function (a) { return a[0] === d.id && a[1].replace('.º', '') === num; })[0] : null;
   var rx = new RegExp('art(?:igo)?s?\\.?\\s*(?:[0-9.º, e]*\\b)?' + num.replace('-', '\\-') + '\\.?º', 'i'), sig = d.sigla;
   var qs = QUESTOES.filter(function (q) { return rx.test(q.e) && (q.e.indexOf(sig) >= 0 || q.e.indexOf(d.nome) >= 0 || (sig === 'CRP' && /Constituição|CRP/.test(q.e))); }).slice(0, 4);
-  h += '<div class="au-lei-art"><span class="au-lei-sig">' + esc(sig) + '</span><b>Artigo ' + esc(num) + '.º</b><span class="au-lei-ep">' + (ep ? esc(ep[1]) : res ? esc(res[2]) : 'Epígrafe por confirmar no texto oficial') + '</span></div>' +
-    (res ? '<p class="au-lei-res">' + esc(res[3]) + '<em>Resumo do LEXDESK, não é o texto legal.</em></p>' : '') +
-    '<div class="row au-lei-bts"><button class="btn sm" data-a="au-lei-inserir">+ Inserir na folha</button><a class="btn sm" href="' + esc(d.url) + '" target="_blank" rel="noopener">Texto oficial ↗</a><button class="btn sm" data-a="au-lei-lado" title="Abre o texto oficial numa janela encostada à direita do ecrã">Abrir lado a lado</button></div>' +
+  var tem = leiTem(d.id), lr = tem ? LEI.art[leiK(d.id, num)] : undefined;
+  if (tem && lr === undefined) leiArt(d.id, num).then(function () { auLeiPintar(); });
+  h += '<div class="au-lei-art"><span class="au-lei-sig">' + esc(sig) + '</span><b>Artigo ' + esc(num) + '.º</b><span class="au-lei-ep">' + (lr && lr.epigrafe ? esc(lr.epigrafe) : ep ? esc(ep[1]) : res ? esc(res[2]) : tem && lr === undefined ? 'A carregar…' : tem ? 'Artigo não encontrado na versão consolidada' : 'Epígrafe por confirmar no texto oficial') + '</span></div>' +
+    (lr ? '<div class="au-lei-tx lei-tx">' + leiTextoHtml(lr.texto) + '</div><span class="lei-fonte">' + esc(leiFonteNota(d.id)) + '</span>' : res ? '<p class="au-lei-res">' + esc(res[3]) + '<em>Resumo do LEXDESK, não é o texto legal.</em></p>' : '') +
+    '<div class="row au-lei-bts"><button class="btn sm" data-a="au-lei-inserir">+ Inserir na folha</button>' + (tem ? '<button class="btn sm" data-a="lei-abrir" data-id="' + d.id + '|' + esc(num) + '">Abrir no leitor</button>' : '<a class="btn sm" href="' + esc(d.url) + '" target="_blank" rel="noopener">Texto oficial ↗</a>') + '<button class="btn sm" data-a="au-lei-lado" title="Abre o texto oficial numa janela encostada à direita do ecrã">Abrir lado a lado</button></div>' +
     (qs.length ? '<span class="eyebrow">Teste-se sobre este artigo</span><div class="au-lei-q">' + qs.map(function (q) { return '<details><summary>' + esc(q.q) + '</summary><p><b>' + esc(q.o[q.a]) + '</b> ' + esc(q.e) + '</p></details>'; }).join('') + '</div>' : '') +
     (L.hist.length > 1 ? '<span class="eyebrow">Percurso nesta aula</span><div class="au-arts">' + L.hist.slice(-8).map(function (k) { var p = k.split('|'); return '<button class="au-art' + (p[0] === num && p[1] === sig ? ' on' : '') + '" data-a="au-lei-ir" data-id="' + esc(p[0]) + '" data-s="' + esc(p[1]) + '">' + esc(p[1] + ' ' + p[0] + '.º') + '</button>'; }).join('') + '</div>' : '');
   return h;
@@ -7540,6 +7579,8 @@ A['au-lei-abrir'] = function () { var v = ($('#au-lei-n').value || '').replace(/
 A['au-lei-mov'] = function (el) {
   var L = S.auLei, d = auLeiDip(), dir = Number(el.dataset.id), cur = parseInt(L && L.art || '0', 10) || 0;
   var lista = (d.arts || []).map(function (a) { return parseInt(a[0], 10); }).filter(function (x) { return x; }).sort(function (a, b) { return a - b; });
+  var lr = L && L.art && LEI.art[leiK(d.id, L.art)];
+  if (lr) { leiOrd(d.id, lr.ord + dir).then(function (x) { if (x) auLeiAbrir(x.num); }); return; }
   var alvo = dir > 0 ? Math.max(1, cur + 1) : Math.max(1, cur - 1);
   auLeiAbrir(String(alvo));
 };
@@ -7745,6 +7786,104 @@ setTimeout(function () {
   });
 }, 1500);
 
+/* ---------- TEXTO INTEGRAL DA LEGISLAÇÃO (versões consolidadas do Diário da República) ---------- */
+var LEI = { meta: null, metaP: null, art: {}, ord: {}, toc: {}, tocP: {} };
+function leiMetaCarregar() {
+  if (LEI.metaP || !SB) return LEI.metaP;
+  LEI.metaP = SB.from('lei_diplomas').select('*').then(function (r) { LEI.meta = {}; (r && r.data || []).forEach(function (d) { LEI.meta[d.dip] = d; }); scheduleRender(); return LEI.meta; }, function () { LEI.meta = {}; });
+  return LEI.metaP;
+}
+function leiTem(dip) { if (!LEI.meta) { leiMetaCarregar(); return false; } return !!LEI.meta[dip]; }
+function leiK(dip, num) { return dip + '|' + String(num).toUpperCase(); }
+function leiGuardar(dip, r) { if (!r) return; LEI.art[leiK(dip, r.num)] = r; LEI.ord[dip + '#' + r.ord] = r; }
+function leiArt(dip, num) {
+  var k = leiK(dip, num); if (LEI.art[k] !== undefined) return Promise.resolve(LEI.art[k]);
+  return SB.from('lei_artigos').select('*').eq('dip', dip).eq('num', String(num).toUpperCase()).order('ord').limit(1).then(function (r) { var x = r && r.data && r.data[0] || null; if (x) leiGuardar(dip, x); else LEI.art[k] = null; return x; });
+}
+function leiOrd(dip, ord) {
+  var k = dip + '#' + ord; if (LEI.ord[k]) return Promise.resolve(LEI.ord[k]);
+  return SB.from('lei_artigos').select('*').eq('dip', dip).eq('ord', ord).limit(1).then(function (r) { var x = r && r.data && r.data[0] || null; if (x) leiGuardar(dip, x); return x; });
+}
+function leiToc(dip) {
+  if (LEI.toc[dip]) return Promise.resolve(LEI.toc[dip]); if (LEI.tocP[dip]) return LEI.tocP[dip];
+  var out = [], pag = function (de) { return SB.from('lei_artigos').select('ord,num,epigrafe,seccao').eq('dip', dip).order('ord').range(de, de + 999).then(function (r) { var d = r && r.data || []; out = out.concat(d); return d.length === 1000 ? pag(de + 1000) : out; }); };
+  LEI.tocP[dip] = pag(0).then(function (l) { LEI.toc[dip] = l; return l; }); return LEI.tocP[dip];
+}
+function leiTextoHtml(t) {
+  return esc(t || '').split(/\n+/).map(function (l) { l = l.trim(); if (!l) return ''; var m = l.match(/^(\d+\s*[-.]|[a-z]\)|[ivx]+\))\s*/i); return '<p' + (m ? ' class="' + (/^\d/.test(m[1]) ? 'n' : 'al') + '"' : '') + '>' + l + '</p>'; }).join('');
+}
+function leiDipInfo(dip) { return DIPLOMAS.filter(function (d) { return d.id === dip; })[0] || { id: dip, sigla: dip.toUpperCase(), nome: dip, url: '#' }; }
+function leiFonteNota(dip) { var m = LEI.meta && LEI.meta[dip]; return 'Versão consolidada do Diário da República' + (m && m.extraido_em ? ', obtida a ' + new Date(m.extraido_em).toLocaleDateString('pt-PT') : '') + '. Confirme alterações posteriores no texto oficial.'; }
+/* ligações automáticas nas explicações: «art. 569.º do CPC» abre o artigo */
+var LEI_SIG = { CRP: 'crp', CC: 'cc', CPC: 'cpc', CP: 'cp', CPP: 'cpp', CT: 'ct', CSC: 'csc', CPA: 'cpa' };
+function leiLinkify(txt) {
+  var h = esc(txt || '');
+  return h.replace(/\b(art(?:igo|s)?\.?\s*)(\d+)\.?º(-[A-Z])?((?:,\s*n\.?\s?º[^,;]*?)?(?:,\s*al[^,;]*?)?,?\s*(?:do|da)\s+)(CRP|CC|CPC|CPP|CP|CT|CSC|CPA)\b/g, function (m, a, n, suf, mid, sig) {
+    var dip = LEI_SIG[sig]; if (!dip || (LEI.meta && !LEI.meta[dip])) return m;
+    return '<button class="lei-lk" data-a="lei-ver" data-id="' + dip + '|' + n + (suf || '') + '" title="Ler o artigo">' + m + '</button>';
+  });
+}
+A['lei-ver'] = function (el) {
+  var p = el.dataset.id.split('|'), dip = p[0], num = p[1], d = leiDipInfo(dip);
+  openModal(d.sigla + ' · Artigo ' + num + '.º', '<div class="lei-mod" id="lei-mod"><p style="color:var(--muted)">A carregar…</p></div>', '<button class="btn" data-a="lei-abrir" data-id="' + dip + '|' + num + '">Abrir no leitor</button><button class="btn pri" data-a="close">Fechar</button>');
+  leiArt(dip, num).then(function (r) { var c = $('#lei-mod'); if (!c) return; c.innerHTML = r ? (r.epigrafe ? '<h3 class="lei-ep">' + esc(r.epigrafe) + '</h3>' : '') + '<div class="lei-tx">' + leiTextoHtml(r.texto) + '</div><span class="lei-fonte">' + esc(leiFonteNota(dip)) + '</span>' : '<p>Artigo não encontrado na versão consolidada.</p>'; });
+};
+A['lei-abrir'] = function (el) { var p = el.dataset.id.split('|'); closeModal(); S.lei = { dip: p[0], num: p[1] }; go('lei'); };
+
+/* ----- leitor de legislação ----- */
+function vLei() {
+  leiMetaCarregar();
+  var L = S.lei || (S.lei = { dip: 'crp', num: '1' }), d = leiDipInfo(L.dip), dips = LEI.meta ? Object.keys(LEI.meta) : [];
+  var ordem = ['crp', 'cc', 'cpc', 'cp', 'cpp', 'ct', 'csc', 'cpa']; dips.sort(function (a, b) { return ordem.indexOf(a) - ordem.indexOf(b); });
+  var h = '<div class="head"><div><span class="crumb"><button data-go="biblioteca">Biblioteca</button> / Texto integral</span><h1>' + esc(d.nome) + '</h1><p class="sub">' + esc(leiFonteNota(L.dip)) + '</p></div></div>';
+  h += '<div class="lei-top"><div class="seg" role="group" aria-label="Diploma">' + dips.map(function (k) { return '<button class="' + (k === L.dip ? 'on' : '') + '" data-a="lei-dip" data-id="' + k + '">' + esc(leiDipInfo(k).sigla) + '</button>'; }).join('') + '</div>' +
+    '<label class="search lei-q">' + I.search + '<span class="sr">Procurar no diploma</span><input type="search" id="lei-q" placeholder="N.º do artigo ou palavras (ex.: 483, usucapião)…" value="' + esc(L.q || '') + '"></label></div>';
+  var toc = LEI.toc[L.dip]; if (!toc) leiToc(L.dip).then(function () { if (S.view === 'lei') render(); });
+  var r = LEI.art[leiK(L.dip, L.num)]; if (r === undefined) leiArt(L.dip, L.num).then(function () { if (S.view === 'lei') render(); });
+  var res = L.res && L.resQ === L.q ? L.res : null;
+  h += '<div class="lei-grid"><aside class="card lei-toc"><h2 style="font-size:15px">Índice</h2><div class="lei-toc-l">' + (toc ? leiTocHtml(toc, L) : '<p class="au-nota-p">A carregar o índice…</p>') + '</div></aside><section class="lei-main">';
+  if (res) h += '<div class="card lei-res"><div class="row" style="justify-content:space-between"><h2 style="font-size:15px">' + plural(res.length, 'resultado', 'resultados') + ' para «' + esc(L.q) + '»</h2><button class="lnk" data-a="lei-limpar">Limpar</button></div>' + (res.length ? res.map(function (x) { return '<button class="lei-ri" data-a="lei-ir" data-id="' + esc(x.num) + '"><b>Art. ' + esc(x.num) + '.º</b><span>' + esc(x.epigrafe || '') + '</span></button>'; }).join('') : '<p class="au-nota-p">Sem resultados.</p>') + '</div>';
+  h += '<article class="card lei-art">' + (r === undefined ? '<p class="au-nota-p">A carregar…</p>' : !r ? '<div class="empty"><span>O artigo ' + esc(L.num) + '.º não existe na versão consolidada deste diploma.</span></div>' :
+    '<span class="lei-sec">' + esc(r.seccao || '') + '</span><div class="lei-h"><span class="lei-sig">' + esc(d.sigla) + '</span><h2>Artigo ' + esc(r.num) + '.º</h2></div>' + (r.epigrafe ? '<h3 class="lei-ep">' + esc(r.epigrafe) + '</h3>' : '') + '<div class="lei-tx">' + leiTextoHtml(r.texto) + '</div>' +
+    '<div class="row lei-bts"><button class="btn sm" data-a="lei-mov" data-id="-1">‹ Anterior</button><button class="btn sm" data-a="lei-mov" data-id="1">Seguinte ›</button><span style="flex:1"></span><button class="btn sm" data-a="lei-copiar">Copiar</button>' + (d.arts ? '<button class="btn sm" data-a="lib-add" data-id="' + d.id + '|' + esc(r.num) + '.º">' + I.plus + 'Workspace</button>' : '') + '<a class="btn sm" href="' + esc((LEI.meta[L.dip] || {}).fonte || d.url) + '" target="_blank" rel="noopener">Diário da República ' + I.ext + '</a></div>' + leiQuestoesHtml(L.dip, r.num)) + '</article></section></div>';
+  return h;
+}
+function leiTocHtml(toc, L) {
+  var grupos = [], g = null; toc.forEach(function (x) { var s = x.seccao || 'Disposições'; if (!g || g.s !== s) { g = { s: s, l: [] }; grupos.push(g); } g.l.push(x); });
+  var atual = toc.filter(function (x) { return x.num === String(L.num).toUpperCase(); })[0], sAt = atual && (atual.seccao || 'Disposições');
+  return grupos.map(function (gr) {
+    var aberto = gr.s === sAt, partes = gr.s.split(' › '), tit = partes[partes.length - 1];
+    return '<details' + (aberto ? ' open' : '') + '><summary title="' + esc(gr.s) + '">' + esc(tit) + ' <em>' + gr.l[0].num + '–' + gr.l[gr.l.length - 1].num + '</em></summary>' + gr.l.map(function (x) { return '<button class="lei-ti' + (atual && x.ord === atual.ord ? ' on' : '') + '" data-a="lei-ir" data-id="' + esc(x.num) + '"><b>' + esc(x.num) + '.º</b> ' + esc(x.epigrafe || '') + '</button>'; }).join('') + '</details>';
+  }).join('');
+}
+function leiQuestoesHtml(dip, num) {
+  var d = leiDipInfo(dip), rx = new RegExp('art(?:igo)?s?\\.?\\s*(?:[0-9.º, e]*\\b)?' + String(num).replace('-', '\\-') + '\\.?º');
+  var qs = QUESTOES.filter(function (q) { return rx.test(q.e) && q.e.indexOf(d.sigla) >= 0; }).slice(0, 5);
+  return qs.length ? '<div class="lei-qs"><span class="eyebrow">Teste-se sobre este artigo</span>' + qs.map(function (q) { return '<details><summary>' + esc(q.q) + '</summary><p><b>' + esc(q.o[q.a]) + '</b> ' + esc(q.e) + '</p></details>'; }).join('') + '</div>' : '';
+}
+A['lei-dip'] = function (el) { S.lei = { dip: el.dataset.id, num: '1' }; render(); };
+A['lei-ir'] = function (el) { S.lei.num = el.dataset.id; render(); var a = document.querySelector('.lei-art'); if (a && a.getBoundingClientRect().top < 0) a.scrollIntoView({ behavior: 'smooth' }); };
+A['lei-limpar'] = function () { S.lei.q = ''; S.lei.res = null; render(); };
+A['lei-mov'] = function (el) { var r = LEI.art[leiK(S.lei.dip, S.lei.num)]; if (!r) return; leiOrd(S.lei.dip, r.ord + Number(el.dataset.id)).then(function (x) { if (x) { S.lei.num = x.num; render(); } }); };
+A['lei-copiar'] = function () { var r = LEI.art[leiK(S.lei.dip, S.lei.num)], d = leiDipInfo(S.lei.dip); if (!r) return; var t = 'Artigo ' + r.num + '.º ' + d.sigla + (r.epigrafe ? ' — ' + r.epigrafe : '') + '\n' + r.texto; (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { toast('Artigo copiado.'); }, function () { toast('Não foi possível copiar.'); }); };
+function leiProcurar(q) {
+  var L = S.lei; L.q = q; q = q.trim(); if (!q) { L.res = null; render(); return; }
+  if (/^\d+(-[a-z])?$/i.test(q)) { L.num = q.toUpperCase(); L.res = null; render(); return; }
+  var s = q.replace(/[%_,()]/g, ' ').trim();
+  SB.from('lei_artigos').select('num,epigrafe,ord').eq('dip', L.dip).or('epigrafe.ilike.%' + s + '%,texto.ilike.%' + s + '%').order('ord').limit(40).then(function (r) { L.res = r && r.data || []; L.resQ = L.q; if (S.view === 'lei') render(); });
+}
+document.addEventListener('keydown', function (ev) { if (ev.target && ev.target.id === 'lei-q' && ev.key === 'Enter') { ev.preventDefault(); leiProcurar(ev.target.value); } });
+document.addEventListener('search', function (ev) { if (ev.target && ev.target.id === 'lei-q' && !ev.target.value) leiProcurar(''); }, true);
+
+/* biblioteca: botão «Ler o texto integral» */
+var _libListLEI = libList;
+libList = function () {
+  var h = _libListLEI(); if (!LEI.meta) { leiMetaCarregar(); return h; }
+  DIPLOMAS.forEach(function (d) { if (!LEI.meta[d.id]) return; var a = '<a class="btn sm" href="' + d.url + '"'; var i = h.indexOf('id="dip-' + d.id + '"'); if (i < 0) return; var j = h.indexOf(a, i); if (j < 0) return; h = h.slice(0, j) + '<button class="btn sm pri" data-a="lei-abrir" data-id="' + d.id + '|1">Ler o texto integral</button>' + h.slice(j); });
+  return h;
+};
+setTimeout(leiMetaCarregar, 1500);
+
 /* ---------- MODO NOTURNO ---------- */
 /* Gera automaticamente a versão escura de todas as regras CSS (e dos estilos em linha),
    convertendo as cores segundo o papel de cada propriedade: fundo, texto, contorno. */
@@ -7883,7 +8022,7 @@ A['tema'] = function () { var n = temaEscuro() ? 'claro' : 'escuro'; lsSet('lexd
 try { if (window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () { if (!lsGet('lexdesk_tema')) temaAplicar(temaPref()); }); } catch (e) { }
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
-var VIEW_LBL = { painel: ['Painel', I.grid], reputacao: ['Reputação', I.badge], flashcards: ['Flashcards', I.layers], aula: ['Sala de aula', I.note], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Estudar e praticar', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
+var VIEW_LBL = { painel: ['Painel', I.grid], reputacao: ['Reputação', I.badge], flashcards: ['Flashcards', I.layers], aula: ['Sala de aula', I.note], lei: ['Texto integral da lei', I.book], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Estudar e praticar', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
 var isMac = /Mac|iPhone|iPad/.test(navigator.platform || '');
 
 /* ===== animação de entrada e contadores ===== */
