@@ -1586,6 +1586,55 @@ span.rp-util{cursor:default}
 .gu-arts{display:flex;flex-direction:column;gap:4px;font-size:13.5px}
 .gu-aviso{font-size:11.5px;color:var(--muted);margin:0;line-height:1.5}
 @media (max-width:1000px){.gu-grid{grid-template-columns:1fr}.gu-side{position:static}.gu-dl{grid-template-columns:1fr}.gu-s{padding:18px}}
+/* ---- Glossário ---- */
+.gl{border-bottom:1.5px dotted #7B1E2B;cursor:help;text-decoration:none;border-radius:2px}
+.gl:hover,.gl:focus{background:#FBEFF1;outline:none}
+.gl-tip{position:absolute;z-index:3000;display:none;flex-direction:column;gap:8px;padding:14px 16px;border-radius:14px;background:#fff;border:1px solid #E5E7EB;box-shadow:0 12px 32px rgba(15,23,42,.18);font-size:14px;line-height:1.55;color:#1F2937}
+.gl-tip.on{display:flex}
+.gl-tip-h{display:flex;align-items:center;justify-content:space-between;gap:10px}.gl-tip-h b{font-size:15px;color:#0F1B3D}
+.gl-tip p{margin:0;font:14px/1.6 var(--serif,Georgia,serif)}
+.gl-tip-r{font-size:12.5px;color:#6B7280}
+.gl-tip-v{align-self:flex-start;font-size:13px}
+.gl-f{gap:12px;padding:18px}
+.gl-q{font-size:15px}
+.gl-abc{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.gl-abc button,.gl-abc span{min-width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font:700 13px var(--sans);border:1px solid #E5E7EB;background:#fff;color:#0F1B3D;cursor:pointer}
+.gl-abc span{color:#C7CBD3;cursor:default;border-color:transparent;background:transparent}
+.gl-abc button.on{background:#7B1E2B;color:#fff;border-color:#7B1E2B}
+.gl-abc .lk{border:0;background:none;padding:0 6px;width:auto}
+.gl-n{margin:4px 2px;font-size:13px;color:#6B7280}
+.gl-l{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px}
+.gl-c{gap:8px;padding:18px 20px}.gl-c h3{margin:0;font-size:16.5px;color:#0F1B3D}
+.gl-c p{margin:0;font:15px/1.65 var(--serif,Georgia,serif);color:var(--ink)}
+.gl-c.foco{box-shadow:0 0 0 3px #E6C9CE}
+.gl-ch{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.gl-cf{display:flex;flex-direction:column;gap:3px;font-size:12.5px;color:#6B7280}
+/* ---- Método de resolução e resoluções-modelo ---- */
+.mt-cta{flex-direction:row;align-items:center;gap:14px;padding:16px 20px;text-align:left;cursor:pointer;font:inherit;color:inherit;border:1px solid #E6C9CE;background:linear-gradient(90deg,#FBEFF1,#fff)}
+.mt-cta>span:nth-child(2){display:flex;flex-direction:column;gap:2px;flex:1}.mt-cta>span:nth-child(2) span{font-size:14px;color:#4B5563}
+.mt-ic{font-size:26px}.mt-go{font-size:24px;color:#7B1E2B}
+.mt-tag{font-size:12.5px;font-weight:700;color:#15803D}
+.mt-rots{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.mt-rot{padding:14px 16px;border-radius:12px;background:#F7F8FB}.mt-rot h3{margin:0 0 6px;font-size:15px;color:#0F1B3D}
+.mt-rot ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px;font-size:14px;line-height:1.5}
+.gu-s ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font:15px/1.6 var(--serif,Georgia,serif)}
+.mt-ex{margin:0;font:14px/1.65 var(--serif,Georgia,serif);color:#374151}
+.mt-lemb{margin-top:4px;padding:10px 14px;border-radius:12px;background:#F7F8FB;font-size:14px}
+.mt-lemb summary{cursor:pointer;font-weight:700;color:#0F1B3D}
+.mt-lemb ol{margin:8px 0;padding-left:20px;display:flex;flex-direction:column;gap:3px}
+.mt-mod{gap:14px;padding:24px 28px;margin-top:16px;border-top:4px solid #15803D}.mt-mod h2{margin:0;font-size:20px}
+.mt-q{display:flex;flex-direction:column;gap:8px}
+.mt-q h3{margin:0;font-size:15.5px;color:#0F1B3D;display:flex;gap:10px;align-items:flex-start}
+.mt-q h3 span{flex:none;width:24px;height:24px;border-radius:50%;background:#15803D;color:#fff;display:grid;place-items:center;font-size:12px}
+.mt-q p{margin:0 0 0 34px;font:15.5px/1.75 var(--serif,Georgia,serif);color:var(--ink)}
+/* ---- Sala de aula: relacionado ---- */
+.au-rel{gap:8px}
+.au-rel-k{font:800 10.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:#7B1E2B;margin-top:4px}
+.au-rel-t{display:flex;flex-wrap:wrap;gap:6px}
+.au-rel-g{border:1px solid #E6C9CE;border-bottom:1px solid #E6C9CE;background:#FBEFF1;border-radius:999px;padding:3px 10px;font-size:13px}
+.au-rel-l{display:block;width:100%;text-align:left;padding:8px 10px;border-radius:10px;border:1px solid #E5E7EB;background:#fff;font:600 13.5px var(--sans);color:#0F1B3D;cursor:pointer}
+.au-rel-l:hover{background:#F4F6FA}
+.gu-ideia .gl{border-bottom-color:#E8C77A}.gu-ideia .gl:hover,.gu-ideia .gl:focus{background:rgba(255,255,255,.14)}
 
 </style>
 </head>
@@ -2614,6 +2663,482 @@ var UPD_SEED = [
     resumo: 'A proposta de lei do Governo, que alterava mais de 100 artigos do Código do Trabalho, foi rejeitada na generalidade. Votaram contra o Chega e os partidos de esquerda; PSD, CDS-PP e IL votaram a favor.',
     fonte: 'ECO', url: 'https://eco.sapo.pt/2026/06/19/chega-tira-o-tapete-ao-governo-e-rejeita-reforma-da-lei-do-trabalho-no-parlamento/' }
 ];
+
+/* ---------- GLOSSÁRIO JURÍDICO (dados) ----------
+   [termo, disciplina, definição, base legal (opcional), outras formas (opcional)] */
+var GLOSS = [
+  /* Teoria Geral do Direito Civil */
+  ['Personalidade jurídica', 'tgdc', 'Aptidão para ser titular de direitos e obrigações. Nas pessoas singulares adquire-se no momento do nascimento completo e com vida.', 'art. 66.º do CC'],
+  ['Capacidade jurídica', 'tgdc', 'Medida dos direitos e obrigações de que uma pessoa pode ser titular. Também chamada capacidade de gozo.', 'art. 67.º do CC', ['capacidade de gozo']],
+  ['Capacidade de exercício', 'tgdc', 'Aptidão para exercer pessoal e livremente os direitos e cumprir as obrigações, sem necessidade de representante ou assistente. Adquire-se, em regra, com a maioridade.', 'art. 130.º do CC'],
+  ['Menoridade', 'tgdc', 'Situação de quem ainda não completou 18 anos. Os menores carecem, em regra, de capacidade de exercício, suprida pelo poder paternal e, subsidiariamente, pela tutela.', 'art. 122.º do CC', ['menor', 'menores']],
+  ['Maior acompanhado', 'tgdc', 'Regime que substituiu a interdição e a inabilitação: o maior impossibilitado, por razões de saúde, deficiência ou comportamento, de exercer plena e conscientemente os seus direitos beneficia de medidas de acompanhamento decretadas pelo tribunal.', 'art. 138.º do CC', ['acompanhamento de maior']],
+  ['Emancipação', 'tgdc', 'Aquisição de plena capacidade de exercício pelo menor em virtude do casamento.', 'art. 132.º do CC'],
+  ['Pessoa coletiva', 'tgdc', 'Organização de pessoas ou de bens a que a ordem jurídica reconhece personalidade jurídica, como as associações, as fundações e as sociedades.', 'art. 157.º do CC', ['pessoas coletivas']],
+  ['Negócio jurídico', 'tgdc', 'Facto jurídico voluntário constituído por uma ou mais declarações de vontade dirigidas à produção de efeitos jurídicos que a ordem jurídica reconhece e tutela em conformidade com essa vontade.', '', ['negócios jurídicos']],
+  ['Declaração negocial', 'tgdc', 'Comportamento pelo qual se exterioriza uma vontade negocial. Pode ser expressa (palavras, escrito ou outro meio direto) ou tácita (deduzida de factos que, com toda a probabilidade, a revelam).', 'art. 217.º do CC', ['declaração tácita', 'declaração expressa']],
+  ['Liberdade de forma', 'tgdc', 'Princípio segundo o qual a validade da declaração negocial não depende de forma especial, salvo quando a lei a exigir.', 'art. 219.º do CC', ['consensualidade']],
+  ['Forma legal', 'tgdc', 'Forma que a lei exige para a validade de certa declaração negocial (por exemplo, escritura pública ou documento particular autenticado). A sua inobservância gera, em regra, nulidade.', 'art. 220.º do CC'],
+  ['Escritura pública', 'tgdc', 'Documento autêntico lavrado por notário (ou outra entidade com competência para tal) que exara declarações negociais. É exigida, em alternativa ao documento particular autenticado, para negócios como a compra e venda de imóveis.', 'art. 875.º do CC'],
+  ['Documento particular autenticado', 'tgdc', 'Documento particular cujo conteúdo é confirmado pelas partes perante notário, advogado, solicitador ou outra entidade com competência para autenticar.', 'art. 363.º do CC'],
+  ['Interpretação do negócio jurídico', 'tgdc', 'Determinação do sentido juridicamente relevante da declaração: vale o sentido que um declaratário normal, colocado na posição do real declaratário, possa deduzir do comportamento do declarante (teoria da impressão do destinatário).', 'art. 236.º do CC', ['impressão do destinatário']],
+  ['Integração do negócio jurídico', 'tgdc', 'Preenchimento de lacunas da declaração negocial de harmonia com a vontade que as partes teriam tido se houvessem previsto o ponto omisso, ou de acordo com os ditames da boa-fé.', 'art. 239.º do CC'],
+  ['Simulação', 'tgdc', 'Divergência intencional entre a vontade real e a declarada, por acordo entre declarante e declaratário, com o intuito de enganar terceiros. O negócio simulado é nulo.', 'art. 240.º do CC', ['negócio simulado']],
+  ['Reserva mental', 'tgdc', 'Emissão de uma declaração contrária à vontade real com o intuito de enganar o declaratário. Não prejudica a validade da declaração, salvo se o declaratário tiver conhecimento da reserva.', 'art. 244.º do CC'],
+  ['Erro', 'tgdc', 'Representação inexata ou ignorância de uma circunstância de facto ou de direito que foi determinante na decisão de celebrar o negócio. Pode recair sobre a pessoa, o objeto ou os motivos e, verificados os requisitos legais, gera anulabilidade.', 'art. 251.º do CC', ['erro-vício', 'erro vício']],
+  ['Dolo', 'tgdc', 'No direito civil, qualquer sugestão ou artifício empregado com a intenção ou consciência de induzir ou manter em erro o autor da declaração. Torna a declaração anulável. No direito penal, designa a forma mais grave de imputação subjetiva (ver «Dolo direto, necessário e eventual»).', 'art. 253.º do CC'],
+  ['Coação moral', 'tgdc', 'Declaração determinada pelo receio de um mal de que o declarante foi ilicitamente ameaçado com o fim de obter dele a declaração. Torna o negócio anulável.', 'art. 255.º do CC'],
+  ['Coação física', 'tgdc', 'Situação em que o declarante é reduzido a mero instrumento, sem qualquer vontade de agir. A declaração não produz qualquer efeito.', 'art. 246.º do CC', ['coação absoluta']],
+  ['Usura', 'tgdc', 'Negócio em que alguém, explorando a situação de necessidade, inexperiência, ligeireza, dependência, estado mental ou fraqueza de caráter de outrem, obtém benefícios excessivos ou injustificados. É anulável.', 'art. 282.º do CC', ['negócio usurário']],
+  ['Nulidade', 'tgdc', 'Forma mais grave de invalidade: o negócio não produz os efeitos a que se dirigia. É invocável a todo o tempo por qualquer interessado e pode ser declarada oficiosamente pelo tribunal.', 'art. 286.º do CC', ['nulo', 'nula']],
+  ['Anulabilidade', 'tgdc', 'Forma de invalidade que só pode ser arguida pelas pessoas em cujo interesse a lei a estabelece, dentro do ano subsequente à cessação do vício. Enquanto não for anulado, o negócio produz efeitos.', 'art. 287.º do CC', ['anulável', 'anulação']],
+  ['Confirmação', 'tgdc', 'Ato pelo qual a pessoa a quem pertence o direito de anulação sana o negócio anulável, depois de cessado o vício e conhecendo-o.', 'art. 288.º do CC'],
+  ['Conversão do negócio jurídico', 'tgdc', 'Aproveitamento de um negócio nulo ou anulado como negócio de tipo ou conteúdo diferente, do qual contenha os requisitos essenciais, quando o fim prosseguido pelas partes permita supor que o teriam querido se tivessem previsto a invalidade.', 'art. 293.º do CC', ['conversão']],
+  ['Redução do negócio jurídico', 'tgdc', 'A nulidade ou anulação parcial não determina a invalidade de todo o negócio, salvo quando se mostre que este não teria sido concluído sem a parte viciada.', 'art. 292.º do CC', ['redução']],
+  ['Condição', 'tgdc', 'Cláusula pela qual as partes subordinam a produção (condição suspensiva) ou a resolução (condição resolutiva) dos efeitos do negócio a um acontecimento futuro e incerto.', 'art. 270.º do CC', ['condição suspensiva', 'condição resolutiva']],
+  ['Termo', 'tgdc', 'Cláusula pela qual os efeitos do negócio começam (termo inicial) ou cessam (termo final) num acontecimento futuro e certo.', 'art. 278.º do CC'],
+  ['Representação', 'tgdc', 'Atuação de alguém em nome de outrem, dentro dos limites dos poderes que lhe competem: o negócio produz os seus efeitos diretamente na esfera jurídica do representado.', 'art. 258.º do CC', ['representante']],
+  ['Procuração', 'tgdc', 'Ato pelo qual alguém atribui a outrem, voluntariamente, poderes representativos.', 'art. 262.º do CC'],
+  ['Representação sem poderes', 'tgdc', 'Negócio celebrado por quem não tem poderes de representação: é ineficaz em relação ao representado, se não for por ele ratificado.', 'art. 268.º do CC'],
+  ['Abuso do direito', 'tgdc', 'Exercício de um direito que excede manifestamente os limites impostos pela boa-fé, pelos bons costumes ou pelo fim social ou económico desse direito. É ilegítimo.', 'art. 334.º do CC', ['abuso de direito', 'venire contra factum proprium']],
+  ['Boa-fé', 'tgdc', 'Em sentido objetivo, padrão de conduta leal e honesta que deve presidir à formação e à execução dos contratos; em sentido subjetivo, ignorância desculpável de que se lesa direito alheio.', 'art. 227.º do CC', ['boa fé']],
+  ['Culpa in contrahendo', 'tgdc', 'Responsabilidade pré-contratual de quem, nos preliminares ou na formação do contrato, não procede segundo as regras da boa-fé, causando danos à outra parte.', 'art. 227.º do CC', ['responsabilidade pré-contratual']],
+  ['Prescrição', 'tgdc', 'Extinção do direito de exigir judicialmente o cumprimento pelo decurso do tempo sem exercício. O prazo ordinário é de 20 anos; depois de completada, o beneficiário pode recusar o cumprimento.', 'art. 309.º do CC', ['prescreveu', 'prescrito']],
+  ['Caducidade', 'tgdc', 'Extinção de um direito pelo seu não exercício dentro do prazo fixado por lei ou convenção. Ao contrário da prescrição, em regra não se suspende nem se interrompe.', 'arts. 298.º e 328.º do CC', ['caduca', 'caducou']],
+  ['Interrupção da prescrição', 'tgdc', 'Inutilização do prazo já decorrido: a prescrição interrompe-se, por exemplo, pela citação ou notificação judicial de qualquer ato que exprima a intenção de exercer o direito, começando a correr novo prazo.', 'art. 323.º do CC'],
+  ['Presunção', 'tgdc', 'Ilação que a lei ou o julgador tira de um facto conhecido para firmar um facto desconhecido. Quem tem a seu favor uma presunção legal escusa de provar o facto a que ela conduz.', 'art. 350.º do CC', ['presunção legal', 'presunções']],
+  ['Ónus da prova', 'tgdc', 'Encargo de provar os factos: àquele que invoca um direito cabe fazer a prova dos factos constitutivos; a prova dos factos impeditivos, modificativos ou extintivos compete àquele contra quem a invocação é feita.', 'art. 342.º do CC'],
+  ['Coisa', 'tgdc', 'Tudo aquilo que pode ser objeto de relações jurídicas. As coisas classificam-se em imóveis e móveis, fungíveis e não fungíveis, consumíveis e não consumíveis, entre outras.', 'art. 202.º do CC', ['coisas imóveis', 'coisas móveis']],
+  ['Benfeitoria', 'tgdc', 'Despesa feita para conservar ou melhorar a coisa. Pode ser necessária, útil ou voluptuária.', 'art. 216.º do CC', ['benfeitorias']],
+  ['Frutos', 'tgdc', 'Tudo o que uma coisa produz periodicamente, sem prejuízo da sua substância. Podem ser naturais ou civis (rendas e juros).', 'art. 212.º do CC'],
+
+  /* Obrigações */
+  ['Obrigação', 'obr', 'Vínculo jurídico por virtude do qual uma pessoa (devedor) fica adstrita para com outra (credor) à realização de uma prestação.', 'art. 397.º do CC', ['obrigações']],
+  ['Prestação', 'obr', 'Comportamento a que o devedor está vinculado. Pode ser de dar, de fazer ou de não fazer, e tem de ser física e legalmente possível, conforme à lei e determinável.', 'art. 398.º do CC'],
+  ['Obrigação natural', 'obr', 'Obrigação fundada num mero dever de ordem moral ou social, cujo cumprimento não é judicialmente exigível, mas corresponde a um dever de justiça. O que for prestado espontaneamente não pode ser repetido.', 'art. 402.º do CC', ['obrigações naturais']],
+  ['Obrigação solidária', 'obr', 'Obrigação em que cada um dos devedores responde pela prestação integral e esta a todos libera (solidariedade passiva), ou em que cada credor tem a faculdade de exigir a prestação integral (solidariedade ativa).', 'art. 512.º do CC', ['solidariedade', 'solidariamente', 'solidária']],
+  ['Obrigação conjunta', 'obr', 'Obrigação plural em que cada devedor só responde pela sua parte e cada credor só pode exigir a sua parte. É a regra nas obrigações civis com pluralidade de sujeitos; a solidariedade só existe quando resulte da lei ou da vontade das partes.', 'art. 513.º do CC', ['parciariedade']],
+  ['Obrigação alternativa', 'obr', 'Obrigação que compreende duas ou mais prestações, mas em que o devedor se exonera efetuando aquela que, por escolha, vier a ser designada. Em regra, a escolha pertence ao devedor.', 'art. 543.º do CC'],
+  ['Obrigação genérica', 'obr', 'Obrigação cujo objeto é determinado apenas quanto ao género (por exemplo, 100 litros de azeite). A escolha pertence, em regra, ao devedor.', 'art. 539.º do CC'],
+  ['Obrigação pecuniária', 'obr', 'Obrigação que tem por objeto uma quantia em dinheiro. Rege-se pelo princípio nominalista: o cumprimento faz-se em moeda com curso legal pelo valor nominal.', 'art. 550.º do CC', ['obrigações pecuniárias']],
+  ['Contrato-promessa', 'obr', 'Convenção pela qual alguém se obriga a celebrar certo contrato. Aplicam-se-lhe as disposições do contrato prometido, exceto as relativas à forma e as que, pela sua razão de ser, não se devam considerar extensivas.', 'art. 410.º do CC', ['contrato promessa', 'promessa de compra e venda']],
+  ['Sinal', 'obr', 'Coisa entregue por um contraente ao outro no momento da celebração do contrato ou em momento posterior. No contrato-promessa de compra e venda, presume-se que toda a quantia entregue tem carácter de sinal.', 'art. 441.º do CC'],
+  ['Execução específica', 'obr', 'Possibilidade de obter sentença que produza os efeitos da declaração negocial do faltoso que não cumpriu um contrato-promessa, quando a isso não se oponha a natureza da obrigação.', 'art. 830.º do CC'],
+  ['Pacto de preferência', 'obr', 'Convenção pela qual alguém assume a obrigação de dar preferência a outrem na venda de determinada coisa.', 'art. 414.º do CC', ['direito de preferência', 'preferência']],
+  ['Gestão de negócios', 'obr', 'Situação em que uma pessoa assume a direção de negócio alheio no interesse e por conta do respetivo dono, sem para tal estar autorizada.', 'art. 464.º do CC'],
+  ['Enriquecimento sem causa', 'obr', 'Fonte de obrigações: aquele que, sem causa justificativa, enriquecer à custa de outrem é obrigado a restituir aquilo com que injustamente se locupletou.', 'art. 473.º do CC', ['enriquecimento injustificado']],
+  ['Responsabilidade civil', 'obr', 'Obrigação de reparar os danos sofridos por alguém. Pode ser extracontratual (por factos ilícitos, pelo risco ou por factos lícitos) ou contratual (pelo incumprimento de obrigações).', 'art. 483.º do CC'],
+  ['Responsabilidade extracontratual', 'obr', 'Responsabilidade por violação ilícita e culposa de direitos de outrem ou de disposições legais destinadas a proteger interesses alheios, fora de uma relação obrigacional prévia. Também chamada responsabilidade aquiliana.', 'art. 483.º do CC', ['responsabilidade aquiliana', 'responsabilidade delitual']],
+  ['Responsabilidade contratual', 'obr', 'Responsabilidade do devedor que falta culposamente ao cumprimento da obrigação, tornando-se responsável pelo prejuízo que causa ao credor. A culpa do devedor presume-se.', 'art. 798.º do CC', ['responsabilidade obrigacional']],
+  ['Responsabilidade pelo risco', 'obr', 'Responsabilidade objetiva, independente de culpa, que só existe nos casos especificados na lei, como a do comitente e a dos acidentes causados por veículos.', 'art. 499.º do CC', ['responsabilidade objetiva']],
+  ['Ilicitude', 'obr', 'Contrariedade de um comportamento à ordem jurídica. Na responsabilidade civil, traduz-se na violação de direitos subjetivos de outrem ou de normas de proteção.', 'art. 483.º do CC', ['ilícito', 'facto ilícito']],
+  ['Culpa', 'obr', 'Juízo de censura ao agente por ter atuado como atuou quando podia e devia ter agido de outro modo. No direito civil, é apreciada pela diligência de um bom pai de família; abrange o dolo e a negligência.', 'art. 487.º do CC'],
+  ['Bom pai de família', 'obr', 'Padrão abstrato de diligência pelo qual se aprecia a culpa no direito civil: a de uma pessoa medianamente cuidadosa, em face das circunstâncias de cada caso.', 'art. 487.º do CC', ['diligência de um bom pai de família']],
+  ['Dano', 'obr', 'Prejuízo sofrido pelo lesado. Pode ser patrimonial (danos emergentes e lucros cessantes) ou não patrimonial (dor, sofrimento, desgosto).', 'art. 562.º do CC', ['danos']],
+  ['Dano emergente', 'obr', 'Prejuízo causado nos bens ou direitos já existentes na titularidade do lesado à data da lesão.', 'art. 564.º do CC', ['danos emergentes']],
+  ['Lucro cessante', 'obr', 'Benefício que o lesado deixou de obter em consequência da lesão. É indemnizável.', 'art. 564.º do CC', ['lucros cessantes']],
+  ['Danos não patrimoniais', 'obr', 'Danos insuscetíveis de avaliação pecuniária (dor física, sofrimento moral). São indemnizáveis quando, pela sua gravidade, mereçam a tutela do direito.', 'art. 496.º do CC', ['dano não patrimonial', 'danos morais']],
+  ['Nexo de causalidade', 'obr', 'Relação entre o facto e o dano. O direito português adota a teoria da causalidade adequada: a obrigação de indemnizar só existe em relação aos danos que o lesado provavelmente não teria sofrido se não fosse a lesão.', 'art. 563.º do CC', ['causalidade adequada', 'nexo causal']],
+  ['Reconstituição natural', 'obr', 'Forma preferencial de indemnização: reconstituir a situação que existiria se não se tivesse verificado o evento que obriga à reparação. Quando não for possível, suficiente ou for excessivamente onerosa, a indemnização é fixada em dinheiro.', 'art. 566.º do CC'],
+  ['Teoria da diferença', 'obr', 'Critério de cálculo da indemnização em dinheiro: diferença entre a situação patrimonial do lesado na data mais recente que puder ser atendida pelo tribunal e a que teria nessa data se não existissem danos.', 'art. 566.º do CC'],
+  ['Culpa do lesado', 'obr', 'Quando um facto culposo do lesado tiver concorrido para a produção ou agravamento dos danos, cabe ao tribunal determinar se a indemnização deve ser totalmente concedida, reduzida ou mesmo excluída.', 'art. 570.º do CC'],
+  ['Comitente', 'obr', 'Aquele que encarrega outrem (comissário) de qualquer comissão. Responde, independentemente de culpa, pelos danos que o comissário causar no exercício da função, desde que sobre este recaia também a obrigação de indemnizar.', 'art. 500.º do CC', ['comissário', 'relação de comissão']],
+  ['Direção efetiva do veículo', 'obr', 'Critério de imputação da responsabilidade pelo risco nos acidentes de viação: responde quem tiver a direção efetiva de veículo de circulação terrestre e o utilizar no seu próprio interesse.', 'art. 503.º do CC'],
+  ['Cumprimento', 'obr', 'Realização voluntária da prestação devida. O devedor deve proceder de boa-fé e a prestação deve ser realizada integralmente, e não por partes.', 'art. 762.º do CC', ['pagamento']],
+  ['Mora', 'obr', 'Atraso no cumprimento: o devedor constitui-se em mora quando, por causa que lhe seja imputável, a prestação, ainda possível, não foi efetuada no tempo devido. Obriga a reparar os danos causados ao credor.', 'art. 804.º do CC', ['mora do devedor']],
+  ['Interpelação', 'obr', 'Exigência de cumprimento feita pelo credor ao devedor, judicial ou extrajudicialmente. Nas obrigações sem prazo certo, é ela que constitui o devedor em mora.', 'art. 805.º do CC', ['interpelação admonitória']],
+  ['Incumprimento definitivo', 'obr', 'Situação em que a prestação já não será realizada: por impossibilidade imputável ao devedor, por perda do interesse do credor ou por não cumprimento no prazo razoável fixado pelo credor (interpelação admonitória).', 'art. 808.º do CC', ['não cumprimento definitivo']],
+  ['Impossibilidade da prestação', 'obr', 'A obrigação extingue-se quando a prestação se torna impossível por causa não imputável ao devedor. Se a impossibilidade for imputável ao devedor, este responde como se faltasse culposamente ao cumprimento.', 'art. 790.º do CC', ['impossibilidade superveniente']],
+  ['Cumprimento defeituoso', 'obr', 'Realização da prestação em termos que não correspondem ao devido (defeitos de qualidade, quantidade ou modo). É tratado como forma de incumprimento.', 'art. 799.º do CC'],
+  ['Exceção de não cumprimento', 'obr', 'Nos contratos bilaterais, a faculdade de cada contraente recusar a sua prestação enquanto o outro não efetuar a que lhe cabe ou não oferecer o seu cumprimento simultâneo.', 'art. 428.º do CC', ['exceptio non adimpleti contractus']],
+  ['Resolução do contrato', 'obr', 'Extinção do contrato por iniciativa de uma das partes, com fundamento na lei ou em convenção. Tem, em regra, efeito retroativo e faz-se mediante declaração à outra parte.', 'art. 432.º do CC', ['resolução']],
+  ['Alteração das circunstâncias', 'obr', 'Se as circunstâncias em que as partes fundaram a decisão de contratar sofrerem uma alteração anormal, a parte lesada tem direito à resolução do contrato ou à sua modificação segundo juízos de equidade.', 'art. 437.º do CC'],
+  ['Cláusula penal', 'obr', 'Estipulação pela qual as partes fixam antecipadamente o montante da indemnização exigível em caso de incumprimento. Pode ser reduzida pelo tribunal, de acordo com a equidade, quando for manifestamente excessiva.', 'art. 810.º do CC'],
+  ['Compensação', 'obr', 'Extinção de duas obrigações recíprocas: quando duas pessoas sejam simultaneamente credor e devedor uma da outra, qualquer delas pode livrar-se da sua obrigação por meio de compensação com a obrigação do seu credor.', 'art. 847.º do CC'],
+  ['Novação', 'obr', 'Extinção de uma obrigação por meio da contração de uma nova obrigação em substituição da antiga.', 'art. 857.º do CC'],
+  ['Remissão', 'obr', 'Perdão da dívida: o credor pode remitir a dívida por contrato com o devedor.', 'art. 863.º do CC'],
+  ['Confusão', 'obr', 'Extinção do crédito e da dívida quando na mesma pessoa se reúnam as qualidades de credor e devedor da mesma obrigação.', 'art. 868.º do CC'],
+  ['Dação em cumprimento', 'obr', 'Realização de uma prestação diferente da que era devida, que só exonera o devedor se o credor der o seu assentimento.', 'art. 837.º do CC'],
+  ['Consignação em depósito', 'obr', 'Depósito judicial da coisa devida, a que o devedor pode recorrer quando, sem culpa sua, não puder efetuar a prestação ou o credor estiver em mora.', 'art. 841.º do CC'],
+  ['Cessão de créditos', 'obr', 'Transmissão, pelo credor, de parte ou da totalidade do crédito a um terceiro, independentemente do consentimento do devedor.', 'art. 577.º do CC'],
+  ['Sub-rogação', 'obr', 'Transmissão do crédito para um terceiro que cumpre a obrigação em lugar do devedor ou que fornece ao devedor os meios necessários ao cumprimento.', 'art. 589.º do CC'],
+  ['Assunção de dívida', 'obr', 'Transmissão singular de uma dívida para um novo devedor, que só exonera o antigo devedor havendo declaração expressa do credor.', 'art. 595.º do CC'],
+  ['Garantia geral das obrigações', 'obr', 'Pelo cumprimento da obrigação respondem todos os bens do devedor suscetíveis de penhora, salvo regimes especiais de separação de patrimónios.', 'art. 601.º do CC', ['garantia patrimonial']],
+  ['Impugnação pauliana', 'obr', 'Meio de conservação da garantia patrimonial que permite ao credor reagir contra atos do devedor que envolvam diminuição dessa garantia e que não sejam de natureza pessoal, verificados os requisitos legais.', 'art. 610.º do CC'],
+  ['Sub-rogação do credor ao devedor', 'obr', 'Faculdade de o credor exercer, contra terceiro, os direitos de conteúdo patrimonial que competem ao devedor, quando este não os exerça e isso seja essencial à satisfação ou garantia do crédito.', 'art. 606.º do CC', ['ação sub-rogatória']],
+  ['Fiança', 'obr', 'Garantia pessoal: o fiador garante a satisfação do direito de crédito, ficando pessoalmente obrigado perante o credor.', 'art. 627.º do CC', ['fiador']],
+  ['Benefício da excussão', 'obr', 'Direito do fiador de recusar o cumprimento enquanto o credor não tiver excutido todos os bens do devedor sem obter a satisfação do seu crédito.', 'art. 638.º do CC'],
+  ['Penhor', 'obr', 'Garantia real que confere ao credor o direito à satisfação do seu crédito, com preferência sobre os demais credores, pelo valor de certa coisa móvel ou de créditos ou outros direitos não suscetíveis de hipoteca.', 'art. 666.º do CC'],
+  ['Hipoteca', 'obr', 'Garantia real que confere ao credor o direito de ser pago pelo valor de certas coisas imóveis, ou equiparadas, pertencentes ao devedor ou a terceiro, com preferência sobre os demais credores que não gozem de privilégio especial ou de prioridade de registo.', 'art. 686.º do CC'],
+  ['Direito de retenção', 'obr', 'Direito do devedor que disponha de um crédito contra o seu credor de não entregar a coisa que deve entregar, se o crédito resultar de despesas feitas por causa dela ou de danos por ela causados.', 'art. 754.º do CC'],
+  ['Privilégio creditório', 'obr', 'Faculdade que a lei concede a certos credores, em atenção à causa do crédito, de serem pagos com preferência a outros, independentemente do registo.', 'art. 733.º do CC', ['privilégios creditórios']],
+  ['Compra e venda', 'obr', 'Contrato pelo qual se transmite a propriedade de uma coisa, ou outro direito, mediante um preço.', 'art. 874.º do CC'],
+  ['Venda de coisa defeituosa', 'obr', 'Venda de coisa que sofre de vício que a desvaloriza ou impede a realização do fim a que se destina, ou que não tem as qualidades asseguradas pelo vendedor. Confere ao comprador direitos de anulação, redução do preço, reparação ou substituição e indemnização.', 'art. 913.º do CC'],
+  ['Doação', 'obr', 'Contrato pelo qual uma pessoa, por espírito de liberalidade e à custa do seu património, dispõe gratuitamente de uma coisa ou de um direito, ou assume uma obrigação, em benefício do outro contraente.', 'art. 940.º do CC'],
+  ['Arrendamento', 'obr', 'Locação de coisa imóvel. A locação é o contrato pelo qual uma das partes se obriga a proporcionar à outra o gozo temporário de uma coisa, mediante retribuição.', 'art. 1023.º do CC', ['locação', 'arrendatário', 'senhorio']],
+  ['Mandato', 'obr', 'Contrato pelo qual uma das partes se obriga a praticar um ou mais atos jurídicos por conta da outra.', 'art. 1157.º do CC'],
+  ['Empreitada', 'obr', 'Contrato pelo qual uma das partes se obriga em relação à outra a realizar certa obra, mediante um preço.', 'art. 1207.º do CC', ['empreiteiro']],
+  ['Mútuo', 'obr', 'Contrato pelo qual uma das partes empresta à outra dinheiro ou outra coisa fungível, ficando a segunda obrigada a restituir outro tanto do mesmo género e qualidade.', 'art. 1142.º do CC'],
+  ['Comodato', 'obr', 'Contrato gratuito pelo qual uma das partes entrega à outra certa coisa, móvel ou imóvel, para que se sirva dela, com a obrigação de a restituir.', 'art. 1129.º do CC'],
+
+  /* Direitos Reais */
+  ['Direito real', 'reais', 'Direito absoluto que confere ao titular um poder direto e imediato sobre uma coisa, oponível a todos (erga omnes). Vigora o princípio da tipicidade: só existem os direitos reais previstos na lei.', 'art. 1306.º do CC', ['direitos reais', 'tipicidade dos direitos reais', 'numerus clausus']],
+  ['Propriedade', 'reais', 'Direito real máximo: o proprietário goza de modo pleno e exclusivo dos direitos de uso, fruição e disposição das coisas que lhe pertencem, dentro dos limites da lei.', 'art. 1305.º do CC', ['direito de propriedade', 'proprietário']],
+  ['Posse', 'reais', 'Poder que se manifesta quando alguém atua por forma correspondente ao exercício do direito de propriedade ou de outro direito real. Compõe-se de corpus (elemento material) e animus (intenção de agir como titular).', 'art. 1251.º do CC', ['possuidor', 'corpus', 'animus']],
+  ['Mera detenção', 'reais', 'Situação de quem tem o poder de facto sobre a coisa sem intenção de agir como beneficiário do direito, por exemplo o arrendatário ou o comodatário. Não é posse.', 'art. 1253.º do CC', ['detentor']],
+  ['Usucapião', 'reais', 'Aquisição do direito de propriedade, ou de outros direitos reais de gozo, pela posse mantida por certo lapso de tempo.', 'art. 1287.º do CC'],
+  ['Ação de reivindicação', 'reais', 'Ação pela qual o proprietário exige judicialmente de qualquer possuidor ou detentor da coisa o reconhecimento do seu direito de propriedade e a consequente restituição do que lhe pertence.', 'art. 1311.º do CC', ['reivindicação']],
+  ['Acessão', 'reais', 'Forma de aquisição originária que se verifica quando com a coisa que é propriedade de alguém se une e incorpora outra coisa que lhe não pertencia.', 'art. 1325.º do CC'],
+  ['Compropriedade', 'reais', 'Situação em que duas ou mais pessoas são simultaneamente titulares do direito de propriedade sobre a mesma coisa.', 'art. 1403.º do CC', ['comproprietário']],
+  ['Propriedade horizontal', 'reais', 'Regime em que as frações autónomas de um edifício pertencem a proprietários diferentes, com compropriedade das partes comuns.', 'art. 1414.º do CC', ['condomínio']],
+  ['Usufruto', 'reais', 'Direito de gozar temporária e plenamente uma coisa ou direito alheio, sem alterar a sua forma ou substância.', 'art. 1439.º do CC', ['usufrutuário']],
+  ['Direito de superfície', 'reais', 'Faculdade de construir ou manter, perpétua ou temporariamente, uma obra em terreno alheio, ou de nele fazer ou manter plantações.', 'art. 1524.º do CC', ['superfície']],
+  ['Servidão predial', 'reais', 'Encargo imposto num prédio (serviente) em proveito exclusivo de outro prédio (dominante) pertencente a dono diferente.', 'art. 1543.º do CC', ['servidão', 'servidões']],
+  ['Registo predial', 'reais', 'Sistema que dá publicidade à situação jurídica dos prédios, tendo em vista a segurança do comércio jurídico imobiliário.', '', ['registo']],
+
+  /* Família e Sucessões */
+  ['Casamento', 'fam', 'Contrato celebrado entre duas pessoas que pretendem constituir família mediante uma plena comunhão de vida.', 'art. 1577.º do CC'],
+  ['Regime de bens', 'fam', 'Conjunto de regras que definem a propriedade dos bens dos cônjuges. Na falta de convenção antenupcial, vigora o regime da comunhão de adquiridos.', 'art. 1717.º do CC', ['comunhão de adquiridos', 'comunhão geral', 'separação de bens']],
+  ['Convenção antenupcial', 'fam', 'Acordo celebrado pelos nubentes, antes do casamento, para fixar o regime de bens.', 'art. 1698.º do CC'],
+  ['Divórcio', 'fam', 'Dissolução do casamento decretada pelo tribunal ou pelo conservador do registo civil. Pode ser por mútuo consentimento ou sem consentimento de um dos cônjuges.', 'art. 1773.º do CC'],
+  ['Responsabilidades parentais', 'fam', 'Conjunto de poderes-deveres dos pais relativamente à pessoa e aos bens dos filhos menores, exercidos no interesse destes.', 'art. 1878.º do CC', ['poder paternal']],
+  ['Alimentos', 'fam', 'Tudo o que é indispensável ao sustento, habitação e vestuário. Compreendem também a instrução e a educação do alimentado, no caso de este ser menor.', 'art. 2003.º do CC'],
+  ['União de facto', 'fam', 'Situação jurídica de duas pessoas que vivem em condições análogas às dos cônjuges há mais de dois anos, com os efeitos previstos em lei própria.'],
+  ['Sucessão', 'fam', 'Chamamento de uma ou mais pessoas à titularidade das relações jurídicas patrimoniais de uma pessoa falecida e consequente devolução dos bens que a esta pertenciam.', 'art. 2024.º do CC', ['sucessão por morte']],
+  ['Herança', 'fam', 'Conjunto de bens e relações patrimoniais transmitidos por morte. O herdeiro sucede na totalidade ou numa quota do património do falecido; o legatário sucede em bens ou valores determinados.', 'art. 2030.º do CC', ['herdeiro', 'legatário', 'legado']],
+  ['Legítima', 'fam', 'Porção de bens de que o testador não pode dispor, por ser legalmente destinada aos herdeiros legitimários (cônjuge, descendentes e ascendentes).', 'art. 2156.º do CC', ['herdeiros legitimários', 'quota indisponível']],
+  ['Testamento', 'fam', 'Ato unilateral e revogável pelo qual uma pessoa dispõe, para depois da morte, de todos os seus bens ou de parte deles.', 'art. 2179.º do CC'],
+  ['Partilha', 'fam', 'Ato pelo qual se põe termo à comunhão hereditária, atribuindo a cada herdeiro os bens que lhe cabem.', 'art. 2101.º do CC'],
+
+  /* Direito Constitucional */
+  ['Constituição', 'con', 'Lei fundamental do Estado, que define a sua organização política e os direitos fundamentais dos cidadãos. Ocupa o topo da hierarquia das normas.', 'art. 3.º da CRP'],
+  ['Estado de direito democrático', 'con', 'Estado baseado na soberania popular, no pluralismo, no respeito e garantia dos direitos fundamentais e na separação e interdependência de poderes.', 'art. 2.º da CRP', ['Estado de direito']],
+  ['Princípio da igualdade', 'con', 'Princípio segundo o qual todos os cidadãos têm a mesma dignidade social e são iguais perante a lei, proibindo-se o arbítrio e as discriminações injustificadas.', 'art. 13.º da CRP', ['igualdade']],
+  ['Princípio da proporcionalidade', 'con', 'Exigência de que as restrições de direitos sejam adequadas, necessárias e equilibradas face ao fim prosseguido (proibição do excesso).', 'art. 18.º da CRP', ['proporcionalidade', 'proibição do excesso']],
+  ['Proteção da confiança', 'con', 'Subprincípio do Estado de direito que proíbe alterações legislativas inesperadas e desproporcionadas que afetem expectativas legítimas dos cidadãos.', 'art. 2.º da CRP', ['princípio da confiança', 'segurança jurídica']],
+  ['Direitos, liberdades e garantias', 'con', 'Categoria de direitos fundamentais com regime reforçado: são diretamente aplicáveis e vinculam entidades públicas e privadas, e só podem ser restringidos nos casos expressamente previstos na Constituição.', 'art. 18.º da CRP', ['DLG']],
+  ['Direitos sociais', 'con', 'Direitos económicos, sociais e culturais (saúde, habitação, educação, segurança social), que exigem prestações do Estado e dependem em grande medida de concretização legislativa.', 'art. 63.º da CRP', ['direitos económicos, sociais e culturais']],
+  ['Conteúdo essencial', 'con', 'Núcleo de um direito, liberdade ou garantia que nenhuma lei restritiva pode diminuir.', 'art. 18.º da CRP'],
+  ['Estado de emergência', 'con', 'Situação de exceção, declarada pelo Presidente da República nos termos da Constituição, que pode suspender o exercício de alguns direitos, liberdades e garantias. O estado de sítio é a forma mais grave.', 'art. 19.º da CRP', ['estado de sítio']],
+  ['Órgãos de soberania', 'con', 'O Presidente da República, a Assembleia da República, o Governo e os Tribunais.', 'art. 110.º da CRP'],
+  ['Separação de poderes', 'con', 'Princípio de organização do poder político segundo o qual as funções legislativa, executiva e judicial são atribuídas a órgãos distintos, que se controlam mutuamente (separação e interdependência).', 'art. 111.º da CRP', ['separação e interdependência']],
+  ['Semipresidencialismo', 'con', 'Sistema de governo em que o Governo é politicamente responsável perante o Presidente da República, eleito por sufrágio direto, e perante o Parlamento.', 'art. 190.º da CRP', ['sistema semipresidencial']],
+  ['Promulgação', 'con', 'Ato do Presidente da República que atesta a existência do diploma e é condição da sua entrada em vigor. A falta de promulgação determina a inexistência jurídica do ato.', 'art. 137.º da CRP'],
+  ['Veto', 'con', 'Recusa de promulgação. O veto político aos decretos da Assembleia é suspensivo (pode ser superado por confirmação); o veto aos decretos do Governo é absoluto.', 'art. 136.º da CRP', ['veto político']],
+  ['Referenda ministerial', 'con', 'Assinatura do Governo exigida para certos atos do Presidente da República, cuja falta determina a inexistência jurídica do ato.', 'art. 140.º da CRP'],
+  ['Moção de censura', 'con', 'Instrumento pelo qual a Assembleia da República efetiva a responsabilidade política do Governo. A sua aprovação por maioria absoluta dos Deputados em efetividade de funções implica a demissão do Governo.', 'art. 194.º da CRP'],
+  ['Moção de confiança', 'con', 'Pedido do Governo à Assembleia da República de um voto de confiança sobre uma declaração de política geral ou um assunto de relevante interesse nacional. A sua não aprovação implica a demissão do Governo.', 'art. 193.º da CRP'],
+  ['Reserva absoluta de competência legislativa', 'con', 'Matérias que só a Assembleia da República pode regular, sem possibilidade de autorização ao Governo.', 'art. 164.º da CRP', ['reserva absoluta']],
+  ['Reserva relativa de competência legislativa', 'con', 'Matérias da competência da Assembleia da República, sobre as quais o Governo só pode legislar mediante lei de autorização legislativa.', 'art. 165.º da CRP', ['reserva relativa']],
+  ['Autorização legislativa', 'con', 'Lei da Assembleia da República que permite ao Governo legislar sobre matéria da reserva relativa, definindo o objeto, o sentido, a extensão e a duração da autorização.', 'art. 165.º da CRP', ['lei de autorização legislativa', 'decreto-lei autorizado']],
+  ['Decreto-lei', 'con', 'Ato legislativo do Governo. Tem, em regra, valor igual ao das leis da Assembleia da República.', 'art. 198.º da CRP', ['decretos-leis']],
+  ['Lei orgânica', 'con', 'Lei da Assembleia da República sobre certas matérias da reserva absoluta, aprovada na votação final global por maioria absoluta dos Deputados em efetividade de funções.', 'art. 166.º da CRP', ['leis orgânicas']],
+  ['Lei de valor reforçado', 'con', 'Lei que, por força da Constituição, é pressuposto normativo necessário de outras leis ou que por outras deve ser respeitada. A sua violação gera ilegalidade.', 'art. 112.º da CRP', ['leis de valor reforçado']],
+  ['Inconstitucionalidade', 'con', 'Desconformidade de uma norma com a Constituição. Pode ser material (conteúdo), orgânica (órgão incompetente) ou formal (forma ou procedimento), por ação ou por omissão.', 'art. 277.º da CRP', ['inconstitucional', 'inconstitucionalidade material', 'inconstitucionalidade orgânica', 'inconstitucionalidade formal']],
+  ['Fiscalização preventiva', 'con', 'Controlo da constitucionalidade feito pelo Tribunal Constitucional antes da promulgação ou assinatura de um diploma, a pedido, em regra, do Presidente da República.', 'art. 278.º da CRP'],
+  ['Fiscalização concreta', 'con', 'Controlo da constitucionalidade realizado por qualquer tribunal a propósito de um caso, com recurso para o Tribunal Constitucional. A decisão vale apenas para esse processo.', 'art. 280.º da CRP', ['fiscalização difusa']],
+  ['Fiscalização abstrata sucessiva', 'con', 'Controlo da constitucionalidade de normas em vigor, independentemente de um caso concreto, a pedido das entidades legitimadas. A declaração tem força obrigatória geral.', 'art. 281.º da CRP', ['fiscalização sucessiva abstrata']],
+  ['Força obrigatória geral', 'con', 'Eficácia erga omnes da declaração de inconstitucionalidade pelo Tribunal Constitucional, que elimina a norma da ordem jurídica, em regra com efeitos desde a sua entrada em vigor e repristinação das normas revogadas.', 'art. 282.º da CRP'],
+  ['Repristinação', 'con', 'Renascimento das normas que tinham sido revogadas por uma norma declarada inconstitucional com força obrigatória geral.', 'art. 282.º da CRP'],
+  ['Inconstitucionalidade por omissão', 'con', 'Falta de medidas legislativas necessárias para tornar exequíveis normas constitucionais. O Tribunal Constitucional verifica-a e dá conhecimento ao órgão legislativo competente.', 'art. 283.º da CRP'],
+  ['Revisão constitucional', 'con', 'Alteração da Constituição pela Assembleia da República, sujeita a limites temporais, formais, materiais e circunstanciais.', 'art. 284.º da CRP', ['limites materiais']],
+
+  /* Direito Administrativo */
+  ['Ato administrativo', 'adm', 'Decisão que, no exercício de poderes jurídico-administrativos, visa produzir efeitos jurídicos externos numa situação individual e concreta.', 'art. 148.º do CPA', ['atos administrativos']],
+  ['Regulamento administrativo', 'adm', 'Norma jurídica geral e abstrata que, no exercício de poderes jurídico-administrativos, visa produzir efeitos jurídicos externos.', 'art. 135.º do CPA', ['regulamento', 'regulamentos']],
+  ['Contrato administrativo', 'adm', 'Acordo de vontades celebrado por contraentes públicos e sujeito a um regime substantivo de direito administrativo.', ''],
+  ['Princípio da legalidade', 'adm', 'Os órgãos da Administração Pública devem atuar em obediência à lei e ao direito, dentro dos limites dos poderes que lhes forem conferidos e em conformidade com os respetivos fins.', 'art. 3.º do CPA', ['legalidade']],
+  ['Prossecução do interesse público', 'adm', 'Princípio segundo o qual compete aos órgãos da Administração prosseguir o interesse público, no respeito pelos direitos e interesses legalmente protegidos dos particulares.', 'art. 4.º do CPA', ['interesse público']],
+  ['Discricionariedade', 'adm', 'Margem de livre decisão conferida por lei à Administração para escolher, entre várias soluções possíveis, a que melhor serve o interesse público. Está sujeita aos princípios gerais da atividade administrativa.', '', ['poder discricionário', 'discricionário']],
+  ['Audiência dos interessados', 'adm', 'Direito dos interessados de se pronunciarem no procedimento antes de ser tomada a decisão final, que deve ser informada do sentido provável desta.', 'art. 121.º do CPA'],
+  ['Dever de fundamentação', 'adm', 'Obrigação de a Administração expor, de forma expressa, clara, suficiente e congruente, os fundamentos de facto e de direito das decisões que afetem os particulares.', 'art. 152.º do CPA', ['fundamentação']],
+  ['Revogação', 'adm', 'Ato administrativo que determina a cessação dos efeitos de outro ato, por razões de mérito, conveniência ou oportunidade.', 'art. 165.º do CPA'],
+  ['Anulação administrativa', 'adm', 'Ato administrativo que determina a destruição dos efeitos de outro ato, com fundamento em invalidade.', 'art. 165.º do CPA'],
+  ['Reclamação', 'adm', 'Impugnação administrativa dirigida ao autor do ato ou da omissão.', 'art. 191.º do CPA'],
+  ['Recurso hierárquico', 'adm', 'Impugnação administrativa dirigida ao superior hierárquico do autor do ato, para que este o revogue, anule, modifique ou substitua.', 'art. 193.º do CPA'],
+  ['Ação administrativa', 'adm', 'Forma de processo comum do contencioso administrativo, que abrange, entre outros, os pedidos de impugnação de atos administrativos e de condenação à prática de ato devido.', 'art. 37.º do CPTA', ['impugnação de ato administrativo']],
+  ['Providência cautelar administrativa', 'adm', 'Medida destinada a assegurar a utilidade da sentença a proferir num processo administrativo, como a suspensão da eficácia de um ato.', 'art. 112.º do CPTA', ['suspensão da eficácia']],
+
+  /* Direito Penal */
+  ['Crime', 'pen', 'Facto típico, ilícito, culposo e punível. A sua análise segue, por esta ordem, a ação, a tipicidade, a ilicitude, a culpa e a punibilidade.', '', ['facto punível', 'teoria geral da infração']],
+  ['Princípio da legalidade penal', 'pen', 'Só pode ser punido criminalmente o facto descrito e declarado passível de pena por lei anterior ao momento da sua prática (nullum crimen, nulla poena sine lege). Proíbe a analogia incriminadora e a retroatividade desfavorável.', 'art. 1.º do CP', ['nullum crimen sine lege', 'princípio da legalidade', 'legalidade']],
+  ['Tipicidade', 'pen', 'Correspondência entre o facto praticado e a descrição legal de um crime (tipo legal). Abrange elementos objetivos (conduta, resultado, nexo) e subjetivos (dolo ou negligência).', 'art. 1.º do CP', ['tipo legal', 'típico', 'tipo objetivo', 'tipo subjetivo']],
+  ['Ilicitude penal', 'pen', 'Contrariedade do facto típico à ordem jurídica considerada na sua totalidade. Exclui-se quando se verifique uma causa de justificação.', 'art. 31.º do CP', ['ilicitude', 'ilícito']],
+  ['Causa de justificação', 'pen', 'Circunstância que exclui a ilicitude do facto típico, como a legítima defesa, o direito de necessidade, o cumprimento de um dever ou o consentimento do ofendido.', 'art. 31.º do CP', ['causas de justificação', 'justificação']],
+  ['Legítima defesa', 'pen', 'Facto praticado como meio necessário para repelir a agressão atual e ilícita de interesses juridicamente protegidos do agente ou de terceiro. Exclui a ilicitude.', 'art. 32.º do CP'],
+  ['Excesso de legítima defesa', 'pen', 'Uso de meios superiores aos necessários para repelir a agressão. O facto é ilícito, mas a pena pode ser especialmente atenuada; o agente não é punido se o excesso resultar de perturbação, medo ou susto não censuráveis.', 'art. 33.º do CP'],
+  ['Direito de necessidade', 'pen', 'Facto praticado como meio adequado para afastar um perigo atual que ameace interesses juridicamente protegidos, quando haja sensível superioridade do interesse a salvaguardar relativamente ao sacrificado.', 'art. 34.º do CP', ['estado de necessidade justificante']],
+  ['Estado de necessidade desculpante', 'pen', 'Facto ilícito praticado como meio adequado para afastar um perigo atual que ameace a vida, a integridade física, a honra ou a liberdade, quando não seja razoável exigir ao agente outro comportamento. Exclui a culpa.', 'art. 35.º do CP'],
+  ['Consentimento do ofendido', 'pen', 'Causa de justificação quando se refira a interesses jurídicos livremente disponíveis e o facto não ofenda os bons costumes.', 'art. 38.º do CP', ['consentimento']],
+  ['Culpa penal', 'pen', 'Censura dirigida ao agente por ter praticado o facto ilícito. Não há pena sem culpa e a medida da pena não pode ultrapassar a medida da culpa.', 'art. 40.º do CP', ['princípio da culpa', 'culpa']],
+  ['Inimputabilidade', 'pen', 'Incapacidade de culpa: é inimputável o menor de 16 anos e quem, por anomalia psíquica, for incapaz, no momento da prática do facto, de avaliar a sua ilicitude ou de se determinar de acordo com essa avaliação.', 'arts. 19.º e 20.º do CP', ['inimputável']],
+  ['Dolo direto, necessário e eventual', 'pen', 'Age com dolo direto quem, representando um facto que preenche um tipo de crime, atuar com intenção de o realizar. O dolo é necessário quando o agente representa a realização do facto como consequência necessária da conduta, e eventual quando a representa como possível e se conforma com ela.', 'art. 14.º do CP', ['dolo direto', 'dolo necessário', 'dolo eventual', 'dolo']],
+  ['Negligência', 'pen', 'Atuação de quem, por não proceder com o cuidado a que está obrigado e de que é capaz, representa como possível a realização do facto sem se conformar (negligência consciente) ou nem sequer a representa (negligência inconsciente). Só é punível nos casos previstos na lei.', 'art. 15.º do CP', ['negligência consciente', 'negligência inconsciente', 'negligente']],
+  ['Erro sobre a ilicitude', 'pen', 'Atuação sem consciência da ilicitude do facto. Exclui a culpa se o erro não for censurável; se for censurável, o agente é punido com a pena aplicável ao crime doloso, que pode ser especialmente atenuada.', 'art. 17.º do CP'],
+  ['Erro sobre os elementos do tipo', 'pen', 'Erro sobre elementos de facto ou de direito de um tipo de crime. Exclui o dolo, ficando ressalvada a punibilidade da negligência nos termos gerais.', 'art. 16.º do CP', ['erro sobre o facto']],
+  ['Atos preparatórios', 'pen', 'Atos que preparam a execução do crime. Não são puníveis, salvo disposição em contrário.', 'art. 21.º do CP'],
+  ['Tentativa', 'pen', 'Há tentativa quando o agente praticar atos de execução de um crime que decidiu cometer, sem que este chegue a consumar-se. Só é punível nos crimes puníveis com pena superior a 3 anos de prisão, salvo disposição em contrário.', 'art. 22.º do CP', ['crime tentado']],
+  ['Tentativa impossível', 'pen', 'Tentativa que não pode consumar-se por inaptidão do meio ou inexistência do objeto. Não é punível quando for manifesta essa inaptidão ou inexistência.', 'art. 23.º do CP'],
+  ['Desistência', 'pen', 'A tentativa deixa de ser punível quando o agente voluntariamente desistir de prosseguir na execução do crime, impedir a consumação ou o resultado.', 'art. 24.º do CP', ['desistência voluntária']],
+  ['Autoria', 'pen', 'É punível como autor quem executar o facto, por si mesmo ou por intermédio de outrem (autoria mediata), ou tomar parte direta na sua execução por acordo com outros (coautoria), e ainda quem dolosamente determinar outra pessoa à prática do facto (instigação).', 'art. 26.º do CP', ['autor', 'coautoria', 'coautor', 'autoria mediata', 'instigação', 'instigador']],
+  ['Cumplicidade', 'pen', 'Prestação dolosa de auxílio material ou moral à prática por outrem de um facto doloso. O cúmplice é punido com a pena do autor, especialmente atenuada.', 'art. 27.º do CP', ['cúmplice']],
+  ['Concurso de crimes', 'pen', 'Situação em que o agente pratica vários crimes. É punido com uma pena única, cuja moldura tem como limite máximo a soma das penas concretamente aplicadas e como limite mínimo a mais elevada delas.', 'arts. 30.º e 77.º do CP', ['concurso efetivo', 'crime continuado']],
+  ['Omissão', 'pen', 'Quando um tipo de crime compreender um certo resultado, o facto abrange a omissão da ação adequada a evitá-lo, desde que sobre o omitente recaia um dever jurídico que pessoalmente o obrigue a evitar esse resultado (posição de garante).', 'art. 10.º do CP', ['crime omissivo', 'posição de garante', 'comissão por omissão']],
+  ['Crime público', 'pen', 'Crime cujo procedimento não depende de queixa: o Ministério Público promove o processo oficiosamente logo que tenha notícia do crime.', 'art. 48.º do CPP'],
+  ['Crime semipúblico', 'pen', 'Crime cujo procedimento depende de queixa do ofendido ou de outras pessoas. Sem queixa, o Ministério Público não tem legitimidade para promover o processo.', 'art. 49.º do CPP', ['queixa']],
+  ['Crime particular', 'pen', 'Crime cujo procedimento depende de queixa, de constituição de assistente e de dedução de acusação particular pelo ofendido.', 'art. 50.º do CPP', ['acusação particular']],
+  ['Pena de prisão', 'pen', 'Pena principal privativa da liberdade, com duração mínima de 1 mês e máxima, em regra, de 20 anos.', 'art. 41.º do CP', ['prisão']],
+  ['Pena de multa', 'pen', 'Pena principal fixada em dias, entre 10 e 360, correspondendo a cada dia uma quantia entre 5 € e 500 €, em função da situação económica e financeira do condenado.', 'art. 47.º do CP', ['multa']],
+  ['Suspensão da execução da pena', 'pen', 'Pena de substituição: o tribunal suspende a execução da pena de prisão aplicada em medida não superior a 5 anos se concluir que a simples censura do facto e a ameaça da prisão realizam de forma adequada e suficiente as finalidades da punição.', 'art. 50.º do CP', ['pena suspensa']],
+  ['Finalidades das penas', 'pen', 'A aplicação de penas visa a proteção de bens jurídicos (prevenção geral) e a reintegração do agente na sociedade (prevenção especial). A pena não pode ultrapassar a medida da culpa.', 'art. 40.º do CP', ['prevenção geral', 'prevenção especial']],
+  ['Medida da pena', 'pen', 'Determinação da pena concreta, dentro dos limites definidos na lei, feita em função da culpa do agente e das exigências de prevenção, atendendo a todas as circunstâncias que deponham a favor ou contra ele.', 'art. 71.º do CP', ['determinação da medida da pena']],
+  ['Atenuação especial da pena', 'pen', 'Redução da moldura penal quando existam circunstâncias que diminuam por forma acentuada a ilicitude do facto, a culpa do agente ou a necessidade da pena.', 'art. 72.º do CP'],
+  ['Reincidência', 'pen', 'Agravação da pena de quem pratica crime doloso punível com prisão efetiva superior a 6 meses depois de ter sido condenado por crime doloso em prisão efetiva superior a 6 meses, se a condenação anterior não serviu de suficiente advertência.', 'art. 75.º do CP'],
+  ['Medida de segurança', 'pen', 'Reação criminal aplicada a inimputáveis perigosos, fundada na perigosidade e não na culpa, como o internamento.', 'art. 91.º do CP', ['internamento']],
+  ['Prescrição do procedimento criminal', 'pen', 'Extinção do procedimento criminal pelo decurso de prazos que variam consoante a gravidade da pena aplicável ao crime.', 'art. 118.º do CP'],
+  ['Bem jurídico', 'pen', 'Interesse ou valor protegido pela norma penal, como a vida, a integridade física ou o património.', '', ['bens jurídicos']],
+  ['Homicídio qualificado', 'pen', 'Homicídio praticado em circunstâncias que revelem especial censurabilidade ou perversidade do agente, enumeradas exemplificativamente na lei.', 'art. 132.º do CP'],
+  ['Furto', 'pen', 'Subtração de coisa móvel ou animal alheios, com ilegítima intenção de apropriação para si ou para outra pessoa.', 'art. 203.º do CP'],
+  ['Roubo', 'pen', 'Subtração ou constrangimento à entrega de coisa móvel alheia, com ilegítima intenção de apropriação, por meio de violência contra uma pessoa, de ameaça com perigo iminente para a vida ou integridade física, ou pondo-a na impossibilidade de resistir.', 'art. 210.º do CP'],
+  ['Burla', 'pen', 'Determinar outrem, por meio de erro ou engano sobre factos que astuciosamente provocou, à prática de atos que lhe causem, ou a outra pessoa, prejuízo patrimonial, com intenção de enriquecimento ilegítimo.', 'art. 217.º do CP'],
+
+  /* Processo Penal */
+  ['Arguido', 'pp', 'Pessoa contra quem for deduzida acusação ou requerida instrução, ou que seja constituída como tal. Adquire direitos processuais, como o de não responder sobre os factos que lhe são imputados.', 'art. 57.º do CPP', ['constituição de arguido']],
+  ['Assistente', 'pp', 'Sujeito processual que colabora com o Ministério Público, subordinando a sua intervenção à atuação deste. Pode constituir-se como assistente, nomeadamente, o ofendido.', 'art. 68.º do CPP'],
+  ['Ofendido', 'pp', 'Titular dos interesses que a lei especialmente quis proteger com a incriminação.', 'art. 113.º do CP'],
+  ['Ministério Público', 'pp', 'Magistratura que exerce a ação penal, dirige o inquérito e deduz acusação, orientada pelo princípio da legalidade.', 'art. 53.º do CPP', ['MP']],
+  ['Inquérito', 'pp', 'Fase processual dirigida pelo Ministério Público que compreende as diligências destinadas a investigar a existência de um crime, determinar os seus agentes e a responsabilidade deles e descobrir e recolher as provas, em ordem à decisão sobre a acusação.', 'art. 262.º do CPP'],
+  ['Acusação', 'pp', 'Ato pelo qual o Ministério Público, havendo indícios suficientes de se ter verificado crime e de quem foi o seu agente, submete o arguido a julgamento.', 'art. 283.º do CPP', ['despacho de acusação']],
+  ['Arquivamento', 'pp', 'Decisão do Ministério Público que encerra o inquérito sem acusação, por falta de prova do crime ou do seu agente, ou por inadmissibilidade legal do procedimento.', 'art. 277.º do CPP'],
+  ['Instrução', 'pp', 'Fase facultativa que visa a comprovação judicial da decisão de deduzir acusação ou de arquivar o inquérito, em ordem a submeter ou não a causa a julgamento.', 'art. 286.º do CPP', ['decisão instrutória', 'pronúncia', 'não pronúncia']],
+  ['Juiz de instrução', 'pp', 'Juiz competente para praticar os atos jurisdicionais no inquérito (por exemplo, aplicar medidas de coação) e para dirigir a instrução.', 'art. 17.º do CPP'],
+  ['Indícios suficientes', 'pp', 'Indícios dos quais resulte uma possibilidade razoável de ao arguido vir a ser aplicada, por força deles, em julgamento, uma pena ou medida de segurança.', 'art. 283.º do CPP'],
+  ['Detenção', 'pp', 'Privação da liberdade por um período máximo de 48 horas, para apresentação ao juiz ou para assegurar a presença em ato processual.', 'art. 254.º do CPP'],
+  ['Flagrante delito', 'pp', 'Crime que se está a cometer ou se acabou de cometer, e ainda o caso em que o agente for, logo após o crime, perseguido ou encontrado com objetos ou sinais que mostrem claramente que acabou de o cometer.', 'art. 256.º do CPP'],
+  ['Medidas de coação', 'pp', 'Meios processuais de limitação da liberdade pessoal, aplicados ao arguido para fins cautelares, como o termo de identidade e residência, a obrigação de apresentação periódica ou a prisão preventiva.', 'art. 191.º do CPP', ['medida de coação']],
+  ['Termo de identidade e residência', 'pp', 'Medida de coação aplicada a quem seja constituído arguido, pela qual este indica a sua residência e fica sujeito a certas obrigações.', 'art. 196.º do CPP', ['TIR']],
+  ['Prisão preventiva', 'pp', 'Medida de coação mais grave, de natureza excecional e subsidiária, só aplicável quando as outras se revelarem inadequadas ou insuficientes e se verifiquem os pressupostos legais.', 'art. 202.º do CPP'],
+  ['Presunção de inocência', 'pp', 'Garantia segundo a qual todo o arguido se presume inocente até ao trânsito em julgado da sentença de condenação. Dela decorre o princípio in dubio pro reo.', 'art. 32.º da CRP', ['in dubio pro reo']],
+  ['Princípio do acusatório', 'pp', 'Separação entre a entidade que acusa e a que julga: o objeto do processo é fixado pela acusação e o tribunal não pode julgar factos que nela não constem (salvo as alterações legalmente admitidas).', 'art. 32.º da CRP', ['estrutura acusatória']],
+  ['Livre apreciação da prova', 'pp', 'A prova é apreciada segundo as regras da experiência e a livre convicção da entidade competente, salvo quando a lei dispuser diferentemente.', 'art. 127.º do CPP'],
+  ['Proibições de prova', 'pp', 'Limites à obtenção e valoração da prova: são nulas, não podendo ser utilizadas, as provas obtidas mediante tortura, coação ou ofensa da integridade física ou moral, entre outras.', 'art. 126.º do CPP', ['métodos proibidos de prova', 'prova proibida']],
+  ['Processo sumário', 'pp', 'Forma de processo especial, mais rápida, aplicável a detidos em flagrante delito, verificados os requisitos legais.', 'art. 381.º do CPP'],
+
+  /* Processo Civil */
+  ['Ação declarativa', 'pc', 'Ação que visa obter a declaração da existência ou inexistência de um direito ou facto (simples apreciação), a condenação na prestação de uma coisa ou facto (condenação) ou a constituição, modificação ou extinção de uma situação jurídica (constitutiva).', 'art. 10.º do CPC', ['ação de condenação', 'ação de simples apreciação', 'ação constitutiva']],
+  ['Ação executiva', 'pc', 'Ação em que o credor requer as providências adequadas à realização coativa de uma obrigação que lhe é devida, com base num título executivo.', 'art. 10.º do CPC', ['execução']],
+  ['Pressupostos processuais', 'pc', 'Requisitos de que depende o dever de o juiz se pronunciar sobre o mérito da causa: personalidade e capacidade judiciárias, legitimidade, interesse em agir, patrocínio judiciário e competência do tribunal, entre outros. A sua falta gera exceções dilatórias.', '', ['pressuposto processual']],
+  ['Personalidade judiciária', 'pc', 'Suscetibilidade de ser parte. Quem tiver personalidade jurídica tem igualmente personalidade judiciária.', 'art. 11.º do CPC'],
+  ['Capacidade judiciária', 'pc', 'Suscetibilidade de estar, por si, em juízo. Tem por base e por medida a capacidade de exercício de direitos.', 'art. 15.º do CPC'],
+  ['Legitimidade processual', 'pc', 'O autor é parte legítima quando tem interesse direto em demandar; o réu, quando tem interesse direto em contradizer. Afere-se, em regra, pela relação controvertida tal como é configurada pelo autor.', 'art. 30.º do CPC', ['legitimidade']],
+  ['Litisconsórcio', 'pc', 'Pluralidade de partes do lado ativo ou passivo relativamente à mesma relação material controvertida. É necessário quando a lei ou o negócio exigirem a intervenção de todos os interessados, ou quando, pela natureza da relação, a sua intervenção seja necessária para a decisão produzir o seu efeito útil normal.', 'art. 33.º do CPC', ['litisconsórcio necessário', 'litisconsórcio voluntário']],
+  ['Coligação', 'pc', 'Pluralidade de partes com pedidos diferentes, admitida quando a causa de pedir seja a mesma e única ou os pedidos estejam entre si numa relação de prejudicialidade ou de dependência, entre outros casos.', 'art. 36.º do CPC'],
+  ['Patrocínio judiciário', 'pc', 'Representação das partes em juízo por advogado. É obrigatório, nomeadamente, nas causas de competência de tribunais com alçada em que seja admissível recurso ordinário.', 'art. 40.º do CPC', ['constituição de advogado']],
+  ['Competência', 'pc', 'Medida de jurisdição de cada tribunal. Distingue-se em razão da matéria, do valor, da hierarquia e do território. A incompetência pode ser absoluta ou relativa.', 'art. 60.º do CPC', ['incompetência absoluta', 'incompetência relativa']],
+  ['Petição inicial', 'pc', 'Articulado com que o autor propõe a ação, onde identifica as partes, expõe os factos essenciais que constituem a causa de pedir e as razões de direito, e formula o pedido.', 'art. 552.º do CPC', ['PI']],
+  ['Causa de pedir', 'pc', 'Facto jurídico concreto de que procede a pretensão deduzida pelo autor.', 'art. 581.º do CPC'],
+  ['Pedido', 'pc', 'Efeito jurídico que o autor pretende obter com a ação.', 'art. 581.º do CPC'],
+  ['Citação', 'pc', 'Ato pelo qual se dá conhecimento ao réu de que foi proposta contra ele determinada ação e se chama ao processo para se defender.', 'art. 219.º do CPC', ['citado']],
+  ['Notificação', 'pc', 'Ato pelo qual se chama alguém a juízo ou se dá conhecimento de um facto, fora dos casos de citação.', 'art. 219.º do CPC'],
+  ['Contestação', 'pc', 'Articulado de defesa do réu, a apresentar no prazo de 30 dias a contar da citação. Pode conter defesa por impugnação e por exceção.', 'art. 569.º do CPC'],
+  ['Defesa por impugnação', 'pc', 'O réu contradiz os factos articulados pelo autor ou afirma que esses factos não podem produzir o efeito jurídico pretendido.', 'art. 571.º do CPC', ['impugnação']],
+  ['Defesa por exceção', 'pc', 'O réu alega factos que obstam à apreciação do mérito (exceção dilatória) ou que impedem, modificam ou extinguem o direito invocado pelo autor (exceção perentória).', 'art. 571.º do CPC', ['exceção']],
+  ['Exceção dilatória', 'pc', 'Exceção que obsta a que o tribunal conheça do mérito da causa e dá lugar à absolvição da instância ou à remessa do processo para outro tribunal.', 'art. 576.º do CPC', ['exceções dilatórias', 'absolvição da instância']],
+  ['Exceção perentória', 'pc', 'Exceção que importa a absolvição total ou parcial do pedido, por consistir na invocação de factos que impedem, modificam ou extinguem o efeito jurídico dos factos articulados pelo autor.', 'art. 576.º do CPC', ['exceções perentórias', 'absolvição do pedido']],
+  ['Reconvenção', 'pc', 'Pedido autónomo que o réu deduz contra o autor na contestação, nos casos em que a lei o admite.', 'art. 266.º do CPC', ['pedido reconvencional']],
+  ['Revelia', 'pc', 'Falta de contestação do réu. Se o réu tiver sido regularmente citado, consideram-se confessados os factos articulados pelo autor (revelia operante), salvo as exceções legais.', 'art. 567.º do CPC', ['revelia operante', 'revelia inoperante']],
+  ['Audiência prévia', 'pc', 'Diligência que se segue aos articulados destinada, entre outros fins, a tentar a conciliação, discutir as exceções e o mérito, delimitar os termos do litígio e proferir o despacho saneador.', 'art. 591.º do CPC'],
+  ['Despacho saneador', 'pc', 'Despacho que conhece das exceções dilatórias e nulidades processuais e, quando o estado do processo o permita, conhece imediatamente do mérito da causa.', 'art. 595.º do CPC', ['saneador']],
+  ['Temas da prova', 'pc', 'Questões de facto controvertidas que delimitam a instrução da causa, enunciadas após os articulados.', 'art. 596.º do CPC'],
+  ['Prazo perentório', 'pc', 'Prazo cujo decurso extingue o direito de praticar o ato. O ato pode ainda ser praticado nos três dias úteis seguintes, mediante pagamento de multa, ou depois, em caso de justo impedimento.', 'art. 139.º do CPC', ['prazo dilatório', 'justo impedimento']],
+  ['Princípio do dispositivo', 'pc', 'Às partes cabe alegar os factos essenciais que constituem a causa de pedir e aqueles em que se baseiam as exceções invocadas; o tribunal não pode condenar em quantidade superior ou em objeto diverso do que se pedir.', 'art. 5.º do CPC', ['dispositivo']],
+  ['Princípio do contraditório', 'pc', 'O tribunal não pode resolver o conflito sem que a resolução lhe seja pedida por uma das partes e a outra seja devidamente chamada para deduzir oposição; não são lícitas decisões-surpresa.', 'art. 3.º do CPC', ['contraditório', 'decisão-surpresa']],
+  ['Dever de gestão processual', 'pc', 'Dever do juiz de dirigir ativamente o processo e providenciar pelo seu andamento célere, adotando mecanismos de simplificação e agilização processual.', 'art. 6.º do CPC', ['gestão processual']],
+  ['Princípio da cooperação', 'pc', 'Dever de magistrados, mandatários e partes cooperarem entre si, concorrendo para se obter, com brevidade e eficácia, a justa composição do litígio.', 'art. 7.º do CPC', ['cooperação']],
+  ['Sentença', 'pc', 'Ato pelo qual o juiz decide a causa principal ou algum incidente que apresente a estrutura de uma causa.', 'art. 152.º do CPC'],
+  ['Caso julgado', 'pc', 'Imutabilidade da decisão que já não admite recurso ordinário nem reclamação. O caso julgado material tem força obrigatória dentro e fora do processo; o formal só dentro do processo.', 'art. 619.º do CPC', ['trânsito em julgado', 'transitada em julgado', 'caso julgado material', 'caso julgado formal']],
+  ['Nulidades da sentença', 'pc', 'Vícios da sentença como a falta de assinatura do juiz, a falta de fundamentação, a oposição entre fundamentos e decisão, a omissão ou excesso de pronúncia e a condenação além do pedido.', 'art. 615.º do CPC', ['omissão de pronúncia', 'excesso de pronúncia']],
+  ['Recurso', 'pc', 'Meio de impugnação das decisões judiciais. Os recursos ordinários são a apelação e a revista; os extraordinários, o recurso para uniformização de jurisprudência e a revisão.', 'art. 627.º do CPC', ['recursos']],
+  ['Apelação', 'pc', 'Recurso ordinário interposto para o Tribunal da Relação da decisão do tribunal de 1.ª instância.', 'art. 644.º do CPC'],
+  ['Revista', 'pc', 'Recurso ordinário interposto para o Supremo Tribunal de Justiça, em regra do acórdão da Relação.', 'art. 671.º do CPC'],
+  ['Dupla conforme', 'pc', 'Obstáculo à revista: não é admitido recurso de revista do acórdão da Relação que confirme, sem voto de vencido e sem fundamentação essencialmente diferente, a decisão da 1.ª instância, salvo revista excecional.', 'art. 671.º do CPC', ['revista excecional']],
+  ['Alçada', 'pc', 'Limite de valor dentro do qual um tribunal julga sem admissibilidade de recurso ordinário: 5.000 € para os tribunais de 1.ª instância e 30.000 € para as Relações.', 'art. 629.º do CPC'],
+  ['Providência cautelar', 'pc', 'Medida destinada a acautelar o efeito útil de uma ação, quando haja fundado receio de que outrem cause lesão grave e dificilmente reparável ao direito. Depende sempre de uma ação principal.', 'art. 362.º do CPC', ['procedimento cautelar', 'providências cautelares', 'periculum in mora', 'fumus boni iuris']],
+  ['Arresto', 'pc', 'Providência cautelar especificada que consiste na apreensão judicial de bens do devedor, quando o credor tenha justificado receio de perder a garantia patrimonial do seu crédito.', 'art. 391.º do CPC'],
+  ['Inversão do contencioso', 'pc', 'Dispensa do requerente da providência do ónus de propor a ação principal, quando a matéria adquirida no procedimento permita formar convicção segura sobre a existência do direito acautelado.', 'art. 369.º do CPC'],
+  ['Título executivo', 'pc', 'Documento que serve de base à execução, determinando o seu fim e os seus limites, como a sentença condenatória ou o documento autêntico que importe constituição ou reconhecimento de uma obrigação.', 'art. 703.º do CPC', ['títulos executivos']],
+  ['Embargos de executado', 'pc', 'Meio de oposição do executado à execução, deduzido no prazo de 20 dias a contar da citação.', 'art. 728.º do CPC', ['oposição à execução']],
+  ['Embargos de terceiro', 'pc', 'Meio pelo qual um terceiro, cuja posse ou direito seja ofendido por um ato judicial de apreensão ou entrega de bens (como a penhora), defende a sua posição.', 'art. 342.º do CPC'],
+  ['Penhora', 'pc', 'Apreensão judicial de bens do executado suficientes para o pagamento da dívida exequenda e das despesas previsíveis da execução.', 'art. 735.º do CPC', ['penhorado', 'impenhorabilidade']],
+  ['Injunção', 'pc', 'Procedimento que visa conferir força executiva a requerimento destinado a exigir o cumprimento de obrigações pecuniárias, quando o requerido não deduza oposição.', ''],
+  ['Ónus de alegação', 'pc', 'Encargo de cada parte de alegar os factos essenciais em que funda a sua pretensão ou exceção, sob pena de o tribunal não os poder considerar.', 'art. 5.º do CPC'],
+
+  /* Direito do Trabalho */
+  ['Contrato de trabalho', 'trab', 'Contrato pelo qual uma pessoa singular se obriga, mediante retribuição, a prestar a sua atividade a outra ou outras pessoas, no âmbito de organização e sob a autoridade destas.', 'art. 11.º do CT'],
+  ['Subordinação jurídica', 'trab', 'Sujeição do trabalhador à autoridade e direção do empregador. É o elemento que distingue o contrato de trabalho da prestação de serviços.', 'art. 11.º do CT', ['subordinação']],
+  ['Presunção de laboralidade', 'trab', 'Presunção de existência de contrato de trabalho quando se verifiquem algumas das características previstas na lei (local, equipamentos, horário, retribuição certa, funções de direção).', 'art. 12.º do CT'],
+  ['Período experimental', 'trab', 'Tempo inicial de execução do contrato durante o qual as partes apreciam o interesse na sua manutenção. Durante ele, qualquer das partes pode denunciar o contrato sem invocação de justa causa.', 'art. 111.º do CT'],
+  ['Retribuição', 'trab', 'Prestação a que, nos termos do contrato, das normas que o regem ou dos usos, o trabalhador tem direito em contrapartida do seu trabalho.', 'art. 258.º do CT', ['salário', 'remuneração']],
+  ['Justa causa de despedimento', 'trab', 'Comportamento culposo do trabalhador que, pela sua gravidade e consequências, torne imediata e praticamente impossível a subsistência da relação de trabalho.', 'art. 351.º do CT', ['justa causa', 'despedimento por facto imputável ao trabalhador']],
+  ['Despedimento ilícito', 'trab', 'Despedimento sem fundamento, sem procedimento ou com vícios legais. Confere ao trabalhador direito a indemnização e às retribuições intercalares, bem como à reintegração.', 'art. 381.º do CT', ['ilicitude do despedimento', 'reintegração']],
+  ['Despedimento coletivo', 'trab', 'Cessação de contratos de trabalho promovida pelo empregador, simultânea ou sucessivamente no período de três meses, abrangendo pelo menos dois ou cinco trabalhadores, consoante a dimensão da empresa, por motivos de mercado, estruturais ou tecnológicos.', 'art. 359.º do CT'],
+  ['Contrato a termo', 'trab', 'Contrato de trabalho de duração limitada, só admissível para satisfação de necessidade temporária da empresa e pelo período estritamente necessário.', 'art. 140.º do CT', ['termo certo', 'termo incerto', 'contrato a prazo']],
+  ['Convenção coletiva de trabalho', 'trab', 'Instrumento de regulamentação coletiva negociado entre associações sindicais e empregadores ou associações de empregadores: contrato coletivo, acordo coletivo ou acordo de empresa.', 'art. 2.º do CT', ['contrato coletivo', 'IRCT']],
+  ['Greve', 'trab', 'Abstenção coletiva e concertada da prestação de trabalho, como forma de defesa de interesses dos trabalhadores. É um direito fundamental.', 'art. 57.º da CRP'],
+  ['Poder disciplinar', 'trab', 'Poder do empregador de aplicar sanções disciplinares ao trabalhador ao seu serviço, enquanto vigorar o contrato, mediante procedimento disciplinar.', 'art. 98.º do CT', ['procedimento disciplinar', 'sanção disciplinar']],
+
+  /* Direito Fiscal */
+  ['Imposto', 'fisc', 'Prestação pecuniária, coativa, unilateral e definitiva, exigida a pessoas singulares ou coletivas por entidades públicas, sem caráter de sanção, para satisfação de necessidades públicas.', 'art. 3.º da LGT', ['impostos']],
+  ['Taxa', 'fisc', 'Tributo que assenta na prestação concreta de um serviço público, na utilização de um bem do domínio público ou na remoção de um obstáculo jurídico ao comportamento dos particulares.', 'art. 4.º da LGT', ['taxas']],
+  ['Princípio da legalidade fiscal', 'fisc', 'Os impostos são criados por lei, que determina a incidência, a taxa, os benefícios fiscais e as garantias dos contribuintes. Integra a reserva relativa da Assembleia da República.', 'art. 103.º da CRP', ['legalidade tributária']],
+  ['Facto tributário', 'fisc', 'Facto cuja verificação faz nascer a obrigação tributária.', 'art. 36.º da LGT'],
+  ['Sujeito passivo', 'fisc', 'Pessoa singular ou coletiva, património ou organização de facto ou de direito que, nos termos da lei, está vinculado ao cumprimento da prestação tributária, seja como contribuinte direto, substituto ou responsável.', 'art. 18.º da LGT', ['contribuinte']],
+  ['Substituição tributária', 'fisc', 'Exigência da prestação tributária a pessoa diferente do contribuinte, efetivada através do mecanismo da retenção na fonte.', 'art. 20.º da LGT', ['retenção na fonte']],
+  ['Liquidação', 'fisc', 'Ato tributário pelo qual se determina o montante do imposto a pagar.', ''],
+  ['Caducidade do direito à liquidação', 'fisc', 'O direito de liquidar os tributos caduca se a liquidação não for validamente notificada ao contribuinte no prazo de quatro anos, em regra.', 'art. 45.º da LGT'],
+  ['Prescrição tributária', 'fisc', 'As dívidas tributárias prescrevem, salvo o disposto em lei especial, no prazo de oito anos.', 'art. 48.º da LGT'],
+  ['Reclamação graciosa', 'fisc', 'Meio administrativo de impugnação de atos tributários, dirigido à administração tributária.', 'art. 68.º do CPPT'],
+  ['Impugnação judicial', 'fisc', 'Meio processual próprio para impugnar judicialmente a legalidade de atos tributários de liquidação.', 'art. 99.º do CPPT'],
+  ['Execução fiscal', 'fisc', 'Processo de cobrança coerciva das dívidas ao Estado e a outras pessoas coletivas de direito público.', 'art. 148.º do CPPT', ['processo de execução fiscal']],
+  ['IRS', 'fisc', 'Imposto sobre o Rendimento das Pessoas Singulares, que incide sobre o valor anual dos rendimentos das categorias previstas na lei.', 'art. 1.º do CIRS'],
+  ['IRC', 'fisc', 'Imposto sobre o Rendimento das Pessoas Coletivas, que incide sobre os rendimentos obtidos pelas pessoas coletivas e outras entidades sujeitas.', 'art. 1.º do CIRC'],
+  ['IVA', 'fisc', 'Imposto sobre o Valor Acrescentado, que incide sobre as transmissões de bens e prestações de serviços efetuadas no território nacional a título oneroso, as importações e as operações intracomunitárias.', 'art. 1.º do CIVA'],
+
+  /* Direito Comercial */
+  ['Ato de comércio', 'com', 'Ato regulado no Código Comercial (ato objetivamente comercial) ou praticado por comerciante, se não for de natureza exclusivamente civil e o contrário não resultar do próprio ato (ato subjetivamente comercial).', 'art. 2.º do CCom', ['atos de comércio']],
+  ['Comerciante', 'com', 'Pessoa que, tendo capacidade para praticar atos de comércio, faz deles profissão, e as sociedades comerciais.', 'art. 13.º do CCom', ['comerciantes']],
+  ['Sociedade comercial', 'com', 'Sociedade que tenha por objeto a prática de atos de comércio e adote um dos tipos legais: sociedade em nome coletivo, por quotas, anónima ou em comandita.', 'art. 1.º do CSC', ['sociedades comerciais']],
+  ['Sociedade por quotas', 'com', 'Tipo de sociedade em que o capital está dividido em quotas e os sócios são solidariamente responsáveis por todas as entradas convencionadas no contrato social; só o património social responde pelas dívidas da sociedade.', 'art. 197.º do CSC', ['quotas', 'Lda.']],
+  ['Sociedade anónima', 'com', 'Tipo de sociedade em que o capital é dividido em ações e cada sócio limita a sua responsabilidade ao valor das ações que subscreveu.', 'art. 271.º do CSC', ['ações', 'S.A.']],
+  ['Personalidade jurídica das sociedades', 'com', 'As sociedades gozam de personalidade jurídica e existem como tais a partir da data do registo definitivo do contrato pelo qual se constituem.', 'art. 5.º do CSC'],
+  ['Desconsideração da personalidade jurídica', 'com', 'Afastamento excecional da autonomia da sociedade para responsabilizar os sócios, quando a personalidade coletiva seja usada de modo abusivo, em fraude à lei ou contra a boa-fé.', '', ['levantamento da personalidade coletiva']],
+  ['Gerente', 'com', 'Membro do órgão de administração e representação da sociedade por quotas. Nas sociedades anónimas, fala-se em administradores.', 'art. 252.º do CSC', ['gerência', 'administrador', 'administradores']],
+  ['Deliberação social', 'com', 'Decisão dos sócios tomada em assembleia geral ou por outra forma prevista na lei. Pode ser nula ou anulável, consoante o vício.', 'art. 53.º do CSC', ['deliberações sociais']],
+  ['Insolvência', 'com', 'Situação do devedor que se encontra impossibilitado de cumprir as suas obrigações vencidas.', '', ['insolvente', 'processo de insolvência']],
+
+  /* Direito Internacional Público */
+  ['Tratado', 'dip', 'Acordo internacional celebrado por escrito entre Estados (ou outros sujeitos de direito internacional) e regido pelo direito internacional.', '', ['tratados', 'convenção internacional']],
+  ['Ratificação', 'dip', 'Ato pelo qual um Estado manifesta, no plano internacional, o seu consentimento em ficar vinculado por um tratado. Em Portugal, compete ao Presidente da República ratificar os tratados internacionais.', 'art. 135.º da CRP'],
+  ['Reserva a tratado', 'dip', 'Declaração unilateral de um Estado, feita ao assinar ou ratificar um tratado, pela qual visa excluir ou modificar o efeito jurídico de certas disposições na sua aplicação a esse Estado.', '', ['reservas']],
+  ['Costume internacional', 'dip', 'Prática geral aceite como sendo o direito (elementos material e psicológico, opinio juris). As normas de direito internacional geral ou comum fazem parte integrante do direito português.', 'art. 8.º da CRP', ['opinio iuris', 'opinio juris']],
+  ['Ius cogens', 'dip', 'Normas imperativas de direito internacional geral, aceites e reconhecidas pela comunidade internacional como normas que não admitem derrogação (por exemplo, a proibição do genocídio).', '', ['jus cogens']],
+  ['Pacta sunt servanda', 'dip', 'Princípio segundo o qual todo o tratado em vigor vincula as partes e deve ser por elas cumprido de boa-fé.', ''],
+  ['Imunidade de jurisdição', 'dip', 'Isenção de um Estado estrangeiro, ou dos seus agentes diplomáticos, da jurisdição dos tribunais de outro Estado, nos termos do direito internacional.', '', ['imunidade diplomática']]
+];
+
+/* ---------- RESOLUÇÕES-MODELO DOS CASOS PRÁTICOS ----------
+   Para cada caso: uma lista de respostas, pela ordem das questões; cada resposta é uma lista de parágrafos. */
+var CASOS_MODELO = {
+  'caso-pc1': [
+    ['B foi regularmente citado na sua própria pessoa e não apresentou contestação no prazo de 30 dias a contar da citação (art. 569.º, n.º 1, do CPC). Está, por isso, em situação de revelia.',
+      'Sendo o réu citado na sua própria pessoa, a revelia é operante: consideram-se confessados os factos articulados pelo autor (art. 567.º, n.º 1, do CPC). Os factos relativos à realização das obras e ao preço acordado ficam assentes, sem necessidade de prova.',
+      'Segue-se a fase do art. 567.º, n.º 2, do CPC: é concedido o prazo de 10 dias, primeiro ao mandatário do autor e depois ao do réu, para alegarem por escrito, e em seguida é proferida sentença.'],
+    ['A revelia é inoperante nos casos do art. 568.º do CPC: quando, havendo vários réus, algum contestar, quanto aos factos que impugnar; quando o réu for incapaz, situando-se a causa no âmbito da incapacidade, ou tiver sido citado editalmente e permaneça em revelia absoluta; quando a vontade das partes for ineficaz para produzir o efeito jurídico pretendido; ou quando se trate de factos para cuja prova se exija documento escrito.',
+      'No caso, nenhuma dessas situações se verifica: B é o único réu, foi citado pessoalmente e nada indica que seja incapaz. O contrato de empreitada não está sujeito a forma especial (art. 219.º do CC) e o pagamento do preço é matéria disponível. Os efeitos da revelia produzem-se plenamente.'],
+    ['Não. A revelia opera sobre os factos, não sobre o direito: a causa é julgada «conforme for de direito» (art. 567.º, n.º 2, do CPC). O juiz tem de verificar se os factos confessados preenchem a previsão da norma que fundamenta o pedido e pode conhecer das exceções de conhecimento oficioso.',
+      'Aqui, os factos alegados — realização das obras a pedido de B e preço acordado de 20.000 € — integram um contrato de empreitada (art. 1207.º do CC), do qual resulta a obrigação de pagar o preço. A condenação de B é, por isso, o desfecho provável, mas resulta de uma apreciação jurídica, e não de um efeito automático da falta de contestação.',
+      'Sendo a causa de manifesta simplicidade, a sentença pode limitar-se à parte decisória, precedida da identificação das partes e de fundamentação sumária (art. 567.º, n.º 3, do CPC).']
+  ],
+
+  'caso-civ1': [
+    ['Entre C e a clínica foi celebrado um contrato de prestação de serviços médicos. A cirurgia mal executada traduz um cumprimento defeituoso, gerando responsabilidade contratual da clínica (art. 798.º do CC).',
+      'A clínica responde pelos atos do médico que utilizou no cumprimento como se tivessem sido praticados por ela própria (art. 800.º, n.º 1, do CC).',
+      'O médico, não sendo parte no contrato, pode responder perante C a título extracontratual, por violação ilícita e culposa do direito à integridade física (art. 483.º, n.º 1, do CC). Há, assim, um concurso de responsabilidades; a doutrina dominante admite que o lesado opte pelo regime que lhe seja mais favorável.'],
+    ['Na via contratual, incumbe ao devedor provar que a falta de cumprimento ou o cumprimento defeituoso não procede de culpa sua (art. 799.º, n.º 1, do CC). Contudo, tratando-se de uma obrigação de meios, discute-se se C tem primeiro de provar o próprio defeito — a desconformidade da atuação com as leges artis. Os relatórios juntos ajudam precisamente nessa prova.',
+      'Na via extracontratual, é ao lesado que incumbe provar a culpa do autor da lesão (art. 487.º, n.º 1, do CC). Esta diferença é um argumento forte para C fundar a ação contra a clínica na responsabilidade contratual.'],
+    ['São indemnizáveis os danos patrimoniais — despesas médicas, tratamentos futuros e perda de rendimentos —, abrangendo os danos emergentes e os lucros cessantes (art. 564.º do CC). Desde que haja nexo de causalidade adequada (art. 563.º do CC).',
+      'São também indemnizáveis os danos não patrimoniais que, pela sua gravidade, mereçam a tutela do direito (art. 496.º, n.º 1, do CC). Uma lesão permanente cumpre seguramente esse requisito. A jurisprudência admite hoje a sua reparação também no âmbito da responsabilidade contratual.',
+      'A indemnização é fixada em dinheiro, por a reconstituição natural não ser possível (arts. 562.º e 566.º do CC).'],
+    ['Não. Na responsabilidade extracontratual, o direito prescreve no prazo de três anos a contar da data em que o lesado teve conhecimento do direito que lhe compete (art. 498.º, n.º 1, do CC): decorreram apenas dois.',
+      'Na responsabilidade contratual aplica-se o prazo ordinário de vinte anos (art. 309.º do CC). Ainda assim, se C quiser manter aberta a via extracontratual contra o médico, deve propor a ação no ano que falta.']
+  ],
+
+  'caso-pp1': [
+    ['Sim, em princípio. D foi surpreendido a cometer o crime: há flagrante delito (art. 256.º, n.º 1, do CPP). O facto integra um crime de furto, punível com pena de prisão (art. 203.º, n.º 1, do CP). Perante flagrante delito por crime punível com prisão, a entidade policial procede à detenção (art. 255.º, n.º 1, alínea a), do CPP).',
+      'Há, porém, um ponto decisivo: o furto simples é um crime semipúblico — o procedimento depende de queixa (art. 203.º, n.º 3, do CP). Por isso, a detenção só se mantém se, em ato a ela seguido, a ofendida exercer o direito de queixa (art. 255.º, n.º 3, do CPP). Se a cliente não apresentar queixa, D tem de ser libertado.'],
+    ['A detenção tem de ser submetida a apreciação judicial no prazo máximo de 48 horas (art. 28.º, n.º 1, da CRP; art. 254.º do CPP), para restituição à liberdade ou aplicação de medida de coação.',
+      'Como foi detido em flagrante delito por entidade policial e o crime é punível com prisão de máximo não superior a 5 anos, D pode ser julgado em processo sumário (art. 381.º, n.º 1, do CPP), sendo apresentado ao juiz para julgamento nesse mesmo prazo.'],
+    ['Não. A prisão preventiva exige fortes indícios de crime doloso punível com pena de prisão de máximo superior a 5 anos, entre outras hipóteses (art. 202.º, n.º 1, do CPP). O furto simples é punível com prisão até 3 anos: o pressuposto não se verifica.',
+      'De todo o modo, a prisão preventiva é excecional e subsidiária (art. 28.º, n.º 2, da CRP) e qualquer medida, salvo o termo de identidade e residência, exige a verificação concreta de um dos perigos do art. 204.º do CPP. D não tem antecedentes e tem residência fixa. A medida adequada e proporcional será o termo de identidade e residência (art. 196.º do CPP).']
+  ],
+
+  'caso-con1': [
+    ['Trata-se de fiscalização concreta da constitucionalidade. Todos os tribunais estão obrigados a recusar a aplicação de normas que infrinjam a Constituição (art. 204.º da CRP), e o juiz fê-lo no âmbito de um processo concreto. O parâmetro invocado é o princípio da igualdade (art. 13.º da CRP).'],
+    ['Cabe recurso para o Tribunal Constitucional das decisões dos tribunais que recusem a aplicação de qualquer norma com fundamento na sua inconstitucionalidade (art. 280.º, n.º 1, alínea a), da CRP).',
+      'Nos termos da Lei do Tribunal Constitucional, podem recorrer o Ministério Público e quem tenha legitimidade para recorrer segundo a lei do processo — designadamente a parte vencida. Neste tipo de recurso não é exigido o esgotamento prévio dos recursos ordinários.',
+      'O Tribunal Constitucional aprecia apenas a questão de constitucionalidade. Se julgar a norma conforme à Constituição, o processo baixa para que a decisão seja reformada em conformidade. A decisão produz efeitos apenas no caso concreto.'],
+    ['Sim, para o Ministério Público. O recurso é obrigatório para o Ministério Público quando a norma cuja aplicação foi recusada constar de convenção internacional, ato legislativo ou decreto regulamentar (art. 280.º, n.º 3, da CRP). Um decreto-lei é um ato legislativo (art. 112.º, n.º 1, da CRP).']
+  ],
+
+  'caso-pc2': [
+    ['A providência adequada é o arresto: a apreensão judicial de bens do devedor, ao alcance do credor que tenha justo receio de perder a garantia patrimonial do seu crédito (art. 619.º, n.º 1, do CC; art. 391.º, n.º 1, do CPC). C deve requerer o arresto da casa de D.',
+      'Como C já dispõe de uma sentença na ação declarativa, o arresto é requerido como incidente dessa ação (art. 364.º, n.º 1, do CPC). Em alternativa, se o recurso interposto da sentença tiver efeito meramente devolutivo, a sentença já constitui título executivo e C poderia instaurar execução e requerer a penhora (art. 704.º, n.º 1, do CPC).'],
+    ['C tem de alegar e demonstrar, sumariamente, a probabilidade da existência do crédito e o justificado receio de perda da garantia patrimonial (art. 391.º, n.º 1, do CPC, e art. 392.º, n.º 1, do CPC).',
+      'A probabilidade do crédito resulta, desde logo, da sentença favorável. O receio fundado resulta da venda iminente do único imóvel de D e da anunciada emigração. Estes factos objetivos devem ser alegados e provados, por exemplo por testemunhas ou pelo anúncio de venda.'],
+    ['Não. O arresto é decretado sem audiência da parte contrária, desde que se mostrem preenchidos os requisitos legais (art. 393.º, n.º 1, do CPC). Ouvir D frustraria a finalidade da providência, permitindo-lhe vender a casa antes da apreensão.',
+      'D é notificado depois de realizada a apreensão e pode reagir, em alternativa, por recurso ou por oposição, alegando factos ou meios de prova não considerados (art. 372.º do CPC).'],
+    ['O arresto é instrumental da ação principal e caduca nos casos do art. 373.º, n.º 1, do CPC. Por exemplo, se, proposta a ação, o processo estiver parado mais de 30 dias por negligência do requerente; se a ação for julgada improcedente por decisão transitada em julgado; ou se o direito acautelado se extinguir.',
+      'O fundamento clássico — não propor a ação no prazo de 30 dias a contar da notificação do trânsito em julgado da decisão que ordenou a providência (alínea a)) — vale para o arresto requerido antes da ação. Aqui, a ação já está pendente, pelo que esse fundamento não se aplica.']
+  ],
+
+  'caso-pp2': [
+    ['A bofetada que causou dores e uma escoriação integra o crime de ofensa à integridade física simples (art. 143.º, n.º 1, do CP).',
+      'É um crime semipúblico: o procedimento criminal depende de queixa (art. 143.º, n.º 2, do CP). Sem ela, o Ministério Público não pode promover o processo (art. 49.º do CPP).'],
+    ['Sim. O direito de queixa extingue-se no prazo de seis meses a contar da data em que o titular teve conhecimento do facto e dos seus autores (art. 115.º, n.º 1, do CP). Tendo a queixa sido apresentada quatro meses depois, foi tempestiva.'],
+    ['Sim. O queixoso pode desistir da queixa, desde que não haja oposição do arguido, até à publicação da sentença da 1.ª instância (art. 116.º, n.º 2, do CP). A sentença ainda não foi publicada, e E, reconciliado com F, não se oporá.',
+      'A desistência é homologada pela autoridade judiciária competente (art. 51.º do CPP), o que extingue o procedimento. A desistência impede que a queixa seja renovada (art. 116.º, n.º 2, do CP).'],
+    ['Não. Nos crimes semipúblicos, a queixa é condição de legitimidade do Ministério Público (art. 49.º, n.º 1, do CPP). Diferente seria um crime público, em que o Ministério Público promove o processo oficiosamente (art. 48.º do CPP).']
+  ],
+
+  'caso-civ2': [
+    ['A compra e venda de bens imóveis só é válida se for celebrada por escritura pública ou por documento particular autenticado (art. 875.º do CC). Um documento particular simplesmente assinado pelas partes não cumpre a forma legal.'],
+    ['A declaração negocial que careça da forma legalmente prescrita é nula, quando outra não seja a sanção especialmente prevista na lei (art. 220.º do CC). O contrato é, portanto, nulo por vício de forma.',
+      'Pode discutir-se o aproveitamento do negócio por conversão (art. 293.º do CC): o documento assinado por ambos poderia valer como contrato-promessa de compra e venda (art. 410.º, n.º 2, do CC), se o fim prosseguido pelas partes permitir supor que o teriam querido. Nesse caso, o promitente-vendedor só poderia invocar a falta de reconhecimento presencial das assinaturas se a omissão tivesse sido culposamente causada pelo comprador (art. 410.º, n.º 3, do CC). H poderia então pedir a execução específica (art. 830.º do CC).'],
+    ['Em princípio, sim. A nulidade é invocável a todo o tempo por qualquer interessado e pode ser declarada oficiosamente pelo tribunal (art. 286.º do CC). Não há prazo.',
+      'A circunstância de G ter recebido o preço e tolerado durante dois anos a ocupação do apartamento pode, porém, configurar abuso do direito, na modalidade de venire contra factum proprium (art. 334.º do CC). A jurisprudência admite, em casos excecionais, que o abuso do direito paralise a invocação de uma nulidade formal. Isso exige uma confiança legítima de H e um investimento nela, o que deve ser demonstrado no caso concreto.'],
+    ['A declaração de nulidade tem efeito retroativo: deve ser restituído tudo o que tiver sido prestado (art. 289.º, n.º 1, do CC). G restitui o preço de 150.000 € e H restitui o apartamento.',
+      'As obrigações recíprocas de restituição devem ser cumpridas simultaneamente, aplicando-se, na parte aplicável, as regras da exceção de não cumprimento (art. 290.º do CC). H pode, portanto, recusar a entrega do apartamento enquanto G não lhe devolver o preço.',
+      'Quanto aos frutos e às benfeitorias, aplica-se o regime da posse de boa ou má-fé (art. 289.º, n.º 3, do CC).']
+  ],
+
+  'caso-con2': [
+    ['Estão em causa o direito de reunião e o direito de manifestação. Os cidadãos têm o direito de se reunir, pacificamente e sem armas, mesmo em lugares abertos ao público, sem necessidade de qualquer autorização, e a todos é reconhecido o direito de manifestação (art. 45.º da CRP). São direitos, liberdades e garantias, sujeitos ao regime reforçado do art. 18.º da CRP.'],
+    ['Não. Legislar sobre direitos, liberdades e garantias é matéria da reserva relativa de competência legislativa da Assembleia da República (art. 165.º, n.º 1, alínea b), da CRP). O Governo só o pode fazer mediante lei de autorização legislativa (art. 198.º, n.º 1, alínea b), da CRP).',
+      'Tendo o decreto-lei sido aprovado sem autorização, padece de inconstitucionalidade orgânica.'],
+    ['Não. As restrições só são admissíveis nos casos expressamente previstos na Constituição e devem limitar-se ao necessário para salvaguardar outros direitos ou interesses constitucionalmente protegidos (art. 18.º, n.º 2, da CRP).',
+      'A exigência de autorização prévia contraria frontalmente o texto do art. 45.º, n.º 1, da CRP. É diferente a exigência de um mero aviso prévio às autoridades, que a lei ordinária prevê para permitir a adoção de medidas de segurança.',
+      'A proibição genérica de manifestações a menos de 500 metros de qualquer edifício público é desproporcionada: não é necessária, porque existem meios menos restritivos para proteger o funcionamento dos serviços. Além disso, tende a esvaziar o conteúdo essencial do direito, impedindo manifestações junto dos destinatários naturais do protesto (art. 18.º, n.º 3, da CRP).'],
+    ['Por fiscalização concreta: em qualquer processo em que a norma deva ser aplicada (por exemplo, numa impugnação de uma proibição municipal), o tribunal deve recusar a sua aplicação (art. 204.º da CRP), com recurso para o Tribunal Constitucional (art. 280.º da CRP).',
+      'Por fiscalização abstrata sucessiva, a pedido de qualquer das entidades do art. 281.º, n.º 2, da CRP, como o Presidente da República, o Provedor de Justiça, o Procurador-Geral da República ou um décimo dos Deputados. A declaração de inconstitucionalidade terá força obrigatória geral (art. 282.º da CRP).',
+      'A fiscalização preventiva já não é possível, porque só pode ser requerida antes da promulgação (art. 278.º, n.º 1, da CRP).']
+  ],
+
+  'caso-pen2': [
+    ['Sim. O golpe de J preenche o tipo de ofensa à integridade física (art. 143.º, n.º 1, do CP), mas a ilicitude é excluída por legítima defesa (art. 31.º, n.º 2, alínea a), do CP, e art. 32.º do CP).'],
+    ['A legítima defesa exige: (i) uma agressão atual e ilícita de interesses juridicamente protegidos do agente ou de terceiro; (ii) que o facto seja o meio necessário para a repelir; (iii) segundo a doutrina dominante, o animus defendendi, isto é, a consciência e vontade de defesa (art. 32.º do CP).',
+      'No caso: I tinha entrado de noite na habitação de J e avançava com uma barra de ferro levantada — agressão atual e ilícita à integridade física e ao domicílio. O golpe com o taco, que neutralizou a ameaça, era o meio necessário, dada a perigosidade da arma do agressor e a ausência de alternativa menos lesiva igualmente eficaz. J atuou para se defender. O primeiro golpe está justificado.'],
+    ['Quando I já estava caído e desarmado, a agressão tinha cessado: falta o requisito da atualidade. Os golpes posteriores não estão cobertos pela legítima defesa e constituem uma nova ofensa à integridade física, ilícita e culposa (art. 143.º do CP).',
+      'Haverá ainda que ponderar se as circunstâncias — golpes repetidos sobre alguém indefeso, com um taco — revelam especial censurabilidade, para efeitos de ofensa à integridade física qualificada (art. 145.º do CP).'],
+    ['O excesso de legítima defesa (art. 33.º do CP) pressupõe uma situação de legítima defesa em curso, em que o agente emprega meios superiores aos necessários (excesso intensivo). Aqui, o problema é outro: J continua a agredir depois de a agressão ter terminado (excesso extensivo).',
+      'A doutrina maioritária entende que o excesso extensivo não cabe no art. 33.º do CP, por falta de uma agressão atual. Alguns autores admitem a aplicação analógica quando a reação se prolonga imediatamente, num único contexto emocional.',
+      'Mesmo sem o art. 33.º do CP, o estado de perturbação de J pode ser valorado na determinação da medida da pena (art. 71.º do CP) ou, verificados os pressupostos, na atenuação especial (art. 72.º do CP).']
+  ],
+
+  'caso-civ3': [
+    ['M pode responsabilizar:',
+      '(i) K, por facto ilícito e culposo (art. 483.º do CC);',
+      '(ii) a empresa L, como comitente, que responde independentemente de culpa pelos danos causados pelo comissário no exercício da função, desde que sobre este recaia também a obrigação de indemnizar (art. 500.º do CC);',
+      '(iii) também L, pelo risco, como quem tem a direção efetiva do veículo e o utiliza no seu próprio interesse (art. 503.º, n.º 1, do CC).',
+      'Havendo seguro obrigatório válido, a ação é dirigida, em regra, contra a seguradora, nos termos do regime do seguro obrigatório automóvel. Entre os responsáveis há solidariedade (art. 497.º do CC).'],
+    ['Sim. Aquele que conduz o veículo por conta de outrem responde pelos danos que causar, salvo se provar que não houve culpa da sua parte (art. 503.º, n.º 3, do CC). K, motorista ao serviço da empresa, beneficia dessa presunção apenas se a ilidir.',
+      'Acresce que M estava parado num semáforo vermelho: não há qualquer culpa do lesado que possa reduzir a indemnização (art. 570.º do CC).'],
+    ['São indemnizáveis os danos patrimoniais: a reparação do carro (dano emergente) e os rendimentos perdidos durante os três meses sem trabalhar (lucro cessante), nos termos do art. 564.º do CC. Também as despesas médicas.',
+      'São ainda indemnizáveis os danos não patrimoniais decorrentes dos ferimentos (dores, incómodos), que pela sua gravidade mereçam a tutela do direito (art. 496.º do CC).',
+      'A indemnização visa reconstituir a situação que existiria sem o acidente (art. 562.º do CC) e, não sendo isso possível, é fixada em dinheiro (art. 566.º do CC).'],
+    ['O direito prescreve no prazo de três anos a contar do conhecimento do direito (art. 498.º, n.º 1, do CC).',
+      'Se o facto ilícito constituir crime para o qual a lei estabeleça prescrição sujeita a prazo mais longo, é este o prazo aplicável (art. 498.º, n.º 3, do CC). As lesões causadas por negligência podem integrar o crime de ofensa à integridade física por negligência (art. 148.º, n.º 1, do CP), punível com prisão até 1 ano, cujo procedimento prescreve em 5 anos (art. 118.º, n.º 1, alínea c), do CP). M beneficiará, assim, de um prazo de 5 anos.']
+  ]
+};
 
 /* Matéria explicada — Direito Constitucional */
 var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
@@ -4020,7 +4545,7 @@ Store.attach = function (session) {
 };
 
 /* ---------- estado da interface ---------- */
-var VIEWS = ['painel', 'reputacao', 'flashcards', 'aula', 'lei', 'guias', 'guia', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
+var VIEWS = ['painel', 'reputacao', 'flashcards', 'aula', 'lei', 'guias', 'guia', 'glossario', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
 var S = {
   view: 'painel', wsId: null, wsTab: '01', wsQ: '', q: '',
   libQ: '', libArea: 'Todas', libOpen: { cpc: true },
@@ -4103,6 +4628,7 @@ function render() {
   else if (v === 'aula') h = vAula();
   else if (v === 'lei') h = vLei();
     else if (v === 'guias') h = vGuias();
+    else if (v === 'glossario') h = vGlossario();
     else if (v === 'guia') h = vGuia();
   else if (v === 'agenda') h = vAgenda();
   else if (v === 'dissertacao') h = vDissertacao();
@@ -7048,16 +7574,16 @@ var MOD_PERFIL = {
   doc: ['docente', 'atualidade', 'mentoria'],
   outro: ['kpis', 'progresso', 'calendario', 'horario', 'atualidade', 'continuar', 'mentoria', 'ferramentas']
 };
-var NAV = { painel: ['Painel', 'grid'], guias: ['Matéria explicada', 'book'], aula: ['Sala de aula', 'aula'], flashcards: ['Flashcards', 'layers'], atualidade: ['Atualidade jurídica', 'news'], biblioteca: ['Biblioteca jurídica', 'book'], instituicoes: ['Instituições', 'uni'], workspaces: ['Legal Workspaces', 'folder'], minutas: ['Gerador de minutas', 'file'], cadeiras: ['Cadeiras', 'layers'], apontamentos: ['Apontamentos', 'note'], exames: ['Estudar e praticar', 'check'], casos: ['Casos práticos', 'scale'], prazos: ['Contador de prazos', 'hour'], agenda: ['Agenda de diligências', 'cal'], dissertacao: ['Dissertação', 'cap'], ordem: ['Treino para a Ordem', 'badge'], docente: ['Ensino', 'pen'] };
+var NAV = { painel: ['Painel', 'grid'], guias: ['Matéria explicada', 'book'], glossario: ['Glossário jurídico', 'book'], aula: ['Sala de aula', 'aula'], flashcards: ['Flashcards', 'layers'], atualidade: ['Atualidade jurídica', 'news'], biblioteca: ['Biblioteca jurídica', 'book'], instituicoes: ['Instituições', 'uni'], workspaces: ['Legal Workspaces', 'folder'], minutas: ['Gerador de minutas', 'file'], cadeiras: ['Cadeiras', 'layers'], apontamentos: ['Apontamentos', 'note'], exames: ['Estudar e praticar', 'check'], casos: ['Casos práticos', 'scale'], prazos: ['Contador de prazos', 'hour'], agenda: ['Agenda de diligências', 'cal'], dissertacao: ['Dissertação', 'cap'], ordem: ['Treino para a Ordem', 'badge'], docente: ['Ensino', 'pen'] };
 var COMUN = ['chat', 'mensagens', 'salas', 'connect'];
 var NAV_PERFIL = {
-  lic: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos']], ['Trabalho', ['workspaces', 'minutas']]],
+  lic: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'glossario', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos']], ['Trabalho', ['workspaces', 'minutas']]],
   licd: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Próximo passo', ['ordem', 'prazos', 'minutas', 'workspaces']]],
   mest: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Investigação', ['dissertacao', 'workspaces', 'apontamentos']]],
   estag: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Prática', ['prazos', 'agenda', 'minutas', 'workspaces']], ['Preparação', ['ordem', 'casos']]],
   prof: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Prática', ['prazos', 'agenda', 'minutas', 'workspaces']]],
   doc: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Ensino', ['docente', 'casos', 'exames']]],
-  outro: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos']], ['Trabalho', ['workspaces', 'minutas', 'prazos', 'agenda']]]
+  outro: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'glossario', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos']], ['Trabalho', ['workspaces', 'minutas', 'prazos', 'agenda']]]
 };
 var AREAS_OPC = ['Civil', 'Processo Civil', 'Penal', 'Constitucional', 'Administrativo', 'Comercial', 'Fiscal', 'Laboral', 'Migrações', 'Institucional'];
 
@@ -9541,7 +10067,7 @@ function vGuia() {
   var L = function (x) { return typeof leiLinkify === 'function' ? leiLinkify(x) : esc(x); };
   var qs = QUESTOES.filter(function (q) { return q.d === d && q.t === t; });
   var h = '<div class="head"><div><span class="crumb"><button data-go="guias">Matéria explicada</button> / ' + esc(DISC[d].nome) + '</span><h1>' + esc(temaNome(d, t)) + '</h1><p class="sub">' + esc(g.sub || '') + ' · ' + guiaMin(g) + ' min de leitura</p></div></div>';
-  h += '<div class="gu-grid"><article class="gu-art">';
+  h += '<div class="gu-grid"><article class="gu-art" data-gl="' + d + '">';
   h += '<section class="card gu-s gu-ideia"><span class="gu-k">Em poucas palavras</span><p>' + L(g.ideia) + '</p></section>';
   if (g.conceitos) h += '<section class="card gu-s" id="gu-c"><h2>Conceitos-chave</h2><dl class="gu-dl">' + g.conceitos.map(function (c) { return '<dt>' + esc(c[0]) + '</dt><dd>' + L(c[1]) + '</dd>'; }).join('') + '</dl></section>';
   if (g.regime) h += '<section class="card gu-s" id="gu-r"><h2>Regime jurídico</h2>' + g.regime.map(function (r) { return '<div class="gu-reg"><h3>' + esc(r[0]) + '</h3>' + r.slice(1).map(function (p) { return '<p>' + L(p) + '</p>'; }).join('') + '</div>'; }).join('') + '</section>';
@@ -9564,6 +10090,281 @@ function guiaEsquema(e, L) {
 }
 A['guia-ir'] = function (el, ev) { if (ev) ev.preventDefault(); var x = document.getElementById(el.dataset.id); if (x) x.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
 A['guia-treinar'] = function (el) { var p = el.dataset.id.split('|'); S.examCfg = S.examCfg || {}; S.examCfg.disc = p[0]; S.examCfg.tema = p[1]; go('exames'); };
+
+/* ---------- GLOSSÁRIO JURÍDICO, MÉTODO DE RESOLUÇÃO DE HIPÓTESES E APONTAMENTOS INTELIGENTES ---------- */
+
+/* ===== Glossário: índice e deteção de termos ===== */
+var GL = { idx: null, re: null, reAc: null, mapa: null };
+// Termos que ficam no glossário mas não são assinalados automaticamente nos textos (demasiado comuns)
+var GL_NAO_AUTO = ['competência', 'constituição', 'prestação', 'obrigação', 'obrigações', 'propriedade', 'representação', 'representante', 'recursos', 'registo', 'execução', 'legitimidade', 'detenção', 'liquidação', 'revogação', 'reclamação', 'ratificação', 'notificação', 'sentença', 'pedido', 'herança', 'testamento', 'contribuinte', 'remuneração', 'salário', 'imposto', 'impostos', 'taxa', 'taxas', 'tratado', 'tratados', 'ações', 'quotas', 'consentimento', 'queixa', 'multa', 'prisão', 'alimentos', 'casamento', 'divórcio', 'mandato', 'doação', 'interpelação', 'impugnação', 'registo predial', 'partilha', 'legado', 'herdeiro', 'pagamento', 'cumprimento', 'pressuposto processual'];
+function glSlug(t) { return norm(t).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
+function glIdx() {
+  if (GL.idx) return GL.idx;
+  var idx = [], mapa = {}, formas = [], acr = [];
+  (typeof GLOSS !== 'undefined' ? GLOSS : []).forEach(function (g, i) {
+    var e = { i: i, t: g[0], d: g[1], def: g[2], ref: g[3] || '', al: g[4] || [], id: glSlug(g[0]) };
+    idx.push(e);
+    [e.t].concat(e.al).forEach(function (f) {
+      var k = f.toLowerCase(); (mapa[k] = mapa[k] || []).push(i); if (mapa[k].length > 1) return;
+      var sigla = /^[A-ZÁÉÍÓÚÇ.]{2,6}$/.test(f.replace(/\s/g, ''));
+      if (sigla) { acr.push(f); return; }
+      var curto = f.indexOf(' ') < 0 && f.length < 9;
+      if (curto && !/^(usucapião|usufruto|hipoteca|penhor|fiança|comodato|mútuo|sinal|arresto|penhora|revelia|citação|caducidade|prescrição|reconvenção|anulabilidade|nulidade|simulação|coação|usura|mora|dolo|roubo|furto|burla|tentativa|autoria|cumplicidade|novação|remissão|confusão|apelação|revista|alçada|greve|injunção|inquérito|instrução|acusação|arguido|assistente|ofendido|veto)$/i.test(f)) return;
+      if (GL_NAO_AUTO.indexOf(k) >= 0) return;
+      formas.push(f);
+    });
+  });
+  var esc2 = function (s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); };
+  formas.sort(function (a, b) { return b.length - a.length; });
+  acr.sort(function (a, b) { return b.length - a.length; });
+  try {
+    GL.re = formas.length ? new RegExp('(?<![\\p{L}\\p{N}])(' + formas.map(esc2).join('|') + ')(?![\\p{L}\\p{N}])', 'giu') : null;
+    GL.reAc = acr.length ? new RegExp('(?<![\\p{L}\\p{N}])(' + acr.map(esc2).join('|') + ')(?![\\p{L}\\p{N}])', 'gu') : null;
+  } catch (e) { GL.re = GL.reAc = null; }
+  GL.mapa = mapa; GL.idx = idx; return idx;
+}
+var GL_FAM = { pp: 'pen', pen: 'pp', pex: 'pc', pc: 'pex', civ: 'obr', tgdc: 'obr', obr: 'tgdc', reais: 'obr', fam: 'tgdc', fisc: 'adm' };
+function glEntrada(forma, ctx) {
+  glIdx(); var l = GL.mapa[String(forma).toLowerCase()]; if (!l) return null;
+  if (ctx && l.length > 1) { var p = l.filter(function (i) { return GL.idx[i].d === ctx; })[0]; if (p == null) p = l.filter(function (i) { return GL.idx[i].d === GL_FAM[ctx]; })[0]; if (p != null) return GL.idx[p]; }
+  return GL.idx[l[0]];
+}
+// Termos do glossário presentes num texto (por ordem de aparecimento, sem repetições)
+function glTermosEm(txt, ctx) {
+  glIdx(); var vistos = {}, out = [];
+  [GL.re, GL.reAc].forEach(function (re) {
+    if (!re) return; re.lastIndex = 0; var m;
+    while ((m = re.exec(txt))) { var e = glEntrada(m[1], ctx); if (e && !vistos[e.i]) { vistos[e.i] = 1; out.push({ e: e, pos: m.index }); } }
+  });
+  return out.sort(function (a, b) { return a.pos - b.pos; }).map(function (x) { return x.e; });
+}
+// Assinala, em cada contentor [data-gl], a primeira ocorrência de cada termo
+function glAplicar(raiz) {
+  glIdx(); if (!GL.re && !GL.reAc) return;
+  var cs = (raiz || document).querySelectorAll('[data-gl]:not([data-gl-ok])');
+  [].forEach.call(cs, function (c) {
+    c.setAttribute('data-gl-ok', '1'); var ctx = c.getAttribute('data-gl') || '';
+    var usados = {}, nos = [], w = document.createTreeWalker(c, NodeFilter.SHOW_TEXT, { acceptNode: function (n) {
+      var p = n.parentNode; if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+      if (p.closest && p.closest('a,button,.gl,h1,h2,h3,dt,summary,textarea,input,select,[contenteditable],.gl-no')) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    } }), n;
+    while ((n = w.nextNode())) nos.push(n);
+    nos.forEach(function (no) {
+      var txt = no.nodeValue, cortes = [];
+      [GL.re, GL.reAc].forEach(function (re) {
+        if (!re) return; re.lastIndex = 0; var m;
+        while ((m = re.exec(txt))) { var e = glEntrada(m[1], ctx); if (!e || usados[e.i]) continue; if (cortes.some(function (k) { return m.index < k.b && m.index + m[0].length > k.a; })) continue; usados[e.i] = 1; cortes.push({ a: m.index, b: m.index + m[0].length, e: e }); }
+      });
+      if (!cortes.length) return;
+      cortes.sort(function (a, b) { return a.a - b.a; });
+      var frag = document.createDocumentFragment(), pos = 0;
+      cortes.forEach(function (k) {
+        if (k.a > pos) frag.appendChild(document.createTextNode(txt.slice(pos, k.a)));
+        var s = document.createElement('span'); s.className = 'gl'; s.tabIndex = 0; s.dataset.g = k.e.i; s.textContent = txt.slice(k.a, k.b); frag.appendChild(s); pos = k.b;
+      });
+      if (pos < txt.length) frag.appendChild(document.createTextNode(txt.slice(pos)));
+      no.parentNode.replaceChild(frag, no);
+    });
+  });
+}
+var _renderGL = render;
+render = function () { _renderGL.apply(this, arguments); try { glAplicar(); } catch (e) { } };
+
+/* ===== Glossário: janela de definição ===== */
+var GLT = { el: null, alvo: null, t: null };
+function glTipHtml(e) {
+  var L = typeof leiLinkify === 'function' ? leiLinkify : esc;
+  return '<div class="gl-tip-h"><b>' + esc(e.t) + '</b><span class="chip gray">' + esc(DISC[e.d] ? DISC[e.d].curto : '') + '</span></div><p>' + esc(e.def) + '</p>' + (e.ref ? '<span class="gl-tip-r">' + L(e.ref) + '</span>' : '') + '<button class="lk gl-tip-v" data-a="gl-ver" data-id="' + e.id + '">Ver no glossário ›</button>';
+}
+function glMostrar(alvo) {
+  var e = GL.idx && GL.idx[Number(alvo.dataset.g)]; if (!e) return;
+  clearTimeout(GLT.t);
+  if (!GLT.el) { GLT.el = document.createElement('div'); GLT.el.className = 'gl-tip'; GLT.el.setAttribute('role', 'tooltip'); document.body.appendChild(GLT.el); GLT.el.addEventListener('mouseenter', function () { clearTimeout(GLT.t); }); GLT.el.addEventListener('mouseleave', glEsconderDepois); }
+  GLT.alvo = alvo; GLT.el.innerHTML = glTipHtml(e); GLT.el.classList.add('on');
+  var r = alvo.getBoundingClientRect(), w = Math.min(340, window.innerWidth - 24), x = Math.max(12, Math.min(r.left + r.width / 2 - w / 2, window.innerWidth - w - 12));
+  GLT.el.style.width = w + 'px'; GLT.el.style.left = (x + window.scrollX) + 'px';
+  var hT = GLT.el.offsetHeight, y = r.bottom + 8; if (y + hT > window.innerHeight - 8 && r.top - hT - 8 > 0) y = r.top - hT - 8;
+  GLT.el.style.top = (y + window.scrollY) + 'px';
+}
+function glEsconder() { if (GLT.el) GLT.el.classList.remove('on'); GLT.alvo = null; }
+function glEsconderDepois() { clearTimeout(GLT.t); GLT.t = setTimeout(glEsconder, 220); }
+document.addEventListener('mouseover', function (ev) { var g = ev.target.closest && ev.target.closest('.gl'); if (g) glMostrar(g); });
+document.addEventListener('mouseout', function (ev) { var g = ev.target.closest && ev.target.closest('.gl'); if (g) glEsconderDepois(); });
+document.addEventListener('focusin', function (ev) { var g = ev.target.closest && ev.target.closest('.gl'); if (g) glMostrar(g); });
+document.addEventListener('click', function (ev) {
+  var g = ev.target.closest && ev.target.closest('.gl'); if (g) { if (GLT.alvo === g && GLT.el.classList.contains('on')) glEsconder(); else glMostrar(g); return; }
+  if (GLT.el && !GLT.el.contains(ev.target)) glEsconder();
+});
+document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') glEsconder(); });
+window.addEventListener('scroll', function () { if (GLT.el && GLT.el.classList.contains('on') && GLT.alvo && !GLT.el.matches(':hover')) glEsconder(); }, { passive: true });
+
+/* ===== Glossário: página ===== */
+function glFiltrados() {
+  var q = norm(S.glQ || '').trim(), a = S.glArea || 'todas', l = S.glLetra || '';
+  return glIdx().filter(function (e) {
+    if (a !== 'todas' && e.d !== a) return false;
+    if (l && norm(e.t).charAt(0) !== l) return false;
+    return !q || norm(e.t + ' ' + e.al.join(' ') + ' ' + e.def).indexOf(q) >= 0;
+  }).sort(function (x, y) { return x.t.localeCompare(y.t, 'pt'); });
+}
+function glLista() {
+  var l = glFiltrados(), L = typeof leiLinkify === 'function' ? leiLinkify : esc;
+  if (!l.length) return '<div class="card"><div class="empty">Nenhum termo encontrado. Experimente outra palavra ou limpe os filtros.</div></div>';
+  return '<p class="gl-n">' + plural(l.length, 'termo', 'termos') + '</p><div class="gl-l">' + l.map(function (e) {
+    return '<article class="card gl-c' + (S.glFoco === e.id ? ' foco' : '') + '" id="gl-' + e.id + '"><div class="gl-ch"><h3>' + esc(e.t) + '</h3><span class="chip gray">' + esc(DISC[e.d] ? DISC[e.d].curto : '') + '</span></div><p>' + esc(e.def) + '</p>' +
+      (e.ref || e.al.length ? '<div class="gl-cf">' + (e.ref ? '<span class="gl-ref">' + L(e.ref) + '</span>' : '') + (e.al.length ? '<span class="gl-al">Também: ' + esc(e.al.join(', ')) + '</span>' : '') + '</div>' : '') + '</article>';
+  }).join('') + '</div>';
+}
+function vGlossario() {
+  var idx = glIdx(), a = S.glArea || 'todas', l = S.glLetra || '';
+  var areas = Object.keys(DISC).filter(function (k) { return idx.some(function (e) { return e.d === k; }); });
+  var letras = {}; idx.forEach(function (e) { letras[norm(e.t).charAt(0)] = 1; });
+  var h = '<div class="head"><div><span class="crumb"><button data-go="guias">Matéria explicada</button> / Glossário</span><h1>Glossário jurídico</h1><p class="sub">' + idx.length + ' termos explicados em linguagem simples, com a base legal. Nos guias e nos casos práticos, passe o rato (ou toque) sobre as palavras sublinhadas para ver a definição.</p></div></div>';
+  h += '<div class="card gl-f"><input class="in gl-q" data-in="glq" placeholder="Procurar um termo (ex.: revelia, dolo eventual, usucapião)…" value="' + esc(S.glQ || '') + '" aria-label="Procurar no glossário">' +
+    '<div class="est-ts">' + [['todas', 'Todas as áreas']].concat(areas.map(function (k) { return [k, DISC[k].curto]; })).map(function (x) { return '<button class="est-t' + (a === x[0] ? ' on' : '') + '" data-a="gl-area" data-id="' + x[0] + '"><span>' + esc(x[1]) + '</span></button>'; }).join('') + '</div>' +
+    '<div class="gl-abc">' + 'abcdefghijklmnopqrstuvwxyz'.split('').map(function (c) { return letras[c] ? '<button class="' + (l === c ? 'on' : '') + '" data-a="gl-letra" data-id="' + c + '">' + c.toUpperCase() + '</button>' : '<span>' + c.toUpperCase() + '</span>'; }).join('') + (l ? '<button class="lk" data-a="gl-letra" data-id="">Todas</button>' : '') + '</div></div>';
+  h += '<div id="gl-list">' + glLista() + '</div>';
+  if (S.glFoco) setTimeout(function () { var el = document.getElementById('gl-' + S.glFoco); if (el) el.scrollIntoView({ block: 'center' }); S.glFoco = null; }, 30);
+  return h;
+}
+A['gl-area'] = function (el) { S.glArea = el.dataset.id; render(); };
+A['gl-letra'] = function (el) { S.glLetra = el.dataset.id; S.glQ = ''; render(); };
+A['gl-ver'] = function (el) { glEsconder(); S.glFoco = el.dataset.id; S.glQ = ''; S.glArea = 'todas'; S.glLetra = ''; go('glossario'); };
+document.addEventListener('input', function (ev) {
+  var t = ev.target; if (!t.dataset || t.dataset.in !== 'glq') return;
+  S.glQ = t.value; S.glLetra = ''; var c = $('#gl-list'); if (c) c.innerHTML = glLista();
+});
+var _vGuiasGL = vGuias;
+vGuias = function () { return _vGuiasGL().replace('</p></div></div>', '</p></div><button class="btn" data-go="glossario">📖 Glossário jurídico</button></div>'); };
+
+/* ===== Casos práticos: método de resolução e resoluções-modelo ===== */
+var METODO_HIP = {
+  passos: [
+    ['Ler a hipótese duas vezes', 'Na primeira leitura, perceba a história. Na segunda, sublinhe tudo o que tem relevância jurídica: datas e prazos, valores, a qualidade das pessoas (menor, comerciante, funcionário, trabalhador), a forma dos atos e as reações de cada interveniente. Em regra, nenhum facto da hipótese está lá por acaso.'],
+    ['Identificar as questões jurídicas', 'Transforme cada pergunta numa ou mais questões de direito («o contrato é válido?», «a detenção foi legal?»). Procure também os problemas implícitos: um prazo que já passou, um pressuposto processual em falta, uma exceção que a outra parte pode invocar.'],
+    ['Enquadrar', 'Indique o ramo do direito e o instituto em causa e localize a norma-base (o «artigo-mãe»): art. 483.º do CC para a responsabilidade extracontratual, art. 32.º do CP para a legítima defesa, art. 165.º da CRP para a reserva relativa.'],
+    ['Subsumir, requisito a requisito', 'Decomponha a norma nos seus requisitos e verifique cada um deles nos factos, por ordem. É o silogismo jurídico: premissa maior (a norma), premissa menor (os factos) e conclusão. É aqui que se ganha a maior parte da cotação.'],
+    ['Discutir as alternativas', 'Se os factos permitem mais do que uma qualificação, ou se há divergência na doutrina ou na jurisprudência, apresente as posições, tome partido e justifique. Um «depende» bem fundamentado vale mais do que uma certeza sem argumentos.'],
+    ['Concluir', 'Responda expressamente a cada pergunta, numa frase clara: «A detenção foi legal, mas só se mantém se a ofendida apresentar queixa.» A conclusão tem de decorrer da subsunção que fez.']
+  ],
+  roteiros: [
+    ['Responsabilidade civil extracontratual', ['Facto voluntário do agente', 'Ilicitude: violação de direito de outrem ou de norma de proteção (art. 483.º do CC)', 'Culpa: dolo ou negligência, apreciada pela diligência de um bom pai de família (art. 487.º do CC)', 'Dano: patrimonial e não patrimonial (arts. 496.º e 564.º do CC)', 'Nexo de causalidade adequada (art. 563.º do CC)', 'Responsáveis, presunções, culpa do lesado, prescrição (art. 498.º do CC)']],
+    ['Responsabilidade criminal', ['Ação ou omissão jurídico-penalmente relevante', 'Tipicidade objetiva: conduta, resultado, nexo de imputação', 'Tipicidade subjetiva: dolo ou negligência (arts. 14.º e 15.º do CP)', 'Ilicitude: há alguma causa de justificação? (art. 31.º do CP)', 'Culpa: imputabilidade, consciência da ilicitude, exigibilidade (arts. 17.º, 20.º e 35.º do CP)', 'Formas especiais: tentativa, comparticipação, concurso', 'Natureza do crime e consequências: pública, semipública ou particular; pena aplicável']],
+    ['Processo civil', ['Que ação ou providência? Qual o fim? (art. 10.º do CPC)', 'Pressupostos processuais: personalidade, capacidade, legitimidade, interesse em agir, patrocínio, competência', 'Prazos e forma dos atos: contagem e consequências do seu decurso (art. 139.º do CPC)', 'Efeitos da conduta processual das partes (revelia, confissão, ónus da prova)', 'Decisão possível e meios de reação (recursos, oposição)']],
+    ['Direito constitucional', ['Que direito ou princípio está em causa? É um direito, liberdade e garantia?', 'Inconstitucionalidade orgânica: o órgão era competente? (arts. 164.º, 165.º e 198.º da CRP)', 'Inconstitucionalidade formal: foi seguida a forma e o procedimento devidos?', 'Inconstitucionalidade material: a restrição é admissível e proporcional? (art. 18.º da CRP)', 'Que tipo de fiscalização é possível, quem a pode pedir e com que efeitos? (arts. 278.º a 283.º da CRP)']],
+    ['Processo penal', ['Em que fase está o processo (inquérito, instrução, julgamento, recurso)?', 'Quem são os sujeitos processuais e que direitos têm?', 'A diligência ou medida é admissível? Pressupostos e prazos legais', 'O crime depende de queixa ou de acusação particular? (arts. 48.º a 50.º do CPP)', 'Medidas de coação: pressupostos gerais, perigos concretos e proporcionalidade (arts. 191.º a 204.º do CPP)']]
+  ],
+  escrita: [
+    'Comece cada resposta pela questão jurídica que vai resolver, e não por uma introdução genérica sobre o instituto.',
+    'Cite sempre o artigo com o número, o número interno e a alínea, e o diploma: «art. 805.º, n.º 2, alínea a), do CC».',
+    'Não transcreva artigos: explique o que a norma exige e mostre como os factos a preenchem.',
+    'Use parágrafos curtos, um por requisito, e termine cada questão com uma conclusão.',
+    'Gerir o tempo: divida o tempo do exame pela cotação de cada pergunta e reserve 5 minutos para reler.'
+  ],
+  erros: [
+    'Responder em abstrato, explicando a matéria sem a aplicar aos factos concretos da hipótese.',
+    'Saltar requisitos «óbvios»: o corretor só pode cotar o que estiver escrito.',
+    'Ignorar factos da hipótese (uma data, um valor, uma qualidade das pessoas), que quase sempre servem para colocar um problema.',
+    'Concluir sem fundamentar, ou fundamentar sem concluir.',
+    'Esquecer os prazos e a natureza do crime, que muitas vezes decidem a questão.'
+  ]
+};
+function vCasoMetodo() {
+  var L = typeof leiLinkify === 'function' ? leiLinkify : esc;
+  var h = '<div class="head"><div><span class="crumb"><button data-a="case-back">Casos práticos</button> / Método de resolução</span><h1>Como resolver uma hipótese prática</h1><p class="sub">Um método em seis passos, roteiros por área e as regras de escrita que fazem a diferença na nota.</p></div></div>';
+  h += '<div class="gu-grid"><article class="gu-art" data-gl>';
+  h += '<section class="card gu-s"><h2>O método em seis passos</h2><ol class="gu-passos">' + METODO_HIP.passos.map(function (p) { return '<li><b>' + esc(p[0]) + '</b><span>' + L(p[1]) + '</span></li>'; }).join('') + '</ol></section>';
+  h += '<section class="card gu-s"><h2>Roteiros por área</h2><p class="gu-qn">Use-os como lista de verificação: percorra os pontos pela ordem e diga, para cada um, se está ou não preenchido no caso.</p><div class="mt-rots">' + METODO_HIP.roteiros.map(function (r) { return '<div class="mt-rot"><h3>' + esc(r[0]) + '</h3><ol>' + r[1].map(function (x) { return '<li>' + L(x) + '</li>'; }).join('') + '</ol></div>'; }).join('') + '</div></section>';
+  h += '<section class="card gu-s"><h2>Como escrever a resposta</h2><ul>' + METODO_HIP.escrita.map(function (x) { return '<li>' + L(x) + '</li>'; }).join('') + '</ul></section>';
+  h += '<section class="card gu-s gu-err"><h2>Erros que mais tiram valores</h2><ul>' + METODO_HIP.erros.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></section>';
+  h += '<nav class="gu-nav"><span></span><button class="btn pri" data-a="case-back">Praticar com os casos ›</button></nav></article>';
+  h += '<aside class="gu-side"><div class="card gu-toc"><span class="gu-k">Exemplo de subsunção</span><p class="mt-ex">«Nos termos do art. 32.º do CP, a legítima defesa exige uma agressão atual e ilícita. <i>No caso</i>, I avançava com uma barra levantada: a agressão era iminente e, portanto, atual. Era ilícita, por não estar coberta por qualquer causa de justificação. <i>Logo</i>, o primeiro requisito está preenchido.»</p></div>' +
+    '<div class="card gu-toc"><span class="gu-k">Treinar</span><p class="mt-ex">' + CASOS.length + ' casos com resolução-modelo completa.</p><button class="btn" data-a="case-back">Ver os casos</button></div></aside></div>';
+  return h;
+}
+vCasos = function () {
+  var h = '<div class="head"><div><h1>Casos práticos</h1><p class="sub">Resolva a hipótese por escrito e só depois compare com os tópicos de correção e a resolução-modelo.</p></div><button class="btn" data-a="case-metodo">🧭 Método de resolução</button></div>';
+  h += '<button class="card mt-cta" data-a="case-metodo"><span class="mt-ic">🧭</span><span><b>Nunca sabe por onde começar uma hipótese?</b><span>Aprenda o método em seis passos e os roteiros de resolução por área — 5 minutos de leitura.</span></span><span class="mt-go">›</span></button>';
+  h += '<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">' + CASOS.map(function (c) {
+    var st = Store.get('cs_' + c.id);
+    return '<button class="card" data-a="case-open" data-id="' + c.id + '" style="text-align:left;cursor:pointer;font:inherit;color:inherit"><span class="row" style="justify-content:space-between;width:100%"><span class="chip gray">' + DISC[c.d].nome + '</span>' + (st && st.done ? '<span class="chip ok">Resolvido</span>' : st && st.texto ? '<span class="chip gold">Em curso</span>' : '') + '</span><span class="ttl">' + esc(c.titulo) + '</span><span style="font-size:14px;color:var(--muted);line-height:1.6">' + esc(c.enunciado.slice(0, 140)) + '…</span>' + (CASOS_MODELO[c.id] ? '<span class="mt-tag">✓ Com resolução-modelo</span>' : '') + '</button>';
+  }).join('') + '</div>';
+  return h;
+};
+var _vCasoMT = vCaso;
+vCaso = function () {
+  if (S.caseId === '__metodo') return vCasoMetodo();
+  var c = CASOS.filter(function (x) { return x.id === S.caseId; })[0]; if (!c) { S.caseId = null; return vCasos(); }
+  var st = Store.get('cs_' + c.id) || {}, show = S.caseShow[c.id] || st.done, mod = CASOS_MODELO[c.id], L = typeof leiLinkify === 'function' ? leiLinkify : esc;
+  var h = _vCasoMT();
+  // Lembrete do método ao lado do enunciado
+  h = h.replace('</ol></div><div class="card b">', '</ol><details class="mt-lemb"><summary>🧭 Lembrete do método</summary><ol>' + METODO_HIP.passos.map(function (p) { return '<li>' + esc(p[0]) + '</li>'; }).join('') + '</ol><button class="lk" data-a="case-metodo">Ver o método completo ›</button></details></div><div class="card b">');
+  h = h.replace('<div class="split"><div class="card a">', '<div class="split" data-gl="' + c.d + '"><div class="card a">');
+  if (show && mod) {
+    h += '<section class="card mt-mod" data-gl="' + c.d + '"><div class="row" style="justify-content:space-between"><h2>Resolução-modelo</h2><button class="btn sm" data-a="case-modelo-copiar">Copiar</button></div><p class="gu-qn">Uma resposta completa, como a escreveria num exame. Compare a estrutura: questão, norma, subsunção e conclusão.</p>' +
+      c.perguntas.map(function (p, i) { return '<div class="mt-q"><h3><span>' + (i + 1) + '</span>' + esc(p) + '</h3>' + (mod[i] || []).map(function (x) { return '<p>' + L(x) + '</p>'; }).join('') + '</div>'; }).join('') + '</section>';
+  }
+  return h;
+};
+A['case-metodo'] = function () { S.caseId = '__metodo'; go('casos'); window.scrollTo(0, 0); };
+A['case-modelo-copiar'] = function () {
+  var c = CASOS.filter(function (x) { return x.id === S.caseId; })[0], mod = c && CASOS_MODELO[c.id]; if (!mod) return;
+  var t = c.titulo + '\n\n' + c.perguntas.map(function (p, i) { return (i + 1) + '. ' + p + '\n' + (mod[i] || []).join('\n'); }).join('\n\n');
+  (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { toast('Resolução copiada.'); }, function () { toast('Não foi possível copiar.'); });
+};
+
+/* ===== Sala de aula: apontamentos inteligentes ===== */
+function auTextoFolha(s) { return auNotasDe(s).map(function (x) { return x.txt || ''; }).join('\n'); }
+function auRelHtml(s) {
+  var txt = auTextoFolha(s), d = typeof cadParaDisc === 'function' ? cadParaDisc(s.cad) : null, nt = norm(txt);
+  var termos = glTermosEm(txt, d).slice(0, 10);
+  var guias = [];
+  if (d && typeof guiasDe === 'function') {
+    var G = guiasDe(d);
+    guias = (TEMAS[d] || []).filter(function (t) { return G[t[0]]; }).map(function (t) {
+      var g = G[t[0]], pal = [t[1]].concat((g.conceitos || []).map(function (c) { return c[0]; })), sc = 0;
+      pal.forEach(function (p) { if (nt && nt.indexOf(norm(p)) >= 0) sc += 2; norm(p).split(/\W+/).forEach(function (w) { if (w.length > 6 && nt.indexOf(w) >= 0) sc++; }); });
+      return { t: t, sc: sc };
+    }).sort(function (a, b) { return b.sc - a.sc; }).slice(0, 3);
+  }
+  var nq = d ? QUESTOES.filter(function (q) { return q.d === d; }).length : 0;
+  var h = '<h2 style="font-size:16px">Relacionado com esta aula</h2>';
+  if (!txt.trim()) return h + '<span class="au-nota-p">Escreva os seus apontamentos e aqui aparecem os conceitos do glossário, os guias da matéria e as perguntas para treinar.</span>';
+  if (termos.length) h += '<span class="au-rel-k">Conceitos nos seus apontamentos</span><div class="au-rel-t">' + termos.map(function (e) { return '<span class="gl au-rel-g" tabindex="0" data-g="' + e.i + '">' + esc(e.t) + '</span>'; }).join('') + '</div>';
+  if (guias.length) h += '<span class="au-rel-k">Matéria explicada</span>' + guias.map(function (x) { return '<button class="au-rel-l" data-a="guia-abrir" data-id="' + d + '|' + x.t[0] + '">📘 ' + esc(x.t[1]) + '</button>'; }).join('');
+  if (nq) h += '<span class="au-rel-k">Treinar</span><button class="au-rel-l" data-a="au-treinar" data-id="' + d + '">✍ ' + plural(nq, 'pergunta', 'perguntas') + ' de ' + esc(DISC[d].curto) + '</button>';
+  if (!termos.length && !guias.length && !nq) h += '<span class="au-nota-p">Ainda não encontrámos ligações. Use os termos jurídicos e cite os artigos («art. 483.º do CC») para obter sugestões.</span>';
+  return h;
+}
+var _vAulaSessaoRel = vAulaSessao;
+vAulaSessao = function (s, vivo) {
+  var h = _vAulaSessaoRel(s, vivo);
+  h = h.replace('<div class="card au-res" id="au-res">', '<div class="card au-rel" id="au-rel">' + auRelHtml(s) + '</div><div class="card au-res" id="au-res">');
+  return h.replace('<span class="au-sep"></span><div class="au-dl">', '<button class="au-fb tg" data-a="au-fc-sel" title="Criar um flashcard com o texto selecionado">🃏 Cartão da seleção</button><span class="au-sep"></span><div class="au-dl">');
+};
+A['au-treinar'] = function (el) { auGuardarFolha(true); S.examCfg = S.examCfg || {}; S.examCfg.disc = el.dataset.id; S.examCfg.tema = 'todos'; go('exames'); };
+A['au-fc-sel'] = function () {
+  var s = auAtual(); if (!s) return;
+  var sel = window.getSelection(), t = (AU.rng && auFolhaEl() && auFolhaEl().contains(AU.rng.startContainer) ? AU.rng.toString() : (sel ? sel.toString() : '')).replace(/\s+/g, ' ').trim();
+  if (!t) { toast('Selecione primeiro, na folha, o texto que quer transformar em cartão.'); return; }
+  var fr = '', vs = t, p = t.split('::');
+  if (p.length > 1) { fr = p[0].trim(); vs = p.slice(1).join('::').trim(); }
+  else {
+    var e = glEntrada(t, typeof cadParaDisc === 'function' ? cadParaDisc(s.cad) : null);
+    if (e) { fr = 'O que é «' + (t.length < 60 ? t : e.t) + '»?'; vs = e.def + (e.ref ? ' (' + e.ref + ')' : ''); }
+    else { var m = t.match(/^(.{3,80}?)\s*(?:[:—–]| - | é | são )\s*(.+)$/); if (m) { fr = 'O que é «' + m[1].replace(/[.,;]+$/, '') + '»?'; vs = m[2]; } }
+  }
+  openModal('Novo flashcard', '<p style="margin:0;font-size:13.5px;color:var(--muted)">Reveja a pergunta e a resposta. O cartão fica em Flashcards → Os meus cartões, com repetição espaçada.</p><label class="f">Frente (pergunta)<input class="in" id="au-fcs-f" value="' + esc(fr) + '" placeholder="Ex.: Quais são os requisitos da legítima defesa?"></label><label class="f">Verso (resposta)<textarea class="in" id="au-fcs-v" rows="4">' + esc(vs) + '</textarea></label>', '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="au-fc-sel-ok">Criar cartão</button>');
+  setTimeout(function () { var f = $('#au-fcs-f'); if (f && !f.value) f.focus(); }, 30);
+};
+A['au-fc-sel-ok'] = function () {
+  var s = auAtual(), fr = ($('#au-fcs-f') || {}).value, vs = ($('#au-fcs-v') || {}).value;
+  fr = (fr || '').trim(); vs = (vs || '').trim();
+  if (!fr) { toast('Escreva a pergunta da frente do cartão.'); return; }
+  Store.put({ id: uid('ct'), kind: 'cartao', frente: fr, verso: vs || 'Rever na folha da aula.', cad: s ? s.cad : '', sess: s ? s.id : '' });
+  closeModal(); toast('Cartão criado. Encontre-o em Flashcards → Os meus cartões.');
+};
 
 /* ---------- MODO NOTURNO ---------- */
 /* Gera automaticamente a versão escura de todas as regras CSS (e dos estilos em linha),
@@ -9703,7 +10504,7 @@ A['tema'] = function () { var n = temaEscuro() ? 'claro' : 'escuro'; lsSet('lexd
 try { if (window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () { if (!lsGet('lexdesk_tema')) temaAplicar(temaPref()); }); } catch (e) { }
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
-var VIEW_LBL = { painel: ['Painel', I.grid], guias: ['Matéria explicada', I.book], guia: ['Guia de estudo', I.book], reputacao: ['Reputação', I.badge], flashcards: ['Flashcards', I.layers], aula: ['Sala de aula', I.note], lei: ['Texto integral da lei', I.book], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Estudar e praticar', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
+var VIEW_LBL = { painel: ['Painel', I.grid], guias: ['Matéria explicada', I.book], guia: ['Guia de estudo', I.book], glossario: ['Glossário jurídico', I.book], reputacao: ['Reputação', I.badge], flashcards: ['Flashcards', I.layers], aula: ['Sala de aula', I.note], lei: ['Texto integral da lei', I.book], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Estudar e praticar', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
 var isMac = /Mac|iPhone|iPad/.test(navigator.platform || '');
 
 /* ===== animação de entrada e contadores ===== */
