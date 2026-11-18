@@ -5401,6 +5401,48 @@ function renderSide() {
     '<div class="sidefoot" style="margin-top:0"><strong><span class="dot ' + st[0] + '"></span>' + st[1] + '</strong><span>' + st[2] + '</span></div>';
 }
 
+/* ---------- atualização mínima do DOM ---------- */
+function lxSame(a, b) {
+  if (a.nodeType !== b.nodeType) return false;
+  if (a.nodeType !== 1) return true;
+  return a.tagName === b.tagName && (a.id || '') === (b.id || '') && (a.getAttribute('data-id') || '') === (b.getAttribute('data-id') || '') && (a.getAttribute('data-a') || '') === (b.getAttribute('data-a') || '');
+}
+function lxAttrs(a, b) {
+  var i, at, n;
+  for (i = a.attributes.length - 1; i >= 0; i--) { n = a.attributes[i].name; if (n.indexOf('data-tm-') === 0 || n === 'data-gl-ok') continue; if (!b.hasAttribute(n)) { if (n === 'style' && a.hasAttribute('data-tm-o')) a.removeAttribute('data-tm-o'); a.removeAttribute(n); } }
+  for (i = 0; i < b.attributes.length; i++) {
+    at = b.attributes[i]; n = at.name;
+    if (n === 'style' && a.hasAttribute('data-tm-o')) { if (a.getAttribute('data-tm-o') === at.value) continue; a.removeAttribute('data-tm-o'); }
+    if ((n === 'fill' || n === 'stroke') && a.hasAttribute('data-tm-' + n)) { if (a.getAttribute('data-tm-' + n) === at.value) continue; a.removeAttribute('data-tm-' + n); }
+    if (a.getAttribute(n) !== at.value) a.setAttribute(n, at.value);
+  }
+}
+function lxPatch(a, b) {
+  if (a.nodeType !== 1) { if (a.nodeValue !== b.nodeValue) a.nodeValue = b.nodeValue; return true; }
+  if (a.__glh !== undefined) { if (a.__glh !== b.innerHTML) return false; lxAttrs(a, b); return true; }
+  lxAttrs(a, b);
+  var foco = document.activeElement, tag = a.tagName;
+  if (tag === 'INPUT') { if (a !== foco) { if (a.value !== b.value) a.value = b.value; a.checked = b.checked; } return true; }
+  if (tag === 'TEXTAREA') { if (a !== foco && a.value !== b.value) a.value = b.value; return true; }
+  if (a.hasAttribute('data-keep')) return true;
+  if (a.isContentEditable && foco && a.contains(foco)) return true;
+  lxMorph(a, b);
+  if (tag === 'SELECT') { var sel = b.querySelector('option[selected]'); a.value = sel ? sel.value : (a.options[0] ? a.options[0].value : ''); }
+  return true;
+}
+function lxMorph(a, b) {
+  var ac = a.firstChild, bc = b.firstChild, nb, nx;
+  while (bc) {
+    nb = bc.nextSibling;
+    while (ac && ac.nodeType === 1 && ac.hasAttribute('data-ext')) ac = ac.nextSibling;
+    if (!ac) { a.appendChild(bc); }
+    else if (lxSame(ac, bc) && lxPatch(ac, bc)) { ac = ac.nextSibling; }
+    else { nx = ac.nextSibling; a.replaceChild(bc, ac); ac = nx; }
+    bc = nb;
+  }
+  while (ac) { nx = ac.nextSibling; if (!(ac.nodeType === 1 && ac.hasAttribute('data-ext'))) a.removeChild(ac); ac = nx; }
+}
+
 /* ---------- render principal ---------- */
 function render() {
   renderSide();
@@ -5438,7 +5480,13 @@ function render() {
   var mHtml = vTopbar() + h + '<p class="foot">O LEXDESK é uma ferramenta de apoio ao estudo e à prática jurídica. Não substitui a consulta da legislação em vigor no Diário da República nem o aconselhamento por advogado. <button class="lnk" data-a="legal-abrir" data-id="privacidade">Política de Privacidade</button> · <button class="lnk" data-a="legal-abrir" data-id="termos">Termos e Condições</button></p>';
   // Atualizações em segundo plano (tempo real, carregamentos) não voltam a desenhar a página se nada mudou: evita o «piscar».
   var mEl = $('#main'); S._igual = !!(S._bg && mEl.__h === mHtml);
-  if (!S._igual) { mEl.innerHTML = mHtml; mEl.__h = mHtml; }
+  if (!S._igual) {
+    // Na mesma vista, atualiza só o que mudou (sem apagar e voltar a desenhar a página inteira): evita o «piscar» de imagens, cores e animações.
+    if (mEl.__v === v && mEl.__h) { var tp = document.createElement('template'); tp.innerHTML = mHtml; try { lxMorph(mEl, tp.content); } catch (e) { mEl.innerHTML = mHtml; } }
+    else mEl.innerHTML = mHtml;
+    mEl.__h = mHtml; mEl.__v = v;
+    try { if (typeof tmInline === 'function' && temaEscuro()) tmInline(mEl); } catch (e) {}
+  }
   if (v === 'painel' && !S._igual) renderBusca();
 }
 
@@ -10940,7 +10988,7 @@ function glAplicar(raiz) {
   glIdx(); if (!GL.re && !GL.reAc) return;
   var cs = (raiz || document).querySelectorAll('[data-gl]:not([data-gl-ok])');
   [].forEach.call(cs, function (c) {
-    c.setAttribute('data-gl-ok', '1'); var ctx = c.getAttribute('data-gl') || '';
+    c.__glh = c.innerHTML; c.setAttribute('data-gl-ok', '1'); var ctx = c.getAttribute('data-gl') || '';
     var usados = {}, nos = [], w = document.createTreeWalker(c, NodeFilter.SHOW_TEXT, { acceptNode: function (n) {
       var p = n.parentNode; if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
       if (p.closest && p.closest('a,button,.gl,h1,h2,h3,dt,summary,textarea,input,select,[contenteditable],.gl-no')) return NodeFilter.FILTER_REJECT;
@@ -11477,7 +11525,7 @@ function vMeet() {
     '<div class="row" style="gap:8px"><select class="in mt-cid" data-a2="meet-cid" aria-label="Cidade"><option value="todas">Todas as cidades</option>' + MEET_CID.map(function (c) { return '<option' + (MEET.cid === c[0] ? ' selected' : '') + '>' + c[0] + '</option>'; }).join('') + '</select><label class="check"><input type="checkbox" id="meet-meus"' + (MEET.meus ? ' checked' : '') + '> Os meus eventos</label></div></div>';
   if (MEET.l === null) { meetCarregar(); return h + '<div class="empty">A carregar os eventos…</div>'; }
   var l = meetFiltrados();
-  h += '<div class="mt-grid"><div class="card mt-mapw"><div id="meet-mapa" class="mt-mapa"></div><span class="mt-leg">' + Object.keys(MEET_CAT).map(function (k) { return '<i style="--c:' + MEET_CAT[k][2] + '"></i>' + MEET_CAT[k][0]; }).join('') + '</span></div>' +
+  h += '<div class="mt-grid"><div class="card mt-mapw"><div id="meet-mapa" class="mt-mapa" data-keep="1"></div><span class="mt-leg">' + Object.keys(MEET_CAT).map(function (k) { return '<i style="--c:' + MEET_CAT[k][2] + '"></i>' + MEET_CAT[k][0]; }).join('') + '</span></div>' +
     '<div class="mt-lista" id="meet-lista">' + (l.length ? l.map(meetCard).join('') : '<div class="card"><div class="empty" style="border:0"><b>Ainda não há eventos' + (MEET.cid !== 'todas' ? ' em ' + esc(MEET.cid) : '') + '</b><span>Seja o primeiro: organize um café, um grupo de estudo ou um jogo de padel.</span><button class="btn wine" data-a="meet-novo">' + I.plus + 'Criar evento</button></div></div>') + '</div></div>';
   setTimeout(meetMapa, 0);
   return h;
@@ -11691,7 +11739,7 @@ render = function () {
 function meetPainelHtml() {
   if (MEET.l === null) { meetCarregar(); return ''; }
   var agora = new Date(), l = MEET.l.filter(function (e) { return !e.cancelado && new Date(e.inicio) > agora; }).slice(0, 3);
-  return '<section class="card" id="meet-painel"><div class="row" style="justify-content:space-between"><div><h2>Eventos perto de si</h2><span style="font-size:13px;color:var(--muted)">LexDesk Meet · encontros organizados por estudantes de Direito</span></div><div class="row"><button class="btn sm" data-go="meet">Ver mapa</button><button class="btn sm wine" data-a="meet-novo">' + I.plus + 'Criar evento</button></div></div>' +
+  return '<section class="card" id="meet-painel" data-ext="1"><div class="row" style="justify-content:space-between"><div><h2>Eventos perto de si</h2><span style="font-size:13px;color:var(--muted)">LexDesk Meet · encontros organizados por estudantes de Direito</span></div><div class="row"><button class="btn sm" data-go="meet">Ver mapa</button><button class="btn sm wine" data-a="meet-novo">' + I.plus + 'Criar evento</button></div></div>' +
     (l.length ? '<div class="mt-pl">' + l.map(meetCard).join('') + '</div>' : '<div class="empty" style="border:0">Ainda não há eventos marcados. Que tal organizar um café ou um grupo de estudo?</div>') + '</section>';
 }
 
@@ -12081,7 +12129,7 @@ Store.connect();
 </script>
 <script>
 /* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='90099bf7aebb';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
+(function(){var B='574fcc7590d5';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>
