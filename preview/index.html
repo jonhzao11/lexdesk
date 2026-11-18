@@ -11494,7 +11494,7 @@ function meetMapa() {
     if (!document.body.contains(MEET.node)) return;
     if (!MEET.map) {
       MEET.map = L.map(MEET.node, { zoomControl: true, scrollWheelZoom: false, attributionControl: true }).setView([39.6, -8.1], 6);
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18, subdomains: 'abcd', attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>' }).addTo(MEET.map);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>' }).addTo(MEET.map);
       MEET.camada = L.layerGroup().addTo(MEET.map);
       MEET.map.on('popupopen', function (ev) { var b = ev.popup.getElement && ev.popup.getElement().querySelector('[data-a="meet-abrir"]'); if (b) b.onclick = function (x) { x.preventDefault(); x.stopPropagation(); A['meet-abrir'](b); }; });
     }
