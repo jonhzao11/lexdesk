@@ -1635,6 +1635,37 @@ span.rp-util{cursor:default}
 .au-rel-l{display:block;width:100%;text-align:left;padding:8px 10px;border-radius:10px;border:1px solid #E5E7EB;background:#fff;font:600 13.5px var(--sans);color:#0F1B3D;cursor:pointer}
 .au-rel-l:hover{background:#F4F6FA}
 .gu-ideia .gl{border-bottom-color:#E8C77A}.gu-ideia .gl:hover,.gu-ideia .gl:focus{background:rgba(255,255,255,.14)}
+/* ---- Calculadora da herança ---- */
+.ch-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:16px;align-items:start}
+@media (max-width:1000px){.ch-grid{grid-template-columns:1fr}}
+.ch-in{display:flex;flex-direction:column;gap:12px}
+.ch-c{gap:10px;padding:18px 20px}.ch-c h2{margin:0;font-size:16px}
+.ch-esc{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ch-e{display:flex;flex-direction:column;gap:4px;text-align:left;padding:12px 14px;border-radius:12px;border:1.5px solid #E5E7EB;background:#fff;cursor:pointer;font:inherit;color:inherit}
+.ch-e.on{border-color:#7B1E2B;background:#FBEFF1}.ch-e b{font-size:15px;color:#0F1B3D}
+.ch-e code{font:700 13px ui-monospace,Menlo,monospace;color:#7B1E2B}.ch-e span{font-size:12.5px;color:#4B5563;line-height:1.45}
+.ch-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ch-li{display:grid;grid-template-columns:24px 1.3fr 1fr auto 24px;gap:8px;align-items:end;padding:10px;border-radius:12px;background:#F7F8FB}
+.ch-li .f{margin:0}.ch-ck{display:flex;flex-direction:column;gap:4px}
+.ch-i{width:24px;height:24px;border-radius:50%;background:#0F1B3D;color:#fff;display:grid;place-items:center;font:800 12px var(--sans);align-self:center}
+.ch-sm{margin:0;font-size:13px;color:#6B7280;line-height:1.5}
+.ch-out{padding:20px 22px;position:sticky;top:84px}
+.ch-res{display:flex;flex-direction:column;gap:16px}
+.ch-pa{display:grid;grid-template-columns:28px 1fr;gap:12px}
+.ch-pa h3{margin:2px 0 6px;font-size:15.5px;color:#0F1B3D}.ch-pa p{margin:4px 0;font-size:14.5px;line-height:1.6}
+.ch-n{width:28px;height:28px;border-radius:50%;background:#7B1E2B;color:#fff;display:grid;place-items:center;font:800 13px var(--sans)}
+.ch-f{font:600 14px ui-monospace,Menlo,monospace!important;background:#F7F8FB;padding:8px 10px;border-radius:8px}
+.ch-dif{background:#FFF7E6;border-left:3px solid #D97706;padding:8px 10px;border-radius:6px}
+.ch-ok{background:#ECFDF3;border-left:3px solid #15803D;padding:8px 10px;border-radius:6px}
+.ch-fr{display:inline-flex;align-items:baseline;font-weight:700}
+.ch-tb{overflow-x:auto}.ch-tb table{width:100%;border-collapse:collapse;font-size:13.5px}
+.ch-tb th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:#6B7280;padding:6px 8px;border-bottom:1px solid #E5E7EB}
+.ch-tb td{padding:8px;border-bottom:1px solid #F0F1F4;vertical-align:top}
+.ch-why{display:block;font-size:12px;color:#6B7280;margin-top:2px;line-height:1.45}
+.ch-av{margin:0;font-size:12px;color:#9CA3AF;line-height:1.5}
+.ch-cta{text-align:left;cursor:pointer;font:inherit;color:inherit;gap:4px;padding:14px 16px;border:1px solid #E6C9CE;background:linear-gradient(135deg,#FBEFF1,#fff)}
+.ch-cta b{font-size:15px;color:#7B1E2B}.ch-cta span{font-size:13px;color:#4B5563;line-height:1.45}
+.ch-tb td:not(:first-child){white-space:nowrap}
 
 </style>
 </head>
@@ -2188,7 +2219,7 @@ var TEMAS = {
   tgdc: [['pess', 'Pessoas e personalidade'], ['coisas', 'Coisas'], ['neg', 'Declaração negocial e forma'], ['vic', 'Vícios da vontade'], ['inval', 'Invalidade do negócio'], ['repr', 'Representação, condição e termo'], ['tempo', 'Prescrição e caducidade'], ['exerc', 'Exercício e prova dos direitos']],
   obr: [['fontes', 'Fontes das obrigações'], ['rc', 'Responsabilidade civil'], ['modal', 'Modalidades e transmissão'], ['cumpr', 'Cumprimento e extinção'], ['inc', 'Não cumprimento e mora'], ['garant', 'Garantias'], ['contr', 'Contratos em especial']],
   reais: [['geral', 'Princípios e noções gerais'], ['posse', 'Posse'], ['aquis', 'Usucapião e outras formas de aquisição'], ['compr', 'Compropriedade e propriedade horizontal'], ['menores', 'Usufruto, superfície e servidões'], ['viz', 'Relações de vizinhança'], ['reg', 'Registo predial']],
-  fam: [['casam', 'Casamento e efeitos'], ['regimes', 'Regimes de bens'], ['div', 'Divórcio e união de facto'], ['filia', 'Filiação, parentesco e alimentos'], ['sucg', 'Sucessão em geral'], ['legit', 'Sucessão legítima e legitimária'], ['test', 'Testamento e herança']],
+  fam: [['prom', 'Promessa de casamento'], ['casam', 'Casamento: impedimentos e invalidade'], ['conv', 'Convenção antenupcial'], ['regimes', 'Regimes de bens'], ['admin', 'Administração e disposição dos bens'], ['divid', 'Dívidas dos cônjuges'], ['div', 'Divórcio e união de facto'], ['filia', 'Filiação, parentesco e alimentos'], ['sucg', 'Sucessão em geral'], ['sleg', 'Sucessão legítima'], ['legit', 'Sucessão legitimária e cálculo da legítima'], ['imput', 'Imputação, colação e redução'], ['test', 'Testamento e herança'], ['pacto', 'Sucessão contratual']],
   pen: [['lei', 'Lei penal e princípios'], ['facto', 'Facto, dolo e negligência'], ['just', 'Causas de justificação'], ['culpa', 'Culpa e erro'], ['tent', 'Tentativa e comparticipação'], ['penas', 'Penas e sua aplicação'], ['esp', 'Crimes em especial']],
   adm: [['org', 'Organização administrativa'], ['princ', 'Princípios da atividade administrativa'], ['proc', 'Procedimento administrativo'], ['ato', 'Ato administrativo'], ['inval', 'Invalidade, revogação e anulação'], ['regul', 'Regulamentos e contratos'], ['cont', 'Contencioso administrativo']],
   com: [['atos', 'Atos de comércio e comerciantes'], ['tit', 'Títulos de crédito'], ['socg', 'Sociedades: parte geral'], ['tipos', 'Tipos de sociedades'], ['orgs', 'Órgãos, quotas e deliberações'], ['insolv', 'Insolvência e recuperação']],
@@ -3354,6 +3385,456 @@ GUIAS.con = {
       'Tratar como limites materiais matérias que não constam do art. 288.º da CRP.'
     ],
     artigos: ['art. 284.º da CRP', 'art. 285.º da CRP', 'art. 286.º da CRP', 'art. 287.º da CRP', 'art. 288.º da CRP', 'art. 289.º da CRP']
+  }
+};
+
+/* Matéria explicada — Direito da Família e das Sucessões */
+var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
+GUIAS.fam = {
+  prom: {
+    sub: 'O noivado não obriga a casar: restituição de donativos, indemnizações limitadas e o prazo de um ano.',
+    ideia: 'A promessa de casamento é um contrato, mas um contrato fraco: não dá direito a exigir a celebração do casamento nem a outras indemnizações além das previstas no art. 1594.º do CC, mesmo que haja cláusula penal (art. 1591.º do CC). A lei protege a liberdade matrimonial até ao último momento.',
+    conceitos: [
+      ['Promessa de casamento', 'Contrato pelo qual duas pessoas, a título de esponsais, desposórios ou outro, se comprometem a contrair matrimónio (art. 1591.º do CC).'],
+      ['Donativos', 'Ofertas feitas aos noivos, por um ao outro ou por terceiros, em virtude da promessa e na expectativa do casamento. Se o casamento não se realizar por incapacidade ou retratação, devem ser restituídos (art. 1592.º, n.º 1, do CC).'],
+      ['Justo motivo', 'Razão séria que legitima o rompimento (por exemplo, uma infidelidade ou uma revelação grave sobre o outro). Quem rompe sem justo motivo, ou dá causa culposa à retratação do outro, tem de indemnizar (art. 1594.º, n.º 1, do CC).']
+    ],
+    regime: [
+      ['Restituições', 'Rompida a promessa, cada promitente restitui os donativos recebidos do outro ou de terceiros, segundo as regras da nulidade e anulabilidade (art. 1592.º, n.º 1, do CC). A obrigação abrange as cartas e retratos pessoais, mas não as coisas já consumidas (art. 1592.º, n.º 2, do CC).', 'Se a promessa não se cumprir por morte de um dos promitentes, o sobrevivo pode conservar os donativos do falecido, perdendo então o direito aos que lhe fez (art. 1593.º do CC).'],
+      ['Indemnização', 'O promitente que rompa sem justo motivo, ou que culposamente leve o outro a retratar-se, indemniza o esposado inocente, os pais deste ou terceiros que tenham agido em nome dos pais, das despesas feitas e das obrigações contraídas na previsão do casamento (art. 1594.º, n.º 1, do CC).', 'Ficam de fora os danos não patrimoniais e os lucros cessantes: a indemnização é só a do art. 1594.º do CC (art. 1591.º do CC). Na fixação do montante, o tribunal atende às circunstâncias e ao que tenha sido aproveitado.'],
+      ['Prazo', 'O direito de exigir a restituição dos donativos ou a indemnização caduca no prazo de um ano, contado do rompimento da promessa ou da morte do promitente (art. 1595.º do CC).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Há promessa de casamento?', 'Acordo sério de casar (art. 1591.º do CC).'],
+      ['Pode exigir-se o casamento?', 'Nunca (art. 1591.º do CC).'],
+      ['Restituições', 'Donativos, cartas e retratos (arts. 1592.º e 1593.º do CC).'],
+      ['Houve rompimento sem justo motivo?', 'Se sim, indemnização das despesas e obrigações contraídas (art. 1594.º do CC).'],
+      ['Quem pode pedir?', 'O noivo inocente, os pais dele e terceiros que agiram em nome dos pais.'],
+      ['Ainda está em prazo?', 'Um ano (art. 1595.º do CC).']
+    ] },
+    exemplo: ['Três semanas antes do casamento, Rui termina o noivado com Inês porque se apaixonou por outra pessoa. Os pais de Inês tinham pago 15.000 € pelo copo de água e oferecido aos noivos uma viagem, que acabaram por usar eles próprios. Inês exige 30.000 € pelo desgosto e a devolução do anel de noivado que deu a Rui.',
+      'Rui rompeu a promessa sem justo motivo: apaixonar-se por outra pessoa é um motivo pessoal, mas não justo no sentido do art. 1594.º do CC. Deve indemnizar Inês e os pais dela das despesas feitas na previsão do casamento — os 15.000 € do copo de água.',
+      'A viagem foi aproveitada pelos pais: na fixação da indemnização tem-se em conta esse aproveitamento, pelo que o seu valor não deve ser incluído.',
+      'Os 30.000 € pelo desgosto não são devidos: os danos não patrimoniais não são indemnizáveis, já que a indemnização se limita à prevista no art. 1594.º do CC (art. 1591.º do CC).',
+      'O anel foi um donativo feito em vista do casamento: Rui deve restituí-lo (art. 1592.º, n.º 1, do CC). Todos estes direitos caducam um ano após o rompimento (art. 1595.º do CC).'],
+    erros: [
+      'Admitir uma ação para obrigar o noivo a casar.',
+      'Conceder indemnização por danos morais ou lucros cessantes, em vez de a limitar às despesas e obrigações do art. 1594.º do CC.',
+      'Esquecer os pais e terceiros como titulares do direito à indemnização.',
+      'Esquecer o prazo de caducidade de um ano (art. 1595.º do CC).'
+    ],
+    artigos: ['art. 1591.º do CC', 'art. 1592.º do CC', 'art. 1593.º do CC', 'art. 1594.º do CC', 'art. 1595.º do CC']
+  },
+
+  casam: {
+    sub: 'Capacidade matrimonial, impedimentos dirimentes e impedientes, falta e vícios da vontade, anulação e casamento putativo.',
+    ideia: 'Para casar, é preciso não ter nenhum impedimento (art. 1600.º do CC). Os impedimentos dirimentes tornam o casamento anulável; os impedientes não o invalidam, mas trazem sanções. O casamento anulável produz efeitos enquanto não for anulado por sentença (art. 1632.º do CC) e, havendo boa-fé, os efeitos podem até manter-se (art. 1647.º do CC).',
+    conceitos: [
+      ['Impedimentos dirimentes absolutos', 'Impedem o casamento com qualquer pessoa: idade inferior a 18 anos; demência notória e acompanhamento de maior, quando a sentença o determine; casamento anterior não dissolvido (art. 1601.º do CC).'],
+      ['Impedimentos dirimentes relativos', 'Impedem o casamento entre certas pessoas: parentesco na linha reta; relação anterior de responsabilidades parentais; parentesco no 2.º grau da linha colateral (irmãos); afinidade na linha reta; condenação de um nubente por homicídio doloso contra o cônjuge do outro (art. 1602.º do CC).'],
+      ['Impedimentos impedientes', 'Não tornam o casamento anulável, mas sujeitam os nubentes a sanções: parentesco no 3.º grau da linha colateral (tios e sobrinhos); vínculo de tutela, acompanhamento ou administração legal de bens; pronúncia por homicídio doloso contra o cônjuge do outro, enquanto não houver despronúncia ou absolvição (art. 1604.º do CC). O antigo prazo internupcial foi revogado.'],
+      ['Casamento putativo', 'Casamento anulado que produz efeitos em relação ao cônjuge de boa-fé até ao trânsito em julgado da sentença (art. 1647.º do CC). A boa-fé presume-se (art. 1648.º, n.º 3, do CC).']
+    ],
+    regime: [
+      ['Causas de anulabilidade', 'É anulável o casamento contraído com impedimento dirimente, com falta de vontade ou vontade viciada por erro ou coação, ou celebrado sem as testemunhas exigidas por lei (art. 1631.º do CC).', 'Há falta de vontade quando o nubente não tinha consciência do ato, estava em erro sobre a identidade física do outro, foi vítima de coação física ou houve simulação (art. 1635.º do CC). O erro-vício só releva se recair sobre qualidades essenciais da pessoa do outro cônjuge, for desculpável e determinante (art. 1636.º do CC).'],
+      ['Legitimidade e prazos', 'Na anulação fundada em impedimento dirimente, têm legitimidade os cônjuges, os parentes na linha reta ou até ao 4.º grau da colateral, os herdeiros e adotantes e o Ministério Público, entre outros (art. 1639.º do CC). Os prazos variam consoante o impedimento (art. 1643.º do CC).', 'A anulação por falta de vontade deve ser pedida nos três anos seguintes à celebração (art. 1644.º do CC); a fundada em vícios da vontade, nos seis meses subsequentes à cessação do vício (art. 1645.º do CC).'],
+      ['Sanções dos impedimentos impedientes', 'A violação do impedimento de parentesco no 3.º grau ou do vínculo de tutela, acompanhamento ou administração legal de bens torna o infrator incapaz de receber do seu cônjuge qualquer benefício por doação ou testamento (art. 1650.º, n.º 2, do CC).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Situação', 'Consequência', 'Base legal'], linhas: [
+      ['Impedimento dirimente', 'Casamento anulável', 'arts. 1601.º, 1602.º e 1631.º, a), do CC'],
+      ['Falta de vontade', 'Anulável; ação em 3 anos', 'arts. 1635.º e 1644.º do CC'],
+      ['Erro-vício ou coação moral', 'Anulável; ação em 6 meses após cessar o vício', 'arts. 1636.º, 1638.º e 1645.º do CC'],
+      ['Impedimento impediente', 'Válido, com sanções patrimoniais', 'arts. 1604.º e 1650.º do CC'],
+      ['Cônjuge de boa-fé', 'Efeitos putativos até à sentença', 'arts. 1647.º e 1648.º do CC']
+    ] },
+    exemplo: ['Tiago casou com Joana sem saber que esta, à data, já estava casada em França, num casamento que nunca foi transcrito em Portugal. Dois anos depois, descobre a situação. Quid iuris?',
+      'O casamento anterior não dissolvido é um impedimento dirimente absoluto, mesmo que o respetivo assento não tenha sido lavrado no registo português (art. 1601.º, alínea c), do CC). O segundo casamento é anulável (art. 1631.º, alínea a), do CC).',
+      'Tiago tem legitimidade para propor a ação de anulação (art. 1639.º, n.º 1, do CC), tal como o primeiro cônjuge de Joana (art. 1639.º, n.º 2, do CC). Até à sentença de anulação, a anulabilidade não pode ser invocada para nenhum efeito (art. 1632.º do CC).',
+      'Tiago estava de boa-fé: o casamento produz efeitos em relação a ele até ao trânsito em julgado da sentença, e só ele pode arrogar-se os benefícios do estado matrimonial (art. 1647.º, n.º 2, do CC).'],
+    erros: [
+      'Aplicar normas revogadas, como o prazo internupcial ou o casamento de menores de 16 a 18 anos com autorização.',
+      'Confundir impedimentos dirimentes (anulabilidade) com impedientes (sanções).',
+      'Esquecer que a anulabilidade do casamento só pode ser invocada depois de reconhecida por sentença (art. 1632.º do CC).',
+      'Trocar os prazos da falta de vontade (art. 1644.º do CC) e dos vícios da vontade (art. 1645.º do CC).'
+    ],
+    artigos: ['art. 1600.º do CC', 'art. 1601.º do CC', 'art. 1602.º do CC', 'art. 1604.º do CC', 'art. 1631.º do CC', 'art. 1635.º do CC', 'art. 1636.º do CC', 'art. 1639.º do CC', 'art. 1647.º do CC', 'art. 1650.º do CC']
+  },
+
+  conv: {
+    sub: 'Liberdade de convenção e os seus limites, regime imperativo da separação, imutabilidade, cláusulas típicas de exame e doações para casamento.',
+    ideia: 'Os noivos podem escolher livremente o regime de bens em convenção antenupcial, quer adotando um regime tipo, quer criando o seu (art. 1698.º do CC). Mas há limites: matérias que não podem ser convencionadas (art. 1699.º do CC), casos em que a separação é imposta (art. 1720.º do CC) e a regra da imutabilidade depois do casamento (art. 1714.º do CC). A análise de cláusulas é uma das perguntas mais frequentes nos exames.',
+    conceitos: [
+      ['Convenção antenupcial', 'Acordo entre os nubentes que fixa o regime de bens. É válida se for celebrada por declaração perante funcionário do registo civil ou por escritura pública (art. 1710.º do CC). Na falta, invalidade ou caducidade, vigora a comunhão de adquiridos (art. 1717.º do CC).'],
+      ['Separação imperativa', 'O casamento celebrado sem processo preliminar ou por quem já tenha completado 60 anos considera-se sempre contraído sob o regime da separação (art. 1720.º, n.º 1, do CC). Os nubentes podem ainda assim fazer doações entre si (art. 1720.º, n.º 2, do CC).'],
+      ['Imutabilidade', 'Depois do casamento, não podem ser alterados nem a convenção nem o regime legal, fora dos casos previstos na lei (art. 1714.º, n.º 1, do CC), como a simples separação judicial de bens (art. 1715.º do CC).'],
+      ['Convenção sob condição ou a termo', 'É válida (art. 1713.º do CC). Por isso, a cláusula «separação nos primeiros três anos e comunhão de adquiridos depois» não viola a imutabilidade: a alteração estava prevista antes do casamento.']
+    ],
+    regime: [
+      ['O que não pode ser convencionado (art. 1699.º do CC)', 'A regulamentação da sucessão hereditária dos cônjuges ou de terceiro, salvo nos casos dos artigos seguintes; a alteração dos direitos ou deveres paternais ou conjugais; a alteração das regras sobre administração dos bens do casal; a comunicabilidade dos bens do art. 1733.º do CC (art. 1699.º, n.º 1, do CC).', 'Se o casamento for celebrado por quem tenha filhos, ainda que maiores, não pode ser convencionada a comunhão geral nem a comunicabilidade dos bens próprios do n.º 1 do art. 1722.º do CC (art. 1699.º, n.º 2, do CC).'],
+      ['O que pode ser convencionado em matéria sucessória', 'A convenção pode conter a instituição de herdeiro ou a nomeação de legatário a favor de um dos esposados ou de terceiro, e a renúncia recíproca à condição de herdeiro legitimário do outro cônjuge (art. 1700.º, n.º 1, do CC).', 'Pode ainda estipular que, dissolvido o casamento por morte e havendo descendentes comuns, a partilha se faça segundo a comunhão geral (art. 1719.º, n.º 1, do CC). Não vale para o divórcio.'],
+      ['Doações para casamento', 'São as feitas a um ou a ambos os esposados em vista do casamento (art. 1753.º do CC) e só podem ser feitas na convenção antenupcial (art. 1756.º, n.º 1, do CC). Feitas fora dela, as doações em vida ficam sujeitas ao regime geral (art. 1756.º, n.º 2, do CC).', 'Caducam se o casamento não for celebrado dentro de um ano ou for anulado (art. 1760.º, n.º 1, do CC). Em caso de divórcio, perdem-se os benefícios recebidos em vista do casamento (art. 1791.º do CC).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['A convenção é formalmente válida?', 'Registo civil ou escritura pública (art. 1710.º do CC).'],
+      ['Há separação imperativa?', '60 anos ou falta de processo preliminar (art. 1720.º do CC).'],
+      ['Há filhos anteriores?', 'Proibida a comunhão geral (art. 1699.º, n.º 2, do CC).'],
+      ['Cada cláusula viola o art. 1699.º, n.º 1, do CC?', 'Sucessão, deveres, administração, bens do art. 1733.º do CC.'],
+      ['A cláusula é condição ou termo?', 'Válida (art. 1713.º do CC); não viola a imutabilidade.'],
+      ['Cláusula sobre partilha', 'Só para dissolução por morte, com descendentes comuns e segundo a comunhão geral (art. 1719.º do CC).']
+    ] },
+    exemplo: ['Paulo (62 anos) e Sara (45 anos, com um filho de outra relação) celebram convenção antenupcial em que adotam a comunhão geral, estipulam que o salário de Sara será administrado por ambos e que, em caso de divórcio, a partilha se fará pelas regras da comunhão geral. Na convenção, Paulo doa a Sara um apartamento.',
+      'Paulo já completou 60 anos: o casamento fica imperativamente sujeito à separação de bens (art. 1720.º, n.º 1, alínea b), do CC). A escolha da comunhão geral é ineficaz. Além disso, sempre seria proibida, porque Sara tem um filho (art. 1699.º, n.º 2, do CC).',
+      'A cláusula sobre a administração do salário altera as regras de administração (o salário é administrado por quem o recebe, art. 1678.º, n.º 2, alínea a), do CC). É proibida pelo art. 1699.º, n.º 1, alínea c), do CC.',
+      'A cláusula de partilha em caso de divórcio não cabe no art. 1719.º do CC, que só a admite para a dissolução por morte com descendentes comuns: é nula.',
+      'A doação do apartamento é válida, apesar da separação imperativa (art. 1720.º, n.º 2, do CC). Feita na convenção, é uma doação para casamento (arts. 1753.º e 1756.º do CC).'],
+    erros: [
+      'Esquecer de verificar a idade dos nubentes (60 anos) e os filhos anteriores antes de analisar as cláusulas.',
+      'Considerar inválida, por violar a imutabilidade, uma cláusula a termo ou sob condição prevista antes do casamento.',
+      'Aplicar o art. 1719.º do CC à partilha por divórcio.',
+      'Chamar doação para casamento a uma doação feita fora da convenção antenupcial.'
+    ],
+    artigos: ['art. 1698.º do CC', 'art. 1699.º do CC', 'art. 1700.º do CC', 'art. 1710.º do CC', 'art. 1713.º do CC', 'art. 1714.º do CC', 'art. 1717.º do CC', 'art. 1719.º do CC', 'art. 1720.º do CC', 'art. 1756.º do CC']
+  },
+
+  regimes: {
+    sub: 'Comunhão de adquiridos, comunhão geral e separação: que bens são próprios e que bens são comuns.',
+    ideia: 'O regime de bens decide a quem pertence cada bem. Na comunhão de adquiridos, o regime supletivo (art. 1717.º do CC), é comum o que se adquire a título oneroso durante o casamento e o produto do trabalho; é próprio o que se tinha antes e o que se recebe por sucessão ou doação. Na comunhão geral, quase tudo é comum. Na separação, nada é comum.',
+    conceitos: [
+      ['Bens próprios na comunhão de adquiridos', 'Os bens que cada cônjuge tinha ao casar, os que lhe advierem depois por sucessão ou doação e os adquiridos por virtude de direito próprio anterior (art. 1722.º do CC).'],
+      ['Bens comuns na comunhão de adquiridos', 'O produto do trabalho dos cônjuges e os bens adquiridos na constância do matrimónio que não sejam excetuados por lei (art. 1724.º do CC).'],
+      ['Sub-rogação real', 'Conservam a natureza de próprios os bens trocados diretamente por bens próprios, o preço dos bens próprios alienados e os bens adquiridos com dinheiro próprio, se a proveniência for mencionada no documento de aquisição com intervenção de ambos os cônjuges (art. 1723.º do CC).'],
+      ['Bens incomunicáveis', 'Mesmo na comunhão geral, são excluídos da comunhão, entre outros, os bens doados ou deixados com cláusula de incomunicabilidade, os direitos estritamente pessoais e as indemnizações por factos contra a pessoa de cada cônjuge (art. 1733.º do CC).']
+    ],
+    regime: [
+      ['Comunhão de adquiridos', 'Os bens adquiridos em parte com dinheiro próprio e em parte com dinheiro comum têm a natureza da prestação mais valiosa, com compensações na partilha (art. 1726.º do CC). Os bens adquiridos por virtude da titularidade de bens próprios, que não sejam frutos, são próprios (art. 1728.º do CC).', 'Os frutos e rendimentos dos bens próprios são comuns: entram na comunhão como bens adquiridos durante o casamento.'],
+      ['Comunhão geral', 'O património comum é constituído por todos os bens presentes e futuros dos cônjuges que não sejam excetuados por lei (art. 1732.º do CC), designadamente pelo art. 1733.º do CC.'],
+      ['Separação de bens', 'Cada cônjuge conserva o domínio e a fruição de todos os seus bens, presentes e futuros, e pode dispor deles livremente (art. 1735.º do CC). Havendo dúvida sobre a propriedade de um móvel, presume-se a compropriedade (art. 1736.º, n.º 2, do CC).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Bem', 'Adquiridos', 'Comunhão geral', 'Separação'], linhas: [
+      ['Bens anteriores ao casamento', 'Próprio', 'Comum', 'Próprio'],
+      ['Herança ou doação recebida durante o casamento', 'Próprio', 'Comum (salvo cláusula de incomunicabilidade)', 'Próprio'],
+      ['Salário', 'Comum', 'Comum', 'Próprio'],
+      ['Bem comprado durante o casamento', 'Comum (salvo sub-rogação)', 'Comum', 'De quem o comprou'],
+      ['Rendas de um imóvel próprio', 'Comuns', 'Comuns', 'Próprias']
+    ] },
+    exemplo: ['Casados em comunhão de adquiridos, Ana recebe por herança da avó uma casa no Algarve e troca-a por três apartamentos no Porto, que arrenda. Com o salário, o casal compra um carro.',
+      'A casa herdada é bem próprio de Ana (art. 1722.º, n.º 1, alínea b), do CC). Os apartamentos, obtidos por troca direta, conservam a natureza de bens próprios por sub-rogação real (art. 1723.º, alínea a), do CC).',
+      'As rendas são frutos de bens próprios e, como bens adquiridos durante o casamento, são comuns (art. 1724.º, alínea b), do CC).',
+      'O carro foi comprado com o salário, que é comum (art. 1724.º, alínea a), do CC): é bem comum.'],
+    erros: [
+      'Considerar comum, na comunhão de adquiridos, o que se recebe por herança ou doação.',
+      'Esquecer que os frutos dos bens próprios são comuns.',
+      'Aplicar a sub-rogação do art. 1723.º, alínea c), do CC sem a menção da proveniência do dinheiro no documento de aquisição.',
+      'Esquecer as exceções do art. 1733.º do CC na comunhão geral.'
+    ],
+    artigos: ['art. 1717.º do CC', 'art. 1722.º do CC', 'art. 1723.º do CC', 'art. 1724.º do CC', 'art. 1726.º do CC', 'art. 1732.º do CC', 'art. 1733.º do CC', 'art. 1735.º do CC', 'art. 1736.º do CC']
+  },
+
+  admin: {
+    sub: 'Quem administra cada bem, quando é preciso o consentimento do outro cônjuge e o que acontece se faltar (ilegitimidade conjugal).',
+    ideia: 'Ser dono não basta: no casamento, é preciso saber quem administra o bem e se o ato exige o consentimento do outro cônjuge. A falta de consentimento, quando exigido, torna o ato anulável a pedido do cônjuge que não consentiu (art. 1687.º do CC).',
+    conceitos: [
+      ['Administração', 'Cada cônjuge administra os seus bens próprios (art. 1678.º, n.º 1, do CC) e ainda certos bens comuns: os proventos do seu trabalho, os direitos de autor, os bens comuns que levou para o casamento ou adquiriu a título gratuito, entre outros (art. 1678.º, n.º 2, do CC). Fora destes casos, cada cônjuge pode praticar atos de administração ordinária sobre os bens comuns; os restantes atos exigem o consentimento de ambos (art. 1678.º, n.º 3, do CC).'],
+      ['Móveis', 'Cada cônjuge pode alienar ou onerar os móveis próprios ou comuns que administre (art. 1682.º, n.º 2, do CC), salvo os utilizados conjuntamente na vida do lar ou como instrumento comum de trabalho e os pertencentes exclusivamente ao cônjuge que os não administra (art. 1682.º, n.º 3, do CC).'],
+      ['Imóveis e estabelecimento', 'Carece do consentimento de ambos, salvo no regime da separação, a alienação, oneração ou arrendamento de imóveis próprios ou comuns e a alienação, oneração ou locação de estabelecimento comercial (art. 1682.º-A, n.º 1, do CC).'],
+      ['Casa de morada da família', 'A sua alienação, oneração ou arrendamento carece sempre do consentimento de ambos, mesmo no regime da separação e mesmo que seja bem próprio (art. 1682.º-A, n.º 2, do CC).']
+    ],
+    regime: [
+      ['Heranças e legados', 'Não é necessário consentimento para aceitar doações, heranças ou legados, mas o repúdio exige o consentimento de ambos, salvo no regime da separação (art. 1683.º do CC).'],
+      ['Sanção: anulabilidade', 'Os atos praticados sem o consentimento exigido pelos arts. 1682.º, 1682.º-A, 1682.º-B e 1683.º, n.º 2, do CC são anuláveis a requerimento do cônjuge que não consentiu ou dos seus herdeiros, nos seis meses subsequentes ao conhecimento do ato e nunca depois de três anos sobre a sua celebração (art. 1687.º, n.os 1 e 2, do CC).'],
+      ['Dever de contribuir', 'Ambos os cônjuges devem contribuir para os encargos da vida familiar, de harmonia com as possibilidades de cada um (art. 1676.º, n.º 1, do CC). Se um não cumprir, o outro pode exigir que lhe seja diretamente entregue parte dos rendimentos ou proventos daquele (art. 1676.º, n.º 4, do CC).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['O bem é próprio ou comum?', 'Ver o regime de bens.'],
+      ['Quem o administra?', 'Art. 1678.º do CC.'],
+      ['É móvel ou imóvel?', 'Arts. 1682.º e 1682.º-A do CC.'],
+      ['É a casa de morada da família?', 'Consentimento sempre necessário (art. 1682.º-A, n.º 2, do CC).'],
+      ['Faltou o consentimento?', 'Anulabilidade a pedido do cônjuge preterido (art. 1687.º do CC).'],
+      ['Está em prazo?', '6 meses após conhecimento, máximo 3 anos.']
+    ] },
+    exemplo: ['Casados em separação de bens, Carlos vende sem o consentimento de Marta um terreno que herdou e, uma semana depois, a moradia de que é proprietário e onde o casal vive. Marta soube das vendas há dois meses.',
+      'No regime da separação, a venda de imóveis próprios não exige o consentimento do outro cônjuge (art. 1682.º-A, n.º 1, do CC). A venda do terreno é válida.',
+      'A moradia é a casa de morada da família: a sua alienação carece sempre do consentimento de ambos, mesmo no regime da separação e sendo bem próprio (art. 1682.º-A, n.º 2, do CC).',
+      'A venda é anulável a requerimento de Marta (art. 1687.º, n.º 1, do CC), que está dentro do prazo de seis meses a contar do conhecimento (art. 1687.º, n.º 2, do CC).'],
+    erros: [
+      'Confundir propriedade e administração: um bem comum pode ser administrado só por um dos cônjuges.',
+      'Esquecer que a casa de morada da família exige sempre consentimento, mesmo na separação.',
+      'Dizer que o ato é nulo: é anulável, e só pelo cônjuge preterido ou pelos seus herdeiros.',
+      'Esquecer o duplo prazo do art. 1687.º, n.º 2, do CC.'
+    ],
+    artigos: ['art. 1676.º do CC', 'art. 1678.º do CC', 'art. 1682.º do CC', 'art. 1682.º-A do CC', 'art. 1682.º-B do CC', 'art. 1683.º do CC', 'art. 1687.º do CC']
+  },
+
+  divid: {
+    sub: 'Dívidas comunicáveis e próprias, proveito comum, o cônjuge comerciante e os bens que respondem; mecanismos de proteção na execução.',
+    ideia: 'Qualquer cônjuge pode contrair dívidas sem o consentimento do outro (art. 1690.º, n.º 1, do CC). A pergunta é sempre dupla: quem é responsável (só o devedor ou ambos — arts. 1691.º e 1692.º do CC) e que bens respondem (arts. 1695.º e 1696.º do CC).',
+    conceitos: [
+      ['Dívidas comunicáveis', 'As contraídas por ambos ou por um com o consentimento do outro; as contraídas para os encargos normais da vida familiar; as contraídas pelo cônjuge administrador em proveito comum do casal e nos limites dos seus poderes; e as contraídas no exercício do comércio, salvo prova de que não foram em proveito comum ou se vigorar a separação (art. 1691.º, n.º 1, do CC).'],
+      ['Proveito comum', 'Não se presume, salvo nos casos em que a lei o declarar (art. 1691.º, n.º 3, do CC). O caso típico de presunção é o das dívidas comerciais do cônjuge comerciante (art. 1691.º, n.º 1, alínea d), do CC), exceto no regime da separação.'],
+      ['Dívidas próprias', 'As contraídas sem o consentimento do outro fora dos casos do art. 1691.º do CC, as provenientes de crimes e as indemnizações por factos imputáveis a cada um, entre outras (art. 1692.º do CC).']
+    ],
+    regime: [
+      ['Bens que respondem por dívidas comuns', 'Respondem os bens comuns e, na falta ou insuficiência, solidariamente, os bens próprios de qualquer dos cônjuges (art. 1695.º, n.º 1, do CC). No regime da separação, a responsabilidade não é solidária (art. 1695.º, n.º 2, do CC).'],
+      ['Bens que respondem por dívidas próprias', 'Respondem os bens próprios do devedor e, subsidiariamente, a sua meação nos bens comuns (art. 1696.º, n.º 1, do CC). Mas respondem ao mesmo tempo que os bens próprios o produto do trabalho e os direitos de autor do devedor, os bens comuns que levou para o casal ou adquiriu a título gratuito e os sub-rogados (art. 1696.º, n.º 2, do CC).'],
+      ['Na execução', 'Se, em execução movida contra um só cônjuge, forem penhorados bens comuns, o outro é citado para, em 20 dias, requerer a separação de bens (art. 740.º, n.º 1, do CPC). O exequente pode também alegar fundamentadamente que a dívida, constante de título diverso de sentença, é comum (art. 741.º, n.º 1, do CPC).', 'Fora da execução, o cônjuge em perigo de perder o que é seu pela má administração do outro pode requerer a simples separação judicial de bens (art. 1767.º do CC).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Quem contraiu a dívida e quando?', 'A dívida tem a data do facto que lhe deu origem (art. 1690.º, n.º 2, do CC).'],
+      ['É comunicável?', 'Percorrer as alíneas do art. 1691.º do CC.'],
+      ['Há presunção de proveito comum?', 'Só se a lei o declarar (art. 1691.º, n.º 3, do CC); comerciante fora da separação.'],
+      ['Dívida comum', 'Bens comuns e depois próprios, solidariamente — ou conjuntamente na separação (art. 1695.º do CC).'],
+      ['Dívida própria', 'Bens próprios e os do art. 1696.º, n.º 2, do CC; depois a meação.'],
+      ['Defesa do outro cônjuge', 'Separação na execução (art. 740.º do CPC); separação judicial de bens (art. 1767.º do CC).']
+    ] },
+    exemplo: ['Daniel, casado com Luísa em comunhão de adquiridos, é comerciante de antiguidades. Contrai uma dívida de 40.000 € junto de um fornecedor para abastecer a loja. Luísa não deu consentimento. O fornecedor quer responsabilizar ambos.',
+      'Qualquer cônjuge pode contrair dívidas sem o consentimento do outro (art. 1690.º, n.º 1, do CC).',
+      'A dívida foi contraída no exercício do comércio: é comunicável, salvo se Luísa provar que não foi contraída em proveito comum do casal (art. 1691.º, n.º 1, alínea d), do CC). A presunção funciona porque não vigora a separação de bens.',
+      'Sendo comum, respondem os bens comuns e, na sua falta ou insuficiência, solidariamente, os bens próprios de cada cônjuge (art. 1695.º, n.º 1, do CC). Se a execução for movida só contra Daniel, o fornecedor pode alegar a comunicabilidade no processo executivo (art. 741.º do CPC).'],
+    erros: [
+      'Presumir o proveito comum fora dos casos previstos na lei.',
+      'Aplicar a presunção do cônjuge comerciante no regime da separação de bens.',
+      'Esquecer que, na separação, a responsabilidade pelas dívidas comuns é conjunta e não solidária.',
+      'Ignorar os bens que respondem «ao mesmo tempo» do art. 1696.º, n.º 2, do CC.'
+    ],
+    artigos: ['art. 1690.º do CC', 'art. 1691.º do CC', 'art. 1692.º do CC', 'art. 1695.º do CC', 'art. 1696.º do CC', 'art. 1767.º do CC', 'art. 740.º do CPC', 'art. 741.º do CPC']
+  },
+
+  div: {
+    sub: 'Divórcio por mútuo consentimento e sem consentimento, fundamentos, efeitos patrimoniais, perda de benefícios, casa de morada e animais.',
+    ideia: 'Desde 2008, o divórcio deixou de ser um julgamento sobre a culpa: pode ser por mútuo consentimento ou sem consentimento de um dos cônjuges, com fundamento objetivo na rutura do casamento (arts. 1773.º e 1781.º do CC). Os efeitos patrimoniais impedem que alguém «lucre» com o divórcio (arts. 1790.º e 1791.º do CC).',
+    conceitos: [
+      ['Mútuo consentimento', 'Requerido por ambos, em regra na conservatória do registo civil, ou no tribunal se não houver acordo sobre algum dos assuntos do art. 1775.º do CC (art. 1773.º, n.º 2, do CC).'],
+      ['Sem consentimento', 'Requerido no tribunal por um contra o outro, com fundamento na separação de facto por um ano consecutivo, na alteração das faculdades mentais do outro há mais de um ano, na ausência sem notícias há pelo menos um ano ou em quaisquer outros factos que mostrem a rutura definitiva do casamento (art. 1781.º do CC).'],
+      ['Data dos efeitos', 'Os efeitos produzem-se com o trânsito em julgado da sentença, mas retroagem à data da proposição da ação quanto às relações patrimoniais entre os cônjuges (art. 1789.º, n.º 1, do CC).']
+    ],
+    regime: [
+      ['Partilha', 'Nenhum dos cônjuges pode receber na partilha mais do que receberia se tivessem casado em comunhão de adquiridos (art. 1790.º do CC). Na comunhão geral, isto obriga a calcular quanto caberia a cada um no regime de adquiridos.'],
+      ['Perda de benefícios', 'Cada cônjuge perde todos os benefícios recebidos ou a receber do outro ou de terceiro em vista do casamento ou em consideração do estado de casado (art. 1791.º, n.º 1, do CC). O autor da liberalidade pode determinar que reverta para os filhos (art. 1791.º, n.º 2, do CC).'],
+      ['Danos', 'O cônjuge lesado pode pedir a reparação dos danos causados pelo outro nos termos gerais da responsabilidade civil e nos tribunais comuns (art. 1792.º, n.º 1, do CC). Quem pede o divórcio com base na alteração das faculdades mentais do outro deve reparar os danos não patrimoniais causados pela dissolução, pedido que é feito na própria ação (art. 1792.º, n.º 2, do CC).'],
+      ['Casa, animais e alimentos', 'O tribunal pode dar a casa de morada da família de arrendamento a qualquer dos cônjuges, seja comum ou própria do outro (art. 1793.º do CC). Os animais de companhia são confiados a um ou a ambos, atendendo também ao bem-estar do animal (art. 1793.º-A do CC). Cada ex-cônjuge deve prover à sua subsistência, mas pode haver direito a alimentos (art. 2016.º do CC).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Questão', 'Regra', 'Base legal'], linhas: [
+      ['Fundamento do divórcio litigioso', 'Rutura objetiva, sem culpa', 'art. 1781.º do CC'],
+      ['Quem pode pedir com base em anomalia ou ausência', 'Só o cônjuge que a invoca', 'art. 1785.º do CC'],
+      ['Limite da partilha', 'Como se fosse comunhão de adquiridos', 'art. 1790.º do CC'],
+      ['Benefícios em vista do casamento', 'Perdem-se', 'art. 1791.º do CC'],
+      ['Casa de morada', 'Arrendamento judicial possível', 'art. 1793.º do CC']
+    ] },
+    exemplo: ['Casados em comunhão geral, Miguel levou para o casamento uma moradia de 300.000 €. Durante o casamento, o casal poupou 100.000 €. Vera pede o divórcio e quer ficar com a moradia, entregando a Miguel as poupanças.',
+      'Pelo art. 1790.º do CC, nenhum cônjuge pode receber mais do que receberia na comunhão de adquiridos. Nesse regime, a moradia seria bem próprio de Miguel e só as poupanças seriam comuns.',
+      'Miguel tem direito a 300.000 € + 50.000 € = 350.000 €; Vera, a 50.000 €. Total: 400.000 €.',
+      'Se a moradia for adjudicada a Vera (300.000 €) e as poupanças a Miguel (100.000 €), Vera terá de pagar tornas a Miguel no valor de 250.000 €.'],
+    erros: [
+      'Discutir a culpa como fundamento do divórcio, segundo o regime anterior a 2008.',
+      'Fazer a partilha da comunhão geral sem aplicar o limite do art. 1790.º do CC.',
+      'Esquecer que só o cônjuge que invoca a anomalia ou a ausência pode pedir o divórcio com esses fundamentos (art. 1785.º do CC).',
+      'Pedir indemnização pela «dor do divórcio» na ação de divórcio fora do caso do art. 1792.º, n.º 2, do CC.'
+    ],
+    artigos: ['art. 1773.º do CC', 'art. 1775.º do CC', 'art. 1781.º do CC', 'art. 1785.º do CC', 'art. 1789.º do CC', 'art. 1790.º do CC', 'art. 1791.º do CC', 'art. 1792.º do CC', 'art. 1793.º do CC', 'art. 1793.º-A do CC']
+  },
+
+  sucg: {
+    sub: 'Abertura da sucessão, vocação, capacidade e indignidade, direito de representação, aceitação e repúdio, herdeiros e legatários.',
+    ideia: 'A sucessão abre-se no momento da morte (art. 2031.º do CC) e são chamados os sucessíveis com prioridade na hierarquia, desde que tenham capacidade (art. 2032.º do CC). Os bens só passam a ser seus com a aceitação, cujos efeitos retroagem à abertura da sucessão (art. 2050.º do CC).',
+    conceitos: [
+      ['Fontes da sucessão', 'A sucessão é deferida por lei, testamento ou contrato (art. 2026.º do CC). A sucessão legal é legítima ou legitimária, consoante possa ou não ser afastada pela vontade do autor (art. 2027.º do CC).'],
+      ['Herdeiro e legatário', 'Herdeiro sucede na totalidade ou numa quota do património; legatário sucede em bens ou valores determinados (art. 2030.º, n.º 2, do CC). O usufrutuário, mesmo de toda a herança, é legatário (art. 2030.º, n.º 4, do CC).'],
+      ['Indignidade', 'Incapacidade sucessória de quem praticou certos atos graves contra o autor da sucessão ou os seus familiares, como o homicídio doloso (art. 2034.º do CC). Tem de ser declarada judicialmente, em regra no prazo de dois anos a contar da abertura da sucessão (art. 2036.º do CC).'],
+      ['Direito de representação', 'Chamamento dos descendentes de um herdeiro ou legatário que não pôde ou não quis aceitar, para ocuparem a sua posição (art. 2039.º do CC). Na sucessão legal, tem sempre lugar a favor dos descendentes de filho e de irmão (art. 2042.º do CC).']
+    ],
+    regime: [
+      ['Indignidade e representação', 'Declarada a indignidade, a devolução ao indigno é havida como inexistente (art. 2037.º, n.º 1, do CC), mas, na sucessão legal, isso não prejudica o direito de representação dos seus descendentes (art. 2037.º, n.º 2, do CC).'],
+      ['Aceitação e repúdio', 'A aceitação pode ser expressa ou tácita; os simples atos de administração não implicam aceitação tácita (art. 2056.º do CC). O repúdio retroage à abertura da sucessão, considerando-se não chamado o repudiante, salvo para efeitos de representação (art. 2062.º do CC).', 'Se o chamado morrer sem aceitar nem repudiar, o direito transmite-se aos seus herdeiros (art. 2058.º do CC).'],
+      ['Responsabilidade pelos encargos', 'A herança responde pelo funeral, pelos encargos de administração e liquidação, pelas dívidas do falecido e pelos legados (art. 2068.º do CC). Os herdeiros não respondem para além do valor dos bens herdados; aceitando pura e simplesmente, cabe-lhes provar a insuficiência dos bens (art. 2071.º do CC).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Abertura da sucessão', 'Morte do autor; último domicílio (art. 2031.º do CC).'],
+      ['Quem é chamado?', 'Hierarquia: legitimária, contratual, testamentária, legítima.'],
+      ['Tem capacidade?', 'Nascido ou concebido; não indigno (arts. 2033.º e 2034.º do CC).'],
+      ['Não pode ou não quer aceitar?', 'Representação (art. 2039.º do CC), substituição ou acrescer.'],
+      ['Aceitação', 'Expressa ou tácita; retroage à abertura (arts. 2050.º e 2056.º do CC).']
+    ] },
+    exemplo: ['António morre deixando dois filhos, Bruno e Carla. Bruno tinha sido condenado por tentativa de homicídio contra o pai e tem uma filha, Diana. Carla repudia a herança e não tem filhos.',
+      'Bruno é indigno (art. 2034.º, alínea a), do CC: o homicídio doloso, ainda que não consumado). Declarada a indignidade, a devolução a seu favor tem-se por inexistente (art. 2037.º, n.º 1, do CC), mas Diana pode representá-lo na sucessão legal (arts. 2037.º, n.º 2, e 2042.º do CC).',
+      'Carla repudiou: considera-se não chamada (art. 2062.º do CC). Não tendo descendentes, não há representação; a sua parte acresce à dos outros sucessíveis da mesma classe (art. 2137.º, n.º 2, do CC) — neste caso, Diana, por representação de Bruno.'],
+    erros: [
+      'Considerar a indignidade automática, sem ação judicial e sem atender ao prazo.',
+      'Esquecer que os descendentes do indigno podem representá-lo na sucessão legal.',
+      'Tratar como aceitação tácita meros atos de administração.',
+      'Confundir representação (descendentes do chamado) com transmissão do direito de suceder (herdeiros de quem morre depois do autor sem aceitar).'
+    ],
+    artigos: ['art. 2026.º do CC', 'art. 2030.º do CC', 'art. 2031.º do CC', 'art. 2032.º do CC', 'art. 2034.º do CC', 'art. 2037.º do CC', 'art. 2039.º do CC', 'art. 2042.º do CC', 'art. 2050.º do CC', 'art. 2062.º do CC']
+  },
+
+  sleg: {
+    sub: 'As cinco classes de sucessíveis, a quota do cônjuge, irmãos germanos e unilaterais, representação e acrescer.',
+    ideia: 'A sucessão legítima funciona quando o falecido não dispôs, válida e eficazmente, dos bens de que podia dispor (art. 2131.º do CC). A lei chama os herdeiros por classes e, dentro de cada classe, os parentes de grau mais próximo (arts. 2133.º a 2135.º do CC).',
+    conceitos: [
+      ['Classes de sucessíveis', 'Cônjuge e descendentes; cônjuge e ascendentes; irmãos e seus descendentes; outros colaterais até ao 4.º grau; Estado (art. 2133.º, n.º 1, do CC). As classes anteriores preferem às seguintes (art. 2134.º do CC).'],
+      ['Cônjuge e filhos', 'A partilha faz-se por cabeça, mas a quota do cônjuge não pode ser inferior a uma quarta parte da herança (art. 2139.º, n.º 1, do CC). Com quatro ou mais filhos, o cônjuge recebe 1/4 e os filhos dividem os 3/4 restantes.'],
+      ['Cônjuge e ascendentes', 'Ao cônjuge cabem dois terços e aos ascendentes um terço (art. 2142.º, n.º 1, do CC).'],
+      ['Irmãos germanos e unilaterais', 'Concorrendo irmãos germanos com consanguíneos ou uterinos, cada germano recebe o dobro de cada um dos outros (art. 2146.º do CC).']
+    ],
+    regime: [
+      ['O cônjuge que não é chamado', 'O cônjuge não é chamado se à data da morte estiver divorciado ou separado judicialmente de pessoas e bens, por sentença transitada ou que venha a transitar (art. 2133.º, n.º 3, do CC).'],
+      ['Representação e acrescer', 'Os descendentes dos filhos que não puderem ou não quiserem aceitar são chamados por representação (art. 2140.º do CC). Se algum sucessível não aceitar e não houver representação, a sua parte acresce à dos outros da mesma classe (art. 2137.º, n.º 2, do CC).'],
+      ['Ascendentes', 'Se algum ascendente não puder ou não quiser aceitar, a sua parte acresce à dos outros ascendentes; não os havendo, acresce ao cônjuge (art. 2143.º do CC). Na falta de descendentes e ascendentes, o cônjuge recebe tudo (art. 2144.º do CC).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Herdeiros', 'Partilha', 'Base legal'], linhas: [
+      ['Cônjuge + 1 a 3 filhos', 'Por cabeça', 'art. 2139.º, n.º 1, do CC'],
+      ['Cônjuge + 4 ou mais filhos', 'Cônjuge 1/4; filhos dividem 3/4', 'art. 2139.º, n.º 1, do CC'],
+      ['Cônjuge + ascendentes', 'Cônjuge 2/3; ascendentes 1/3', 'art. 2142.º, n.º 1, do CC'],
+      ['Só cônjuge', 'Tudo', 'art. 2144.º do CC'],
+      ['Irmãos germanos + unilaterais', 'Germano recebe o dobro', 'art. 2146.º do CC']
+    ] },
+    exemplo: ['Beatriz morre sem testamento. Deixa marido e cinco filhos; um deles, Hugo, morreu antes dela, deixando dois filhos. A herança vale 400.000 €.',
+      'Cônjuge e descendentes integram a 1.ª classe (art. 2133.º, n.º 1, alínea a), do CC). Por cabeça seriam seis partes (1/6 cada), mas o cônjuge não pode receber menos de 1/4 (art. 2139.º, n.º 1, do CC).',
+      'O marido recebe 1/4 = 100.000 €; os cinco filhos (ou estirpes) dividem 3/4 = 300.000 €, ou seja, 60.000 € cada.',
+      'A quota de Hugo é recebida pelos seus dois filhos por representação (arts. 2140.º e 2042.º do CC): 30.000 € cada.'],
+    erros: [
+      'Dividir sempre por cabeça, esquecendo o mínimo de 1/4 do cônjuge.',
+      'Chamar os irmãos quando há ascendentes.',
+      'Esquecer a representação a favor dos netos ou dos sobrinhos.',
+      'Dividir em partes iguais entre irmãos germanos e unilaterais.'
+    ],
+    artigos: ['art. 2131.º do CC', 'art. 2133.º do CC', 'art. 2135.º do CC', 'art. 2137.º do CC', 'art. 2139.º do CC', 'art. 2142.º do CC', 'art. 2144.º do CC', 'art. 2146.º do CC']
+  },
+
+  legit: {
+    sub: 'Herdeiros legitimários, quotas indisponíveis, cálculo do valor total da herança (fórmulas de Coimbra e de Lisboa), legítima objetiva e subjetiva.',
+    ideia: 'A legítima é a porção de bens de que o autor da sucessão não pode dispor, por estar destinada aos herdeiros legitimários: cônjuge, descendentes e ascendentes (arts. 2156.º e 2157.º do CC). Para a calcular, é preciso primeiro apurar o valor total da herança, que inclui os bens doados em vida (art. 2162.º do CC).',
+    conceitos: [
+      ['Legítima objetiva (quota indisponível)', 'Fração da herança reservada ao conjunto dos legitimários: cônjuge sozinho, 1/2; cônjuge e filhos, 2/3; um só filho, 1/2; dois ou mais filhos, 2/3; cônjuge e ascendentes, 2/3; só pais, 1/2; só ascendentes do 2.º grau ou seguintes, 1/3 (arts. 2158.º, 2159.º e 2161.º do CC).'],
+      ['Quota disponível', 'A parte restante, de que o autor da sucessão pode dispor livremente, por doação ou testamento.'],
+      ['Legítima subjetiva', 'Parte da legítima objetiva que cabe a cada legitimário, segundo as regras da sucessão legítima (art. 2157.º do CC): por cabeça entre cônjuge e filhos, com o mínimo de 1/4 para o cônjuge; 2/3 para o cônjuge e 1/3 para os ascendentes.'],
+      ['R, P e D', 'Relictum (bens existentes à data da morte), Passivo (dívidas da herança) e Donatum (bens doados e despesas sujeitas a colação) — os elementos do art. 2162.º do CC.']
+    ],
+    regime: [
+      ['Fórmula de Coimbra: VTH = (R − P) + D', 'Subtrai-se primeiro o passivo aos bens deixados e só depois se somam as doações. Como os credores do falecido não podem atingir os bens doados, o donatum não responde pelo passivo: se as dívidas excederem o relictum, (R − P) conta como zero.'],
+      ['Fórmula de Lisboa: VTH = R + D − P', 'Segue a ordem das operações da letra do art. 2162.º do CC: somam-se os bens deixados e os doados e subtrai-se o passivo. Quando o passivo excede o relictum, o excesso é abatido também ao valor das doações, o que reduz o valor da herança e as legítimas.'],
+      ['Quando as fórmulas divergem', 'Se R for maior ou igual a P, as duas fórmulas dão o mesmo resultado. Só divergem quando o passivo excede o relictum. Num exame, indique a fórmula que segue e porquê, ou siga a da sua faculdade.'],
+      ['Bens que não entram', 'Não é atendido o valor dos bens doados que tenham perecido em vida do autor da sucessão por facto não imputável ao donatário (arts. 2112.º e 2162.º, n.º 2, do CC).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Identificar os legitimários', 'Cônjuge, descendentes, ascendentes (art. 2157.º do CC), com capacidade e que aceitem.'],
+      ['Calcular o VTH', 'Coimbra: (R − P) + D. Lisboa: R + D − P (art. 2162.º do CC).'],
+      ['Legítima objetiva', 'Fração legal sobre o VTH (arts. 2158.º a 2161.º do CC).'],
+      ['Quota disponível', 'VTH − legítima objetiva.'],
+      ['Legítimas subjetivas', 'Dividir a legítima objetiva segundo as regras da sucessão legítima.'],
+      ['Imputar e, se preciso, reduzir', 'Ver o guia «Imputação, colação e redução».']
+    ] },
+    exemplo: ['Rita morre deixando marido e dois filhos. Deixou bens no valor de 90.000 € e dívidas de 120.000 €. Em vida, doou 60.000 € a um amigo.',
+      'Fórmula de Coimbra: (R − P) = 90.000 − 120.000 = negativo, que conta como zero; VTH = 0 + 60.000 = 60.000 €. Legítima objetiva (cônjuge e filhos): 2/3 = 40.000 €; quota disponível: 20.000 €.',
+      'Fórmula de Lisboa: VTH = 90.000 + 60.000 − 120.000 = 30.000 €. Legítima objetiva: 20.000 €; quota disponível: 10.000 €.',
+      'Em ambos os casos, a doação ao amigo excede a quota disponível e ofende a legítima: é inoficiosa e redutível, a pedido dos legitimários, na medida necessária para preencher a legítima (arts. 2168.º e 2169.º do CC) — 40.000 € segundo a fórmula de Coimbra e 20.000 € segundo a de Lisboa. A escolha da fórmula muda o resultado.'],
+    erros: [
+      'Calcular a legítima só sobre os bens deixados, esquecendo as doações.',
+      'Aplicar uma fórmula sem a identificar quando o passivo excede o relictum.',
+      'Confundir as frações: 1/2 para um só filho, 2/3 para dois ou mais.',
+      'Esquecer o mínimo de 1/4 do cônjuge ao calcular as legítimas subjetivas.'
+    ],
+    artigos: ['art. 2156.º do CC', 'art. 2157.º do CC', 'art. 2158.º do CC', 'art. 2159.º do CC', 'art. 2160.º do CC', 'art. 2161.º do CC', 'art. 2162.º do CC', 'art. 2112.º do CC']
+  },
+
+  imput: {
+    sub: 'Onde se imputa cada liberalidade: colação, dispensa de colação, legados em substituição da legítima, inoficiosidade e ordem de redução.',
+    ideia: 'Calculadas a legítima e a quota disponível, é preciso «arrumar» cada doação e cada deixa testamentária na quota certa. Se as liberalidades excederem a quota disponível e ofenderem a legítima, são inoficiosas e reduzem-se, pela ordem legal (arts. 2168.º e 2171.º do CC).',
+    conceitos: [
+      ['Colação', 'Restituição à massa da herança, para igualação da partilha, dos bens doados pelo ascendente aos descendentes que pretendam entrar na sucessão (art. 2104.º do CC). Faz-se, em regra, por imputação do valor na quota hereditária do donatário (art. 2108.º, n.º 1, do CC).'],
+      ['Sujeitos à colação', 'Só os descendentes que eram, à data da doação, presuntivos herdeiros legitimários do doador (art. 2105.º do CC). A posição do cônjuge é discutida: a Escola de Coimbra tende a sujeitá-lo à colação; em Lisboa, sustenta-se a imputação da doação ao cônjuge na quota disponível.'],
+      ['Dispensa de colação', 'O doador pode dispensar a colação, no ato ou depois (art. 2113.º, n.º 1, do CC). Presume-se dispensada nas doações manuais e remuneratórias (art. 2113.º, n.º 3, do CC). Não havendo colação, a doação é imputada na quota disponível (art. 2114.º, n.º 1, do CC).'],
+      ['Inoficiosidade', 'São inoficiosas as liberalidades, em vida ou por morte, que ofendam a legítima dos herdeiros legitimários (art. 2168.º, n.º 1, do CC), e redutíveis na medida necessária (art. 2169.º do CC).']
+    ],
+    regime: [
+      ['Regras de imputação', 'Doação a descendente sujeita a colação: imputa-se na legítima subjetiva do donatário e, no excesso, na quota disponível. Doação dispensada de colação ou feita a terceiro: quota disponível (art. 2114.º, n.º 1, do CC). Legado em substituição da legítima: quota indisponível, e o excesso na disponível (art. 2165.º, n.º 4, do CC). Deixas testamentárias a terceiros: quota disponível.', 'Se o donatário repudiar a herança sem ter descendentes que o representem, a doação é imputada na quota indisponível (art. 2114.º, n.º 2, do CC).'],
+      ['Ordem de redução', 'Reduzem-se primeiro as disposições testamentárias a título de herança, depois os legados e, por último, as liberalidades em vida (art. 2171.º do CC). As testamentárias reduzem-se proporcionalmente (art. 2172.º do CC). Nas doações, começa-se pela última (art. 2173.º do CC).'],
+      ['Igualação', 'Se não houver bens suficientes para igualar todos os herdeiros, as doações não são reduzidas, salvo se houver inoficiosidade (art. 2108.º, n.º 2, do CC).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Liberalidade', 'Imputação', 'Base legal'], linhas: [
+      ['Doação a descendente, sem dispensa', 'Legítima subjetiva do donatário; excesso na QD', 'arts. 2104.º e 2108.º do CC'],
+      ['Doação com dispensa de colação', 'Quota disponível', 'art. 2114.º, n.º 1, do CC'],
+      ['Doação a terceiro', 'Quota disponível', '—'],
+      ['Legado em substituição da legítima', 'Quota indisponível; excesso na QD', 'art. 2165.º do CC'],
+      ['Herança ou legado testamentário a terceiro', 'Quota disponível', '—']
+    ] },
+    exemplo: ['Jorge morre viúvo, com dois filhos, Ana e Bruno. Deixa bens no valor de 300.000 €, sem dívidas. Em vida doou 120.000 € a Ana, sem dispensa de colação. No testamento, deixa 80.000 € a uma fundação.',
+      'VTH = 300.000 + 120.000 = 420.000 €. Legítima objetiva (dois filhos, sem cônjuge): 2/3 = 280.000 € (art. 2159.º, n.º 2, do CC); quota disponível: 140.000 €. Legítimas subjetivas: 140.000 € cada.',
+      'A doação a Ana, sujeita a colação, imputa-se na sua legítima subjetiva: cabe por inteiro (120.000 € < 140.000 €). Ana recebe ainda 20.000 € dos bens deixados para completar a legítima.',
+      'O legado à fundação imputa-se na quota disponível (80.000 € < 140.000 €): não é inoficioso. Sobram 60.000 € da quota disponível, que são partilhados pelos herdeiros legítimos.'],
+    erros: [
+      'Imputar na quota disponível uma doação a descendente sujeita a colação.',
+      'Esquecer que a colação só abrange descendentes que eram presuntivos herdeiros legitimários à data da doação.',
+      'Reduzir primeiro as doações em vida, invertendo a ordem do art. 2171.º do CC.',
+      'Reduzir as doações por ordem cronológica direta, em vez de começar pela última (art. 2173.º do CC).'
+    ],
+    artigos: ['art. 2104.º do CC', 'art. 2105.º do CC', 'art. 2108.º do CC', 'art. 2110.º do CC', 'art. 2113.º do CC', 'art. 2114.º do CC', 'art. 2165.º do CC', 'art. 2168.º do CC', 'art. 2171.º do CC', 'art. 2173.º do CC']
+  },
+
+  test: {
+    sub: 'Noção e formas do testamento, revogação, substituição direta, fideicomisso, direito de acrescer e caducidade das deixas.',
+    ideia: 'O testamento é o ato unilateral e revogável pelo qual alguém dispõe dos seus bens para depois da morte (art. 2179.º do CC). É um ato pessoal (art. 2182.º do CC) e não pode ser feito por duas pessoas no mesmo ato (art. 2181.º do CC). Nos exames, as questões giram à volta das substituições, do fideicomisso e da caducidade das deixas.',
+    conceitos: [
+      ['Formas comuns', 'Testamento público, escrito por notário no seu livro de notas, e testamento cerrado, escrito e assinado pelo testador ou a seu rogo e depois aprovado por notário (arts. 2204.º a 2206.º do CC).'],
+      ['Substituição direta', 'O testador designa um substituto para o caso de o instituído não poder ou não querer aceitar; prevendo só um desses casos, entende-se que quis abranger o outro (art. 2281.º do CC). Aplica-se também aos legados (art. 2285.º do CC).'],
+      ['Fideicomisso', 'O testador impõe ao herdeiro (fiduciário) o encargo de conservar a herança, para que ela reverta, por sua morte, a favor de outrem (fideicomissário) (art. 2286.º do CC). O fiduciário tem o gozo e a administração dos bens, com regime próximo do usufruto (art. 2290.º do CC).'],
+      ['Limite de um grau', 'São nulas as substituições fideicomissárias em mais de um grau (art. 2288.º do CC), mas a nulidade não afeta a instituição nem a substituição anterior: tem-se por não escrita a cláusula excedente (art. 2289.º do CC).']
+    ],
+    regime: [
+      ['Revogação', 'O testador não pode renunciar à faculdade de revogar o testamento (art. 2311.º do CC). A revogação expressa faz-se noutro testamento ou em escritura pública (art. 2312.º do CC); um testamento posterior revoga tacitamente o anterior na parte incompatível (art. 2313.º do CC).'],
+      ['Caducidade', 'As deixas caducam, entre outros casos, se o beneficiário morrer antes do testador (salvo representação) ou se se tornar incapaz de adquirir (art. 2317.º do CC).'],
+      ['Direito de acrescer', 'Se um dos herdeiros instituídos na mesma quota não puder ou não quiser aceitar, a sua parte acresce à dos outros (art. 2301.º do CC); o mesmo vale para os legatários do mesmo objeto (art. 2302.º do CC). Não há acrescer se o testador dispuser outra coisa ou se houver direito de representação (art. 2304.º do CC).'],
+      ['Fideicomissos irregulares', 'São havidas como fideicomissárias, por exemplo, a proibição de o herdeiro dispor dos bens e o chamamento de alguém ao que restar da herança por morte do herdeiro (art. 2295.º do CC).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['O testamento é válido?', 'Capacidade, forma e pessoalidade (arts. 2181.º, 2182.º e 2204.º do CC).'],
+      ['Herança ou legado?', 'Quota do património ou bem determinado (art. 2030.º do CC).'],
+      ['Há substituição?', 'Direta (art. 2281.º do CC) ou fideicomissária (art. 2286.º do CC).'],
+      ['Fideicomisso em mais de um grau?', 'Reduz-se a um grau (arts. 2288.º e 2289.º do CC).'],
+      ['A deixa caducou?', 'Predecesso, incapacidade, indignidade (art. 2317.º do CC).'],
+      ['Quem fica com a deixa caducada?', 'Substituto, representação, acrescer ou herdeiros legítimos.']
+    ] },
+    exemplo: ['No testamento, Lúcia deixa o relógio a Nuno, «com a obrigação de o conservar e, por morte dele, passar ao seu filho Paulo e, depois, a Rita». Deixa ainda a mota a Fábio e, «se Fábio não sobreviver, ao meu amigo Mário». Fábio morre antes de Lúcia e Mário é declarado indigno.',
+      'A deixa do relógio é um legado com substituição fideicomissária: Nuno é fiduciário e Paulo é fideicomissário (arts. 2285.º e 2286.º do CC). O chamamento de Rita criaria um segundo grau, nulo (art. 2288.º do CC); tem-se por não escrita essa cláusula, mantendo-se o fideicomisso Nuno–Paulo (art. 2289.º do CC).',
+      'Quanto à mota, há uma substituição direta a favor de Mário (arts. 2281.º e 2285.º do CC). Fábio faleceu antes da testadora, mas Mário, declarado indigno, é incapaz: a substituição também caduca (art. 2317.º do CC). A mota cabe aos herdeiros legais de Lúcia.'],
+    erros: [
+      'Admitir fideicomissos em mais de um grau ou anular toda a deixa por causa do grau excedente.',
+      'Confundir substituição direta (alternativa) com fideicomissária (sucessiva).',
+      'Esquecer que o testamento é sempre revogável e que a renúncia a essa faculdade é nula.',
+      'Esquecer a caducidade por predecesso ou incapacidade do beneficiário.'
+    ],
+    artigos: ['art. 2179.º do CC', 'art. 2181.º do CC', 'art. 2182.º do CC', 'art. 2204.º do CC', 'art. 2281.º do CC', 'art. 2286.º do CC', 'art. 2288.º do CC', 'art. 2289.º do CC', 'art. 2301.º do CC', 'art. 2317.º do CC']
+  },
+
+  pacto: {
+    sub: 'A regra da proibição dos pactos sucessórios e as exceções na convenção antenupcial, incluindo a renúncia recíproca do cônjuge.',
+    ideia: 'Por regra, ninguém pode dispor por contrato da sua sucessão, renunciar à sucessão de pessoa viva ou dispor da sucessão de terceiro: os contratos sucessórios são nulos, salvo nos casos previstos na lei (art. 2028.º do CC). As exceções concentram-se na convenção antenupcial (art. 1700.º do CC).',
+    conceitos: [
+      ['Pacto designativo', 'Instituição contratual de herdeiro ou nomeação de legatário. É admitida na convenção antenupcial a favor de um dos esposados, feita pelo outro ou por terceiro, ou a favor de terceiro, feita por um dos esposados (art. 1700.º, n.º 1, alíneas a) e b), do CC).'],
+      ['Pacto renunciativo', 'A renúncia à sucessão de pessoa viva é, em regra, proibida. A exceção é a renúncia recíproca à condição de herdeiro legitimário do outro cônjuge, feita na convenção antenupcial (art. 1700.º, n.º 1, alínea c), do CC).'],
+      ['Doações por morte', 'As doações para casamento que devam produzir efeitos por morte do doador são havidas como pactos sucessórios (art. 1755.º, n.º 2, do CC).']
+    ],
+    regime: [
+      ['Irrevogabilidade', 'A instituição contratual e a nomeação de legatário a favor de um esposado não podem ser unilateralmente revogadas depois da aceitação, nem o doador pode prejudicar o donatário por atos gratuitos de disposição (art. 1701.º, n.º 1, do CC).'],
+      ['Caducidade', 'Caducam nos casos do art. 1760.º do CC e ainda se o donatário morrer antes do doador (art. 1703.º, n.º 1, do CC). As instituições a favor de terceiro, que intervenha como aceitante na convenção, seguem os arts. 1701.º e 1702.º do CC e ficam ineficazes se a convenção caducar (art. 1705.º, n.º 1, do CC).'],
+      ['A renúncia do cônjuge e a inoficiosidade', 'Não são inoficiosas as liberalidades a favor do cônjuge que tenha renunciado nos termos do art. 1700.º, n.º 1, alínea c), do CC, até ao valor da legítima que lhe caberia sem a renúncia (art. 2168.º, n.º 2, do CC).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Há um contrato sobre sucessão não aberta?', 'Se sim, é pacto sucessório (art. 2028.º, n.º 1, do CC).'],
+      ['Está num caso previsto na lei?', 'Em regra, na convenção antenupcial (art. 1700.º do CC). Se não, é nulo.'],
+      ['Designativo ou renunciativo?', 'Instituição de herdeiro, nomeação de legatário ou renúncia recíproca do cônjuge.'],
+      ['Pode ser revogado?', 'Não unilateralmente após a aceitação (art. 1701.º do CC).'],
+      ['Caducou?', 'Arts. 1703.º e 1760.º do CC.']
+    ] },
+    exemplo: ['Na convenção antenupcial, em que interveio o primo José, Aníbal declara deixar a Beatriz, sua noiva, um quadro e a José 1/10 da sua herança. Anos depois, Aníbal faz um testamento a deixar o quadro a outra pessoa.',
+      'A deixa do quadro a Beatriz é um pacto sucessório designativo entre esposados, admitido pelo art. 1700.º, n.º 1, alínea a), do CC. Depois de aceite, não pode ser unilateralmente revogada (art. 1701.º, n.º 1, do CC): o testamento posterior não a afeta.',
+      'A instituição de José em 1/10 da herança é um pacto designativo a favor de terceiro, que interveio como aceitante (arts. 1700.º, n.º 1, alínea b), e 1705.º do CC). Também é irrevogável, salvo reserva dessa faculdade (art. 1705.º, n.º 2, do CC).'],
+    erros: [
+      'Considerar válido um pacto sucessório celebrado fora da convenção antenupcial e fora dos casos legais.',
+      'Admitir a revogação unilateral de um pacto já aceite.',
+      'Esquecer a renúncia recíproca do cônjuge, introduzida em 2018.',
+      'Confundir doação para casamento em vida com doação por morte, que vale como pacto sucessório.'
+    ],
+    artigos: ['art. 2028.º do CC', 'art. 1700.º do CC', 'art. 1701.º do CC', 'art. 1703.º do CC', 'art. 1705.º do CC', 'art. 1755.º do CC', 'art. 2168.º do CC']
   }
 };
 
@@ -4545,7 +5026,7 @@ Store.attach = function (session) {
 };
 
 /* ---------- estado da interface ---------- */
-var VIEWS = ['painel', 'reputacao', 'flashcards', 'aula', 'lei', 'guias', 'guia', 'glossario', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
+var VIEWS = ['painel', 'reputacao', 'flashcards', 'aula', 'lei', 'guias', 'guia', 'glossario', 'calcheranca', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
 var S = {
   view: 'painel', wsId: null, wsTab: '01', wsQ: '', q: '',
   libQ: '', libArea: 'Todas', libOpen: { cpc: true },
@@ -4629,6 +5110,7 @@ function render() {
   else if (v === 'lei') h = vLei();
     else if (v === 'guias') h = vGuias();
     else if (v === 'glossario') h = vGlossario();
+    else if (v === 'calcheranca') h = vCalcHeranca();
     else if (v === 'guia') h = vGuia();
   else if (v === 'agenda') h = vAgenda();
   else if (v === 'dissertacao') h = vDissertacao();
@@ -7574,16 +8056,16 @@ var MOD_PERFIL = {
   doc: ['docente', 'atualidade', 'mentoria'],
   outro: ['kpis', 'progresso', 'calendario', 'horario', 'atualidade', 'continuar', 'mentoria', 'ferramentas']
 };
-var NAV = { painel: ['Painel', 'grid'], guias: ['Matéria explicada', 'book'], glossario: ['Glossário jurídico', 'book'], aula: ['Sala de aula', 'aula'], flashcards: ['Flashcards', 'layers'], atualidade: ['Atualidade jurídica', 'news'], biblioteca: ['Biblioteca jurídica', 'book'], instituicoes: ['Instituições', 'uni'], workspaces: ['Legal Workspaces', 'folder'], minutas: ['Gerador de minutas', 'file'], cadeiras: ['Cadeiras', 'layers'], apontamentos: ['Apontamentos', 'note'], exames: ['Estudar e praticar', 'check'], casos: ['Casos práticos', 'scale'], prazos: ['Contador de prazos', 'hour'], agenda: ['Agenda de diligências', 'cal'], dissertacao: ['Dissertação', 'cap'], ordem: ['Treino para a Ordem', 'badge'], docente: ['Ensino', 'pen'] };
+var NAV = { painel: ['Painel', 'grid'], guias: ['Matéria explicada', 'book'], glossario: ['Glossário jurídico', 'book'], calcheranca: ['Calculadora da herança', 'grid'], aula: ['Sala de aula', 'aula'], flashcards: ['Flashcards', 'layers'], atualidade: ['Atualidade jurídica', 'news'], biblioteca: ['Biblioteca jurídica', 'book'], instituicoes: ['Instituições', 'uni'], workspaces: ['Legal Workspaces', 'folder'], minutas: ['Gerador de minutas', 'file'], cadeiras: ['Cadeiras', 'layers'], apontamentos: ['Apontamentos', 'note'], exames: ['Estudar e praticar', 'check'], casos: ['Casos práticos', 'scale'], prazos: ['Contador de prazos', 'hour'], agenda: ['Agenda de diligências', 'cal'], dissertacao: ['Dissertação', 'cap'], ordem: ['Treino para a Ordem', 'badge'], docente: ['Ensino', 'pen'] };
 var COMUN = ['chat', 'mensagens', 'salas', 'connect'];
 var NAV_PERFIL = {
-  lic: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'glossario', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos']], ['Trabalho', ['workspaces', 'minutas']]],
+  lic: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'glossario', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos', 'calcheranca']], ['Trabalho', ['workspaces', 'minutas']]],
   licd: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Próximo passo', ['ordem', 'prazos', 'minutas', 'workspaces']]],
   mest: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Investigação', ['dissertacao', 'workspaces', 'apontamentos']]],
   estag: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Prática', ['prazos', 'agenda', 'minutas', 'workspaces']], ['Preparação', ['ordem', 'casos']]],
   prof: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Prática', ['prazos', 'agenda', 'minutas', 'workspaces']]],
   doc: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Ensino', ['docente', 'casos', 'exames']]],
-  outro: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'glossario', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos']], ['Trabalho', ['workspaces', 'minutas', 'prazos', 'agenda']]]
+  outro: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'glossario', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos', 'calcheranca']], ['Trabalho', ['workspaces', 'minutas', 'prazos', 'agenda']]]
 };
 var AREAS_OPC = ['Civil', 'Processo Civil', 'Penal', 'Constitucional', 'Administrativo', 'Comercial', 'Fiscal', 'Laboral', 'Migrações', 'Institucional'];
 
@@ -10040,7 +10522,7 @@ libList = function () {
 setTimeout(leiMetaCarregar, 1500);
 
 /* ===== Matéria explicada: guias de estudo por tema ===== */
-var GUIA_ORD = ['obr', 'pen', 'pc', 'pex', 'con'];
+var GUIA_ORD = ['obr', 'fam', 'pen', 'pc', 'pex', 'con'];
 function guiasDe(d) { return (typeof GUIAS !== 'undefined' && GUIAS[d]) || {}; }
 function guiaTem(d, t) { return !!guiasDe(d)[t]; }
 function guiaN(d) { return Object.keys(guiasDe(d)).length; }
@@ -10366,6 +10848,152 @@ A['au-fc-sel-ok'] = function () {
   closeModal(); toast('Cartão criado. Encontre-o em Flashcards → Os meus cartões.');
 };
 
+/* ---------- CALCULADORA DA HERANÇA (legítima, quota disponível, imputação e redução) ---------- */
+function chEst() {
+  if (!S.ch) {
+    var g = null; try { g = JSON.parse(localStorage.getItem('lexdesk_calc_heranca') || 'null'); } catch (e) { }
+    S.ch = g || { escola: 'coimbra', R: 300000, P: 0, conj: true, filhos: 2, asc: 0, asc2: false, doa: [], leg: [] };
+  }
+  return S.ch;
+}
+function chGuardar() { try { localStorage.setItem('lexdesk_calc_heranca', JSON.stringify(S.ch)); } catch (e) { } }
+function chEur(v) { v = Math.round((v || 0) * 100) / 100; return v.toLocaleString('pt-PT', { minimumFractionDigits: v % 1 ? 2 : 0, maximumFractionDigits: 2 }) + ' €'; }
+function chNum(v) { var n = parseFloat(String(v || '').replace(/\s/g, '').replace(/\.(?=\d{3}(\D|$))/g, '').replace(',', '.')); return isFinite(n) && n > 0 ? n : 0; }
+function chFr(a, b) { return '<span class="ch-fr"><sup>' + a + '</sup>⁄<sub>' + b + '</sub></span>'; }
+function chHerdeiros(c) {
+  var l = [];
+  if (c.conj) l.push({ k: 'conj', nome: 'Cônjuge' });
+  for (var i = 1; i <= c.filhos; i++) l.push({ k: 'f' + i, nome: 'Filho ' + i });
+  if (!c.filhos) for (var j = 1; j <= c.asc; j++) l.push({ k: 'a' + j, nome: c.asc2 ? 'Ascendente ' + j + ' (2.º grau ou seg.)' : (c.asc === 1 ? 'Progenitor' : 'Progenitor ' + j) });
+  return l;
+}
+function chCalcular(c, escola) {
+  escola = escola || c.escola;
+  var R = chNum(c.R), P = chNum(c.P), D = c.doa.reduce(function (s, d) { return s + chNum(d.v); }, 0), r = { R: R, P: P, D: D, passos: [] };
+  r.vth = escola === 'lisboa' ? Math.max(0, R + D - P) : Math.max(0, R - P) + D;
+  r.formula = escola === 'lisboa' ? 'VTH = R + D − P = ' + chEur(R) + ' + ' + chEur(D) + ' − ' + chEur(P) : 'VTH = (R − P) + D = (' + chEur(R) + ' − ' + chEur(P) + ')' + (R < P ? ' → 0 €' : '') + ' + ' + chEur(D);
+  // Legítima objetiva
+  var n = c.filhos, a = n ? 0 : c.asc, fr = [0, 1], base = '';
+  if (n) { fr = c.conj ? [2, 3] : (n === 1 ? [1, 2] : [2, 3]); base = c.conj ? 'art. 2159.º, n.º 1, do CC' : 'art. 2159.º, n.º 2, do CC'; }
+  else if (a) { fr = c.conj ? [2, 3] : (c.asc2 ? [1, 3] : [1, 2]); base = c.conj ? 'art. 2161.º, n.º 1, do CC' : 'art. 2161.º, n.º 2, do CC'; }
+  else if (c.conj) { fr = [1, 2]; base = 'art. 2158.º do CC'; }
+  r.fr = fr; r.baseQI = base; r.qi = fr[0] ? r.vth * fr[0] / fr[1] : 0; r.qd = r.vth - r.qi;
+  // Legítimas subjetivas
+  var H = chHerdeiros(c), leg = {};
+  if (n) {
+    if (c.conj) { var qc = Math.max(1 / (n + 1), 1 / 4); leg.conj = r.qi * qc; for (var i = 1; i <= n; i++) leg['f' + i] = (r.qi - leg.conj) / n; r.regraSub = (n + 1 > 4 ? 'O cônjuge recebe o mínimo de 1/4 da legítima e os filhos dividem o restante' : 'Divisão por cabeça entre o cônjuge e os filhos') + ' (arts. 2157.º e 2139.º, n.º 1, do CC).'; }
+    else { for (var i2 = 1; i2 <= n; i2++) leg['f' + i2] = r.qi / n; r.regraSub = 'Divisão em partes iguais pelos filhos (arts. 2157.º e 2139.º, n.º 2, do CC).'; }
+  } else if (a) {
+    var qa = c.conj ? r.qi / 3 : r.qi; if (c.conj) leg.conj = r.qi * 2 / 3;
+    for (var j = 1; j <= a; j++) leg['a' + j] = qa / a;
+    r.regraSub = c.conj ? 'Dois terços para o cônjuge e um terço para os ascendentes (arts. 2157.º e 2142.º, n.º 1, do CC).' : 'Divisão pelos ascendentes (arts. 2157.º, 2135.º e 2136.º do CC).';
+  } else if (c.conj) { leg.conj = r.qi; r.regraSub = 'O cônjuge é o único herdeiro legitimário.'; }
+  r.H = H; r.leg = leg;
+  // Imputações
+  var usado = {}, qdUsada = 0, imps = [];
+  H.forEach(function (h) { usado[h.k] = 0; });
+  var noQI = function (k, v) { var livre = Math.max(0, (leg[k] || 0) - usado[k]), x = Math.min(v, livre); usado[k] += x; return x; };
+  c.doa.forEach(function (d, i) {
+    var v = chNum(d.v), k = d.b, h = H.filter(function (x) { return x.k === k; })[0], qi = 0, txt = '';
+    if (!h || k === 'terc') txt = 'Doação a terceiro: imputa-se na quota disponível.';
+    else if (d.disp) txt = 'Colação dispensada: imputa-se na quota disponível (art. 2114.º, n.º 1, do CC).';
+    else if (k.charAt(0) === 'f') { qi = noQI(k, v); txt = 'Sujeita a colação: imputa-se na legítima subjetiva do donatário' + (v > qi ? ' e o excesso na quota disponível' : '') + ' (arts. 2104.º e 2108.º do CC).'; }
+    else if (k === 'conj') {
+      if (escola === 'coimbra') { qi = noQI(k, v); txt = 'Escola de Coimbra: o cônjuge é tratado como sujeito à colação; imputa-se na sua legítima' + (v > qi ? ' e o excesso na quota disponível' : '') + '.'; }
+      else txt = 'Escola de Lisboa: a doação ao cônjuge imputa-se na quota disponível (intangibilidade qualitativa da legítima).';
+    } else txt = 'Doação a ascendente: imputa-se na quota disponível.';
+    var qd = v - qi; qdUsada += qd;
+    imps.push({ tipo: 'doa', i: i, nome: 'Doação ' + (i + 1) + ' — ' + (h ? h.nome : 'terceiro'), v: v, qi: qi, qd: qd, txt: txt });
+  });
+  c.leg.forEach(function (l, i) {
+    var v = chNum(l.v), k = l.b, h = H.filter(function (x) { return x.k === k; })[0], qi = 0, txt = '';
+    if (h && l.subst) { qi = noQI(k, v); txt = 'Legado em substituição da legítima: imputa-se na quota indisponível' + (v > qi ? ' e o excesso na disponível' : '') + ' (art. 2165.º, n.º 4, do CC).'; }
+    else txt = h ? 'Deixa a herdeiro legitimário sem ser em substituição da legítima: imputa-se, em regra, na quota disponível.' : 'Deixa testamentária a terceiro: imputa-se na quota disponível.';
+    var qd = v - qi; qdUsada += qd;
+    imps.push({ tipo: 'leg', i: i, nome: (l.her ? 'Herança testamentária ' : 'Legado ') + (i + 1) + ' — ' + (h ? h.nome : 'terceiro'), v: v, qi: qi, qd: qd, txt: txt, her: !!l.her });
+  });
+  r.imps = imps; r.qdUsada = qdUsada; r.usado = usado;
+  // Inoficiosidade e redução (arts. 2168.º a 2173.º do CC)
+  var exc = Math.max(0, qdUsada - r.qd), falta = exc, red = {};
+  if (exc > 0.005) {
+    [imps.filter(function (x) { return x.tipo === 'leg' && x.her && x.qd > 0; }), imps.filter(function (x) { return x.tipo === 'leg' && !x.her && x.qd > 0; })].forEach(function (grupo) {
+      if (falta <= 0.005 || !grupo.length) return;
+      var tot = grupo.reduce(function (s, x) { return s + x.qd; }, 0), aplicar = Math.min(falta, tot);
+      grupo.forEach(function (x) { red[x.tipo + x.i] = aplicar * x.qd / tot; }); falta -= aplicar;
+    });
+    imps.filter(function (x) { return x.tipo === 'doa' && x.qd > 0; }).reverse().forEach(function (x) { if (falta <= 0.005) return; var q = Math.min(falta, x.qd); red['doa' + x.i] = q; falta -= q; });
+  }
+  r.exc = exc; r.red = red;
+  return r;
+}
+function chOpcoesBen(c, sel, comTerc) {
+  var l = (comTerc ? [{ k: 'terc', nome: 'Terceiro (não legitimário)' }] : []).concat(chHerdeiros(c));
+  return l.map(function (h) { return '<option value="' + h.k + '"' + (sel === h.k ? ' selected' : '') + '>' + esc(h.nome) + '</option>'; }).join('');
+}
+function chResultado() {
+  var c = chEst(), r = chCalcular(c), o = chCalcular(c, c.escola === 'lisboa' ? 'coimbra' : 'lisboa'), H = r.H;
+  var esc2 = c.escola === 'lisboa' ? 'Lisboa' : 'Coimbra', outra = c.escola === 'lisboa' ? 'Coimbra' : 'Lisboa';
+  var h = '<div class="ch-res">';
+  h += '<section class="ch-pa"><span class="ch-n">1</span><div><h3>Valor total da herança (art. 2162.º do CC)</h3><p class="ch-f">' + r.formula + ' = <b>' + chEur(r.vth) + '</b></p>' +
+    (Math.abs(o.vth - r.vth) > 0.005 ? '<p class="ch-dif">⚖ Com a fórmula de ' + outra + ', o valor seria ' + chEur(o.vth) + '. As fórmulas divergem porque o passivo excede o relictum.</p>' : '<p class="ch-ok">As fórmulas de Coimbra e de Lisboa dão aqui o mesmo resultado, porque o relictum cobre o passivo.</p>') + '</div></section>';
+  if (!H.length) return h + '<section class="ch-pa"><span class="ch-n">2</span><div><h3>Sem herdeiros legitimários</h3><p>Não há legítima: toda a herança é disponível e as liberalidades não são inoficiosas.</p></div></section></div>';
+  h += '<section class="ch-pa"><span class="ch-n">2</span><div><h3>Legítima objetiva e quota disponível</h3><p>Quota indisponível: ' + chFr(r.fr[0], r.fr[1]) + ' × ' + chEur(r.vth) + ' = <b>' + chEur(r.qi) + '</b> (' + r.baseQI + ')</p><p>Quota disponível: ' + chEur(r.vth) + ' − ' + chEur(r.qi) + ' = <b>' + chEur(r.qd) + '</b></p></div></section>';
+  h += '<section class="ch-pa"><span class="ch-n">3</span><div><h3>Legítimas subjetivas</h3><p class="ch-sm">' + r.regraSub + '</p><div class="ch-tb"><table><thead><tr><th>Herdeiro</th><th>Legítima subjetiva</th></tr></thead><tbody>' + H.map(function (x) { return '<tr><td>' + esc(x.nome) + '</td><td>' + chEur(r.leg[x.k]) + '</td></tr>'; }).join('') + '</tbody></table></div></div></section>';
+  h += '<section class="ch-pa"><span class="ch-n">4</span><div><h3>Imputação das liberalidades</h3>' + (r.imps.length ? '<div class="ch-tb"><table><thead><tr><th>Liberalidade</th><th>Valor</th><th>Na legítima</th><th>Na quota disponível</th></tr></thead><tbody>' + r.imps.map(function (x) { return '<tr><td>' + esc(x.nome) + '<span class="ch-why">' + esc(x.txt) + '</span></td><td>' + chEur(x.v) + '</td><td>' + chEur(x.qi) + '</td><td>' + chEur(x.qd) + '</td></tr>'; }).join('') + '</tbody></table></div><p>Quota disponível consumida: ' + chEur(r.qdUsada) + ' de ' + chEur(r.qd) + '.</p>' : '<p class="ch-sm">Não indicou doações nem deixas testamentárias.</p>') + '</div></section>';
+  h += '<section class="ch-pa"><span class="ch-n">5</span><div><h3>Inoficiosidade e redução (arts. 2168.º a 2173.º do CC)</h3>' + (r.exc > 0.005 ? '<p class="ch-dif">As liberalidades excedem a quota disponível em <b>' + chEur(r.exc) + '</b>: são inoficiosas e redutíveis a pedido dos legitimários (arts. 2168.º e 2169.º do CC).</p><p class="ch-sm">Ordem legal: primeiro as deixas a título de herança, depois os legados (proporcionalmente), por fim as doações, começando pela mais recente (arts. 2171.º a 2173.º do CC). As doações estão pela ordem em que as indicou, da mais antiga para a mais recente.</p><div class="ch-tb"><table><thead><tr><th>Liberalidade</th><th>Redução</th></tr></thead><tbody>' + r.imps.filter(function (x) { return r.red[x.tipo + x.i]; }).map(function (x) { return '<tr><td>' + esc(x.nome) + '</td><td>− ' + chEur(r.red[x.tipo + x.i]) + '</td></tr>'; }).join('') + '</tbody></table></div>' : '<p class="ch-ok">Não há inoficiosidade: as liberalidades cabem na quota disponível' + (r.qd - r.qdUsada > 0.005 ? '. Sobram ' + chEur(r.qd - r.qdUsada) + ' de quota disponível, que seguem para os herdeiros legítimos (art. 2131.º do CC)' : '') + '.</p>') + '</div></section>';
+  h += '<section class="ch-pa"><span class="ch-n">6</span><div><h3>Mapa das legítimas</h3><div class="ch-tb"><table><thead><tr><th>Herdeiro</th><th>Legítima</th><th>Já recebido por imputação</th><th>A receber</th></tr></thead><tbody>' + H.map(function (x) { var u = r.usado[x.k] || 0; return '<tr><td>' + esc(x.nome) + '</td><td>' + chEur(r.leg[x.k]) + '</td><td>' + chEur(u) + '</td><td><b>' + chEur(Math.max(0, r.leg[x.k] - u)) + '</b></td></tr>'; }).join('') + '</tbody></table></div><p class="ch-sm">O valor «a receber» é preenchido com os bens da herança e, se não chegarem, pela redução das liberalidades inoficiosas.</p></div></section>';
+  h += '<p class="ch-av">Resultado calculado segundo a fórmula de ' + esc2 + '. Ferramenta de estudo: em exame, apresente sempre o raciocínio e as normas aplicáveis. Não considera situações como a representação, o repúdio, a deserdação ou os bens que pereceram (art. 2112.º do CC).</p></div>';
+  return h;
+}
+function vCalcHeranca() {
+  var c = chEst();
+  var h = '<div class="head"><div><span class="crumb"><button data-go="guias">Matéria explicada</button> / Calculadora da herança</span><h1>Calculadora da herança</h1><p class="sub">Calcule passo a passo o valor total da herança, a legítima, a quota disponível, a imputação das liberalidades e a redução por inoficiosidade — segundo a fórmula de Coimbra ou a de Lisboa.</p></div></div>';
+  h += '<div class="ch-grid"><div class="ch-in">';
+  h += '<section class="card ch-c"><h2>Escola</h2><div class="ch-esc">' + [['coimbra', 'Coimbra', 'VTH = (R − P) + D', 'O donatum não responde pelo passivo; se P > R, (R − P) conta como zero.'], ['lisboa', 'Lisboa', 'VTH = R + D − P', 'Segue a ordem da letra do art. 2162.º do CC; o passivo abate-se ao conjunto.']].map(function (e) { return '<button class="ch-e' + (c.escola === e[0] ? ' on' : '') + '" data-a="ch-escola" data-id="' + e[0] + '"><b>' + e[1] + '</b><code>' + e[2] + '</code><span>' + e[3] + '</span></button>'; }).join('') + '</div></section>';
+  h += '<section class="card ch-c"><h2>Património</h2><div class="ch-row"><label class="f">Relictum (R) — bens à data da morte<input class="in" inputmode="decimal" data-ch="R" value="' + esc(String(c.R || '')) + '"></label><label class="f">Passivo (P) — dívidas da herança<input class="in" inputmode="decimal" data-ch="P" value="' + esc(String(c.P || '')) + '"></label></div></section>';
+  h += '<section class="card ch-c"><h2>Herdeiros legitimários</h2><label class="check"><input type="checkbox" data-ch="conj"' + (c.conj ? ' checked' : '') + '> Cônjuge sobrevivo</label><div class="ch-row"><label class="f">Filhos (ou estirpes)<input class="in" type="number" min="0" max="12" data-ch="filhos" value="' + c.filhos + '"></label><label class="f">Ascendentes (sem filhos)<input class="in" type="number" min="0" max="8" data-ch="asc" value="' + c.asc + '"' + (c.filhos ? ' disabled' : '') + '></label></div>' + (!c.filhos && c.asc ? '<label class="check"><input type="checkbox" data-ch="asc2"' + (c.asc2 ? ' checked' : '') + '> São ascendentes do 2.º grau ou seguintes (não há pais vivos)</label>' : '') + '</section>';
+  h += '<section class="card ch-c"><div class="row" style="justify-content:space-between"><h2>Doações em vida (D)</h2><button class="btn sm" data-a="ch-add" data-id="doa">+ Doação</button></div>' + (c.doa.length ? c.doa.map(function (d, i) { return '<div class="ch-li"><span class="ch-i">' + (i + 1) + '</span><label class="f">Donatário<select class="in" data-ch="doa.' + i + '.b">' + chOpcoesBen(c, d.b, true) + '</select></label><label class="f">Valor<input class="in" inputmode="decimal" data-ch="doa.' + i + '.v" value="' + esc(String(d.v || '')) + '"></label><label class="check"><input type="checkbox" data-ch="doa.' + i + '.disp"' + (d.disp ? ' checked' : '') + '> Dispensa de colação</label><button class="lk" data-a="ch-del" data-id="doa.' + i + '" aria-label="Remover">✕</button></div>'; }).join('') + '<p class="ch-sm">Indique as doações da mais antiga para a mais recente: a ordem conta para a redução.</p>' : '<p class="ch-sm">Sem doações.</p>') + '</section>';
+  h += '<section class="card ch-c"><div class="row" style="justify-content:space-between"><h2>Testamento</h2><button class="btn sm" data-a="ch-add" data-id="leg">+ Deixa</button></div>' + (c.leg.length ? c.leg.map(function (l, i) { return '<div class="ch-li"><span class="ch-i">' + (i + 1) + '</span><label class="f">Beneficiário<select class="in" data-ch="leg.' + i + '.b">' + chOpcoesBen(c, l.b, true) + '</select></label><label class="f">Valor<input class="in" inputmode="decimal" data-ch="leg.' + i + '.v" value="' + esc(String(l.v || '')) + '"></label><div class="ch-ck"><label class="check"><input type="checkbox" data-ch="leg.' + i + '.her"' + (l.her ? ' checked' : '') + '> A título de herança</label>' + (l.b && l.b !== 'terc' ? '<label class="check"><input type="checkbox" data-ch="leg.' + i + '.subst"' + (l.subst ? ' checked' : '') + '> Em substituição da legítima</label>' : '') + '</div><button class="lk" data-a="ch-del" data-id="leg.' + i + '" aria-label="Remover">✕</button></div>'; }).join('') : '<p class="ch-sm">Sem deixas testamentárias.</p>') + '</section>';
+  h += '<div class="row" style="gap:8px"><button class="btn" data-a="ch-exemplo">Carregar um exemplo</button><button class="btn" data-a="ch-limpar">Limpar</button></div>';
+  h += '</div><div class="card ch-out" id="ch-out" data-gl="fam">' + chResultado() + '</div></div>';
+  return h;
+}
+function chSet(path, val) {
+  var c = chEst(), p = path.split('.');
+  if (p.length === 1) c[p[0]] = val; else c[p[0]][Number(p[1])][p[2]] = val;
+  if (path === 'filhos' || path === 'asc' || path === 'conj') {
+    c.filhos = Math.max(0, Math.min(12, parseInt(c.filhos, 10) || 0)); c.asc = Math.max(0, Math.min(8, parseInt(c.asc, 10) || 0));
+    var ks = chHerdeiros(c).map(function (h) { return h.k; });
+    c.doa.concat(c.leg).forEach(function (x) { if (x.b !== 'terc' && ks.indexOf(x.b) < 0) x.b = 'terc'; });
+  }
+  chGuardar();
+}
+document.addEventListener('input', function (ev) {
+  var t = ev.target; if (!t.dataset || !t.dataset.ch || t.type === 'checkbox' || t.tagName === 'SELECT') return;
+  var k = t.dataset.ch; chSet(k, (k === 'filhos' || k === 'asc') ? t.value : t.value);
+  if (k === 'filhos' || k === 'asc') { var pos = k; render(); var el = document.querySelector('[data-ch="' + pos + '"]'); if (el) el.focus(); return; }
+  var o = $('#ch-out'); if (o) { o.innerHTML = chResultado(); o.removeAttribute('data-gl-ok'); glAplicar(); }
+});
+document.addEventListener('change', function (ev) {
+  var t = ev.target; if (!t.dataset || !t.dataset.ch) return;
+  if (t.type === 'checkbox') chSet(t.dataset.ch, t.checked); else if (t.tagName === 'SELECT') chSet(t.dataset.ch, t.value); else return;
+  render();
+});
+A['ch-escola'] = function (el) { chEst().escola = el.dataset.id; chGuardar(); render(); };
+A['ch-add'] = function (el) { var c = chEst(); c[el.dataset.id].push({ b: 'terc', v: '', disp: false, subst: false, her: false }); chGuardar(); render(); };
+A['ch-del'] = function (el) { var p = el.dataset.id.split('.'), c = chEst(); c[p[0]].splice(Number(p[1]), 1); chGuardar(); render(); };
+A['ch-limpar'] = function () { S.ch = { escola: chEst().escola, R: '', P: '', conj: false, filhos: 0, asc: 0, asc2: false, doa: [], leg: [] }; chGuardar(); render(); };
+A['ch-exemplo'] = function () {
+  S.ch = { escola: chEst().escola, R: 90000, P: 120000, conj: true, filhos: 2, asc: 0, asc2: false, doa: [{ b: 'f1', v: 30000, disp: false }, { b: 'terc', v: 60000, disp: false }], leg: [{ b: 'terc', v: 10000, her: false, subst: false }] };
+  chGuardar(); render(); toast('Exemplo carregado: o passivo excede o relictum. Troque de escola para ver a diferença.');
+};
+var _vGuiaCH = vGuia;
+vGuia = function () {
+  var h = _vGuiaCH(), g = S.guia || {};
+  if (g.d === 'fam' && (g.t === 'legit' || g.t === 'imput')) h = h.replace('<aside class="gu-side">', '<aside class="gu-side"><button class="card ch-cta" data-go="calcheranca"><b>🧮 Calculadora da herança</b><span>Faça as contas passo a passo, com a fórmula de Coimbra ou de Lisboa.</span></button>');
+  return h;
+};
+
 /* ---------- MODO NOTURNO ---------- */
 /* Gera automaticamente a versão escura de todas as regras CSS (e dos estilos em linha),
    convertendo as cores segundo o papel de cada propriedade: fundo, texto, contorno. */
@@ -10504,7 +11132,7 @@ A['tema'] = function () { var n = temaEscuro() ? 'claro' : 'escuro'; lsSet('lexd
 try { if (window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () { if (!lsGet('lexdesk_tema')) temaAplicar(temaPref()); }); } catch (e) { }
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
-var VIEW_LBL = { painel: ['Painel', I.grid], guias: ['Matéria explicada', I.book], guia: ['Guia de estudo', I.book], glossario: ['Glossário jurídico', I.book], reputacao: ['Reputação', I.badge], flashcards: ['Flashcards', I.layers], aula: ['Sala de aula', I.note], lei: ['Texto integral da lei', I.book], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Estudar e praticar', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
+var VIEW_LBL = { painel: ['Painel', I.grid], guias: ['Matéria explicada', I.book], guia: ['Guia de estudo', I.book], glossario: ['Glossário jurídico', I.book], calcheranca: ['Calculadora da herança', I.grid], reputacao: ['Reputação', I.badge], flashcards: ['Flashcards', I.layers], aula: ['Sala de aula', I.note], lei: ['Texto integral da lei', I.book], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Estudar e praticar', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
 var isMac = /Mac|iPhone|iPad/.test(navigator.platform || '');
 
 /* ===== animação de entrada e contadores ===== */
