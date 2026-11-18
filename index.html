@@ -12085,7 +12085,7 @@ function vBemvindo() {
   var h = '<div class="bv' + (an ? ' an' : '') + '">';
   h += '<header class="bv-hd"><span class="bv-logo"><span class="mark logo">' + I.logo + '</span><span><b>LEX</b>DESK</span></span>' + (sessaoAtiva() ? '' : '<div class="bv-acc"><button class="btn ghost sm" data-a="bv-conta" data-id="entrar">Iniciar sessão</button><button class="btn gold sm" data-a="bv-conta" data-id="registo">Criar conta</button></div>') + '</header>';
   h += '<div class="bv-col"><div class="bv-bal">' + balancaSVG() + '</div><span class="bv-k">' + saud + ' ao</span><h1><b>LEX</b>DESK</h1><p class="bv-sub">' + (nome ? 'Olá, ' + esc(nome) + '. ' : '') + 'Em que fase está? Adaptamos tudo a si.</p>';
-  h += '<div class="bv-list" role="list">' + Object.keys(PERFIS).map(function (k, n) {
+  h += '<div class="bv-list" role="list">' + Object.keys(PERFIS).filter(function (k) { return k !== 'licd' && k !== 'outro'; }).map(function (k, n) {
     var on = t === k, x = '<div class="bv-o' + (on ? ' on' : '') + (on && abre ? ' abre' : '') + '" role="listitem" style="--i:' + n + '"><button class="bv-ob" data-a="onb-tipo" data-id="' + k + '" aria-expanded="' + on + '"><span class="bv-i">' + bvIc(k) + '</span><span class="bv-tx"><b>' + esc(PERFIS[k].nome) + '</b><span>' + esc(PERFIS[k].d) + '</span></span><span class="bv-ch" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M4.5 3l3 3-3 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></button>';
     if (on) {
       x += '<div class="bv-det">' +
@@ -12176,8 +12176,8 @@ function bvApresentacao() {
     '<div class="bv-num">' + n.filter(function (x) { return x[0]; }).map(function (x) { return '<div><b>' + x[0] + '</b><span>' + x[1] + '</span></div>'; }).join('') + '</div>' +
     '<div class="bv-feat">' + BV_FEAT.map(function (f, i) { return '<div class="bv-fc" style="--i:' + i + '"><span class="bv-fi">' + (I[f[0]] || '') + '</span><b>' + f[1] + '</b><span>' + f[2] + '</span></div>'; }).join('') + '</div>' +
     '<div class="bv-como"><h3>Como funciona</h3><ol>' + [['Escolha a sua fase', 'Licenciatura, mestrado, estágio ou profissão: o painel adapta-se a si.'], ['Crie a sua conta grátis', 'Guarde o progresso e entre na comunidade.'], ['Estude, pratique e contribua', 'Simule exames, resolva casos, ajude colegas e ganhe reputação.']].map(function (p, i) { return '<li><span>' + (i + 1) + '</span><b>' + p[0] + '</b><em>' + p[1] + '</em></li>'; }).join('') + '</ol></div>' +
-    '<div class="bv-faq"><h3>Perguntas frequentes</h3>' + BV_FAQ.map(function (f) { return '<details><summary>' + f[0] + '</summary><p>' + f[1] + '</p></details>'; }).join('') + '</div>' +
     '<div class="bv-cta"><b>Pronto para começar?</b><div class="row" style="justify-content:center;gap:10px"><button class="btn gold" data-a="bv-topo">Escolher a minha fase ↑</button>' + (sessaoAtiva() ? '' : '<button class="btn ghost" data-a="bv-conta" data-id="registo">Criar conta grátis</button>') + '</div></div>' +
+    '<div class="bv-faq"><h3>Perguntas frequentes</h3>' + BV_FAQ.map(function (f) { return '<details><summary>' + f[0] + '</summary><p>' + f[1] + '</p></details>'; }).join('') + '</div>' +
     '</section>';
 }
 A['bv-topo'] = function () { window.scrollTo({ top: 0, behavior: 'smooth' }); };
@@ -15311,7 +15311,7 @@ Store.connect();
 </script>
 <script>
 /* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='e342b7a557b6';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
+(function(){var B='4b32e71e769a';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>
