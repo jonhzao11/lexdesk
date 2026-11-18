@@ -345,7 +345,7 @@ button.card:hover,.dcard:hover,.li:hover{transform:translateY(-2px);box-shadow:v
 .ring .v>span{font-size:12px;color:var(--muted)}
 .ring circle.fg{animation:ringDraw 1.2s var(--ease) both}
 @keyframes ringDraw{from{stroke-dashoffset:var(--len)}to{stroke-dashoffset:var(--off)}}
-.chart{width:100%;height:190px;display:block}
+.chart{width:100%;height:auto;aspect-ratio:560/190;display:block}
 .chart path.l{stroke-dasharray:var(--len,1200);animation:draw 1.4s var(--ease) both}
 .chart circle{transition:r .2s}
 .chart g.pt:hover circle{r:7}
@@ -1851,6 +1851,16 @@ html.dark .mpp-n{background:#1A2233;border-color:#2C3548;color:#E6EAF2}html.dark
 .mpp-x ul{margin:12px 0 0;padding-left:18px;font-size:13.5px;line-height:1.55}
 html.dark .mpp-x{background:rgba(201,162,39,.08);border-color:#3A3424}html.dark .mpp-xg>div{background:#1A2233;border-color:#2C3548}
 @media (max-width:760px){.mpp-xg{grid-template-columns:1fr}}
+/* ===== Modo silencioso ===== */
+body.silencio .sino-n,body.silencio .nbadge{display:none!important}
+.sino.sil{opacity:.75}
+.sil-box{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:4px;padding:12px 14px;border-radius:14px;background:var(--soft,#F4F5F9);font-size:13px;color:var(--muted)}
+.sil-box span{flex:1 1 220px;min-width:0}
+.sil-bt{display:inline-flex;align-items:center;gap:8px}
+.sil-sw{flex:none;width:38px;height:22px;border-radius:99px;background:#D5D9E3;position:relative;transition:background .2s}
+.sil-sw i{position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .2s}
+.sil-sw.on{background:#7B1E2B}.sil-sw.on i{transform:translateX(16px)}
+html.dark .sil-box,body.dark .sil-box{background:rgba(255,255,255,.06)}
 
 </style>
 </head>
@@ -8417,8 +8427,8 @@ function renderSide() {
     : Store.mode === 'local' ? ['local', 'Guardado neste navegador', 'Os dados ficam apenas neste dispositivo.']
     : ['', 'Sessão temporária', 'Os dados perdem-se ao fechar a página.'];
   $('#side').innerHTML =
-    '<button class="brand nav" data-go="painel" style="padding:0 8px;background:none" aria-label="LEXDESK, ir para o painel"><span class="mark logo">' + I.logo + '</span><span class="word"><b>LEX</b><span>DESK</span></span></button>' +
-    '<div class="navgrp"><span class="navlbl">Geral</span>' + navBtn('painel', 'Painel', I.grid) + navBtn('atualidade', 'Atualidade jurídica', I.news) + navBtn('biblioteca', 'Biblioteca jurídica', I.book) + navBtn('instituicoes', 'Instituições', I.uni) + '</div>' +
+    '<button class="brand nav" data-go="painel" style="padding:0 8px;background:none" aria-label="LEXDESK, ir para o Início"><span class="mark logo">' + I.logo + '</span><span class="word"><b>LEX</b><span>DESK</span></span></button>' +
+    '<div class="navgrp"><span class="navlbl">Geral</span>' + navBtn('painel', 'Início', I.grid) + navBtn('atualidade', 'Atualidade jurídica', I.news) + navBtn('biblioteca', 'Biblioteca jurídica', I.book) + navBtn('instituicoes', 'Instituições', I.uni) + '</div>' +
     '<div class="navgrp"><span class="navlbl">Trabalho</span>' + navBtn('workspaces', 'Legal Workspaces', I.folder) + navBtn('minutas', 'Gerador de minutas', I.file) + '</div>' +
     '<div class="navgrp"><span class="navlbl">Estudo</span>' + navBtn('cadeiras', 'Cadeiras', I.layers) + navBtn('apontamentos', 'Apontamentos', I.note) + navBtn('exames', 'Simulador de exames', I.check) + navBtn('casos', 'Casos práticos', I.scale) + '</div>' +
     '<div class="navgrp"><span class="navlbl">Comunidade</span>' + navBtn('chat', 'Chat da comunidade', I.chat) + navBtn('mensagens', 'Mensagens' + (sessaoAtiva() && dmNaoLidas() ? '<span class="nbadge" style="margin-left:auto">' + dmNaoLidas() + '</span>' : ''), I.mail) + navBtn('salas', 'Salas de estudo', I.door) + navBtn('connect', 'Mentoria e explicações', I.users) + '</div>' +
@@ -8553,7 +8563,7 @@ function vPainel() {
   }).join('');
   P.continuar = '<section class="grid2"><div class="card"><div class="row" style="justify-content:space-between"><h2>Continuar onde ficou</h2>' + (s.ws.length ? '<button class="btn sm" data-go="workspaces">Ver todos</button>' : '') + '</div>' + cont + '</div>' +
     '<div class="card"><h2>Taxa de acerto por disciplina</h2>' + prog + (s.tot ? '' : '<p class="foot" style="margin:0">Os valores aparecem à medida que faz simulações de exame.</p>') + '</div></section>';
-  P.mentoria = '<section class="promo"><div style="display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 320px"><span class="eyebrow" style="color:var(--gold)">Mentoria e explicações</span><h2 style="color:#fff;font-size:24px">Aprender em conjunto. Partilhar conhecimento.</h2><p style="margin:0;color:#C3CCDB">Encontre explicadores, esclareça dúvidas ou partilhe o que sabe com outros estudantes de Direito.</p></div><div class="row"><button class="btn gold" data-a="conn-tab" data-id="aprender">Quero aprender</button><button class="btn ghost" data-a="conn-tab" data-id="ensinar">Quero ensinar</button></div></section>';
+  P._mentoriaAntiga = '<section class="promo"><div style="display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 320px"><span class="eyebrow" style="color:var(--gold)">Mentoria e explicações</span><h2 style="color:#fff;font-size:24px">Aprender em conjunto. Partilhar conhecimento.</h2><p style="margin:0;color:#C3CCDB">Encontre explicadores, esclareça dúvidas ou partilhe o que sabe com outros estudantes de Direito.</p></div><div class="row"><button class="btn gold" data-a="conn-tab" data-id="aprender">Quero aprender</button><button class="btn ghost" data-a="conn-tab" data-id="ensinar">Quero ensinar</button></div></section>';
   // ferramentas + atividade
   var tools = [['exames', 'Simulador de exames', QUESTOES.length + ' questões com explicação e referência legal.'], ['casos', 'Casos práticos', 'Hipóteses com tópicos de correção.'], ['minutas', 'Gerador de minutas', 'Procuração, requerimento, petição inicial e contestação.'], ['biblioteca', 'Biblioteca jurídica', 'Diplomas essenciais e artigos-chave.']];
   var ult = s.at.slice().sort(function (a, b) { return b.createdAt - a.createdAt; }).slice(0, 4);
@@ -9573,7 +9583,7 @@ function openPerfil(pre) {
   var p = clone(perfil() || { id: 'perfil', kind: 'perfil', ano: 1, disciplinas: [] });
   if (pre) { p.instId = pre; var i = instById(pre); p.curso = i.cursos[0].nome; }
   S.editPerfil = p;
-  openModal('O meu perfil académico', '<p class="sub" style="margin:0;font-size:14px">Estes dados são privados e servem para personalizar o LEXDESK: painel, cadeiras, apontamentos e comunidade.</p>' + perfilForm(p), '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="perfil-save">Guardar perfil</button>');
+  openModal('O meu perfil académico', '<p class="sub" style="margin:0;font-size:14px">Estes dados são privados e servem para personalizar o LEXDESK: Início, cadeiras, apontamentos e comunidade.</p>' + perfilForm(p), '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="perfil-save">Guardar perfil</button>');
 }
 function refreshPerfilForm() {
   var p = S.editPerfil; p.instId = $('#pf-inst').value; p.curso = $('#pf-curso').value; p.ano = Number($('#pf-ano').value); p.letivo = $('#pf-letivo').value;
@@ -11431,22 +11441,22 @@ var PERFIS = {
   estag: { nome: 'Advogado/a estagiário/a', curto: 'Estágio', ic: '⚖️', d: 'Prazos processuais, diligências, minutas e treino para a Ordem.' },
   prof: { nome: 'Profissional do Direito', curto: 'Profissional', ic: '💼', d: 'Advogado, solicitador, magistrado ou jurista: prazos, agenda e alertas.' },
   doc: { nome: 'Docente', curto: 'Docente', ic: '👩‍🏫', d: 'Perguntas e casos próprios, salas com alunos e quizzes ao vivo.' },
-  outro: { nome: 'Outro / só estou a explorar', curto: 'Explorar', ic: '🔍', d: 'Acesso a tudo, com o painel completo.' }
+  outro: { nome: 'Outro / só estou a explorar', curto: 'Explorar', ic: '🔍', d: 'Acesso a tudo, com o Início completo.' }
 };
 var MODS = {
   kpis: 'Indicadores de estudo', progresso: 'Gráficos de progresso', calendario: 'Calendário de avaliações', horario: 'Horário semanal', atualidade: 'Atualidade jurídica',
-  prazosag: 'Próximos prazos e diligências', dissertacao: 'Dissertação', ordem: 'Treino para a Ordem', docente: 'Ensino: perguntas e casos', continuar: 'Continuar onde ficou', mentoria: 'Mentoria e explicações', ferramentas: 'Ferramentas e últimas simulações'
+  prazosag: 'Próximos prazos e diligências', dissertacao: 'Dissertação', ordem: 'Treino para a Ordem', docente: 'Ensino: perguntas e casos', continuar: 'Continuar onde ficou', ferramentas: 'Ferramentas e últimas simulações'
 };
 var MOD_PERFIL = {
-  lic: ['kpis', 'progresso', 'calendario', 'horario', 'atualidade', 'continuar', 'mentoria', 'ferramentas'],
-  licd: ['atualidade', 'ordem', 'prazosag', 'continuar', 'mentoria', 'ferramentas'],
-  mest: ['dissertacao', 'atualidade', 'continuar', 'mentoria'],
+  lic: ['kpis', 'progresso', 'calendario', 'horario', 'atualidade', 'continuar', 'ferramentas'],
+  licd: ['atualidade', 'ordem', 'prazosag', 'continuar', 'ferramentas'],
+  mest: ['dissertacao', 'atualidade', 'continuar'],
   estag: ['prazosag', 'ordem', 'atualidade', 'continuar', 'ferramentas'],
   prof: ['prazosag', 'atualidade', 'continuar'],
-  doc: ['docente', 'atualidade', 'mentoria'],
-  outro: ['kpis', 'progresso', 'calendario', 'horario', 'atualidade', 'continuar', 'mentoria', 'ferramentas']
+  doc: ['docente', 'atualidade'],
+  outro: ['kpis', 'progresso', 'calendario', 'horario', 'atualidade', 'continuar', 'ferramentas']
 };
-var NAV = { painel: ['Painel', 'grid'], guias: ['Matéria explicada', 'book'], glossario: ['Glossário jurídico', 'book'], calcheranca: ['Calculadora da herança', 'grid'], mapapp: ['Mapa do processo penal', 'book'], mapapc: ['Mapa do processo declarativo', 'book'], aula: ['Sala de aula', 'aula'], flashcards: ['Flashcards', 'layers'], atualidade: ['Atualidade jurídica', 'news'], biblioteca: ['Biblioteca jurídica', 'book'], instituicoes: ['Instituições', 'uni'], workspaces: ['Legal Workspaces', 'folder'], minutas: ['Gerador de minutas', 'file'], cadeiras: ['Cadeiras', 'layers'], apontamentos: ['Apontamentos', 'note'], exames: ['Estudar e praticar', 'check'], casos: ['Casos práticos', 'scale'], prazos: ['Contador de prazos', 'hour'], agenda: ['Agenda de diligências', 'cal'], dissertacao: ['Dissertação', 'cap'], ordem: ['Treino para a Ordem', 'badge'], docente: ['Ensino', 'pen'] };
+var NAV = { painel: ['Início', 'grid'], guias: ['Matéria explicada', 'book'], glossario: ['Glossário jurídico', 'book'], calcheranca: ['Calculadora da herança', 'grid'], mapapp: ['Mapa do processo penal', 'book'], mapapc: ['Mapa do processo declarativo', 'book'], aula: ['Sala de aula', 'aula'], flashcards: ['Flashcards', 'layers'], atualidade: ['Atualidade jurídica', 'news'], biblioteca: ['Biblioteca jurídica', 'book'], instituicoes: ['Instituições', 'uni'], workspaces: ['Legal Workspaces', 'folder'], minutas: ['Gerador de minutas', 'file'], cadeiras: ['Cadeiras', 'layers'], apontamentos: ['Apontamentos', 'note'], exames: ['Estudar e praticar', 'check'], casos: ['Casos práticos', 'scale'], prazos: ['Contador de prazos', 'hour'], agenda: ['Agenda de diligências', 'cal'], dissertacao: ['Dissertação', 'cap'], ordem: ['Treino para a Ordem', 'badge'], docente: ['Ensino', 'pen'] };
 var COMUN = ['chat', 'mensagens', 'salas', 'connect'];
 var NAV_PERFIL = {
   lic: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'glossario', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos', 'calcheranca', 'mapapp', 'mapapc']], ['Trabalho', ['workspaces', 'minutas']]],
@@ -11485,7 +11495,7 @@ function painelCompor(P, pf) {
   var t = tipoPerfil(), m = modsAtivos(), h = (t === 'lic' || t === 'outro' ? P.hero : heroPerfil(t)) + P.busca;
   var gen = { prazosag: modPrazos, dissertacao: modDiss, ordem: modOrdem, docente: modDocente };
   m.ordem.forEach(function (k) { if (m.hidden.indexOf(k) >= 0) return; var x = P[k] != null ? P[k] : (gen[k] ? gen[k]() : ''); h += x; });
-  h += '<div class="row" style="justify-content:center"><button class="btn sm" data-a="painel-pers">' + I.gear + 'Personalizar painel</button><button class="btn sm" data-a="onb-abrir">' + PERFIS[t].ic + ' Perfil: ' + esc(PERFIS[t].curto) + ' · alterar</button></div>';
+  h += '<div class="row" style="justify-content:center"><button class="btn sm" data-a="painel-pers">' + I.gear + 'Personalizar Início</button><button class="btn sm" data-a="onb-abrir">' + PERFIS[t].ic + ' Perfil: ' + esc(PERFIS[t].curto) + ' · alterar</button></div>';
   return h;
 }
 function heroPerfil(t) {
@@ -11518,7 +11528,7 @@ renderSide = function () {
   var nb = function (k) { return navBtn(k, NAV[k][0], I[NAV[k][1]]); };
   var dmb = sessaoAtiva() && dmNaoLidas() ? '<span class="nbadge" style="margin-left:auto">' + dmNaoLidas() + '</span>' : '';
   var maisAberto = S.navMais || mais.indexOf(S.view) >= 0;
-  $('#side').innerHTML = '<button class="brand nav" data-go="painel" style="padding:0 8px;background:none" aria-label="LEXDESK, ir para o painel"><span class="mark logo">' + I.logo + '</span><span class="word"><b>LEX</b><span>DESK</span></span></button>' +
+  $('#side').innerHTML = '<button class="brand nav" data-go="painel" style="padding:0 8px;background:none" aria-label="LEXDESK, ir para o Início"><span class="mark logo">' + I.logo + '</span><span class="word"><b>LEX</b><span>DESK</span></span></button>' +
     grupos.map(function (g) { return '<div class="navgrp"><span class="navlbl">' + esc(g[0]) + '</span>' + g[1].map(nb).join('') + '</div>'; }).join('') +
     '<div class="navgrp"><span class="navlbl">Comunidade</span>' + navBtn('chat', 'Chat da comunidade', I.chat) + navBtn('mensagens', 'Mensagens' + dmb, I.mail) + navBtn('salas', 'Salas de estudo', I.door) + navBtn('connect', 'Mentoria e explicações', I.users) + '</div>' +
     (mais.length ? '<div class="navgrp"><button class="navlbl navmais" data-a="nav-mais" aria-expanded="' + !!maisAberto + '">Mais ferramentas ' + (maisAberto ? '▴' : '▾') + '</button>' + (maisAberto ? mais.map(nb).join('') : '') + '</div>' : '') +
@@ -11541,14 +11551,14 @@ function onbPintar() {
     f = '<button class="btn" data-a="onb-ant" style="margin-right:auto">← Voltar</button><button class="btn wine" data-a="onb-seg">Continuar →</button>';
   } else {
     var mods = MOD_PERFIL[ONB.tipo];
-    b = '<p class="onb-q">Pronto! O seu painel fica assim:</p><div class="onb-prev">' + mods.map(function (m, i) { return '<div class="onb-m"><span>' + (i + 1) + '</span>' + esc(MODS[m]) + '</div>'; }).join('') + '</div><p style="margin:0;color:var(--muted);font-size:13px">Nada é apagado: as outras ferramentas ficam em «Mais ferramentas», no menu. Pode personalizar o painel e mudar de perfil a qualquer momento.</p>';
+    b = '<p class="onb-q">Pronto! O seu Início fica assim:</p><div class="onb-prev">' + mods.map(function (m, i) { return '<div class="onb-m"><span>' + (i + 1) + '</span>' + esc(MODS[m]) + '</div>'; }).join('') + '</div><p style="margin:0;color:var(--muted);font-size:13px">Nada é apagado: as outras ferramentas ficam em «Mais ferramentas», no menu. Pode personalizar o Início e mudar de perfil a qualquer momento.</p>';
     f = '<button class="btn" data-a="onb-ant" style="margin-right:auto">← Voltar</button><button class="btn" data-a="onb-fim" data-id="ajustar">Ajustar módulos</button><button class="btn wine" data-a="onb-fim">Entrar no LEXDESK</button>';
   }
   openModal('Bem-vindo ao LEXDESK · passo ' + ONB.passo + ' de 3', '<div class="onb">' + b + '</div>', f);
 }
 function painelPers() {
   var m = modsAtivos();
-  openModal('Personalizar painel', '<p style="margin:0;font-size:14px;color:var(--muted)">Escolha os módulos e a ordem. O painel adapta-se ao perfil «' + esc(PERFIS[tipoPerfil()].nome) + '».</p><div class="list" style="gap:6px">' + m.ordem.map(function (k, i) {
+  openModal('Personalizar Início', '<p style="margin:0;font-size:14px;color:var(--muted)">Escolha os módulos e a ordem. O Início adapta-se ao perfil «' + esc(PERFIS[tipoPerfil()].nome) + '».</p><div class="list" style="gap:6px">' + m.ordem.map(function (k, i) {
     return '<div class="li" style="cursor:default;padding:8px 12px"><label class="check" style="flex:1;min-height:0"><input type="checkbox" data-mod="' + k + '"' + (m.hidden.indexOf(k) < 0 ? ' checked' : '') + '>' + esc(MODS[k]) + '</label><button class="icon-btn" data-a="pp-mv" data-i="' + i + '" data-d="-1" aria-label="Subir">↑</button><button class="icon-btn" data-a="pp-mv" data-i="' + i + '" data-d="1" aria-label="Descer">↓</button></div>';
   }).join('') + '</div>', '<button class="btn" data-a="pp-repor" style="margin-right:auto">Repor do perfil</button><button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="pp-ok">Guardar</button>');
   S.ppOrdem = m.ordem.slice();
@@ -11565,13 +11575,13 @@ var A14 = {
     var antes = perfilUser(), mudou = !antes || antes.tipo !== ONB.tipo;
     guardarPerfilUser({ tipo: ONB.tipo, ano: ONB.ano, areas: ONB.areas, hidden: mudou ? null : antes.hidden, ordem: mudou ? null : antes.ordem });
     lsSet('lexdesk_onb', 'feito'); closeModal(); S.view = 'painel'; render(); window.scrollTo(0, 0);
-    if (el.dataset.id === 'ajustar') painelPers(); else toast('Painel adaptado ao perfil «' + PERFIS[ONB.tipo].nome + '».');
+    if (el.dataset.id === 'ajustar') painelPers(); else toast('Início adaptado ao perfil «' + PERFIS[ONB.tipo].nome + '».');
   },
   'nav-mais': function () { S.navMais = !S.navMais; renderSide(); },
   'painel-pers': function () { painelPers(); },
   'pp-mv': function (el) { var o = S.ppOrdem, i = Number(el.dataset.i), j = i + Number(el.dataset.d); if (j < 0 || j >= o.length) return; var vis = {}; [].forEach.call(document.querySelectorAll('[data-mod]'), function (c) { vis[c.dataset.mod] = c.checked; }); var t = o[i]; o[i] = o[j]; o[j] = t; var p = guardarPerfilUser({ ordem: o.slice(), hidden: o.filter(function (k) { return vis[k] === false; }) }); painelPers(); },
-  'pp-ok': function () { var hid = []; [].forEach.call(document.querySelectorAll('[data-mod]'), function (c) { if (!c.checked) hid.push(c.dataset.mod); }); guardarPerfilUser({ ordem: S.ppOrdem, hidden: hid }); closeModal(); render(); toast('Painel guardado.'); },
-  'pp-repor': function () { guardarPerfilUser({ ordem: null, hidden: null }); closeModal(); render(); toast('Painel reposto.'); }
+  'pp-ok': function () { var hid = []; [].forEach.call(document.querySelectorAll('[data-mod]'), function (c) { if (!c.checked) hid.push(c.dataset.mod); }); guardarPerfilUser({ ordem: S.ppOrdem, hidden: hid }); closeModal(); render(); toast('Início guardado.'); },
+  'pp-repor': function () { guardarPerfilUser({ ordem: null, hidden: null }); closeModal(); render(); toast('Início reposto.'); }
 };
 Object.keys(A14).forEach(function (k) { A[k] = A14[k]; });
 
@@ -11948,7 +11958,7 @@ painelCompor = function (P, pf) {
   var h = heroB(t) + '<section class="bento" aria-label="Indicadores">' + hbDestaque() + hbTiles(t) + '</section>' + P.busca;
   var gen = { prazosag: modPrazos, dissertacao: modDiss, ordem: modOrdem, docente: modDocente };
   m.ordem.forEach(function (k) { if (k === 'kpis' || m.hidden.indexOf(k) >= 0) return; h += P[k] != null ? P[k] : (gen[k] ? gen[k]() : ''); });
-  h += '<div class="row" style="justify-content:center"><button class="btn sm" data-a="painel-pers">' + I.gear + 'Personalizar painel</button><button class="btn sm" data-a="onb-abrir">' + PERFIS[t].ic + ' Perfil: ' + esc(PERFIS[t].curto) + ' · alterar</button></div>';
+  h += '<div class="row" style="justify-content:center"><button class="btn sm" data-a="painel-pers">' + I.gear + 'Personalizar Início</button><button class="btn sm" data-a="onb-abrir">' + PERFIS[t].ic + ' Perfil: ' + esc(PERFIS[t].curto) + ' · alterar</button></div>';
   return h;
 };
 A['hb-aval'] = function () { if (S.hbAval && A['ex-open']) A['ex-open']({ dataset: { id: S.hbAval } }); };
@@ -11971,9 +11981,9 @@ renderSide = function () {
     return '<div class="tn-g' + (on ? ' on' : '') + '"><button class="tn-b" aria-haspopup="true">' + esc(nome) + (badge ? '<span class="nbadge">' + badge + '</span>' : '') + '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="tn-m" role="menu">' + html + (extra || '') + '</div></div>';
   };
   var com = ['meet', 'chat', 'mensagens', 'salas', 'connect', 'reputacao'];
-  $('#side').innerHTML = '<button class="brand nav tn-brand" data-go="painel" aria-label="LEXDESK, ir para o painel"><span class="mark logo">' + I.logo + '</span><span class="word"><b>LEX</b><span>DESK</span></span></button>' +
+  $('#side').innerHTML = '<button class="brand nav tn-brand" data-go="painel" aria-label="LEXDESK, ir para o Início"><span class="mark logo">' + I.logo + '</span><span class="word"><b>LEX</b><span>DESK</span></span></button>' +
     '<div class="tn-bar">' +
-    '<button class="tn-b' + (S.view === 'painel' ? ' on' : '') + '" data-go="painel">Painel</button>' +
+    '<button class="tn-b' + (S.view === 'painel' ? ' on' : '') + '" data-go="painel">Início</button>' +
     grupos.filter(function (g) { return g[1].length; }).map(function (g) { return grupo(g[0], g[1], g[1].map(nb).join('')); }).join('') +
     grupo('Comunidade', com, item('meet', 'LexDesk Meet', I.meet || I.users) + item('chat', 'Chat da comunidade', I.chat) + item('mensagens', 'Mensagens' + (dmn ? ' <span class="nbadge">' + dmn + '</span>' : ''), I.mail) + item('salas', 'Salas de estudo', I.door) + item('connect', 'Mentoria e explicações', I.users) + item('reputacao', 'Reputação', I.badge), dmn) +
     (t === 'lic' ? '' : grupo('Mais', mais, mais.map(nb).join(''), 0, '<div class="tn-sep"></div><button class="tn-i" data-a="onb-abrir">' + I.gear + '<span>' + PERFIS[t].ic + ' Perfil: ' + esc(PERFIS[t].curto) + ' · alterar</span></button>' + (t === 'lic' ? '<button class="tn-i" data-a="perfil-edit">' + I.cap + '<span>Perfil académico</span></button>' : '') + '<span class="tn-st">' + st + '</span>')) +
@@ -12090,7 +12100,7 @@ function vBemvindo() {
     if (on) {
       x += '<div class="bv-det">' +
         (k === 'lic' ? '<div class="bv-ano"><span>Ano</span>' + [1, 2, 3, 4].map(function (a) { return '<button class="' + (ONB.ano === a ? 'on' : '') + '" data-a="onb-ano" data-id="' + a + '">' + (a === 1 ? '1.º · Caloiro/a' : a + '.º') + '</button>'; }).join('') + '</div>' : '') +
-        (sessaoAtiva() ? '<button class="btn gold bv-go" data-a="onb-fim">Entrar no painel →</button>'
+        (sessaoAtiva() ? '<button class="btn gold bv-go" data-a="onb-fim">Entrar no Início →</button>'
           : '<div class="bv-gst"><button class="btn gold bv-go" data-a="bv-conta" data-id="registo">Criar conta e entrar →</button><div class="bv-alt"><button data-a="bv-conta" data-id="entrar">Já tenho conta</button><span>·</span><button data-a="onb-fim">Continuar sem conta</button></div><span class="bv-nota">Sem conta, os dados ficam apenas neste navegador.</span></div>') +
         '</div>';
     }
@@ -12124,7 +12134,7 @@ carregarMeuPerfil = function () {
     if (pend) { try { localStorage.removeItem('lexdesk_onb_pend'); } catch (e) { } }
     setTimeout(function () {
       if (pend && pend.tipo && !perfilUser()) { guardarPerfilUser(pend); lsSet('lexdesk_onb', 'feito'); }
-      if (S.view === 'bemvindo' && perfilUser() && S.bvLoginAgora) { S.bvLoginAgora = false; go('painel'); toast('Sessão iniciada. Painel adaptado ao perfil «' + PERFIS[perfilUser().tipo].nome + '».'); }
+      if (S.view === 'bemvindo' && perfilUser() && S.bvLoginAgora) { S.bvLoginAgora = false; go('painel'); toast('Sessão iniciada. Início adaptado ao perfil «' + PERFIS[perfilUser().tipo].nome + '».'); }
     }, 900);
     return p;
   });
@@ -12137,7 +12147,7 @@ function vBemvindoOla() {
   var saud = g === 'f' ? 'Bem-vinda de volta' : g === 'm' ? 'Bem-vindo de volta' : 'Bem-vindo/a de volta';
   return '<div class="bv bv-ola' + (an ? ' an' : '') + '"><header class="bv-hd"><span class="bv-logo"><span class="mark logo">' + I.logo + '</span><span><b>LEX</b>DESK</span></span></header>' +
     '<div class="bv-col"><div class="bv-bal big">' + balancaSVG() + '</div><span class="bv-k">' + saud + '</span><h1>' + (S.nome ? '<b>' + esc(S.nome) + '</b>' : '<b>LEX</b>DESK') + '</h1>' +
-    '<p class="bv-sub">' + (t ? 'O seu painel de ' + esc(PERFIS[t].curto.toLowerCase()) + ' está pronto.' : 'O seu painel está pronto.') + '</p>' +
+    '<p class="bv-sub">' + (t ? 'O seu Início de ' + esc(PERFIS[t].curto.toLowerCase()) + ' está pronto.' : 'O seu Início está pronto.') + '</p>' +
     '<button class="btn gold bv-go bv-cont" data-a="bv-cont">Continuar →</button><button class="bv-skip bv-alt2" data-a="onb-abrir">Alterar perfil</button></div></div>';
 }
 function bvArranque(h0) {
@@ -12175,7 +12185,7 @@ function bvApresentacao() {
     '<div class="bv-apr-hd"><span class="bv-k">Porquê o LEXDESK</span><h2 id="bv-apr-h">Tudo o que precisa para estudar e praticar Direito, num só lugar.</h2><p>Do 1.º ano ao exercício da profissão: estudo, ferramentas e uma comunidade feita por e para juristas.</p></div>' +
     '<div class="bv-num">' + n.filter(function (x) { return x[0]; }).map(function (x) { return '<div><b>' + x[0] + '</b><span>' + x[1] + '</span></div>'; }).join('') + '</div>' +
     '<div class="bv-feat">' + BV_FEAT.map(function (f, i) { return '<div class="bv-fc" style="--i:' + i + '"><span class="bv-fi">' + (I[f[0]] || '') + '</span><b>' + f[1] + '</b><span>' + f[2] + '</span></div>'; }).join('') + '</div>' +
-    '<div class="bv-como"><h3>Como funciona</h3><ol>' + [['Escolha a sua fase', 'Licenciatura, mestrado, estágio ou profissão: o painel adapta-se a si.'], ['Crie a sua conta grátis', 'Guarde o progresso e entre na comunidade.'], ['Estude, pratique e contribua', 'Simule exames, resolva casos, ajude colegas e ganhe reputação.']].map(function (p, i) { return '<li><span>' + (i + 1) + '</span><b>' + p[0] + '</b><em>' + p[1] + '</em></li>'; }).join('') + '</ol></div>' +
+    '<div class="bv-como"><h3>Como funciona</h3><ol>' + [['Escolha a sua fase', 'Licenciatura, mestrado, estágio ou profissão: o Início adapta-se a si.'], ['Crie a sua conta grátis', 'Guarde o progresso e entre na comunidade.'], ['Estude, pratique e contribua', 'Simule exames, resolva casos, ajude colegas e ganhe reputação.']].map(function (p, i) { return '<li><span>' + (i + 1) + '</span><b>' + p[0] + '</b><em>' + p[1] + '</em></li>'; }).join('') + '</ol></div>' +
     '<div class="bv-cta"><b>Pronto para começar?</b><div class="row" style="justify-content:center;gap:10px"><button class="btn gold" data-a="bv-topo">Escolher a minha fase ↑</button>' + (sessaoAtiva() ? '' : '<button class="btn ghost" data-a="bv-conta" data-id="registo">Criar conta grátis</button>') + '</div></div>' +
     '<div class="bv-faq"><h3>Perguntas frequentes</h3>' + BV_FAQ.map(function (f) { return '<details><summary>' + f[0] + '</summary><p>' + f[1] + '</p></details>'; }).join('') + '</div>' +
     '</section>';
@@ -14603,9 +14613,9 @@ renderSide = function () {
   if (tipoPerfil() !== 'lic') return _renderSideN2();
   document.body.classList.add('tn'); document.body.classList.toggle('bvp', S.view === 'bemvindo');
   if (typeof VIEW_LBL !== 'undefined' && VIEW_LBL.workspaces) VIEW_LBL.workspaces[0] = wsNome();
-  var h = '<button class="brand nav tn-brand" data-go="painel" aria-label="LEXDESK, ir para o painel"><span class="mark logo">' + I.logo + '</span><span class="word"><b>LEX</b><span>DESK</span></span></button>';
+  var h = '<button class="brand nav tn-brand" data-go="painel" aria-label="LEXDESK, ir para o Início"><span class="mark logo">' + I.logo + '</span><span class="word"><b>LEX</b><span>DESK</span></span></button>';
   h += '<nav class="tn-bar n2-bar" aria-label="Navegação principal"><span class="n2-ind" aria-hidden="true"></span>';
-  h += '<button class="n2-b' + (S.view === 'painel' ? ' on' : '') + '" data-go="painel"' + (S.view === 'painel' ? ' aria-current="page"' : '') + '>' + I.grid + '<span>Painel</span><em class="n2-c">Painel</em></button>';
+  h += '<button class="n2-b' + (S.view === 'painel' ? ' on' : '') + '" data-go="painel"' + (S.view === 'painel' ? ' aria-current="page"' : '') + '>' + I.grid + '<span>Início</span><em class="n2-c">Início</em></button>';
   N2.grupos.forEach(function (g) {
     var on = n2Ativo(g);
     if (g.direto) { h += '<button class="n2-b' + (on ? ' on' : '') + '" data-go="' + g.direto + '"' + (on ? ' aria-current="page"' : '') + '>' + I[g.ic] + '<span>' + esc(g.nome) + '</span><em class="n2-c">' + esc(g.curto || g.nome) + '</em></button>'; return; }
@@ -14928,6 +14938,48 @@ function meetPainelHtml() {
     (l.length ? '<div class="mt-pl">' + l.map(meetCard).join('') + '</div>' : '<div class="empty" style="border:0">Ainda não há eventos marcados. Que tal organizar um café ou um grupo de estudo?</div>') + '</section>';
 }
 
+/* ---------- MODO SILENCIOSO: silenciar avisos de notificações e mensagens ---------- */
+function silencioOn() { return lsGet('lexdesk_silencio') === 'on'; }
+function silencioAplicar() { document.body.classList.toggle('silencio', silencioOn()); }
+var SIL_RE = /^Nova mensagem|aderiu ao seu evento/;
+var _toastSil = toast;
+toast = function (msg) { if (silencioOn() && SIL_RE.test(String(msg || ''))) return; return _toastSil.apply(this, arguments); };
+A['silencio'] = function () {
+  var on = !silencioOn(); lsSet('lexdesk_silencio', on ? 'on' : 'off'); silencioAplicar();
+  closeModal(); render();
+  _toastSil(on ? 'Notificações e mensagens silenciadas. Pode reativá-las no sino ou no menu da conta.' : 'Notificações e mensagens reativadas.');
+};
+function silencioBtn(cls) {
+  var on = silencioOn();
+  return '<button class="' + (cls || 'btn') + ' sil-bt" data-a="silencio" aria-pressed="' + on + '">' + (on ? I.sinoOn : I.sinoOff) + (on ? 'Reativar notificações' : 'Silenciar notificações') + '</button>';
+}
+I.sinoOff = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.7 3A6 6 0 0 1 18 8c0 3 .5 5 1.2 6.5M17 17H3s3-2 3-9c0-.5 0-1 .1-1.5"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0M2 2l20 20"/></svg>';
+I.sinoOn = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>';
+/* sino da barra superior: ícone riscado quando está em silêncio */
+var _sinoBtnSil = sinoBtn;
+sinoBtn = function () {
+  var h = _sinoBtnSil();
+  if (!silencioOn()) return h;
+  return h.replace('class="sino"', 'class="sino sil"').replace(/aria-label="[^"]*"/, 'aria-label="Notificações silenciadas"').replace(/<svg[\s\S]*?<\/svg>/, I.sinoOff.replace('width="16" height="16"', 'width="18" height="18"'));
+};
+/* janela do sino: opção para silenciar */
+var _updSinoSil = A9['upd-sino'];
+A9['upd-sino'] = A['upd-sino'] = function () {
+  _updSinoSil.apply(this, arguments);
+  var m = document.querySelector('.modal .list'); if (!m) return;
+  m.insertAdjacentHTML('beforebegin', '<div class="sil-box"><span>' + (silencioOn() ? 'Os avisos de novas mensagens e notificações estão silenciados e os contadores estão ocultos.' : 'Não quer ser interrompido? Silencie os avisos de novas mensagens e notificações.') + '</span>' + silencioBtn('btn sm') + '</div>');
+};
+/* menu da conta: mesma opção */
+var _contaMenuSil = A['conta-menu'];
+if (_contaMenuSil) A['conta-menu'] = function () {
+  _contaMenuSil.apply(this, arguments);
+  var l = document.querySelector('.cm-g .cm-l'); if (!l) return;
+  var on = silencioOn();
+  l.parentNode.parentNode.insertAdjacentHTML('beforeend', '<div class="cm-g"><span class="cm-gt">Notificações</span><div class="cm-l"><button class="cm-i" data-a="silencio" aria-pressed="' + on + '"><span class="cm-ic">' + (on ? I.sinoOff : I.sinoOn) + '</span><span class="cm-tx"><b>' + (on ? 'Notificações silenciadas' : 'Silenciar notificações e mensagens') + '</b><span>' + (on ? 'Toque para voltar a receber avisos' : 'Deixa de ver avisos e contadores de novas mensagens') + '</span></span><span class="sil-sw' + (on ? ' on' : '') + '" aria-hidden="true"><i></i></span></button></div></div>');
+};
+var _renderSideSil = renderSide;
+renderSide = function () { silencioAplicar(); return _renderSideSil.apply(this, arguments); };
+
 /* ---------- MODO NOTURNO ---------- */
 /* Gera automaticamente a versão escura de todas as regras CSS (e dos estilos em linha),
    convertendo as cores segundo o papel de cada propriedade: fundo, texto, contorno. */
@@ -15066,7 +15118,7 @@ A['tema'] = function () { var n = temaEscuro() ? 'claro' : 'escuro'; lsSet('lexd
 try { if (window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () { if (!lsGet('lexdesk_tema')) temaAplicar(temaPref()); }); } catch (e) { }
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
-var VIEW_LBL = { painel: ['Painel', I.grid], guias: ['Matéria explicada', I.book], guia: ['Guia de estudo', I.book], glossario: ['Glossário jurídico', I.book], mapapp: ['Mapa do processo penal', I.book], mapapc: ['Mapa do processo declarativo', I.book], calcheranca: ['Calculadora da herança', I.grid], meet: ['LexDesk Meet', I.grid], reputacao: ['Reputação', I.badge], flashcards: ['Flashcards', I.layers], aula: ['Sala de aula', I.note], lei: ['Texto integral da lei', I.book], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Estudar e praticar', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
+var VIEW_LBL = { painel: ['Início', I.grid], guias: ['Matéria explicada', I.book], guia: ['Guia de estudo', I.book], glossario: ['Glossário jurídico', I.book], mapapp: ['Mapa do processo penal', I.book], mapapc: ['Mapa do processo declarativo', I.book], calcheranca: ['Calculadora da herança', I.grid], meet: ['LexDesk Meet', I.grid], reputacao: ['Reputação', I.badge], flashcards: ['Flashcards', I.layers], aula: ['Sala de aula', I.note], lei: ['Texto integral da lei', I.book], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Estudar e praticar', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
 var isMac = /Mac|iPhone|iPad/.test(navigator.platform || '');
 
 /* ===== animação de entrada e contadores ===== */
@@ -15124,7 +15176,7 @@ function svgLine(vals, labels) {
     var tx = Math.min(Math.max(x(i), 60), W - 60);
     return '<g class="pt"><circle cx="' + x(i) + '" cy="' + y(v) + '" r="5" fill="#fff" stroke="#7B1E2B" stroke-width="3"/><g class="tt"><rect x="' + (tx - 52) + '" y="' + (y(v) - 40) + '" width="104" height="26" rx="8" fill="#0E1222"/><text x="' + tx + '" y="' + (y(v) - 23) + '" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">' + v + '% · ' + esc(labels[i] || '') + '</text></g><circle cx="' + x(i) + '" cy="' + y(v) + '" r="16" fill="transparent"/></g>';
   }).join('');
-  return '<svg class="chart" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" role="img" aria-label="Evolução da taxa de acerto nas últimas simulações"><defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#8C1D30"/><stop offset="1" stop-color="#1E3A5F"/></linearGradient><linearGradient id="la" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7B1E2B" stop-opacity=".22"/><stop offset="1" stop-color="#1E3A5F" stop-opacity="0"/></linearGradient></defs>' + grid +
+  return '<svg class="chart" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Evolução da taxa de acerto nas últimas simulações"><defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#8C1D30"/><stop offset="1" stop-color="#1E3A5F"/></linearGradient><linearGradient id="la" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7B1E2B" stop-opacity=".22"/><stop offset="1" stop-color="#1E3A5F" stop-opacity="0"/></linearGradient></defs>' + grid +
     '<path d="' + area + '" fill="url(#la)"/><path class="l" d="' + d + '" fill="none" stroke="url(#lg)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="--len:1400" stroke-dasharray="1400"/>' + pts + '</svg>';
 }
 function vProgresso() {
@@ -15314,7 +15366,7 @@ Store.connect();
 </script>
 <script>
 /* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='1ca0fb467396';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
+(function(){var B='836b02f360a0';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>
