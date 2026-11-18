@@ -1765,6 +1765,8 @@ body.tn .main>.topbar{right:max(24px,calc((100vw - 1360px) / 2 + 32px - 8px))!im
 .mt-canc{border-left:3px solid #B42318}
 .leaflet-container{font-family:var(--sans)}
 .mt-pin span i{font-style:normal;transform:rotate(45deg);display:block}
+.mt-mapa-in{width:100%;height:100%}
+.mt-pl{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
 
 </style>
 </head>
@@ -11339,7 +11341,7 @@ N2.dicas = {
   comunidade: function () { return '💬 Ganhe reputação a ajudar os colegas'; }
 };
 function n2Badge(g) {
-  if (g.id === 'comunidade') { var d = sessaoAtiva() ? dmNaoLidas() : 0; return d ? '<span class="nbadge">' + d + '</span>' : ''; }
+  if (g.id === 'comunidade') { var d = (sessaoAtiva() ? dmNaoLidas() : 0) + (typeof MEET !== 'undefined' ? MEET.nao || 0 : 0); return d ? '<span class="nbadge">' + d + '</span>' : ''; }
   if (g.id === 'praticar') { var n = 0; try { n = fcFila('todas', 'todos').length; } catch (e) { } return n ? '<span class="n2-dot" title="' + plural(n, 'cartão', 'cartões') + ' para rever"></span>' : ''; }
   return '';
 }
@@ -11349,7 +11351,7 @@ function n2Menu(g) {
   return '<div class="n2-m ' + g.cor + '" role="menu" aria-label="' + esc(g.nome) + '"><div class="n2-mh"><span class="n2-mi">' + I[g.ic] + '</span><div><b>' + esc(g.nome) + '</b><span>' + esc(g.lema) + '</span></div></div><div class="n2-mg">' +
     g.itens.map(function (x, i) {
       var on = S.view === x[0] || (x[0] === 'guias' && S.view === 'guia'), lbl = x[0] === 'workspaces' ? wsNome() : x[1];
-      return '<button class="n2-i' + (on ? ' on' : '') + '" role="menuitem" data-go="' + x[0] + '" style="--i:' + i + '"><span class="n2-ii">' + (I[x[3]] || I.grid) + '</span><span class="n2-it"><b>' + esc(lbl) + (x[0] === 'mensagens' && dm ? ' <span class="nbadge">' + dm + '</span>' : '') + '</b><span>' + esc(x[2]) + '</span></span><span class="n2-ar">›</span></button>';
+      return '<button class="n2-i' + (on ? ' on' : '') + '" role="menuitem" data-go="' + x[0] + '" style="--i:' + i + '"><span class="n2-ii">' + (I[x[3]] || I.grid) + '</span><span class="n2-it"><b>' + esc(lbl) + (x[0] === 'mensagens' && dm ? ' <span class="nbadge">' + dm + '</span>' : '') + (x[0] === 'meet' && typeof MEET !== 'undefined' && MEET.nao ? ' <span class="nbadge">' + MEET.nao + '</span>' : '') + '</b><span>' + esc(x[2]) + '</span></span><span class="n2-ar">›</span></button>';
     }).join('') + '</div><div class="n2-mf">' + (N2.dicas[g.id] ? esc(N2.dicas[g.id]()) : '') + '<span class="n2-k"><kbd>Ctrl</kbd> <kbd>K</kbd> pesquisar</span></div></div>';
 }
 var _renderSideN2 = renderSide;
@@ -11471,12 +11473,12 @@ function vMeet() {
   setTimeout(meetMapa, 0);
   return h;
 }
-function meetPintar() { if (S.view === 'meet') render(); }
+function meetPintar() { if (S.view === 'meet' || S.view === 'painel') render(); }
 /* ----- Mapa (Leaflet + OpenStreetMap) ----- */
 function meetLeaflet(cb) {
   if (window.L && window.L.map) return cb();
   if (MEET.leaflet === 'erro') return;
-  if (MEET.leaflet) { MEET.leaflet.push(cb); return; }
+  if (MEET.leaflet && MEET.leaflet.push) { MEET.leaflet.push(cb); return; }
   MEET.leaflet = [cb];
   var css = document.createElement('link'); css.rel = 'stylesheet'; css.href = 'leaflet.css'; document.head.appendChild(css);
   var s = document.createElement('script'); s.src = 'leaflet.js';
@@ -11485,24 +11487,28 @@ function meetLeaflet(cb) {
   document.head.appendChild(s);
 }
 function meetMapa() {
-  var el = document.getElementById('meet-mapa'); if (!el) return;
+  var slot = document.getElementById('meet-mapa'); if (!slot) return;
+  if (!MEET.node) { MEET.node = document.createElement('div'); MEET.node.className = 'mt-mapa-in'; }
+  if (MEET.node.parentNode !== slot) { slot.innerHTML = ''; slot.appendChild(MEET.node); }
   meetLeaflet(function () {
-    el = document.getElementById('meet-mapa'); if (!el || el._lx) return; el._lx = 1;
-    if (MEET.map) { try { MEET.map.remove(); } catch (e) { } }
-    var m = L.map(el, { zoomControl: true, scrollWheelZoom: false, attributionControl: true }).setView([39.6, -8.1], 6);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18, subdomains: 'abcd', attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>' }).addTo(m);
-    MEET.map = m;
-    m.on('popupopen', function (ev) { var b = ev.popup.getElement && ev.popup.getElement().querySelector('[data-a="meet-abrir"]'); if (b) b.onclick = function (x) { x.preventDefault(); x.stopPropagation(); A['meet-abrir'](b); }; });
-    var l = meetFiltrados(), pts = [];
+    if (!document.body.contains(MEET.node)) return;
+    if (!MEET.map) {
+      MEET.map = L.map(MEET.node, { zoomControl: true, scrollWheelZoom: false, attributionControl: true }).setView([39.6, -8.1], 6);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18, subdomains: 'abcd', attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>' }).addTo(MEET.map);
+      MEET.camada = L.layerGroup().addTo(MEET.map);
+      MEET.map.on('popupopen', function (ev) { var b = ev.popup.getElement && ev.popup.getElement().querySelector('[data-a="meet-abrir"]'); if (b) b.onclick = function (x) { x.preventDefault(); x.stopPropagation(); A['meet-abrir'](b); }; });
+    }
+    setTimeout(function () { if (MEET.map) MEET.map.invalidateSize(); }, 30);
+    var l = meetFiltrados().filter(function (e) { return !e.cancelado; }), chave = l.map(function (e) { return e.id + ':' + meetN(e.id); }).join('|');
+    if (chave === MEET.chave) return; MEET.chave = chave;
+    MEET.camada.clearLayers(); var pts = [];
     l.forEach(function (e) {
-      if (e.cancelado) return;
       var c = MEET_CAT[e.categoria] || MEET_CAT.convivio;
       var ic = L.divIcon({ className: 'mt-pin', html: '<span style="--c:' + c[2] + '"><i>' + c[3] + '</i></span>', iconSize: [34, 42], iconAnchor: [17, 40], popupAnchor: [0, -36] });
-      var mk = L.marker([e.lat, e.lng], { icon: ic, title: e.titulo }).addTo(m);
-      mk.bindPopup('<div class="mt-pop"><span class="mt-ev-k">' + c[0] + ' · ' + esc(e.cidade) + '</span><b>' + esc(e.titulo) + '</b><span>' + esc(meetData(e)) + '</span><span>' + meetN(e.id) + '/' + e.max_part + ' participantes</span><button class="btn sm wine" data-a="meet-abrir" data-id="' + e.id + '">Ver e aderir</button></div>');
+      L.marker([e.lat, e.lng], { icon: ic, title: e.titulo }).bindPopup('<div class="mt-pop"><span class="mt-ev-k">' + c[0] + ' · ' + esc(e.cidade) + '</span><b>' + esc(e.titulo) + '</b><span>' + esc(meetData(e)) + '</span><span>' + meetN(e.id) + '/' + e.max_part + ' participantes</span><button class="btn sm wine" data-a="meet-abrir" data-id="' + e.id + '">Ver e aderir</button></div>').addTo(MEET.camada);
       pts.push([e.lat, e.lng]);
     });
-    if (pts.length > 1) m.fitBounds(pts, { padding: [40, 40], maxZoom: 11 }); else if (pts.length === 1) m.setView(pts[0], 11);
+    if (pts.length > 1) MEET.map.fitBounds(pts, { padding: [40, 40], maxZoom: 11 }); else if (pts.length === 1) MEET.map.setView(pts[0], 11); else MEET.map.setView([39.6, -8.1], 6);
   });
 }
 /* ----- Página de um evento ----- */
@@ -11639,6 +11645,43 @@ document.addEventListener('submit', function (ev) { if (ev.target && ev.target.c
 // Navegação: Meet como primeira opção da Comunidade
 NAV.meet = ['LexDesk Meet', 'meet'];
 if (typeof N2 !== 'undefined') N2.grupos.forEach(function (g) { if (g.id === 'comunidade' && !g.itens.some(function (x) { return x[0] === 'meet'; })) g.itens.unshift(['meet', 'LexDesk Meet', 'Eventos e encontros presenciais no mapa', 'meet']); });
+
+/* ----- Notificações: adesões aos meus eventos e mensagens nos eventos em que participo ----- */
+function meetNotifIniciar() {
+  if (MEET.notif || !SB || !sessaoAtiva() || !Store.uid) return; MEET.notif = true; MEET.nao = 0;
+  if (MEET.l === null) meetCarregar();
+  SB.channel('meet-notif-' + Store.uid.slice(0, 8))
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'evento_part' }, function (p) {
+      var n = p.new || {}, e = (MEET.l || []).filter(function (x) { return String(x.id) === String(n.evento_id); })[0];
+      if (!e) { MEET.l = null; meetCarregar(); return; }
+      (MEET.part[e.id] = MEET.part[e.id] || []); if (MEET.part[e.id].indexOf(n.user_id) < 0) MEET.part[e.id].push(n.user_id);
+      if (e.criador === Store.uid && n.user_id !== Store.uid) { loadNames([n.user_id]); MEET.nao++; setTimeout(function () { toast(chatNome(n.user_id) + ' aderiu ao seu evento «' + e.titulo + '».'); }, 400); renderSide(); }
+    })
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'evento_msgs' }, function (p) {
+      var m = p.new || {}; if (m.autor === Store.uid) return;
+      var aVer = S.view === 'meet' && String(MEET.ev) === String(m.evento_id); if (aVer) return;
+      var e = (MEET.l || []).filter(function (x) { return String(x.id) === String(m.evento_id); })[0];
+      MEET.nao++; renderSide(); toast('Nova mensagem' + (e ? ' em «' + e.titulo + '»' : ' num evento') + '.');
+    })
+    .subscribe();
+}
+var _goMeet = go;
+go = function (v) { if (v === 'meet') MEET.nao = 0; return _goMeet.apply(this, arguments); };
+var _renderMeetN = render;
+render = function () {
+  _renderMeetN.apply(this, arguments);
+  if (sessaoAtiva() && !MEET.notif) setTimeout(meetNotifIniciar, 1500);
+  if (S.view === 'painel' && sessaoAtiva() && !document.getElementById('meet-painel')) {
+    var alvo = document.querySelector('.main .promo'); var h = meetPainelHtml(); if (!h) return;
+    if (alvo) alvo.insertAdjacentHTML('beforebegin', h); else { var r = document.querySelector('.main [data-a="painel-pers"]'); if (r) r.parentNode.insertAdjacentHTML('beforebegin', h); }
+  }
+};
+function meetPainelHtml() {
+  if (MEET.l === null) { meetCarregar(); return ''; }
+  var agora = new Date(), l = MEET.l.filter(function (e) { return !e.cancelado && new Date(e.inicio) > agora; }).slice(0, 3);
+  return '<section class="card" id="meet-painel"><div class="row" style="justify-content:space-between"><div><h2>Eventos perto de si</h2><span style="font-size:13px;color:var(--muted)">LexDesk Meet · encontros organizados por estudantes de Direito</span></div><div class="row"><button class="btn sm" data-go="meet">Ver mapa</button><button class="btn sm wine" data-a="meet-novo">' + I.plus + 'Criar evento</button></div></div>' +
+    (l.length ? '<div class="mt-pl">' + l.map(meetCard).join('') + '</div>' : '<div class="empty" style="border:0">Ainda não há eventos marcados. Que tal organizar um café ou um grupo de estudo?</div>') + '</section>';
+}
 
 /* ---------- MODO NOTURNO ---------- */
 /* Gera automaticamente a versão escura de todas as regras CSS (e dos estilos em linha),
