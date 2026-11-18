@@ -1825,6 +1825,27 @@ img,svg,video,canvas,iframe{max-width:100%}
 html.dark .n2-m .n2-i:hover,html.dark .n2-m .n2-i:focus-visible,html.dark .n2-m .n2-i.on{background:rgba(255,255,255,.07)!important}
 html.dark .n2-m .n2-it b{color:#F1F3F8}html.dark .n2-m .n2-it>span{color:#A9B1C2}
 @media (hover:none){.n2-i:hover{background:none}html.dark .n2-m .n2-i:hover{background:none!important}}
+/* Mapa do processo penal */
+.mpp-w{padding:18px 16px;overflow-x:auto}
+.mpp-tl{list-style:none;margin:0;padding:0;display:flex;gap:6px;min-width:640px;position:relative}
+.mpp-tl::before{content:'';position:absolute;left:24px;right:24px;top:22px;height:2px;background:linear-gradient(90deg,#7B1E2B,#C9A227);opacity:.35}
+.mpp-f{flex:1;position:relative}
+.mpp-f button{width:100%;border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;font:inherit;color:var(--ink);padding:0 2px}
+.mpp-n{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid #E5E1DA;font-weight:800;font-size:15px;color:#0F1B3D;transition:transform .2s,background .2s,border-color .2s,color .2s;position:relative;z-index:1}
+.mpp-f.lat .mpp-n{border-style:dashed}
+.mpp-f b{font-size:12.5px;text-align:center;line-height:1.2}
+.mpp-f button:hover .mpp-n{transform:translateY(-2px);border-color:#7B1E2B}
+.mpp-f.on .mpp-n{background:#7B1E2B;border-color:#7B1E2B;color:#fff;box-shadow:0 8px 18px -8px rgba(123,30,43,.6)}
+.mpp-f.on b{color:#7B1E2B}
+.mpp-g{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start;margin-top:14px}
+.mpp-d h2{margin:4px 0 6px}.mpp-d h3{font-size:15px;margin:18px 0 8px}
+.mpp-quem{background:#FBF6EC;border-radius:12px;padding:10px 12px;font-size:14px}
+.mpp-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.mpp-2 ul{margin:0;padding-left:18px;font-size:14px;line-height:1.55}
+.mpp-art{font-size:12.5px;color:#6B7280;margin:14px 0}
+.mpp-esp h3{margin:4px 0 2px}.mpp-e{display:flex;flex-direction:column;gap:2px;padding:10px 0;border-top:1px solid #EEE9E0;font-size:13px}.mpp-e b{font-size:14px}.mpp-e em{font-style:normal;color:#6B7280;font-size:12px}
+.mpp-esp .btn{margin-top:8px}
+html.dark .mpp-n{background:#1A2233;border-color:#2C3548;color:#E6EAF2}html.dark .mpp-quem{background:rgba(201,162,39,.1)}html.dark .mpp-e{border-color:#2C3548}
+@media (max-width:900px){.mpp-g{grid-template-columns:1fr}.mpp-2{grid-template-columns:1fr}}
 
 </style>
 </head>
@@ -2383,7 +2404,7 @@ var TEMAS = {
   adm: [['org', 'Organização administrativa'], ['princ', 'Princípios da atividade administrativa'], ['proc', 'Procedimento administrativo'], ['ato', 'Ato administrativo'], ['inval', 'Invalidade, revogação e anulação'], ['regul', 'Regulamentos e contratos'], ['cont', 'Contencioso administrativo']],
   com: [['atos', 'Atos de comércio e comerciantes'], ['tit', 'Títulos de crédito'], ['socg', 'Sociedades: parte geral'], ['tipos', 'Tipos de sociedades'], ['orgs', 'Órgãos, quotas e deliberações'], ['insolv', 'Insolvência e recuperação']],
   pc: [['princ', 'Princípios e pressupostos'], ['artic', 'Petição, citação e defesa'], ['prazos', 'Prazos e atos processuais'], ['prova', 'Instrução e prova'], ['sent', 'Sentença e caso julgado'], ['rec', 'Recursos'], ['caut', 'Procedimentos cautelares'], ['exec', 'Ação executiva']],
-  pp: [['geral', 'Princípios e prazos'], ['suj', 'Sujeitos processuais'], ['queixa', 'Queixa e natureza dos crimes'], ['inq', 'Inquérito e acusação'], ['instr', 'Instrução'], ['coac', 'Detenção e medidas de coação'], ['prova', 'Prova'], ['julg', 'Julgamento e tribunais'], ['rec', 'Recursos e habeas corpus']]
+  pp: [['geral', 'Princípios e prazos'], ['suj', 'Sujeitos processuais'], ['comp', 'Competência dos tribunais'], ['queixa', 'Queixa e natureza dos crimes'], ['inq', 'Inquérito e acusação'], ['coac', 'Detenção e medidas de coação'], ['prova', 'Prova'], ['instr', 'Instrução'], ['julg', 'Julgamento'], ['esp', 'Processos especiais'], ['rec', 'Recursos e habeas corpus'], ['nul', 'Nulidades e irregularidades']]
 };
 /* disciplina e tema das questões já existentes */
 (function () {
@@ -3530,6 +3551,159 @@ var CASOS_MODELO = {
     ['Substituição direta', 'fam', 'Designação, pelo testador, de um substituto para o caso de o herdeiro ou legatário instituído não poder ou não querer aceitar.', 'art. 2281.º do CC'],
     ['Fideicomisso', 'fam', 'Substituição fideicomissária: o testador impõe ao herdeiro (fiduciário) o encargo de conservar a herança, para que reverta, por sua morte, a favor de outrem (fideicomissário). É nulo em mais de um grau.', 'art. 2286.º do CC', ['substituição fideicomissária', 'fiduciário', 'fideicomissário']],
     ['Pacto sucessório', 'fam', 'Contrato pelo qual alguém renuncia à sucessão de pessoa viva ou dispõe da sua própria sucessão ou da de terceiro. Só é admitido nos casos previstos na lei.', 'art. 2028.º do CC', ['pactos sucessórios', 'sucessão contratual']]
+  ].forEach(function (g) { GLOSS.push(g); });
+})();
+
+/* ---------- PROCESSO PENAL: casos práticos com resolução-modelo, questões e termos do glossário (texto original do LEXDESK) ---------- */
+(function () {
+  function C(id, titulo, enunciado, perguntas, topicos, modelo) { CASOS.push({ id: id, d: 'pp', titulo: titulo, enunciado: enunciado, perguntas: perguntas, topicos: topicos }); CASOS_MODELO[id] = modelo; }
+
+  C('caso-pp3', 'A busca às duas da manhã',
+    'A PJ investiga Rui por tráfico de estupefacientes. Às 2h00 de um sábado, sem mandado, três inspetores batem à porta da casa de Rui. A companheira, Inês, que vive com ele, abre a porta e, perante a insistência dos inspetores, diz «entrem, não temos nada a esconder». Encontram 2 kg de cocaína num armário do quarto. Rui, que estava a dormir, nada disse. No dia seguinte, o Ministério Público pede ao juiz que «valide» a busca.',
+    ['A busca podia realizar-se àquela hora e sem despacho prévio do juiz?', 'O consentimento de Inês é suficiente?', 'Que consequência tem uma eventual ilegalidade na prova encontrada?'],
+    ['Busca domiciliária: regra de autorização judicial e horário das 7 às 21 horas (art. 177.º, n.º 1, do CPP); exceções do n.º 2 (criminalidade especialmente violenta ou altamente organizada, consentimento documentado, flagrante delito por crime com pena superior a 3 anos).', 'Consentimento: tem de ser do visado e documentado (art. 177.º, n.º 2, alínea b), e art. 174.º, n.º 5, alínea b), do CPP); discute-se o consentimento de um coabitante.', 'Nulidade da busca (art. 177.º, n.º 1, do CPP) e proibição de valoração (art. 126.º, n.º 3, do CPP); a validação posterior não sana o vício.'],
+    [['Em regra, não. A busca em casa habitada depende de ordem ou autorização do juiz e efetuada entre as 7 e as 21 horas, sob pena de nulidade (art. 177.º, n.º 1, do CPP). Fora desse horário, só é possível nos casos do n.º 2: terrorismo ou criminalidade especialmente violenta ou altamente organizada, consentimento do visado documentado, ou flagrante delito por crime punível com prisão de máximo superior a 3 anos. O tráfico de estupefacientes pode integrar a criminalidade altamente organizada (art. 1.º, alínea m), do CPP), mas mesmo nesse caso a busca sem despacho prévio do juiz só é admitida pelo Ministério Público ou pelos órgãos de polícia criminal nas situações do art. 177.º, n.º 3, do CPP, com comunicação imediata ao juiz para validação. Nada no enunciado indica uma situação de flagrante delito ou de urgência que justificasse a atuação sem mandado.'],
+      ['O consentimento exigido é o do visado, isto é, de quem tem a disponibilidade do lugar onde a busca se realiza, e tem de ficar documentado (art. 177.º, n.º 2, alínea b), e art. 174.º, n.º 5, alínea b), do CPP). Inês coabita com Rui e, nessa medida, pode ser considerada visada quanto aos espaços comuns. Mas há duas fragilidades: o consentimento foi dado «perante a insistência» dos inspetores, o que põe em causa a sua liberdade, e não consta que tenha sido documentado. Acresce que Rui, também titular do domicílio, estava presente e não foi consultado. A solução mais segura é considerar que não houve consentimento válido.'],
+      ['Sendo a busca ilegal, é nula (art. 177.º, n.º 1, do CPP) e a prova obtida com intromissão no domicílio sem consentimento do titular, sem base legal, não pode ser utilizada (art. 126.º, n.º 3, do CPP, e art. 32.º, n.º 8, da CRP). A «validação» pedida no dia seguinte não sana o vício: a validação do art. 177.º, n.º 3, pressupõe que se estava numa das situações em que a lei dispensa o despacho prévio, o que não acontecia. A cocaína apreendida não pode servir de prova contra Rui, e deve ainda ponderar-se se outras provas que dela derivem ficam contaminadas.']]);
+
+  C('caso-pp4', 'A escuta que apanhou outro crime',
+    'No inquérito contra Sofia por corrupção, o juiz de instrução autorizou a interceção do telemóvel desta. Numa das conversas gravadas, Sofia combina com o irmão, Duarte, a venda de um carro furtado. O Ministério Público quer usar essa gravação num processo novo contra Duarte por recetação (art. 231.º, n.º 1, do CP, punível com prisão até 5 anos ou multa). Noutra conversa, Sofia fala com o seu advogado sobre a estratégia de defesa.',
+    ['A gravação pode ser usada no processo contra Duarte?', 'E a conversa entre Sofia e o advogado?'],
+    ['Conhecimentos fortuitos: só podem ser usados noutro processo nas condições do art. 187.º, n.º 7, do CPP (crime do catálogo e interceção de pessoa abrangida pelo n.º 4).', 'Conversas com o defensor: proibida a interceção e gravação, salvo quando o juiz tenha motivos sérios para pensar que constituem objeto ou elemento de crime (art. 187.º, n.º 5, do CPP); a violação gera nulidade (art. 190.º do CPP).'],
+    [['Trata-se de um conhecimento fortuito: um facto descoberto durante uma escuta autorizada para outro crime. A sua utilização noutro processo só é admitida se a gravação resultar da interceção de meio de comunicação usado por pessoa abrangida pelo art. 187.º, n.º 4, do CPP e se for indispensável à prova de um crime do catálogo do n.º 1 (art. 187.º, n.º 7, do CPP). Sofia é suspeita no processo, pelo que a primeira condição está cumprida. A recetação é punível com prisão até 5 anos ou multa; como o máximo da pena de prisão é superior a 3 anos, o crime integra o catálogo da alínea a) do n.º 1 do art. 187.º. Resta demonstrar que a gravação é indispensável à prova contra Duarte. Se o for, pode ser usada; caso contrário, serve apenas como notícia do crime para abrir inquérito, devendo a prova ser obtida por outros meios.'],
+      ['Não. É proibida a interceção e a gravação de conversas do arguido com o respetivo defensor, salvo quando o juiz tenha motivos sérios para pensar que são, elas próprias, objeto ou elemento de crime (art. 187.º, n.º 5, do CPP). Nada indica que seja o caso. A gravação é nula (art. 190.º do CPP), deve ser destruída e o seu conteúdo não pode ser valorado. Esta proteção decorre diretamente das garantias de defesa (art. 32.º, n.º 1, da CRP).']]);
+
+  C('caso-pp5', 'A testemunha que afinal era suspeita',
+    'Numa investigação por burla, Hugo é ouvido pela PSP como testemunha e admite que recebeu o dinheiro da vítima. Só depois é constituído arguido. No julgamento, Hugo decide ficar em silêncio. O Ministério Público pede que se leiam as declarações que Hugo prestou à PSP e, subsidiariamente, que o agente que o ouviu deponha sobre o que Hugo lhe contou.',
+    ['As declarações de Hugo à PSP podiam ter sido tomadas como testemunha?', 'Podem ser lidas em julgamento?', 'O agente pode depor sobre o que ouviu?'],
+    ['Obrigatoriedade de constituição de arguido logo que haja suspeita fundada (arts. 58.º, n.º 1, alínea a), e 59.º do CPP); consequência do n.º 7 do art. 58.º.', 'Regime de leitura de declarações do arguido (art. 357.º do CPP): só as prestadas perante autoridade judiciária com defensor e com a advertência do art. 141.º, n.º 4, alínea b).', 'Proibição de os órgãos de polícia criminal deporem sobre declarações cuja leitura não seja permitida (art. 356.º, n.º 7, do CPP).'],
+    [['Não deviam. Logo que, durante a inquirição de uma testemunha, apareça uma suspeita séria de que a pessoa ouvida cometeu um crime, a entidade que procede ao ato suspende-o imediatamente e constitui a pessoa como arguido (art. 59.º, n.º 1, do CPP). Ao manter Hugo como testemunha, a PSP impediu-o de exercer o direito ao silêncio e os demais direitos de arguido. Essas declarações não podem ser utilizadas como prova (art. 58.º, n.º 7, do CPP).'],
+      ['Não. Mesmo que tivessem sido prestadas já como arguido, só podem ser lidas em audiência as declarações anteriores do arguido prestadas perante juiz ou Ministério Público, estando presente o defensor, e depois de informado de que podiam ser usadas no processo (art. 357.º, n.º 1, alínea b), e art. 141.º, n.º 4, alínea b), do CPP). Declarações prestadas à PSP não preenchem estes requisitos. O silêncio de Hugo em julgamento não pode ser contornado por esta via, nem valorado contra ele (art. 61.º, n.º 1, alínea d), do CPP).'],
+      ['Também não. Os órgãos de polícia criminal que tenham recebido declarações cuja leitura não seja permitida, nem quem tenha colaborado de algum modo, tenham participado na sua recolha, não podem ser inquiridos como testemunhas sobre o conteúdo daquelas (art. 356.º, n.º 7, do CPP). Admiti-lo seria fazer entrar pela porta da prova testemunhal aquilo que a lei não deixa entrar pela leitura.']]);
+
+  C('caso-pp6', 'O arquivamento que a vítima não aceita',
+    'Marta apresentou queixa contra o ex-marido por ofensa à integridade física simples. O Ministério Público arquivou o inquérito por falta de indícios, sem ouvir duas testemunhas que Marta tinha indicado. Marta é notificada do arquivamento e procura um advogado 25 dias depois. Ainda não se constituiu assistente.',
+    ['Que meios tem Marta para reagir?', 'Ainda vai a tempo?', 'Que deve conter o seu requerimento?'],
+    ['Instrução a requerer pelo assistente (art. 287.º, n.º 1, alínea b), do CPP); intervenção hierárquica (art. 278.º do CPP); omissão de diligências como nulidade (art. 120.º, n.º 2, alínea d), do CPP).', 'Prazo de 20 dias para requerer instrução já decorrido; intervenção hierárquica nos 20 dias seguintes ao fim desse prazo; constituição de assistente (art. 68.º, n.º 3, alínea b), do CPP).', 'Requerimento de intervenção hierárquica fundamentado ou, se ainda possível, requerimento de abertura de instrução com narração dos factos (arts. 287.º, n.º 2, e 283.º, n.º 3, do CPP).'],
+    [['Marta tem duas vias. A primeira é requerer a abertura da instrução, constituindo-se assistente, para que um juiz comprove a decisão de arquivar (art. 287.º, n.º 1, alínea b), do CPP); a ofensa à integridade física simples é semipública, pelo que a instrução é admissível. A segunda é pedir a intervenção hierárquica do superior do magistrado que arquivou, para que este determine o prosseguimento das investigações ou a dedução de acusação (art. 278.º do CPP). Pode ainda invocar a insuficiência do inquérito, por omissão de diligências essenciais (art. 120.º, n.º 2, alínea d), do CPP).'],
+      ['O prazo para requerer a instrução é de 20 dias a contar da notificação do arquivamento (art. 287.º, n.º 1, do CPP). Passados 25 dias, esse prazo terminou, salvo justo impedimento ou o pagamento de multa nos três dias úteis seguintes ao termo do prazo (art. 107.º-A do CPP), que também já não se aplica. Resta a intervenção hierárquica, que pode ser requerida em 20 dias contados da data em que a abertura da instrução já não pode ser requerida (art. 278.º, n.º 1, do CPP). Marta está a tempo de a pedir, como denunciante que pode vir a ser assistente.'],
+      ['O requerimento de intervenção hierárquica deve explicar por que razão o arquivamento é infundado: a omissão das duas testemunhas indicadas, a sua relevância para a prova da agressão e o que se espera provar com elas. Se ainda estivesse em prazo para a instrução, o requerimento teria de narrar os factos imputados ao arguido e indicar as normas aplicáveis, como uma verdadeira acusação, sob pena de rejeição (arts. 287.º, n.os 2 e 3, e 283.º, n.º 3, do CPP).']]);
+
+  C('caso-pp7', 'Prisão preventiva: até quando?',
+    'Tiago está em prisão preventiva desde 3 de março, por roubo (art. 210.º, n.º 1, do CP, punível com prisão de 1 a 8 anos). A 10 de julho ainda não foi deduzida acusação e o seu advogado quer pedir a libertação imediata. Desde o primeiro interrogatório, Tiago nunca mais foi ouvido sobre a manutenção da medida, e o processo não foi declarado de excecional complexidade.',
+    ['A prisão preventiva mantém-se legal a 10 de julho?', 'Se a 4 de setembro Tiago continuar preso sem acusação, que meio deve usar e perante que tribunal?', 'Que outra falha se deteta e que consequência tem?'],
+    ['Prazo regra de 4 meses sem acusação (art. 215.º, n.º 1, alínea a), do CPP), elevado para 6 meses na criminalidade violenta (art. 215.º, n.º 2, do CPP); o roubo é criminalidade violenta (art. 1.º, alínea j), do CPP).', 'Habeas corpus por prisão mantida para além dos prazos (art. 222.º, n.º 2, alínea c), do CPP), dirigido ao Supremo Tribunal de Justiça.', 'Reexame trimestral obrigatório (art. 213.º, n.º 1, alínea a), do CPP).'],
+    [['Sim. A regra é a extinção da prisão preventiva ao fim de quatro meses sem acusação (art. 215.º, n.º 1, alínea a), do CPP), o que apontaria para 3 de julho. Porém, o prazo é elevado para seis meses nos casos de criminalidade violenta (art. 215.º, n.º 2, do CPP). O roubo dirige-se contra a integridade física e a liberdade pessoal e é punível com prisão de máximo igual ou superior a 5 anos, pelo que é criminalidade violenta (art. 1.º, alínea j), do CPP). Esta elevação resulta diretamente da lei e não depende de declaração de excecional complexidade, que só releva para o n.º 3 do art. 215.º. O prazo termina a 3 de setembro; a 10 de julho, a prisão ainda é legal quanto ao prazo.'],
+      ['A 4 de setembro, sem acusação, o prazo de seis meses estaria ultrapassado e a prisão passaria a ser ilegal por se manter para além dos prazos fixados por lei (art. 222.º, n.º 2, alínea c), do CPP). O meio próprio é a providência de habeas corpus, que pode ser requerida pelo próprio ou por qualquer cidadão com plenos direitos políticos, endereçada ao presidente do Supremo Tribunal de Justiça (art. 222.º, n.º 1, do CPP). É um meio expedito e independente do recurso.'],
+      ['O juiz devia ter reexaminado oficiosamente os pressupostos da prisão preventiva até três meses depois da aplicação, isto é, até 3 de junho, decidindo se a medida devia ser mantida, substituída ou revogada (art. 213.º, n.º 1, alínea a), do CPP). A falta de reexame não torna, por si só, a prisão ilegal para efeitos de habeas corpus, porque a medida não caduca por isso. Mas é um vício que Tiago pode invocar, pedindo de imediato o reexame e a revogação ou substituição da medida, se os pressupostos tiverem enfraquecido (art. 212.º do CPP).']]);
+
+  C('caso-pp8', 'A faca que apareceu no julgamento',
+    'Vasco está acusado de ofensa à integridade física simples (art. 143.º do CP), por ter dado um murro a um colega. No julgamento, uma testemunha afirma que Vasco tinha uma faca na mão e que ameaçou o colega com ela, o que não constava da acusação. A defesa opõe-se a que estes factos sejam considerados. O Ministério Público defende que se trata apenas de uma «alteração da qualificação».',
+    ['Que tipo de alteração está em causa?', 'Como deve o tribunal proceder?', 'E se o tribunal condenar Vasco por ofensa qualificada sem cumprir esse regime?'],
+    ['Conceito de alteração substancial (art. 1.º, alínea f), do CPP): crime diverso ou agravação dos limites máximos.', 'Regime do art. 359.º do CPP: sem acordo, os novos factos não podem ser considerados; podem valer como denúncia se forem autonomizáveis.', 'Nulidade da sentença (art. 379.º, n.º 1, alínea b), do CPP).'],
+    [['Os novos factos não alteram apenas a qualificação jurídica. O uso de uma faca pode integrar a ofensa à integridade física qualificada (art. 145.º do CP, por referência ao art. 132.º, n.º 2, do CP), com moldura mais grave, e a ameaça com faca pode configurar um crime autónomo de ameaça agravada. Em ambos os casos, há uma alteração substancial dos factos: imputa-se um crime diverso ou agravam-se os limites máximos da pena (art. 1.º, alínea f), do CPP). A posição do Ministério Público não procede.'],
+      ['A alteração substancial não pode ser tomada em conta para a condenação no processo em curso (art. 359.º, n.º 1, do CPP), a menos que Ministério Público, arguido e assistente estejam de acordo em que o julgamento prossiga também pelos factos novos (art. 359.º, n.º 3, do CPP). A defesa opõe-se, pelo que não há acordo. Quanto à agravação da ofensa (uso da faca na agressão), os factos não são autonomizáveis e o julgamento prossegue apenas pela ofensa simples. Quanto à ameaça, que é um facto autónomo, a comunicação ao Ministério Público funciona como denúncia, para que este proceda num processo próprio (art. 359.º, n.º 2, do CPP).'],
+      ['A sentença que condene por factos diversos dos descritos na acusação, fora dos casos e das condições dos arts. 358.º e 359.º do CPP, é nula (art. 379.º, n.º 1, alínea b), do CPP). Vasco pode arguir a nulidade no recurso, e o tribunal superior pode conhecê-la (art. 379.º, n.º 2, do CPP).']]);
+
+  C('caso-pp9', 'Recorrer para onde?',
+    'Joana foi condenada pelo tribunal coletivo a 6 anos de prisão por tráfico de estupefacientes. Discorda de dois pontos: entende que o tribunal deu como provado, sem prova bastante, que vendia droga desde 2022; e considera a pena excessiva. Só ela recorre. O depósito do acórdão foi feito a 2 de maio.',
+    ['Para que tribunal deve recorrer?', 'Em que prazo e com que exigências?', 'O tribunal superior pode aumentar a pena?'],
+    ['Impugnação da matéria de facto implica recurso para a Relação (arts. 427.º e 428.º do CPP); o recurso direto para o Supremo só para matéria de direito (art. 432.º, n.º 1, alínea c), do CPP).', 'Prazo de 30 dias a contar do depósito (art. 411.º, n.º 1, alínea b), do CPP); especificações do art. 412.º, n.º 3, do CPP.', 'Proibição da reformatio in pejus (art. 409.º do CPP).'],
+    [['Joana quer discutir também a matéria de facto (a prova da atividade desde 2022). O recurso direto para o Supremo Tribunal de Justiça só é possível quando vise apenas a discussão de questões de direito (art. 432.º, n.º 1, alínea c), do CPP). Como impugna factos, deve recorrer para o Tribunal da Relação, que conhece de facto e de direito (arts. 427.º e 428.º do CPP), e pode aí discutir também a medida da pena. Da decisão da Relação poderá depois haver recurso para o Supremo, nos limites do art. 400.º do CPP: se a Relação confirmar a condenação em pena não superior a 8 anos, funciona a dupla conforme e já não há recurso (art. 400.º, n.º 1, alínea f), do CPP).'],
+      ['O prazo é de 30 dias a contar do depósito do acórdão na secretaria (art. 411.º, n.º 1, alínea b), do CPP). O requerimento é motivado e termina com conclusões (arts. 411.º, n.º 3, e 412.º, n.º 1, do CPP). Na impugnação da matéria de facto, Joana tem de especificar os concretos pontos de facto que considera incorretamente julgados, as concretas provas que impõem decisão diversa e as provas que devem ser renovadas, com referência às passagens das gravações (art. 412.º, n.os 3 e 4, do CPP). Sem estas especificações, a impugnação de facto pode ser rejeitada.'],
+      ['Não. Tendo o recurso sido interposto apenas pela arguida, o tribunal de recurso fica impedido de agravar o tipo ou a medida das sanções em prejuízo dela (art. 409.º, n.º 1, do CPP). No pior cenário, a decisão é mantida.']]);
+
+  C('caso-pp10', 'O carteirista apanhado no elétrico',
+    'Às 10h00, no elétrico 28, um turista vê Leandro tirar-lhe a carteira do bolso e agarra-o. Com a ajuda de outros passageiros, retém-no até à paragem seguinte, onde o entregam a uma patrulha da PSP às 10h40. O furto simples é punível com prisão até 3 anos ou multa (art. 203.º, n.º 1, do CP). Leandro tem 19 anos e não tem antecedentes.',
+    ['A detenção pelos passageiros foi legal?', 'Que forma de processo deve seguir-se e em que prazo?', 'Há alternativa ao julgamento?'],
+    ['Flagrante delito (art. 256.º do CPP); detenção por qualquer pessoa quando nenhuma autoridade esteja presente nem possa ser chamada em tempo útil (art. 255.º, n.º 1, alínea b), do CPP).', 'Processo sumário (art. 381.º, n.º 1, alínea b), do CPP): entrega em menos de duas horas; audiência em 48 horas (art. 387.º do CPP).', 'Suspensão provisória do processo (arts. 281.º e 384.º do CPP).'],
+    [['Sim. Leandro foi surpreendido a cometer o crime, o que constitui flagrante delito (art. 256.º, n.º 1, do CPP). Num crime punível com pena de prisão, qualquer pessoa pode proceder à detenção em flagrante delito se uma autoridade judiciária ou entidade policial não estiver no local nem for possível chamá-la a tempo (art. 255.º, n.º 1, alínea b), do CPP), devendo entregar imediatamente o detido a uma dessas entidades (art. 255.º, n.º 2, do CPP). Foi o que aconteceu.'],
+      ['O processo sumário: há detenção em flagrante delito, quanto a um crime cuja pena de prisão tem um máximo não superior a 5 anos, efetuada por particular, e o detido foi entregue à PSP em 40 minutos, dentro do limite de duas horas (art. 381.º, n.º 1, alínea b), do CPP). A PSP deve lavrar auto sumário da entrega e apresentar Leandro ao Ministério Público, e a audiência deve começar até 48 horas depois de ser detido (arts. 382.º e 387.º, n.º 1, do CPP), salvo os adiamentos previstos no art. 387.º, n.º 2.'],
+      ['Sim. Em processo sumário, o Ministério Público pode determinar a suspensão provisória do processo, quando se verifiquem os seus pressupostos (art. 384.º, n.º 1, do CPP, remetendo para o art. 281.º). Leandro não tem antecedentes, o crime é de pequena gravidade e é previsível que injunções como reparar o lesado ou entregar uma quantia a uma instituição bastem para as exigências de prevenção. É ainda necessária a concordância do arguido e do juiz.']]);
+
+  /* Questões do simulador */
+  function N(t, id, q, o, e) { QUESTOES.push({ id: id, d: 'pp', t: t, q: q, o: o, a: 0, e: e }); }
+  N('comp', 'pq1', 'Um crime punível com prisão até 5 anos, sem outras especialidades, é julgado:', ['Pelo tribunal singular', 'Pelo tribunal coletivo', 'Pelo tribunal do júri', 'Pelo juiz de instrução'], 'O tribunal singular julga os crimes cuja pena máxima abstrata seja igual ou inferior a 5 anos de prisão (art. 16.º, n.º 2, alínea b), do CPP).');
+  N('comp', 'pq2', 'A intervenção do tribunal do júri:', ['Depende sempre de requerimento e é irretratável', 'É obrigatória nos crimes de homicídio', 'É decidida oficiosamente pelo juiz', 'Pode ser requerida apenas pelo arguido'], 'O júri só intervém a requerimento do Ministério Público, do assistente ou do arguido, e o requerimento é irretratável (art. 13.º, n.os 1, 2 e 5, do CPP).');
+  N('comp', 'pq3', 'Quando o Ministério Público usa a faculdade do art. 16.º, n.º 3, do CPP, o tribunal singular:', ['Fica impedido de ir além de 5 anos', 'Pode aplicar qualquer pena dentro da moldura legal', 'Tem de remeter o processo ao coletivo', 'Só pode aplicar pena de multa'], 'É o limite do art. 16.º, n.º 4, do CPP.');
+  N('comp', 'pq4', 'A incompetência territorial do tribunal:', ['Só pode ser deduzida e declarada até ao início da audiência de julgamento', 'Pode ser conhecida até ao trânsito em julgado', 'Gera nulidade insanável', 'Nunca pode ser conhecida oficiosamente'], 'A incompetência territorial tem um limite temporal (art. 32.º, n.º 2, do CPP), ao contrário da material e funcional.');
+  N('comp', 'pq5', 'O juiz que presidiu ao debate instrutório:', ['Está impedido de intervir no julgamento do mesmo processo', 'Pode presidir ao julgamento, se ninguém se opuser', 'Só fica impedido se tiver aplicado prisão preventiva', 'Pode intervir no julgamento como adjunto'], 'É um caso de impedimento por participação no processo (art. 40.º do CPP).');
+  N('suj', 'pq6', 'É obrigatória a constituição de arguido quando:', ['Um suspeito é detido', 'Alguém apresenta queixa', 'Uma testemunha é inquirida pela primeira vez', 'O Ministério Público abre inquérito contra desconhecidos'], 'A detenção de um suspeito impõe a constituição de arguido (art. 58.º, n.º 1, alínea c), do CPP).');
+  N('suj', 'pq7', 'A omissão da constituição de arguido, quando obrigatória, implica que:', ['Aquilo que a pessoa disse nessas condições fica proibido de ser usado como prova', 'Todo o inquérito é nulo', 'O processo tem de ser arquivado', 'A pessoa não pode voltar a ser ouvida'], 'É a consequência prevista no art. 58.º, n.º 7, do CPP.');
+  N('suj', 'pq8', 'O arguido tem o dever de responder com verdade às perguntas sobre:', ['A sua identidade', 'Os factos que lhe são imputados', 'O paradeiro dos objetos do crime', 'As declarações de outros arguidos'], 'O dever de verdade limita-se à identidade (art. 61.º, n.º 6, alínea b), do CPP); quanto aos factos, tem direito ao silêncio.');
+  N('suj', 'pq9', 'Os assistentes em processo penal:', ['São sempre representados por advogado', 'Podem intervir pessoalmente em todas as fases', 'Só podem ser pessoas singulares', 'Não podem recorrer das decisões'], 'Art. 70.º, n.º 1, do CPP.');
+  N('suj', 'pq10', 'Pela regra da adesão, o pedido de indemnização civil fundado num crime é deduzido:', ['No processo penal', 'Sempre em ação cível autónoma', 'Apenas depois do trânsito da sentença penal', 'No tribunal administrativo'], 'Art. 71.º do CPP; o pedido em separado só é possível nos casos do art. 72.º do CPP.');
+  N('suj', 'pq11', 'É obrigatória a assistência de defensor:', ['No primeiro interrogatório de arguido detido', 'Na constituição de arguido em qualquer caso', 'Na apresentação de queixa', 'Na prestação do termo de identidade e residência'], 'Art. 64.º, n.º 1, alínea a), do CPP.');
+  N('queixa', 'pq12', 'Nos crimes particulares, o processo depende de:', ['Queixa, constituição de assistente e acusação particular', 'Apenas de queixa', 'Apenas de acusação do Ministério Público', 'Autorização do juiz de instrução'], 'Art. 50.º do CPP.');
+  N('queixa', 'pq13', 'O direito de queixa extingue-se:', ['Seis meses após o titular conhecer o facto e os seus autores', 'Seis meses após a prática do facto', 'Um ano após a prática do facto', 'Com a prescrição do procedimento criminal'], 'Art. 115.º, n.º 1, do CP.');
+  N('queixa', 'pq14', 'Num crime particular, se o assistente não deduzir acusação:', ['O Ministério Público não pode acusar e o processo é arquivado', 'O Ministério Público acusa em sua substituição', 'O juiz nomeia um acusador oficioso', 'O processo segue para julgamento sem acusação'], 'A acusação particular é indispensável (arts. 50.º e 285.º do CPP).');
+  N('queixa', 'pq15', 'A desistência da queixa é possível:', ['Até à publicação da sentença de 1.ª instância, se o arguido não se opuser', 'A todo o tempo, mesmo após o trânsito em julgado', 'Apenas durante o inquérito', 'Só com autorização do Ministério Público'], 'Art. 116.º, n.º 2, do CP, e art. 51.º do CPP.');
+  N('inq', 'pq16', 'O inquérito, sem arguidos presos nem em permanência na habitação, deve terminar, em regra, no prazo de:', ['8 meses', '6 meses', '4 meses', '12 meses'], 'Art. 276.º, n.º 1, do CPP.');
+  N('inq', 'pq17', 'A suspensão provisória do processo exige, entre outros requisitos:', ['Acordo do arguido e do assistente, bem como do juiz de instrução', 'Que o crime seja punível só com multa', 'Uma condenação anterior do arguido', 'Que o arguido confesse os factos em julgamento'], 'Art. 281.º, n.º 1, do CPP.');
+  N('inq', 'pq18', 'Os «indícios suficientes» que justificam a acusação existem quando:', ['Resulta deles uma probabilidade razoável de o arguido vir a sofrer uma pena ou medida de segurança', 'Há certeza absoluta da culpa do arguido', 'O arguido confessou', 'Existe pelo menos uma testemunha presencial'], 'Art. 283.º, n.º 2, do CPP.');
+  N('inq', 'pq19', 'Contra um despacho de arquivamento, além da instrução, o assistente pode:', ['Pedir a intervenção hierárquica', 'Recorrer diretamente para a Relação', 'Pedir habeas corpus', 'Requerer a suspensão provisória do processo'], 'Art. 278.º do CPP.');
+  N('inq', 'pq20', 'As buscas domiciliárias no inquérito são, em regra, ordenadas ou autorizadas:', ['Pelo juiz de instrução', 'Pelo Ministério Público', 'Pelo órgão de polícia criminal', 'Pelo presidente do tribunal'], 'Arts. 177.º, n.º 1, e 269.º, n.º 1, alínea c), do CPP.');
+  N('inq', 'pq21', 'As declarações para memória futura:', ['São tomadas pelo juiz de instrução, com contraditório, e podem ser lidas no julgamento', 'São tomadas pelo Ministério Público sem presença do defensor', 'Nunca podem ser usadas em julgamento', 'Substituem obrigatoriamente o depoimento em audiência em todos os crimes'], 'Arts. 271.º e 356.º, n.º 2, alínea a), do CPP.');
+  N('coac', 'pq22', 'A medida de coação que pode ser aplicada pelo Ministério Público ou pelo órgão de polícia criminal é:', ['O termo de identidade e residência', 'A caução', 'A obrigação de permanência na habitação', 'A suspensão do exercício de funções'], 'Art. 196.º, n.º 1, do CPP.');
+  N('coac', 'pq23', 'Os pressupostos gerais das medidas de coação (art. 204.º do CPP) são:', ['Fuga ou perigo de fuga, perigo para a prova e perigo de continuação da atividade criminosa ou perturbação da ordem pública', 'Apenas a gravidade do crime', 'A existência de antecedentes criminais', 'A confissão do arguido'], 'Os perigos têm de verificar-se em concreto (art. 204.º, n.º 1, do CPP).');
+  N('coac', 'pq24', 'Os pressupostos da prisão preventiva são reexaminados oficiosamente:', ['No prazo máximo de três meses', 'Uma vez por ano', 'Apenas a requerimento do arguido', 'Só no fim do inquérito'], 'Art. 213.º, n.º 1, alínea a), do CPP.');
+  N('coac', 'pq25', 'Em regra, a prisão preventiva extingue-se se, desde o seu início, decorrerem sem acusação:', ['4 meses', '6 meses', '8 meses', '1 ano'], 'Art. 215.º, n.º 1, alínea a), do CPP.');
+  N('coac', 'pq26', 'O particular pode deter alguém em flagrante delito:', ['Se nenhuma autoridade estiver no local nem for possível chamá-la a tempo', 'Em qualquer circunstância e por qualquer crime', 'Nunca', 'Apenas com autorização telefónica do Ministério Público'], 'Art. 255.º, n.º 1, alínea b), do CPP.');
+  N('coac', 'pq27', 'A providência de habeas corpus por prisão ilegal é decidida:', ['Pelo Supremo Tribunal de Justiça', 'Pelo juiz de instrução', 'Pelo Tribunal Constitucional', 'Pelo Ministério Público'], 'Arts. 222.º e 223.º do CPP.');
+  N('prova', 'pq28', 'Uma confissão obtida com promessa de vantagem legalmente inadmissível é:', ['Prova proibida, que não pode ser utilizada', 'Válida, se o arguido a confirmar', 'Uma mera irregularidade', 'Válida apenas contra os coarguidos'], 'Art. 126.º, n.º 2, alínea e), do CPP.');
+  N('prova', 'pq29', 'O depoimento indireto (ouvir dizer):', ['Só vale se a pessoa de quem se ouviu for chamada a depor, salvo impossibilidade', 'Vale sempre como prova plena', 'É sempre proibido', 'Só vale em processo sumário'], 'Art. 129.º, n.º 1, do CPP.');
+  N('prova', 'pq30', 'A apreciação técnica ou científica própria de uma perícia:', ['Em princípio, não fica sujeita à livre convicção do juiz', 'É livremente apreciado como qualquer prova', 'Vincula o tribunal sem possibilidade de divergência', 'Só vale se confirmado por testemunhas'], 'Art. 163.º, n.º 1, do CPP; a divergência tem de ser fundamentada (n.º 2).');
+  N('prova', 'pq31', 'A interceção de conversas entre o arguido e o seu defensor:', ['É proibida, salvo fundadas razões para crer que constituem objeto ou elemento de crime', 'É livre se autorizada pelo Ministério Público', 'É sempre permitida nos crimes do catálogo', 'Depende apenas de consentimento do arguido'], 'Art. 187.º, n.º 5, do CPP.');
+  N('prova', 'pq32', 'Em regra, as declarações prestadas no inquérito:', ['Não podem ser valoradas em julgamento se não forem reproduzidas nos casos admitidos por lei', 'Valem automaticamente como prova em julgamento', 'Só valem se o Ministério Público as ler', 'Só podem ser usadas contra o assistente'], 'Arts. 355.º a 357.º do CPP.');
+  N('instr', 'pq33', 'O requerimento de abertura da instrução só pode ser rejeitado:', ['Por extemporaneidade, incompetência do juiz ou inadmissibilidade legal da instrução', 'Por falta de provas', 'Se o Ministério Público discordar', 'Se o arguido estiver preso'], 'Art. 287.º, n.º 3, do CPP.');
+  N('instr', 'pq34', 'Não havendo arguidos presos, a instrução deve terminar em:', ['4 meses', '2 meses', '6 meses', '8 meses'], 'Art. 306.º, n.º 1, do CPP.');
+  N('instr', 'pq35', 'A decisão instrutória que pronuncia o arguido pelos factos da acusação do Ministério Público:', ['É irrecorrível', 'Admite recurso para o Supremo Tribunal de Justiça', 'Admite reclamação para o presidente da Relação', 'É recorrível apenas pelo assistente'], 'Art. 310.º, n.º 1, do CPP.');
+  N('julg', 'pq36', 'Uma alteração substancial dos factos é aquela que:', ['Imputa ao arguido um crime diverso ou agrava os limites máximos das sanções aplicáveis', 'Altera apenas a data dos factos', 'Muda a qualificação jurídica sem alterar factos', 'Corrige um erro de escrita da acusação'], 'Art. 1.º, alínea f), do CPP.');
+  N('julg', 'pq37', 'O arguido notificado para contestar dispõe, em regra, de:', ['20 dias', '10 dias', '30 dias', '5 dias'], 'Art. 311.º-B, n.º 1, do CPP.');
+  N('julg', 'pq38', 'A confissão integral e sem reservas em julgamento NÃO dispensa a produção de prova quando:', ['O crime é punível com prisão superior a 5 anos', 'O arguido é primário', 'Há assistente constituído', 'O julgamento decorre no tribunal singular'], 'Art. 344.º, n.º 3, alínea c), do CPP.');
+  N('julg', 'pq39', 'É nula a sentença que:', ['Não contenha o exame crítico das provas', 'Seja lida no dia seguinte à deliberação', 'Não mencione o nome dos jurados', 'Seja proferida por tribunal singular'], 'Arts. 374.º, n.º 2, e 379.º, n.º 1, alínea a), do CPP.');
+  N('esp', 'pq40', 'No processo sumaríssimo, a sanção proposta pelo Ministério Público:', ['Tem de ser não privativa da liberdade', 'Pode ser prisão efetiva até 5 anos', 'É sempre a pena de multa máxima', 'É fixada pelo assistente'], 'Art. 392.º, n.º 1, do CPP.');
+  N('esp', 'pq41', 'O detido em flagrante por um particular pode ser julgado em processo sumário se for entregue à autoridade:', ['Num prazo que não exceda duas horas', 'No prazo de 24 horas', 'No prazo de 48 horas', 'Em qualquer prazo'], 'Art. 381.º, n.º 1, alínea b), do CPP.');
+  N('esp', 'pq42', 'Nas formas de processo especiais:', ['Não há lugar a instrução', 'A instrução é obrigatória', 'Só o assistente pode requerer instrução', 'A instrução é dirigida pelo Ministério Público'], 'Art. 286.º, n.º 3, do CPP.');
+  N('rec', 'pq43', 'O prazo geral de interposição de recurso em processo penal é de:', ['30 dias', '20 dias', '15 dias', '10 dias'], 'Art. 411.º, n.º 1, do CPP.');
+  N('rec', 'pq44', 'Se só o arguido recorre, o tribunal superior:', ['Não pode agravar a sanção', 'Pode agravar a pena se a achar branda', 'Tem de confirmar a decisão', 'Pode condenar por outro crime mais grave'], 'Proibição da reformatio in pejus (art. 409.º, n.º 1, do CPP).');
+  N('rec', 'pq45', 'Do acórdão do coletivo que aplique prisão superior a 5 anos, visando só matéria de direito, recorre-se:', ['Diretamente para o Supremo Tribunal de Justiça', 'Para a Relação e depois para o Supremo', 'Para o Tribunal Constitucional', 'Para o juiz de instrução'], 'Art. 432.º, n.º 1, alínea c), e n.º 2, do CPP.');
+  N('rec', 'pq46', 'Não é admissível recurso de acórdão da Relação que confirme a condenação de 1.ª instância em pena de prisão:', ['Não superior a 8 anos', 'Superior a 8 anos', 'Superior a 5 anos', 'Qualquer que seja a pena'], 'Dupla conforme (art. 400.º, n.º 1, alínea f), do CPP).');
+  N('nul', 'pq47', 'A ausência do defensor num ato em que a lei exige a sua comparência é:', ['Nulidade insanável', 'Nulidade dependente de arguição', 'Mera irregularidade', 'Inexistência jurídica'], 'Art. 119.º, alínea c), do CPP.');
+  N('nul', 'pq48', 'As irregularidades devem ser arguidas, se o interessado não assistiu ao ato:', ['Nos três dias seguintes à notificação para qualquer termo do processo ou à intervenção em algum ato', 'No prazo de 10 dias', 'Até ao trânsito em julgado', 'No recurso da sentença'], 'Art. 123.º, n.º 1, do CPP.');
+  N('nul', 'pq49', 'A nulidade por insuficiência do inquérito deve ser arguida:', ['No requerimento de abertura da instrução ou, não havendo instrução, até ao termo do prazo para a requerer', 'Até ao início da audiência', 'No recurso da sentença', 'A todo o tempo'], 'Art. 120.º, n.º 2, alínea d), e n.º 3, alínea c), do CPP.');
+  N('nul', 'pq50', 'Quando a lei não comina nulidade para a violação de uma regra processual, o ato é:', ['Irregular', 'Nulo', 'Inexistente', 'Válido sem qualquer vício'], 'Princípio da legalidade das nulidades (art. 118.º, n.os 1 e 2, do CPP).');
+
+  /* Termos do glossário */
+  [
+    ['Constituição de arguido', 'pp', 'Ato formal pelo qual uma pessoa passa a ter o estatuto de arguido, com os direitos (como o silêncio e a defesa) e os deveres (como prestar termo de identidade e residência) que a lei lhe atribui. É obrigatória em vários casos, como a detenção ou a aplicação de uma medida de coação.', 'arts. 57.º a 59.º do CPP', ['constituído arguido', 'constituir arguido']],
+    ['Direito ao silêncio', 'pp', 'Direito do arguido a não responder a perguntas sobre os factos que lhe são imputados nem sobre o que tenha dito a respeito desses factos. O silêncio não pode ser usado contra ele.', 'art. 61.º, n.º 1, alínea d), do CPP', ['silêncio do arguido']],
+    ['Defensor', 'pp', 'Advogado que assiste tecnicamente o arguido e exerce os direitos que a lei lhe reconhece. Em certos atos, como o primeiro interrogatório de detido ou a audiência, a sua presença é obrigatória.', 'arts. 62.º a 67.º do CPP', ['defensor oficioso']],
+    ['Vítima', 'pp', 'Pessoa que sofreu um dano causado diretamente por um crime. Tem direitos de informação, proteção e participação, mesmo sem se constituir assistente.', 'art. 67.º-A do CPP', ['vítima especialmente vulnerável']],
+    ['Órgãos de polícia criminal', 'pp', 'Entidades e agentes policiais (como a PJ, a PSP e a GNR) que coadjuvam as autoridades judiciárias na investigação, sob a sua direção e dependência funcional.', 'arts. 55.º e 56.º do CPP', ['OPC', 'órgão de polícia criminal']],
+    ['Autoridade judiciária', 'pp', 'O juiz, o juiz de instrução e o Ministério Público, cada um relativamente aos atos processuais da sua competência.', 'art. 1.º, alínea b), do CPP', ['autoridades judiciárias']],
+    ['Notícia do crime', 'pp', 'O conhecimento, pelo Ministério Público, de que um crime pode ter sido cometido, seja por conhecimento próprio, por intermédio da polícia ou por denúncia. Dá origem à abertura do inquérito.', 'arts. 241.º e 262.º do CPP', ['notícia de crime']],
+    ['Denúncia', 'pp', 'Comunicação de um crime às autoridades. É obrigatória para as entidades policiais e para os funcionários quanto aos crimes de que tomem conhecimento no exercício de funções; para os restantes cidadãos é facultativa.', 'arts. 242.º e 244.º do CPP', ['denúncia obrigatória']],
+    ['Suspensão provisória do processo', 'pp', 'Solução de consenso para crimes puníveis com prisão até 5 anos: o processo fica suspenso enquanto o arguido cumpre injunções e regras de conduta e, se as cumprir, é arquivado definitivamente.', 'arts. 281.º e 282.º do CPP', ['suspensão provisória']],
+    ['Intervenção hierárquica', 'pp', 'Pedido ao superior hierárquico do magistrado do Ministério Público que arquivou um inquérito, para que este determine a acusação ou o prosseguimento das investigações.', 'art. 278.º do CPP', []],
+    ['Pronúncia', 'pp', 'Despacho do juiz de instrução que, no fim da instrução, conclui que há indícios suficientes e submete o arguido a julgamento. O contrário é a não pronúncia.', 'arts. 307.º e 308.º do CPP', ['despacho de pronúncia', 'não pronúncia']],
+    ['Debate instrutório', 'pp', 'Ato oral e contraditório da instrução, em que se discute se há indícios suficientes para levar o arguido a julgamento.', 'arts. 297.º a 305.º do CPP', []],
+    ['Primeiro interrogatório judicial', 'pp', 'Interrogatório do arguido detido pelo juiz de instrução, até 48 horas, com defensor, antes de decidir a medida de coação.', 'art. 141.º do CPP', ['primeiro interrogatório']],
+    ['Habeas corpus', 'pp', 'Providência urgente contra a detenção ou a prisão manifestamente ilegais, por exemplo por excesso de prazo ou por falta de competência de quem a ordenou.', 'arts. 220.º a 224.º do CPP e art. 31.º da CRP', ['providência de habeas corpus']],
+    ['Busca domiciliária', 'pp', 'Busca em casa habitada ou numa sua dependência fechada. Em regra, tem de ser ordenada ou autorizada pelo juiz e realizada entre as 7 e as 21 horas.', 'art. 177.º do CPP', ['busca em casa habitada']],
+    ['Escutas telefónicas', 'pp', 'Interceção e gravação de conversações ou comunicações, autorizada pelo juiz de instrução apenas para crimes de um catálogo legal e quando forem indispensáveis para a descoberta da verdade.', 'arts. 187.º a 190.º do CPP', ['interceção de comunicações', 'escutas']],
+    ['Conhecimentos fortuitos', 'pp', 'Factos descobertos numa escuta autorizada para outro crime. Só podem ser usados noutro processo em condições apertadas, nomeadamente tratando-se de crime do catálogo.', 'art. 187.º, n.º 7, do CPP', ['conhecimento fortuito']],
+    ['Depoimento indireto', 'pp', 'O depoimento de quem relata o que ouviu dizer a outra pessoa. Só vale como prova se essa pessoa for chamada a depor, salvo impossibilidade.', 'art. 129.º do CPP', ['ouvir dizer', 'testemunho de ouvir dizer']],
+    ['Declarações para memória futura', 'pp', 'Depoimento recolhido pelo juiz no inquérito ou na instrução, com contraditório, para poder ser usado no julgamento, por exemplo quando a testemunha não poderá estar presente ou é vítima especialmente vulnerável.', 'arts. 271.º e 294.º do CPP', ['memória futura']],
+    ['Alteração substancial dos factos', 'pp', 'Mudança dos factos que imputa ao arguido um crime diferente ou agrava os limites máximos da pena. Só pode ser considerada no mesmo processo com o acordo de todos os sujeitos processuais.', 'arts. 1.º, alínea f), e 359.º do CPP', ['alteração substancial']],
+    ['Alteração não substancial dos factos', 'pp', 'Mudança dos factos com relevo para a decisão que não implica crime diverso nem agravação dos limites da pena. O tribunal comunica-a ao arguido e concede-lhe tempo para a defesa.', 'art. 358.º do CPP', ['alteração não substancial']],
+    ['Processo abreviado', 'pp', 'Forma especial de processo para crimes puníveis até 5 anos de prisão ou com multa, quando há provas simples e evidentes. Não tem instrução.', 'arts. 391.º-A e seguintes do CPP', []],
+    ['Processo sumaríssimo', 'pp', 'Forma especial de consenso: o Ministério Público propõe uma sanção não privativa da liberdade e, se o arguido não se opuser, a decisão vale como sentença condenatória.', 'arts. 392.º a 398.º do CPP', ['sumaríssimo']],
+    ['Reformatio in pejus', 'pp', 'Agravação da decisão em prejuízo de quem recorre. É proibida quando o recurso é interposto apenas pelo arguido, ou pelo Ministério Público apenas a favor deste.', 'art. 409.º do CPP', ['proibição da reformatio in pejus']],
+    ['Dupla conforme', 'pp', 'Situação em que a Relação confirma a condenação da 1.ª instância. Quando a pena em causa não exceda 8 anos de prisão, já não há recurso para o Supremo Tribunal de Justiça.', 'art. 400.º, n.º 1, alínea f), do CPP', []],
+    ['Nulidade insanável', 'pp', 'Vício grave de um ato processual, previsto no art. 119.º do CPP, que deve ser declarado oficiosamente em qualquer fase do procedimento.', 'art. 119.º do CPP', ['nulidades insanáveis']],
+    ['Irregularidade processual', 'pp', 'Vício de um ato processual a que a lei não atribui a consequência de nulidade. Só invalida o ato se for arguido no próprio ato ou nos três dias seguintes.', 'art. 123.º do CPP', ['irregularidade']],
+    ['Contumácia', 'pp', 'Situação do arguido que não é possível notificar para o julgamento nem deter. É declarada pelo tribunal e implica, entre outros efeitos, a suspensão dos termos do processo até que se apresente ou seja detido.', 'arts. 335.º a 337.º do CPP', ['arguido contumaz']]
   ].forEach(function (g) { GLOSS.push(g); });
 })();
 
@@ -5025,6 +5199,447 @@ GUIAS.pen = {
   }
 };
 
+/* Matéria explicada — Direito Processual Penal (texto original do LEXDESK) */
+var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
+GUIAS.pp = {
+  geral: {
+    sub: 'Para que serve o processo penal, os princípios que o estruturam e as regras sobre prazos e atos.',
+    ideia: 'O processo penal é o caminho que o Estado tem de percorrer para apurar se um crime foi cometido, por quem, e que consequência daí resulta. Vive de uma tensão permanente: descobrir a verdade e punir os culpados, mas sem sacrificar os direitos de quem é suspeito, que se presume inocente até à condenação definitiva (art. 32.º, n.º 2, da CRP). Quase todas as regras do CPP são uma forma de equilibrar estas duas exigências.',
+    conceitos: [
+      ['Estrutura acusatória', 'Quem investiga e acusa (o Ministério Público) não é quem julga (o tribunal). O juiz de julgamento só conhece dos factos que lhe chegam pela acusação ou pela pronúncia, o que garante a sua imparcialidade (art. 32.º, n.º 5, da CRP).'],
+      ['Princípio da legalidade', 'Perante a notícia de um crime público, o Ministério Público é obrigado a abrir inquérito e, havendo indícios suficientes, a acusar; não escolhe por conveniência (arts. 48.º, 262.º, n.º 2, e 283.º do CPP). As soluções de consenso (suspensão provisória, arquivamento com dispensa de pena, processo sumaríssimo) são exceções previstas na lei, não um poder livre.'],
+      ['Princípio da oficialidade', 'A iniciativa e o impulso do processo cabem a uma entidade pública, o Ministério Público. A regra cede nos crimes semipúblicos (é precisa queixa) e particulares (é precisa queixa, constituição de assistente e acusação particular).'],
+      ['Presunção de inocência e in dubio pro reo', 'O arguido não tem de provar que está inocente. Se, depois de produzida a prova, o tribunal ficar com uma dúvida razoável sobre um facto desfavorável ao arguido, decide a favor deste.'],
+      ['Contraditório', 'Nenhuma decisão relevante deve ser tomada sem que o visado possa pronunciar-se; na audiência, toda a prova é discutida pelas partes (art. 327.º do CPP e art. 32.º, n.º 5, da CRP).'],
+      ['Imediação e oralidade', 'Em regra, só vale como prova para fundar a decisão final aquilo que foi produzido ou examinado em audiência, perante o tribunal (art. 355.º do CPP).']
+    ],
+    regime: [
+      ['Aplicação da lei no tempo', 'A lei processual penal aplica-se de imediato aos processos pendentes, sem prejuízo dos atos já praticados (art. 5.º, n.º 1, do CPP).', 'Não se aplica a lei nova aos processos já iniciados se daí resultar um piorar de forma relevante, e evitável, a posição do arguido, por exemplo restringindo a sua defesa, ou se desorganizar a coerência entre os atos do processo (art. 5.º, n.º 2, do CPP).'],
+      ['Contagem dos prazos', 'Os prazos contam-se pelas regras do processo civil (art. 104.º, n.º 1, do CPP): são contínuos e, terminando em dia em que os tribunais estão fechados, passam para o primeiro dia útil seguinte.', 'Correm em férias os prazos dos processos urgentes, por exemplo os que têm arguidos detidos ou presos (arts. 103.º, n.º 2, e 104.º, n.º 2, do CPP). Fora do prazo, o ato só pode ser praticado havendo justo impedimento (art. 107.º, n.º 2, do CPP) ou mediante o pagamento de multa nos três dias úteis seguintes (art. 107.º-A do CPP).'],
+      ['Segredo de justiça', 'Em regra, o processo é público (art. 86.º, n.º 1, do CPP). Durante o inquérito, pode ser sujeito a segredo de justiça: pelo juiz de instrução, a pedido do ofendido, do assistente ou do arguido, quando a publicidade prejudique os seus direitos; ou pelo Ministério Público, para proteger a investigação, com validação do juiz (art. 86.º, n.os 2 e 3, do CPP).', 'O segredo vincula todos os que tomem contacto com o processo e proíbe a assistência a atos e a divulgação do seu conteúdo (art. 86.º, n.º 8, do CPP).'],
+      ['Princípio da suficiência', 'O processo penal resolve as questões prejudiciais de outra natureza (civil, administrativa…) necessárias à decisão da causa (art. 7.º, n.º 1, do CPP).', 'Excecionalmente, o tribunal pode suspender o processo para que a questão seja decidida no tribunal competente, quando não possa ser convenientemente resolvida no processo penal (art. 7.º, n.os 2 a 4, do CPP).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Notícia do crime', 'Por conhecimento direto, através da polícia ou por denúncia (art. 241.º do CPP).'],
+      ['Inquérito', 'Fase obrigatória, dirigida pelo Ministério Público: investiga e decide se acusa ou arquiva (arts. 262.º a 285.º do CPP).'],
+      ['Instrução', 'Fase facultativa, dirigida pelo juiz de instrução: controla judicialmente a decisão de acusar ou de arquivar (arts. 286.º a 310.º do CPP).'],
+      ['Julgamento', 'Audiência pública e contraditória, que termina com a sentença (arts. 311.º a 380.º-A do CPP).'],
+      ['Recursos', 'Reapreciação da decisão por um tribunal superior (arts. 399.º e seguintes do CPP).'],
+      ['Execução', 'Cumprimento da pena ou da medida de segurança aplicada (arts. 467.º e seguintes do CPP).']
+    ] },
+    exemplo: ['Uma lei processual nova, que entra em vigor durante o inquérito, reduz o prazo para o arguido requerer a abertura da instrução. O arguido é notificado da acusação já depois de a lei nova vigorar. Que prazo se aplica?',
+      'A regra é a aplicação imediata da lei processual (art. 5.º, n.º 1, do CPP). Contudo, a redução do prazo para requerer a instrução limita o direito de defesa de um arguido cujo processo já estava em curso, o que constitui um agravamento sensível e ainda evitável da sua posição processual. Por força do art. 5.º, n.º 2, alínea a), do CPP, aplica-se o regime anterior, mais favorável.',
+      'Esta exceção não é uma retroatividade da lei favorável como no direito penal substantivo: o que se protege é a confiança do arguido nas regras do processo que já corria contra ele.']
+    ,
+    erros: [
+      'Confundir o princípio da legalidade processual (dever de investigar e acusar) com o princípio da legalidade penal (não há crime sem lei).',
+      'Esquecer que o juiz de julgamento fica limitado pelos factos da acusação ou da pronúncia: é a estrutura acusatória que o impõe.',
+      'Contar prazos de processos com arguido preso como se se suspendessem nas férias judiciais.',
+      'Tratar a presunção de inocência como simples regra de prova: ela é também uma regra de tratamento do arguido ao longo de todo o processo.'
+    ],
+    artigos: ['art. 5.º do CPP', 'art. 7.º do CPP', 'art. 48.º do CPP', 'art. 86.º do CPP', 'art. 104.º do CPP', 'art. 107.º do CPP', 'art. 241.º do CPP', 'art. 262.º do CPP', 'art. 355.º do CPP', 'art. 32.º da CRP']
+  },
+
+  suj: {
+    sub: 'Quem intervém no processo e com que poderes: tribunal, Ministério Público, órgãos de polícia criminal, arguido, defensor, assistente, vítima e partes civis.',
+    ideia: 'Nem todos os que aparecem num processo são sujeitos processuais. Sujeitos são aqueles a quem a lei dá poderes próprios para influenciar a decisão: o juiz, o Ministério Público, o arguido, o defensor e o assistente. Os órgãos de polícia criminal coadjuvam as autoridades judiciárias; as testemunhas e os peritos são meros participantes. Saber quem é quem é o ponto de partida de qualquer hipótese prática.',
+    conceitos: [
+      ['Ministério Público', 'Titular da ação penal. Recebe as denúncias, dirige o inquérito, acusa ou arquiva, e intervém em todas as fases, sempre vinculado a critérios de estrita objetividade (arts. 48.º e 53.º do CPP).'],
+      ['Órgãos de polícia criminal', 'Entidades e agentes policiais que levam a cabo atos de investigação ordenados ou delegados pelas autoridades judiciárias, sob a sua direção e na sua dependência funcional (arts. 1.º, alínea c), 55.º e 56.º do CPP).'],
+      ['Arguido', 'A pessoa contra quem é deduzida acusação ou requerida instrução, ou que foi formalmente constituída como tal no inquérito (art. 57.º do CPP). A constituição confere um estatuto de direitos e deveres processuais.'],
+      ['Defensor', 'Advogado que assiste tecnicamente o arguido. Pode exercer, em nome dele, os direitos do arguido, exceto os que este reserve pessoalmente (art. 63.º do CPP).'],
+      ['Assistente', 'Colaborador do Ministério Público, que pode intervir ativamente: oferecer provas, requerer diligências, acusar e recorrer (art. 69.º do CPP). Atua sempre por advogado (art. 70.º do CPP).'],
+      ['Vítima', 'A pessoa que sofreu um dano causado diretamente pelo crime. Tem um estatuto próprio de proteção e informação, mesmo que não se constitua assistente (art. 67.º-A do CPP).']
+    ],
+    regime: [
+      ['Constituição de arguido', 'É obrigatória, nomeadamente, quando um suspeito presta declarações num inquérito contra si dirigido, quando lhe deva ser aplicada uma medida de coação ou uma garantia patrimonial, quando é detido, ou quando lhe é comunicado um auto de notícia que o dá como agente de um crime (art. 58.º, n.º 1, do CPP).', 'Se a constituição for omitida ou não respeitar as formalidades legais, o que essa pessoa tiver declarado fica impedido de valer como prova (art. 58.º, n.º 7, do CPP).'],
+      ['Direitos do arguido', 'Entre outros: estar presente nos atos que lhe digam respeito, ser ouvido antes de qualquer decisão que o afete pessoalmente, não responder a perguntas sobre os factos imputados nem sobre o que tenha dito a respeito desses factos, escolher defensor ou pedir a sua nomeação, e recorrer das decisões desfavoráveis (art. 61.º, n.º 1, do CPP).', 'O silêncio não pode ser valorado contra o arguido. O dever de responder com verdade abrange apenas a identificação e, em certos momentos, os antecedentes criminais (art. 61.º, n.º 6, alínea b), e art. 141.º, n.º 3, do CPP).'],
+      ['Assistência obrigatória de defensor', 'É obrigatória, por exemplo, nos interrogatórios de arguido detido ou preso, nos interrogatórios feitos por autoridade judiciária, no debate instrutório e na audiência, e nos recursos (art. 64.º, n.º 1, do CPP).', 'A falta de defensor num ato em que a lei exige a sua presença é nulidade insanável (art. 119.º, alínea c), do CPP).'],
+      ['Quem pode ser assistente', 'Os ofendidos maiores de 16 anos (titulares dos interesses que a incriminação especialmente protege), as pessoas de cuja queixa ou acusação particular depende o procedimento, certos familiares quando o ofendido morre ou é incapaz, e qualquer pessoa em determinados crimes, como os de corrupção ou peculato (art. 68.º, n.º 1, do CPP).', 'O requerimento deve ser apresentado até ao quinto dia anterior ao debate instrutório ou ao julgamento, ou nos prazos especiais previstos para acusar ou requerer a instrução (art. 68.º, n.º 3, do CPP). Nos crimes particulares, a constituição de assistente é indispensável para o processo prosseguir.'],
+      ['Partes civis', 'Quem quer ser indemnizado pelos danos de um crime pede-o, em regra, dentro do próprio processo penal (princípio de adesão, art. 71.º do CPP), salvo nos casos em que a lei permite o pedido em separado (art. 72.º do CPP).', 'O lesado que apenas pede a indemnização é parte civil; não precisa de ser assistente nem de ter advogado se o valor o dispensar (arts. 74.º e 76.º do CPP).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Sujeito', 'Papel essencial', 'Poderes típicos'], linhas: [
+      ['Juiz de instrução', 'Guardião dos direitos fundamentais no inquérito; dirige a instrução', 'Primeiro interrogatório, medidas de coação, buscas domiciliárias, escutas (arts. 268.º e 269.º do CPP)'],
+      ['Ministério Público', 'Titular da ação penal', 'Dirige o inquérito, acusa, arquiva, recorre (arts. 53.º e 263.º do CPP)'],
+      ['Órgãos de polícia criminal', 'Coadjuvam as autoridades judiciárias', 'Medidas cautelares e de polícia, detenção em flagrante (arts. 55.º, 249.º e 255.º do CPP)'],
+      ['Arguido', 'Pessoa visada pelo processo', 'Direitos do art. 61.º do CPP; requerer instrução; contestar; recorrer'],
+      ['Assistente', 'Colaborador do Ministério Público', 'Acusar, requerer instrução, recorrer (art. 69.º do CPP)'],
+      ['Partes civis', 'Lesado e responsável civil', 'Deduzir e contestar o pedido de indemnização (arts. 71.º e seguintes do CPP)']
+    ] },
+    exemplo: ['Numa esquadra, B é ouvido «como testemunha» num inquérito por furto. Durante a conversa, o agente percebe que B é o principal suspeito, mas continua a inquiri-lo sem o constituir arguido, e B acaba por confessar. A confissão pode ser usada?',
+      'Logo que surgiu suspeita fundada contra B, num inquérito que corria contra pessoa determinada, a constituição como arguido tornou-se obrigatória antes de continuar a ouvi-lo (art. 58.º, n.º 1, alínea a), e art. 59.º, n.º 1, do CPP). Ao manter B como testemunha, a polícia privou-o dos direitos de arguido, sobretudo do direito ao silêncio.',
+      'Consequência: as declarações não podem ser utilizadas como prova (art. 58.º, n.º 7, do CPP). A investigação pode prosseguir, mas a confissão obtida naquelas condições fica fora do processo.']
+    ,
+    erros: [
+      'Dizer que a vítima é automaticamente assistente: tem de requerer a constituição e de ser representada por advogado.',
+      'Tratar os órgãos de polícia criminal como sujeitos processuais autónomos: atuam na dependência funcional da autoridade judiciária.',
+      'Esquecer que o direito ao silêncio não abrange as perguntas sobre a identificação.',
+      'Pensar que o pedido de indemnização civil se faz sempre numa ação cível separada: a regra é a adesão ao processo penal.'
+    ],
+    artigos: ['art. 53.º do CPP', 'art. 55.º do CPP', 'art. 57.º do CPP', 'art. 58.º do CPP', 'art. 61.º do CPP', 'art. 64.º do CPP', 'art. 67.º-A do CPP', 'art. 68.º do CPP', 'art. 69.º do CPP', 'art. 71.º do CPP']
+  },
+
+  comp: {
+    sub: 'Que tribunal julga: competência material, funcional e territorial, conexão de processos, impedimentos e recusas.',
+    ideia: 'Antes de discutir a substância, é preciso saber quem decide. A competência material resulta, no essencial, da gravidade do crime, medida pela pena máxima abstratamente aplicável: o tribunal singular julga a criminalidade menos grave, o coletivo a mais grave, e o júri intervém apenas se for requerido. A territorial resulta do lugar onde o crime se consumou.',
+    conceitos: [
+      ['Tribunal singular', 'Um só juiz. Julga os crimes com pena máxima igual ou inferior a 5 anos de prisão, os crimes contra a autoridade pública e tudo o que não caiba aos outros tribunais (art. 16.º do CPP).'],
+      ['Tribunal coletivo', 'Três juízes. Julga os crimes dolosos ou agravados pelo resultado em que a morte de uma pessoa seja elemento do tipo, e os crimes com pena máxima superior a 5 anos (art. 14.º do CPP).'],
+      ['Tribunal do júri', 'Juízes e jurados. Só intervém se o Ministério Público, o assistente ou o arguido o requererem, em crimes graves: os do título III e do capítulo I do título V do livro II do CP (entre eles, os crimes contra a segurança do Estado) e os puníveis com pena máxima superior a 8 anos. O requerimento é irretratável (art. 13.º do CPP).'],
+      ['Conexão', 'Quando vários crimes ou agentes estão ligados (o mesmo agente praticou vários crimes; vários agentes atuaram em comparticipação…), organiza-se um só processo para todos, para evitar decisões contraditórias (art. 24.º do CPP).'],
+      ['Impedimento, recusa e escusa', 'Garantias de imparcialidade. O impedimento atua por força da lei (por exemplo, o juiz que interveio na instrução não pode julgar). A recusa é pedida pelas partes e a escusa pelo próprio juiz, quando haja motivo sério para desconfiar da sua imparcialidade (arts. 39.º, 40.º e 43.º do CPP).']
+    ],
+    regime: [
+      ['Uso do art. 16.º, n.º 3, do CPP', 'Num crime com pena máxima superior a 5 anos que não seja dos reservados ao coletivo pelo n.º 1 do art. 14.º, o Ministério Público pode, na acusação, entender que em concreto não deve ser aplicada pena superior a 5 anos, e submeter o caso ao tribunal singular.', 'O tribunal singular fica então impedido de aplicar pena de prisão superior a 5 anos (art. 16.º, n.º 4, do CPP). É um mecanismo de simplificação muito frequente na prática.'],
+      ['Competência territorial', 'É competente o tribunal da área onde o crime se consumou (art. 19.º, n.º 1, do CPP).', 'Há regras próprias para crimes que consistem em morte (lugar onde o agente atuou ou deveria ter atuado), crimes permanentes (lugar onde cessou a consumação), crimes a bordo de navio ou aeronave e crimes de localização duvidosa (arts. 19.º a 22.º do CPP).'],
+      ['Incompetência', 'A incompetência material e funcional é conhecida e declarada oficiosamente e pode ser deduzida até ao trânsito em julgado da decisão final; a territorial só até ao início da audiência (art. 32.º do CPP).', 'Declarada a incompetência, o processo é remetido ao tribunal competente, que anula os atos que não teriam sido praticados se o processo tivesse corrido logo nele e repete os necessários (art. 33.º do CPP).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Tribunal', 'Quando', 'Base legal'], linhas: [
+      ['Júri', 'Requerido; crimes dos títulos III e V (cap. I) do livro II do CP, ou pena máxima superior a 8 anos', 'art. 13.º do CPP'],
+      ['Coletivo', 'Morte como elemento do tipo; pena máxima superior a 5 anos', 'art. 14.º do CPP'],
+      ['Singular', 'Pena máxima igual ou inferior a 5 anos; residual; uso do art. 16.º, n.º 3', 'art. 16.º do CPP'],
+      ['Juiz de instrução', 'Atos jurisdicionais do inquérito, instrução e decisão instrutória', 'art. 17.º do CPP'],
+      ['Tribunal da Relação', 'Recursos das decisões de 1.ª instância; julgamento de certos magistrados', 'art. 12.º do CPP'],
+      ['Supremo Tribunal de Justiça', 'Recursos em matéria de direito; revisão; fixação de jurisprudência', 'art. 11.º do CPP']
+    ] },
+    exemplo: ['A é acusado de um crime de furto qualificado punível com prisão de 2 a 8 anos (art. 204.º, n.º 2, do CP). O Ministério Público, na acusação, considera que, atendendo à reparação integral do prejuízo, não deve ser aplicada pena superior a 5 anos. Que tribunal julga e com que limite?',
+      'Pela pena máxima abstrata (8 anos), o caso caberia ao tribunal coletivo (art. 14.º, n.º 2, alínea b), do CPP). Como não se trata de um crime em que a morte seja elemento do tipo nem dos reservados pelo n.º 1 do art. 14.º, o Ministério Público pode usar a faculdade do art. 16.º, n.º 3, do CPP.',
+      'O processo é julgado pelo tribunal singular, que não pode condenar em prisão acima de 5 anos (art. 16.º, n.º 4, do CPP). A pena concreta, ainda que viesse a justificar mais, fica limitada a esse teto.']
+    ,
+    erros: [
+      'Determinar a competência pela pena concreta que se espera: conta a pena máxima abstrata (salvo o mecanismo do art. 16.º, n.º 3).',
+      'Pensar que o júri pode ser imposto pelo tribunal: depende sempre de requerimento.',
+      'Confundir impedimento (automático, por força da lei) com recusa (pedido fundamentado das partes).',
+      'Esquecer que a incompetência territorial tem um limite temporal para ser arguida.'
+    ],
+    artigos: ['art. 13.º do CPP', 'art. 14.º do CPP', 'art. 16.º do CPP', 'art. 17.º do CPP', 'art. 19.º do CPP', 'art. 24.º do CPP', 'art. 32.º do CPP', 'art. 39.º do CPP', 'art. 40.º do CPP', 'art. 43.º do CPP']
+  },
+
+  queixa: {
+    sub: 'Crimes públicos, semipúblicos e particulares: quem tem legitimidade para pôr o processo em marcha e como.',
+    ideia: 'A natureza do crime decide se o Ministério Público pode agir sozinho. Nos crimes públicos, basta a notícia do crime. Nos semipúblicos, precisa de uma queixa do titular do direito. Nos particulares, além da queixa, o ofendido tem de se constituir assistente e de deduzir acusação particular. É uma pergunta que se faz sempre no início de uma hipótese, porque condiciona tudo o resto: prazos, desistência e forma de acusar.',
+    conceitos: [
+      ['Crime público', 'O Ministério Público promove o processo oficiosamente, logo que tenha notícia do crime (art. 48.º do CPP). É a regra: o crime é público quando a lei nada diz em contrário.'],
+      ['Crime semipúblico', 'O procedimento depende de queixa. A lei indica-o no próprio tipo, com uma fórmula como «o procedimento criminal depende de queixa» (art. 49.º do CPP). Exemplo: ofensa à integridade física simples (art. 143.º, n.º 2, do CP).'],
+      ['Crime particular', 'O procedimento depende de queixa, de constituição de assistente e de acusação particular. A lei usa a fórmula «depende de acusação particular» (art. 50.º do CPP). Exemplos: injúria e difamação (art. 188.º do CP).'],
+      ['Titular da queixa', 'Em regra, o ofendido, isto é, o titular dos interesses que a lei quis proteger com a incriminação (art. 113.º, n.º 1, do CP). Há regras para o caso de morte ou incapacidade do ofendido (art. 113.º, n.os 2 a 6, do CP).'],
+      ['Desistência', 'Nos crimes semipúblicos e particulares, quem se queixou pode desistir até à leitura da sentença de 1.ª instância, desde que o arguido não se oponha (art. 116.º, n.º 2, do CP, e art. 51.º do CPP).']
+    ],
+    regime: [
+      ['Prazo da queixa', 'A queixa tem de ser apresentada em seis meses contados do dia em que o titular ficou a saber do facto e de quem o praticou (art. 115.º, n.º 1, do CP).', 'O prazo conta-se autonomamente para cada titular. A queixa apresentada contra um dos comparticipantes estende-se aos restantes (art. 114.º do CP).'],
+      ['Forma e destinatário', 'A queixa pode ser apresentada ao Ministério Público ou a qualquer órgão de polícia criminal, que a transmite àquele (arts. 49.º, n.º 2, e 245.º do CPP).', 'Pode ser feita pessoalmente, por mandatário com poderes especiais ou por escrito; não exige fórmulas sacramentais, bastando a manifestação clara da vontade de procedimento criminal.'],
+      ['Tramitação dos crimes particulares', 'Concluído o inquérito, o Ministério Público dá ao assistente 10 dias para apresentar acusação particular, informando-o de se foram recolhidos indícios suficientes (art. 285.º, n.os 1 e 2, do CPP).', 'O Ministério Público pode, nos cinco dias seguintes, acusar pelos mesmos factos ou por parte deles (art. 285.º, n.º 4, do CPP). Se o assistente não acusar, o processo é arquivado: o Ministério Público não pode substituí-lo.'],
+      ['Concurso de crimes de natureza diferente', 'Se forem cometidos vários crimes, uns públicos e outros dependentes de queixa ou de acusação particular, o Ministério Público promove logo o processo pelos crimes públicos (art. 52.º, n.º 1, do CPP).', 'Quanto aos restantes, só pode prosseguir se o titular o desejar e cumprir os respetivos requisitos.']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Natureza', 'Queixa', 'Assistente', 'Quem acusa', 'Desistência'], linhas: [
+      ['Público', 'Não é necessária', 'Facultativo', 'Ministério Público', 'Não relevante'],
+      ['Semipúblico', 'Necessária (6 meses)', 'Facultativo', 'Ministério Público', 'Possível, sem oposição do arguido'],
+      ['Particular', 'Necessária (6 meses)', 'Obrigatório', 'O assistente (acusação particular)', 'Possível, sem oposição do arguido']
+    ] },
+    exemplo: ['C chama «ladrão» a D, em plena rua, à frente de vizinhos. D apresenta queixa sete meses depois, quando decide avançar. Quid juris?',
+      'Os factos integram, em abstrato, um crime de injúria (art. 181.º do CP), crime particular (art. 188.º, n.º 1, do CP). O procedimento depende de queixa, de constituição de assistente e de acusação particular (art. 50.º do CPP).',
+      'D teve conhecimento do facto e do seu autor no próprio dia. O prazo de seis meses do art. 115.º, n.º 1, do CP já tinha decorrido quando apresentou queixa, pelo que o direito de queixa se extinguiu. O Ministério Público não tem legitimidade para promover o processo e o inquérito deve ser arquivado.']
+    ,
+    erros: [
+      'Classificar um crime como semipúblico ou particular sem procurar a norma que o diz: no silêncio da lei, o crime é público.',
+      'Contar o prazo de queixa a partir da data do crime, e não a partir do conhecimento do facto e do autor.',
+      'Admitir que o Ministério Público acusa num crime particular quando o assistente não o faz.',
+      'Esquecer a oposição do arguido como limite à desistência da queixa.'
+    ],
+    artigos: ['art. 48.º do CPP', 'art. 49.º do CPP', 'art. 50.º do CPP', 'art. 51.º do CPP', 'art. 52.º do CPP', 'art. 285.º do CPP', 'art. 113.º do CP', 'art. 115.º do CP', 'art. 116.º do CP', 'art. 188.º do CP']
+  },
+
+  inq: {
+    sub: 'Da notícia do crime ao fim do inquérito: diligências, prazos, arquivamento, suspensão provisória e acusação.',
+    ideia: 'O inquérito é a fase de investigação. Serve para reunir provas sobre a existência do crime, os seus agentes e a sua responsabilidade, de modo a decidir se há ou não acusação (art. 262.º, n.º 1, do CPP). É dirigido pelo Ministério Público, com o apoio da polícia; o juiz de instrução só intervém quando estão em causa direitos fundamentais. O inquérito termina sempre com uma de três decisões: arquivar, suspender provisoriamente ou acusar.',
+    conceitos: [
+      ['Notícia do crime', 'O Ministério Público adquire-a por conhecimento direto, através da polícia ou na sequência de denúncia (art. 241.º do CPP). As polícias estão sempre obrigadas a denunciar e para os funcionários quanto aos crimes que cheguem ao seu conhecimento por causa do cargo (art. 242.º do CPP).'],
+      ['Indícios suficientes', 'Há indícios suficientes quando deles resulta uma probabilidade razoável de o arguido vir a sofrer, no julgamento, uma pena ou medida de segurança (art. 283.º, n.º 2, do CPP). Parte da doutrina e da jurisprudência exige que a condenação seja mais provável do que a absolvição.'],
+      ['Arquivamento', 'Ocorre quando há prova bastante de que não se verificou crime, de que o arguido não o praticou ou de que é legalmente inadmissível o procedimento, e ainda quando não foi possível obter indícios suficientes (art. 277.º do CPP).'],
+      ['Suspensão provisória do processo', 'Solução de consenso: num crime punível com prisão não superior a 5 anos, o processo fica suspenso mediante injunções e regras de conduta. Cumpridas, o processo é arquivado e não pode ser reaberto (arts. 281.º e 282.º do CPP).'],
+      ['Declarações para memória futura', 'Depoimentos recolhidos pelo juiz de instrução, com contraditório, quando se preveja que a testemunha não poderá estar presente no julgamento, ou para proteger vítimas especialmente vulneráveis. Podem depois ser lidos em audiência (art. 271.º do CPP).']
+    ],
+    regime: [
+      ['Atos reservados ao juiz de instrução', 'Só o juiz pode praticar, nomeadamente, o primeiro interrogatório judicial de arguido detido, a aplicação de medidas de coação (com exceção do termo de identidade e residência) e certas buscas e apreensões (art. 268.º do CPP).', 'Só o juiz pode ordenar ou autorizar, entre outros, as buscas domiciliárias, as apreensões de correspondência e as interceções de comunicações (art. 269.º do CPP). O Ministério Público pode delegar nos órgãos de polícia criminal a prática de atos de investigação, com as exceções do art. 270.º do CPP.'],
+      ['Prazos máximos', 'O inquérito deve terminar em 6 meses se houver arguidos presos ou em obrigação de permanência na habitação, e em 8 meses nos restantes casos (art. 276.º, n.º 1, do CPP).', 'Os prazos são alargados para a criminalidade grave e para os processos de excecional complexidade (art. 276.º, n.os 2 e 3, do CPP), e contam-se desde que o inquérito passa a correr contra pessoa determinada ou desde a constituição de arguido (art. 276.º, n.º 4, do CPP). Ultrapassá-los não gera nulidade, mas permite pedir a aceleração processual (art. 108.º do CPP).'],
+      ['Reação ao arquivamento', 'Contra o arquivamento, o assistente (ou quem se possa constituir como tal) pode requerer a abertura da instrução, em 20 dias (art. 287.º, n.º 1, alínea b), do CPP).', 'Em alternativa, pode pedir a intervenção hierárquica do superior do magistrado, para que este determine a acusação ou o prosseguimento das investigações (art. 278.º do CPP). O inquérito arquivado só pode ser reaberto com novos elementos de prova (art. 279.º do CPP).'],
+      ['Requisitos da acusação', 'A acusação contém, sob pena de nulidade, a identificação do arguido, a descrição dos factos que justificam a aplicação da pena, as normas violadas e as provas a produzir (art. 283.º, n.º 3, do CPP).', 'A acusação fixa o objeto do processo: o tribunal de julgamento não pode condenar por factos substancialmente diferentes sem respeitar o regime dos arts. 358.º e 359.º do CPP. O assistente pode acusar em 10 dias pelos mesmos factos ou por factos que não importem alteração substancial (art. 284.º do CPP).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Abertura', 'Notícia do crime e registo; verificar a legitimidade (queixa, se necessária).'],
+      ['Investigação', 'Diligências do Ministério Público e dos órgãos de polícia criminal; intervenção do juiz de instrução quando estejam em causa direitos fundamentais.'],
+      ['Constituição de arguido', 'Quando exigido pelo art. 58.º do CPP; interrogatório com os direitos do art. 61.º.'],
+      ['Avaliação da prova', 'Há indícios suficientes do crime e da sua autoria?'],
+      ['Decisão final', 'Arquivamento (art. 277.º), suspensão provisória (art. 281.º) ou acusação (art. 283.º do CPP).']
+    ] },
+    exemplo: ['E, sem antecedentes, conduziu com uma taxa de álcool de 1,4 g/l (crime do art. 292.º do CP, punível com prisão até 1 ano ou multa). Confessou de imediato e mostrou-se arrependido. Que solução pode o Ministério Público adotar no fim do inquérito?',
+      'Estão reunidos os pressupostos da suspensão provisória do processo: o crime é com pena de prisão até 5 anos (art. 281.º, n.º 1, do CPP), o arguido não tem condenação nem suspensão anterior por crime da mesma natureza, o grau de culpa não é elevado e as injunções parecem bastar para as exigências de prevenção.',
+      'O Ministério Público pode propor a suspensão, com a concordância do arguido e do juiz de instrução, impondo por exemplo a entrega de uma quantia a uma instituição e a proibição de conduzir durante algum tempo (art. 281.º, n.os 2 e 3, do CPP). Cumpridas as injunções, o processo é arquivado (art. 282.º, n.º 3, do CPP).']
+    ,
+    erros: [
+      'Dizer que o juiz de instrução dirige o inquérito: quem o dirige é o Ministério Público (art. 263.º do CPP).',
+      'Pensar que ultrapassar o prazo do inquérito torna nulos os atos: a consequência é a possibilidade de aceleração processual.',
+      'Esquecer que a suspensão provisória exige a concordância do arguido e do assistente, bem como do juiz de instrução.',
+      'Redigir uma acusação com conclusões em vez de factos concretos: o art. 283.º, n.º 3, exige a narração dos factos.'
+    ],
+    artigos: ['art. 241.º do CPP', 'art. 262.º do CPP', 'art. 263.º do CPP', 'art. 268.º do CPP', 'art. 269.º do CPP', 'art. 271.º do CPP', 'art. 276.º do CPP', 'art. 277.º do CPP', 'art. 278.º do CPP', 'art. 281.º do CPP', 'art. 283.º do CPP', 'art. 284.º do CPP']
+  },
+
+  coac: {
+    sub: 'Detenção, primeiro interrogatório judicial e medidas de coação: pressupostos, princípios, prazos e reações.',
+    ideia: 'As medidas de coação limitam a liberdade de quem ainda não foi condenado. Por isso, só existem as que a lei prevê (princípio da legalidade), só podem servir finalidades cautelares (evitar a fuga, proteger a prova, impedir a continuação da atividade criminosa) e têm de ser necessárias, adequadas e proporcionais. A prisão preventiva é a última de todas, só aplicável quando as outras se mostram insuficientes.',
+    conceitos: [
+      ['Detenção', 'Privação da liberdade por um máximo de 48 horas, para apresentar o detido a julgamento sumário ou ao juiz para interrogatório ou aplicação de medida de coação, ou para assegurar a sua presença num ato processual (art. 254.º do CPP).'],
+      ['Flagrante delito', 'O crime que se está a cometer ou que se acabou de cometer, e ainda o caso em que o agente é perseguido logo após o crime ou encontrado com objetos ou vestígios que revelem, sem margem para dúvida, que o acabou de praticar (art. 256.º do CPP). Qualquer pessoa pode deter em flagrante delito, se não estiver presente uma autoridade (art. 255.º do CPP).'],
+      ['Termo de identidade e residência', 'Medida mínima, aplicada a todo o arguido: indica a morada para notificações e assume o dever de comparecer e de não mudar de residência sem comunicar (art. 196.º do CPP). Pode ser aplicada pelo Ministério Público ou pelos órgãos de polícia criminal.'],
+      ['Escala das medidas', 'Termo de identidade e residência, caução, apresentação periódica, suspensão do exercício de funções, proibição e imposição de condutas, obrigação de permanência na habitação e prisão preventiva (arts. 196.º a 202.º do CPP).'],
+      ['Princípios', 'Necessidade, adequação e proporcionalidade: a medida deve ser a menos gravosa que satisfaça as exigências cautelares, e proporcional à gravidade do crime e à sanção previsivelmente aplicável (art. 193.º do CPP).']
+    ],
+    regime: [
+      ['Requisitos gerais', 'À exceção do termo de identidade e residência, nenhuma medida é aplicada sem que, em concreto e no momento da aplicação, se verifique fuga ou risco de fuga, risco para a investigação ou para a prova, ou perigo de continuação da atividade criminosa ou de perturbação grave da ordem pública (art. 204.º do CPP).', 'Os perigos têm de ser concretos e fundamentados em factos: não basta invocar a gravidade abstrata do crime.'],
+      ['Prisão preventiva', 'Pressupõe fortes indícios de um crime doloso com prisão de máximo superior a 5 anos, ou de certos crimes enumerados (criminalidade violenta, terrorismo, criminalidade altamente organizada, entre outros) puníveis com máximo superior a 3 anos (art. 202.º, n.º 1, do CPP).', 'Tem prazos máximos de duração, que dependem da fase do processo: 4 meses sem acusação, 8 meses sem decisão instrutória, 1 ano e 2 meses sem condenação em 1.ª instância e 1 ano e 6 meses sem trânsito em julgado, elevados nos casos mais graves (art. 215.º do CPP). Os pressupostos são reexaminados oficiosamente de 3 em 3 meses (art. 213.º do CPP).'],
+      ['Primeiro interrogatório judicial', 'O arguido detido que não vá ser julgado logo é interrogado pelo juiz de instrução até 48 horas, com assistência obrigatória de defensor (art. 141.º, n.os 1 e 2, do CPP).', 'O juiz informa o arguido dos seus direitos, dos motivos da detenção, dos factos imputados e das provas que os sustentam, salvo quando a sua revelação ponha gravemente em causa a investigação (art. 141.º, n.º 4, do CPP). Só depois decide a medida a aplicar, ouvido o arguido (art. 194.º do CPP).'],
+      ['Reações', 'Da decisão que aplica, mantém ou substitui uma medida de coação cabe recurso, a decidir no prazo máximo de 30 dias (art. 219.º do CPP).', 'Contra a detenção ou a prisão manifestamente ilegais, pode ser requerida a providência de habeas corpus (arts. 220.º e 222.º do CPP), que não depende do recurso e é decidida com grande celeridade.']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Legalidade', 'A medida está prevista na lei e o crime admite-a (moldura penal, natureza dolosa)?'],
+      ['Indícios', 'Há indícios (ou fortes indícios, para a prisão preventiva e a permanência na habitação) da prática do crime?'],
+      ['Perigos concretos', 'Qual dos perigos do art. 204.º do CPP se verifica, e com base em que factos?'],
+      ['Necessidade e adequação', 'Há uma medida menos gravosa que bastaria (art. 193.º do CPP)?'],
+      ['Proporcionalidade', 'A medida é proporcional à gravidade do crime e à pena previsível?'],
+      ['Audição e decisão', 'Ouvir o arguido e fundamentar o despacho (art. 194.º do CPP).']
+    ] },
+    exemplo: ['F é detido em flagrante delito por roubo com uso de faca (art. 210.º, n.º 2, do CP, punível com prisão de 3 a 15 anos). Não tem residência fixa e já faltou a outros atos processuais. O Ministério Público promove a prisão preventiva. Está bem fundamentada?',
+      'Há fortes indícios (detenção em flagrante) de um crime doloso punível com prisão de máximo superior a 5 anos (art. 202.º, n.º 1, alínea a), do CPP). Verifica-se, em concreto, perigo de fuga: não tem residência fixa e há faltas anteriores (art. 204.º, alínea a), do CPP).',
+      'Falta ainda demonstrar que as medidas menos gravosas, como a obrigação de permanência na habitação com vigilância eletrónica, seriam insuficientes. Sem residência fixa, essa medida é dificilmente exequível, o que torna defensável a prisão preventiva como única medida adequada (arts. 193.º e 202.º do CPP). F deve ser ouvido antes da decisão, em primeiro interrogatório, dentro das 48 horas.']
+    ,
+    erros: [
+      'Aplicar uma medida de coação apenas pela gravidade do crime, sem identificar um perigo concreto do art. 204.º do CPP.',
+      'Saltar diretamente para a prisão preventiva sem afastar, fundamentadamente, as medidas menos gravosas.',
+      'Esquecer o prazo de 48 horas para apresentar o detido ao juiz.',
+      'Confundir habeas corpus (ilegalidade manifesta da privação da liberdade) com recurso da medida de coação.'
+    ],
+    artigos: ['art. 141.º do CPP', 'art. 191.º do CPP', 'art. 193.º do CPP', 'art. 194.º do CPP', 'art. 196.º do CPP', 'art. 202.º do CPP', 'art. 204.º do CPP', 'art. 213.º do CPP', 'art. 215.º do CPP', 'art. 219.º do CPP', 'art. 222.º do CPP', 'art. 254.º do CPP', 'art. 255.º do CPP', 'art. 256.º do CPP']
+  },
+
+  prova: {
+    sub: 'Provas e instrumentos para as obter, livre apreciação, e as provas proibidas.',
+    ideia: 'Em processo penal, a verdade não pode ser procurada a qualquer preço. São admissíveis todas as provas que a lei não proíba (art. 125.º do CPP), mas há métodos absolutamente proibidos, como a tortura, a coação ou o engano, e outros que só são válidos se respeitarem os pressupostos da lei, como as buscas ou as escutas. A prova proibida não pode ser usada, mesmo que seja verdadeira.',
+    conceitos: [
+      ['Meios de prova', 'Aquilo que, por si, demonstra os factos: prova testemunhal, declarações dos sujeitos processuais e das partes civis, acareação, reconhecimento, reconstituição, prova pericial e documental (arts. 128.º a 170.º do CPP).'],
+      ['Meios de obtenção da prova', 'Instrumentos que permitem recolher as provas: exames, revistas e buscas, apreensões e interceção de comunicações (arts. 171.º a 190.º do CPP).'],
+      ['Livre apreciação', 'O tribunal aprecia a prova segundo as regras da experiência e a sua livre convicção, que tem de ser objetivada e explicada na fundamentação (art. 127.º do CPP). A prova pericial é uma exceção: o juízo técnico presume-se subtraído à livre apreciação, e a divergência tem de ser fundamentada (art. 163.º do CPP).'],
+      ['Métodos proibidos', 'São nulas, e não podem ser utilizadas, as provas obtidas mediante tortura, coação ou ofensa da integridade física ou moral, e as obtidas com invasão da vida privada, da casa, da correspondência ou das comunicações sem consentimento do titular, fora dos casos previstos na lei (art. 126.º do CPP e art. 32.º, n.º 8, da CRP).'],
+      ['Depoimento indireto', 'O que a testemunha sabe por ter ouvido dizer a outra pessoa. Só vale se o juiz chamar essa pessoa a depor, salvo se a sua inquirição não for possível (art. 129.º do CPP).']
+    ],
+    regime: [
+      ['Buscas', 'São autorizadas ou ordenadas por despacho da autoridade judiciária competente quando haja indícios de que objetos relacionados com o crime, ou o próprio arguido, se encontram em lugar reservado (art. 174.º, n.os 2 e 3, do CPP).', 'A busca em casa habitada depende de ordem ou autorização do juiz e, em regra, entre as 7 e as 21 horas (art. 177.º, n.º 1, do CPP). Há exceções, por exemplo com consentimento documentado do visado ou em flagrante delito por crime punível com prisão de máximo superior a 3 anos (art. 177.º, n.os 2 e 3, do CPP).'],
+      ['Escutas telefónicas', 'Só podem ser autorizadas por despacho fundamentado do juiz de instrução, quando o Ministério Público o requeira, quando forem indispensáveis para a descoberta da verdade ou esta for, de outra forma, impossível ou muito difícil, e apenas para os crimes do catálogo (art. 187.º, n.º 1, do CPP).', 'O incumprimento dos requisitos e das formalidades das escutas gera nulidade (art. 190.º do CPP). As conversas do arguido com o seu defensor não podem ser intercetadas, salvo quando o juiz tenha motivos sérios para pensar que constituem objeto ou elemento do crime (art. 187.º, n.º 5, do CPP).'],
+      ['Leitura de declarações em audiência', 'Em regra, as declarações prestadas antes do julgamento não podem ser lidas nem valoradas em audiência (art. 355.º do CPP).', 'As exceções estão nos arts. 356.º e 357.º do CPP: declarações para memória futura, acordo dos sujeitos processuais, impossibilidade de comparência, ou declarações do arguido prestadas perante juiz ou Ministério Público, estando presente o defensor, e após a advertência do art. 141.º, n.º 4, alínea b), do CPP.'],
+      ['Efeito à distância', 'A prova proibida contamina, em regra, as provas que dela derivam diretamente.', 'A jurisprudência admite exceções, por exemplo quando a prova derivada teria sido obtida de forma independente ou quando o nexo com a prova proibida se mostra atenuado. É uma questão discutida, que convém expor nas hipóteses práticas com as várias posições.']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Diligência', 'Quem autoriza', 'Nota principal'], linhas: [
+      ['Revista e busca não domiciliária', 'Autoridade judiciária (Ministério Público ou juiz)', 'Dispensada em urgência ou flagrante, com validação posterior (art. 174.º do CPP)'],
+      ['Busca domiciliária', 'Juiz de instrução', 'Entre as 7 e as 21 horas, com exceções (art. 177.º do CPP)'],
+      ['Busca em escritório de advogado ou consultório médico', 'Juiz, presidindo pessoalmente', 'Aviso prévio à ordem profissional (art. 177.º, n.º 5, do CPP)'],
+      ['Apreensão de correspondência', 'Juiz', 'O juiz é o primeiro a conhecer o conteúdo (art. 179.º do CPP)'],
+      ['Escutas', 'Juiz de instrução', 'Crimes do catálogo e indispensabilidade (art. 187.º do CPP)'],
+      ['Perícia', 'Autoridade judiciária', 'Juízo técnico vinculado (arts. 151.º e 163.º do CPP)']
+    ] },
+    exemplo: ['Para obter uma confissão, um agente diz a G, falsamente, que o seu cúmplice já o denunciou e que, se confessar, sai em liberdade nesse dia. G confessa. Que valor tem a confissão?',
+      'A confissão foi obtida mediante perturbação da liberdade de vontade de G por meios enganosos e por promessa de vantagem legalmente inadmissível (art. 126.º, n.º 2, alíneas a) e e), do CPP). Estas são provas absolutamente proibidas, independentemente do consentimento do arguido (art. 126.º, n.º 1, do CPP).',
+      'A confissão é nula e não pode ser utilizada. Além disso, há que avaliar se as provas obtidas a partir dela (por exemplo, a localização dos objetos furtados) ficam também contaminadas, ou se teriam sido descobertas de forma independente.']
+    ,
+    erros: [
+      'Tratar as nulidades de prova do art. 126.º como nulidades dependentes de arguição: são proibições de valoração que o tribunal deve conhecer.',
+      'Esquecer que a busca domiciliária exige despacho do juiz, e não do Ministério Público.',
+      'Usar em julgamento declarações do inquérito fora das exceções dos arts. 356.º e 357.º do CPP.',
+      'Valorar como prova o silêncio do arguido.'
+    ],
+    artigos: ['art. 125.º do CPP', 'art. 126.º do CPP', 'art. 127.º do CPP', 'art. 129.º do CPP', 'art. 163.º do CPP', 'art. 174.º do CPP', 'art. 177.º do CPP', 'art. 179.º do CPP', 'art. 187.º do CPP', 'art. 190.º do CPP', 'art. 355.º do CPP', 'art. 356.º do CPP', 'art. 357.º do CPP', 'art. 32.º da CRP']
+  },
+
+  instr: {
+    sub: 'A fase de controlo judicial da acusação ou do arquivamento: requerimento, atos de instrução, debate e decisão instrutória.',
+    ideia: 'A instrução não é um segundo inquérito. É uma fase facultativa, dirigida por um juiz, que serve para comprovar judicialmente a opção do Ministério Público entre acusar e arquivar, e decidir se o caso deve, ou não, ir a julgamento (art. 286.º, n.º 1, do CPP). Termina com a pronúncia (o processo segue para julgamento) ou com a não pronúncia (o processo é arquivado).',
+    conceitos: [
+      ['Requerimento de abertura da instrução', 'Peça com que o arguido ou o assistente pedem a instrução, em 20 dias contados da notificação da acusação ou do arquivamento (art. 287.º, n.º 1, do CPP). Não tem forma rígida, mas tem de explicar, de facto e de direito, por que discorda.'],
+      ['Legitimidade', 'O arguido requer quanto aos factos pelos quais foi acusado. O assistente requer quanto aos factos pelos quais o Ministério Público não acusou, desde que o crime não seja particular (art. 287.º, n.º 1, do CPP).'],
+      ['Requerimento do assistente como acusação', 'Quando o assistente reage a um arquivamento, o seu requerimento tem de conter a narração dos factos e as normas aplicáveis, como uma acusação (arts. 287.º, n.º 2, e 283.º, n.º 3, do CPP). É ele que delimita o objeto da instrução.'],
+      ['Debate instrutório', 'Ato obrigatório da instrução, oral e contraditório, em que se discute se há indícios suficientes para submeter o arguido a julgamento (arts. 297.º a 305.º do CPP).'],
+      ['Pronúncia e não pronúncia', 'Se houver indícios suficientes dos pressupostos da pena, o juiz pronuncia o arguido; caso contrário, profere despacho de não pronúncia (art. 308.º, n.º 1, do CPP).']
+    ],
+    regime: [
+      ['Rejeição do requerimento', 'O requerimento só pode ser recusado por três razões: chegou tarde, o juiz não é competente ou a lei não admite instrução naquele caso (art. 287.º, n.º 3, do CPP).', 'Por exemplo, a instrução é inadmissível nas formas de processo especiais (art. 286.º, n.º 3, do CPP), e o requerimento do assistente sem narração de factos tem sido considerado inadmissível, não havendo convite ao aperfeiçoamento.'],
+      ['Prazos', 'O juiz encerra a instrução em 2 meses se houver arguidos presos ou em obrigação de permanência na habitação, e em 4 meses nos restantes casos (art. 306.º, n.º 1, do CPP).', 'O prazo de 2 meses é elevado para 3 nos crimes do art. 215.º, n.º 2, do CPP (art. 306.º, n.º 2, do CPP).'],
+      ['Alteração dos factos', 'A pronúncia por factos substancialmente diferentes dos que constam da acusação ou do requerimento do assistente é nula (art. 309.º, n.º 1, do CPP).', 'Se, durante a instrução, resultar uma alteração não substancial, o juiz comunica-a ao defensor e concede prazo para a defesa (art. 303.º, n.º 1, do CPP).'],
+      ['Recurso', 'Quando o juiz pronuncia o arguido exatamente pelos factos acusados pelo Ministério Público, não há recurso dessa decisão (art. 310.º, n.º 1, do CPP).', 'A não pronúncia é recorrível, nos termos gerais.']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Requerimento', 'Arguido ou assistente, em 20 dias (art. 287.º do CPP).'],
+      ['Despacho de abertura', 'Admite ou rejeita o requerimento (art. 287.º, n.os 3 a 5).'],
+      ['Atos de instrução', 'Diligências que o juiz entenda úteis; pode recusar as dilatórias (arts. 289.º a 291.º).'],
+      ['Debate instrutório', 'Oral e contraditório; obrigatório (arts. 297.º a 305.º).'],
+      ['Decisão instrutória', 'Pronúncia ou não pronúncia (arts. 307.º e 308.º).']
+    ] },
+    exemplo: ['O Ministério Público arquivou um inquérito por burla por falta de indícios. H, ofendido, constituiu-se assistente e requereu a abertura da instrução dizendo apenas que «discorda do arquivamento e que o arguido o enganou». O que deve o juiz fazer?',
+      'O assistente tem legitimidade (art. 287.º, n.º 1, alínea b), do CPP) e está em prazo. Contudo, o seu requerimento funciona como uma acusação alternativa e tem de narrar os factos concretos e indicar as normas violadas (arts. 287.º, n.º 2, e 283.º, n.º 3, alíneas b) e c), do CPP).',
+      'Sem narração de factos, a instrução não teria objeto, e não é possível pronunciar alguém por factos que ninguém descreveu (art. 309.º do CPP). O requerimento deve ser rejeitado por inadmissibilidade legal da instrução (art. 287.º, n.º 3, do CPP), segundo o que o Supremo Tribunal de Justiça já fixou em jurisprudência obrigatória.']
+    ,
+    erros: [
+      'Tratar a instrução como uma fase obrigatória: só existe se for requerida.',
+      'Esquecer que, nos crimes particulares, não cabe ao assistente pedir instrução contra a sua própria falta de acusação: deve acusar.',
+      'Redigir o requerimento do assistente sem factos concretos.',
+      'Pensar que o debate instrutório é dispensável: é um ato obrigatório da instrução.'
+    ],
+    artigos: ['art. 286.º do CPP', 'art. 287.º do CPP', 'art. 289.º do CPP', 'art. 297.º do CPP', 'art. 303.º do CPP', 'art. 306.º do CPP', 'art. 307.º do CPP', 'art. 308.º do CPP', 'art. 309.º do CPP', 'art. 310.º do CPP']
+  },
+
+  julg: {
+    sub: 'Do saneamento à sentença: contestação, audiência, produção da prova, alteração dos factos e requisitos da sentença.',
+    ideia: 'O julgamento é o centro do processo penal. Tudo o que vem antes (inquérito e instrução) é preparatório; é na audiência, pública, oral e contraditória, que se produz a prova que pode fundar a condenação. O objeto do julgamento está fixado pela acusação ou pela pronúncia, e o tribunal só pode ir além dele dentro dos limites estritos dos arts. 358.º e 359.º do CPP.',
+    conceitos: [
+      ['Saneamento', 'Recebido o processo, o presidente conhece das nulidades e questões prévias e pode rejeitar a acusação manifestamente infundada, por exemplo se não contiver a narração dos factos ou se estes não constituírem crime (art. 311.º do CPP).'],
+      ['Contestação', 'O arguido é notificado para, em 20 dias, apresentar contestação, por artigos, com a indicação da prova (arts. 311.º-A e 311.º-B do CPP). Não contestar não equivale a confessar.'],
+      ['Continuidade da audiência', 'A audiência decorre sem interrupções até ao encerramento. Só se admitem as interrupções estritamente necessárias, e os adiamentos são excecionais e não podem, em regra, exceder 30 dias (art. 328.º do CPP).'],
+      ['Presença do arguido', 'É obrigatória, salvo nos casos em que a lei permite o julgamento na ausência (arts. 332.º a 334.º do CPP).'],
+      ['Confissão integral e sem reservas', 'Implica a renúncia à produção da prova relativa aos factos confessados, que se consideram provados, salvo em crimes punidos com prisão superior a 5 anos ou quando o tribunal duvide da sua veracidade (art. 344.º do CPP).']
+    ],
+    regime: [
+      ['Alteração não substancial dos factos', 'Se, no julgamento, surgirem factos com relevo para a decisão que não alterem substancialmente os da acusação ou da pronúncia, o juiz que preside dá conhecimento da alteração ao arguido e, se este o pedir, concede-lhe tempo para preparar a defesa (art. 358.º, n.º 1, do CPP).', 'O mesmo regime aplica-se à alteração da qualificação jurídica (art. 358.º, n.º 3, do CPP).'],
+      ['Alteração substancial dos factos', 'É aquela que imputa ao arguido um crime diverso ou agrava os limites máximos das sanções aplicáveis (art. 1.º, alínea f), do CPP). Não pode ser tomada em conta para a condenação no processo em curso (art. 359.º, n.º 1, do CPP).', 'Só pode ser considerada se Ministério Público, arguido e assistente aceitarem que o julgamento continue por esses novos factos (art. 359.º, n.º 3, do CPP). Caso contrário, valerá como denúncia para procedimento autónomo, se os novos factos forem autonomizáveis (art. 359.º, n.º 2, do CPP).'],
+      ['Requisitos da sentença', 'A sentença tem um relatório, a fundamentação (factos provados e não provados, exposição dos motivos e exame crítico das provas) e o dispositivo (art. 374.º do CPP).', 'É nula a sentença sem os requisitos de fundamentação, a que condene por factos diversos fora dos arts. 358.º e 359.º, ou a que deixe de se pronunciar sobre algo que tinha de decidir ou decida algo que lhe estava vedado (art. 379.º, n.º 1, do CPP).'],
+      ['Determinação da sanção', 'A deliberação faz-se em duas fases: primeiro a questão da culpabilidade, depois a da determinação da sanção (arts. 368.º e 369.º do CPP).', 'Para escolher e medir a pena, o tribunal pode pedir relatório social e reabrir a audiência para produzir a prova suplementar necessária (arts. 370.º e 371.º do CPP).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Saneamento', 'Questões prévias e eventual rejeição da acusação (art. 311.º do CPP).'],
+      ['Contestação', 'Notificação para contestar em 20 dias (arts. 311.º-A e 311.º-B).'],
+      ['Designação da audiência', 'Despacho que marca a data (art. 312.º e seguintes).'],
+      ['Produção da prova', 'Declarações do arguido, prova da acusação, da defesa e das partes civis (art. 341.º do CPP).'],
+      ['Alegações e últimas declarações', 'Alegações orais; a última palavra é do arguido (arts. 360.º e 361.º).'],
+      ['Deliberação e sentença', 'Culpabilidade, sanção e leitura pública (arts. 365.º a 375.º).']
+    ] },
+    exemplo: ['I é julgado por ofensa à integridade física simples (art. 143.º do CP). No julgamento, prova-se que agrediu a vítima com uma barra de ferro, circunstância que não constava da acusação e que integra o crime de ofensa à integridade física qualificada (art. 145.º do CP), com moldura mais grave. Pode ser condenado pelo crime qualificado?',
+      'A nova circunstância agrava os limites máximos da pena aplicável, pelo que constitui alteração substancial dos factos (art. 1.º, alínea f), do CPP). Não pode ser tomada em conta para condenar I neste processo (art. 359.º, n.º 1, do CPP).',
+      'Só seria possível se Ministério Público, arguido e assistente concordassem em que o julgamento prossiga também pelos factos novos (art. 359.º, n.º 3, do CPP). Sem acordo, I só pode ser julgado pela ofensa simples. Como a agressão com a barra não é autonomizável dos factos já em julgamento, não pode servir de base a um novo processo.']
+    ,
+    erros: [
+      'Valorar em audiência provas do inquérito que não foram reproduzidas ou examinadas em julgamento (art. 355.º do CPP).',
+      'Confundir alteração substancial com alteração da qualificação jurídica: esta segue o regime do art. 358.º, n.º 3, do CPP.',
+      'Esquecer o exame crítico das provas na fundamentação da sentença.',
+      'Pensar que a falta de contestação equivale a confissão.'
+    ],
+    artigos: ['art. 1.º do CPP', 'art. 311.º do CPP', 'art. 311.º-A do CPP', 'art. 311.º-B do CPP', 'art. 328.º do CPP', 'art. 332.º do CPP', 'art. 344.º do CPP', 'art. 358.º do CPP', 'art. 359.º do CPP', 'art. 368.º do CPP', 'art. 374.º do CPP', 'art. 379.º do CPP']
+  },
+
+  esp: {
+    sub: 'Processo sumário, abreviado e sumaríssimo: quando se aplicam e o que os distingue do processo comum.',
+    ideia: 'Para a pequena e média criminalidade, o processo comum é demasiado longo. Os processos especiais simplificam a tramitação quando a prova é evidente (sumário e abreviado) ou quando há consenso sobre uma sanção não privativa da liberdade (sumaríssimo). Em todos, não há instrução, e a escolha da forma errada pode gerar nulidade.',
+    conceitos: [
+      ['Processo sumário', 'Para detidos em flagrante quanto a crimes com prisão de máximo não superior a 5 anos, ou superior se o Ministério Público considerar que não se justifica pena superior a 5 anos (art. 381.º do CPP). O julgamento é imediato ou muito rápido.'],
+      ['Processo abreviado', 'Para crimes puníveis com multa ou prisão não superior a 5 anos (ou superior, com o mesmo limite concreto), quando haja provas simples e evidentes de que resultem indícios suficientes do crime e da sua autoria, por exemplo em caso de flagrante delito sem julgamento sumário, ou prova essencialmente documental (art. 391.º-A do CPP).'],
+      ['Processo sumaríssimo', 'O Ministério Público, a pedido do arguido ou após o ouvir, propõe ao juiz a aplicação de uma pena ou medida não privativa da liberdade, num crime punível com prisão não superior a 5 anos ou só com multa (art. 392.º do CPP). Se o arguido aceitar, a decisão vale como sentença condenatória e transita em julgado.'],
+      ['Reenvio', 'Se não se verificarem os pressupostos da forma especial, ou se o arguido se opuser no sumaríssimo, o processo segue a forma comum (arts. 390.º e 398.º do CPP).'],
+      ['Ausência de instrução', 'Nas formas de processo especiais não há lugar a instrução (art. 286.º, n.º 3, do CPP).']
+    ],
+    regime: [
+      ['Sumário: prazos', 'O detido é apresentado ao Ministério Público (art. 382.º do CPP) e a audiência começa, em regra, até 48 horas depois de ser detido (art. 387.º, n.º 1, do CPP).', 'O início pode ser adiado dentro dos limites do art. 387.º, n.º 2, do CPP, por exemplo até 20 dias se o arguido pedir prazo para preparar a defesa.'],
+      ['Sumário: detenção por particular', 'Também cabem no processo sumário os detidos em flagrante por particular, se forem entregues a uma autoridade judiciária ou entidade policial no prazo máximo de duas horas (art. 381.º, n.º 1, alínea b), do CPP).', 'Fora deste prazo, o caso segue outra forma de processo.'],
+      ['Sumaríssimo: oposição', 'O arguido é notificado do requerimento e pode opor-se no prazo de 15 dias (art. 396.º do CPP).', 'Sem oposição, o juiz profere despacho a aplicar a sanção, que vale como sentença condenatória e transita em julgado (art. 397.º do CPP). Com oposição, o processo é reenviado para a forma comum (art. 398.º do CPP).'],
+      ['Erro na forma de processo', 'Usar uma forma de processo diferente da que a lei impõe é nulidade dependente de arguição (art. 120.º, n.º 2, alínea a), do CPP).', 'Se, porém, o erro implicar a omissão do inquérito ou da instrução nos casos em que a lei a exige, ou o uso de processo especial sem que a lei o permita, a nulidade é insanável (art. 119.º, alíneas d) e f), do CPP).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Forma', 'Pressuposto principal', 'Limite de pena', 'Particularidade'], linhas: [
+      ['Sumário', 'Detenção em flagrante delito', 'Até 5 anos (ou mais, com limite concreto de 5)', 'Julgamento em 48 horas, em regra'],
+      ['Abreviado', 'Provas simples e evidentes', 'Até 5 anos ou multa (ou mais, com limite concreto de 5)', 'Acusação em 90 dias desde a notícia do crime'],
+      ['Sumaríssimo', 'Consenso sobre sanção não privativa da liberdade', 'Até 5 anos ou só multa', 'O arguido pode opor-se em 15 dias'],
+      ['Comum', 'Todos os restantes casos', 'Sem limite', 'Inquérito, instrução facultativa e julgamento']
+    ] },
+    exemplo: ['J é detido pela PSP às 23h00, em flagrante, a conduzir sem habilitação legal (crime punível com prisão até 2 anos ou multa). Qual a forma de processo e o que tem de acontecer nas horas seguintes?',
+      'Há detenção em flagrante delito (art. 256.º do CPP) efetuada por entidade policial, por crime punível com prisão de máximo não superior a 5 anos: estão reunidos os pressupostos do processo sumário (art. 381.º, n.º 1, alínea a), do CPP).',
+      'J deve ser apresentado ao Ministério Público e a julgamento no prazo máximo de 48 horas (arts. 254.º, n.º 1, alínea a), 382.º e 387.º, n.º 1, do CPP). Se não for possível iniciar logo a audiência, aplicam-se os adiamentos do art. 387.º do CPP. Se faltar algum pressuposto, o Ministério Público pode recorrer ao processo abreviado ou pelo comum.']
+    ,
+    erros: [
+      'Aplicar o processo sumário sem detenção em flagrante delito.',
+      'Pensar que no processo sumaríssimo o arguido pode ser condenado em prisão efetiva.',
+      'Requerer instrução num processo especial (sumário, abreviado ou sumaríssimo).',
+      'Esquecer o prazo de duas horas para a entrega do detido por particular.'
+    ],
+    artigos: ['art. 381.º do CPP', 'art. 382.º do CPP', 'art. 387.º do CPP', 'art. 390.º do CPP', 'art. 391.º-A do CPP', 'art. 392.º do CPP', 'art. 396.º do CPP', 'art. 397.º do CPP', 'art. 398.º do CPP', 'art. 286.º do CPP']
+  },
+
+  rec: {
+    sub: 'Recursos ordinários e extraordinários, habeas corpus: o que é recorrível, por quem, para onde, em que prazo e com que fundamentos.',
+    ideia: 'O recurso é o remédio contra as decisões erradas. A regra é a recorribilidade (art. 399.º do CPP), mas a lei exclui o recurso em vários casos, sobretudo para o Supremo Tribunal de Justiça, reservado às questões de direito e aos casos mais graves. Num recurso, o que o tribunal superior aprecia é delimitado pelas conclusões do recorrente, sem prejuízo das questões de conhecimento oficioso.',
+    conceitos: [
+      ['Recurso ordinário', 'Interposto de decisões ainda não transitadas em julgado: para a Relação ou, nos casos previstos, diretamente para o Supremo Tribunal de Justiça (arts. 427.º e 432.º do CPP).'],
+      ['Recursos extraordinários', 'Interpostos de decisões já transitadas: recurso para fixação de jurisprudência (arts. 437.º e seguintes do CPP) e recurso de revisão (arts. 449.º e seguintes do CPP).'],
+      ['Proibição da reformatio in pejus', 'Se o recurso for interposto só pelo arguido, ou pelo Ministério Público apenas a favor daquele, o tribunal superior não pode agravar a sanção (art. 409.º do CPP).'],
+      ['Vícios da decisão', 'Mesmo num recurso restrito à matéria de direito, pode invocar-se a falta de factos provados bastantes para a decisão, uma contradição que não se consiga resolver na fundamentação ou entre esta e a decisão, e o erro notório na apreciação da prova, desde que resultem do texto da decisão (art. 410.º, n.º 2, do CPP).'],
+      ['Habeas corpus', 'Providência urgente, decidida pelo Supremo Tribunal de Justiça, contra a prisão ilegal: ordenada por entidade incompetente, baseada num facto que não a permite, ou mantida para além dos prazos legais (art. 222.º, n.º 2, do CPP).']
+    ],
+    regime: [
+      ['Prazo e forma', 'O prazo de interposição é de 30 dias, a contar da notificação da decisão ou do depósito da sentença na secretaria (art. 411.º, n.º 1, do CPP). O requerimento é sempre motivado (art. 411.º, n.º 3, do CPP).', 'A motivação termina com conclusões, que resumem as razões do pedido. Se se impugnar a matéria de facto, o recorrente tem de especificar os pontos incorretamente julgados, as provas que impõem decisão diversa e as provas a renovar (art. 412.º, n.os 1 e 3, do CPP).'],
+      ['Decisões irrecorríveis', 'Não há recurso, entre outros, de despachos de mero expediente, de decisões que dependem da livre resolução do tribunal e de vários acórdãos das Relações proferidos em recurso, como os que confirmem a condenação em prisão não superior a 8 anos (dupla conforme) ou apliquem pena não privativa da liberdade ou prisão não superior a 5 anos (art. 400.º, n.º 1, do CPP).', 'Quanto à parte civil, o recurso depende do valor do pedido e da sucumbência, em relação à alçada do tribunal recorrido (art. 400.º, n.º 2, do CPP).'],
+      ['Recurso direto para o Supremo', 'Dos acórdãos finais do tribunal do júri ou do coletivo que condenem em prisão por mais de 5 anos, quando se vise exclusivamente o reexame da matéria de direito, recorre-se diretamente para o Supremo Tribunal de Justiça (art. 432.º, n.º 1, alínea c), do CPP).', 'Se se impugnar também a matéria de facto, o recurso é para a Relação, que conhece de facto e de direito (art. 428.º do CPP).'],
+      ['Legitimidade', 'Podem recorrer o Ministério Público (mesmo no exclusivo interesse do arguido), o arguido e o assistente das decisões contra eles proferidas, e as partes civis quanto à parte que lhes diga respeito (art. 401.º, n.º 1, do CPP).', 'Sem interesse em agir, não há legitimidade para recorrer (art. 401.º, n.º 2, do CPP). Por exemplo, o assistente não tem, em regra, interesse em recorrer só para agravar a medida da pena, salvo se demonstrar um interesse próprio, conforme jurisprudência fixada.']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['A decisão é recorrível?', 'Regra do art. 399.º e exceções do art. 400.º do CPP.'],
+      ['Quem recorre?', 'Legitimidade e interesse em agir (art. 401.º do CPP).'],
+      ['Para onde?', 'Relação (art. 427.º) ou Supremo Tribunal de Justiça (art. 432.º do CPP).'],
+      ['Em que prazo?', '30 dias, com motivação e conclusões (arts. 411.º e 412.º do CPP).'],
+      ['Com que fundamentos?', 'Matéria de facto, de direito e vícios do art. 410.º do CPP.'],
+      ['Que efeitos?', 'Subida e efeito (arts. 406.º a 408.º); proibição da reformatio in pejus (art. 409.º).']
+    ] },
+    exemplo: ['K foi condenado pelo tribunal coletivo em 7 anos de prisão. Pretende discutir apenas a qualificação jurídica dos factos e a medida da pena. Para onde recorre?',
+      'Trata-se de um acórdão final do tribunal coletivo que aplica pena de prisão superior a 5 anos, e o recurso se limita a questões de direito. Recorre-se diretamente para o Supremo Tribunal de Justiça (art. 432.º, n.º 1, alínea c), do CPP), sem recurso prévio para a Relação (art. 432.º, n.º 2, do CPP).',
+      'O prazo é de 30 dias a contar do depósito do acórdão (art. 411.º, n.º 1, alínea b), do CPP). Se K quisesse também impugnar a matéria de facto, teria de recorrer para a Relação (arts. 427.º e 428.º do CPP).']
+    ,
+    erros: [
+      'Impugnar a matéria de facto sem as especificações do art. 412.º, n.º 3, do CPP.',
+      'Ir para o Supremo Tribunal de Justiça discutir factos.',
+      'Ignorar a dupla conforme como limite ao recurso das decisões das Relações.',
+      'Usar o habeas corpus para discutir a valoração da prova: é reservado à ilegalidade manifesta da prisão.'
+    ],
+    artigos: ['art. 399.º do CPP', 'art. 400.º do CPP', 'art. 401.º do CPP', 'art. 409.º do CPP', 'art. 410.º do CPP', 'art. 411.º do CPP', 'art. 412.º do CPP', 'art. 427.º do CPP', 'art. 428.º do CPP', 'art. 432.º do CPP', 'art. 437.º do CPP', 'art. 449.º do CPP', 'art. 222.º do CPP']
+  },
+
+  nul: {
+    sub: 'Os três graus de invalidade (nulidades insanáveis, nulidades sanáveis e irregularidades): como se distinguem e como se invocam.',
+    ideia: 'Nem todo o vício de um ato processual o torna inválido. A violação de uma regra do processo só gera nulidade quando a lei o diz expressamente; nos outros casos, o ato é irregular (art. 118.º, n.os 1 e 2, do CPP). Dentro das nulidades, as insanáveis são de conhecimento oficioso em qualquer fase, e as restantes têm de ser arguidas pelo interessado no momento próprio, sob pena de sanação.',
+    conceitos: [
+      ['Princípio da legalidade das nulidades', 'Só há nulidade quando a lei a comina expressamente. Nos restantes casos, o ato ilegal é irregular (art. 118.º do CPP).'],
+      ['Nulidades insanáveis', 'As do art. 119.º do CPP: composição do tribunal, processo não promovido pelo Ministério Público, ausência obrigatória do arguido ou do defensor, falta de inquérito ou de instrução obrigatórios, violação das regras de competência e uso de forma especial fora dos casos legais.'],
+      ['Nulidades dependentes de arguição', 'As do art. 120.º do CPP e as cominadas noutras normas sem a qualificação de insanáveis, como o emprego de uma forma de processo errada ou a insuficiência do inquérito ou da instrução.'],
+      ['Irregularidades', 'Todos os restantes vícios. Só determinam a invalidade do ato se forem arguidas no próprio ato ou nos três dias seguintes à notificação ou intervenção posterior (art. 123.º, n.º 1, do CPP).'],
+      ['Proibições de prova', 'Têm um regime próprio (art. 126.º do CPP): não se confundem com as nulidades processuais, porque impedem a valoração da prova e devem ser conhecidas pelo tribunal.']
+    ],
+    regime: [
+      ['Momentos para arguir', 'As nulidades dependentes de arguição devem ser invocadas: antes de terminar o ato a que o interessado assista; quanto ao inquérito, no requerimento de abertura da instrução ou, não havendo instrução, até ao termo do prazo para a requerer; quanto à instrução, até ao fim do debate instrutório (art. 120.º, n.º 3, do CPP).', 'Se não forem arguidas a tempo, ficam sanadas (art. 121.º do CPP).'],
+      ['Efeitos da declaração', 'Declarada a nulidade, cai o ato viciado e os que dele dependerem e puderem ser afetados (art. 122.º, n.º 1, do CPP).', 'A declaração determina que atos ficam afetados e ordena, sempre que necessário e possível, a sua repetição, aproveitando-se todos os atos que ainda puderem ser salvos (art. 122.º, n.os 2 e 3, do CPP).'],
+      ['Sanação', 'Salvo nos casos em que a lei disponha de outro modo, as nulidades ficam sanadas se os interessados renunciarem expressamente a argui-las, tiverem aceitado expressamente os efeitos do ato anulável ou se tiverem prevalecido da faculdade a cujo exercício o ato anulável se dirigia (art. 121.º, n.º 1, do CPP).', 'As nulidades insanáveis não se sanam; só o trânsito em julgado da decisão final as torna, em regra, irrelevantes.']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Há violação de uma regra processual?', 'Identificar o ato e a norma violada.'],
+      ['A lei comina nulidade?', 'Se não, trata-se de irregularidade (art. 118.º, n.º 2, do CPP).'],
+      ['Que tipo de nulidade?', 'Insanável (art. 119.º) ou dependente de arguição (art. 120.º do CPP).'],
+      ['Foi arguida a tempo?', 'Prazos do art. 120.º, n.º 3, ou do art. 123.º do CPP.'],
+      ['Que atos ficam afetados?', 'Efeito à distância limitado aos atos dependentes (art. 122.º do CPP).']
+    ] },
+    exemplo: ['L foi julgado sem que o seu defensor estivesse presente na audiência, que se realizou com L presente. L só invoca o vício no recurso da sentença. Ainda vai a tempo?',
+      'A assistência de defensor na audiência é obrigatória (art. 64.º, n.º 1, alínea c), do CPP). A sua ausência, num caso em que a lei exige a comparência, constitui nulidade insanável (art. 119.º, alínea c), do CPP).',
+      'As nulidades insanáveis são de conhecimento oficioso em qualquer fase do procedimento, até ao trânsito em julgado. L pode invocá-la no recurso e, sendo declarada, a audiência e os atos dela dependentes, incluindo a sentença, são inválidos e terão de ser repetidos (art. 122.º do CPP).']
+    ,
+    erros: [
+      'Chamar nulidade a um vício que a lei não qualifica como tal: é irregularidade.',
+      'Deixar passar o prazo de três dias para arguir uma irregularidade.',
+      'Arguir a nulidade do inquérito só no julgamento, depois de decorrido o prazo para requerer a instrução.',
+      'Confundir as proibições de prova com as nulidades processuais.'
+    ],
+    artigos: ['art. 118.º do CPP', 'art. 119.º do CPP', 'art. 120.º do CPP', 'art. 121.º do CPP', 'art. 122.º do CPP', 'art. 123.º do CPP', 'art. 126.º do CPP']
+  }
+};
+
 
 </script>
 <script>
@@ -5388,7 +6003,7 @@ Store.attach = function (session) {
 };
 
 /* ---------- estado da interface ---------- */
-var VIEWS = ['painel', 'reputacao', 'flashcards', 'aula', 'lei', 'guias', 'guia', 'glossario', 'calcheranca', 'meet', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
+var VIEWS = ['painel', 'reputacao', 'flashcards', 'aula', 'lei', 'guias', 'guia', 'glossario', 'calcheranca', 'mapapp', 'meet', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
 var S = {
   view: 'painel', wsId: null, wsTab: '01', wsQ: '', q: '',
   libQ: '', libArea: 'Todas', libOpen: { cpc: true },
@@ -5516,6 +6131,7 @@ function render() {
     else if (v === 'guias') h = vGuias();
     else if (v === 'glossario') h = vGlossario();
     else if (v === 'calcheranca') h = vCalcHeranca();
+    else if (v === 'mapapp') h = vMapaPP();
     else if (v === 'meet') h = vMeet();
     else if (v === 'guia') h = vGuia();
   else if (v === 'agenda') h = vAgenda();
@@ -8471,16 +9087,16 @@ var MOD_PERFIL = {
   doc: ['docente', 'atualidade', 'mentoria'],
   outro: ['kpis', 'progresso', 'calendario', 'horario', 'atualidade', 'continuar', 'mentoria', 'ferramentas']
 };
-var NAV = { painel: ['Painel', 'grid'], guias: ['Matéria explicada', 'book'], glossario: ['Glossário jurídico', 'book'], calcheranca: ['Calculadora da herança', 'grid'], aula: ['Sala de aula', 'aula'], flashcards: ['Flashcards', 'layers'], atualidade: ['Atualidade jurídica', 'news'], biblioteca: ['Biblioteca jurídica', 'book'], instituicoes: ['Instituições', 'uni'], workspaces: ['Legal Workspaces', 'folder'], minutas: ['Gerador de minutas', 'file'], cadeiras: ['Cadeiras', 'layers'], apontamentos: ['Apontamentos', 'note'], exames: ['Estudar e praticar', 'check'], casos: ['Casos práticos', 'scale'], prazos: ['Contador de prazos', 'hour'], agenda: ['Agenda de diligências', 'cal'], dissertacao: ['Dissertação', 'cap'], ordem: ['Treino para a Ordem', 'badge'], docente: ['Ensino', 'pen'] };
+var NAV = { painel: ['Painel', 'grid'], guias: ['Matéria explicada', 'book'], glossario: ['Glossário jurídico', 'book'], calcheranca: ['Calculadora da herança', 'grid'], mapapp: ['Mapa do processo penal', 'book'], aula: ['Sala de aula', 'aula'], flashcards: ['Flashcards', 'layers'], atualidade: ['Atualidade jurídica', 'news'], biblioteca: ['Biblioteca jurídica', 'book'], instituicoes: ['Instituições', 'uni'], workspaces: ['Legal Workspaces', 'folder'], minutas: ['Gerador de minutas', 'file'], cadeiras: ['Cadeiras', 'layers'], apontamentos: ['Apontamentos', 'note'], exames: ['Estudar e praticar', 'check'], casos: ['Casos práticos', 'scale'], prazos: ['Contador de prazos', 'hour'], agenda: ['Agenda de diligências', 'cal'], dissertacao: ['Dissertação', 'cap'], ordem: ['Treino para a Ordem', 'badge'], docente: ['Ensino', 'pen'] };
 var COMUN = ['chat', 'mensagens', 'salas', 'connect'];
 var NAV_PERFIL = {
-  lic: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'glossario', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos', 'calcheranca']], ['Trabalho', ['workspaces', 'minutas']]],
+  lic: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'glossario', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos', 'calcheranca', 'mapapp']], ['Trabalho', ['workspaces', 'minutas']]],
   licd: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Próximo passo', ['ordem', 'prazos', 'minutas', 'workspaces']]],
   mest: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Investigação', ['dissertacao', 'workspaces', 'apontamentos']]],
   estag: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Prática', ['prazos', 'agenda', 'minutas', 'workspaces']], ['Preparação', ['ordem', 'casos']]],
   prof: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Prática', ['prazos', 'agenda', 'minutas', 'workspaces']]],
   doc: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Ensino', ['docente', 'casos', 'exames']]],
-  outro: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'glossario', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos', 'calcheranca']], ['Trabalho', ['workspaces', 'minutas', 'prazos', 'agenda']]]
+  outro: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'glossario', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos', 'calcheranca', 'mapapp']], ['Trabalho', ['workspaces', 'minutas', 'prazos', 'agenda']]]
 };
 var AREAS_OPC = ['Civil', 'Processo Civil', 'Penal', 'Constitucional', 'Administrativo', 'Comercial', 'Fiscal', 'Laboral', 'Migrações', 'Institucional'];
 
@@ -10937,7 +11553,7 @@ libList = function () {
 setTimeout(leiMetaCarregar, 1500);
 
 /* ===== Matéria explicada: guias de estudo por tema ===== */
-var GUIA_ORD = ['obr', 'fam', 'pen', 'pc', 'pex', 'con'];
+var GUIA_ORD = ['obr', 'fam', 'pen', 'pp', 'pc', 'pex', 'con'];
 function guiasDe(d) { return (typeof GUIAS !== 'undefined' && GUIAS[d]) || {}; }
 function guiaTem(d, t) { return !!guiasDe(d)[t]; }
 function guiaN(d) { return Object.keys(guiasDe(d)).length; }
@@ -11409,6 +12025,81 @@ vGuia = function () {
   return h;
 };
 
+/* ---------- MAPA DO PROCESSO PENAL (fases, quem decide, prazos e reações) ---------- */
+var MPP = [
+  { id: 'not', nome: 'Notícia do crime', curto: 'Notícia', quem: 'Ministério Público e órgãos de polícia criminal', tema: 'queixa',
+    o: 'O processo começa quando o Ministério Público toma conhecimento de um possível crime: por conhecimento próprio, por intermédio da polícia ou por denúncia. Nos crimes semipúblicos e particulares, só avança se houver queixa do titular.',
+    prazos: [['Queixa (crimes semipúblicos e particulares)', '6 meses desde o conhecimento do facto e do autor', 'art. 115.º do CP'], ['Comunicação da notícia ao Ministério Público', 'No mais curto prazo, até 10 dias', 'art. 248.º do CPP']],
+    dec: ['Registo e abertura de inquérito (art. 262.º, n.º 2, do CPP)', 'Medidas cautelares e de polícia, em caso de urgência (arts. 249.º a 253.º do CPP)', 'Detenção em flagrante delito (arts. 255.º e 256.º do CPP)'],
+    reac: ['Sem queixa válida e tempestiva, não há legitimidade do Ministério Público nos crimes semipúblicos e particulares.'],
+    art: ['art. 241.º do CPP', 'art. 242.º do CPP', 'art. 49.º do CPP', 'art. 50.º do CPP'] },
+  { id: 'det', nome: 'Detenção e medidas de coação', curto: 'Coação', quem: 'Juiz de instrução (salvo o termo de identidade e residência)', tema: 'coac', lateral: true,
+    o: 'Pode surgir em qualquer momento a partir do inquérito. O detido é presente ao juiz em 48 horas; as medidas de coação servem apenas finalidades cautelares e obedecem à necessidade, adequação e proporcionalidade.',
+    prazos: [['Apresentação do detido ao juiz', 'Máximo de 48 horas', 'arts. 141.º e 254.º do CPP'], ['Reexame da prisão preventiva', 'De 3 em 3 meses', 'art. 213.º do CPP'], ['Prisão preventiva sem acusação', '4 meses (alargável)', 'art. 215.º do CPP'], ['Decisão do recurso da medida', 'Máximo de 30 dias', 'art. 219.º do CPP']],
+    dec: ['Termo de identidade e residência (art. 196.º do CPP)', 'Caução, apresentação periódica, proibições e imposições de conduta', 'Obrigação de permanência na habitação (art. 201.º do CPP)', 'Prisão preventiva (art. 202.º do CPP)'],
+    reac: ['Recurso da decisão que aplica a medida (art. 219.º do CPP)', 'Habeas corpus contra detenção ou prisão ilegal (arts. 220.º e 222.º do CPP)'],
+    art: ['art. 193.º do CPP', 'art. 204.º do CPP'] },
+  { id: 'inq', nome: 'Inquérito', curto: 'Inquérito', quem: 'Ministério Público, coadjuvado pelos órgãos de polícia criminal', tema: 'inq',
+    o: 'Fase obrigatória de investigação. Reúne as provas sobre o crime, os agentes e a sua responsabilidade. O juiz de instrução intervém apenas nos atos que tocam direitos fundamentais.',
+    prazos: [['Duração com arguidos presos ou em permanência na habitação', '6 meses (alargável)', 'art. 276.º, n.º 1, do CPP'], ['Duração nos restantes casos', '8 meses (alargável)', 'art. 276.º, n.º 1, do CPP'], ['Acusação do assistente (crimes públicos e semipúblicos)', '10 dias após a notificação da acusação do MP', 'art. 284.º do CPP'], ['Acusação particular', '10 dias após notificação do MP', 'art. 285.º do CPP']],
+    dec: ['Arquivamento (art. 277.º do CPP)', 'Arquivamento com dispensa de pena (art. 280.º do CPP)', 'Suspensão provisória do processo (art. 281.º do CPP)', 'Acusação (art. 283.º do CPP)', 'Opção por forma especial: sumário, abreviado ou sumaríssimo'],
+    reac: ['Contra o arquivamento: instrução pedida pelo assistente (art. 287.º do CPP) ou intervenção hierárquica (art. 278.º do CPP)', 'Contra a acusação: instrução pedida pelo arguido (art. 287.º do CPP)', 'Atraso: pedido de aceleração processual (art. 108.º do CPP)'],
+    art: ['art. 262.º do CPP', 'art. 263.º do CPP', 'art. 268.º do CPP', 'art. 269.º do CPP'] },
+  { id: 'ins', nome: 'Instrução (facultativa)', curto: 'Instrução', quem: 'Juiz de instrução', tema: 'instr',
+    o: 'Só existe se for requerida. Comprova judicialmente a decisão de acusar ou de arquivar e decide se o caso vai a julgamento. Não há instrução nas formas de processo especiais.',
+    prazos: [['Requerimento de abertura da instrução', '20 dias após a notificação da acusação ou do arquivamento', 'art. 287.º do CPP'], ['Duração com arguidos presos ou em permanência na habitação', '2 meses (3 nos crimes mais graves)', 'art. 306.º do CPP'], ['Duração nos restantes casos', '4 meses', 'art. 306.º do CPP']],
+    dec: ['Despacho de pronúncia: o processo segue para julgamento (art. 308.º do CPP)', 'Despacho de não pronúncia: o processo é arquivado (art. 308.º do CPP)'],
+    reac: ['A pronúncia pelos factos da acusação do MP é irrecorrível (art. 310.º do CPP)', 'A não pronúncia é recorrível', 'Nulidades do inquérito: arguir no requerimento de abertura da instrução (art. 120.º, n.º 3, do CPP)'],
+    art: ['art. 286.º do CPP', 'art. 297.º do CPP', 'art. 309.º do CPP'] },
+  { id: 'jul', nome: 'Julgamento', curto: 'Julgamento', quem: 'Tribunal singular, coletivo ou do júri', tema: 'julg',
+    o: 'Audiência pública, oral e contraditória. Só vale a prova produzida ou examinada em audiência. O tribunal está limitado pelos factos da acusação ou da pronúncia.',
+    prazos: [['Contestação do arguido', '20 dias após a notificação para contestar', 'art. 311.º-B do CPP'], ['Requerimento de júri pelo arguido', 'No prazo do requerimento de abertura da instrução', 'art. 13.º do CPP'], ['Adiamento da audiência', 'Não pode exceder 30 dias', 'art. 328.º do CPP']],
+    dec: ['Sentença condenatória (art. 375.º do CPP)', 'Sentença absolutória (art. 376.º do CPP)', 'Decisão do pedido de indemnização civil (art. 377.º do CPP)'],
+    reac: ['Alteração não substancial dos factos: comunicação e prazo para defesa (art. 358.º do CPP)', 'Alteração substancial: só com acordo de todos (art. 359.º do CPP)', 'Nulidades da sentença (art. 379.º do CPP)'],
+    art: ['art. 311.º do CPP', 'art. 355.º do CPP', 'art. 374.º do CPP'] },
+  { id: 'rec', nome: 'Recursos', curto: 'Recursos', quem: 'Tribunal da Relação ou Supremo Tribunal de Justiça', tema: 'rec',
+    o: 'Reapreciação das decisões não transitadas. A Relação conhece de facto e de direito; o Supremo, em regra, apenas de direito. Depois do trânsito em julgado, restam os recursos extraordinários.',
+    prazos: [['Interposição e motivação', '30 dias', 'art. 411.º do CPP'], ['Resposta ao recurso', '30 dias', 'art. 413.º do CPP']],
+    dec: ['Confirmação ou revogação da decisão', 'Reenvio para novo julgamento (art. 426.º do CPP)', 'Rejeição do recurso (art. 420.º do CPP)'],
+    reac: ['Recurso para fixação de jurisprudência (art. 437.º do CPP)', 'Recurso de revisão (art. 449.º do CPP)'],
+    art: ['art. 399.º do CPP', 'art. 400.º do CPP', 'art. 410.º do CPP', 'art. 432.º do CPP'] },
+  { id: 'exe', nome: 'Execução', curto: 'Execução', quem: 'Tribunal de 1.ª instância e tribunal de execução das penas', tema: null,
+    o: 'Com o trânsito em julgado, a decisão torna-se exequível: cumpre-se a pena de prisão, a multa, a suspensão da execução ou outra sanção aplicada.',
+    prazos: [['Pagamento da multa', '15 dias após a notificação', 'art. 489.º do CPP']],
+    dec: ['Liberdade condicional (arts. 484.º e seguintes do CPP)', 'Substituição da multa por trabalho (art. 490.º do CPP)', 'Revogação ou extinção da suspensão da pena (art. 495.º do CPP)'],
+    reac: ['Recurso das decisões proferidas na execução, nos termos gerais'],
+    art: ['art. 467.º do CPP', 'art. 470.º do CPP'] }
+];
+var MPP_ESP = [
+  ['Sumário', 'Detenção em flagrante delito; pena até 5 anos (ou limite concreto de 5)', 'Julgamento em 48 horas, em regra', 'art. 381.º do CPP'],
+  ['Abreviado', 'Provas simples e evidentes; pena até 5 anos ou multa', 'Sem instrução; acusação rápida', 'art. 391.º-A do CPP'],
+  ['Sumaríssimo', 'Consenso sobre sanção não privativa da liberdade', 'Arguido pode opor-se em 15 dias', 'art. 392.º do CPP']
+];
+function vMapaPP() {
+  var L = function (x) { return typeof leiLinkify === 'function' ? leiLinkify(x) : esc(x); };
+  var i = S.mpp == null ? 2 : S.mpp, f = MPP[i];
+  var h = '<div class="head"><div><span class="crumb"><button data-go="guias">Matéria explicada</button> / Direito Processual Penal</span><h1>Mapa do processo penal</h1><p class="sub">Da notícia do crime à execução da pena: quem decide em cada fase, os prazos principais e como reagir. Toque numa fase para ver os pormenores.</p></div></div>';
+  h += '<section class="card mpp-w"><ol class="mpp-tl">' + MPP.map(function (x, k) {
+    return '<li class="mpp-f' + (k === i ? ' on' : '') + (x.lateral ? ' lat' : '') + '"><button data-a="mpp-f" data-id="' + k + '" aria-pressed="' + (k === i) + '"><span class="mpp-n">' + (x.lateral ? '⚖' : (k < 1 ? 1 : k)) + '</span><b>' + esc(x.curto) + '</b></button></li>';
+  }).join('') + '</ol></section>';
+  h += '<div class="mpp-g"><section class="card mpp-d"><span class="gu-k">' + (f.lateral ? 'Pode ocorrer a partir do inquérito' : 'Fase ' + (i < 1 ? 1 : i) + ' de ' + (MPP.length - 1)) + '</span><h2>' + esc(f.nome) + '</h2>' +
+    '<p class="mpp-quem"><b>Quem dirige ou decide:</b> ' + esc(f.quem) + '</p><p>' + L(f.o) + '</p>' +
+    '<h3>Prazos principais</h3><div class="gu-tw"><table class="gu-tab"><thead><tr><th>O quê</th><th>Prazo</th><th>Norma</th></tr></thead><tbody>' + f.prazos.map(function (p) { return '<tr><th scope="row">' + esc(p[0]) + '</th><td>' + esc(p[1]) + '</td><td>' + L(p[2]) + '</td></tr>'; }).join('') + '</tbody></table></div>' +
+    '<div class="mpp-2"><div><h3>Como pode terminar</h3><ul>' + f.dec.map(function (d) { return '<li>' + L(d) + '</li>'; }).join('') + '</ul></div><div><h3>Como reagir</h3><ul>' + f.reac.map(function (d) { return '<li>' + L(d) + '</li>'; }).join('') + '</ul></div></div>' +
+    '<p class="mpp-art">' + f.art.map(function (a) { return L(a); }).join(' · ') + '</p>' +
+    '<div class="row">' + (i > 0 ? '<button class="btn sm" data-a="mpp-f" data-id="' + (i - 1) + '">← ' + esc(MPP[i - 1].curto) + '</button>' : '') + (f.tema ? '<button class="btn gold sm" data-a="guia-abrir" data-id="pp|' + f.tema + '">Estudar este tema</button>' : '') + (i < MPP.length - 1 ? '<button class="btn sm" data-a="mpp-f" data-id="' + (i + 1) + '">' + esc(MPP[i + 1].curto) + ' →</button>' : '') + '</div></section>' +
+    '<aside class="card mpp-esp"><span class="gu-k">Atalhos</span><h3>Processos especiais</h3><p class="sub">Para a pequena e média criminalidade, sem instrução.</p>' + MPP_ESP.map(function (e) { return '<div class="mpp-e"><b>' + esc(e[0]) + '</b><span>' + esc(e[1]) + '</span><em>' + esc(e[2]) + ' · ' + L(e[3]) + '</em></div>'; }).join('') +
+    '<button class="btn sm" data-a="guia-abrir" data-id="pp|esp">Ver o tema completo</button></aside></div>';
+  return h;
+}
+A['mpp-f'] = function (el) { S.mpp = Number(el.dataset.id); render(); };
+var _vGuiaMPP = vGuia;
+vGuia = function () {
+  var h = _vGuiaMPP(), g = S.guia || {};
+  if (g.d === 'pp') h = h.replace('<aside class="gu-side">', '<aside class="gu-side"><button class="card ch-cta" data-go="mapapp"><b>🗺️ Mapa do processo penal</b><span>Todas as fases, prazos e reações num só ecrã.</span></button>');
+  return h;
+};
+
 /* ---------- BARRA SUPERIOR DO ESTUDANTE DE LICENCIATURA (organizada por intenções) ---------- */
 I.spark = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg>';
 I.glos = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M8.5 13l2-6 2 6M9.2 11h2.6M15 8.5h2M15 11h2"/></svg>';
@@ -11427,6 +12118,7 @@ var N2 = {
     { id: 'aprender', nome: 'Aprender', ic: 'book', cor: 'c2', lema: 'Perceber a matéria', itens: [
       ['guias', 'Matéria explicada', 'Guias por tema, com esquemas e exemplos resolvidos', 'book'],
       ['glossario', 'Glossário jurídico', 'Os conceitos explicados em linguagem simples', 'glos'],
+      ['mapapp', 'Mapa do processo penal', 'Fases, prazos e reações num só ecrã', 'layers'],
       ['atualidade', 'Atualidade jurídica', 'Novas leis, acórdãos e notícias', 'news']] },
     { id: 'praticar', nome: 'Praticar', ic: 'target', cor: 'c3', lema: 'Testar o que sabe', itens: [
       ['exames', 'Simulador de exames', 'Perguntas com correção e base legal', 'check'],
@@ -11933,7 +12625,7 @@ A['tema'] = function () { var n = temaEscuro() ? 'claro' : 'escuro'; lsSet('lexd
 try { if (window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () { if (!lsGet('lexdesk_tema')) temaAplicar(temaPref()); }); } catch (e) { }
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
-var VIEW_LBL = { painel: ['Painel', I.grid], guias: ['Matéria explicada', I.book], guia: ['Guia de estudo', I.book], glossario: ['Glossário jurídico', I.book], calcheranca: ['Calculadora da herança', I.grid], meet: ['LexDesk Meet', I.grid], reputacao: ['Reputação', I.badge], flashcards: ['Flashcards', I.layers], aula: ['Sala de aula', I.note], lei: ['Texto integral da lei', I.book], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Estudar e praticar', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
+var VIEW_LBL = { painel: ['Painel', I.grid], guias: ['Matéria explicada', I.book], guia: ['Guia de estudo', I.book], glossario: ['Glossário jurídico', I.book], mapapp: ['Mapa do processo penal', I.book], calcheranca: ['Calculadora da herança', I.grid], meet: ['LexDesk Meet', I.grid], reputacao: ['Reputação', I.badge], flashcards: ['Flashcards', I.layers], aula: ['Sala de aula', I.note], lei: ['Texto integral da lei', I.book], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Estudar e praticar', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
 var isMac = /Mac|iPhone|iPad/.test(navigator.platform || '');
 
 /* ===== animação de entrada e contadores ===== */
@@ -12181,7 +12873,7 @@ Store.connect();
 </script>
 <script>
 /* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='9c71f14821b4';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
+(function(){var B='aa745593292e';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>
