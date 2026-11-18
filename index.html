@@ -2399,11 +2399,11 @@ var TEMAS = {
   tgdc: [['pess', 'Pessoas e personalidade'], ['coisas', 'Coisas'], ['neg', 'Declaração negocial e forma'], ['vic', 'Vícios da vontade'], ['inval', 'Invalidade do negócio'], ['repr', 'Representação, condição e termo'], ['tempo', 'Prescrição e caducidade'], ['exerc', 'Exercício e prova dos direitos']],
   obr: [['fontes', 'Fontes das obrigações'], ['rc', 'Responsabilidade civil'], ['modal', 'Modalidades e transmissão'], ['cumpr', 'Cumprimento e extinção'], ['inc', 'Não cumprimento e mora'], ['garant', 'Garantias'], ['contr', 'Contratos em especial']],
   reais: [['geral', 'Princípios e noções gerais'], ['posse', 'Posse'], ['aquis', 'Usucapião e outras formas de aquisição'], ['compr', 'Compropriedade e propriedade horizontal'], ['menores', 'Usufruto, superfície e servidões'], ['viz', 'Relações de vizinhança'], ['reg', 'Registo predial']],
-  fam: [['prom', 'Promessa de casamento'], ['casam', 'Casamento: impedimentos e invalidade'], ['conv', 'Convenção antenupcial'], ['regimes', 'Regimes de bens'], ['admin', 'Administração e disposição dos bens'], ['divid', 'Dívidas dos cônjuges'], ['div', 'Divórcio e união de facto'], ['filia', 'Filiação, parentesco e alimentos'], ['sucg', 'Sucessão em geral'], ['sleg', 'Sucessão legítima'], ['legit', 'Sucessão legitimária e cálculo da legítima'], ['imput', 'Imputação, colação e redução'], ['test', 'Testamento e herança'], ['pacto', 'Sucessão contratual']],
+  fam: [['prom', 'Promessa de casamento'], ['casam', 'Casamento: impedimentos e invalidade'], ['conv', 'Convenção antenupcial'], ['regimes', 'Regimes de bens'], ['admin', 'Administração e disposição dos bens'], ['divid', 'Dívidas dos cônjuges'], ['div', 'Divórcio e união de facto'], ['filia', 'Filiação, parentesco e alimentos'], ['sucg', 'Sucessão em geral'], ['indig', 'Capacidade, indignidade e deserdação'], ['chamam', 'Representação, transmissão e acrescer'], ['acei', 'Aceitação, repúdio e herança jacente'], ['sleg', 'Sucessão legítima'], ['legit', 'Sucessão legitimária e cálculo da legítima'], ['imput', 'Imputação, colação e redução'], ['test', 'Testamento e herança'], ['pacto', 'Sucessão contratual'], ['cabeca', 'Administração da herança e cabeça-de-casal'], ['partilha', 'Partilha']],
   pen: [['lei', 'Lei penal e princípios'], ['facto', 'Facto, dolo e negligência'], ['imp', 'Causalidade e imputação objetiva'], ['omis', 'Crimes omissivos'], ['just', 'Causas de justificação'], ['culpa', 'Culpa e erro'], ['erro', 'O erro em direito penal'], ['tent', 'Tentativa e comparticipação'], ['part', 'Autoria e participação'], ['conc', 'Concurso de crimes'], ['penas', 'Penas e sua aplicação'], ['subst', 'Penas de substituição'], ['extin', 'Prescrição e extinção da responsabilidade'], ['esp', 'Crimes em especial']],
   adm: [['org', 'Organização administrativa'], ['princ', 'Princípios da atividade administrativa'], ['proc', 'Procedimento administrativo'], ['ato', 'Ato administrativo'], ['inval', 'Invalidade, revogação e anulação'], ['regul', 'Regulamentos e contratos'], ['cont', 'Contencioso administrativo']],
   com: [['atos', 'Atos de comércio e comerciantes'], ['tit', 'Títulos de crédito'], ['socg', 'Sociedades: parte geral'], ['tipos', 'Tipos de sociedades'], ['orgs', 'Órgãos, quotas e deliberações'], ['insolv', 'Insolvência e recuperação']],
-  pc: [['princ', 'Princípios e pressupostos'], ['artic', 'Petição, citação e defesa'], ['prazos', 'Prazos e atos processuais'], ['prova', 'Instrução e prova'], ['sent', 'Sentença e caso julgado'], ['rec', 'Recursos'], ['caut', 'Procedimentos cautelares'], ['exec', 'Ação executiva']],
+  pc: [['princ', 'Princípios e pressupostos'], ['comp', 'Competência dos tribunais'], ['valor', 'Valor da causa, forma e alçadas'], ['incid', 'Pluralidade de partes e intervenção de terceiros'], ['artic', 'Petição, citação e defesa'], ['inst', 'A instância'], ['saneam', 'Audiência prévia e saneamento'], ['prazos', 'Prazos e atos processuais'], ['prova', 'Instrução e prova'], ['aud', 'Audiência final'], ['sent', 'Sentença e caso julgado'], ['rec', 'Recursos'], ['caut', 'Procedimentos cautelares'], ['exec', 'Ação executiva']],
   pp: [['geral', 'Princípios e prazos'], ['suj', 'Sujeitos processuais'], ['comp', 'Competência dos tribunais'], ['queixa', 'Queixa e natureza dos crimes'], ['inq', 'Inquérito e acusação'], ['coac', 'Detenção e medidas de coação'], ['prova', 'Prova'], ['instr', 'Instrução'], ['julg', 'Julgamento'], ['esp', 'Processos especiais'], ['rec', 'Recursos e habeas corpus'], ['nul', 'Nulidades e irregularidades']]
 };
 /* disciplina e tema das questões já existentes */
@@ -3823,6 +3823,205 @@ var CASOS_MODELO = {
   ].forEach(function (g) { GLOSS.push(g); });
 })();
 
+/* ---------- PROCESSO CIVIL DECLARATIVO: casos práticos com resolução-modelo, questões e termos do glossário (texto original do LEXDESK) ---------- */
+(function () {
+  function C(id, titulo, enunciado, perguntas, topicos, modelo) { CASOS.push({ id: id, d: 'pc', titulo: titulo, enunciado: enunciado, perguntas: perguntas, topicos: topicos }); CASOS_MODELO[id] = modelo; }
+
+  C('caso-pc3', 'O tribunal errado',
+    'A sociedade Mobílias Norte, Lda., com sede em Braga, vendeu a Filipa, que vive em Coimbra, uma cozinha por 9.000 €, que não foi paga. A sociedade propõe a ação de cobrança no tribunal de Braga. Filipa contesta, alegando apenas que a cozinha tinha defeitos. Já depois da audiência prévia, o juiz repara que a ação devia ter sido proposta em Coimbra.',
+    ['Qual era o tribunal territorialmente competente?', 'Que tipo de incompetência existe e quem a pode invocar?', 'O juiz ainda pode conhecer dela?'],
+    ['Regra do art. 71.º, n.º 1, do CPC: domicílio do réu; a opção pelo lugar do cumprimento não se aplica a réu pessoa singular fora das áreas metropolitanas comuns.', 'Incompetência relativa (art. 102.º do CPC), arguível pelo réu no prazo da contestação (art. 103.º do CPC) e, neste caso, também de conhecimento oficioso (art. 104.º, n.º 1, alínea a), do CPC).', 'Limite temporal do conhecimento oficioso: até ao despacho saneador (art. 104.º, n.º 3, do CPC).'],
+    [['A ação destina-se a exigir o cumprimento de uma obrigação, pelo que deve correr no tribunal da área onde o réu tem domicílio (art. 71.º, n.º 1, do CPC). Filipa vive em Coimbra. A possibilidade de o credor optar pelo tribunal do lugar do cumprimento só existe quando o réu é pessoa coletiva ou quando ambos têm domicílio na mesma área metropolitana de Lisboa ou do Porto, o que não acontece. O tribunal competente era o de Coimbra.'],
+      ['Trata-se da violação de uma regra de competência territorial, que gera incompetência relativa (art. 102.º do CPC). Em regra, tem de ser arguida pelo réu no prazo da contestação (art. 103.º do CPC), o que Filipa não fez. Porém, a regra da primeira parte do n.º 1 do art. 71.º está entre aquelas cuja violação o tribunal deve conhecer oficiosamente, sempre que os autos forneçam os elementos necessários (art. 104.º, n.º 1, alínea a), do CPC).'],
+      ['O conhecimento oficioso tem um limite temporal: cabe ao juiz levantar e resolver a questão até ao despacho saneador (art. 104.º, n.º 3, do CPC). Se o saneador já foi proferido na audiência prévia, o momento passou e o tribunal de Braga fica competente. Se ainda não foi, o juiz deve ouvir as partes e, julgando-se incompetente, remeter o processo para o tribunal de Coimbra (art. 105.º, n.º 3, do CPC).']]);
+
+  C('caso-pc4', 'A ação que ficou parada',
+    'Gonçalo intentou uma ação contra Helena para reaver 20.000 € emprestados. Helena faleceu durante o processo, e a instância foi suspensa. Passaram oito meses sem que Gonçalo promovesse a habilitação dos herdeiros. O juiz pondera declarar a instância deserta.',
+    ['Porque foi suspensa a instância?', 'Pode ser declarada a deserção?', 'Que consequências teria a deserção para o direito de Gonçalo?'],
+    ['Suspensão por falecimento de uma parte (art. 269.º, n.º 1, alínea a), do CPC); cessa com a habilitação dos sucessores.', 'Deserção: mais de seis meses sem impulso, por negligência das partes (art. 281.º, n.º 1, do CPC); necessidade de despacho e de apreciar a negligência.', 'A deserção extingue a instância, não o direito; atenção à prescrição (art. 277.º, alínea c), do CPC).'],
+    [['A morte de uma das partes suspende a instância (art. 269.º, n.º 1, alínea a), do CPC). A suspensão mantém-se até que os sucessores da falecida sejam habilitados no processo, através do incidente próprio, cabendo ao interessado promovê-lo.'],
+      ['A instância considera-se deserta quando, por negligência das partes, o processo aguarda impulso processual há mais de seis meses (art. 281.º, n.º 1, do CPC). Passaram oito meses sem que Gonçalo promovesse a habilitação, ato que lhe cabia. Antes de declarar a deserção, o juiz deve verificar se a paragem se deve efetivamente a negligência de Gonçalo (por exemplo, ouvindo-o), porque a deserção não é automática. Confirmada a negligência, a deserção é declarada por despacho.'],
+      ['A deserção extingue a instância (art. 277.º, alínea c), do CPC), mas não o direito de crédito. Gonçalo pode propor nova ação contra os herdeiros, desde que o direito não tenha entretanto prescrito. Deve ponderar que a interrupção da prescrição resultante da citação na primeira ação pode ter efeitos limitados quando a instância termina por deserção, matéria que deve ser verificada no Código Civil.']]);
+
+  C('caso-pc5', 'A exceção decidida sem debate',
+    'Inês intentou ação de indemnização contra Joaquim por danos num acidente de viação ocorrido há quatro anos. Na contestação, Joaquim invocou a prescrição. O juiz dispensou a audiência prévia e, no despacho saneador, julgou a prescrição procedente e absolveu Joaquim do pedido. Inês nunca foi ouvida sobre a prescrição.',
+    ['O juiz podia conhecer do mérito no saneador?', 'Podia dispensar a audiência prévia?', 'Como deve Inês reagir?'],
+    ['Conhecimento do mérito no saneador (art. 595.º, n.º 1, alínea b), do CPC) quando o processo o permita.', 'Dispensa da audiência prévia só para os fins das alíneas d), e) e f) do art. 591.º, n.º 1 (art. 593.º, n.º 1, do CPC); a discussão do mérito exige audiência (art. 591.º, n.º 1, alínea b)).', 'Violação do contraditório (art. 3.º, n.º 3, do CPC): decisão-surpresa; reação por recurso, invocando nulidade.'],
+    [['Sim, em abstrato. Se for possível, sem produzir mais prova, apreciar uma exceção perentória como a prescrição, o juiz conhece dela no despacho saneador (art. 595.º, n.º 1, alínea b), do CPC), que fica a valer como sentença.'],
+      ['Não. A audiência prévia só pode ser dispensada quando se destinaria apenas a proferir o saneador formal, a enunciar o objeto e os temas da prova ou a programar a audiência final (art. 593.º, n.º 1, do CPC). Quando o juiz tenciona conhecer imediatamente do mérito, a audiência prévia serve precisamente para permitir que as partes debatam os factos e o direito (art. 591.º, n.º 1, alínea b), do CPC). Ao dispensá-la, o juiz privou Inês de se pronunciar sobre a prescrição.'],
+      ['A decisão viola o princípio do contraditório e constitui uma decisão-surpresa (art. 3.º, n.º 3, do CPC). Inês deve recorrer da decisão, invocando a nulidade processual decorrente da omissão de um ato que a lei prescreve e que influi no exame da causa (art. 195.º, n.º 1, do CPC). Pode ainda discutir o mérito da prescrição, por exemplo invocando o prazo mais longo aplicável se o facto constituir crime (art. 498.º, n.º 3, do CC).']]);
+
+  C('caso-pc6', 'O fabricante chamado ao processo',
+    'Leonor comprou um frigorífico numa loja e, uma semana depois, este incendiou-se e destruiu a cozinha. Leonor intenta ação de indemnização contra a loja. A loja entende que a culpa é do fabricante e quer que este fique vinculado pela decisão. Por seu lado, o marido de Leonor, coproprietário da casa, quer entrar no processo para pedir também a indemnização pelos danos na casa.',
+    ['Que meio deve a loja usar para envolver o fabricante?', 'Como pode o marido de Leonor intervir?', 'Até quando pode a loja requerer o chamamento?'],
+    ['Intervenção acessória provocada (arts. 321.º a 323.º do CPC): direito de regresso.', 'Intervenção principal espontânea (art. 311.º do CPC), por ter interesse igual ao da autora.', 'Na contestação (art. 322.º, n.º 1, do CPC).'],
+    [['A loja não pretende que o fabricante seja condenado perante Leonor; pretende assegurar o seu direito de regresso, se vier a ser condenada. O meio adequado é a intervenção acessória provocada (art. 321.º do CPC). O fabricante entra como auxiliar da loja, com o estatuto de assistente, e a sentença constitui caso julgado quanto a ele relativamente às questões de que depende o direito de regresso (art. 323.º, n.os 1 e 4, do CPC).'],
+      ['O marido tem, em relação aos danos na casa comum, um interesse igual ao da autora. Pode intervir como parte principal, ao lado de Leonor, através da intervenção principal espontânea (art. 311.º do CPC), apresentando articulado próprio ou aderindo ao da autora.'],
+      ['O chamamento para intervenção acessória é deduzido pelo réu na contestação ou, se não pretender contestar, em requerimento apresentado no prazo da contestação (art. 322.º, n.º 1, do CPC). O juiz aprecia a relevância do interesse e defere-o se a intervenção não perturbar indevidamente o andamento do processo (art. 322.º, n.º 2, do CPC).']]);
+
+  C('caso-pc7', 'Recorrer de uma condenação pequena',
+    'Marco foi condenado em 1.ª instância a pagar 4.000 € numa ação em que o autor pedia 7.000 €. Marco discorda da decisão, que acha mal fundamentada. O autor também queria recorrer, por não ter obtido os 3.000 € restantes. O juiz não se pronunciou sobre um dos pedidos do autor.',
+    ['Marco pode recorrer?', 'E o autor?', 'Há algum vício que possa ser invocado independentemente do valor?'],
+    ['Alçada da 1.ª instância (5.000 €) e sucumbência superior a metade (2.500 €) (art. 629.º, n.º 1, do CPC).', 'Sucumbência do autor (3.000 €) superior a 2.500 €; recurso subordinado (art. 633.º do CPC).', 'Nulidade por omissão de pronúncia (art. 615.º, n.º 1, alínea d), do CPC); arguição perante o tribunal recorrido se não couber recurso (art. 615.º, n.º 4, do CPC).'],
+    [['O valor da causa é de 7.000 €, superior à alçada da 1.ª instância (5.000 €). Marco ficou vencido em 4.000 €, valor superior a metade da alçada (2.500 €). Pode recorrer para a Relação (art. 629.º, n.º 1, do CPC), no prazo de 30 dias (art. 638.º, n.º 1, do CPC).'],
+      ['O autor ficou vencido em 3.000 €, também acima de metade da alçada. Pode interpor recurso independente. Se não o fizer e Marco recorrer, pode ainda interpor recurso subordinado (art. 633.º do CPC).'],
+      ['A falta de pronúncia sobre um dos pedidos constitui nulidade da sentença por omissão de pronúncia (art. 615.º, n.º 1, alínea d), do CPC). Como há recurso, a nulidade é invocada nas alegações do recurso; se a decisão não admitisse recurso, seria arguida perante o próprio tribunal que a proferiu (art. 615.º, n.º 4, do CPC).']]);
+
+  C('caso-pc8', 'Desistir ou transigir?',
+    'Nuno intentou ação contra a sua seguradora, pedindo 15.000 € por danos causados por uma inundação. Depois da contestação, a seguradora propõe pagar 9.000 € para pôr fim ao litígio. Nuno aceita, mas quer saber como fazer para que o acordo fique vinculativo e se pode, mais tarde, voltar a pedir a diferença.',
+    ['Como se formaliza o acordo no processo?', 'Que efeito tem a sentença homologatória?', 'E se Nuno, em vez de transigir, quisesse apenas desistir da instância?'],
+    ['Transação por documento ou termo no processo (art. 290.º do CPC) e homologação por sentença.', 'Extinção da instância (art. 277.º, alínea d), do CPC) e força de caso julgado material.', 'Desistência da instância depois da contestação depende de aceitação do réu (art. 286.º, n.º 1, do CPC).'],
+    [['A transação pode ser feita por documento autêntico ou particular, ou por termo no processo, lavrado pela secretaria a pedido verbal dos interessados (art. 290.º, n.os 1 e 2, do CPC). Depois, o juiz verifica se, pelo objeto e pela qualidade das pessoas que nela intervêm, é válida e, sendo, homologa-a por sentença (art. 290.º, n.º 3, do CPC).'],
+      ['A transação homologada extingue a instância (art. 277.º, alínea d), do CPC) e a sentença homologatória faz caso julgado sobre o objeto do acordo. Nuno não poderá voltar a pedir a diferença de 6.000 €, porque o litígio ficou composto por acordo: a transação implica concessões recíprocas e encerra a questão.'],
+      ['Desistir da instância permitiria a Nuno propor nova ação mais tarde. Mas, como a desistência seria requerida depois da contestação, dependeria da aceitação da seguradora (art. 286.º, n.º 1, do CPC). Já a desistência do pedido seria livre, mas extinguiria o próprio direito, o que não lhe interessa.']]);
+
+  /* Questões do simulador */
+  function N(t, id, q, o, e) { QUESTOES.push({ id: id, d: 'pc', t: t, q: q, o: o, a: 0, e: e }); }
+  N('comp', 'pcq1', 'A ação para exigir o cumprimento de uma obrigação deve ser proposta, em regra, no tribunal:', ['Do domicílio do réu', 'Do domicílio do autor', 'Do lugar da celebração do contrato', 'Escolhido livremente pelo autor'], 'Art. 71.º, n.º 1, do CPC.');
+  N('comp', 'pcq2', 'As ações referentes a direitos reais sobre imóveis são propostas no tribunal:', ['Da situação dos bens', 'Do domicílio do réu', 'Do domicílio do autor', 'Da sede da conservatória'], 'Art. 70.º, n.º 1, do CPC.');
+  N('comp', 'pcq3', 'A infração às regras de competência em razão do território gera:', ['Incompetência relativa', 'Incompetência absoluta', 'Nulidade insanável', 'Inexistência da sentença'], 'Art. 102.º do CPC.');
+  N('comp', 'pcq4', 'A incompetência absoluta implica, em regra:', ['A absolvição do réu da instância ou o indeferimento liminar', 'A remessa automática ao tribunal competente', 'A absolvição do pedido', 'A suspensão da instância'], 'Art. 99.º, n.º 1, do CPC; o n.º 2 permite pedir a remessa se os articulados já tiverem terminado.');
+  N('comp', 'pcq5', 'Julgada procedente a exceção de incompetência relativa:', ['O processo é remetido ao tribunal competente', 'O réu é absolvido da instância', 'O autor tem de pagar multa', 'A ação é arquivada'], 'Art. 105.º, n.º 3, do CPC.');
+  N('comp', 'pcq6', 'Por acordo das partes, podem ser afastadas as regras de competência em razão:', ['Do território, com as exceções da lei', 'Da matéria', 'Da hierarquia', 'Do valor'], 'Art. 95.º, n.º 1, do CPC.');
+  N('valor', 'pcq7', 'A alçada dos tribunais de 1.ª instância em matéria cível é de:', ['5.000 €', '15.000 €', '30.000 €', '2.500 €'], 'Art. 44.º, n.º 1, da Lei da Organização do Sistema Judiciário.');
+  N('valor', 'pcq8', 'Em regra, só é admissível recurso ordinário quando a causa tem valor superior à alçada e a decisão é desfavorável ao recorrente em valor superior a:', ['Metade da alçada', 'Um quarto da alçada', 'Toda a alçada', 'Dois terços da alçada'], 'Art. 629.º, n.º 1, do CPC.');
+  N('valor', 'pcq9', 'O processo comum de declaração segue:', ['Forma única', 'Forma ordinária, sumária ou sumaríssima, consoante o valor', 'Sempre a forma do processo especial', 'A forma escolhida pelo réu'], 'Art. 548.º do CPC.');
+  N('valor', 'pcq10', 'Compete fixar o valor da causa:', ['Ao juiz', 'Ao autor, sem possibilidade de alteração', 'À secretaria', 'Ao réu'], 'Art. 306.º, n.º 1, do CPC.');
+  N('valor', 'pcq11', 'Se o recurso independente for admissível, o recurso subordinado:', ['Também o é, ainda que a sucumbência do recorrente não exceda metade da alçada', 'Nunca é admissível', 'Só é admissível se a sucumbência exceder a alçada', 'Depende de autorização do juiz'], 'Art. 633.º, n.º 5, do CPC.');
+  N('incid', 'pcq12', 'Quando a lei ou o negócio exigem a intervenção de todos os interessados, há:', ['Litisconsórcio necessário', 'Litisconsórcio voluntário', 'Coligação', 'Assistência'], 'Art. 33.º do CPC.');
+  N('incid', 'pcq13', 'O réu que pretende chamar ao processo um terceiro contra quem tenha direito de regresso usa:', ['A intervenção acessória provocada', 'A intervenção principal espontânea', 'A oposição espontânea', 'A reconvenção'], 'Art. 321.º do CPC.');
+  N('incid', 'pcq14', 'O chamamento para intervenção acessória é deduzido pelo réu:', ['Na contestação ou, não contestando, no prazo desta', 'Até ao início da audiência final', 'Em qualquer momento', 'Apenas no recurso'], 'Art. 322.º, n.º 1, do CPC.');
+  N('incid', 'pcq15', 'A preterição de litisconsórcio necessário gera:', ['Ilegitimidade, sanável pela intervenção do interessado em falta', 'Incompetência', 'Nulidade da sentença', 'Ineptidão da petição'], 'Arts. 33.º, 261.º e 316.º do CPC.');
+  N('incid', 'pcq16', 'O terceiro que intervém para auxiliar uma das partes, por ter interesse jurídico em que a decisão lhe seja favorável, é:', ['Assistente', 'Interveniente principal', 'Opoente', 'Litisconsorte necessário'], 'Art. 326.º do CPC.');
+  N('inst', 'pcq17', 'Citado o réu, a instância deve manter-se a mesma quanto:', ['Às pessoas, ao pedido e à causa de pedir', 'Apenas às pessoas', 'Apenas ao pedido', 'Ao tribunal e ao juiz'], 'Princípio da estabilidade da instância (art. 260.º do CPC).');
+  N('inst', 'pcq18', 'A instância considera-se deserta quando, por negligência das partes, o processo aguarda impulso há mais de:', ['Seis meses', 'Três meses', 'Um ano', 'Dois anos'], 'Art. 281.º, n.º 1, do CPC.');
+  N('inst', 'pcq19', 'A desistência da instância requerida depois da contestação:', ['Depende da aceitação do réu', 'É sempre livre', 'É proibida', 'Extingue o direito do autor'], 'Art. 286.º, n.º 1, do CPC.');
+  N('inst', 'pcq20', 'O autor pode reduzir o pedido:', ['Em qualquer altura', 'Apenas até à contestação', 'Apenas com acordo do réu', 'Nunca'], 'Art. 265.º, n.º 2, do CPC.');
+  N('inst', 'pcq21', 'A morte de uma das partes:', ['Suspende a instância', 'Extingue a instância', 'Não tem qualquer efeito', 'Implica absolvição do pedido'], 'Art. 269.º, n.º 1, alínea a), do CPC.');
+  N('inst', 'pcq22', 'Não é causa de extinção da instância:', ['A suspensão por causa prejudicial', 'O compromisso arbitral', 'A transação', 'A inutilidade superveniente da lide'], 'Art. 277.º do CPC; a suspensão não extingue a instância.');
+  N('saneam', 'pcq23', 'A audiência prévia realiza-se, em regra:', ['Num dos 30 dias seguintes', 'Num dos 10 dias seguintes', 'Após a audiência final', 'Só a pedido das partes'], 'Art. 591.º, n.º 1, do CPC.');
+  N('saneam', 'pcq24', 'Se o juiz tenciona conhecer do mérito no saneador, deve:', ['Permitir às partes o debate de facto e de direito, em regra na audiência prévia', 'Decidir sem ouvir as partes', 'Remeter o processo para julgamento', 'Pedir parecer ao Ministério Público'], 'Art. 591.º, n.º 1, alínea b), e art. 3.º, n.º 3, do CPC.');
+  N('saneam', 'pcq25', 'O despacho saneador destina-se a:', ['Conhecer das exceções dilatórias e nulidades e, sendo possível, do mérito', 'Marcar a audiência final', 'Ouvir as testemunhas', 'Fixar as custas finais'], 'Art. 595.º, n.º 1, do CPC.');
+  N('saneam', 'pcq26', 'As testemunhas indicadas podem ser alteradas ou acrescentadas até:', ['20 dias antes da audiência final', '10 dias antes da audiência final', 'Ao início da audiência final', 'Ao fim dos articulados'], 'Art. 598.º, n.º 2, do CPC.');
+  N('saneam', 'pcq27', 'O despacho que enuncia os temas da prova:', ['Admite reclamação das partes', 'É irrecorrível e insuscetível de reclamação', 'Só pode ser alterado pelo Supremo', 'É proferido na sentença'], 'Art. 596.º, n.º 2, do CPC.');
+  N('aud', 'pcq28', 'A falta de um advogado só justifica o adiamento da audiência final quando:', ['A data não tenha sido marcada mediante acordo prévio, ou haja justo impedimento', 'O cliente o pedir', 'Houver testemunhas a ouvir', 'Sempre'], 'Art. 603.º, n.º 1, do CPC.');
+  N('aud', 'pcq29', 'Encerrada a audiência final, a sentença deve ser proferida em:', ['30 dias', '10 dias', '60 dias', '90 dias'], 'Art. 607.º, n.º 1, do CPC.');
+  N('aud', 'pcq30', 'A audiência final em processo civil:', ['É sempre gravada', 'Só é gravada a pedido das partes', 'Nunca é gravada', 'Só é gravada no tribunal coletivo'], 'Art. 155.º, n.º 1, do CPC.');
+  N('artic', 'pcq31', 'O prazo para contestar no processo comum é de:', ['30 dias', '20 dias', '15 dias', '10 dias'], 'Art. 569.º, n.º 1, do CPC.');
+  N('artic', 'pcq32', 'A réplica é admissível, nomeadamente, para:', ['O autor se defender da reconvenção', 'O autor responder a qualquer exceção', 'O autor alterar o pedido livremente', 'O réu completar a contestação'], 'Art. 584.º, n.º 1, do CPC.');
+  N('artic', 'pcq33', 'A réplica é apresentada no prazo de:', ['30 dias a contar da notificação da contestação', '10 dias', '15 dias', '20 dias'], 'Art. 585.º do CPC.');
+  N('sent', 'pcq34', 'A sentença que deixe de se pronunciar sobre questões que devia apreciar é:', ['Nula', 'Inexistente', 'Válida', 'Apenas irregular'], 'Art. 615.º, n.º 1, alínea d), do CPC.');
+  N('rec', 'pcq35', 'Se o recorrente impugnar a decisão de facto com base em prova gravada, ao prazo de recurso acrescem:', ['10 dias', '5 dias', '15 dias', '30 dias'], 'Art. 638.º, n.º 7, do CPC.');
+
+  /* Termos do glossário */
+  [
+    ['Competência territorial', 'pc', 'Critério que define o tribunal concreto, dentro da mesma espécie, onde a ação deve ser proposta, como o do domicílio do réu ou o da situação dos bens.', 'arts. 70.º a 84.º do CPC', []],
+    ['Incompetência absoluta', 'pc', 'Vício resultante da violação das regras de competência internacional, material ou hierárquica, ou da preterição de tribunal arbitral. Leva, em regra, à absolvição do réu da instância.', 'arts. 96.º a 101.º do CPC', []],
+    ['Incompetência relativa', 'pc', 'Vício resultante da violação das regras de competência territorial ou em razão do valor, ou de um pacto de competência. Leva ao envio dos autos para o tribunal competente.', 'arts. 102.º a 108.º do CPC', []],
+    ['Pacto de competência', 'pc', 'Acordo das partes que afasta as regras de competência territorial, escolhendo o tribunal que julgará os litígios de certa relação.', 'art. 95.º do CPC', []],
+    ['Valor da causa', 'pc', 'Quantia que representa a utilidade económica imediata do pedido. Importa para a admissibilidade do recurso e para as custas.', 'arts. 296.º a 310.º do CPC', []],
+    ['Sucumbência', 'pc', 'Medida em que a decisão é desfavorável a uma parte. Para recorrer, tem de exceder, em regra, metade da alçada do tribunal recorrido.', 'art. 629.º do CPC', []],
+    ['Instância', 'pc', 'Relação processual que se estabelece entre o autor, o réu e o tribunal desde a propositura da ação até à sua extinção.', 'arts. 259.º a 291.º do CPC', []],
+    ['Estabilidade da instância', 'pc', 'Princípio segundo o qual, depois da citação, as pessoas, o pedido e a causa de pedir se mantêm, salvo as modificações que a lei admite.', 'art. 260.º do CPC', []],
+    ['Suspensão da instância', 'pc', 'Paragem temporária do processo, por exemplo pela morte de uma parte ou por estar pendente uma causa prejudicial.', 'arts. 269.º a 276.º do CPC', []],
+    ['Deserção da instância', 'pc', 'Extinção do processo quando este fica parado mais de seis meses por negligência das partes em promover o seu andamento.', 'art. 281.º do CPC', ['deserção']],
+    ['Desistência da instância', 'pc', 'Ato pelo qual o autor põe fim ao processo sem renunciar ao direito, podendo propor nova ação. Depois da contestação, depende da aceitação do réu.', 'arts. 285.º e 286.º do CPC', []],
+    ['Desistência do pedido', 'pc', 'Ato pelo qual o autor renuncia ao direito que pretendia fazer valer. É livre e extingue esse direito.', 'arts. 285.º e 286.º do CPC', []],
+    ['Transação', 'pc', 'Acordo pelo qual as partes põem fim ao litígio mediante concessões recíprocas. Homologada por sentença, extingue a instância.', 'arts. 283.º e 290.º do CPC; art. 1248.º do CC', ['transação judicial']],
+    ['Inutilidade superveniente da lide', 'pc', 'Causa de extinção da instância que ocorre quando, depois de proposta a ação, deixa de haver interesse em obter uma decisão, por exemplo porque o réu cumpriu.', 'art. 277.º, alínea e), do CPC', []],
+    ['Despacho pré-saneador', 'pc', 'Despacho proferido no fim dos articulados para suprir exceções dilatórias e convidar as partes a corrigir ou completar as suas peças.', 'art. 590.º do CPC', []],
+    ['Decisão-surpresa', 'pc', 'Decisão que se baseia numa questão sobre a qual as partes não tiveram oportunidade de se pronunciar. É proibida pelo princípio do contraditório.', 'art. 3.º, n.º 3, do CPC', []],
+    ['Audiência final', 'pc', 'Sessão em que se produz a prova ainda não produzida e se fazem as alegações orais, antes da sentença. É sempre gravada.', 'arts. 599.º a 606.º do CPC', ['audiência de julgamento']],
+    ['Intervenção principal', 'pc', 'Incidente pelo qual um terceiro entra no processo como parte principal, por ter um interesse igual ao do autor ou do réu.', 'arts. 311.º a 320.º do CPC', []],
+    ['Intervenção acessória provocada', 'pc', 'Incidente em que o réu chama ao processo quem responde perante ele em via de regresso, para que a sentença lhe seja oponível.', 'arts. 321.º a 324.º do CPC', []],
+    ['Recurso subordinado', 'pc', 'Recurso interposto por uma parte depois de a outra ter recorrido, quando ambas ficaram vencidas. Fica dependente do recurso principal.', 'art. 633.º do CPC', []]
+  ].forEach(function (g) { GLOSS.push(g); });
+})();
+
+/* ---------- SUCESSÕES: casos práticos de aprofundamento, questões e termos do glossário (texto original do LEXDESK) ---------- */
+(function () {
+  function C(id, titulo, enunciado, perguntas, topicos, modelo) { CASOS.push({ id: id, d: 'fam', titulo: titulo, enunciado: enunciado, perguntas: perguntas, topicos: topicos }); CASOS_MODELO[id] = modelo; }
+
+  C('caso-fam13', 'O filho deserdado',
+    'No testamento, Alberto declara: «deserdo o meu filho Bruno, porque nunca me visitou nos últimos dez anos». Alberto morre viúvo, deixando dois filhos, Bruno e Cecília, e um neto, Duarte, filho de Bruno. Bruno quer impugnar a deserdação.',
+    ['A deserdação é válida?', 'Que prazo tem Bruno para reagir?', 'Se a deserdação fosse válida, Duarte herdaria alguma coisa?'],
+    ['Causas taxativas de deserdação (art. 2166.º, n.º 1, do CC); a falta de visitas não está prevista.', 'Impugnação no prazo de dois anos contados da abertura do testamento (art. 2167.º do CC).', 'Equiparação do deserdado ao indigno (art. 2166.º, n.º 2) e representação dos descendentes (arts. 2037.º, n.º 2, e 2042.º do CC).'],
+    [['Não. A deserdação só é possível nos casos enumerados no art. 2166.º, n.º 1, do CC: condenação por crime doloso contra a pessoa, o património ou a honra do autor da sucessão ou de familiares próximos, com pena superior a seis meses; condenação por denúncia caluniosa ou falso testemunho contra essas pessoas; ou recusa, sem justa causa, de alimentos devidos. A falta de visitas, por mais censurável que seja moralmente, não é causa legal de deserdação. A cláusula não priva Bruno da sua legítima.'],
+      ['Bruno pode impugnar a deserdação com fundamento na inexistência de causa legal, numa ação que caduca dois anos após a abertura do testamento (art. 2167.º do CC). Há quem entenda que, sendo a causa invocada manifestamente não prevista na lei, a deserdação é simplesmente ineficaz; em qualquer caso, é prudente agir dentro do prazo.'],
+      ['Sim. O deserdado é equiparado ao indigno para todos os efeitos (art. 2166.º, n.º 2, do CC), e a incapacidade do indigno não prejudica o direito de representação dos seus descendentes na sucessão legal (art. 2037.º, n.º 2, do CC). Duarte ocuparia o lugar de Bruno na sucessão legitimária e legítima do avô (art. 2042.º do CC).']]);
+
+  C('caso-fam14', 'A herança com mais dívidas do que bens',
+    'Elisa morre deixando como únicos herdeiros os filhos Fernando e Graça. A herança tem um apartamento de 120.000 € e dívidas de 180.000 €. Fernando quer repudiar. Graça, que tem dívidas pessoais de 50.000 €, também repudia, para evitar problemas. Os credores de Graça ficam a saber do repúdio dois meses depois.',
+    ['Se Fernando aceitar, responde pelos 180.000 €?', 'Que forma deve ter o repúdio?', 'Os credores de Graça podem reagir ao repúdio?'],
+    ['Responsabilidade limitada ao valor dos bens herdados; diferença no ónus da prova entre aceitação pura e simples e a benefício de inventário (art. 2071.º do CC).', 'Forma da alienação da herança (art. 2063.º do CC): escritura pública ou documento particular autenticado quando haja imóveis.', 'Sub-rogação dos credores do repudiante, em seis meses (art. 2067.º do CC); o remanescente vai para os herdeiros seguintes.'],
+    [['Não. Mesmo na aceitação pura e simples, a responsabilidade do herdeiro pelos encargos da herança fica limitada ao valor do que se herdou (art. 2071.º, n.º 2, do CC). A diferença está no ónus da prova: se aceitar a benefício de inventário, só respondem os bens inventariados, cabendo aos credores provar a existência de outros (art. 2071.º, n.º 1); se aceitar pura e simplesmente, é Fernando que tem de provar que a herança não chega para as dívidas. Por isso, numa herança deficitária, a aceitação a benefício de inventário é a escolha mais segura.'],
+      ['O repúdio está sujeito à forma exigida para a alienação da herança (art. 2063.º do CC). Existindo um imóvel, exige-se escritura pública ou documento particular autenticado. O repúdio é irrevogável (art. 2066.º do CC) e não pode ser parcial nem condicional (art. 2064.º do CC).'],
+      ['Sim. Os credores de Graça podem aceitar a herança em nome dela, no prazo de seis meses a contar do conhecimento do repúdio (art. 2067.º, n.os 1 e 2, do CC); como souberam há dois meses, estão em tempo. Contudo, numa herança com mais dívidas do que bens, a quota de Graça nada lhes daria, porque os credores da herança são pagos primeiro. Se houvesse remanescente depois de pagos, este não voltaria para Graça, mas para os herdeiros seguintes (art. 2067.º, n.º 3, do CC).']]);
+
+  C('caso-fam15', 'O herdeiro que morreu sem se decidir',
+    'Hélder morre em janeiro, viúvo, deixando a filha Isabel como única herdeira. Isabel morre em março, sem ter aceitado nem repudiado a herança do pai, deixando como herdeiro o marido, Jorge. Jorge quer aceitar a herança de Isabel, mas repudiar a de Hélder, que tem dívidas elevadas.',
+    ['O que acontece ao direito de Isabel de aceitar a herança do pai?', 'Jorge pode fazer o que pretende?', 'E se Isabel tivesse morrido antes de Hélder?'],
+    ['Transmissão do direito de suceder (art. 2058.º, n.º 1, do CC).', 'A transmissão pressupõe a aceitação da herança do transmitente, mas permite repudiar a herança a que este fora chamado (art. 2058.º, n.º 2, do CC).', 'Pré-morte: não há transmissão; representação só a favor de descendentes (art. 2042.º do CC).'],
+    [['Isabel morreu depois do pai, sem ter aceitado nem repudiado. A faculdade de aceitar ou repudiar a herança de Hélder transmite-se aos herdeiros de Isabel (art. 2058.º, n.º 1, do CC), neste caso, a Jorge.'],
+      ['Sim. A transmissão depende de os herdeiros aceitarem a herança de quem morreu transmitente, mas isso não os impede de repudiar a herança a que este fora chamado (art. 2058.º, n.º 2, do CC). Jorge pode aceitar a herança de Isabel e repudiar a de Hélder.'],
+      ['Se Isabel tivesse morrido antes do pai, não chegaria a ser chamada à herança deste e não haveria transmissão. Jorge, sendo marido e não descendente de Isabel, também não poderia representá-la, porque a representação só funciona a favor dos descendentes (arts. 2039.º e 2042.º do CC). A herança de Hélder seguiria para os herdeiros legítimos seguintes.']]);
+
+  C('caso-fam16', 'Os irmãos que não se entendem',
+    'Leonardo morre viúvo, deixando três filhos: Marta, que vivia com ele há cinco anos, Nuno e Olga. A herança inclui a casa onde Marta vive, um carro e contas bancárias. Marta não presta informações aos irmãos e vendeu o carro a um amigo. Nuno quer partilhar já; Olga prefere esperar uns anos.',
+    ['Quem é o cabeça-de-casal?', 'A venda do carro por Marta é válida?', 'Nuno pode exigir a partilha contra a vontade de Olga? Como?'],
+    ['Ordem do art. 2080.º do CC: parentes herdeiros legais, mais próximos em grau e, em igualdade, quem vivia com o falecido, no mínimo, no último ano.', 'Poderes do cabeça-de-casal (arts. 2088.º a 2090.º do CC): administração, não alienação livre; remoção (art. 2086.º do CC).', 'Direito de exigir partilha a todo o tempo (art. 2101.º do CC); inventário sem acordo (art. 2102.º do CC).'],
+    [['Não há cônjuge nem testamenteiro. O cargo cabe aos parentes que sejam herdeiros legais, preferindo os mais próximos em grau; os três filhos estão no mesmo grau, e entre eles prefere quem vivia com o falecido, no mínimo, no último ano antes da morte (art. 2080.º, n.os 1, alínea c), 2 e 3, do CC). Marta é a cabeça-de-casal.'],
+      ['O cabeça-de-casal administra a herança, mas os seus poderes de alienação são limitados: pode vender frutos ou bens deterioráveis, nos termos do art. 2090.º do CC, mas não um bem como o carro sem o acordo dos restantes herdeiros. A venda é, em princípio, ineficaz perante os co-herdeiros. A recusa de informação e a venda indevida podem fundamentar a remoção de Marta do cargo (art. 2086.º do CC) e a obrigação de prestar contas (art. 2093.º do CC).'],
+      ['Sim. Qualquer co-herdeiro pode exigir a partilha quando quiser (art. 2101.º, n.º 1, do CC); a vontade de Olga de esperar só seria vinculativa se todos tivessem convencionado a indivisão, por prazo não superior a cinco anos. Sem acordo de todos, a partilha faz-se por inventário (art. 2102.º, n.º 2, alínea a), do CC).']]);
+
+  /* Questões do simulador */
+  function N(t, id, q, o, e) { QUESTOES.push({ id: id, d: 'fam', t: t, q: q, o: o, a: 0, e: e }); }
+  N('indig', 'fs69', 'Carece de capacidade sucessória, por indignidade:', ['O condenado por homicídio doloso, mesmo tentado, contra o autor da sucessão', 'O filho que não visita o pai', 'O herdeiro que repudiou outra herança', 'O cônjuge separado de facto'], 'Art. 2034.º, alínea a), do CC.');
+  N('indig', 'fs70', 'A ação de declaração de indignidade pode ser intentada, em regra, no prazo de:', ['Dois anos contados da morte do autor da sucessão', 'Seis meses a contar da morte', 'Dez anos', 'A todo o tempo'], 'Art. 2036.º, n.º 1, do CC, com o prazo alternativo de um ano.');
+  N('indig', 'fs71', 'Declarada a indignidade, na sucessão legal, os descendentes do indigno:', ['Podem herdar por representação', 'Ficam também excluídos', 'Só herdam se o autor da sucessão o declarar', 'Herdam metade do que caberia ao indigno'], 'Art. 2037.º, n.º 2, do CC.');
+  N('indig', 'fs72', 'A deserdação:', ['Exige testamento com declaração expressa de uma causa prevista na lei', 'Pode ser feita por qualquer motivo', 'Opera automaticamente com a condenação penal', 'Só pode atingir herdeiros testamentários'], 'Art. 2166.º, n.º 1, do CC.');
+  N('indig', 'fs73', 'A ação de impugnação da deserdação caduca:', ['Dois anos após a abertura do testamento', 'Um ano após a morte', 'Cinco anos após a partilha', 'Nunca'], 'Art. 2167.º do CC.');
+  N('indig', 'fs74', 'Quando o único herdeiro é o próprio indigno, a ação de declaração de indignidade é intentada:', ['Pelo Ministério Público', 'Por qualquer cidadão', 'Pelo cabeça-de-casal', 'Pelo notário'], 'Art. 2036.º, n.º 2, do CC.');
+  N('chamam', 'fs75', 'Na sucessão legal, a representação tem lugar na linha colateral em benefício:', ['Dos descendentes de irmão do falecido', 'Dos ascendentes do falecido', 'Do cônjuge do irmão pré-falecido', 'Dos tios do falecido'], 'Art. 2042.º do CC.');
+  N('chamam', 'fs76', 'Se o chamado morre depois do autor da sucessão sem aceitar nem repudiar:', ['O direito de aceitar ou repudiar transmite-se aos seus herdeiros', 'A herança acresce aos co-herdeiros', 'Os seus descendentes representam-no', 'A herança considera-se repudiada'], 'Art. 2058.º, n.º 1, do CC.');
+  N('chamam', 'fs77', 'Havendo representação, a herança divide-se:', ['Por estirpes', 'Por cabeças', 'Em partes proporcionais à idade', 'Segundo a vontade do cabeça-de-casal'], 'Art. 2044.º do CC.');
+  N('chamam', 'fs78', 'Não há direito de acrescer na sucessão testamentária quando:', ['Houver direito de representação', 'Os herdeiros forem irmãos', 'A herança tiver dívidas', 'O testamento for cerrado'], 'Art. 2304.º do CC.');
+  N('chamam', 'fs79', 'Na sucessão testamentária, a representação não se verifica quando:', ['O testador designou substituto ao herdeiro ou legatário', 'O instituído repudiou', 'O instituído faleceu antes do testador', 'O instituído tinha filhos'], 'Art. 2041.º, n.º 2, alínea a), do CC.');
+  N('acei', 'fs80', 'Diz-se jacente a herança:', ['Aberta, mas ainda não aceite nem declarada vaga para o Estado', 'Já partilhada', 'Aceite a benefício de inventário', 'Sem bens'], 'Art. 2046.º, n.º 1, do CC.');
+  N('acei', 'fs81', 'Os simples atos de administração praticados pelo sucessível:', ['Não implicam aceitação tácita da herança', 'Valem sempre como aceitação expressa', 'Valem como repúdio', 'Só são válidos com autorização judicial'], 'Art. 2056.º, n.º 3, do CC.');
+  N('acei', 'fs82', 'O direito de aceitar a herança caduca:', ['Dez anos após o conhecimento do chamamento', 'Um ano após a morte', 'Seis meses após a abertura da sucessão', 'Vinte anos após a morte'], 'Art. 2059.º, n.º 1, do CC.');
+  N('acei', 'fs83', 'A herança não pode ser aceite:', ['Sob condição, a termo ou só em parte (salvo exceção legal)', 'Pelo cônjuge', 'Por quem tenha dívidas', 'Depois de 15 dias'], 'Art. 2054.º do CC.');
+  N('acei', 'fs84', 'A aceitação da herança é anulável:', ['Por dolo ou coação, mas não por simples erro', 'Por simples erro', 'A todo o tempo, por arrependimento', 'Nunca'], 'Art. 2060.º do CC.');
+  N('acei', 'fs85', 'Quem é credor do repudiante pode aceitar a herança no lugar dele no prazo de:', ['Seis meses a contar do conhecimento do repúdio', 'Dez anos', 'Um mês', 'Dois anos'], 'Art. 2067.º, n.º 2, do CC.');
+  N('acei', 'fs86', 'Aceite a herança a benefício de inventário, pelos encargos respondem:', ['Os bens inventariados, salvo prova da existência de outros', 'Todos os bens do herdeiro', 'Apenas os imóveis da herança', 'Os bens do cabeça-de-casal'], 'Art. 2071.º, n.º 1, do CC.');
+  N('cabeca', 'fs87', 'O cargo de cabeça-de-casal cabe, em primeiro lugar:', ['Ao cônjuge sobrevivo não separado, se for herdeiro ou meeiro', 'Ao filho mais velho', 'Ao testamenteiro, em qualquer caso', 'Ao herdeiro com maior quota'], 'Art. 2080.º, n.º 1, alínea a), do CC.');
+  N('cabeca', 'fs88', 'O cabeça-de-casal deve prestar contas:', ['Anualmente', 'Apenas no fim da partilha', 'Mensalmente', 'Só se algum herdeiro o pedir'], 'Art. 2093.º, n.º 1, do CC.');
+  N('cabeca', 'fs89', 'Os bens doados em vida pelo autor da sucessão:', ['Não se consideram hereditários e continuam a ser administrados pelo donatário', 'São administrados pelo cabeça-de-casal', 'Voltam automaticamente à herança', 'São vendidos para pagar as dívidas'], 'Art. 2087.º, n.º 2, do CC.');
+  N('cabeca', 'fs90', 'A ação de petição da herança pode ser intentada:', ['A todo o tempo, sem prejuízo da usucapião e da caducidade do direito de aceitar', 'No prazo de um ano', 'No prazo de seis meses após a partilha', 'Apenas pelo cabeça-de-casal'], 'Art. 2075.º do CC.');
+  N('cabeca', 'fs91', 'Quando um co-herdeiro vende o seu quinhão a um estranho, os outros co-herdeiros:', ['Têm direito de preferência', 'Podem anular a venda livremente', 'Ficam obrigados a vender também', 'Nada podem fazer'], 'Art. 2130.º do CC.');
+  N('partilha', 'fs92', 'A indivisão da herança pode ser convencionada por prazo não superior a:', ['Cinco anos, renovável', 'Dez anos', 'Um ano', 'Vinte anos'], 'Art. 2101.º, n.º 2, do CC.');
+  N('partilha', 'fs93', 'Havendo acordo de todos os interessados, a partilha é feita:', ['Nas conservatórias ou por via notarial', 'Obrigatoriamente em tribunal', 'Por inventário judicial', 'Pelo cabeça-de-casal sozinho'], 'Art. 2102.º, n.º 1, do CC.');
+  N('partilha', 'fs94', 'Feita a partilha, cada herdeiro é considerado sucessor único dos bens que lhe couberam:', ['Desde a abertura da herança', 'Desde a data da partilha', 'Desde o registo', 'Desde a aceitação'], 'Art. 2119.º do CC.');
+  N('partilha', 'fs95', 'A partilha extrajudicial é impugnável:', ['Nos casos em que o sejam os contratos', 'A todo o tempo, sem fundamento', 'Apenas por lesão superior a metade', 'Nunca'], 'Art. 2121.º do CC.');
+
+  /* Termos do glossário */
+  [
+    ['Capacidade sucessória', 'fam', 'Aptidão para ser chamado a uma herança. Têm-na o Estado e as pessoas nascidas ou concebidas à data da morte, salvo exceções, como a indignidade.', 'art. 2033.º do CC', []],
+    ['Deserdação', 'fam', 'Privação da legítima de um herdeiro legitimário, feita pelo autor da sucessão em testamento, com indicação expressa de uma das causas previstas na lei.', 'arts. 2166.º e 2167.º do CC', ['deserdado']],
+    ['Reabilitação do indigno', 'fam', 'Perdão do autor da sucessão, feito em testamento ou escritura pública, que devolve ao indigno a capacidade de lhe suceder.', 'art. 2038.º do CC', []],
+    ['Transmissão do direito de suceder', 'fam', 'Passagem do direito de aceitar ou repudiar uma herança para os herdeiros de quem morreu depois de ser chamado, sem se ter pronunciado.', 'art. 2058.º do CC', ['direito de transmissão']],
+    ['Estirpe', 'fam', 'Conjunto dos descendentes que, por representação, ocupam a posição de um herdeiro que não pôde ou não quis aceitar. Recebem em conjunto o que lhe caberia.', 'art. 2044.º do CC', ['partilha por estirpes']],
+    ['Herança jacente', 'fam', 'Herança já aberta, mas ainda não aceite nem declarada vaga para o Estado.', 'art. 2046.º do CC', []],
+    ['Aceitação a benefício de inventário', 'fam', 'Forma de aceitar a herança em que só respondem pelas dívidas os bens inventariados, cabendo aos credores provar a existência de outros.', 'art. 2071.º do CC', ['benefício de inventário']],
+    ['Herança indivisa', 'fam', 'Situação da herança depois de aceite e antes da partilha: os herdeiros têm quotas ideais sobre o conjunto, e não direitos sobre bens concretos.', 'art. 2091.º do CC', []],
+    ['Cabeça-de-casal', 'fam', 'Pessoa que administra a herança até à sua liquidação e partilha, designada segundo uma ordem legal.', 'arts. 2079.º a 2096.º do CC', ['cabeça de casal']],
+    ['Petição da herança', 'fam', 'Ação em que o herdeiro pede o reconhecimento da sua qualidade e a restituição dos bens da herança a quem os possua.', 'art. 2075.º do CC', []],
+    ['Quinhão hereditário', 'fam', 'Parte ideal que cabe a cada herdeiro na herança indivisa. Pode ser alienado, com preferência dos co-herdeiros.', 'arts. 2124.º e 2130.º do CC', ['quota hereditária']],
+    ['Inventário', 'fam', 'Processo para relacionar os bens de uma herança e fazer a partilha quando não há acordo ou quando a lei o exige.', 'art. 2102.º do CC', ['processo de inventário']],
+    ['Partilha em vida', 'fam', 'Doação de bens feita em vida pelo autor da sucessão a alguns herdeiros presumidos, com o consentimento dos outros, que recebem tornas.', 'art. 2029.º do CC', []]
+  ].forEach(function (g) { GLOSS.push(g); });
+})();
+
 /* Matéria explicada — Direito Constitucional */
 var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
 GUIAS.con = {
@@ -4490,6 +4689,185 @@ GUIAS.fam = {
   }
 };
 
+/* Matéria explicada — Sucessões, temas de aprofundamento (texto original do LEXDESK) */
+var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
+GUIAS.fam = GUIAS.fam || {};
+
+GUIAS.fam.indig = {
+  sub: 'Quem pode suceder: capacidade sucessória, indignidade, declaração judicial, reabilitação e deserdação.',
+  ideia: 'Para herdar, é preciso existir no momento da abertura da sucessão e não estar afastado pela lei. A indignidade afasta quem praticou atos graves contra o autor da sucessão ou contra a sua liberdade de testar; a deserdação permite ao próprio autor da sucessão, por testamento e com causa expressa, retirar a legítima a um herdeiro legitimário. Em ambos os casos, os descendentes do afastado podem ocupar o seu lugar por representação, na sucessão legal.',
+  conceitos: [
+    ['Capacidade sucessória', 'Têm capacidade o Estado e as pessoas nascidas ou concebidas à data da abertura da sucessão, não excetuadas por lei; na sucessão testamentária ou contratual, também os nascituros não concebidos filhos de pessoa determinada e as pessoas coletivas (art. 2033.º do CC).'],
+    ['Causas de indignidade', 'Condenação por homicídio doloso, mesmo tentado, contra o autor da sucessão ou familiares próximos; condenação por denúncia caluniosa ou falso testemunho contra essas pessoas, em crime punível com mais de dois anos de prisão; interferência dolosa ou coativa na feitura do testamento; e destruição, ocultação ou falsificação do testamento (art. 2034.º do CC).'],
+    ['Declaração de indignidade', 'Em regra, a indignidade tem de ser declarada judicialmente, numa ação intentada em dois anos desde a abertura da sucessão, ou num ano a contar da condenação ou do conhecimento das causas das alíneas c) e d) (art. 2036.º do CC). A sentença penal por homicídio doloso pode já declará-la (art. 69.º-A do CP).'],
+    ['Deserdação', 'Por testamento, com declaração expressa da causa, o autor da sucessão pode privar um herdeiro legitimário da legítima, nos casos taxativos do art. 2166.º do CC, entre os quais a recusa injustificada de alimentos.'],
+    ['Reabilitação', 'O indigno readquire a capacidade se o autor da sucessão o reabilitar expressamente em testamento ou escritura pública; sem reabilitação expressa, mas contemplado em testamento por quem conhecia a causa, pode suceder dentro dos limites dessa disposição (art. 2038.º do CC).']
+  ],
+  regime: [
+    ['Efeitos da indignidade', 'Declarada a indignidade, a devolução da herança ao indigno considera-se inexistente, e ele é tratado como possuidor de má-fé dos bens recebidos (art. 2037.º, n.º 1, do CC).', 'Na sucessão legal, os descendentes do indigno podem herdar por representação (art. 2037.º, n.º 2, do CC). A incapacidade é pessoal e não se estende a eles.'],
+    ['Legitimidade do Ministério Público', 'Se o único herdeiro for o próprio indigno, cabe ao Ministério Público intentar a ação de declaração de indignidade (art. 2036.º, n.º 2, do CC).', 'Se a indignidade não tiver sido declarada na sentença penal, a condenação por homicídio doloso é obrigatoriamente comunicada ao Ministério Público (art. 2036.º, n.º 3, do CC).'],
+    ['Impugnação da deserdação', 'O deserdado pode impugnar a deserdação com fundamento na inexistência da causa invocada, numa ação que caduca dois anos após a abertura do testamento (art. 2167.º do CC).', 'O deserdado é equiparado ao indigno para todos os efeitos (art. 2166.º, n.º 2, do CC), o que inclui a representação pelos seus descendentes.']
+  ],
+  esquema: { tipo: 'tabela', cab: ['', 'Indignidade', 'Deserdação'], linhas: [
+    ['Fonte', 'A lei (art. 2034.º do CC)', 'Testamento do autor da sucessão (art. 2166.º do CC)'],
+    ['Quem atinge', 'Qualquer sucessível', 'Herdeiros legitimários'],
+    ['Como opera', 'Declaração judicial (ou na sentença penal)', 'Declaração expressa da causa no testamento'],
+    ['Prazo para reagir', 'Ação em 2 anos ou 1 ano (art. 2036.º do CC)', 'Impugnação em 2 anos (art. 2167.º do CC)'],
+    ['Descendentes do afastado', 'Podem representar, na sucessão legal', 'Podem representar (equiparação ao indigno)']
+  ] },
+  exemplo: ['Rui foi condenado por tentativa de homicídio contra o pai, António. António morre um ano depois, sem testamento, deixando Rui (que tem uma filha, Sara) e outra filha, Teresa. A sentença penal não declarou a indignidade. Quem herda?',
+    'Rui está numa situação de indignidade (art. 2034.º, alínea a), do CC): homicídio doloso, ainda que não consumado, contra o autor da sucessão. Como a sentença penal não a declarou, a indignidade deve ser declarada em ação própria, que Teresa pode intentar no prazo do art. 2036.º, n.º 1, do CC.',
+    'Declarada a indignidade, a herança considera-se nunca ter sido devolvida a Rui (art. 2037.º, n.º 1). Mas, na sucessão legal, Sara, filha de Rui, herda por representação o lugar do pai (arts. 2037.º, n.º 2, e 2042.º do CC). A herança divide-se entre Teresa e Sara, em partes iguais.']
+  ,
+  erros: [
+    'Pensar que a indignidade opera sempre automaticamente: em regra, exige declaração judicial ou na sentença penal.',
+    'Esquecer que os descendentes do indigno ou do deserdado podem representá-lo.',
+    'Admitir a deserdação por causas não previstas no art. 2166.º do CC ou sem indicação expressa da causa.',
+    'Confundir a deserdação (retira a legítima) com o simples silêncio do testamento (que não afeta a legítima).'
+  ],
+  artigos: ['art. 2033.º do CC', 'art. 2034.º do CC', 'art. 2036.º do CC', 'art. 2037.º do CC', 'art. 2038.º do CC', 'art. 2042.º do CC', 'art. 2166.º do CC', 'art. 2167.º do CC', 'art. 69.º-A do CP']
+};
+
+GUIAS.fam.chamam = {
+  sub: 'Quando o chamado não pode ou não quer herdar: direito de representação, transmissão do direito de suceder, direito de acrescer e substituição direta.',
+  ideia: 'Muitas hipóteses de sucessões giram à volta de uma pergunta: o que acontece à parte de quem não chega a herdar? A resposta depende do motivo e do momento. Se o chamado morreu antes do autor da sucessão, é indigno ou repudiou, entram em jogo a representação, a substituição direta ou o acrescer. Se morreu depois, mas sem ter aceitado ou repudiado, há transmissão do direito de suceder para os seus herdeiros.',
+  conceitos: [
+    ['Direito de representação', 'Os descendentes ocupam a posição do ascendente que não chegou a herdar, por não poder ou não querer (art. 2039.º do CC). Na sucessão legal, tem sempre lugar na linha reta (descendentes de filho) e na colateral (descendentes de irmão), qualquer que seja o grau (art. 2042.º do CC).'],
+    ['Transmissão', 'Se o sucessível chamado morre depois do autor da sucessão, mas sem ter aceitado nem repudiado, o direito de aceitar ou repudiar passa para os seus herdeiros, desde que estes aceitem a herança do falecido (art. 2058.º do CC).'],
+    ['Direito de acrescer', 'Se um dos herdeiros chamados à mesma quota não puder ou não quiser aceitar, a sua parte acresce à dos outros (arts. 2137.º e 2301.º do CC), quando não haja representação nem substituição.'],
+    ['Substituição direta', 'O testador designa quem recebe no lugar do instituído que não queira ou não possa aceitar (art. 2281.º do CC).'],
+    ['Representação e repúdio', 'Os descendentes podem representar quem repudiou a herança (art. 2039.º do CC); o repúdio do representado não impede a representação.']
+  ],
+  regime: [
+    ['Ordem de aplicação', 'Na sucessão testamentária, a substituição direta prevalece; na sua falta, há representação nos casos em que a lei a admite e, por fim, o acrescer (arts. 2041.º e 2304.º do CC).', 'Na sucessão legal, a representação tem prioridade sobre o acrescer: só não havendo representantes é que a parte acresce aos restantes herdeiros da mesma classe (art. 2137.º do CC).'],
+    ['Partilha por estirpes', 'Havendo representação, a herança divide-se por estirpes: os representantes recebem, em conjunto, o que caberia ao representado (art. 2044.º do CC).', 'Exemplo: se o falecido deixa um filho vivo e dois netos de um filho pré-falecido, a herança divide-se em duas partes; os netos repartem entre si a parte do pai.'],
+    ['Representação na sucessão testamentária', 'Também há representação na sucessão testamentária, em benefício dos descendentes do instituído que faleceu antes do testador ou que repudiou, salvo se outra for a vontade do testador ou se a deixa for de usufruto ou de natureza pessoal (art. 2041.º do CC).', 'Assim, a deixa a um filho pré-falecido não caduca se este tiver descendentes, nos termos dessa norma.']
+  ],
+  esquema: { tipo: 'tabela', cab: ['Situação do chamado', 'Mecanismo', 'Quem recebe'], linhas: [
+    ['Morreu antes do autor da sucessão', 'Representação (ou substituição direta, se prevista)', 'Os seus descendentes, por estirpe'],
+    ['Repudiou', 'Representação, se admitida; senão, acrescer', 'Descendentes ou co-herdeiros'],
+    ['Indigno ou deserdado', 'Representação na sucessão legal', 'Os seus descendentes'],
+    ['Morreu depois, sem aceitar nem repudiar', 'Transmissão (art. 2058.º do CC)', 'Os seus herdeiros, se aceitarem a herança dele'],
+    ['Não há representantes nem substituto', 'Acrescer', 'Os co-herdeiros chamados à mesma quota']
+  ] },
+  exemplo: ['Beatriz morre viúva, sem testamento. Tinha três filhos: Carlos (vivo), Diana (falecida antes dela, com dois filhos, Eva e Filipe) e Gil, que repudia a herança e não tem filhos. Como se reparte a herança?',
+    'Diana morreu antes da mãe: os seus filhos, Eva e Filipe, sucedem por representação, ocupando a posição dela (arts. 2039.º e 2042.º do CC). Gil repudiou e não tem descendentes, pelo que não há representação: a sua parte acresce à dos restantes herdeiros (art. 2137.º do CC).',
+    'A herança divide-se, assim, em duas estirpes: metade para Carlos e metade para a estirpe de Diana, que Eva e Filipe repartem em partes iguais (um quarto cada) (art. 2044.º do CC).']
+  ,
+  erros: [
+    'Aplicar o acrescer quando há descendentes que podem representar.',
+    'Confundir representação (o chamado não pôde ou não quis herdar) com transmissão (morreu depois, sem se pronunciar).',
+    'Dividir por cabeças em vez de por estirpes quando há representação.',
+    'Esquecer que a transmissão depende de os herdeiros do transmitente aceitarem a herança deste.'
+  ],
+  artigos: ['art. 2039.º do CC', 'art. 2041.º do CC', 'art. 2042.º do CC', 'art. 2044.º do CC', 'art. 2058.º do CC', 'art. 2137.º do CC', 'art. 2281.º do CC', 'art. 2301.º do CC', 'art. 2304.º do CC']
+};
+
+GUIAS.fam.acei = {
+  sub: 'Herança jacente, aceitação (simples ou com benefício de inventário), repúdio, prazos e responsabilidade pelas dívidas.',
+  ideia: 'Ser chamado à herança não é o mesmo que ser herdeiro: é preciso aceitar. Enquanto ninguém aceita, a herança está jacente e é administrada provisoriamente. A aceitação pode ser expressa ou tácita, e o herdeiro pode escolher entre aceitar pura e simplesmente ou a benefício de inventário, o que muda a forma de provar o limite da sua responsabilidade pelas dívidas. Quem não quer, repudia, por um ato formal e irrevogável.',
+  conceitos: [
+    ['Herança jacente', 'A herança aberta, que ninguém aceitou ainda nem foi declarada vaga a favor do Estado (art. 2046.º do CC). O chamado pode praticar atos urgentes de administração sem que isso implique aceitação (art. 2047.º do CC).'],
+    ['Aceitação expressa e tácita', 'A aceitação é expressa quando há declaração escrita de aceitar ou de assumir o título de herdeiro; é tácita quando se deduz de factos que, com toda a probabilidade, a revelam (arts. 2056.º e 217.º do CC). Simples atos de administração não implicam aceitação tácita (art. 2056.º, n.º 3, do CC).'],
+    ['Aceitação a benefício de inventário', 'Forma de aceitação em que só respondem pelos encargos os bens inventariados, salvo se os credores provarem a existência de outros (art. 2071.º, n.º 1, do CC).'],
+    ['Aceitação pura e simples', 'A responsabilidade também não excede o valor dos bens herdados, mas é o herdeiro que tem de provar que a herança não chega para os encargos (art. 2071.º, n.º 2, do CC).'],
+    ['Repúdio', 'Recusa da herança, sujeita à forma exigida para a alienação da herança (art. 2063.º do CC). Os efeitos retroagem à abertura da sucessão: o repudiante considera-se como nunca tendo sido chamado.']
+  ],
+  regime: [
+    ['Prazos', 'Se o chamado não aceitar nem repudiar nos 15 dias seguintes, o tribunal pode, a pedido do Ministério Público ou de qualquer interessado, notificá-lo para se pronunciar no prazo que fixar; na falta de declaração, a herança considera-se aceite (art. 2049.º do CC).', 'O direito de aceitar caduca ao fim de dez anos a contar do conhecimento do chamamento (art. 2059.º, n.º 1, do CC).'],
+    ['Caráter da aceitação e do repúdio', 'São atos unilaterais, puros e simples: não admitem condição nem termo, nem podem ser parciais (arts. 2054.º e 2064.º do CC).', 'São irrevogáveis. Podem ser anulados por dolo ou coação, mas não com fundamento em simples erro (arts. 2060.º e 2066.º do CC).'],
+    ['Repúdio em prejuízo dos credores', 'Quem é credor do repudiante pode aceitar a herança no lugar dele, no prazo de seis meses a contar do conhecimento do repúdio (art. 2067.º, n.os 1 e 2, do CC).', 'Pagos os credores, o remanescente não volta para o repudiante, mas para os herdeiros seguintes (art. 2067.º, n.º 3, do CC).']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['Abertura', 'A morte abre a sucessão; os sucessíveis são chamados (arts. 2031.º e 2032.º do CC).'],
+    ['Jacência', 'Herança ainda não aceite: atos urgentes de administração (art. 2047.º do CC).'],
+    ['Decisão do chamado', 'Aceitar (expressa ou tacitamente) ou repudiar (com forma), sem condições nem parcialidade.'],
+    ['Modalidade de aceitação', 'Simples ou com benefício de inventário (arts. 2052.º e 2071.º do CC).'],
+    ['Reações de terceiros', 'Notificação para aceitar (art. 2049.º); sub-rogação dos credores do repudiante (art. 2067.º do CC).']
+  ] },
+  exemplo: ['Hugo é o único herdeiro do pai, que deixou uma casa avaliada em 150.000 € e dívidas de 200.000 €. Hugo começa a viver na casa e a pagar o IMI, sem dizer nada. Os credores exigem-lhe 200.000 €. Quid juris?',
+    'Ao passar a viver na casa e a tratá-la como sua, Hugo foi além da mera administração (que, por si, não implicaria aceitação, art. 2056.º, n.º 3, do CC) e praticou atos que, com toda a probabilidade, revelam a vontade de aceitar: houve aceitação tácita (arts. 2056.º, n.º 1, e 217.º do CC), pura e simples.',
+    'Mesmo assim, a responsabilidade de Hugo pelos encargos fica limitada ao valor do que se herdou (art. 2071.º, n.º 2, do CC): os credores não podem atingir o património pessoal de Hugo para além dos 150.000 €. Mas, como aceitou pura e simplesmente, cabe a Hugo provar que a herança é insuficiente. Se tivesse aceitado a benefício de inventário, o ónus seria dos credores.']
+  ,
+  erros: [
+    'Dizer que, na aceitação pura e simples, o herdeiro responde com o seu património por todas as dívidas: o limite é o valor herdado, mudando apenas o ónus da prova.',
+    'Considerar que um simples ato de administração implica aceitação tácita (art. 2056.º, n.º 3, do CC).',
+    'Admitir o repúdio de apenas uma parte da herança ou sob condição.',
+    'Esquecer o prazo de dez anos para aceitar.'
+  ],
+  artigos: ['art. 2046.º do CC', 'art. 2047.º do CC', 'art. 2049.º do CC', 'art. 2052.º do CC', 'art. 2054.º do CC', 'art. 2056.º do CC', 'art. 2059.º do CC', 'art. 2060.º do CC', 'art. 2063.º do CC', 'art. 2064.º do CC', 'art. 2066.º do CC', 'art. 2067.º do CC', 'art. 2071.º do CC']
+};
+
+GUIAS.fam.cabeca = {
+  sub: 'Da aceitação à partilha: herança indivisa, cabeça-de-casal, encargos da herança e petição da herança.',
+  ideia: 'Entre a morte e a partilha, os herdeiros são titulares em conjunto de um património autónomo: a herança indivisa. Alguém tem de a administrar, e a lei escolhe essa pessoa por uma ordem fixa: o cabeça-de-casal. Ao mesmo tempo, a herança responde pelas suas dívidas antes de os herdeiros receberem qualquer coisa. E quem tem a qualidade de herdeiro pode reclamar os bens a quem os possua indevidamente.',
+  conceitos: [
+    ['Herança indivisa', 'Antes da partilha, cada herdeiro tem direito a uma quota ideal do conjunto, e não a bens concretos. Os direitos relativos à herança, em regra, só podem ser exercidos por todos os herdeiros ou contra todos (art. 2091.º do CC).'],
+    ['Cabeça-de-casal', 'Administrador da herança até à liquidação e partilha. O cargo cabe, por esta ordem, ao cônjuge sobrevivo não separado, se for herdeiro ou meeiro; ao testamenteiro; aos parentes herdeiros legais; aos herdeiros testamentários (art. 2080.º do CC).'],
+    ['Bens administrados', 'O cabeça-de-casal administra os bens próprios do falecido e, se este era casado em comunhão, os bens comuns do casal; os bens doados em vida não são hereditários (art. 2087.º do CC).'],
+    ['Encargos da herança', 'Pela herança respondem, por esta ordem, as despesas do funeral e sufrágios, os encargos com a testamentaria, administração e liquidação, as dívidas do falecido e os legados (art. 2068.º do CC).'],
+    ['Petição da herança', 'Ação pela qual o herdeiro pede o reconhecimento da sua qualidade e a restituição dos bens da herança contra quem os possua; pode ser intentada a todo o tempo, sem prejuízo da usucapião e da caducidade do direito de aceitar (art. 2075.º do CC).']
+  ],
+  regime: [
+    ['Poderes do cabeça-de-casal', 'Pode cobrar dívidas ativas, vender frutos e bens deterioráveis, e pedir a entrega dos bens que outro herdeiro ou terceiro detenha (arts. 2088.º a 2090.º do CC).', 'Não pode, sozinho, alienar os bens da herança fora desses casos. Deve prestar contas anualmente (art. 2093.º do CC) e pode ser removido se administrar mal ou ocultar bens (art. 2086.º do CC).'],
+    ['Pagamento das dívidas antes da partilha', 'Antes da partilha, os credores da herança e os legatários cobram pelos bens da herança; os credores pessoais dos herdeiros não podem executar bens hereditários concretos (arts. 2097.º e 2098.º do CC).', 'Depois da partilha, cada herdeiro responde pelos encargos na proporção da quota recebida (art. 2098.º, n.º 1, do CC).'],
+    ['Alienação de quinhão e preferência', 'Cada herdeiro pode alienar o seu quinhão hereditário. Se o vender ou der em cumprimento a estranhos, os co-herdeiros têm direito de preferência, a exercer em dois meses após a comunicação (art. 2130.º do CC).', 'A venda de um bem concreto da herança por um só herdeiro, antes da partilha, é venda de coisa alheia na parte que não lhe pertença.']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['Quem administra?', 'Ordem do art. 2080.º do CC.'],
+    ['O quê?', 'Bens próprios do falecido e bens comuns do casal (art. 2087.º do CC).'],
+    ['Como?', 'Atos de administração; prestação anual de contas (art. 2093.º do CC).'],
+    ['Que dívidas primeiro?', 'Ordem do art. 2068.º do CC.'],
+    ['Até quando?', 'Até à liquidação e partilha; depois, responsabilidade por quotas.']
+  ] },
+  exemplo: ['Joana, viúva, morre deixando três filhos. Um deles, Luís, vive na casa da mãe e recusa-se a deixar os irmãos entrar ou a dar informações sobre as contas bancárias. Quem administra a herança e o que podem fazer os irmãos?',
+    'Não havendo cônjuge sobrevivo nem testamenteiro, o cargo de cabeça-de-casal cabe aos parentes herdeiros legais, preferindo o mais próximo em grau e, em igualdade, o que vivia com o falecido, no mínimo, no último ano (art. 2080.º, n.os 1, alínea c), e 3, do CC). Se Luís vivia com a mãe, é ele o cabeça-de-casal.',
+    'Como cabeça-de-casal, Luís deve administrar com diligência e prestar contas (art. 2093.º do CC). Se ocultar bens ou administrar mal, os irmãos podem pedir a sua remoção (art. 2086.º do CC) e, a todo o tempo, requerer a partilha (art. 2101.º do CC), que, sem acordo, será feita por inventário.']
+  ,
+  erros: [
+    'Tratar cada herdeiro como dono de bens concretos antes da partilha.',
+    'Esquecer a ordem legal de designação do cabeça-de-casal.',
+    'Permitir que os credores pessoais de um herdeiro penhorem bens concretos da herança indivisa.',
+    'Confundir a petição da herança (qualidade de herdeiro) com a ação de reivindicação.'
+  ],
+  artigos: ['art. 2068.º do CC', 'art. 2075.º do CC', 'art. 2079.º do CC', 'art. 2080.º do CC', 'art. 2086.º do CC', 'art. 2087.º do CC', 'art. 2088.º do CC', 'art. 2091.º do CC', 'art. 2093.º do CC', 'art. 2097.º do CC', 'art. 2098.º do CC', 'art. 2130.º do CC']
+};
+
+GUIAS.fam.partilha = {
+  sub: 'O fim da indivisão: direito de exigir partilha, partilha por acordo ou por inventário, efeitos e impugnação.',
+  ideia: 'A partilha transforma as quotas ideais de cada herdeiro em bens concretos. Qualquer herdeiro pode exigi-la a todo o tempo: ninguém é obrigado a ficar indefinidamente em comunhão. Se todos estiverem de acordo, a partilha faz-se de forma simples, numa conservatória ou num notário; se não houver acordo, ou se houver interessados que a lei manda proteger, faz-se por inventário.',
+  conceitos: [
+    ['Direito de exigir partilha', 'Qualquer co-herdeiro ou o cônjuge meeiro pode exigir a partilha quando quiser. Não se pode renunciar a este direito, mas pode convencionar-se a indivisão por um prazo até cinco anos, renovável (art. 2101.º do CC).'],
+    ['Partilha por acordo', 'Havendo acordo de todos os interessados, a partilha é feita nas conservatórias ou por via notarial (art. 2102.º, n.º 1, do CC).'],
+    ['Inventário', 'Processo para relacionar os bens, resolver as questões e fazer a partilha quando não há acordo, quando a lei o impõe ou quando algum herdeiro aceitou a benefício de inventário (art. 2102.º, n.º 2, do CC). Corre no tribunal ou no notário, nos termos da lei especial.'],
+    ['Retroatividade', 'Feita a partilha, cada herdeiro é considerado sucessor único dos bens que lhe couberam desde a abertura da herança, salvo quanto aos frutos (art. 2119.º do CC).'],
+    ['Impugnação', 'A partilha extrajudicial só é impugnável nos casos em que o sejam os contratos, por exemplo por erro, dolo ou coação (art. 2121.º do CC).']
+  ],
+  regime: [
+    ['Quando o inventário é obrigatório', 'Procede-se a inventário quando falte o acordo de algum interessado e nos restantes casos previstos no art. 2102.º, n.º 2, do CC, como a aceitação a benefício de inventário ou certos casos de interessados menores ou incapazes.', 'O inventário judicial segue os termos do processo especial previsto no CPC, com fases de relação de bens, reclamações, conferência de interessados e partilha.'],
+    ['Composição dos quinhões', 'Na partilha, os bens distribuem-se de forma a preencher a quota de cada herdeiro. As tornas compensam quem recebe bens de valor inferior ao da sua quota.', 'A conferência de interessados é o momento central do inventário: aí se acordam as composições e, sem acordo, se fazem as adjudicações e licitações nos termos da lei processual.'],
+    ['Partilha em vida', 'É ainda possível a partilha em vida: o autor da sucessão doa bens a alguns herdeiros presumidos, com o consentimento dos outros, que recebem tornas (art. 2029.º do CC).', 'Não é um pacto sucessório proibido, porque se trata de doações entre vivos com os outros legitimários a intervir.']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['Há acordo de todos?', 'Sim: partilha na conservatória ou no notário. Não: inventário.'],
+    ['Relação de bens', 'Identificar o ativo e o passivo (bens próprios e meação).'],
+    ['Liquidação', 'Pagar ou acautelar os encargos da herança (art. 2068.º do CC).'],
+    ['Preenchimento dos quinhões', 'Atribuir bens de acordo com as quotas, com tornas se necessário.'],
+    ['Efeitos', 'Retroatividade à abertura da herança (art. 2119.º do CC).']
+  ] },
+  exemplo: ['Manuel morre e deixa dois filhos, Nádia e Óscar. Óscar quer manter a herança indivisa por tempo indeterminado, porque gosta de passar férias na casa de praia. Nádia quer partilhar. Quem tem razão?',
+    'Qualquer co-herdeiro tem o direito de exigir a partilha quando quiser, e não se pode renunciar a esse direito (art. 2101.º, n.os 1 e 2, do CC). Só seria possível manter a indivisão por convenção de todos, e por prazo não superior a cinco anos.',
+    'Nádia pode exigir a partilha. Como Óscar não concorda, a partilha faz-se por inventário (art. 2102.º, n.º 2, alínea a), do CC). Se a casa ficar para Óscar e o seu valor exceder a quota dele, terá de pagar tornas a Nádia.']
+  ,
+  erros: [
+    'Admitir uma indivisão perpétua por acordo: o limite é de cinco anos, renovável.',
+    'Pensar que a partilha produz efeitos apenas a partir da data em que é feita: retroage à abertura da herança.',
+    'Impugnar a partilha extrajudicial com fundamentos que não seriam admitidos contra um contrato.',
+    'Esquecer as tornas quando os bens atribuídos excedem a quota.'
+  ],
+  artigos: ['art. 2029.º do CC', 'art. 2101.º do CC', 'art. 2102.º do CC', 'art. 2119.º do CC', 'art. 2121.º do CC']
+};
+
 /* Matéria explicada — Direito das Obrigações */
 var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
 GUIAS.obr = {
@@ -5059,6 +5437,223 @@ GUIAS.pex.geral = {
     ],
     artigos: ['art. 10.º do CPC', 'art. 342.º do CPC', 'art. 550.º do CPC', 'art. 703.º do CPC', 'art. 713.º do CPC', 'art. 728.º do CPC', 'art. 729.º do CPC', 'art. 735.º do CPC', 'art. 738.º do CPC', 'art. 751.º do CPC']
   };
+
+/* Matéria explicada — Processo Civil declarativo, temas de aprofundamento (texto original do LEXDESK) */
+var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
+GUIAS.pc = GUIAS.pc || {};
+
+GUIAS.pc.comp = {
+  sub: 'Em que tribunal se propõe a ação: competência internacional, material, hierárquica, em razão do valor e territorial, e as consequências da incompetência.',
+  ideia: 'Antes de redigir a petição, o advogado tem de escolher o tribunal certo. A competência reparte-se por vários critérios que se aplicam por ordem: primeiro, se os tribunais portugueses podem julgar (competência internacional); depois, se a causa cabe aos tribunais judiciais e a que juízo (matéria); a seguir, a que nível da hierarquia; e, por fim, onde, no território. Errar num critério «absoluto» tem consequências mais graves do que errar num critério «relativo».',
+  conceitos: [
+    ['Competência internacional', 'Os tribunais portugueses são internacionalmente competentes nos casos previstos nos regulamentos europeus e convenções internacionais e, fora deles, nos casos do art. 62.º do CPC. Há matérias de competência exclusiva, como os direitos reais sobre imóveis situados em Portugal (art. 63.º do CPC).'],
+    ['Competência material', 'Os tribunais judiciais julgam as causas que não estejam atribuídas a outra ordem jurisdicional (art. 64.º do CPC). Dentro deles, a lei de organização judiciária distribui as causas por juízos especializados: cíveis, de família e menores, do trabalho, de comércio, entre outros.'],
+    ['Competência em razão da hierarquia', 'Determina se a causa começa no tribunal de 1.ª instância, na Relação ou no Supremo. Em regra, as ações começam na 1.ª instância; os tribunais superiores conhecem sobretudo de recursos (arts. 67.º a 69.º do CPC).'],
+    ['Competência territorial', 'Escolhe o tribunal concreto dentro da mesma espécie. Há regras especiais (por exemplo, para ações sobre imóveis, o tribunal da situação dos bens, art. 70.º do CPC) e uma regra geral: o domicílio do réu (art. 80.º do CPC).'],
+    ['Incompetência absoluta e relativa', 'A violação das regras de competência internacional, material ou hierárquica, ou a preterição do tribunal arbitral, gera incompetência absoluta (art. 96.º do CPC). A violação das regras de território ou de valor, ou de um pacto de competência, gera incompetência relativa (art. 102.º do CPC).']
+  ],
+  regime: [
+    ['Ações de cumprimento de obrigações', 'A ação para exigir o cumprimento, a indemnização pelo incumprimento ou a resolução do contrato por incumprimento é proposta no tribunal do domicílio do réu (art. 71.º, n.º 1, do CPC).', 'O credor pode escolher o tribunal do sítio onde a obrigação devia ser cumprida quando o réu seja pessoa coletiva, ou quando credor e réu tenham domicílio na mesma área metropolitana de Lisboa ou do Porto.'],
+    ['Regime da incompetência absoluta', 'Pode ser arguida pelas partes e, em regra, deve ser suscitada oficiosamente pelo tribunal enquanto não houver sentença transitada sobre o fundo da causa (art. 97.º, n.º 1, do CPC).', 'Determina a absolvição do réu da instância ou o indeferimento liminar. Se for decretada depois dos articulados, o autor pode, em 10 dias após o trânsito, pedir a remessa do processo ao tribunal competente, aproveitando os articulados (art. 99.º do CPC).'],
+    ['Regime da incompetência relativa', 'Deve ser arguida pelo réu, em regra, no prazo da contestação (art. 103.º do CPC). O tribunal conhece-a oficiosamente nos casos do art. 104.º do CPC (entre eles, as ações sobre imóveis do art. 70.º e a regra do domicílio do réu do art. 71.º, n.º 1), mas só até ao despacho saneador.', 'Julgada procedente, o processo é remetido ao tribunal competente (art. 105.º, n.º 3, do CPC), sem absolvição da instância. A decisão transitada resolve definitivamente a questão (art. 105.º, n.º 2, do CPC).'],
+    ['Pactos de competência', 'As partes podem convencionar o tribunal territorialmente competente (pacto de competência) ou atribuir jurisdição a tribunais de um certo Estado (pacto de jurisdição), dentro dos limites da lei (arts. 94.º e 95.º do CPC).', 'As regras de matéria, hierarquia e valor não podem ser afastadas. O acordo territorial tem de respeitar a forma do contrato de que emerge a obrigação e de indicar as questões abrangidas e o critério de escolha do tribunal (art. 95.º do CPC).']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['Internacional', 'Os tribunais portugueses podem julgar? (regulamentos europeus; arts. 62.º e 63.º do CPC)'],
+    ['Material', 'A causa cabe aos tribunais judiciais? A que juízo especializado?'],
+    ['Hierarquia', 'Começa na 1.ª instância, como é a regra?'],
+    ['Valor', 'O valor influencia a distribuição entre juízos (por exemplo, juízo central ou local cível)?'],
+    ['Território', 'Regra especial aplicável? Se não houver, domicílio do réu (art. 80.º do CPC).']
+  ] },
+  exemplo: ['Uma sociedade com sede no Porto vendeu e entregou mercadoria a António, que vive em Faro, e este não pagou. A sociedade quer intentar a ação em Lisboa, onde fica o seu armazém. Pode? E se intentar no Porto?',
+    'A ação de cumprimento deve correr no tribunal da área onde o réu tem domicílio, ou seja, Faro (art. 71.º, n.º 1, do CPC). A opção pelo lugar do cumprimento só existe quando o réu é pessoa coletiva ou quando ambos têm domicílio na mesma área metropolitana; nenhuma das hipóteses se verifica, porque o réu é uma pessoa singular que vive em Faro. Lisboa não é competente.',
+    'Propor a ação em Lisboa ou no Porto viola uma regra de competência territorial: há incompetência relativa (art. 102.º do CPC). António pode argui-la na contestação, e o próprio juiz deve conhecê-la oficiosamente até ao despacho saneador (art. 104.º, n.os 1, alínea a), e 3, do CPC). Procedendo a exceção, os autos seguem para o tribunal de Faro (art. 105.º, n.º 3, do CPC), sem absolvição da instância.']
+  ,
+  erros: [
+    'Tratar a incompetência territorial como absoluta e pedir a absolvição da instância.',
+    'Esquecer de verificar primeiro a competência internacional quando há elementos estrangeiros.',
+    'Aplicar a opção do lugar do cumprimento fora das situações previstas no art. 71.º do CPC.',
+    'Deixar passar a contestação sem arguir a incompetência relativa.'
+  ],
+  artigos: ['art. 62.º do CPC', 'art. 63.º do CPC', 'art. 64.º do CPC', 'art. 70.º do CPC', 'art. 71.º do CPC', 'art. 80.º do CPC', 'art. 94.º do CPC', 'art. 96.º do CPC', 'art. 97.º do CPC', 'art. 99.º do CPC', 'art. 102.º do CPC', 'art. 104.º do CPC', 'art. 105.º do CPC']
+};
+
+GUIAS.pc.inst = {
+  sub: 'A vida da ação: início, estabilidade, modificações, suspensão e as várias formas de extinção da instância.',
+  ideia: 'A instância é a relação processual que se cria entre o autor, o réu e o tribunal. Começa com a apresentação da petição e, a partir da citação, deve manter-se estável: as mesmas pessoas, o mesmo pedido e a mesma causa de pedir. Pode ser suspensa, por exemplo pela morte de uma parte, e termina normalmente com o julgamento, mas também pode terminar por desistência, confissão, transação, deserção ou inutilidade da lide.',
+  conceitos: [
+    ['Início da instância', 'A instância começa com a propositura da ação, que se considera feita quando a petição se considera apresentada; os efeitos em relação ao réu só se produzem com a citação (art. 259.º do CPC).'],
+    ['Estabilidade da instância', 'Citado o réu, a instância mantém-se quanto às pessoas, ao pedido e à causa de pedir, salvo as modificações que a lei permite (art. 260.º do CPC).'],
+    ['Modificação subjetiva', 'As partes podem mudar por sucessão (habilitação de herdeiros), pelos incidentes de intervenção de terceiros ou para sanar a falta de um litisconsorte necessário (arts. 261.º e 262.º do CPC).'],
+    ['Alteração do pedido e da causa de pedir', 'Sem acordo, a causa de pedir só pode ser alterada ou ampliada em consequência de confissão do réu; o pedido pode ser reduzido a todo o tempo e ampliado até ao encerramento da discussão em 1.ª instância, se for desenvolvimento ou consequência do pedido inicial (art. 265.º do CPC).'],
+    ['Suspensão', 'A instância suspende-se, por exemplo, com a morte ou extinção de uma parte, ou com a morte do advogado nos processos com patrocínio obrigatório (art. 269.º do CPC), e pode ser suspensa pelo juiz quando haja causa prejudicial ou outro motivo justificado (art. 272.º do CPC).']
+  ],
+  regime: [
+    ['Causas de extinção', 'A instância extingue-se com o julgamento, o compromisso arbitral, a deserção, a desistência, a confissão ou a transação, e a impossibilidade ou inutilidade da lide que surja depois (art. 277.º do CPC).', 'Cada causa tem efeitos diferentes: a desistência do pedido extingue o direito; a desistência da instância apenas faz cessar o processo e permite propor nova ação.'],
+    ['Desistência', 'A desistência do pedido é livre, mas não prejudica a reconvenção, salvo se esta depender do pedido do autor. A desistência da instância, se for pedida depois de o réu contestar, depende da aceitação deste (art. 286.º do CPC).', 'A desistência, a confissão e a transação são homologadas por sentença, que fiscaliza o objeto e a qualidade das pessoas que intervêm (art. 290.º do CPC).'],
+    ['Deserção', 'Considera-se deserta a instância quando, por negligência das partes, o processo aguarda impulso processual há mais de seis meses (art. 281.º, n.º 1, do CPC).', 'A deserção é julgada por despacho do juiz, depois de verificada a negligência da parte. Não é automática: o tribunal deve ouvir a parte, se houver dúvidas sobre a causa da paragem.'],
+    ['Inutilidade superveniente', 'Quando, depois de proposta a ação, deixa de haver interesse em decidir (por exemplo, porque o réu pagou), a instância extingue-se por inutilidade superveniente da lide (art. 277.º, alínea e), do CPC).', 'As custas ficam, em regra, a cargo de quem deu causa à inutilidade.']
+  ],
+  esquema: { tipo: 'tabela', cab: ['Forma de extinção', 'Efeito', 'Pode voltar a propor?'], linhas: [
+    ['Julgamento de mérito', 'Caso julgado material', 'Não'],
+    ['Absolvição da instância', 'Caso julgado formal', 'Sim, sanando o vício'],
+    ['Desistência do pedido', 'Extingue o direito que se pretendia fazer valer', 'Não'],
+    ['Desistência da instância', 'Faz cessar o processo', 'Sim'],
+    ['Confissão e transação', 'Homologadas por sentença, valem como decisão de mérito', 'Não'],
+    ['Deserção', 'Extingue a instância por inércia', 'Sim, se o direito não tiver caducado ou prescrito']
+  ] },
+  exemplo: ['Bruna intenta ação contra Carla a pedir 8.000 € de rendas em atraso. Depois da contestação, Bruna percebe que se enganou nos meses e quer desistir para propor uma ação corrigida. Carla não aceita. Que pode Bruna fazer?',
+    'Bruna pretende desistir da instância, para poder propor nova ação. Como a contestação já foi apresentada, essa desistência depende da aceitação da ré (art. 286.º, n.º 1, do CPC), que a recusa.',
+    'Bruna pode, em vez disso, reduzir o pedido, o que é admitido a todo o tempo (art. 265.º, n.º 2, do CPC), ou ampliá-lo até ao encerramento da discussão em 1.ª instância, se a ampliação for desenvolvimento ou consequência do pedido inicial. Se desistisse do pedido, perderia o próprio direito às rendas.']
+  ,
+  erros: [
+    'Confundir desistência do pedido com desistência da instância.',
+    'Pensar que a deserção é automática, sem despacho e sem verificação da negligência.',
+    'Alterar livremente a causa de pedir depois da citação.',
+    'Esquecer a homologação por sentença da transação.'
+  ],
+  artigos: ['art. 259.º do CPC', 'art. 260.º do CPC', 'art. 261.º do CPC', 'art. 265.º do CPC', 'art. 269.º do CPC', 'art. 272.º do CPC', 'art. 277.º do CPC', 'art. 281.º do CPC', 'art. 286.º do CPC', 'art. 290.º do CPC']
+};
+
+GUIAS.pc.saneam = {
+  sub: 'Da fase dos articulados ao julgamento: despacho pré-saneador, audiência prévia, despacho saneador, objeto do litígio e temas da prova.',
+  ideia: 'Terminados os articulados, o juiz tem de pôr o processo em ordem antes de passar à prova. É a fase da condensação: corrigem-se as falhas das peças, tenta-se a conciliação, resolvem-se as exceções e, se for possível, decide-se logo o mérito. O que sobra para julgamento fica delimitado no despacho que identifica o objeto do litígio e enuncia os temas da prova.',
+  conceitos: [
+    ['Despacho pré-saneador', 'Despacho que, findos os articulados, providencia pelo suprimento de exceções dilatórias, convida as partes a aperfeiçoar os articulados ou a juntar documentos (art. 590.º, n.os 2 a 4, do CPC).'],
+    ['Audiência prévia', 'Diligência, a realizar num dos 30 dias seguintes, com várias finalidades possíveis: tentativa de conciliação, discussão das exceções ou do mérito, delimitação dos termos do litígio, despacho saneador, programação da audiência final (art. 591.º do CPC).'],
+    ['Despacho saneador', 'Decisão que conhece das exceções dilatórias e nulidades processuais e, se o estado do processo o permitir, conhece imediatamente do mérito da causa (art. 595.º do CPC).'],
+    ['Temas da prova', 'Questões de facto controvertidas que vão ser objeto de prova, enunciadas de forma ampla, sem a rigidez da antiga base instrutória (art. 596.º do CPC).'],
+    ['Adequação formal e gestão processual', 'O juiz pode adaptar a tramitação às especificidades da causa, sempre com respeito pelo contraditório e pela igualdade das partes (arts. 6.º e 547.º do CPC).']
+  ],
+  regime: [
+    ['Quando não há audiência prévia', 'Não se realiza nas ações não contestadas em que a revelia é inoperante e nos casos em que o processo deva findar no saneador por exceção dilatória já discutida nos articulados (art. 592.º do CPC).', 'O juiz pode dispensá-la quando se destinaria apenas a proferir o saneador, a enunciar o objeto e os temas da prova ou a programar a audiência final; nesse caso, profere os despachos em 20 dias, e as partes podem pedir que a audiência se realize (art. 593.º do CPC).'],
+    ['Conhecimento do mérito no saneador', 'Se as questões puderem ser decididas sem mais prova, o juiz decide logo, no todo ou em parte, o pedido ou a exceção perentória (art. 595.º, n.º 1, alínea b), do CPC).', 'Neste caso, o saneador tem o valor de sentença. Antes de o fazer, o juiz deve dar às partes oportunidade de discutir as questões, normalmente na audiência prévia (art. 591.º, n.º 1, alínea b), do CPC).'],
+    ['Reclamação e prova', 'As partes podem reclamar do despacho que identifica o objeto do litígio e enuncia os temas da prova; a decisão sobre a reclamação só pode ser impugnada no recurso da decisão final (art. 596.º, n.os 2 e 3, do CPC).', 'O requerimento probatório pode ser alterado na audiência prévia, e a lista de testemunhas pode ser alterada ou completado até ao vigésimo dia anterior à audiência final (art. 598.º do CPC).']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['Fim dos articulados', 'Petição, contestação e, se admissível, réplica.'],
+    ['Pré-saneador', 'Suprir exceções e aperfeiçoar articulados (art. 590.º do CPC).'],
+    ['Audiência prévia', 'Conciliação, discussão e programação (art. 591.º), salvo não realização ou dispensa (arts. 592.º e 593.º do CPC).'],
+    ['Saneador', 'Exceções, nulidades e, se possível, mérito (art. 595.º do CPC).'],
+    ['Objeto e temas da prova', 'Delimitação do que vai a julgamento (art. 596.º do CPC).'],
+    ['Programação', 'Datas da audiência final e meios de prova a produzir.']
+  ] },
+  exemplo: ['Numa ação de indemnização por um acidente, o réu invoca na contestação que o direito prescreveu. Os factos relativos às datas estão documentados e não são discutidos. O juiz pode decidir já?',
+    'A prescrição é uma exceção perentória. Se os factos de que depende estiverem assentes, por documento ou por acordo, a questão pode ser decidida sem produção de mais prova, no despacho saneador (art. 595.º, n.º 1, alínea b), do CPC).',
+    'Antes de decidir, o juiz deve proporcionar às partes o debate, de facto e de direito, sobre a prescrição, convocando a audiência prévia para esse fim (art. 591.º, n.º 1, alínea b), do CPC). Uma decisão-surpresa, sem essa oportunidade, violaria o contraditório (art. 3.º, n.º 3, do CPC).']
+  ,
+  erros: [
+    'Decidir o mérito no saneador sem dar às partes oportunidade de discussão.',
+    'Formular os temas da prova como se fossem quesitos fechados, à maneira da antiga base instrutória.',
+    'Esquecer o prazo de 20 dias para alterar o rol de testemunhas.',
+    'Confundir a dispensa da audiência prévia com a sua não realização obrigatória.'
+  ],
+  artigos: ['art. 3.º do CPC', 'art. 6.º do CPC', 'art. 547.º do CPC', 'art. 590.º do CPC', 'art. 591.º do CPC', 'art. 592.º do CPC', 'art. 593.º do CPC', 'art. 595.º do CPC', 'art. 596.º do CPC', 'art. 598.º do CPC']
+};
+
+GUIAS.pc.aud = {
+  sub: 'A audiência final: adiamentos, tentativa de conciliação, ordem da produção da prova, alegações e prazo da sentença.',
+  ideia: 'É na audiência final que a prova é produzida e discutida perante o juiz que vai decidir. Os princípios da imediação, da oralidade e da concentração explicam as regras: a audiência só se adia em casos restritos, a prova é produzida por uma ordem estabelecida e, no fim, os advogados fazem alegações orais sobre a matéria de facto e de direito. Depois, o juiz tem 30 dias para proferir a sentença.',
+  conceitos: [
+    ['Marcação por acordo', 'A data da audiência é marcada mediante acordo prévio com os mandatários, para evitar sobreposições e adiamentos (art. 151.º do CPC).'],
+    ['Causas de adiamento', 'A audiência só é adiada por impedimento do tribunal, por falta de algum advogado sem que a data tenha sido marcada por acordo prévio, ou por justo impedimento (art. 603.º, n.º 1, do CPC).'],
+    ['Tentativa de conciliação', 'No início, o juiz procura conciliar as partes, se a causa estiver no âmbito do seu poder de disposição (art. 604.º, n.º 2, do CPC).'],
+    ['Ordem da prova', 'Depoimentos de parte, exibição de gravações, esclarecimentos dos peritos e inquirição das testemunhas, seguidos das alegações orais (art. 604.º, n.º 3, do CPC).'],
+    ['Gravação', 'A audiência final é sempre gravada, o que permite impugnar a decisão de facto em recurso (art. 155.º do CPC).']
+  ],
+  regime: [
+    ['Falta das testemunhas', 'A falta de uma testemunha não determina, por si, o adiamento da audiência, que prossegue com a prova disponível.', 'A parte pode prescindir da testemunha ou requerer a sua substituição ou nova notificação, nos termos legais, sem que o julgamento fique parado.'],
+    ['Alegações', 'Encerrada a produção da prova, os advogados fazem alegações orais, expondo as conclusões de facto e de direito (art. 604.º, n.º 3, alínea e), do CPC).', 'Cada advogado pode replicar uma vez, e a duração das alegações pode ser limitada pelo juiz.'],
+    ['Sentença', 'Encerrada a audiência, o processo vai ao juiz para sentença no prazo de 30 dias; se não se considerar esclarecido, pode reabrir a audiência (art. 607.º, n.º 1, do CPC).', 'Na fundamentação, o juiz declara os factos provados e não provados, analisa criticamente as provas e indica as ilações tiradas dos factos instrumentais (art. 607.º, n.º 4, do CPC).']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['Abertura', 'Verificação das presenças; adiamento só nos casos do art. 603.º do CPC.'],
+    ['Conciliação', 'Tentativa de acordo (art. 604.º, n.º 2).'],
+    ['Prova', 'Depoimentos de parte, gravações, peritos e testemunhas (art. 604.º, n.º 3).'],
+    ['Alegações', 'Orais, de facto e de direito.'],
+    ['Sentença', '30 dias após o encerramento (art. 607.º do CPC).']
+  ] },
+  exemplo: ['No dia da audiência final, o advogado do réu falta sem aviso. A data tinha sido marcada por acordo com ambos os mandatários. O réu pede o adiamento. Deve ser concedido?',
+    'A falta de advogado só justifica o adiamento quando a data não foi marcada mediante acordo prévio, ou quando há justo impedimento (art. 603.º, n.º 1, do CPC). A data foi acordada e nada se diz sobre um impedimento.',
+    'A audiência realiza-se. O tribunal pode tomar as medidas necessárias para salvaguardar a defesa do réu, mas a falta injustificada do mandatário não paralisa o julgamento.']
+  ,
+  erros: [
+    'Pensar que a falta de uma testemunha adia obrigatoriamente a audiência.',
+    'Esquecer a gravação como base da impugnação da matéria de facto.',
+    'Omitir, na fundamentação, a análise crítica das provas.',
+    'Confundir a tentativa de conciliação da audiência prévia com a da audiência final: podem existir as duas.'
+  ],
+  artigos: ['art. 151.º do CPC', 'art. 155.º do CPC', 'art. 603.º do CPC', 'art. 604.º do CPC', 'art. 607.º do CPC']
+};
+
+GUIAS.pc.incid = {
+  sub: 'Pluralidade de partes e intervenção de terceiros: litisconsórcio, coligação, intervenção principal e acessória, assistência e oposição.',
+  ideia: 'Muitas ações envolvem mais do que um autor e um réu. A lei distingue os casos em que várias pessoas têm de estar no processo para que a sentença possa ter o efeito prático que dela se espera (litisconsórcio necessário), os casos em que podem estar (litisconsórcio voluntário e coligação) e os mecanismos para trazer terceiros a um processo já em curso (incidentes de intervenção).',
+  conceitos: [
+    ['Litisconsórcio voluntário', 'A relação material diz respeito a várias pessoas, mas a ação pode ser proposta só por uma ou contra uma, conhecendo o tribunal apenas da respetiva quota-parte (art. 32.º do CPC).'],
+    ['Litisconsórcio necessário', 'A lei, o negócio ou a natureza da relação exigem a intervenção de todos os interessados, para que a sentença possa ter o efeito prático que dela se espera (art. 33.º do CPC). A falta de algum gera ilegitimidade.'],
+    ['Coligação', 'Vários autores ou réus com pedidos diferentes, mas ligados pela mesma causa de pedir ou por uma relação de dependência ou de prejudicialidade (art. 36.º do CPC).'],
+    ['Intervenção principal', 'O terceiro entra no processo como parte principal, ao lado do autor ou do réu, por ter um interesse igual ao de uma delas. Pode ser espontânea (art. 311.º do CPC) ou provocada por uma das partes (art. 316.º do CPC).'],
+    ['Intervenção acessória provocada', 'O réu chama um terceiro contra quem tenha direito de regresso, para que a sentença lhe seja oponível na ação de regresso (art. 321.º do CPC). O chamado é auxiliar do réu, não parte principal.'],
+    ['Assistência', 'Um terceiro com interesse jurídico em que a decisão seja favorável a uma das partes intervém para a auxiliar (art. 326.º do CPC).']
+  ],
+  regime: [
+    ['Sanação da ilegitimidade plural', 'A preterição do litisconsórcio necessário pode ser sanada pela intervenção do interessado em falta, provocada pela parte (arts. 261.º e 316.º do CPC).', 'O juiz deve convidar a parte a suprir a falta, no despacho pré-saneador (art. 590.º, n.º 2, alínea a), do CPC), antes de absolver o réu da instância.'],
+    ['Momento da intervenção', 'A intervenção espontânea por mera adesão é admitida enquanto a causa não estiver definitivamente julgada (art. 313.º do CPC); o chamamento de terceiros deve, em regra, ser requerido até ao termo da fase dos articulados (art. 318.º do CPC).', 'O chamamento para intervenção acessória é requerido pelo réu na contestação (art. 322.º do CPC).'],
+    ['Efeitos da sentença', 'A sentença faz caso julgado em relação aos intervenientes principais.', 'Quanto ao chamado como interveniente acessório, a sentença constitui caso julgado relativamente às questões de que dependa o direito de regresso, nos termos do art. 323.º, n.º 4, do CPC.']
+  ],
+  esquema: { tipo: 'tabela', cab: ['Figura', 'Quem entra', 'Posição', 'Norma'], linhas: [
+    ['Intervenção principal espontânea', 'Terceiro, por iniciativa própria', 'Parte principal', 'art. 311.º do CPC'],
+    ['Intervenção principal provocada', 'Terceiro chamado por uma das partes', 'Parte principal', 'art. 316.º do CPC'],
+    ['Intervenção acessória provocada', 'Terceiro chamado pelo réu', 'Auxiliar do réu', 'art. 321.º do CPC'],
+    ['Assistência', 'Terceiro com interesse jurídico', 'Auxiliar de uma parte', 'art. 326.º do CPC'],
+    ['Oposição espontânea', 'Terceiro que se arroga o direito em disputa', 'Parte contra ambos', 'art. 333.º do CPC']
+  ] },
+  exemplo: ['Daniela compra um carro a um stand e descobre um defeito grave no motor. Intenta ação contra o stand pedindo a reparação. O stand quer que o fabricante fique vinculado pela decisão, para depois lhe exigir o que tiver de pagar. Como deve proceder?',
+    'O stand tem, em princípio, direito de regresso contra o fabricante se for condenado. O meio adequado é a intervenção acessória provocada, requerida pelo réu na contestação (arts. 321.º e 322.º do CPC).',
+    'O fabricante entra como auxiliar do stand. Se o stand for condenado, a sentença constitui caso julgado contra o fabricante quanto às questões de que depende o direito de regresso, o que facilita a ação posterior (art. 323.º, n.º 4, do CPC).']
+  ,
+  erros: [
+    'Confundir litisconsórcio necessário com voluntário e absolver da instância sem convidar a parte a suprir a falta.',
+    'Usar a intervenção principal provocada para chamar quem só responde em via de regresso: o meio é a intervenção acessória.',
+    'Admitir coligação sem conexão entre os pedidos.',
+    'Esquecer o momento processual próprio para requerer o chamamento.'
+  ],
+  artigos: ['art. 32.º do CPC', 'art. 33.º do CPC', 'art. 36.º do CPC', 'art. 261.º do CPC', 'art. 311.º do CPC', 'art. 316.º do CPC', 'art. 321.º do CPC', 'art. 322.º do CPC', 'art. 323.º do CPC', 'art. 326.º do CPC', 'art. 333.º do CPC']
+};
+
+GUIAS.pc.valor = {
+  sub: 'O valor da causa, a forma do processo e as alçadas: para que servem e como se determinam.',
+  ideia: 'Toda a causa tem um valor certo, expresso em moeda, que representa a utilidade económica imediata do pedido (art. 296.º do CPC). O valor importa para três coisas práticas: distribuir a causa entre juízos, decidir se cabe recurso (por comparação com a alçada do tribunal) e calcular as custas. A forma do processo, essa, ficou muito simplificada: o processo comum de declaração tem uma forma única.',
+  conceitos: [
+    ['Valor da causa', 'Representa a utilidade económica imediata do pedido; quando o pedido é uma quantia certa, é essa a quantia (arts. 296.º e 297.º do CPC).'],
+    ['Critérios especiais', 'Há regras próprias, por exemplo, para pedidos cumulados (soma), pedidos alternativos ou subsidiários, prestações vincendas e ações sobre o estado das pessoas ou interesses imateriais (arts. 297.º a 303.º do CPC).'],
+    ['Fixação do valor', 'O autor indica o valor na petição; o réu pode impugná-lo; cabe ao juiz fixá-lo, em regra no despacho saneador ou na sentença (arts. 305.º e 306.º do CPC).'],
+    ['Alçada', 'Limite de valor até ao qual o tribunal julga sem recurso ordinário: 5.000 € nos tribunais de 1.ª instância e 30.000 € nas Relações (art. 44.º, n.º 1, da Lei da Organização do Sistema Judiciário).'],
+    ['Forma do processo', 'O processo é comum ou especial; o especial aplica-se aos casos expressamente previstos na lei, e o comum aos restantes (art. 546.º do CPC). O processo comum declarativo tem uma só forma (art. 548.º do CPC).']
+  ],
+  regime: [
+    ['Admissibilidade do recurso', 'Em regra, só há recurso ordinário quando a causa tem valor acima da alçada do tribunal recorrido e a decisão é desfavorável ao recorrente em mais de metade dessa alçada (art. 629.º, n.º 1, do CPC).', 'Há casos em que se pode sempre recorrer, independentemente do valor, como a violação das regras de competência absoluta ou a ofensa de caso julgado (art. 629.º, n.º 2, do CPC).'],
+    ['Momento relevante', 'O valor atende-se à data da propositura da ação, salvo havendo reconvenção ou intervenção principal: o pedido do réu ou do interveniente soma-se ao do autor se for um pedido distinto (art. 299.º do CPC).', 'O aumento do valor por ampliação do pedido também é considerado para a admissibilidade do recurso.'],
+    ['Processos especiais frequentes', 'Para dívidas de valor não superior a 15.000 € emergentes de contratos, existe a ação especial para cumprimento de obrigações pecuniárias e o procedimento de injunção.', 'Antes de escolher a forma, verifique se há processo especial aplicável; só na sua falta se usa o processo comum.']
+  ],
+  esquema: { tipo: 'tabela', cab: ['Valor da causa', 'Recurso da 1.ª instância?', 'Recurso da Relação para o STJ?'], linhas: [
+    ['Até 5.000 €', 'Não, em regra', 'Não'],
+    ['Entre 5.000,01 € e 30.000 €', 'Sim, se a sucumbência exceder 2.500 €', 'Não, em regra'],
+    ['Mais de 30.000 €', 'Sim, se a sucumbência exceder 2.500 €', 'Sim, se a sucumbência exceder 15.000 € (sem dupla conforme)']
+  ] },
+  exemplo: ['Eduardo pede numa ação 12.000 €. O tribunal condena o réu a pagar 10.000 €. Eduardo pode recorrer? E o réu?',
+    'O valor da causa (12.000 €) é superior à alçada da 1.ª instância (5.000 €). Para Eduardo, a decisão é desfavorável em 2.000 €, valor inferior a metade da alçada (2.500 €): não pode recorrer (art. 629.º, n.º 1, do CPC).',
+    'Para o réu, a decisão é desfavorável em 10.000 €, mais de metade da alçada: pode recorrer para a Relação. Se o réu recorrer, Eduardo pode ainda interpor recurso subordinado, que é admissível mesmo que a sua sucumbência não exceda metade da alçada (art. 633.º, n.º 5, do CPC).']
+  ,
+  erros: [
+    'Verificar apenas o valor da causa e esquecer a sucumbência.',
+    'Esquecer os casos de recurso sempre admissível do art. 629.º, n.º 2, do CPC.',
+    'Usar o processo comum quando há um processo especial aplicável.',
+    'Não impugnar, na contestação, um valor da causa mal indicado.'
+  ],
+  artigos: ['art. 296.º do CPC', 'art. 297.º do CPC', 'art. 299.º do CPC', 'art. 305.º do CPC', 'art. 306.º do CPC', 'art. 546.º do CPC', 'art. 548.º do CPC', 'art. 629.º do CPC', 'art. 633.º do CPC']
+};
 
 /* Matéria explicada — Direito Penal */
 var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
@@ -6368,7 +6963,7 @@ Store.attach = function (session) {
 };
 
 /* ---------- estado da interface ---------- */
-var VIEWS = ['painel', 'reputacao', 'flashcards', 'aula', 'lei', 'guias', 'guia', 'glossario', 'calcheranca', 'mapapp', 'meet', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
+var VIEWS = ['painel', 'reputacao', 'flashcards', 'aula', 'lei', 'guias', 'guia', 'glossario', 'calcheranca', 'mapapp', 'mapapc', 'meet', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
 var S = {
   view: 'painel', wsId: null, wsTab: '01', wsQ: '', q: '',
   libQ: '', libArea: 'Todas', libOpen: { cpc: true },
@@ -6497,6 +7092,7 @@ function render() {
     else if (v === 'glossario') h = vGlossario();
     else if (v === 'calcheranca') h = vCalcHeranca();
     else if (v === 'mapapp') h = vMapaPP();
+    else if (v === 'mapapc') h = vMapaPC();
     else if (v === 'meet') h = vMeet();
     else if (v === 'guia') h = vGuia();
   else if (v === 'agenda') h = vAgenda();
@@ -9452,16 +10048,16 @@ var MOD_PERFIL = {
   doc: ['docente', 'atualidade', 'mentoria'],
   outro: ['kpis', 'progresso', 'calendario', 'horario', 'atualidade', 'continuar', 'mentoria', 'ferramentas']
 };
-var NAV = { painel: ['Painel', 'grid'], guias: ['Matéria explicada', 'book'], glossario: ['Glossário jurídico', 'book'], calcheranca: ['Calculadora da herança', 'grid'], mapapp: ['Mapa do processo penal', 'book'], aula: ['Sala de aula', 'aula'], flashcards: ['Flashcards', 'layers'], atualidade: ['Atualidade jurídica', 'news'], biblioteca: ['Biblioteca jurídica', 'book'], instituicoes: ['Instituições', 'uni'], workspaces: ['Legal Workspaces', 'folder'], minutas: ['Gerador de minutas', 'file'], cadeiras: ['Cadeiras', 'layers'], apontamentos: ['Apontamentos', 'note'], exames: ['Estudar e praticar', 'check'], casos: ['Casos práticos', 'scale'], prazos: ['Contador de prazos', 'hour'], agenda: ['Agenda de diligências', 'cal'], dissertacao: ['Dissertação', 'cap'], ordem: ['Treino para a Ordem', 'badge'], docente: ['Ensino', 'pen'] };
+var NAV = { painel: ['Painel', 'grid'], guias: ['Matéria explicada', 'book'], glossario: ['Glossário jurídico', 'book'], calcheranca: ['Calculadora da herança', 'grid'], mapapp: ['Mapa do processo penal', 'book'], mapapc: ['Mapa do processo declarativo', 'book'], aula: ['Sala de aula', 'aula'], flashcards: ['Flashcards', 'layers'], atualidade: ['Atualidade jurídica', 'news'], biblioteca: ['Biblioteca jurídica', 'book'], instituicoes: ['Instituições', 'uni'], workspaces: ['Legal Workspaces', 'folder'], minutas: ['Gerador de minutas', 'file'], cadeiras: ['Cadeiras', 'layers'], apontamentos: ['Apontamentos', 'note'], exames: ['Estudar e praticar', 'check'], casos: ['Casos práticos', 'scale'], prazos: ['Contador de prazos', 'hour'], agenda: ['Agenda de diligências', 'cal'], dissertacao: ['Dissertação', 'cap'], ordem: ['Treino para a Ordem', 'badge'], docente: ['Ensino', 'pen'] };
 var COMUN = ['chat', 'mensagens', 'salas', 'connect'];
 var NAV_PERFIL = {
-  lic: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'glossario', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos', 'calcheranca', 'mapapp']], ['Trabalho', ['workspaces', 'minutas']]],
+  lic: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'glossario', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos', 'calcheranca', 'mapapp', 'mapapc']], ['Trabalho', ['workspaces', 'minutas']]],
   licd: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Próximo passo', ['ordem', 'prazos', 'minutas', 'workspaces']]],
   mest: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Investigação', ['dissertacao', 'workspaces', 'apontamentos']]],
   estag: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Prática', ['prazos', 'agenda', 'minutas', 'workspaces']], ['Preparação', ['ordem', 'casos']]],
   prof: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Prática', ['prazos', 'agenda', 'minutas', 'workspaces']]],
   doc: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Ensino', ['docente', 'casos', 'exames']]],
-  outro: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'glossario', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos', 'calcheranca', 'mapapp']], ['Trabalho', ['workspaces', 'minutas', 'prazos', 'agenda']]]
+  outro: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'glossario', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos', 'calcheranca', 'mapapp', 'mapapc']], ['Trabalho', ['workspaces', 'minutas', 'prazos', 'agenda']]]
 };
 var AREAS_OPC = ['Civil', 'Processo Civil', 'Penal', 'Constitucional', 'Administrativo', 'Comercial', 'Fiscal', 'Laboral', 'Migrações', 'Institucional'];
 
@@ -12465,6 +13061,77 @@ vGuia = function () {
   return h;
 };
 
+/* ---------- MAPA DO PROCESSO DECLARATIVO (processo comum: fases, prazos e reações) ---------- */
+var MPC = [
+  { nome: 'Petição inicial', curto: 'Petição', quem: 'Autor; secretaria', tema: 'artic',
+    o: 'A ação começa com a entrega da petição, que identifica as partes, expõe os factos e as razões de direito, formula o pedido e indica o valor da causa. Com a apresentação, a instância inicia-se; os efeitos quanto ao réu só surgem com a citação.',
+    prazos: [['Prova: rol de testemunhas e requerimentos probatórios', 'Com a petição', 'art. 552.º do CPC'], ['Nova petição após recusa da secretaria', '10 dias', 'art. 560.º do CPC']],
+    dec: ['Recusa da petição pela secretaria (art. 558.º do CPC)', 'Despacho liminar de indeferimento, quando a lei o preveja (art. 590.º, n.º 1, do CPC)', 'Citação do réu (art. 561.º do CPC)'],
+    reac: ['Reclamação da recusa da secretaria para o juiz (art. 559.º do CPC)', 'Apresentação de nova petição no prazo legal (art. 560.º do CPC)'],
+    art: ['art. 259.º do CPC', 'art. 552.º do CPC'] },
+  { nome: 'Contestação', curto: 'Contestação', quem: 'Réu', tema: 'artic',
+    o: 'O réu defende-se por impugnação (contradiz os factos) e por exceção (invoca factos que impedem, modificam ou extinguem o direito, ou obstáculos processuais). Pode ainda deduzir reconvenção. Os factos não impugnados consideram-se admitidos por acordo.',
+    prazos: [['Contestar', '30 dias a contar da citação', 'art. 569.º do CPC'], ['Arguir a incompetência relativa', 'No prazo da contestação', 'art. 103.º do CPC']],
+    dec: ['Contestação com impugnação e exceções (art. 571.º do CPC)', 'Reconvenção (art. 583.º do CPC)', 'Revelia: falta de contestação (art. 567.º do CPC)'],
+    reac: ['Revelia operante: os factos articulados consideram-se confessados, salvo as exceções do art. 568.º do CPC', 'Ónus de impugnação especificada (art. 574.º do CPC)'],
+    art: ['art. 569.º do CPC', 'art. 571.º do CPC', 'art. 574.º do CPC'] },
+  { nome: 'Réplica (se admissível)', curto: 'Réplica', quem: 'Autor', tema: 'artic',
+    o: 'A réplica só é admitida para o autor se defender da reconvenção e, nas ações de simples apreciação negativa, para responder aos factos alegados pelo réu. As exceções invocadas na contestação são respondidas na audiência prévia ou no início da audiência final.',
+    prazos: [['Réplica', '30 dias a contar da notificação da contestação', 'art. 585.º do CPC']],
+    dec: ['Fim da fase dos articulados'],
+    reac: ['Resposta às exceções na audiência prévia ou no início da audiência final (art. 3.º, n.º 4, do CPC)'],
+    art: ['art. 584.º do CPC', 'art. 585.º do CPC'] },
+  { nome: 'Gestão inicial e audiência prévia', curto: 'Audiência prévia', quem: 'Juiz', tema: 'saneam',
+    o: 'O juiz corrige o que for corrigível (despacho pré-saneador), convoca a audiência prévia para tentar a conciliação, discutir exceções ou o mérito e programar o julgamento, ou dispensa-a nos casos previstos.',
+    prazos: [['Audiência prévia', 'Num dos 30 dias seguintes', 'art. 591.º do CPC'], ['Despachos, se for dispensada', '20 dias após o fim dos articulados', 'art. 593.º do CPC']],
+    dec: ['Despacho pré-saneador (art. 590.º do CPC)', 'Despacho saneador: exceções, nulidades e, se possível, mérito (art. 595.º do CPC)', 'Identificação do objeto do litígio e temas da prova (art. 596.º do CPC)'],
+    reac: ['Reclamação do despacho sobre o objeto e os temas da prova (art. 596.º, n.º 2, do CPC)', 'Pedido de realização da audiência prévia dispensada (art. 593.º, n.º 3, do CPC)'],
+    art: ['art. 590.º do CPC', 'art. 592.º do CPC', 'art. 593.º do CPC'] },
+  { nome: 'Audiência final', curto: 'Audiência final', quem: 'Juiz', tema: 'aud',
+    o: 'Produz-se a prova que ficou por produzir: depoimentos de parte, peritos, testemunhas. A audiência é gravada e termina com as alegações orais dos advogados.',
+    prazos: [['Alterar ou aditar o rol de testemunhas', 'Até 20 dias antes da audiência', 'art. 598.º do CPC'], ['Sentença', '30 dias após o encerramento', 'art. 607.º do CPC']],
+    dec: ['Tentativa de conciliação (art. 604.º, n.º 2, do CPC)', 'Produção de prova e alegações (art. 604.º, n.º 3, do CPC)'],
+    reac: ['Adiamento apenas nos casos do art. 603.º do CPC', 'Arguição de nulidades no próprio ato (art. 199.º do CPC)'],
+    art: ['art. 603.º do CPC', 'art. 604.º do CPC'] },
+  { nome: 'Sentença', curto: 'Sentença', quem: 'Juiz', tema: 'sent',
+    o: 'A sentença identifica as partes e o objeto, declara os factos provados e não provados com análise crítica da prova, aplica o direito e decide. Pode ser condenatória, absolutória, de mérito ou de forma.',
+    prazos: [['Recurso da sentença', '30 dias a contar da notificação', 'art. 638.º do CPC'], ['Correção de erros materiais', 'A todo o tempo, se não houver recurso', 'art. 614.º do CPC']],
+    dec: ['Procedência ou improcedência da ação (art. 607.º do CPC)', 'Absolvição da instância, por exceção dilatória (art. 278.º do CPC)'],
+    reac: ['Nulidades da sentença (art. 615.º do CPC)', 'Recurso, se admissível (art. 629.º do CPC)'],
+    art: ['art. 607.º do CPC', 'art. 615.º do CPC', 'art. 619.º do CPC'] },
+  { nome: 'Recursos', curto: 'Recursos', quem: 'Relação; Supremo Tribunal de Justiça', tema: 'rec',
+    o: 'A apelação leva a decisão à Relação, que pode reapreciar os factos com base na gravação. A revista leva ao Supremo as questões de direito, com o limite da dupla conforme.',
+    prazos: [['Apelação ou revista', '30 dias (15 nos processos urgentes e em certas decisões)', 'art. 638.º do CPC'], ['Acréscimo para impugnar factos com prova gravada', '10 dias', 'art. 638.º, n.º 7, do CPC'], ['Contra-alegações', '30 dias', 'art. 638.º, n.º 5, do CPC']],
+    dec: ['Confirmação, revogação ou anulação da decisão', 'Remessa para ampliação da matéria de facto (art. 662.º do CPC)'],
+    reac: ['Revista excecional, em caso de dupla conforme (art. 672.º do CPC)', 'Recurso para uniformização de jurisprudência (art. 688.º do CPC)'],
+    art: ['art. 629.º do CPC', 'art. 640.º do CPC', 'art. 671.º do CPC'] }
+];
+function vMapaPC() {
+  var L = function (x) { return typeof leiLinkify === 'function' ? leiLinkify(x) : esc(x); };
+  var i = S.mpc == null ? 0 : S.mpc, f = MPC[i];
+  var h = '<div class="head"><div><span class="crumb"><button data-go="guias">Matéria explicada</button> / Direito Processual Civil</span><h1>Mapa do processo declarativo</h1><p class="sub">O processo comum de declaração, da petição inicial ao recurso: quem atua em cada fase, os prazos e como reagir. Toque numa fase para ver os pormenores.</p></div></div>';
+  h += '<section class="card mpp-w"><ol class="mpp-tl">' + MPC.map(function (x, k) {
+    return '<li class="mpp-f' + (k === i ? ' on' : '') + '"><button data-a="mpc-f" data-id="' + k + '" aria-pressed="' + (k === i) + '"><span class="mpp-n">' + (k + 1) + '</span><b>' + esc(x.curto) + '</b></button></li>';
+  }).join('') + '</ol></section>';
+  h += '<div class="mpp-g"><section class="card mpp-d"><span class="gu-k">Fase ' + (i + 1) + ' de ' + MPC.length + '</span><h2>' + esc(f.nome) + '</h2>' +
+    '<p class="mpp-quem"><b>Quem atua:</b> ' + esc(f.quem) + '</p><p>' + L(f.o) + '</p>' +
+    '<h3>Prazos principais</h3><div class="gu-tw"><table class="gu-tab"><thead><tr><th>O quê</th><th>Prazo</th><th>Norma</th></tr></thead><tbody>' + f.prazos.map(function (p) { return '<tr><th scope="row">' + esc(p[0]) + '</th><td>' + esc(p[1]) + '</td><td>' + L(p[2]) + '</td></tr>'; }).join('') + '</tbody></table></div>' +
+    '<div class="mpp-2"><div><h3>O que pode acontecer</h3><ul>' + f.dec.map(function (d) { return '<li>' + L(d) + '</li>'; }).join('') + '</ul></div><div><h3>Como reagir</h3><ul>' + f.reac.map(function (d) { return '<li>' + L(d) + '</li>'; }).join('') + '</ul></div></div>' +
+    '<p class="mpp-art">' + f.art.map(function (a) { return L(a); }).join(' · ') + '</p>' +
+    '<div class="row">' + (i > 0 ? '<button class="btn sm" data-a="mpc-f" data-id="' + (i - 1) + '">← ' + esc(MPC[i - 1].curto) + '</button>' : '') + '<button class="btn gold sm" data-a="guia-abrir" data-id="pc|' + f.tema + '">Estudar este tema</button>' + (i < MPC.length - 1 ? '<button class="btn sm" data-a="mpc-f" data-id="' + (i + 1) + '">' + esc(MPC[i + 1].curto) + ' →</button>' : '') + '</div></section>' +
+    '<aside class="card mpp-esp"><span class="gu-k">Lembre-se</span><h3>Contagem dos prazos</h3><p class="sub">Os prazos processuais são contínuos e suspendem-se nas férias judiciais, salvo nos processos urgentes. O ato pode ainda ser praticado nos três dias úteis seguintes, com multa.</p>' +
+    '<div class="mpp-e"><b>Alçadas</b><span>1.ª instância: 5.000 € · Relação: 30.000 €</span><em>Recurso: valor acima da alçada e sucumbência acima de metade dela · ' + L('art. 629.º do CPC') + '</em></div>' +
+    '<button class="btn sm" data-a="guia-abrir" data-id="pc|prazos">Ver prazos e atos</button> <button class="btn sm" data-go="mapapp">Mapa do processo penal</button></aside></div>';
+  return h;
+}
+A['mpc-f'] = function (el) { S.mpc = Number(el.dataset.id); render(); };
+var _vGuiaMPC = vGuia;
+vGuia = function () {
+  var h = _vGuiaMPC(), g = S.guia || {};
+  if (g.d === 'pc') h = h.replace('<aside class="gu-side">', '<aside class="gu-side"><button class="card ch-cta" data-go="mapapc"><b>🗺️ Mapa do processo declarativo</b><span>Da petição ao recurso: fases, prazos e reações.</span></button>');
+  return h;
+};
+
 /* ---------- BARRA SUPERIOR DO ESTUDANTE DE LICENCIATURA (organizada por intenções) ---------- */
 I.spark = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg>';
 I.glos = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M8.5 13l2-6 2 6M9.2 11h2.6M15 8.5h2M15 11h2"/></svg>';
@@ -12484,6 +13151,7 @@ var N2 = {
       ['guias', 'Matéria explicada', 'Guias por tema, com esquemas e exemplos resolvidos', 'book'],
       ['glossario', 'Glossário jurídico', 'Os conceitos explicados em linguagem simples', 'glos'],
       ['mapapp', 'Mapa do processo penal', 'Fases, prazos e reações num só ecrã', 'layers'],
+      ['mapapc', 'Mapa do processo declarativo', 'Da petição ao recurso, com prazos', 'layers'],
       ['atualidade', 'Atualidade jurídica', 'Novas leis, acórdãos e notícias', 'news']] },
     { id: 'praticar', nome: 'Praticar', ic: 'target', cor: 'c3', lema: 'Testar o que sabe', itens: [
       ['exames', 'Simulador de exames', 'Perguntas com correção e base legal', 'check'],
@@ -12990,7 +13658,7 @@ A['tema'] = function () { var n = temaEscuro() ? 'claro' : 'escuro'; lsSet('lexd
 try { if (window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () { if (!lsGet('lexdesk_tema')) temaAplicar(temaPref()); }); } catch (e) { }
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
-var VIEW_LBL = { painel: ['Painel', I.grid], guias: ['Matéria explicada', I.book], guia: ['Guia de estudo', I.book], glossario: ['Glossário jurídico', I.book], mapapp: ['Mapa do processo penal', I.book], calcheranca: ['Calculadora da herança', I.grid], meet: ['LexDesk Meet', I.grid], reputacao: ['Reputação', I.badge], flashcards: ['Flashcards', I.layers], aula: ['Sala de aula', I.note], lei: ['Texto integral da lei', I.book], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Estudar e praticar', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
+var VIEW_LBL = { painel: ['Painel', I.grid], guias: ['Matéria explicada', I.book], guia: ['Guia de estudo', I.book], glossario: ['Glossário jurídico', I.book], mapapp: ['Mapa do processo penal', I.book], mapapc: ['Mapa do processo declarativo', I.book], calcheranca: ['Calculadora da herança', I.grid], meet: ['LexDesk Meet', I.grid], reputacao: ['Reputação', I.badge], flashcards: ['Flashcards', I.layers], aula: ['Sala de aula', I.note], lei: ['Texto integral da lei', I.book], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Estudar e praticar', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
 var isMac = /Mac|iPhone|iPad/.test(navigator.platform || '');
 
 /* ===== animação de entrada e contadores ===== */
@@ -13238,7 +13906,7 @@ Store.connect();
 </script>
 <script>
 /* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='d98da0bab3f6';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
+(function(){var B='844f81d8b84e';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>
