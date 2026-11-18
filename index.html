@@ -1846,6 +1846,11 @@ html.dark .n2-m .n2-it b{color:#F1F3F8}html.dark .n2-m .n2-it>span{color:#A9B1C2
 .mpp-esp .btn{margin-top:8px}
 html.dark .mpp-n{background:#1A2233;border-color:#2C3548;color:#E6EAF2}html.dark .mpp-quem{background:rgba(201,162,39,.1)}html.dark .mpp-e{border-color:#2C3548}
 @media (max-width:900px){.mpp-g{grid-template-columns:1fr}.mpp-2{grid-template-columns:1fr}}
+.mpp-x{margin-top:18px;border:1px solid #EADFC6;background:#FFFBF2;border-radius:16px;padding:14px 16px}.mpp-x h3{margin:0 0 6px}.mpp-x p{margin:0 0 10px;font-size:14px}
+.mpp-xg{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mpp-xg>div{background:#fff;border:1px solid #EEE6D6;border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:4px;font-size:13.5px}.mpp-xg b{color:#7B1E2B}.mpp-xg em{font-style:normal;font-size:12px;color:#6B7280}
+.mpp-x ul{margin:12px 0 0;padding-left:18px;font-size:13.5px;line-height:1.55}
+html.dark .mpp-x{background:rgba(201,162,39,.08);border-color:#3A3424}html.dark .mpp-xg>div{background:#1A2233;border-color:#2C3548}
+@media (max-width:760px){.mpp-xg{grid-template-columns:1fr}}
 
 </style>
 </head>
@@ -13072,9 +13077,15 @@ var MPC = [
   { nome: 'Contestação', curto: 'Contestação', quem: 'Réu', tema: 'artic',
     o: 'O réu defende-se por impugnação (contradiz os factos) e por exceção (invoca factos que impedem, modificam ou extinguem o direito, ou obstáculos processuais). Pode ainda deduzir reconvenção. Os factos não impugnados consideram-se admitidos por acordo.',
     prazos: [['Contestar', '30 dias a contar da citação', 'art. 569.º do CPC'], ['Arguir a incompetência relativa', 'No prazo da contestação', 'art. 103.º do CPC']],
-    dec: ['Contestação com impugnação e exceções (art. 571.º do CPC)', 'Reconvenção (art. 583.º do CPC)', 'Revelia: falta de contestação (art. 567.º do CPC)'],
+    dec: ['Contestação com impugnação e exceções (art. 571.º do CPC)', 'Reconvenção, nos casos do art. 266.º, n.º 2, do CPC (ver abaixo)', 'Revelia: falta de contestação (art. 567.º do CPC)'],
     reac: ['Revelia operante: os factos articulados consideram-se confessados, salvo as exceções do art. 568.º do CPC', 'Ónus de impugnação especificada (art. 574.º do CPC)'],
-    art: ['art. 569.º do CPC', 'art. 571.º do CPC', 'art. 574.º do CPC'] },
+    art: ['art. 569.º do CPC', 'art. 571.º do CPC', 'art. 574.º do CPC', 'art. 266.º do CPC', 'art. 583.º do CPC'],
+    extra: { titulo: 'Quando é admissível a reconvenção', intro: 'Na contestação, o réu pode também formular pedidos contra o autor (art. 266.º, n.º 1, do CPC). Só é admitida quando existe uma destas ligações com a ação (art. 266.º, n.º 2, do CPC):',
+      itens: [['Mesma origem', 'O pedido do réu nasce do facto jurídico em que se baseia a ação ou a defesa. Ex.: o autor pede o preço; o réu pede indemnização pelos defeitos da mesma coisa.', 'alínea a)'],
+        ['Benfeitorias e despesas', 'Pedem-lhe a entrega de uma coisa e o réu quer ser pago das benfeitorias ou despesas que nela fez.', 'alínea b)'],
+        ['Crédito do réu', 'O réu quer ver reconhecido um crédito seu, para o compensar com o do autor ou para cobrar a parte em que excede o crédito deste.', 'alínea c)'],
+        ['Mesmo efeito jurídico', 'O réu pretende para si o mesmo efeito que o autor procura. Ex.: o autor pede o divórcio e o réu também.', 'alínea d)']],
+      notas: ['Não é admitida se ao pedido do réu corresponder outra forma de processo, salvo autorização do juiz (art. 266.º, n.º 3, do CPC).', 'Deve ser identificada e deduzida em separado na contestação, com os fundamentos, o pedido e o valor (art. 583.º do CPC).', 'Havendo reconvenção, o autor pode replicar em 30 dias (arts. 584.º e 585.º do CPC).', 'A improcedência da ação ou a absolvição da instância não impede a apreciação da reconvenção, salvo se esta depender do pedido do autor (art. 266.º, n.º 6, do CPC).'] } },
   { nome: 'Réplica (se admissível)', curto: 'Réplica', quem: 'Autor', tema: 'artic',
     o: 'A réplica só é admitida para o autor se defender da reconvenção e, nas ações de simples apreciação negativa, para responder aos factos alegados pelo réu. As exceções invocadas na contestação são respondidas na audiência prévia ou no início da audiência final.',
     prazos: [['Réplica', '30 dias a contar da notificação da contestação', 'art. 585.º do CPC']],
@@ -13117,6 +13128,7 @@ function vMapaPC() {
     '<p class="mpp-quem"><b>Quem atua:</b> ' + esc(f.quem) + '</p><p>' + L(f.o) + '</p>' +
     '<h3>Prazos principais</h3><div class="gu-tw"><table class="gu-tab"><thead><tr><th>O quê</th><th>Prazo</th><th>Norma</th></tr></thead><tbody>' + f.prazos.map(function (p) { return '<tr><th scope="row">' + esc(p[0]) + '</th><td>' + esc(p[1]) + '</td><td>' + L(p[2]) + '</td></tr>'; }).join('') + '</tbody></table></div>' +
     '<div class="mpp-2"><div><h3>O que pode acontecer</h3><ul>' + f.dec.map(function (d) { return '<li>' + L(d) + '</li>'; }).join('') + '</ul></div><div><h3>Como reagir</h3><ul>' + f.reac.map(function (d) { return '<li>' + L(d) + '</li>'; }).join('') + '</ul></div></div>' +
+    (f.extra ? '<div class="mpp-x"><h3>' + esc(f.extra.titulo) + '</h3><p>' + L(f.extra.intro) + '</p><div class="mpp-xg">' + f.extra.itens.map(function (x) { return '<div><b>' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span><em>' + esc(x[2]) + '</em></div>'; }).join('') + '</div><ul>' + f.extra.notas.map(function (n) { return '<li>' + L(n) + '</li>'; }).join('') + '</ul></div>' : '') +
     '<p class="mpp-art">' + f.art.map(function (a) { return L(a); }).join(' · ') + '</p>' +
     '<div class="row">' + (i > 0 ? '<button class="btn sm" data-a="mpc-f" data-id="' + (i - 1) + '">← ' + esc(MPC[i - 1].curto) + '</button>' : '') + '<button class="btn gold sm" data-a="guia-abrir" data-id="pc|' + f.tema + '">Estudar este tema</button>' + (i < MPC.length - 1 ? '<button class="btn sm" data-a="mpc-f" data-id="' + (i + 1) + '">' + esc(MPC[i + 1].curto) + ' →</button>' : '') + '</div></section>' +
     '<aside class="card mpp-esp"><span class="gu-k">Lembre-se</span><h3>Contagem dos prazos</h3><p class="sub">Os prazos processuais são contínuos e suspendem-se nas férias judiciais, salvo nos processos urgentes. O ato pode ainda ser praticado nos três dias úteis seguintes, com multa.</p>' +
@@ -13906,7 +13918,7 @@ Store.connect();
 </script>
 <script>
 /* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='844f81d8b84e';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
+(function(){var B='fff6db5a9609';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>
