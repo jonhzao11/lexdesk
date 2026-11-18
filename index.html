@@ -1900,6 +1900,48 @@ html.dark .es-b.vazio{background:rgba(255,255,255,.05);border-color:#3A4458}
 
 .jn-lead .capa.jn-capa{width:100%;min-height:0;height:132px;border-radius:12px;margin-bottom:6px}
 @media (max-width:760px){.jn-lead .capa.jn-capa{height:100px}}
+/* ===== Início compacto e nivelado ===== */
+.mp-mais{align-self:flex-start;border:0;background:none;padding:4px 0 0;font:600 12.5px var(--sans);color:#7B1E2B;cursor:pointer}
+.mp-mais:hover{text-decoration:underline}
+body.vini .main{gap:16px}
+body.vini .main>.card{padding:20px 22px}
+body.vini .mp-g svg{max-height:150px}
+body.vini .jn-lead .capa.jn-capa{height:100px}
+body.vini .jn{gap:12px}
+@media (min-width:1100px){
+  body.tn.vini .main{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));align-items:stretch}
+  body.vini .main>*{grid-column:1/-1;min-width:0}
+  body.vini .main>.es,body.vini .main>#meet-painel{grid-column:span 6}
+  body.vini .main>.es:last-of-type:not(:has(+ #meet-painel)){grid-column:1/-1}
+  body.vini .main>#busca{display:none}
+  body.vini .main>.es{display:flex;flex-direction:column}
+  body.vini .main>.es .es-l{flex:1;align-items:flex-end}
+  body.vini .main>#meet-painel{display:flex;flex-direction:column}
+  body.vini .main>#meet-painel .empty{flex:1;display:flex;align-items:center;justify-content:center;text-align:center}
+}
+body.vini .jn-g{align-items:stretch}
+body.vini .jn-lead{height:100%}
+@media (min-width:1100px){
+  body.vini .jn-lead .capa.jn-capa{height:auto;flex:1 1 100px;min-height:100px;max-height:220px}
+  body.vini .main>.es .est-dica{display:none}
+  body.vini .main>.es>.row,body.vini .main>#meet-painel>.row{flex-wrap:nowrap;align-items:flex-start}
+  body.vini .main>#meet-painel>.row>div:last-child{flex:none}
+}
+@media (max-width:760px){
+  body.vini .main{gap:12px}
+  body.vini .bento{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+  body.vini .bento>.bt{grid-column:span 1;order:2;min-width:0;padding:14px}
+  body.vini .bento>.bt-dest{grid-column:1/-1;order:1}
+  body.vini .bento>.seq{grid-column:1/-1;order:3}
+  body.vini .bento>.bt:not(.bt-dest):not(.seq) .bt-h{flex-wrap:wrap;gap:6px}
+  body.vini .bento>.bt:not(.bt-dest):not(.seq) .bt-s{font-size:12px}
+  body.vini .mp-anel{display:grid;grid-template-columns:96px minmax(0,1fr);align-items:center;gap:12px;text-align:left}
+  body.vini .mp-anel .ring{width:96px;height:96px}
+  body.vini .mp-anel .ring .v b{font-size:24px}
+  body.vini .mp-k{grid-template-columns:1fr 1fr}
+  body.vini .mp-g svg{max-height:110px}
+  body.vini .main>.card{padding:16px}
+}
 
 </style>
 </head>
@@ -12954,10 +12996,11 @@ function vMeuProgresso() {
   var graf = '<div class="mp-g"><div class="mp-st">Evolução' + (demoL ? ' <span class="tag-demo">Exemplo</span>' : '') + '</div>' + svgLine(vals, lbls) + '</div>';
   var mc = mpCadeiras(), disc;
   if (mc) {
-    disc = mc.l.length ? mc.l.map(function (c) {
+    var mcMais = mc.l.length > 6 ? mc.l.length - 5 : 0;
+    disc = mc.l.length ? mc.l.slice(0, mcMais ? 5 : 6).map(function (c) {
       var d = c.k ? s.porD[c.k] : null, p = d ? Math.round(100 * d.ok / d.t) : 0;
       return '<button class="mp-d mp-dc" data-a="mp-cad" data-id="' + (c.k || '') + '" title="' + (c.k ? 'Praticar ' + esc(DISC[c.k].nome) : 'Ainda não há perguntas para esta cadeira') + '"><span class="mp-dn">' + esc(c.n) + '</span><span class="mp-dv">' + (d ? p + '%' : c.k ? '—' : 'sem perguntas') + '</span><div class="bar"><i style="width:' + p + '%"></i></div></button>';
-    }).join('') : '<span class="mp-nada">Não há cadeiras do ' + mc.sem + '.º semestre no seu plano. <button class="lk" data-go="cadeiras">Abrir «Cadeiras»</button></span>';
+    }).join('') + (mcMais ? '<button class="mp-mais" data-go="cadeiras">+ ' + mcMais + ' ' + (mcMais === 1 ? 'cadeira' : 'cadeiras') + ' · ver todas</button>' : '') : '<span class="mp-nada">Não há cadeiras do ' + mc.sem + '.º semestre no seu plano. <button class="lk" data-go="cadeiras">Abrir «Cadeiras»</button></span>';
   } else {
     var dk = discsAtivas().filter(function (k) { return s.porD[k]; }); if (!dk.length) dk = discsAtivas().slice(0, 5);
     disc = dk.map(function (k) { var d = s.porD[k], p = d ? Math.round(100 * d.ok / d.t) : 0; return '<div class="mp-d"><span class="mp-dn">' + DISC[k].nome + '</span><span class="mp-dv">' + (d ? p + '%' : '—') + '</span><div class="bar"><i style="width:' + p + '%"></i></div></div>'; }).join('');
@@ -15020,7 +15063,7 @@ if (_contaMenuSil) A['conta-menu'] = function () {
   l.parentNode.parentNode.insertAdjacentHTML('beforeend', '<div class="cm-g"><span class="cm-gt">Notificações</span><div class="cm-l"><button class="cm-i" data-a="silencio" aria-pressed="' + on + '"><span class="cm-ic">' + (on ? I.sinoOff : I.sinoOn) + '</span><span class="cm-tx"><b>' + (on ? 'Notificações silenciadas' : 'Silenciar notificações e mensagens') + '</b><span>' + (on ? 'Toque para voltar a receber avisos' : 'Deixa de ver avisos e contadores de novas mensagens') + '</span></span><span class="sil-sw' + (on ? ' on' : '') + '" aria-hidden="true"><i></i></span></button></div></div>');
 };
 var _renderSideSil = renderSide;
-renderSide = function () { silencioAplicar(); return _renderSideSil.apply(this, arguments); };
+renderSide = function () { silencioAplicar(); document.body.classList.toggle('vini', S.view === 'painel'); return _renderSideSil.apply(this, arguments); };
 
 /* ---------- MODO NOTURNO ---------- */
 /* Gera automaticamente a versão escura de todas as regras CSS (e dos estilos em linha),
@@ -15408,7 +15451,7 @@ Store.connect();
 </script>
 <script>
 /* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='87fd470d17a9';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
+(function(){var B='41685a17171c';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>
