@@ -1668,10 +1668,12 @@ span.rp-util{cursor:default}
 .ch-tb td:not(:first-child){white-space:nowrap}
 /* ---- Barra superior do estudante (n2) ---- */
 .n2-bar{position:relative;gap:2px;padding:5px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
-.n2-ind{position:absolute;left:4px;top:5px;bottom:5px;width:0;border-radius:99px;background:rgba(255,255,255,.1);opacity:0;transition:transform .32s cubic-bezier(.2,.8,.2,1),width .32s cubic-bezier(.2,.8,.2,1),opacity .2s;pointer-events:none;z-index:0}
+.n2-ind{display:none!important}
 .n2-b{position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;border:0;background:none;color:#C9D0DE;font:inherit;font-size:14px;font-weight:600;padding:8px 14px;border-radius:99px;cursor:pointer;white-space:nowrap;transition:color .2s}
 .n2-b>svg:first-child{width:16px;height:16px;opacity:.75;transition:opacity .2s,transform .25s}
-.n2-b:hover,.n2-g.open>.n2-b{color:#fff}.n2-b:hover>svg:first-child{opacity:1;transform:translateY(-1px)}
+.n2-b:hover,.n2-g.open>.n2-b{color:#fff;background:none!important;box-shadow:none!important}.n2-b:hover>svg:first-child,.n2-g.open>.n2-b>svg:first-child{opacity:1;transform:translateY(-2px)}
+.n2-b:not(.on)::after{content:'';position:absolute;left:50%;bottom:1px;width:14px;height:2px;margin-left:-7px;border-radius:2px;background:rgba(255,255,255,.55);transform:scaleX(0);transition:transform .22s cubic-bezier(.2,.8,.2,1)}
+.n2-b:not(.on):hover::after,.n2-g.open>.n2-b:not(.on)::after{transform:scaleX(1)}
 .n2-b.on{color:#fff}
 .n2-b.on::after{content:'';position:absolute;left:50%;bottom:1px;width:18px;height:3px;margin-left:-9px;border-radius:3px;background:linear-gradient(90deg,#E8C77A,#D4A84B);box-shadow:0 0 10px rgba(232,199,122,.6)}
 .n2-b.on>svg:first-child{opacity:1;color:#E8C77A}
@@ -1767,6 +1769,10 @@ body.tn .main>.topbar{right:max(24px,calc((100vw - 1360px) / 2 + 32px - 8px))!im
 .mt-pin span i{font-style:normal;transform:rotate(45deg);display:block}
 .mt-mapa-in{width:100%;height:100%}
 .mt-pl{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
+
+/* Re-desenhos da mesma vista não repetem as animações de entrada (evita o «piscar») */
+.main.rr *:not(.hero-orb,.hero-orb i,.hb-braco,.hb-prato,.au-live,.au-c,.seq-f,.n2-dot),.main.rr *::before,.main.rr *::after{animation:none!important}
+.n2-bar .n2-b:hover,.tn-bar .tn-b:hover{background:none!important}
 
 </style>
 </head>
@@ -5347,9 +5353,10 @@ function scheduleRender() {
     renderPending = false;
     var a = document.activeElement;
     if (a && $('#main').contains(a) && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)) { S.deferred = true; return; }
-    render();
+    S._bg = true; try { render(); } finally { S._bg = false; }
   }, 0);
 }
+window.__lxSR = scheduleRender;
 document.addEventListener('focusout', function () { if (S.deferred) { S.deferred = false; setTimeout(scheduleRender, 50); } });
 
 function go(view) {
@@ -5428,8 +5435,11 @@ function render() {
   else if (v === 'exames') h = S.exam ? vExame() : (S.examResult ? vResultado() : vExamesSetup());
   else if (v === 'casos') h = S.caseId ? vCaso() : vCasos();
   else if (v === 'minutas') h = S.minId ? vMinuta() : vMinutas();
-  $('#main').innerHTML = vTopbar() + h + '<p class="foot">O LEXDESK é uma ferramenta de apoio ao estudo e à prática jurídica. Não substitui a consulta da legislação em vigor no Diário da República nem o aconselhamento por advogado. <button class="lnk" data-a="legal-abrir" data-id="privacidade">Política de Privacidade</button> · <button class="lnk" data-a="legal-abrir" data-id="termos">Termos e Condições</button></p>';
-  if (v === 'painel') renderBusca();
+  var mHtml = vTopbar() + h + '<p class="foot">O LEXDESK é uma ferramenta de apoio ao estudo e à prática jurídica. Não substitui a consulta da legislação em vigor no Diário da República nem o aconselhamento por advogado. <button class="lnk" data-a="legal-abrir" data-id="privacidade">Política de Privacidade</button> · <button class="lnk" data-a="legal-abrir" data-id="termos">Termos e Condições</button></p>';
+  // Atualizações em segundo plano (tempo real, carregamentos) não voltam a desenhar a página se nada mudou: evita o «piscar».
+  var mEl = $('#main'); S._igual = !!(S._bg && mEl.__h === mHtml);
+  if (!S._igual) { mEl.innerHTML = mHtml; mEl.__h = mHtml; }
+  if (v === 'painel' && !S._igual) renderBusca();
 }
 
 /* ---------- PAINEL ---------- */
@@ -11369,8 +11379,7 @@ renderSide = function () {
     h += '<div class="n2-g' + (on ? ' on' : '') + (N2.aberto === g.id ? ' open' : '') + '" data-g="' + g.id + '"><button class="n2-b' + (on ? ' on' : '') + '" data-n2="' + g.id + '" aria-expanded="' + (N2.aberto === g.id) + '">' + I[g.ic] + '<span>' + esc(g.nome) + '</span>' + n2Badge(g) + '<svg class="n2-cv" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>' + n2Menu(g) + '</div>';
   });
   h += '</nav>';
-  $('#side').innerHTML = h;
-  setTimeout(n2IndAtivo, 0);
+  var sd = $('#side'); if (sd.__h !== h) { sd.innerHTML = h; sd.__h = h; }
 };
 function n2Ind(el) {
   var bar = document.querySelector('.n2-bar'), ind = bar && bar.querySelector('.n2-ind'); if (!ind) return;
@@ -11386,7 +11395,6 @@ function n2Abrir(id) {
 }
 var N2_HOVER = window.matchMedia ? window.matchMedia('(hover: hover) and (pointer: fine)').matches : true;
 document.addEventListener('mouseover', function (ev) {
-  var b = ev.target.closest && ev.target.closest('.n2-bar .n2-b'); if (b) n2Ind(b);
   if (!N2_HOVER) return;
   var g = ev.target.closest && ev.target.closest('.n2-g');
   if (g) { clearTimeout(N2.t); if (N2.aberto !== g.dataset.g) N2.t = setTimeout(function () { n2Abrir(g.dataset.g); N2.hoverEm = Date.now(); }, N2.aberto ? 40 : 140); }
@@ -11395,7 +11403,7 @@ document.addEventListener('mouseout', function (ev) {
   var bar = ev.target.closest && ev.target.closest('.n2-bar'); if (!bar) return;
   var para = ev.relatedTarget;
   if (para && bar.contains(para)) { if (!(para.closest && para.closest('.n2-g'))) { clearTimeout(N2.t); if (N2_HOVER) N2.t = setTimeout(function () { n2Abrir(null); }, 160); } return; }
-  clearTimeout(N2.t); if (N2_HOVER) N2.t = setTimeout(function () { n2Abrir(null); }, 220); n2IndAtivo();
+  clearTimeout(N2.t); if (N2_HOVER) N2.t = setTimeout(function () { n2Abrir(null); }, 220);
 });
 document.addEventListener('click', function (ev) {
   var b = ev.target.closest && ev.target.closest('[data-n2]');
@@ -11410,7 +11418,6 @@ document.addEventListener('keydown', function (ev) {
   var it = ev.target.closest && ev.target.closest('.n2-i');
   if (it && (ev.key === 'ArrowDown' || ev.key === 'ArrowUp')) { ev.preventDefault(); var l = [].slice.call(it.parentNode.querySelectorAll('.n2-i')), i = l.indexOf(it) + (ev.key === 'ArrowDown' ? 1 : -1); if (l[i]) l[i].focus(); }
 });
-window.addEventListener('resize', function () { n2IndAtivo(); });
 // As instituições passam para a conta do estudante
 var _contaMenuN2 = A['conta-menu'];
 if (_contaMenuN2) A['conta-menu'] = function () {
@@ -11438,9 +11445,11 @@ function meetData(e) { var d = new Date(e.inicio); return d.toLocaleDateString('
 function meetN(id) { return (MEET.part[id] || []).length; }
 function meetSou(id) { return (MEET.part[id] || []).indexOf(Store.uid) >= 0; }
 function meetCarregar() {
-  if (!SB || !sessaoAtiva()) return;
+  if (!SB || !sessaoAtiva() || MEET.carr) return; MEET.carr = true;
+  var fim = function () { MEET.carr = false; };
   var desde = new Date(Date.now() - 6 * 3600e3).toISOString();
   SB.from('eventos').select('*').gte('inicio', desde).order('inicio', { ascending: true }).limit(300).then(function (r) {
+    fim(); if (r.error && MEET.l) return;
     MEET.l = (r.data || []).filter(function (e) { return !e.cancelado || e.criador === Store.uid; });
     var ids = MEET.l.map(function (e) { return e.id; });
     if (!ids.length) { MEET.part = {}; meetPintar(); return; }
@@ -11448,7 +11457,7 @@ function meetCarregar() {
       MEET.part = {}; (p.data || []).forEach(function (x) { (MEET.part[x.evento_id] = MEET.part[x.evento_id] || []).push(x.user_id); });
       loadNames(MEET.l.map(function (e) { return e.criador; })); meetPintar();
     });
-  });
+  }, fim);
 }
 function meetFiltrados() {
   return (MEET.l || []).filter(function (e) {
@@ -11473,7 +11482,7 @@ function vMeet() {
   setTimeout(meetMapa, 0);
   return h;
 }
-function meetPintar() { if (S.view === 'meet' || S.view === 'painel') render(); }
+function meetPintar() { if (S.view === 'meet' || S.view === 'painel') scheduleRender(); }
 /* ----- Mapa (Leaflet + OpenStreetMap) ----- */
 function meetLeaflet(cb) {
   if (window.L && window.L.map) return cb();
@@ -11653,7 +11662,7 @@ function meetNotifIniciar() {
   SB.channel('meet-notif-' + Store.uid.slice(0, 8))
     .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'evento_part' }, function (p) {
       var n = p.new || {}, e = (MEET.l || []).filter(function (x) { return String(x.id) === String(n.evento_id); })[0];
-      if (!e) { MEET.l = null; meetCarregar(); return; }
+      if (!e) { meetCarregar(); return; }
       (MEET.part[e.id] = MEET.part[e.id] || []); if (MEET.part[e.id].indexOf(n.user_id) < 0) MEET.part[e.id].push(n.user_id);
       if (e.criador === Store.uid && n.user_id !== Store.uid) { loadNames([n.user_id]); MEET.nao++; setTimeout(function () { toast(chatNome(n.user_id) + ' aderiu ao seu evento «' + e.titulo + '».'); }, 400); renderSide(); }
     })
@@ -11671,9 +11680,12 @@ var _renderMeetN = render;
 render = function () {
   _renderMeetN.apply(this, arguments);
   if (sessaoAtiva() && !MEET.notif) setTimeout(meetNotifIniciar, 1500);
-  if (S.view === 'painel' && sessaoAtiva() && !document.getElementById('meet-painel')) {
-    var alvo = document.querySelector('.main .promo'); var h = meetPainelHtml(); if (!h) return;
+  if (S.view === 'painel' && sessaoAtiva()) {
+    var ex = document.getElementById('meet-painel'), h = meetPainelHtml();
+    if (ex) { if (ex.__h === h) return; if (!h) return; ex.outerHTML = h; var nn = document.getElementById('meet-painel'); if (nn) nn.__h = h; return; }
+    var alvo = document.querySelector('.main .promo'); if (!h) return;
     if (alvo) alvo.insertAdjacentHTML('beforebegin', h); else { var r = document.querySelector('.main [data-a="painel-pers"]'); if (r) r.parentNode.insertAdjacentHTML('beforebegin', h); }
+    var mp = document.getElementById('meet-painel'); if (mp) mp.__h = h;
   }
 };
 function meetPainelHtml() {
@@ -11831,11 +11843,13 @@ render = function () {
   _render();
   var key = [S.view, S.wsId, S.apId, S.caseId, S.minId, S.duvId, !!S.exam, !!S.examResult].join('|');
   var m = $('#main'); if (!m) return;
+  if (S._igual) { fxEnhance(); return; }
   if (key !== FX.key) {
+    m.classList.remove('rr');
     FX.key = key; m.classList.remove('enter'); void m.offsetWidth; m.classList.add('enter');
     clearTimeout(FX.t); FX.t = setTimeout(function () { m.classList.remove('enter'); }, 1000);
     countUp(m);
-  } else { [].forEach.call(m.querySelectorAll('[data-count]'), function (el) { el.textContent = el.dataset.count + (el.dataset.suf || ''); }); }
+  } else { m.classList.add('rr'); [].forEach.call(m.querySelectorAll('[data-count]'), function (el) { el.textContent = el.dataset.count + (el.dataset.suf || ''); }); }
   fxEnhance();
   chatAfterRender(); dmAfterRender(); salaAfterRender();
 };
