@@ -1861,6 +1861,45 @@ body.silencio .sino-n,body.silencio .nbadge{display:none!important}
 .sil-sw i{position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .2s}
 .sil-sw.on{background:#7B1E2B}.sil-sw.on i{transform:translateX(16px)}
 html.dark .sil-box,body.dark .sil-box{background:rgba(255,255,255,.06)}
+/* ===== Início: Atualidade jurídica (jornal) ===== */
+.jn{gap:14px}
+.jn-hd{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:2px solid var(--ink)}
+.jn-hd h2{margin:0}
+.jn-dt{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+.jn-g{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:22px}
+.jn-lead,.jn-l button{display:flex;flex-direction:column;gap:7px;width:100%;text-align:left;border:0;background:none;padding:0;cursor:pointer;font:inherit;color:inherit}
+.jn-k{display:flex;align-items:center;gap:8px;font:700 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:#7B1E2B}
+.jn-k .novo{letter-spacing:.06em}
+.jn-t{font:700 24px/1.2 var(--serif);color:var(--ink);letter-spacing:-.01em}
+.jn-r{font-size:14.5px;line-height:1.6;color:#3A4052;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.jn-m{font-size:12.5px;color:var(--muted)}.jn-m u{text-decoration:none;color:#7B1E2B;font-weight:600}
+@media (hover:hover){.jn-lead:hover .jn-t,.jn-l button:hover b{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}}
+.jn-mu{display:flex;flex-direction:column;gap:6px;margin:4px 0 2px;padding:12px 14px;border-left:3px solid #C9A227;background:#FAF7EF}
+.jn-mu em{font:700 10.5px var(--sans);letter-spacing:.09em;text-transform:uppercase;font-style:normal;color:#8A6A12}
+.jn-mu span{font-size:13.5px;line-height:1.45;color:#3A4052;padding-left:14px;position:relative}.jn-mu span::before{content:'';position:absolute;left:0;top:.6em;width:6px;height:1px;background:#8A6A12}
+html.dark .jn-mu{background:rgba(201,162,39,.08)}html.dark .jn-mu span{color:#C3CADA}html.dark .jn-mu em{color:#E3C46A}
+.jn-l{list-style:none;margin:0;padding:0 0 0 22px;border-left:1px solid var(--line);display:flex;flex-direction:column}
+.jn-l li+li{border-top:1px solid var(--line)}
+.jn-l button{gap:4px;padding:10px 0}.jn-l li:first-child button{padding-top:0}
+.jn-l b{font:600 14.5px/1.35 var(--sans);color:var(--ink)}
+.jn-l .jn-k{font-size:10.5px;color:var(--muted)}
+.jn-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#C9A227}
+@media (max-width:760px){.jn-g{grid-template-columns:1fr;gap:16px}.jn-l{padding:14px 0 0;border-left:0;border-top:1px solid var(--line)}.jn-t{font-size:20px}}
+html.dark .jn-hd{border-bottom-color:#E6EAF2}html.dark .jn-r{color:#C3CADA}html.dark .jn-k{color:#E8A0AA}html.dark .jn-m u{color:#E8A0AA}html.dark .jn-l .jn-k{color:#98A1B5}
+/* ===== Início: As minhas disciplinas (lombadas sóbrias) ===== */
+.es-sub{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.es-l{display:flex;align-items:flex-end;gap:6px;padding:18px 2px 0;border-bottom:1px solid var(--line2);overflow-x:auto;overflow-y:hidden;scrollbar-width:thin}
+.es-b{flex:0 0 auto;position:relative;width:46px;height:var(--h);border:0;border-radius:3px 3px 0 0;background:var(--c);color:#fff;cursor:pointer;padding:12px 0 10px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;font:inherit;transition:transform .2s var(--ease,ease),filter .2s}
+.es-b::before,.es-b::after{content:'';position:absolute;left:8px;right:8px;height:1px;background:rgba(255,255,255,.35)}.es-b::before{top:8px}.es-b::after{bottom:10px}
+.es-n{writing-mode:vertical-rl;transform:rotate(180deg);font:600 12px/1.2 var(--sans);letter-spacing:.01em;max-height:calc(var(--h) - 34px);max-width:34px;overflow:hidden;text-align:center;margin:auto 0}
+.es-b:focus-visible{transform:translateY(-8px);filter:brightness(1.12);outline:none}@media (hover:hover){.es-b:hover{transform:translateY(-8px);filter:brightness(1.12)}}
+.es-b:focus-visible{box-shadow:0 0 0 3px rgba(201,162,39,.6)}
+.es-b.vazio{cursor:default;background:#EEF0F5;border:1px dashed #CDD2DE}.es-b.vazio:hover{transform:none;filter:none}
+html.dark .es-b.vazio{background:rgba(255,255,255,.05);border-color:#3A4458}
+@media (prefers-reduced-motion:reduce){.es-b{transition:none}}
+
+.jn-lead .capa.jn-capa{width:100%;min-height:0;height:132px;border-radius:12px;margin-bottom:6px}
+@media (max-width:760px){.jn-lead .capa.jn-capa{height:100px}}
 
 </style>
 </head>
@@ -10373,14 +10412,17 @@ function capa(u, cls) {
     '<span class="capa-k">' + esc(CAT_CURTA[u.cat] || 'Atualidade') + '</span><span class="capa-n">' + esc(numeroCurto(u)) + '</span></div>';
 }
 
-/* ----- painel: faixa de destaques ----- */
+/* ----- Início: Atualidade jurídica em formato de jornal ----- */
 function vDestaquesFaixa() {
   var all = updates(), t = meusTemas();
-  var l = all.filter(function (u) { return paraMim(u, t); }).concat(all).filter(function (u, i, a) { return a.indexOf(u) === i; }).slice(0, 3);
+  var l = all.filter(function (u) { return paraMim(u, t); }).concat(all).filter(function (u, i, a) { return a.indexOf(u) === i; }).slice(0, 5);
   if (!l.length) return '';
-  var nn = novas().length;
-  return '<section class="card" aria-labelledby="faixa-h"><div class="row" style="justify-content:space-between"><div><h2 id="faixa-h">Atualidade jurídica</h2><span style="font-size:13px;color:var(--muted)">' + (nn ? plural(nn, 'novidade por ler', 'novidades por ler') + ' · ' : '') + 'destaques escolhidos para si</span></div><button class="btn sm" data-go="atualidade">Ver tudo</button></div>' +
-    '<div class="faixa">' + l.map(function (u) { return '<button class="fx-c" data-a="upd-ver" data-id="' + esc(u.id) + '">' + capa(u, 'sm') + '<span class="fx-b">' + (eNova(u) ? '<span class="novo">Novo</span>' : '') + '<b>' + esc(u.titulo) + '</b><span>' + esc(u.fonte) + (u.data ? ' · ' + dataCurta(u.data) : '') + '</span></span></button>'; }).join('') + '</div></section>';
+  var nn = novas().length, d = l[0], resto = l.slice(1);
+  var hoje = new Date().toLocaleDateString('pt-PT', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  var meta = function (u) { return esc(u.fonte) + (u.data ? ' · ' + dataCurta(u.data) : ''); };
+  return '<section class="card jn" aria-labelledby="faixa-h"><header class="jn-hd"><div><h2 id="faixa-h">Atualidade jurídica</h2><span class="jn-dt">' + esc(hoje.charAt(0).toUpperCase() + hoje.slice(1)) + (nn ? ' · ' + plural(nn, 'novidade por ler', 'novidades por ler') : '') + '</span></div><button class="btn sm" data-go="atualidade">Ver tudo</button></header>' +
+    '<div class="jn-g"><button class="jn-lead" data-a="upd-ver" data-id="' + esc(d.id) + '">' + capa(d, 'jn-capa') + '<span class="jn-k">' + esc(d.area || CAT_CURTA[d.cat] || 'Atualidade') + (eNova(d) ? '<span class="novo">Novo</span>' : '') + '</span><b class="jn-t">' + esc(d.titulo) + '</b>' + (d.resumo ? '<span class="jn-r">' + esc(d.resumo) + '</span>' : '') + (Array.isArray(d.muda) && d.muda.length ? '<span class="jn-mu"><em>' + (d.cat === 'legislacao' || d.cat === 'novidades' ? 'O que muda' : 'O que foi decidido') + '</em>' + d.muda.slice(0, 3).map(function (x) { return '<span>' + esc(x) + '</span>'; }).join('') + '</span>' : '') + '<span class="jn-m">' + meta(d) + ' · <u>Ler em 30 segundos</u></span></button>' +
+    (resto.length ? '<ol class="jn-l">' + resto.map(function (u) { return '<li><button data-a="upd-ver" data-id="' + esc(u.id) + '"><span class="jn-k">' + esc(CAT_CURTA[u.cat] || 'Atualidade') + (eNova(u) ? ' <i class="jn-dot" aria-label="Por ler"></i>' : '') + '</span><b>' + esc(u.titulo) + '</b><span class="jn-m">' + meta(u) + '</span></button></li>'; }).join('') + '</ol>' : '') + '</div></section>';
 }
 
 /* ----- página da Atualidade ----- */
@@ -12736,17 +12778,17 @@ function estCurto(n) {
   return /^Direito (d[aoe]s? )?\S/.test(n) && n.split(' ').length > 2 ? n.replace(/^Direito (d[aoe]s? )?/, '') : n;
 }
 function instCurtaSigla(pf) { var i = instById(pf.instId); return (i && i.sigla) || 'LEXDESK'; }
+var EST_COR2 = ['#7B1E2B', '#1E3A5F', '#2F4858', '#5B2333', '#3A4A63', '#4A3B52', '#2E5049', '#6A4E2E'];
 function vEstante(pf) {
   if (!pf || !pf.instId) return vMinhasDisc(pf);
   var d = pf.disciplinas || [];
   var livros = d.map(function (x, i) {
-    var h = estHash(x), alt = 138 + (h % 5) * 5, larg = 44 + (h >> 3) % 3 * 3, c = EST_COR[(h + i) % EST_COR.length];
-    return '<button class="est-b" data-a="disc-ap" data-id="' + esc(x) + '" aria-label="' + esc(x) + ' — ver apontamentos" style="--h:' + alt + 'px;--w:' + larg + 'px;--cw:' + Math.round(alt * 0.72) + 'px;--c:' + c + '"><span class="sp"><i>' + esc(estCurto(x)) + '</i></span><span class="cv" aria-hidden="true"><span class="cv-ic">' + I.logo + '</span><span class="cv-t">' + esc(x) + '</span><span class="cv-r"></span><span class="cv-s">' + esc(instCurtaSigla(pf)) + ' · ' + pf.ano + '.º ano</span></span></button>';
+    var h = estHash(x), alt = 176 + (h % 4) * 6, c = EST_COR2[(h + i) % EST_COR2.length];
+    return '<button class="es-b" data-a="disc-ap" data-id="' + esc(x) + '" title="' + esc(x) + ' — ver apontamentos" aria-label="' + esc(x) + ' — ver apontamentos" style="--h:' + alt + 'px;--c:' + c + '"><span class="es-n">' + esc(estCurto(x)) + '</span></button>';
   }).join('');
-  if (!d.length) livros = [0, 1, 2, 3, 4].map(function (i) { return '<span class="est-b vazio" style="--h:' + (128 + i * 7 % 23) + 'px;--w:44px"></span>'; }).join('') + '<button class="btn sm est-add" data-a="perfil-edit">' + I.plus + 'Escolher disciplinas</button>';
-  return '<section class="est" aria-label="As minhas disciplinas"><div class="est-hd"><div><b>As minhas disciplinas</b><span>' + pf.ano + '.º ano · ' + esc(instCurta(pf)) + '</span></div><div class="est-r">' + (d.length ? '<span class="est-dica">Clique num livro para ver os apontamentos</span>' : '') + '<button class="lnk" data-a="perfil-edit">Editar</button></div></div>' +
-    '<div class="est-prat"><div class="est-l">' + livros + '</div><div class="est-tabua" aria-hidden="true"></div></div>' +
-    '</section>';
+  if (!d.length) livros = [0, 1, 2, 3, 4].map(function (i) { return '<span class="es-b vazio" style="--h:' + (140 + i * 7 % 23) + 'px"></span>'; }).join('') + '<button class="btn sm est-add" data-a="perfil-edit">' + I.plus + 'Escolher disciplinas</button>';
+  return '<section class="card es" aria-labelledby="es-h"><div class="row" style="justify-content:space-between;align-items:flex-end"><div><h2 id="es-h">As minhas disciplinas</h2><span class="es-sub">' + pf.ano + '.º ano · ' + esc(instCurta(pf)) + (d.length ? ' · ' + plural(d.length, 'disciplina', 'disciplinas') : '') + '</span></div><div class="est-r">' + (d.length ? '<span class="est-dica">Escolha uma lombada para abrir os apontamentos</span>' : '') + '<button class="btn sm" data-a="perfil-edit">Editar</button></div></div>' +
+    '<div class="es-l">' + livros + '</div></section>';
 }
 var _painelComporCH = painelCompor;
 painelCompor = function (P, pf) {
@@ -15366,7 +15408,7 @@ Store.connect();
 </script>
 <script>
 /* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='836b02f360a0';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
+(function(){var B='87fd470d17a9';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>
