@@ -12114,7 +12114,7 @@ A['onb-tipo'] = function (el) { if (S.view === 'bemvindo' && ONB.tipo === el.dat
 var BV_EST = { licd: 'licenciado', mest: 'mestrado', estag: 'estagiario', prof: 'advogado', doc: 'docente', outro: 'outro' };
 A['bv-conta'] = function (el) {
   if (ONB.tipo) lsSet('lexdesk_onb_pend', JSON.stringify({ tipo: ONB.tipo, ano: ONB.ano, areas: ONB.areas }));
-  A['login-open'](el);
+  S.bvLoginAgora = true; A['login-open'](el);
   if (el.dataset.id === 'registo' && ONB.tipo) setTimeout(function () { var s = $('#lg-est'); if (s) s.value = ONB.tipo === 'lic' ? 'ano' + Math.min(4, ONB.ano || 1) : BV_EST[ONB.tipo]; }, 60);
 };
 var _carregarMeuPerfilBV = carregarMeuPerfil;
@@ -12124,7 +12124,7 @@ carregarMeuPerfil = function () {
     if (pend) { try { localStorage.removeItem('lexdesk_onb_pend'); } catch (e) { } }
     setTimeout(function () {
       if (pend && pend.tipo && !perfilUser()) { guardarPerfilUser(pend); lsSet('lexdesk_onb', 'feito'); }
-      if (S.view === 'bemvindo' && perfilUser()) { go('painel'); toast('Sessão iniciada. Painel adaptado ao perfil «' + PERFIS[perfilUser().tipo].nome + '».'); }
+      if (S.view === 'bemvindo' && perfilUser() && S.bvLoginAgora) { S.bvLoginAgora = false; go('painel'); toast('Sessão iniciada. Painel adaptado ao perfil «' + PERFIS[perfilUser().tipo].nome + '».'); }
     }, 900);
     return p;
   });
@@ -12188,6 +12188,9 @@ vBemvindo = function () {
   var i = h.indexOf('<div class="bv-f">');
   return i < 0 ? h : h.slice(0, i) + bvApresentacao() + h.slice(i);
 };
+/* Só se salta para o painel quando o utilizador acabou de iniciar sessão a partir das boas-vindas; uma sessão já guardada mostra o ecrã «Bem-vindo de volta» com o botão Continuar */
+var _loginOpenBV = A['login-open'];
+A['login-open'] = function (el) { if (S.view === 'bemvindo') S.bvLoginAgora = true; return _loginOpenBV.apply(this, arguments); };
 
 /* ---------- PERGUNTA DO DIA com ranking individual ---------- */
 var PD = { carregado: false, a_carregar: false, estado: 'idle', d: null, seq: 0, t0: 0, rk: { periodo: 'hoje', lista: null } };
@@ -15311,7 +15314,7 @@ Store.connect();
 </script>
 <script>
 /* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='4b32e71e769a';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
+(function(){var B='1ca0fb467396';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>
