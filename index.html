@@ -10478,11 +10478,7 @@ function auOuvir(t) {
 /* ----- descarregar a folha ----- */
 function auDocHtml(s) {
   var corpo = auLimpar(auFolhaEl() ? auFolhaEl().innerHTML : auFolhaHtml(s)).replace(/<p([^>]*)data-tm="([^"]*)"([^>]*)>/g, '<p$1$3><span class="tm">[$2]</span> ').replace(/<img[^>]*>/g, '<em>[fotografia da aula]</em>');
-  return '<!DOCTYPE html><html lang="pt-PT"><head><meta charset="utf-8"><title>' + esc(s.cad) + '</title><style>body{font-family:Calibri,Arial,sans-serif;font-size:12pt;line-height:1.5;max-width:720px;margin:40px auto;color:#111}h1{font-size:18pt;margin:0}h2.sub{font-size:11pt;color:#666;font-weight:normal;margin:4px 0 24px}h2{font-size:15pt;margin:20px 0 8px}h3{font-size:13pt;margin:18px 0 6px}h4{font-size:12pt;margin:14px 0 4px}blockquote{margin:8px 0 8px 18px;padding-left:12px;border-left:3px solid #bbb;color:#444}table{border-collapse:collapse;margin:8px 0}td,th{border:1px solid #999;padding:4px 8px;vertical-align:top}.tm{color:#999;font-size:9pt}mark{background:#fff1a8}p[data-tag="exame"]{border-left:3px solid #c9a45c;padding-left:8px}p[data-tag="duvida"]{border-left:3px solid #b23a48;padding-left:8px}</style></head><body><h1>' + esc(s.cad) + '</h1><h2 class="sub">Aula de ' + new Date(s.ini).toLocaleDateString('pt-PT', { day: 'numeric', month: 'long', year: 'numeric' }) + ' · apontamentos LEXDESK</h2>' + corpo + '<script>
-/* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='90099bf7aebb';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
-</script>
-</body></html>';
+  return '<!DOCTYPE html><html lang="pt-PT"><head><meta charset="utf-8"><title>' + esc(s.cad) + '</title><style>body{font-family:Calibri,Arial,sans-serif;font-size:12pt;line-height:1.5;max-width:720px;margin:40px auto;color:#111}h1{font-size:18pt;margin:0}h2.sub{font-size:11pt;color:#666;font-weight:normal;margin:4px 0 24px}h2{font-size:15pt;margin:20px 0 8px}h3{font-size:13pt;margin:18px 0 6px}h4{font-size:12pt;margin:14px 0 4px}blockquote{margin:8px 0 8px 18px;padding-left:12px;border-left:3px solid #bbb;color:#444}table{border-collapse:collapse;margin:8px 0}td,th{border:1px solid #999;padding:4px 8px;vertical-align:top}.tm{color:#999;font-size:9pt}mark{background:#fff1a8}p[data-tag="exame"]{border-left:3px solid #c9a45c;padding-left:8px}p[data-tag="duvida"]{border-left:3px solid #b23a48;padding-left:8px}</style></head><body><h1>' + esc(s.cad) + '</h1><h2 class="sub">Aula de ' + new Date(s.ini).toLocaleDateString('pt-PT', { day: 'numeric', month: 'long', year: 'numeric' }) + ' · apontamentos LEXDESK</h2>' + corpo + '</body></html>';
 }
 function auTexto(s) { return s.cad + ' — aula de ' + new Date(s.ini).toLocaleDateString('pt-PT') + '\n\n' + auNotasDe({ folha: auFolhaEl() ? auLimpar(auFolhaEl().innerHTML) : auFolhaHtml(s) }).filter(function (x) { return x.txt; }).map(function (x) { return '[' + auT(x.t) + '] ' + (x.tag ? AU_TAGS[x.tag][0] + ' ' : '') + x.txt; }).join('\n'); }
 A['au-dl'] = function (el) {
@@ -12082,6 +12078,10 @@ render();
 Store.connect();
 })();
 
+</script>
+<script>
+/* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
+(function(){var B='90099bf7aebb';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>
