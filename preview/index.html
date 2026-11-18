@@ -1712,64 +1712,12 @@ span.rp-util{cursor:default}
 @media (max-width:1240px) and (min-width:1051px){.n2-b>svg:first-child{display:none}.n2-b{padding:8px 10px}}
 body.n2open .side{z-index:90}
 @media (max-width:1050px){.n2-k{display:none}.n2-m{max-height:calc(100vh - 140px);overflow-y:auto}}
-/* ---- Painel: sala de estudo + estante ---- */
-.sdm-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:stretch}
-@media (max-width:1000px){.sdm-row{grid-template-columns:1fr}}
-.sdm-row>.est{height:100%;justify-content:space-between}
-.sdm{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;gap:14px;padding:20px 22px;border-radius:22px;background:#fff;border:1px solid var(--line);box-shadow:var(--sh1)}
-.sdm-cena{position:absolute;right:0;top:0;width:190px;height:150px;z-index:-1;pointer-events:none}
-.sdm-jan{position:absolute;right:22px;top:16px;width:92px;height:74px;border-radius:10px;border:5px solid #E9E2D3;overflow:hidden;background:linear-gradient(180deg,#9BC7F0,#DCEBF8);transition:background 1s}
-.sdm-jan::before,.sdm-jan::after{content:'';position:absolute;background:#E9E2D3}.sdm-jan::before{left:50%;top:0;bottom:0;width:4px;margin-left:-2px}.sdm-jan::after{top:50%;left:0;right:0;height:4px;margin-top:-2px}
-.sdm-astro{position:absolute;right:12px;top:8px;width:16px;height:16px;border-radius:50%;background:#FFD866;box-shadow:0 0 14px #FFD866}
-.sdm-n1,.sdm-n2{position:absolute;height:8px;border-radius:8px;background:rgba(255,255,255,.9);animation:sdmNuv 18s linear infinite}
-.sdm-n1{width:26px;top:26px;left:-30px}.sdm-n2{width:18px;top:44px;left:-30px;animation-delay:-9s;animation-duration:24s}
-@keyframes sdmNuv{to{transform:translateX(140px)}}
-.sdm.manha .sdm-jan{background:linear-gradient(180deg,#F8C9A0,#FCE7CF)}.sdm.manha .sdm-astro{background:#FFB44D;top:30px}
-.sdm.tarde .sdm-jan{background:linear-gradient(180deg,#E58D6B,#F5C08B)}.sdm.tarde .sdm-astro{background:#FF8A4C;box-shadow:0 0 14px #FF8A4C;top:36px}
-.sdm.noite .sdm-jan{background:linear-gradient(180deg,#1C2541,#3A4A73)}.sdm.noite .sdm-astro{background:#F3F0E6;box-shadow:0 0 10px rgba(243,240,230,.8);width:13px;height:13px}.sdm.noite .sdm-n1,.sdm.noite .sdm-n2{background:rgba(255,255,255,.25)}
-.sdm-cand{position:absolute;right:136px;top:52px;width:40px;height:70px}
-.sdm-luz{position:absolute;left:4px;top:0;width:32px;height:18px;border-radius:16px 16px 4px 4px;background:#7B1E2B;transform:rotate(-14deg);transform-origin:right bottom}
-.sdm-luz::after{content:'';position:absolute;left:-6px;top:14px;width:44px;height:80px;background:radial-gradient(ellipse at top,rgba(255,214,120,.55),transparent 70%);opacity:0;transition:opacity .6s}
-.sdm.ativo .sdm-luz::after{opacity:1}
-.sdm-hast{position:absolute;left:22px;top:14px;width:3px;height:44px;background:#5D6378;transform:rotate(10deg)}
-.sdm-base{position:absolute;left:12px;bottom:6px;width:24px;height:6px;border-radius:4px;background:#5D6378}
-.sdm-livros{position:absolute;right:28px;top:104px;display:flex;gap:3px;align-items:flex-end}
-.sdm-livros i{width:10px;border-radius:2px}.sdm-livros i:nth-child(1){height:26px;background:#1E3A5F}.sdm-livros i:nth-child(2){height:32px;background:#7B1E2B}.sdm-livros i:nth-child(3){height:22px;background:#C8962F;transform:rotate(12deg);transform-origin:bottom left}
-.sdm-mesa{position:absolute;right:10px;left:20px;top:136px;height:6px;border-radius:3px;background:#E9E2D3}
-.sdm-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding-right:180px}
-.sdm-top b{display:block;font-family:var(--serif);font-size:19px;color:var(--navy);margin-top:2px}
-.sdm-k{font:800 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#7B1E2B}
-.sdm-tom{display:none}
-.sdm-corpo{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.sdm-rel{position:relative;width:128px;height:128px;flex:none}
-.sdm-rel svg{width:100%;height:100%;transform:rotate(-90deg)}
-.sdm-tr{fill:none;stroke:#F0ECE3;stroke-width:8}
-.sdm-pr{fill:none;stroke:#7B1E2B;stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset .5s linear}
-.sdm.pausa .sdm-pr{stroke:#1E7A5A}
-.sdm-tx{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.sdm-t{font:800 28px var(--sans);color:var(--navy);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
-.sdm-m{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
-.sdm.ativo .sdm-rel{animation:sdmRes 4s ease-in-out infinite}
-@keyframes sdmRes{50%{transform:scale(1.03)}}
-.sdm-ctl{display:flex;flex-direction:column;gap:10px;flex:1;min-width:200px}
-.sdm-modos{display:inline-flex;padding:3px;border-radius:99px;background:#F4F1EA;align-self:flex-start}
-.sdm-modos button{border:0;background:none;font:600 12.5px var(--sans);padding:6px 12px;border-radius:99px;color:#6B6455;cursor:pointer}
-.sdm-modos button.on{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,.08)}
-.sdm-bts{display:flex;gap:8px;align-items:center}
-.sdm-play{min-width:140px;justify-content:center}
-.sdm-dica{font-size:12.5px;color:var(--muted);line-height:1.45}
-.sdm-grp{display:flex;flex-direction:column;gap:8px;border-top:1px dashed #E7E1D4;padding-top:12px}
-#sdm-salas{display:flex;flex-direction:column;gap:6px}
-.sdm-s{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:#FCFBF8;border-radius:12px;padding:8px 10px;cursor:pointer;font:inherit;color:inherit;text-align:left;transition:border-color .15s,transform .15s}
-.sdm-s:hover{border-color:#D8CFBD;transform:translateX(2px)}
-.sdm-sc{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;color:#fff;font-weight:800;flex:none}
-.sdm-st{display:flex;flex-direction:column;flex:1;min-width:0}.sdm-st b{font-size:14px;color:var(--navy)}.sdm-st span{font-size:12px;color:var(--muted)}
-.sdm-go{font-size:12.5px;font-weight:700;color:#7B1E2B;opacity:0;transition:opacity .15s}.sdm-s:hover .sdm-go{opacity:1}
-.sdm-v{margin:0;font-size:13px;color:var(--muted)}
-.sdm-ac{display:flex;gap:8px;flex-wrap:wrap}
-@media (max-width:560px){.sdm-cena{display:none}.sdm-top{padding-right:0}}
-@media (prefers-reduced-motion:reduce){.sdm-n1,.sdm-n2,.sdm.ativo .sdm-rel{animation:none}}
-.sdm-row .est-prat{overflow-x:auto}.sdm-play{gap:8px}
+/* ---- Alinhamento: barra superior com a mesma largura útil do conteúdo ---- */
+@media (min-width:1051px){
+body.tn .side{padding-left:max(24px,calc((100% - 1360px) / 2 + 32px))!important;padding-right:max(24px,calc((100% - 1360px) / 2 + 32px))!important}
+body.tn .main>.topbar{right:max(24px,calc((100vw - 1360px) / 2 + 32px - 8px))!important}
+}
+@media (min-width:1051px){body.n2 .main>.topbar .topsearch{width:auto!important;padding-left:12px;padding-right:12px}body.n2 .main>.topbar .topsearch span,body.n2 .main>.topbar .topsearch kbd{display:none!important}.n2-b{padding:8px 12px}}
 
 </style>
 </head>
@@ -9663,11 +9611,8 @@ painelCompor = function (P, pf) {
     P = Q;
   }
   var R = {}; for (var k2 in P) R[k2] = P[k2]; R.busca = '<div id="busca"></div>';
-  var tp = tipoPerfil(), juntos = (tp === 'lic' || tp === 'outro') && typeof vSalaEstante === 'function' && m.hidden.indexOf('mentoria') < 0 && m.ordem.indexOf('mentoria') >= 0;
-  if (juntos) R.mentoria = vSalaEstante(pf);
   var h = _painelComporCH(R, pf), marca = '<div class="row" style="justify-content:center"><button class="btn sm" data-a="painel-pers">';
   var j = h.lastIndexOf(marca);
-  if (juntos) return h;
   return j >= 0 ? h.slice(0, j) + vEstante(pf) + h.slice(j) : h + vEstante(pf);
 };
 
@@ -11426,74 +11371,6 @@ if (_contaMenuN2) A['conta-menu'] = function () {
 };
 
 A['cm-inst'] = function () { closeModal(); go('instituicoes'); };
-
-/* ---------- PAINEL: SALA DE ESTUDO (foco + salas) ao lado da estante das disciplinas ---------- */
-SEQ_KINDS.foco = 1;
-var SDM = { modo: 'foco', run: false, fim: 0, rest: 25 * 60000, iv: null, salas: null, carregar: false };
-var SDM_DUR = { foco: 25 * 60000, pausa: 5 * 60000 };
-function sdmFocosHoje() { var h = ymd(new Date()); return Store.all('foco').filter(function (f) { return f.dia === h; }).length; }
-function sdmRestante() { return SDM.run ? Math.max(0, SDM.fim - Date.now()) : SDM.rest; }
-function sdmFmt(ms) { var s = Math.ceil(ms / 1000), m = Math.floor(s / 60); s = s % 60; return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s; }
-function sdmCeu() { var h = new Date().getHours(); return h < 7 ? 'noite' : h < 11 ? 'manha' : h < 17 ? 'dia' : h < 20 ? 'tarde' : 'noite'; }
-function sdmSalas() {
-  if (!sessaoAtiva() || !SB) return null;
-  if (SL.list) return SL.list;
-  if (!SDM.carregar) { SDM.carregar = true; SB.from('salas').select('*, sala_membros(count)').order('created_at', { ascending: false }).then(function (r) { SL.list = r.data || []; SDM.carregar = false; var e = document.getElementById('sdm-salas'); if (e) e.innerHTML = sdmSalasHtml(); }, function () { SDM.carregar = false; }); }
-  return null;
-}
-function sdmSalasHtml() {
-  if (!sessaoAtiva()) return '<p class="sdm-v">Crie uma conta para estudar em grupo com os seus colegas.</p><button class="btn sm" data-a="login-open" data-id="registo">Criar conta</button>';
-  var l = sdmSalas();
-  if (l === null) return '<p class="sdm-v">A carregar as suas salas…</p>';
-  var h = l.slice(0, 3).map(function (s) {
-    var n = s.sala_membros && s.sala_membros[0] ? s.sala_membros[0].count : 1;
-    return '<button class="sdm-s" data-a="sdm-sala" data-id="' + s.id + '"><span class="sdm-sc" style="background:' + (SALA_COR[s.cor] || SALA_COR.wine) + '">' + esc((s.nome || 'S').charAt(0).toUpperCase()) + '</span><span class="sdm-st"><b>' + esc(s.nome || 'Sala de estudo') + '</b><span>' + esc(s.cadeira || 'Estudo em grupo') + ' · ' + plural(n, 'membro', 'membros') + '</span></span><span class="sdm-go">Entrar →</span></button>';
-  }).join('');
-  if (!l.length) h = '<p class="sdm-v">Ainda não está em nenhuma sala. Crie uma e convide os colegas com o código.</p>';
-  return h + '<div class="sdm-ac"><button class="btn sm" data-a="sdm-codigo">Entrar com código</button><button class="btn sm wine" data-a="sdm-nova">' + I.plus + 'Criar sala</button></div>';
-}
-function vSalaEstudoTile() {
-  var r = sdmRestante(), tot = SDM_DUR[SDM.modo], p = 1 - r / tot, C = 2 * Math.PI * 52, n = sdmFocosHoje();
-  var h = '<section class="sdm ' + sdmCeu() + (SDM.run ? ' ativo' : '') + (SDM.modo === 'pausa' ? ' pausa' : '') + '" id="sdm" aria-label="Sala de estudo">';
-  h += '<div class="sdm-cena" aria-hidden="true"><div class="sdm-jan"><i class="sdm-astro"></i><i class="sdm-n1"></i><i class="sdm-n2"></i></div><div class="sdm-cand"><i class="sdm-luz"></i><i class="sdm-hast"></i><i class="sdm-base"></i></div><div class="sdm-livros"><i></i><i></i><i></i></div><div class="sdm-mesa"></div></div>';
-  h += '<div class="sdm-top"><div><span class="sdm-k">Sala de estudo</span><b>' + (SDM.run ? (SDM.modo === 'foco' ? 'Em foco. Bom estudo!' : 'Pausa: estique as pernas.') : SDM.modo === 'foco' ? 'Pronto para 25 minutos de foco?' : 'Hora da pausa') + '</b></div><span class="sdm-tom" title="Sessões de foco concluídas hoje">' + [0, 1, 2, 3].map(function (i) { return '<i class="' + (i < n ? 'f' : '') + '"></i>'; }).join('') + (n > 4 ? '<em>+' + (n - 4) + '</em>' : '') + '</span></div>';
-  h += '<div class="sdm-corpo"><div class="sdm-rel"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="sdm-tr" cx="60" cy="60" r="52"/><circle class="sdm-pr" id="sdm-pr" cx="60" cy="60" r="52" stroke-dasharray="' + C.toFixed(1) + '" stroke-dashoffset="' + (C * (1 - p)).toFixed(1) + '"/></svg><div class="sdm-tx"><span class="sdm-t" id="sdm-t" role="timer" aria-live="off">' + sdmFmt(r) + '</span><span class="sdm-m">' + (SDM.modo === 'foco' ? 'foco' : 'pausa') + '</span></div></div>' +
-    '<div class="sdm-ctl"><div class="sdm-modos" role="group" aria-label="Modo"><button class="' + (SDM.modo === 'foco' ? 'on' : '') + '" data-a="sdm-modo" data-id="foco">Foco · 25</button><button class="' + (SDM.modo === 'pausa' ? 'on' : '') + '" data-a="sdm-modo" data-id="pausa">Pausa · 5</button></div>' +
-    '<div class="sdm-bts"><button class="btn sdm-play' + (SDM.run ? '' : ' wine') + '" data-a="sdm-play">' + (SDM.run ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>Pausar' : '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5l12 7-12 7z"/></svg>' + (r < tot ? 'Retomar' : 'Começar')) + '</button><button class="btn sm" data-a="sdm-reset" aria-label="Recomeçar">↺</button></div>' +
-    '<span class="sdm-dica">' + (n ? plural(n, 'sessão concluída', 'sessões concluídas') + ' hoje · cada sessão conta para os dias seguidos' : 'Cada sessão de foco conta para os seus dias seguidos.') + '</span></div></div>';
-  h += '<div class="sdm-grp"><span class="sdm-k">Estudar em grupo</span><div id="sdm-salas">' + sdmSalasHtml() + '</div></div>';
-  return h + '</section>';
-}
-function sdmPintar() { var e = document.getElementById('sdm'); if (e) e.outerHTML = vSalaEstudoTile(); }
-function sdmTick() {
-  clearInterval(SDM.iv); if (!SDM.run) return;
-  SDM.iv = setInterval(function () {
-    var r = sdmRestante(), t = document.getElementById('sdm-t'), pr = document.getElementById('sdm-pr');
-    if (t) t.textContent = sdmFmt(r);
-    if (pr) { var C = 2 * Math.PI * 52; pr.setAttribute('stroke-dashoffset', (C * (r / SDM_DUR[SDM.modo])).toFixed(1)); }
-    if (r <= 0) sdmFim();
-  }, 500);
-}
-function sdmSom() { try { var c = new (window.AudioContext || window.webkitAudioContext)(); [0, .18, .36].forEach(function (d, i) { var o = c.createOscillator(), g = c.createGain(); o.frequency.value = [660, 880, 990][i]; g.gain.setValueAtTime(.0001, c.currentTime + d); g.gain.exponentialRampToValueAtTime(.12, c.currentTime + d + .02); g.gain.exponentialRampToValueAtTime(.0001, c.currentTime + d + .25); o.connect(g); g.connect(c.destination); o.start(c.currentTime + d); o.stop(c.currentTime + d + .3); }); } catch (e) { } }
-function sdmFim() {
-  clearInterval(SDM.iv); SDM.run = false; sdmSom();
-  if (SDM.modo === 'foco') { Store.put({ id: uid('fo'), kind: 'foco', dia: ymd(new Date()), min: 25, at: Date.now() }); SDM.modo = 'pausa'; toast('Sessão de foco concluída. Faça uma pausa de 5 minutos.'); }
-  else { SDM.modo = 'foco'; toast('Pausa terminada. Vamos a mais uma sessão?'); }
-  SDM.rest = SDM_DUR[SDM.modo]; document.title = 'LEXDESK'; sdmPintar();
-}
-A['sdm-play'] = function () {
-  if (SDM.run) { SDM.rest = sdmRestante(); SDM.run = false; clearInterval(SDM.iv); }
-  else { SDM.fim = Date.now() + SDM.rest; SDM.run = true; sdmTick(); }
-  sdmPintar();
-};
-A['sdm-reset'] = function () { clearInterval(SDM.iv); SDM.run = false; SDM.rest = SDM_DUR[SDM.modo]; sdmPintar(); };
-A['sdm-modo'] = function (el) { clearInterval(SDM.iv); SDM.run = false; SDM.modo = el.dataset.id; SDM.rest = SDM_DUR[SDM.modo]; sdmPintar(); };
-A['sdm-sala'] = function (el) { S.salaId = el.dataset.id; go('salas'); };
-A['sdm-nova'] = function () { go('salas'); setTimeout(function () { if (A['sala-nova']) A['sala-nova'](); }, 60); };
-A['sdm-codigo'] = function () { go('salas'); setTimeout(function () { if (A['sala-codigo']) A['sala-codigo'](); }, 60); };
-document.addEventListener('visibilitychange', function () { if (!document.hidden && SDM.run) { sdmTick(); if (sdmRestante() <= 0) sdmFim(); } });
-function vSalaEstante(pf) { return '<div class="sdm-row">' + vSalaEstudoTile() + vEstante(pf) + '</div>'; }
-Object.defineProperty(MODS, 'mentoria', { get: function () { var t = tipoPerfil(); return t === 'lic' || t === 'outro' ? 'Sala de estudo e disciplinas' : 'Mentoria e explicações'; }, enumerable: true, configurable: true });
 
 /* ---------- MODO NOTURNO ---------- */
 /* Gera automaticamente a versão escura de todas as regras CSS (e dos estilos em linha),
