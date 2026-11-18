@@ -4027,6 +4027,422 @@ var CASOS_MODELO = {
   ].forEach(function (g) { GLOSS.push(g); });
 })();
 
+/* ---------- DIREITO DO TRABALHO: casos práticos com resolução-modelo, questões e glossário (texto original do LEXDESK) ---------- */
+(function () {
+  function C(id, titulo, enunciado, perguntas, topicos, modelo) { CASOS.push({ id: id, d: 'trab', titulo: titulo, enunciado: enunciado, perguntas: perguntas, topicos: topicos }); CASOS_MODELO[id] = modelo; }
+
+  C('caso-trab1', 'O contrato a termo sem motivo',
+    'A empresa Logística Sul contratou Fábio, por escrito, «a termo certo de um ano, por acréscimo de atividade». O contrato foi renovado duas vezes. No fim do terceiro ano, a empresa comunica a Fábio que o contrato caduca. Fábio diz que nunca houve qualquer acréscimo de atividade: sempre fez o mesmo trabalho que os colegas efetivos.',
+    ['O motivo indicado no contrato é suficiente?', 'O contrato podia durar três anos?', 'Que consequências têm estes vícios e como deve Fábio reagir?'],
+    ['Motivo justificativo concreto e verificável (arts. 140.º e 141.º do CT); menções genéricas não bastam.', 'Duração máxima do termo certo de dois anos (art. 148.º, n.º 1, do CT); limites de renovação (art. 149.º do CT).', 'Conversão em contrato sem termo (art. 147.º do CT); a comunicação de caducidade equivale a despedimento ilícito; impugnação em 60 dias (art. 387.º do CT).'],
+    [['Não. O contrato a termo só pode ser celebrado para satisfazer necessidades temporárias, objetivamente definidas (art. 140.º, n.º 1, do CT), e deve indicar o motivo justificativo, descrevendo os factos que o concretizam, estabelecendo a relação entre a justificação e o termo estipulado (art. 141.º do CT). A fórmula «acréscimo de atividade», sem factos concretos, não cumpre esta exigência. Além disso, Fábio diz que sempre fez o mesmo trabalho que os efetivos, o que indica uma necessidade permanente.'],
+      ['Não. A duração do contrato a termo certo não pode ser superior a dois anos (art. 148.º, n.º 1, do CT), incluindo as renovações, que estão ainda sujeitas aos limites do art. 149.º do CT. Ao atingir três anos, o contrato ultrapassou o limite legal.'],
+      ['Considera-se sem termo o contrato celebrado sem indicação suficiente do motivo justificativo ou que exceda os limites de duração ou de renovações (art. 147.º do CT). Fábio é, portanto, trabalhador por tempo indeterminado, e a comunicação de «caducidade» equivale a um despedimento sem justa causa nem procedimento, ou seja, ilícito (art. 381.º do CT). Fábio deve opor-se ao despedimento, no tribunal do trabalho, mediante formulário próprio, no prazo de 60 dias (art. 387.º, n.º 2, do CT), pedindo a reintegração ou a indemnização substitutiva (art. 391.º do CT) e as retribuições intercalares (art. 390.º do CT).']]);
+
+  C('caso-trab2', 'O despedimento pelas redes sociais',
+    'Gabriela, empregada de uma clínica, publicou no Facebook, numa conta aberta, comentários ofensivos sobre a diretora clínica, chamando-lhe «incompetente e corrupta». A diretora soube no próprio dia. Trinta dias depois, a clínica enviou nota de culpa. Gabriela respondeu ao quinto dia útil, pedindo que fossem ouvidas duas colegas. A clínica recusou ouvi-las e despediu-a dez dias depois.',
+    ['A clínica iniciou o procedimento a tempo?', 'A recusa de ouvir as testemunhas tem consequências?', 'Os comentários podem constituir justa causa?'],
+    ['Prazo de 60 dias desde o conhecimento (art. 329.º, n.º 2, do CT).', 'Direito do trabalhador a pedir diligências probatórias (art. 355.º do CT); recusa só se forem dilatórias ou impertinentes (art. 356.º do CT); invalidade do procedimento (art. 382.º do CT).', 'Justa causa (art. 351.º do CT): lesão da honra da superior hierárquica; ponderação da liberdade de expressão, publicidade e proporcionalidade.'],
+    [['Sim. O procedimento disciplinar deve iniciar-se nos 60 dias seguintes ao conhecimento da infração pelo empregador ou superior com competência disciplinar (art. 329.º, n.º 2, do CT). A nota de culpa foi enviada 30 dias após o conhecimento, dentro do prazo.'],
+      ['O trabalhador pode, na resposta à nota de culpa, solicitar as diligências probatórias pertinentes (art. 355.º, n.º 1, do CT), e o empregador deve realizá-las, só podendo recusá-las, por escrito e fundamentadamente, se forem patentemente dilatórias ou impertinentes (art. 356.º do CT). A recusa sem fundamento viola o direito de defesa de Gabriela. O despedimento é ilícito por invalidade do procedimento, nos termos do art. 382.º do CT, independentemente da gravidade dos factos.'],
+      ['Em abstrato, sim. Constitui justa causa o comportamento culposo que, dada a sua gravidade e efeitos, torne impossível, de imediato e na prática, manter a relação de trabalho (art. 351.º, n.º 1, do CT), O CT dá como exemplo as injúrias a trabalhadores da empresa praticadas no âmbito desta (art. 351.º, n.º 2, alínea i), do CT); uma publicação feita fora da empresa não cabe à letra nesse exemplo, mas pode preencher a cláusula geral do n.º 1, sobretudo por ter sido feita numa conta aberta, acessível a colegas e doentes. Ainda assim, o juízo é concreto e deve ponderar a liberdade de expressão, o contexto e o passado disciplinar. No caso, a questão fica prejudicada pela ilicitude do procedimento.']]);
+
+  C('caso-trab3', 'A greve no hospital',
+    'O sindicato dos técnicos de diagnóstico convoca uma greve de três dias num hospital público, enviando aviso prévio com dez dias úteis de antecedência, mas sem qualquer proposta de serviços mínimos. Durante a greve, a administração chama técnicos de uma clínica privada para assegurar todos os exames programados. Henrique, técnico em greve, é ameaçado com processo disciplinar.',
+    ['O aviso prévio foi corretamente feito?', 'A administração podia recorrer à clínica privada?', 'Henrique pode ser punido por fazer greve?'],
+    ['Aviso de dez dias úteis nos serviços essenciais (art. 534.º, n.º 1, do CT); proposta de serviços mínimos no aviso (art. 534.º, n.º 3, do CT).', 'Proibição de substituição de grevistas por pessoas de fora e por empresas contratadas (art. 535.º do CT); serviços mínimos como via legítima (art. 537.º do CT).', 'Proibição de discriminação ou sanção por adesão à greve (art. 540.º do CT); efeitos da greve sobre o contrato (art. 536.º do CT).'],
+    [['O prazo está correto: os serviços de saúde satisfazem necessidades sociais impreteríveis (art. 537.º, n.º 2, do CT), pelo que o aviso exige dez dias úteis (art. 534.º, n.º 1, do CT). Contudo, nestes casos, o aviso prévio deve conter uma proposta de definição dos serviços mínimos (art. 534.º, n.º 3, do CT). A omissão é uma irregularidade que deve levar à definição dos serviços mínimos pelas vias legais, sem tornar, por si, a greve inexistente.'],
+      ['Não. O empregador não pode substituir os grevistas por pessoas que, à data do aviso prévio, não trabalhavam no estabelecimento, nem as tarefas podem ser realizadas por empresa contratada para esse fim (art. 535.º do CT). A forma lícita de garantir os exames urgentes era assegurar os serviços mínimos, definidos nos termos do art. 538.º do CT, e não manter a atividade normal com pessoal externo.'],
+      ['Não. É proibido coagir, prejudicar ou discriminar o trabalhador por motivo de adesão ou não adesão à greve (art. 540.º do CT). A greve suspende o contrato quanto ao dever de assiduidade e à retribuição (art. 536.º do CT), pelo que a ausência de Henrique não é falta disciplinar. Seria diferente se Henrique estivesse designado para os serviços mínimos e não os cumprisse.']]);
+
+  function N(t, id, q, o, e) { QUESTOES.push({ id: id, d: 'trab', t: t, q: q, o: o, a: 0, e: e }); }
+  N('contr', 'trq1', 'A duração do contrato a termo certo, incluindo renovações, não pode exceder:', ['Dois anos', 'Três anos', 'Seis meses', 'Quatro anos'], 'Art. 148.º, n.º 1, do CT.');
+  N('contr', 'trq2', 'No contrato por tempo indeterminado, o período experimental para a generalidade dos trabalhadores é de:', ['90 dias', '30 dias', '180 dias', '240 dias'], 'Art. 112.º, n.º 1, alínea a), do CT.');
+  N('contr', 'trq3', 'O contrato a termo celebrado sem indicação suficiente do motivo justificativo:', ['Considera-se sem termo', 'É nulo', 'Caduca ao fim de seis meses', 'Converte-se em prestação de serviços'], 'Art. 147.º, n.º 1, do CT.');
+  N('contr', 'trq4', 'Verificados alguns indícios do art. 12.º do CT:', ['Presume-se a existência de contrato de trabalho', 'Há necessariamente contrato de prestação de serviços', 'O contrato é nulo', 'Aplica-se o regime do mandato'], 'Art. 12.º, n.º 1, do CT.');
+  N('temp', 'trq5', 'O período anual de férias tem a duração mínima de:', ['22 dias úteis', '25 dias úteis', '30 dias seguidos', '20 dias úteis'], 'Art. 238.º, n.º 1, do CT.');
+  N('temp', 'trq6', 'O subsídio de Natal deve ser pago até:', ['15 de dezembro', '31 de dezembro', '30 de novembro', '1 de dezembro'], 'Art. 263.º, n.º 1, do CT.');
+  N('temp', 'trq7', 'Em regra, o período normal de trabalho não pode exceder:', ['8 horas diárias e 40 semanais', '10 horas por dia e 50 por semana', '7 horas por dia e 35 por semana', '9 horas por dia e 45 por semana'], 'Art. 203.º, n.º 1, do CT.');
+  N('disc', 'trq8', 'O procedimento disciplinar deve iniciar-se nos dias seguintes ao conhecimento da infração:', ['60', '30', '90', '15'], 'Art. 329.º, n.º 2, do CT.');
+  N('disc', 'trq9', 'Para responder à nota de culpa, o trabalhador dispõe de:', ['10 dias úteis', '5 dias úteis', '15 dias seguidos', '30 dias'], 'Art. 355.º, n.º 1, do CT.');
+  N('disc', 'trq10', 'Depois dos pareceres, o empregador tem para decidir o despedimento:', ['30 dias, sob pena de caducidade', '60 dias', '10 dias úteis', 'Prazo ilimitado'], 'Art. 357.º, n.º 1, do CT.');
+  N('cess', 'trq11', 'O trabalhador pode opor-se ao despedimento no prazo de:', ['60 dias', '30 dias', '90 dias', 'Um ano'], 'Art. 387.º, n.º 2, do CT.');
+  N('cess', 'trq12', 'Em substituição da reintegração, a indemnização por despedimento ilícito é fixada entre:', ['15 e 45 dias de salário base (com diuturnidades) por ano de antiguidade', '30 e 60 dias por ano', '10 e 20 dias por ano', 'Um e três meses no total'], 'Art. 391.º, n.º 1, do CT.');
+  N('cess', 'trq13', 'Na denúncia sem justa causa, o trabalhador com mais de dois anos de antiguidade deve dar aviso prévio de:', ['60 dias', '30 dias', '90 dias', '15 dias'], 'Art. 400.º, n.º 1, do CT.');
+  N('cess', 'trq14', 'A resolução com justa causa pelo trabalhador deve ser comunicada nos dias seguintes ao conhecimento dos factos:', ['30', '60', '10', '90'], 'Art. 395.º, n.º 1, do CT.');
+  N('colet', 'trq15', 'Nos serviços que satisfazem necessidades sociais impreteríveis, o aviso prévio de greve é de:', ['10 dias úteis', '5 dias úteis', '15 dias seguidos', '48 horas'], 'Art. 534.º, n.º 1, do CT.');
+  N('colet', 'trq16', 'Durante a greve, o empregador:', ['Não pode substituir os grevistas por quem não trabalhava no estabelecimento à data do aviso', 'Pode contratar uma empresa para fazer o trabalho', 'Pode despedir os grevistas', 'Pode exigir aos grevistas o trabalho normal'], 'Art. 535.º do CT.');
+
+  [
+    ['Nota de culpa', 'trab', 'Comunicação escrita em que o empregador informa o trabalhador da intenção de o despedir e descreve, de forma circunstanciada, os factos que lhe imputa.', 'art. 353.º do CT', []],
+    ['Revogação do contrato de trabalho', 'trab', 'Acordo escrito entre empregador e trabalhador para pôr fim ao contrato. O trabalhador pode, em regra, voltar atrás até ao sétimo dia seguinte.', 'arts. 349.º e 350.º do CT', ['acordo de revogação']],
+    ['Resolução pelo trabalhador', 'trab', 'Cessação imediata do contrato por iniciativa do trabalhador, com justa causa, por exemplo por salários em atraso. Dá direito a indemnização.', 'arts. 394.º a 396.º do CT', []],
+    ['Denúncia pelo trabalhador', 'trab', 'Cessação do contrato por iniciativa do trabalhador, sem necessidade de justificação, mediante aviso prévio de 30 ou 60 dias.', 'art. 400.º do CT', []],
+    ['Serviços mínimos', 'trab', 'Atividades que devem ser asseguradas durante uma greve em setores que satisfazem necessidades sociais impreteríveis, como a saúde ou os transportes.', 'arts. 537.º e 538.º do CT', []],
+    ['Instrumento de regulamentação coletiva de trabalho', 'trab', 'Fonte específica do Direito do Trabalho que regula as condições de trabalho de forma coletiva: pode ser negocial (como a convenção coletiva) ou não negocial (como a portaria de extensão).', 'art. 2.º do CT', ['IRCT']]
+  ].forEach(function (g) { GLOSS.push(g); });
+})();
+
+/* ---------- DIREITOS REAIS: casos práticos com resolução-modelo e questões (texto original do LEXDESK) ---------- */
+(function () {
+  function C(id, titulo, enunciado, perguntas, topicos, modelo) { CASOS.push({ id: id, d: 'reais', titulo: titulo, enunciado: enunciado, perguntas: perguntas, topicos: topicos }); CASOS_MODELO[id] = modelo; }
+
+  C('caso-reais1', 'A casa vendida duas vezes',
+    'Em 2010, Rita comprou a Sérgio, por escritura, um apartamento, mas nunca registou a compra nem chegou a viver lá; arrendou-o a Tânia. Em 2024, Sérgio, que continuava inscrito no registo, vendeu o mesmo apartamento a Ulisses, que registou de imediato. Ulisses quer agora despejar Tânia e Rita reclama a propriedade.',
+    ['Quem é o proprietário do apartamento?', 'Rita pode invocar usucapião?', 'Que pode Rita exigir a Sérgio?'],
+    ['Eficácia real do contrato (art. 408.º do CC) e inoponibilidade a terceiros do facto não registado (arts. 5.º e 6.º do Código do Registo Predial).', 'Posse através de detentor (o arrendatário possui em nome de Rita); sem registo, 15 anos de posse de boa-fé (art. 1296.º do CC): 14 anos não bastam.', 'Responsabilidade de Sérgio pela dupla venda: restituição e indemnização.'],
+    [['Entre Sérgio e Rita, a propriedade transmitiu-se com a escritura de 2010 (art. 408.º, n.º 1, do CC). Contudo, Rita e Ulisses adquiriram do mesmo autor direitos incompatíveis, sendo terceiros para efeitos de registo (art. 5.º, n.º 4, do Código do Registo Predial). A aquisição de Rita, não registada, não é oponível a Ulisses, que registou primeiro (arts. 5.º, n.º 1, e 6.º do Código do Registo Predial). Ulisses prevalece, salvo se Rita puder invocar uma aquisição originária que o registo não afasta.'],
+      ['Rita foi possuidora desde 2010: a arrendatária, Tânia, detém o apartamento em nome dela (art. 1252.º do CC). A posse é titulada (houve escritura) e, por isso, presume-se de boa-fé (art. 1260.º, n.º 2, do CC). Mas, sem registo do título nem da mera posse, a usucapião só se dá ao fim de 15 anos de posse de boa-fé (art. 1296.º do CC). Entre 2010 e 2024 passaram 14 anos: o prazo ainda não estava completo quando Ulisses adquiriu e registou. A usucapião não lhe vale.'],
+      ['Sérgio vendeu um bem que, entre as partes, já não lhe pertencia, frustrando o direito de Rita. Rita pode exigir-lhe a restituição do valor e a indemnização de todos os danos sofridos, nos termos gerais da responsabilidade civil. Fica ainda a hipótese de responsabilidade criminal de Sérgio, se tiver atuado com intenção de enganar.']]);
+
+  C('caso-reais2', 'O caminho pelo terreno do vizinho',
+    'Vítor é dono de um terreno rústico sem acesso à via pública. Há 30 anos que ele e os anteriores donos atravessam o terreno de Xavier por um caminho de terra marcado, com um portão sempre aberto. Xavier vendeu o terreno a Zélia, que fechou o portão à chave e diz que «não há nada no registo».',
+    ['Vítor tem algum direito de passagem?', 'O facto de nada constar do registo é relevante?', 'Se não houvesse caminho marcado, que alternativa teria Vítor?'],
+    ['Servidão de passagem aparente adquirida por usucapião (arts. 1543.º, 1547.º e 1548.º do CC); acessão na posse dos antecessores (art. 1256.º do CC).', 'A usucapião não depende de registo e é oponível ao adquirente.', 'Servidão legal de passagem a favor de prédio encravado (art. 1550.º do CC), mediante indemnização.'],
+    [['Sim. O caminho marcado e o portão são sinais visíveis e permanentes: a servidão é aparente e pode ser adquirida por usucapião (art. 1548.º do CC). Vítor pode juntar à sua posse a dos anteriores donos do terreno (art. 1256.º do CC) e, com 30 anos de posse pública e pacífica, a servidão de passagem está adquirida, mesmo sem título (art. 1296.º do CC).'],
+      ['Não afasta o direito. A usucapião é uma forma de aquisição originária que não depende do registo, e a servidão onera o prédio, acompanhando-o nas mãos de quem quer que o adquira. Zélia adquiriu o terreno já onerado. Vítor pode exigir a reabertura do portão e, se necessário, recorrer às ações de defesa da posse ou de reconhecimento da servidão.'],
+      ['Mesmo sem caminho marcado (e, portanto, sem servidão aparente adquirível por usucapião), o terreno de Vítor está encravado. Teria a faculdade de exigir a constituição de uma servidão legal de passagem sobre os prédios rústicos vizinhos, mediante indemnização, no local e nas condições menos onerosas para o prédio serviente (art. 1550.º do CC e regime seguinte).']]);
+
+  C('caso-reais3', 'O condomínio e o elevador',
+    'Num prédio em propriedade horizontal com seis frações, a assembleia de condóminos aprovou por maioria a substituição do elevador, cabendo a cada fração o mesmo valor. Amélia, dona da loja do rés-do-chão, que tem entrada direta para a rua e não usa o elevador, votou contra e recusa pagar. Bernardo, do 5.º andar, faltou à assembleia.',
+    ['Como devem ser repartidas as despesas com o elevador?', 'Amélia tem de pagar?', 'Como podem Amélia e Bernardo reagir à deliberação?'],
+    ['Repartição em proporção do valor das frações (art. 1424.º, n.º 1, do CC); regras especiais para os elevadores (art. 1424.º do CC).', 'Isenção do condómino cuja fração não seja servida pelo elevador, nos termos do art. 1424.º do CC.', 'Impugnação das deliberações (art. 1433.º do CC): prazos e legitimidade.'],
+    [['Em regra, as despesas de conservação e fruição das partes comuns repartem-se entre os condóminos na proporção do valor de cada fração (art. 1424.º, n.º 1, do CC), e não em partes iguais. A deliberação que reparte por igual o custo afasta-se da regra legal, o que só seria possível nos termos que a própria lei permite.'],
+      ['Há regras especiais para os elevadores: em princípio, as despesas relativas aos lanços de escadas ou às partes comuns que sirvam exclusivamente algum dos condóminos ficam a cargo dos que delas se servem, e o mesmo critério vale para os elevadores (art. 1424.º do CC). Se a loja de Amélia não é servida pelo elevador, por ter acesso direto à via pública, há fundamento para a isentar desta despesa.'],
+      ['As deliberações contrárias à lei ou a regulamentos podem ser impugnadas pelos condóminos que não as tenham aprovado (art. 1433.º, n.º 1, do CC). Amélia, que votou contra, pode pedir a convocação de assembleia extraordinária para revogar a deliberação, sujeitar a questão a centro de arbitragem ou propor a ação de anulação, nos prazos do art. 1433.º do CC. Bernardo, ausente, pode igualmente impugnar, contando-se os prazos a partir da comunicação da deliberação.']]);
+
+  function N(t, id, q, o, e) { QUESTOES.push({ id: id, d: 'reais', t: t, q: q, o: o, a: 0, e: e }); }
+  N('geral', 'rq1', 'Fora dos casos previstos na lei, as restrições ao direito de propriedade têm natureza:', ['Meramente obrigacional', 'Real', 'Nula', 'Pessoalíssima'], 'Art. 1306.º, n.º 1, do CC (tipicidade).');
+  N('geral', 'rq2', 'A ação de reivindicação:', ['Não prescreve, sem prejuízo da usucapião', 'Prescreve em 20 anos', 'Caduca em um ano', 'Só pode ser intentada contra possuidores de má-fé'], 'Art. 1313.º do CC.');
+  N('posse', 'rq3', 'O arrendatário, em relação ao direito de propriedade, é:', ['Detentor', 'Possuidor', 'Comproprietário', 'Usufrutuário'], 'Possui em nome de outrem (art. 1253.º, alínea c), do CC).');
+  N('posse', 'rq4', 'A posse titulada presume-se:', ['De boa-fé', 'De má-fé', 'Violenta', 'Oculta'], 'Art. 1260.º, n.º 2, do CC.');
+  N('posse', 'rq5', 'As ações para manter ou recuperar a posse caducam se não forem intentadas no prazo de:', ['Um ano', 'Seis meses', 'Dois anos', 'Cinco anos'], 'Art. 1282.º do CC.');
+  N('posse', 'rq6', 'O possuidor esbulhado com violência tem direito a:', ['Ser restituído provisoriamente, sem audiência do esbulhador', 'Indemnização apenas', 'Usar a força a todo o tempo', 'Registar a posse automaticamente'], 'Art. 1279.º do CC.');
+  N('aquis', 'rq7', 'Sem registo do título nem da mera posse, a usucapião de imóveis com posse de má-fé exige:', ['20 anos', '15 anos', '10 anos', '30 anos'], 'Art. 1296.º do CC.');
+  N('aquis', 'rq8', 'A usucapião de móveis não sujeitos a registo, sem boa-fé nem título, dá-se ao fim de:', ['6 anos', '3 anos', '10 anos', '15 anos'], 'Art. 1299.º do CC.');
+  N('aquis', 'rq9', 'Invocada a usucapião, os seus efeitos retroagem:', ['À data do início da posse', 'À data da invocação', 'À data do registo', 'À data da sentença'], 'Art. 1288.º do CC.');
+  N('compr', 'rq10', 'Na venda a estranhos da quota de um comproprietário, os outros consortes:', ['Têm direito de preferência', 'Podem anular livremente a venda', 'Ficam obrigados a vender', 'Nada podem fazer'], 'Art. 1409.º do CC.');
+  N('compr', 'rq11', 'A indivisão da coisa comum pode ser convencionada por prazo não superior a:', ['Cinco anos', 'Dez anos', 'Dois anos', 'Vinte anos'], 'Art. 1412.º, n.º 2, do CC.');
+  N('compr', 'rq12', 'A administração das partes comuns de um edifício em propriedade horizontal compete:', ['À assembleia dos condóminos e a um administrador', 'Ao condómino com maior permilagem', 'À câmara municipal', 'Ao construtor'], 'Art. 1430.º, n.º 1, do CC.');
+  N('menores', 'rq13', 'O usufruto constituído a favor de uma pessoa coletiva tem a duração máxima de:', ['30 anos', '20 anos', '50 anos', 'Duração ilimitada'], 'Art. 1443.º do CC.');
+  N('menores', 'rq14', 'As servidões não aparentes:', ['Não podem ser constituídas por usucapião', 'Só se constituem por usucapião', 'São sempre servidões legais', 'Extinguem-se ao fim de cinco anos'], 'Art. 1548.º, n.º 1, do CC.');
+  N('menores', 'rq15', 'As servidões extinguem-se pelo não uso durante:', ['20 anos', '10 anos', '15 anos', '30 anos'], 'Art. 1569.º, n.º 1, alínea b), do CC.');
+  N('viz', 'rq16', 'Quem constrói não pode abrir janelas que deitem diretamente sobre o prédio vizinho sem deixar o intervalo de:', ['Metro e meio', 'Um metro', 'Dois metros', 'Três metros'], 'Art. 1360.º, n.º 1, do CC.');
+  N('viz', 'rq17', 'As emissões provenientes de prédio vizinho podem ser impedidas quando:', ['Causem prejuízo substancial ou excedam o que é próprio do uso normal do prédio', 'Sejam percetíveis', 'O vizinho o deseje', 'Ocorram durante o dia'], 'Art. 1346.º do CC.');
+  N('reg', 'rq18', 'Para efeitos de registo, são terceiros:', ['Os que adquiriram do mesmo transmitente direitos que não podem coexistir', 'Todos os que não foram partes no contrato', 'Os credores do vendedor', 'Os vizinhos do prédio'], 'Art. 5.º, n.º 4, do Código do Registo Predial.');
+  N('reg', 'rq19', 'Os factos sujeitos a registo produzem efeitos contra terceiros:', ['Depois da data do respetivo registo', 'Desde a celebração do contrato', 'Depois de um ano', 'Nunca'], 'Art. 5.º, n.º 1, do Código do Registo Predial.');
+})();
+
+/* ---------- DIREITO COMERCIAL E DAS SOCIEDADES: casos práticos com resolução-modelo e questões (texto original do LEXDESK) ---------- */
+(function () {
+  function C(id, titulo, enunciado, perguntas, topicos, modelo) { CASOS.push({ id: id, d: 'com', titulo: titulo, enunciado: enunciado, perguntas: perguntas, topicos: topicos }); CASOS_MODELO[id] = modelo; }
+
+  C('caso-com1', 'A sociedade que ainda não existia',
+    'Paulo e Raquel celebraram o contrato de uma sociedade por quotas, «Sabores do Mar, Lda.», mas o registo foi recusado por um erro. Entretanto, Paulo, com o acordo de Raquel, arrendou um armazém e comprou câmaras frigoríficas por 25.000 €, tudo em nome da sociedade. O fornecedor não foi pago e quer saber a quem pode exigir o preço.',
+    ['A sociedade já tinha personalidade jurídica?', 'Quem responde pela dívida ao fornecedor?', 'O que muda se o registo vier a ser feito?'],
+    ['Personalidade com o registo definitivo (art. 5.º do CSC).', 'Responsabilidade ilimitada e solidária de quem agiu e dos sócios que autorizaram (art. 40.º do CSC).', 'Assunção dos negócios pela sociedade com o registo (art. 19.º do CSC).'],
+    [['Não. As sociedades só gozam de personalidade jurídica a partir do registo definitivo do contrato (art. 5.º do CSC). Sem registo, a «Sabores do Mar, Lda.» ainda não existe como pessoa jurídica.'],
+      ['Pelos negócios realizados em nome de uma sociedade por quotas entre a celebração do contrato e o registo definitivo respondem ilimitada e solidariamente os que agiram em sua representação e os sócios que autorizaram esses negócios (art. 40.º, n.º 1, do CSC). Paulo agiu e Raquel deu o seu acordo: o fornecedor pode exigir os 25.000 € a qualquer um deles, por inteiro, com direito de regresso entre ambos.'],
+      ['Com o registo definitivo, a sociedade fica automaticamente com os direitos e obrigações resultantes dos negócios celebrados antes dele, nos termos do art. 19.º do CSC. A partir dessa assunção, a responsabilidade dos sócios prevista no art. 40.º cessa nos termos aí previstos, e o fornecedor passa a ter a sociedade como devedora.']]);
+
+  C('caso-com2', 'A assembleia sem convocatória',
+    'Na «Construções Douro, Lda.», com três sócios (Sónia com 50%, Tiago com 30% e Ulisses com 20%), Sónia e Tiago reúnem-se sem convocar Ulisses e deliberam vender o único imóvel da sociedade a uma empresa do marido de Sónia, abaixo do valor de mercado. Ulisses só sabe dois meses depois.',
+    ['Que vício afeta a deliberação?', 'Ulisses ainda pode reagir?', 'A gerente responde pelos prejuízos?'],
+    ['Nulidade por falta de convocação, salvo se todos estiverem presentes ou representados (art. 56.º, n.º 1, alínea a), do CSC).', 'Nulidade invocável a todo o tempo, sem o prazo de 30 dias da anulação (art. 59.º do CSC).', 'Dever de lealdade e responsabilidade perante a sociedade (arts. 64.º e 72.º do CSC); ação social pelos sócios (art. 77.º do CSC).'],
+    [['A deliberação foi tomada numa reunião para a qual Ulisses não foi convocado, sem que todos os sócios estivessem presentes ou representados. É nula (art. 56.º, n.º 1, alínea a), do CSC). Além disso, a venda abaixo do valor a uma empresa ligada a uma sócia sugere uma deliberação abusiva (art. 58.º, n.º 1, alínea b), do CSC), mas este vício fica consumido pelo mais grave.'],
+      ['Sim. O prazo de 30 dias do art. 59.º do CSC aplica-se às deliberações anuláveis. A nulidade não tem prazo para ser invocada por qualquer interessado, nos termos gerais (art. 286.º do CC). Ulisses pode propor ação de declaração de nulidade, e convém registá-la para proteger os seus efeitos perante terceiros.'],
+      ['Se Sónia for gerente e tiver executado a venda, violou o dever de lealdade, que obriga a agir no interesse da sociedade e não no de pessoas próximas (art. 64.º, n.º 1, alínea b), do CSC). Responde perante a sociedade pelos danos, presumindo-se a culpa (art. 72.º, n.º 1, do CSC). Se a sociedade não agir, Ulisses, com pelo menos 5% do capital, pode propor a ação social em benefício desta (art. 77.º do CSC).']]);
+
+  C('caso-com3', 'O aval do pai',
+    'Vânia pediu ao banco um empréstimo de 15.000 € para a sua loja e subscreveu uma livrança em branco, com pacto de preenchimento, avalizada pelo pai, Xavier. Vânia deixou de pagar. O banco preencheu a livrança por 18.000 €, incluindo juros e despesas superiores aos acordados, e exige o pagamento a Xavier. Xavier diz que o banco deve executar primeiro os bens da filha.',
+    ['Xavier tem de pagar antes de serem executados os bens de Vânia?', 'Pode opor ao banco o preenchimento abusivo?', 'Se pagar, que direito tem?'],
+    ['O avalista responde como o avalizado, sem benefício da excussão; distinção do fiador (art. 638.º do CC).', 'Preenchimento abusivo de título em branco: oponível ao portador que interveio no pacto, na medida do excesso.', 'Direito de regresso contra a avalizada.'],
+    [['Não. O avalista responde da mesma maneira que a pessoa por ele avalizada, assumindo uma obrigação cambiária autónoma e solidária. Ao contrário do fiador civil (art. 638.º do CC), não goza do benefício da excussão prévia. O banco pode exigir o pagamento diretamente a Xavier.'],
+      ['Sim, na medida do excesso. A livrança foi entregue em branco com um pacto de preenchimento, e o banco foi parte nesse pacto. O preenchimento em violação do acordado pode ser oposto ao portador que interveio no pacto. Se se provar que os juros e despesas incluídos excedem o acordado, Xavier só responde pelo valor devidamente apurado, cabendo-lhe a prova do abuso.'],
+      ['Pagando, Xavier adquire os direitos resultantes da livrança contra a avalizada, Vânia, e contra os obrigados para com esta, podendo exigir-lhe tudo o que pagou. Se Vânia não tiver bens, o regresso será, na prática, ineficaz, o que mostra o risco elevado do aval.']]);
+
+  function N(t, id, q, o, e) { QUESTOES.push({ id: id, d: 'com', t: t, q: q, o: o, a: 0, e: e }); }
+  N('atos', 'cq1', 'Nas obrigações comerciais, os coobrigados são, salvo estipulação em contrário:', ['Solidários', 'Conjuntos', 'Subsidiários', 'Alternativos'], 'Art. 100.º do CCom.');
+  N('atos', 'cq2', 'São comerciantes:', ['As pessoas que, tendo capacidade, fazem do comércio profissão, e as sociedades comerciais', 'Todas as pessoas que praticam um ato de comércio', 'Apenas as sociedades anónimas', 'Os consumidores'], 'Art. 13.º do CCom.');
+  N('atos', 'cq3', 'O fiador de uma obrigação comercial:', ['É solidário com o afiançado', 'Goza sempre do benefício da excussão', 'Só responde se for comerciante', 'Responde apenas por metade'], 'Art. 101.º do CCom.');
+  N('tit', 'cq4', 'O avalista de uma letra:', ['Responde da mesma maneira que o avalizado, sem benefício da excussão', 'Só responde depois de executados os bens do avalizado', 'Não responde se a obrigação avalizada for nula por qualquer motivo', 'Responde apenas por metade'], 'Natureza autónoma e solidária do aval.');
+  N('tit', 'cq5', 'O princípio segundo o qual o direito é o que resulta do texto do título chama-se:', ['Literalidade', 'Autonomia', 'Abstração', 'Incorporação'], 'Característica dos títulos de crédito.');
+  N('tit', 'cq6', 'A ação cambiária contra o aceitante de uma letra prescreve:', ['Em três anos a contar do vencimento', 'Em seis meses', 'Em um ano', 'Em vinte anos'], 'Regime da Lei Uniforme sobre letras e livranças.');
+  N('socg', 'cq7', 'As sociedades comerciais adquirem personalidade jurídica:', ['Com o registo definitivo do contrato', 'Com a assinatura do contrato', 'Com o início da atividade', 'Com a publicação no Diário da República'], 'Art. 5.º do CSC.');
+  N('socg', 'cq8', 'Pelos negócios em nome de uma sociedade por quotas antes do registo respondem:', ['Ilimitada e solidariamente os que agiram em seu nome e os sócios que os autorizaram', 'Apenas a sociedade', 'Ninguém', 'Apenas o sócio maioritário'], 'Art. 40.º, n.º 1, do CSC.');
+  N('tipos', 'cq9', 'Na sociedade em nome coletivo, o sócio responde pelas obrigações sociais:', ['Subsidiariamente em relação à sociedade e solidariamente com os outros sócios', 'Apenas pela sua entrada', 'Diretamente, antes da sociedade', 'Só se for gerente'], 'Art. 175.º, n.º 1, do CSC.');
+  N('tipos', 'cq10', 'Na sociedade por quotas, cada sócio responde solidariamente:', ['Por todas as entradas previstas no contrato de sociedade', 'Por todas as dívidas da sociedade', 'Apenas pela sua própria entrada', 'Pelos salários dos trabalhadores'], 'Art. 197.º, n.º 1, do CSC.');
+  N('tipos', 'cq11', 'O capital social mínimo da sociedade anónima é de:', ['50.000 €', '5.000 €', '1 €', '100.000 €'], 'Art. 276.º do CSC.');
+  N('orgs', 'cq12', 'A deliberação tomada em assembleia geral não convocada, sem que todos os sócios estejam presentes ou representados, é:', ['Nula', 'Anulável', 'Ineficaz apenas para o sócio ausente', 'Válida'], 'Art. 56.º, n.º 1, alínea a), do CSC.');
+  N('orgs', 'cq13', 'A ação de anulação de deliberações sociais deve ser proposta no prazo de:', ['30 dias', '60 dias', '6 meses', '1 ano'], 'Art. 59.º, n.º 2, do CSC.');
+  N('orgs', 'cq14', 'Os gerentes respondem perante a sociedade pelos danos causados com violação dos seus deveres:', ['Salvo se provarem que procederam sem culpa', 'Apenas se a sociedade provar o dolo', 'Nunca, porque representam a sociedade', 'Só se forem sócios'], 'Art. 72.º, n.º 1, do CSC: a culpa presume-se.');
+  N('insolv', 'cq15', 'O devedor deve requerer a declaração da sua insolvência no prazo de:', ['30 dias após conhecer a situação de insolvência', '60 dias após o primeiro incumprimento', '1 ano', '10 dias'], 'Art. 18.º, n.º 1, do CIRE.');
+  N('insolv', 'cq16', 'Com a declaração de insolvência, os poderes de administração e disposição dos bens da massa passam:', ['Para o administrador da insolvência', 'Para os credores', 'Para o juiz', 'Para o Ministério Público'], 'Art. 81.º, n.º 1, do CIRE.');
+})();
+
+/* ---------- TEORIA GERAL DO DIREITO CIVIL: casos práticos com resolução-modelo e questões (texto original do LEXDESK) ---------- */
+(function () {
+  function C(id, titulo, enunciado, perguntas, topicos, modelo) { CASOS.push({ id: id, d: 'tgdc', titulo: titulo, enunciado: enunciado, perguntas: perguntas, topicos: topicos }); CASOS_MODELO[id] = modelo; }
+
+  C('caso-tgdc1', 'O quadro que não era do pintor',
+    'Nuno, colecionador, compra a Olga, por 30.000 €, um quadro que ambos julgam ser de um pintor famoso; Olga sabia que Nuno só o queria por essa autoria. Mais tarde prova-se que é uma cópia. Noutro negócio, Olga convenceu Pedro a comprar-lhe uma jarra «do século XVIII», sabendo que era moderna, mostrando-lhe um certificado falso.',
+    ['Nuno pode anular a compra do quadro?', 'Pedro pode anular a compra da jarra? Com que fundamento?', 'Em que prazo?'],
+    ['Erro sobre o objeto: essencialidade conhecida do declaratário (arts. 251.º e 247.º do CC).', 'Dolo: artifício com intenção de enganar (arts. 253.º e 254.º do CC).', 'Prazo de um ano a contar da cessação do vício; sem prazo se o negócio não estiver cumprido (art. 287.º do CC).'],
+    [['Nuno incorreu em erro sobre uma qualidade do objeto (a autoria do quadro). O erro sobre o objeto torna o negócio anulável nos termos do art. 247.º do CC, por remissão do art. 251.º: basta que o declaratário soubesse, ou tivesse obrigação de saber, que o elemento sobre o qual recaiu o erro era essencial para o declarante. Olga sabia que Nuno só queria o quadro pela autoria. Nuno pode anular o negócio, mesmo que Olga estivesse de boa-fé.'],
+      ['Pedro foi enganado por uma sugestão e um artifício (o certificado falso) usados por Olga com a intenção de o induzir em erro: há dolo (art. 253.º, n.º 1, do CC). O declarante cuja vontade tenha sido determinada por dolo pode anular a declaração (art. 254.º, n.º 1, do CC). Além disso, Olga responde pelos danos causados, por violação da boa-fé na formação do contrato (art. 227.º do CC).'],
+      ['A anulabilidade pode ser arguida dentro do ano subsequente à cessação do vício, isto é, à descoberta do erro; se o negócio ainda não estiver cumprido, pode ser arguida sem dependência de prazo (art. 287.º do CC). Anulados os negócios, cada parte restitui o que recebeu (art. 289.º do CC).']]);
+
+  C('caso-tgdc2', 'A procuração e a venda ao primo',
+    'Rui deu a Sara uma procuração por escritura pública para vender a sua casa «pelo melhor preço possível». Sara vendeu-a ao seu primo Tiago por 120.000 €, quando o valor de mercado era de 200.000 €, e Tiago sabia disso. Rui quer desfazer o negócio.',
+    ['Sara tinha poderes de representação?', 'O negócio vincula Rui?', 'E se Tiago não soubesse de nada?'],
+    ['Procuração com a forma exigida para o negócio (art. 262.º, n.º 2, do CC).', 'Abuso de representação: poderes formais usados contra o fim, com conhecimento da contraparte (art. 269.º do CC); ineficácia.', 'Proteção da contraparte de boa-fé; responsabilidade de Sara perante Rui.'],
+    [['Sim. A procuração foi outorgada por escritura pública, forma adequada para a venda de um imóvel (art. 262.º, n.º 2, do CC), e atribuía a Sara poderes para vender a casa. Formalmente, Sara agiu dentro dos limites da procuração.'],
+      ['Sara usou os poderes contra o fim para que foram conferidos («pelo melhor preço possível»), vendendo muito abaixo do valor a um familiar: há abuso de representação. O negócio é ineficaz em relação a Rui se a outra parte conhecia ou devia conhecer o abuso (art. 269.º do CC), aplicando-se o regime da representação sem poderes. Tiago sabia; Rui não fica vinculado, salvo se ratificar.'],
+      ['Se Tiago não conhecesse nem devesse conhecer o abuso, o negócio produziria efeitos na esfera de Rui, por ter sido celebrado dentro dos poderes formais da procuração. Rui ficaria vinculado à venda, restando-lhe exigir de Sara a indemnização pelos danos, por violação dos deveres do mandato ou da relação subjacente à procuração.']]);
+
+  C('caso-tgdc3', 'A dívida esquecida',
+    'Ulisses vendeu a Vasco, em março de 2019, uma partida de material de construção para a obra da casa deste. Vasco, que não é comerciante, nunca pagou. Ulisses, comerciante, propõe a ação em maio de 2022. Vasco contesta dizendo apenas «isso já prescreveu».',
+    ['Que prazo de prescrição se aplica?', 'Qual a natureza dessa prescrição?', 'O que acontece no processo?'],
+    ['Prescrição presuntiva de dois anos dos créditos de comerciantes por objetos vendidos a não comerciantes (art. 317.º, alínea b), do CC).', 'Presunção de cumprimento, ilidível só por confissão (arts. 312.º e 313.º do CC); a invocação é incompatível com a negação da dívida.', 'Contestação de Vasco e possibilidade de confissão tácita (art. 314.º do CC).'],
+    [['Trata-se de um crédito de um comerciante por objetos vendidos a quem não é comerciante e não os destinou ao seu comércio. Aplica-se a prescrição de dois anos do art. 317.º, alínea b), do CC, que se conta desde o vencimento, em 2019. Em maio de 2022, o prazo estava decorrido.'],
+      ['É uma prescrição presuntiva: funda-se na presunção de que a dívida foi paga (art. 312.º do CC). Por isso, só pode ser ilidida por confissão do devedor, originário ou sucessor (art. 313.º, n.º 1, do CC). Para a invocar, o devedor tem de, em coerência, alegar que pagou, e não que a dívida existe mas já prescreveu.'],
+      ['Ao dizer apenas «isso já prescreveu», sem afirmar que pagou, Vasco adota um comportamento incompatível com a presunção de cumprimento. Considera-se confessada a dívida se o devedor se recusar a depor ou praticar em juízo atos incompatíveis com a presunção de cumprimento (art. 314.º do CC). A presunção fica ilidida e Vasco será condenado a pagar.']]);
+
+  function N(t, id, q, o, e) { QUESTOES.push({ id: id, d: 'tgdc', t: t, q: q, o: o, a: 0, e: e }); }
+  N('pess', 'tgq1', 'A personalidade jurídica adquire-se:', ['No momento do nascimento completo e com vida', 'Com a conceção', 'Com o registo de nascimento', 'Aos 18 anos'], 'Art. 66.º, n.º 1, do CC.');
+  N('pess', 'tgq2', 'Os negócios praticados por um menor sem capacidade são, em regra:', ['Anuláveis', 'Nulos', 'Inexistentes', 'Válidos'], 'Art. 125.º do CC.');
+  N('pess', 'tgq3', 'No regime do maior acompanhado, as medidas de acompanhamento:', ['São decididas pelo tribunal e limitam-se ao necessário', 'Implicam sempre a perda total da capacidade', 'São fixadas pelo médico', 'Aplicam-se automaticamente aos 65 anos'], 'Arts. 138.º e 145.º do CC.');
+  N('coisas', 'tgq4', 'As coisas móveis ligadas materialmente ao prédio com caráter de permanência são:', ['Partes integrantes', 'Coisas acessórias', 'Frutos', 'Benfeitorias voluptuárias'], 'Art. 204.º, n.º 3, do CC.');
+  N('coisas', 'tgq5', 'As despesas destinadas a impedir que a coisa se perca, destrua ou deteriore são benfeitorias:', ['Necessárias', 'Úteis', 'Voluptuárias', 'Acessórias'], 'Art. 216.º, n.º 3, do CC.');
+  N('neg', 'tgq6', 'O silêncio vale como declaração negocial:', ['Quando esse valor lhe seja atribuído por lei, uso ou convenção', 'Sempre', 'Nunca', 'Quando o proponente o determine'], 'Art. 218.º do CC.');
+  N('neg', 'tgq7', 'A inobservância da forma legalmente prescrita gera, em regra:', ['Nulidade', 'Anulabilidade', 'Ineficácia relativa', 'Mera irregularidade'], 'Art. 220.º do CC.');
+  N('neg', 'tgq8', 'Segundo o art. 236.º do CC, a declaração vale, em regra, com o sentido que:', ['Um destinatário médio, no lugar do destinatário real, retiraria', 'O declarante quis, ainda que oculto', 'O juiz considerar mais justo', 'For mais favorável ao declarante'], 'Teoria da impressão do destinatário.');
+  N('vic', 'tgq9', 'O negócio simulado é:', ['Nulo', 'Anulável', 'Válido entre as partes', 'Ineficaz apenas perante terceiros'], 'Art. 240.º, n.º 2, do CC.');
+  N('vic', 'tgq10', 'A nulidade do negócio simulado não pode ser arguida pelo simulador contra:', ['Terceiro de boa-fé', 'O outro simulador', 'O Ministério Público', 'Os herdeiros do outro simulador'], 'Art. 243.º, n.º 1, do CC.');
+  N('vic', 'tgq11', 'A declaração negocial obtida por coação física:', ['Não produz qualquer efeito', 'É anulável', 'É válida', 'É nula apenas se houver dano'], 'Art. 246.º do CC.');
+  N('vic', 'tgq12', 'O erro sobre os motivos que não se refira à pessoa ou ao objeto só é causa de anulação se:', ['As partes tiverem reconhecido, por acordo, a essencialidade do motivo', 'O motivo for importante para o declarante', 'O declaratário estiver de má-fé', 'O negócio for oneroso'], 'Art. 252.º, n.º 1, do CC.');
+  N('inval', 'tgq13', 'A anulabilidade deve ser arguida, em regra:', ['Dentro do ano subsequente à cessação do vício', 'A todo o tempo', 'Em 20 anos', 'Em 30 dias'], 'Art. 287.º, n.º 1, do CC.');
+  N('inval', 'tgq14', 'O negócio nulo:', ['Não pode ser confirmado', 'Pode ser confirmado pela parte protegida', 'Convalida-se ao fim de um ano', 'Só é nulo se uma das partes o requerer em 30 dias'], 'A confirmação é própria dos negócios anuláveis (art. 288.º do CC).');
+  N('inval', 'tgq15', 'Declarada a nulidade ou anulado o negócio:', ['Cada parte tem de devolver o que recebeu', 'Cada parte fica com o que recebeu', 'Só o culpado restitui', 'Aplica-se apenas para o futuro'], 'Art. 289.º, n.º 1, do CC.');
+  N('repr', 'tgq16', 'O negócio celebrado em nome de outrem sem poderes de representação é:', ['Ineficaz em relação a este, salvo ratificação', 'Nulo', 'Anulável pelo representado em um ano', 'Válido'], 'Art. 268.º, n.º 1, do CC.');
+  N('repr', 'tgq17', 'A procuração deve revestir, salvo disposição em contrário:', ['A mesma forma que a lei exige para o negócio a celebrar pelo procurador', 'Sempre a forma de escritura pública', 'Forma livre', 'A forma de documento autenticado'], 'Art. 262.º, n.º 2, do CC.');
+  N('tempo', 'tgq18', 'O prazo ordinário de prescrição é de:', ['20 anos', '10 anos', '15 anos', '30 anos'], 'Art. 309.º do CC.');
+  N('tempo', 'tgq19', 'A prescrição:', ['Tem de ser invocada por quem dela beneficia, não podendo ser suprida de ofício', 'É sempre conhecida oficiosamente', 'Só opera com sentença', 'Não se interrompe'], 'Art. 303.º do CC.');
+  N('tempo', 'tgq20', 'O prazo de caducidade, em regra:', ['Não se suspende nem se interrompe', 'Interrompe-se com a citação', 'Suspende-se nas férias judiciais', 'É sempre de 20 anos'], 'Art. 328.º do CC.');
+  N('exerc', 'tgq21', 'É ilegítimo o exercício de um direito quando o titular exceda manifestamente os limites impostos:', ['Da boa-fé, dos bons costumes ou da finalidade social ou económica do direito', 'Pela vontade da outra parte', 'Pelo interesse público em geral', 'Pela equidade'], 'Art. 334.º do CC.');
+  N('exerc', 'tgq22', 'Àquele que invocar um direito cabe provar:', ['Os factos constitutivos do direito alegado', 'Os factos extintivos', 'Todos os factos do processo', 'Nada, se houver documento'], 'Art. 342.º, n.º 1, do CC.');
+})();
+
+/* Matéria explicada — Direito Comercial e das Sociedades (texto original do LEXDESK) */
+var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
+GUIAS.com = {
+  atos: {
+    sub: 'Quando um ato é comercial, quem é comerciante, os atos mistos e as especialidades do regime comercial.',
+    ideia: 'O Direito Comercial aplica-se a uma parte da vida económica: os atos de comércio e os comerciantes. O Código Comercial combina dois critérios: um objetivo (atos regulados na lei comercial, seja quem for que os pratique) e um subjetivo (os atos praticados por comerciantes, salvo se forem exclusivamente civis). Qualificar um ato como comercial importa porque o regime muda: há solidariedade, juros próprios e presunções que não existem no Direito Civil.',
+    conceitos: [
+      ['Atos objetivamente comerciais', 'Os atos especialmente regulados no Código Comercial ou em legislação comercial, independentemente da qualidade de quem os pratica (art. 2.º, 1.ª parte, do CCom).'],
+      ['Atos subjetivamente comerciais', 'Os contratos e as obrigações de comerciantes que não sejam de natureza exclusivamente civil, se o contrário não resultar do próprio ato (art. 2.º, 2.ª parte, do CCom).'],
+      ['Comerciantes', 'As pessoas que, tendo capacidade para praticar atos de comércio, fazem deste profissão, e as sociedades comerciais (art. 13.º do CCom).'],
+      ['Atos mistos', 'Atos que são comerciais apenas para uma das partes. Regem-se, em regra, pela lei comercial quanto a todos os contratantes (art. 99.º do CCom).'],
+      ['Empresas comerciais', 'O art. 230.º do CCom enumera atividades exercidas de forma organizada que se consideram comerciais, como a indústria transformadora e certos fornecimentos.']
+    ],
+    regime: [
+      ['Solidariedade', 'Nas obrigações comerciais, os codevedores são solidários, salvo estipulação em contrário (art. 100.º do CCom), ao contrário do Direito Civil, em que a regra é a conjunção (art. 513.º do CC).', 'O fiador de obrigação comercial também responde solidariamente, sem benefício da excussão (art. 101.º do CCom).'],
+      ['Dívidas do cônjuge comerciante', 'As dívidas comerciais do cônjuge comerciante presumem-se contraídas no exercício do seu comércio (art. 15.º do CCom).', 'Esta presunção liga-se ao regime das dívidas dos cônjuges: as dívidas contraídas no exercício do comércio responsabilizam, em certos regimes, ambos os cônjuges (art. 1691.º, n.º 1, alínea d), do CC).'],
+      ['Juros comerciais', 'Os créditos de empresas comerciais vencem juros moratórios a uma taxa supletiva própria, fixada periodicamente por referência à taxa do Banco Central Europeu (art. 102.º do CCom).', 'Nas transações comerciais entre empresas aplicam-se ainda regras especiais contra os atrasos de pagamento.']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['O ato está regulado na lei comercial?', 'Se sim, é objetivamente comercial (art. 2.º, 1.ª parte).'],
+      ['Quem o pratica é comerciante?', 'Pessoa singular que faz do comércio profissão, ou sociedade comercial (art. 13.º).'],
+      ['É exclusivamente civil?', 'Se não for, e for de comerciante, é subjetivamente comercial (art. 2.º, 2.ª parte).'],
+      ['É misto?', 'Lei comercial aplica-se a todos, com ressalvas (art. 99.º).'],
+      ['Consequências', 'Solidariedade, juros comerciais, presunções.']
+    ] },
+    exemplo: ['Carlos e Daniel, ambos comerciantes, compram juntos a uma sociedade um lote de mercadoria para revenda, por 20.000 €. Não pagam. A vendedora pode exigir os 20.000 € só a Carlos?',
+      'A compra para revenda é um ato objetivamente comercial (art. 463.º do CCom) e foi praticado por comerciantes no exercício do comércio. A obrigação é comercial.',
+      'Nas obrigações comerciais, os codevedores são solidários, salvo estipulação em contrário (art. 100.º do CCom). A vendedora pode exigir a totalidade a Carlos, que terá depois direito de regresso contra Daniel pela sua parte. No Direito Civil, a regra seria a conjunção, e cada um só responderia por metade.']
+    ,
+    erros: [
+      'Aplicar a regra civil da conjunção a obrigações comerciais.',
+      'Considerar comerciante quem pratica atos de comércio de forma ocasional.',
+      'Esquecer que os atos mistos se regem, em regra, pela lei comercial para ambas as partes.',
+      'Ignorar a presunção do art. 15.º do CCom nas dívidas do cônjuge comerciante.'
+    ],
+    artigos: ['art. 2.º do CCom', 'art. 13.º do CCom', 'art. 15.º do CCom', 'art. 99.º do CCom', 'art. 100.º do CCom', 'art. 101.º do CCom', 'art. 102.º do CCom', 'art. 230.º do CCom', 'art. 463.º do CCom', 'art. 513.º do CC', 'art. 1691.º do CC']
+  },
+
+  tit: {
+    sub: 'Letra, livrança e cheque: características dos títulos de crédito, endosso, aval, protesto e prescrição.',
+    ideia: 'Um título de crédito é um documento que incorpora um direito: quem tem o título, tem o direito, e pode transmiti-lo de forma simples, sem as formalidades da cessão de créditos. Para que circulem com segurança, os títulos assentam em princípios próprios: o que conta é o que está escrito (literalidade), cada assinatura vale por si (autonomia) e, em regra, o título desliga-se do negócio que lhe deu origem (abstração).',
+    conceitos: [
+      ['Incorporação', 'O direito está ligado ao documento: para o exercer, é preciso apresentar o título.'],
+      ['Literalidade', 'O conteúdo e a extensão do direito são os que resultam do texto do título.'],
+      ['Autonomia', 'Cada pessoa que assina o título assume uma obrigação própria, independente da validade das outras assinaturas.'],
+      ['Abstração', 'As exceções baseadas na relação fundamental (o negócio que originou o título) não podem, em regra, ser opostas ao portador de boa-fé que não interveio nesse negócio.'],
+      ['Letra, livrança e cheque', 'A letra é uma ordem de pagamento dada pelo sacador ao sacado; a livrança é uma promessa de pagamento do subscritor; o cheque é uma ordem de pagamento sobre um banco, com provisão.']
+    ],
+    regime: [
+      ['Endosso', 'A letra transmite-se por endosso, escrito no título, que transfere todos os direitos dele resultantes. O endossante garante, em regra, a aceitação e o pagamento.', 'O portador legítimo é quem justifica o seu direito por uma série ininterrupta de endossos.'],
+      ['Aval', 'O aval garante o pagamento da letra, no todo ou em parte. O avalista responde da mesma maneira que a pessoa por ele afiançada, e a sua obrigação mantém-se mesmo que a obrigação garantida seja nula por qualquer razão que não seja um vício de forma.', 'Ao contrário do fiador, o avalista não pode invocar o benefício da excussão: responde solidariamente com os restantes obrigados.'],
+      ['Prescrição', 'As ações contra o aceitante da letra (e o subscritor da livrança) prescrevem em três anos a contar do vencimento; as do portador contra endossantes e sacador, em um ano a contar do protesto ou do vencimento.', 'As ações do portador do cheque contra os obrigados prescrevem em seis meses a contar do termo do prazo de apresentação. Prescrito o direito cambiário, o credor pode ainda invocar a relação fundamental, mas perde as vantagens do título.']
+    ],
+    esquema: { tipo: 'tabela', cab: ['', 'Letra', 'Livrança', 'Cheque'], linhas: [
+      ['Natureza', 'Ordem de pagamento', 'Promessa de pagamento', 'Ordem de pagamento sobre banco'],
+      ['Obrigado principal', 'Aceitante (sacado que aceita)', 'Subscritor', 'Sacador (com provisão no banco)'],
+      ['Prazo de prescrição principal', '3 anos contra o aceitante', '3 anos contra o subscritor', '6 meses após o prazo de apresentação'],
+      ['Uso típico', 'Comércio entre empresas', 'Garantia de créditos bancários («livrança em branco»)', 'Meio de pagamento']
+    ] },
+    exemplo: ['Eva subscreveu uma livrança de 10.000 € a favor do banco, avalizada pelo pai, Fausto, para garantir um empréstimo. Eva não paga. Fausto diz que o banco tem de executar primeiro os bens de Eva. Tem razão?',
+      'O avalista responde da mesma maneira que o avalizado: Fausto é obrigado cambiário autónomo, solidariamente responsável com a subscritora.',
+      'O avalista não goza do benefício da excussão prévia, que é próprio da fiança civil (art. 638.º do CC). O banco pode exigir os 10.000 € diretamente a Fausto, que terá depois direito de regresso contra Eva. A ação cambiária contra os obrigados principais prescreve em três anos a contar do vencimento.']
+    ,
+    erros: [
+      'Confundir aval com fiança e atribuir ao avalista o benefício da excussão.',
+      'Opor ao portador de boa-fé exceções do negócio subjacente em que ele não interveio.',
+      'Esquecer os prazos curtos de prescrição cambiária.',
+      'Confundir endosso (transmissão do título) com aval (garantia).'
+    ],
+    artigos: ['art. 638.º do CC', 'art. 100.º do CCom']
+  },
+
+  socg: {
+    sub: 'Contrato de sociedade, personalidade jurídica, capacidade, responsabilidade antes do registo e desconsideração da personalidade.',
+    ideia: 'A sociedade comercial é uma pessoa jurídica distinta dos sócios, com património próprio. Nasce de um contrato (ou de um ato unilateral, nas sociedades unipessoais) e só ganha personalidade com o registo definitivo. Esta separação é o seu grande atrativo, porque limita o risco dos sócios, mas também a razão por que a lei e os tribunais reagem quando ela é usada de forma abusiva.',
+    conceitos: [
+      ['Tipos de sociedade', 'Sociedade em nome coletivo, por quotas, anónima e em comandita; os tipos são taxativos (art. 1.º, n.os 2 e 3, do CSC).'],
+      ['Personalidade jurídica', 'As sociedades gozam de personalidade jurídica a partir da data do registo definitivo do contrato (art. 5.º do CSC).'],
+      ['Forma do contrato', 'O contrato deve ser reduzido a escrito, com as assinaturas reconhecidas presencialmente, salvo se for exigida forma mais solene para transmitir os bens que os sócios entregam (art. 7.º, n.º 1, do CSC).'],
+      ['Capacidade', 'A capacidade da sociedade compreende os direitos e deveres necessários ou úteis à prossecução do seu fim, excetuados os vedados por lei ou inseparáveis da personalidade singular (art. 6.º, n.º 1, do CSC).'],
+      ['Desconsideração da personalidade', 'Construção doutrinal e jurisprudencial que permite, em casos excecionais de abuso, ignorar a separação entre a sociedade e os sócios, responsabilizando estes (por exemplo, confusão de patrimónios ou subcapitalização intencional).']
+    ],
+    regime: [
+      ['Atos antes do registo', 'Pelos negócios realizados em nome de uma sociedade por quotas, anónima ou em comandita por ações, entre a celebração do contrato e o registo definitivo, respondem ilimitada e solidariamente os que agiram em representação dela e os sócios que os autorizaram (art. 40.º, n.º 1, do CSC).', 'Com o registo, a sociedade fica automaticamente com os direitos e obrigações resultantes dos negócios celebrados antes dele, nos termos do art. 19.º do CSC.'],
+      ['Liberalidades', 'Não são, em regra, consideradas contrárias ao fim da sociedade as liberalidades habituais, tendo em conta a época e a situação da própria sociedade (art. 6.º, n.º 2, do CSC).', 'Garantias prestadas a dívidas de outras entidades só são consideradas conformes ao fim se houver justificado interesse próprio ou se se tratar de sociedade com a qual exista relação de domínio ou de grupo (art. 6.º, n.º 3, do CSC).'],
+      ['Sociedade unipessoal por quotas', 'Pode ser constituída por um único sócio, pessoa singular ou coletiva (art. 270.º-A do CSC).', 'Para evitar a confusão de patrimónios, os negócios entre o sócio único e a sociedade têm de servir o objeto social e obedecer a requisitos de forma; a violação dessas regras pode levar à responsabilidade ilimitada do sócio (art. 270.º-F do CSC).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Que tipo de sociedade?', 'Nome coletivo, quotas, anónima, comandita (art. 1.º do CSC).'],
+      ['Já tem personalidade?', 'Registo definitivo (art. 5.º do CSC).'],
+      ['O ato está dentro da capacidade?', 'Fim lucrativo; liberalidades e garantias (art. 6.º do CSC).'],
+      ['Quem responde pelas dívidas?', 'A sociedade; os sócios, conforme o tipo e as exceções (arts. 40.º, 175.º, 197.º do CSC).'],
+      ['Há abuso da personalidade?', 'Desconsideração, em casos excecionais.']
+    ] },
+    exemplo: ['Gil e Helena assinam o contrato de uma sociedade por quotas e, antes do registo, Gil, em nome da sociedade, compra equipamento por 30.000 €, com o acordo de Helena. A sociedade nunca chega a ser registada e o fornecedor não é pago. Quem responde?',
+      'Antes do registo definitivo, a sociedade não tem personalidade jurídica (art. 5.º do CSC). Pelos negócios realizados em seu nome nesse período respondem ilimitada e solidariamente os que agiram em representação dela (Gil) e os sócios que autorizaram os negócios (Helena) (art. 40.º, n.º 1, do CSC).',
+      'O fornecedor pode exigir os 30.000 € a Gil ou a Helena, por inteiro. Se a sociedade viesse a ser registada, assumiria esses negócios e, a partir daí, responderia por eles (art. 19.º do CSC).']
+    ,
+    erros: [
+      'Atribuir personalidade jurídica à sociedade antes do registo definitivo.',
+      'Pensar que os sócios de uma sociedade por quotas nunca respondem pelas dívidas sociais.',
+      'Usar a desconsideração da personalidade como regra, e não como exceção.',
+      'Considerar contrária ao fim social qualquer liberalidade, mesmo as usuais.'
+    ],
+    artigos: ['art. 1.º do CSC', 'art. 5.º do CSC', 'art. 6.º do CSC', 'art. 7.º do CSC', 'art. 19.º do CSC', 'art. 40.º do CSC', 'art. 270.º-A do CSC', 'art. 270.º-F do CSC']
+  },
+
+  tipos: {
+    sub: 'As diferenças essenciais entre sociedade em nome coletivo, por quotas, anónima e em comandita.',
+    ideia: 'O tipo de sociedade determina, acima de tudo, quanto arriscam os sócios. Na sociedade em nome coletivo, os sócios respondem com o seu património pelas dívidas da sociedade; na por quotas e na anónima, em regra, arriscam apenas o que investiram. Entre estas duas, a diferença está na organização e na circulação das participações: quotas mais pessoais, ações mais livres.',
+    conceitos: [
+      ['Sociedade em nome coletivo', 'O sócio responde pela sua entrada e, além disso, pelas obrigações sociais, subsidiariamente em relação à sociedade e solidariamente com os outros sócios (art. 175.º, n.º 1, do CSC).'],
+      ['Sociedade por quotas', 'O capital divide-se em quotas e cada sócio responde solidariamente pela realização de todas as entradas previstas; pelas dívidas da sociedade responde apenas o património social (art. 197.º do CSC).'],
+      ['Capital da sociedade por quotas', 'É livremente fixado no contrato e corresponde à soma das quotas (art. 201.º do CSC); cada quota tem um valor nominal mínimo de um euro.'],
+      ['Sociedade anónima', 'O capital divide-se em ações e cada sócio limita a sua responsabilidade ao valor das ações que subscreveu (art. 271.º do CSC). O capital social mínimo é de 50.000 € (art. 276.º do CSC).'],
+      ['Sociedade em comandita', 'Combina sócios comanditados, que respondem como os sócios em nome coletivo, e sócios comanditários, que respondem apenas pela sua entrada (art. 465.º do CSC).']
+    ],
+    regime: [
+      ['Transmissão das participações', 'A cessão de quotas a terceiros depende, em regra, do consentimento da sociedade e exige forma escrita (arts. 228.º e 229.º do CSC).', 'As ações são, em regra, livremente transmissíveis, embora o contrato possa estabelecer limitações (art. 328.º do CSC).'],
+      ['Organização', 'A sociedade por quotas é administrada por gerentes (art. 252.º do CSC); a anónima tem um conselho de administração ou administrador único, e órgãos de fiscalização obrigatórios, segundo os modelos do art. 278.º do CSC.', 'A sociedade anónima é o tipo indicado para empresas de maior dimensão e para o acesso ao mercado de capitais.'],
+      ['Responsabilidade do sócio da sociedade por quotas', 'Além da sua própria entrada, cada sócio responde solidariamente pelas entradas dos outros (art. 197.º, n.º 1, do CSC).', 'Uma vez realizadas todas as entradas, os sócios deixam de responder com o seu património pelas dívidas sociais, salvo situações excecionais.']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Tipo', 'Responsabilidade dos sócios', 'Participação', 'Capital mínimo'], linhas: [
+      ['Nome coletivo', 'Ilimitada, subsidiária e solidária', 'Partes sociais', 'Não há'],
+      ['Por quotas', 'Limitada às entradas (solidária quanto a todas)', 'Quotas', 'Livre (1 € por quota)'],
+      ['Anónima', 'Limitada às ações subscritas', 'Ações', '50.000 €'],
+      ['Comandita', 'Comanditados: ilimitada; comanditários: limitada', 'Partes ou ações', 'Depende da modalidade']
+    ] },
+    exemplo: ['Inês e João constituem uma sociedade por quotas com capital de 10.000 €, em quotas iguais. Inês entrou com 5.000 €; João só entrou com 2.000 € dos 5.000 € a que se obrigou. A sociedade fica com dívidas de 50.000 € e não tem bens. Os credores podem atingir o património de Inês?',
+      'Na sociedade por quotas, cada sócio responde solidariamente pela realização de todas as entradas previstas (art. 197.º, n.º 1, do CSC). Faltam 3.000 € da entrada de João.',
+      'Os credores podem exigir a Inês, através da sociedade, os 3.000 € em falta da entrada de João, nos termos do regime das entradas. Para além disso, o património pessoal de Inês não responde pelas dívidas sociais. Inês terá direito de regresso contra João.']
+    ,
+    erros: [
+      'Dizer que na sociedade por quotas os sócios nunca respondem com o seu património: respondem solidariamente pelas entradas em falta.',
+      'Esquecer o capital mínimo da sociedade anónima.',
+      'Tratar a responsabilidade do sócio em nome coletivo como direta e principal: é subsidiária.',
+      'Pensar que as quotas circulam tão livremente como as ações.'
+    ],
+    artigos: ['art. 175.º do CSC', 'art. 197.º do CSC', 'art. 201.º do CSC', 'art. 228.º do CSC', 'art. 252.º do CSC', 'art. 271.º do CSC', 'art. 276.º do CSC', 'art. 278.º do CSC', 'art. 328.º do CSC', 'art. 465.º do CSC']
+  },
+
+  orgs: {
+    sub: 'Deliberações dos sócios (nulas e anuláveis), deveres e responsabilidade dos gerentes e administradores.',
+    ideia: 'A vontade da sociedade forma-se em dois níveis: os sócios decidem as grandes questões por deliberação, e os gerentes ou administradores gerem o dia a dia. Os dois níveis têm controlos próprios. As deliberações podem ser nulas ou anuláveis, e cada vício tem um prazo e uma via de reação. Os administradores devem agir com cuidado e lealdade, e respondem pelos danos que causarem à sociedade, aos sócios e aos credores.',
+    conceitos: [
+      ['Formas de deliberação', 'Os sócios podem deliberar em assembleia geral convocada, em assembleia universal, por deliberação unânime por escrito ou por voto escrito, conforme o tipo de sociedade (art. 53.º do CSC).'],
+      ['Deliberações nulas', 'Por exemplo, as tomadas em assembleia não convocada (salvo se todos estiverem presentes ou representados), as que tenham conteúdo não sujeito a deliberação dos sócios, ou contrário aos bons costumes ou a normas imperativas (art. 56.º do CSC).'],
+      ['Deliberações anuláveis', 'As que violem a lei, quando não caiba a nulidade, ou o contrato de sociedade, e as abusivas, destinadas a obter vantagens especiais em prejuízo da sociedade ou de outros sócios (art. 58.º do CSC).'],
+      ['Deveres dos administradores', 'Deveres de cuidado, com a diligência de um gestor criterioso e ordenado, e deveres de lealdade, no interesse da sociedade (art. 64.º do CSC).'],
+      ['Regra da decisão empresarial', 'A responsabilidade é excluída se o administrador provar que atuou de forma informada, sem qualquer interesse pessoal em jogo e segundo critérios de racionalidade empresarial (art. 72.º, n.º 2, do CSC).']
+    ],
+    regime: [
+      ['Ação de anulação', 'A anulabilidade pode ser arguida pelo órgão de fiscalização ou por qualquer sócio que não tenha votado a favor do sentido que fez vencimento nem posteriormente tenha aprovado a deliberação (art. 59.º, n.º 1, do CSC).', 'A ação tem de dar entrada no prazo de 30 dias, contados nos termos do art. 59.º, n.º 2, do CSC. A nulidade não tem prazo para ser invocada, nos termos gerais.'],
+      ['Responsabilidade perante a sociedade', 'Os gerentes ou administradores respondem para com a sociedade pelos danos causados por atos ou omissões praticados com violação dos deveres legais ou contratuais, a menos que provem que não tiveram culpa (art. 72.º, n.º 1, do CSC).', 'A culpa presume-se. A sociedade pode agir por deliberação dos sócios e, na sua falta, os sócios com certa percentagem de capital podem propor a ação social (arts. 75.º e 77.º do CSC).'],
+      ['Responsabilidade perante credores', 'Os gerentes ou administradores respondem para com os credores da sociedade quando, pela inobservância culposa de disposições destinadas à proteção destes, o património social se torne insuficiente para a satisfação dos respetivos créditos (art. 78.º do CSC).', 'Respondem ainda perante sócios e terceiros pelos prejuízos que diretamente lhes causem no exercício das funções (art. 79.º do CSC).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Vício', 'Exemplo', 'Quem invoca', 'Prazo'], linhas: [
+      ['Nulidade (art. 56.º do CSC)', 'Assembleia não convocada sem todos presentes', 'Qualquer interessado', 'A todo o tempo, nos termos gerais'],
+      ['Anulabilidade (art. 58.º do CSC)', 'Violação do contrato social; deliberação abusiva', 'Sócio que não votou a favor; órgão de fiscalização', '30 dias (art. 59.º do CSC)']
+    ] },
+    exemplo: ['Numa sociedade por quotas com três sócios, Luís (60%) convoca uma assembleia, sem convocar Marta (10%), e, com o voto de Nuno (30%), aprova um aumento do seu próprio salário de gerente para o triplo, sem qualquer justificação. Como pode Marta reagir?',
+      'A assembleia não foi regularmente convocada quanto a Marta, e nem todos os sócios estiveram presentes ou representados: a deliberação é nula (art. 56.º, n.º 1, alínea a), do CSC). A nulidade não tem prazo para ser invocada.',
+      'Ainda que a assembleia tivesse sido regular, a deliberação poderia ser anulável por abuso, se servisse para Luís obter uma vantagem especial em prejuízo da sociedade ou dos outros sócios (art. 58.º, n.º 1, alínea b), do CSC); nesse caso, Marta teria de propor a ação de anulação em 30 dias (art. 59.º do CSC). Luís pode ainda responder perante a sociedade por violação do dever de lealdade (arts. 64.º e 72.º do CSC).']
+    ,
+    erros: [
+      'Tratar como anulável uma deliberação tomada em assembleia não convocada.',
+      'Deixar passar os 30 dias para a ação de anulação.',
+      'Esquecer que a culpa do administrador se presume na responsabilidade perante a sociedade.',
+      'Confundir responsabilidade perante a sociedade (art. 72.º) com responsabilidade perante credores (art. 78.º).'
+    ],
+    artigos: ['art. 53.º do CSC', 'art. 56.º do CSC', 'art. 58.º do CSC', 'art. 59.º do CSC', 'art. 64.º do CSC', 'art. 72.º do CSC', 'art. 75.º do CSC', 'art. 77.º do CSC', 'art. 78.º do CSC', 'art. 79.º do CSC']
+  },
+
+  insolv: {
+    sub: 'Situação de insolvência, dever de apresentação, efeitos da declaração, qualificação da insolvência e alternativas de recuperação.',
+    ideia: 'Quando uma empresa ou uma pessoa deixa de conseguir pagar as suas dívidas, a lei organiza um processo coletivo para repartir de forma justa o que resta entre os credores ou, sendo possível, recuperar a empresa. O Código da Insolvência e da Recuperação de Empresas (CIRE) regula tanto a liquidação como os planos de recuperação e o processo especial de revitalização (PER).',
+    conceitos: [
+      ['Situação de insolvência', 'Encontra-se em situação de insolvência o devedor que esteja impossibilitado de cumprir as suas obrigações vencidas (art. 3.º, n.º 1, do CIRE). Nas pessoas coletivas, pode ainda resultar de o passivo ser manifestamente superior ao ativo (art. 3.º, n.º 2).'],
+      ['Dever de apresentação', 'O devedor deve requerer a declaração da sua insolvência nos 30 dias seguintes à data do conhecimento da situação de insolvência (art. 18.º, n.º 1, do CIRE). As pessoas singulares não titulares de empresa estão dispensadas deste dever.'],
+      ['Administrador da insolvência', 'Nomeado pelo juiz na sentença de declaração, assume a administração e disposição dos bens da massa insolvente (arts. 52.º e 81.º do CIRE).'],
+      ['Qualificação da insolvência', 'A insolvência é culposa quando criada ou agravada por atuação dolosa ou com culpa grave do devedor ou dos seus administradores, nos três anos anteriores ao início do processo (art. 186.º do CIRE); caso contrário, é fortuita.'],
+      ['Processo especial de revitalização', 'Permite à empresa em situação económica difícil ou de insolvência iminente negociar com os credores um plano de recuperação, antes de ser declarada insolvente.']
+    ],
+    regime: [
+      ['Efeitos da declaração sobre o devedor', 'O devedor fica privado dos poderes de administração e disposição dos bens integrantes da massa insolvente, que passam para o administrador da insolvência (art. 81.º, n.º 1, do CIRE).', 'Os atos praticados pelo devedor em violação desta privação são ineficazes em relação à massa.'],
+      ['Resolução em benefício da massa', 'Podem ser resolvidos em benefício da massa os atos prejudiciais à massa praticados dentro dos dois anos anteriores ao início do processo (art. 120.º do CIRE); certos atos presumem-se prejudiciais sem admitir prova em contrário (art. 121.º do CIRE).', 'É um mecanismo mais simples do que a impugnação pauliana, porque dispensa a prova da má-fé em muitos casos.'],
+      ['Exoneração do passivo restante', 'O devedor pessoa singular pode obter a exoneração dos créditos que não forem pagos no processo ou nos três anos seguintes ao encerramento, cedendo durante esse período o rendimento disponível a um fiduciário (arts. 235.º e seguintes do CIRE).', 'É uma «segunda oportunidade» que não beneficia quem tenha agido de forma desonesta ou culposa na criação da insolvência.']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Há insolvência?', 'Impossibilidade de cumprir obrigações vencidas (art. 3.º do CIRE).'],
+      ['Quem requer?', 'O devedor (dever de apresentação em 30 dias), credores ou o Ministério Público.'],
+      ['Sentença de declaração', 'Nomeação do administrador da insolvência; apreensão dos bens.'],
+      ['Massa insolvente', 'Liquidação ou plano de insolvência; resolução de atos prejudiciais.'],
+      ['Qualificação', 'Culposa ou fortuita (arts. 185.º e 186.º do CIRE).'],
+      ['Pessoas singulares', 'Exoneração do passivo restante.']
+    ] },
+    exemplo: ['A sociedade Óptica Rio, Lda. tem salários e fornecedores em atraso há quatro meses e não consegue pagar. Um ano antes, o gerente vendeu ao irmão, por um quinto do valor, a carrinha da empresa. Que deve fazer o gerente e o que pode ser feito quanto à venda?',
+      'A sociedade está impossibilitada de cumprir as suas obrigações vencidas: está em situação de insolvência (art. 3.º, n.º 1, do CIRE). O gerente deve requerer a declaração de insolvência nos 30 dias seguintes ao conhecimento dessa situação (art. 18.º do CIRE); se não o fizer, presume-se a culpa grave para efeitos de qualificação (art. 186.º, n.º 3, do CIRE).',
+      'A venda da carrinha ao irmão por um quinto do valor, um ano antes, é um ato prejudicial à massa praticado dentro dos dois anos anteriores ao processo e com pessoa especialmente relacionada com o devedor. O administrador da insolvência pode resolvê-la em benefício da massa (arts. 120.º e 121.º do CIRE). O ato pode ainda contribuir para a qualificação da insolvência como culposa (art. 186.º, n.º 2, do CIRE).']
+    ,
+    erros: [
+      'Confundir dificuldades de tesouraria pontuais com insolvência.',
+      'Esquecer o prazo de 30 dias do dever de apresentação.',
+      'Usar a impugnação pauliana quando a resolução em benefício da massa é mais simples e eficaz.',
+      'Pensar que a exoneração do passivo restante se aplica às sociedades.'
+    ],
+    artigos: ['art. 3.º do CIRE', 'art. 18.º do CIRE', 'art. 81.º do CIRE', 'art. 120.º do CIRE', 'art. 121.º do CIRE', 'art. 186.º do CIRE', 'art. 235.º do CIRE']
+  }
+};
+
 /* Matéria explicada — Direito Constitucional */
 var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
 GUIAS.con = {
@@ -4773,7 +5189,7 @@ GUIAS.fam.acei = {
   ideia: 'Ser chamado à herança não é o mesmo que ser herdeiro: é preciso aceitar. Enquanto ninguém aceita, a herança está jacente e é administrada provisoriamente. A aceitação pode ser expressa ou tácita, e o herdeiro pode escolher entre aceitar pura e simplesmente ou a benefício de inventário, o que muda a forma de provar o limite da sua responsabilidade pelas dívidas. Quem não quer, repudia, por um ato formal e irrevogável.',
   conceitos: [
     ['Herança jacente', 'A herança aberta, que ninguém aceitou ainda nem foi declarada vaga a favor do Estado (art. 2046.º do CC). O chamado pode praticar atos urgentes de administração sem que isso implique aceitação (art. 2047.º do CC).'],
-    ['Aceitação expressa e tácita', 'A aceitação é expressa quando há declaração escrita de aceitar ou de assumir o título de herdeiro; é tácita quando se deduz de factos que, com toda a probabilidade, a revelam (arts. 2056.º e 217.º do CC). Simples atos de administração não implicam aceitação tácita (art. 2056.º, n.º 3, do CC).'],
+    ['Aceitação expressa e tácita', 'A aceitação é expressa quando há declaração escrita de aceitar ou de assumir o título de herdeiro; é tácita quando se deduz de comportamentos que, muito provavelmente, a exprimem (arts. 2056.º e 217.º do CC). Simples atos de administração não implicam aceitação tácita (art. 2056.º, n.º 3, do CC).'],
     ['Aceitação a benefício de inventário', 'Forma de aceitação em que só respondem pelos encargos os bens inventariados, salvo se os credores provarem a existência de outros (art. 2071.º, n.º 1, do CC).'],
     ['Aceitação pura e simples', 'A responsabilidade também não excede o valor dos bens herdados, mas é o herdeiro que tem de provar que a herança não chega para os encargos (art. 2071.º, n.º 2, do CC).'],
     ['Repúdio', 'Recusa da herança, sujeita à forma exigida para a alienação da herança (art. 2063.º do CC). Os efeitos retroagem à abertura da sucessão: o repudiante considera-se como nunca tendo sido chamado.']
@@ -6602,6 +7018,753 @@ GUIAS.pp = {
       'Confundir as proibições de prova com as nulidades processuais.'
     ],
     artigos: ['art. 118.º do CPP', 'art. 119.º do CPP', 'art. 120.º do CPP', 'art. 121.º do CPP', 'art. 122.º do CPP', 'art. 123.º do CPP', 'art. 126.º do CPP']
+  }
+};
+
+/* Matéria explicada — Direitos Reais (texto original do LEXDESK) */
+var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
+GUIAS.reais = {
+  geral: {
+    sub: 'O que é um direito real, os seus princípios (tipicidade, especialidade, publicidade) e as suas características: inerência e sequela.',
+    ideia: 'Um direito real dá ao seu titular um poder direto e imediato sobre uma coisa, que pode ser oposto a toda a gente. É isso que o distingue de um direito de crédito, que só vincula o devedor. Por produzirem efeitos perante todos, os direitos reais estão sujeitos a regras mais rígidas: só existem os que a lei prevê e, em regra, têm de ser publicitados.',
+    conceitos: [
+      ['Tipicidade', 'Só podem constituir-se, com caráter real, os direitos previstos na lei; as restrições ao direito de propriedade fora desses casos têm natureza meramente obrigacional (art. 1306.º, n.º 1, do CC). É o princípio do numerus clausus.'],
+      ['Especialidade', 'O direito real incide sobre coisas certas e determinadas, e não sobre um conjunto indeterminado de bens (art. 408.º, n.º 2, do CC, para a transmissão).'],
+      ['Sequela', 'O titular pode perseguir a coisa onde quer que ela esteja e nas mãos de quem quer que a tenha, por exemplo através da ação de reivindicação (art. 1311.º do CC).'],
+      ['Prevalência', 'Entre direitos reais incompatíveis, prevalece, em regra, o primeiramente constituído; nos bens sujeitos a registo, prevalece o primeiramente registado (princípio da prioridade).'],
+      ['Consensualidade', 'A constituição ou transferência de direitos reais sobre coisa determinada dá-se por mero efeito do contrato, salvo as exceções previstas na lei (art. 408.º, n.º 1, do CC).']
+    ],
+    regime: [
+      ['Propriedade', 'O proprietário goza de modo pleno e exclusivo dos direitos de uso, fruição e disposição das coisas que lhe pertencem, dentro dos limites da lei (art. 1305.º do CC).', 'A propriedade sobre imóveis abrange o espaço aéreo e o subsolo, com tudo o que neles se contém e não esteja desintegrado do domínio por lei ou negócio jurídico (art. 1344.º do CC).'],
+      ['Direitos reais menores', 'Ao lado da propriedade, a lei prevê direitos de gozo limitados (usufruto, uso e habitação, superfície, servidões, direito real de habitação periódica), direitos de garantia (hipoteca, penhor, privilégios, retenção) e direitos de aquisição (por exemplo, preferência com eficácia real).', 'Uma cláusula que cria um «direito real» fora destes tipos vale apenas entre as partes, como obrigação.'],
+      ['Defesa da propriedade', 'O proprietário pode reivindicar a coisa de qualquer possuidor ou detentor, pedindo o reconhecimento do seu direito e a restituição (art. 1311.º do CC).', 'A ação de reivindicação não está sujeita a prescrição, ressalvados os direitos que outrem tenha adquirido por usucapião (art. 1313.º do CC).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['', 'Direito real', 'Direito de crédito'], linhas: [
+      ['Objeto', 'Uma coisa certa e determinada', 'Uma prestação do devedor'],
+      ['Eficácia', 'Perante todos (erga omnes)', 'Entre as partes'],
+      ['Criação', 'Só os tipos previstos na lei', 'Liberdade contratual'],
+      ['Sequela', 'Sim', 'Não'],
+      ['Publicidade', 'Registo, nos bens a ele sujeitos', 'Em regra, não']
+    ] },
+    exemplo: ['Ana vende a Bruno um terreno, por escritura, com uma cláusula pela qual Bruno «nunca poderá construir mais de um piso». Mais tarde, Bruno vende o terreno a Carla, que quer construir três pisos. Ana pode impedi-lo?',
+      'A cláusula restringe o direito de propriedade, mas não corresponde a nenhum direito real típico. Fora dos casos previstos na lei, uma restrição deste tipo tem natureza meramente obrigacional (art. 1306.º, n.º 1, do CC).',
+      'A obrigação vincula Bruno, mas não Carla, que não foi parte no contrato. Ana não pode opor a cláusula a Carla; quando muito, pode pedir a Bruno indemnização pelo incumprimento. Se Ana quisesse um efeito real, teria de recorrer a um tipo legal, como uma servidão predial a favor de um prédio seu.']
+    ,
+    erros: [
+      'Criar «direitos reais» por contrato fora dos tipos legais.',
+      'Esquecer que a transmissão dos direitos reais é, em regra, efeito do próprio contrato.',
+      'Confundir oponibilidade a terceiros com eficácia entre as partes.',
+      'Pensar que a reivindicação prescreve.'
+    ],
+    artigos: ['art. 408.º do CC', 'art. 1302.º do CC', 'art. 1305.º do CC', 'art. 1306.º do CC', 'art. 1311.º do CC', 'art. 1313.º do CC', 'art. 1344.º do CC']
+  },
+
+  posse: {
+    sub: 'Noção de posse e detenção, caracteres da posse, aquisição e perda, e os meios de defesa da posse.',
+    ideia: 'A posse é o exercício de facto de um poder sobre uma coisa, correspondente a um direito real, independentemente de esse direito existir. A lei protege-a por si mesma, para garantir a paz social: quem possui pode defender-se contra quem o perturba, sem ter de provar que é dono. E, mantida durante tempo suficiente, a posse pode transformar-se em propriedade, por usucapião.',
+    conceitos: [
+      ['Posse', 'Poder de facto exercido por quem se comporta como se fosse titular da propriedade ou de outro direito real (art. 1251.º do CC). Exige o elemento material (corpus) e, segundo a conceção dominante, a intenção de agir como titular (animus).'],
+      ['Detenção', 'Quem tem a coisa sem a intenção de atuar como titular do direito, quem simplesmente se aproveita da tolerância do titular, ou quem possui em nome de outrem (por exemplo, o arrendatário quanto à propriedade) é mero detentor (art. 1253.º do CC).'],
+      ['Caracteres', 'Quanto aos seus caracteres, a posse distingue-se conforme haja ou não título, boa ou má-fé, violência ou não na sua aquisição, e publicidade ou ocultação (art. 1258.º do CC). Quem tem posse titulada beneficia da presunção de boa-fé (art. 1260.º, n.º 2, do CC).'],
+      ['Aquisição', 'Pela prática reiterada e pública de atos materiais, pela tradição material ou simbólica, por constituto possessório ou por inversão do título (art. 1263.º do CC).'],
+      ['Inversão do título', 'O detentor só passa a possuidor se se opuser ao possuidor, de forma inequívoca e conhecida deste, ou por ato de um terceiro com poder para lhe transmitir a posse (art. 1265.º do CC).']
+    ],
+    regime: [
+      ['Ações possessórias', 'O possuidor perturbado ou esbulhado pode pedir a manutenção ou a restituição da posse (arts. 1276.º a 1278.º do CC), e o esbulhado violentamente tem direito a ser restituído provisoriamente, sem audiência do esbulhador (art. 1279.º do CC).', 'As ações de manutenção e de restituição caducam se não forem intentadas no ano seguinte à turbação ou ao esbulho, ou ao seu conhecimento, se praticado às ocultas (art. 1282.º do CC).'],
+      ['Melhor posse', 'Se a posse do autor não tiver mais de um ano, só pode ser mantido ou restituído contra quem não tiver melhor posse (art. 1278.º, n.º 2, do CC).', 'É melhor posse a titulada; na falta de título, a mais antiga; e, se forem iguais em antiguidade, a atual (art. 1278.º, n.º 3, do CC).'],
+      ['Presunção da titularidade', 'O possuidor goza da presunção da titularidade do direito, exceto se existir, a favor de outrem, presunção fundada em registo anterior ao início da posse (art. 1268.º do CC).', 'É por isso que, em muitos litígios, provar a posse é o primeiro passo para provar a propriedade.']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Corpus', 'Há poder de facto sobre a coisa?'],
+      ['Animus', 'Atua como titular do direito, ou é mero detentor (art. 1253.º do CC)?'],
+      ['Caracteres', 'Titulada? Boa-fé? Pacífica? Pública? (arts. 1258.º a 1262.º do CC)'],
+      ['Lesão', 'Houve turbação, esbulho ou esbulho violento?'],
+      ['Reação', 'Ação possessória dentro de um ano (art. 1282.º do CC) ou restituição provisória (art. 1279.º do CC).']
+    ] },
+    exemplo: ['Daniel cultiva há 20 anos um terreno que julga ter herdado do pai, à vista de todos. Um vizinho, Eduardo, arranca a vedação de noite e começa a lavrar o terreno, dizendo que é dele. Que pode Daniel fazer?',
+      'Daniel é possuidor: exerce poderes de facto correspondentes ao direito de propriedade, de forma pública e pacífica. Eduardo praticou um esbulho, privando-o da posse. Daniel pode intentar ação de restituição da posse no prazo de um ano (arts. 1278.º e 1282.º do CC), sem ter de provar que é proprietário.',
+      'Como a posse dura há mais de um ano, Daniel será restituído enquanto Eduardo não o convencer na questão da titularidade (art. 1278.º, n.º 1, do CC). Além disso, com 20 anos de posse pública e pacífica, Daniel pode invocar a aquisição da propriedade por usucapião (art. 1296.º do CC), mesmo que a posse fosse de má-fé.']
+    ,
+    erros: [
+      'Tratar o arrendatário como possuidor do direito de propriedade: é detentor quanto a esse direito.',
+      'Exigir prova da propriedade numa ação possessória.',
+      'Deixar passar o prazo de um ano das ações possessórias.',
+      'Confundir posse titulada com posse registada.'
+    ],
+    artigos: ['art. 1251.º do CC', 'art. 1253.º do CC', 'art. 1258.º do CC', 'art. 1260.º do CC', 'art. 1263.º do CC', 'art. 1265.º do CC', 'art. 1268.º do CC', 'art. 1276.º do CC', 'art. 1278.º do CC', 'art. 1279.º do CC', 'art. 1282.º do CC']
+  },
+
+  aquis: {
+    sub: 'Como se adquire a propriedade: contrato, sucessão, usucapião, ocupação e acessão.',
+    ideia: 'A propriedade adquire-se por contrato, por sucessão, por usucapião, por ocupação, por acessão e pelos demais modos previstos na lei (art. 1316.º do CC). Na prática, a usucapião é a figura mais importante nos exames, porque permite que a posse prolongada se converta em propriedade, independentemente do que diz o título ou o registo.',
+    conceitos: [
+      ['Usucapião', 'A posse da propriedade ou de outro direito real de gozo, mantida por certo tempo, faculta ao possuidor a aquisição do direito a cujo exercício corresponde a sua atuação (art. 1287.º do CC).'],
+      ['Invocação', 'A usucapião não opera automaticamente: tem de ser invocada, judicial ou extrajudicialmente, por quem dela beneficia, e os seus efeitos retroagem à data do início da posse (arts. 1288.º e 1292.º do CC).'],
+      ['Posse para usucapião', 'Tem de ser pública e pacífica; a posse violenta ou oculta só conta a partir do momento em que cesse a violência ou se torne pública (art. 1297.º do CC).'],
+      ['Acessão', 'Dá-se quando uma coisa se une ou incorpora noutra que pertence a outro dono (art. 1325.º do CC). Na acessão industrial imobiliária, quem constrói de boa-fé em terreno alheio pode adquirir o terreno se o valor da obra for superior ao do terreno, pagando o valor deste (art. 1340.º do CC).'],
+      ['Ocupação', 'Aquisição de coisas móveis que nunca tiveram dono ou foram abandonadas (art. 1318.º do CC).']
+    ],
+    regime: [
+      ['Prazos para imóveis', 'Com título e registo: 10 anos de posse de boa-fé ou 15 de má-fé, contados do registo (art. 1294.º do CC). Com registo da mera posse: 5 anos de boa-fé ou 10 de má-fé (art. 1295.º do CC). Sem registo: 15 anos de boa-fé ou 20 de má-fé (art. 1296.º do CC).', 'Na prática, a regra que mais se aplica é a do art. 1296.º do CC: 20 anos de posse pública e pacífica bastam, mesmo de má-fé.'],
+      ['Prazos para móveis', 'Para móveis sujeitos a registo, os prazos variam entre 2 e 10 anos (art. 1298.º do CC). Para móveis não sujeitos a registo: 3 anos com boa-fé e justo título, 6 anos independentemente de ambos (art. 1299.º do CC).', 'A boa-fé apura-se no momento da aquisição da posse (art. 1260.º, n.º 1, do CC).'],
+      ['Usucapião e registo', 'A usucapião prevalece sobre o registo: quem adquire por usucapião torna-se titular, ainda que outra pessoa tenha o direito registado em seu nome.', 'Por isso se diz que a usucapião é a «base» de todo o sistema de titularidade dos imóveis.']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Situação (imóveis)', 'Boa-fé', 'Má-fé', 'Norma'], linhas: [
+      ['Título registado', '10 anos', '15 anos', 'art. 1294.º do CC'],
+      ['Registo da mera posse', '5 anos', '10 anos', 'art. 1295.º do CC'],
+      ['Sem registo', '15 anos', '20 anos', 'art. 1296.º do CC']
+    ] },
+    exemplo: ['Francisca comprou em 2004 uma casa por documento particular (sem escritura), pagou o preço e passou a viver lá, à vista de todos. O vendedor morreu e os herdeiros, que têm a casa registada em nome do pai, querem agora reavê-la. Quem é a dona?',
+      'A compra de um imóvel por documento particular simples é nula por falta de forma (arts. 875.º e 220.º do CC), pelo que Francisca não adquiriu por contrato. Mas tornou-se possuidora: atua há mais de 20 anos como proprietária, de forma pública e pacífica.',
+      'Sem título válido nem registo, a usucapião exige 15 anos de posse de boa-fé ou 20 de má-fé (art. 1296.º do CC). Em qualquer das hipóteses, o prazo decorreu. Francisca pode invocar a usucapião, adquirindo a propriedade com efeitos desde 2004 (art. 1288.º do CC), e o registo a favor do falecido não o impede.']
+    ,
+    erros: [
+      'Pensar que a usucapião opera automaticamente, sem invocação.',
+      'Contar o prazo de usucapião a partir do registo quando não há registo.',
+      'Esquecer que a posse violenta ou oculta só conta depois de cessar a violência ou a ocultação.',
+      'Afirmar que o registo prevalece sobre a usucapião.'
+    ],
+    artigos: ['art. 1287.º do CC', 'art. 1288.º do CC', 'art. 1292.º do CC', 'art. 1294.º do CC', 'art. 1295.º do CC', 'art. 1296.º do CC', 'art. 1297.º do CC', 'art. 1298.º do CC', 'art. 1299.º do CC', 'art. 1316.º do CC', 'art. 1318.º do CC', 'art. 1325.º do CC', 'art. 1340.º do CC']
+  },
+
+  compr: {
+    sub: 'Compropriedade: direitos dos comproprietários, preferência e divisão. Propriedade horizontal: requisitos, título, partes comuns, despesas e administração.',
+    ideia: 'Quando várias pessoas são simultaneamente titulares do direito de propriedade sobre a mesma coisa, há compropriedade (art. 1403.º do CC): cada uma tem uma quota ideal, não uma parte física. Num edifício dividido em frações autónomas, a lei usa outra figura, a propriedade horizontal, que combina a propriedade exclusiva sobre cada fração com a compropriedade das partes comuns.',
+    conceitos: [
+      ['Compropriedade', 'Os direitos dos consortes são qualitativamente iguais, embora possam ser quantitativamente diferentes; as quotas presumem-se iguais (art. 1403.º do CC).'],
+      ['Uso da coisa comum', 'Na falta de acordo, cada consorte pode servir-se da coisa, desde que não a empregue para fim diferente e não prive os outros do uso a que têm direito (art. 1406.º do CC).'],
+      ['Preferência', 'O comproprietário tem direito de preferência, em primeiro lugar entre os preferentes legais, na venda ou dação em cumprimento a estranhos da quota de outro consorte (art. 1409.º do CC).'],
+      ['Divisão', 'Nenhum comproprietário é obrigado a permanecer na indivisão; pode convencionar-se a indivisão por prazo não superior a cinco anos, renovável (art. 1412.º do CC).'],
+      ['Propriedade horizontal', 'Só podem ser objeto as frações autónomas que, além de constituírem unidades independentes, sejam distintas e isoladas entre si, com saída própria para uma parte comum ou para a via pública (art. 1415.º do CC).']
+    ],
+    regime: [
+      ['Título constitutivo', 'A propriedade horizontal constitui-se por negócio jurídico, por usucapião ou por decisão administrativa ou judicial (art. 1417.º do CC). O título especifica as frações e fixa o valor relativo de cada uma, em percentagem ou permilagem (art. 1418.º do CC).', 'A permilagem determina os votos na assembleia e a quota de cada condómino nas despesas comuns (arts. 1424.º e 1430.º do CC).'],
+      ['Despesas comuns', 'Os gastos indispensáveis para conservar e usar as partes comuns e com os serviços de interesse comum repartem-se entre os condóminos na proporção do valor de cada fração (art. 1424.º do CC).', 'Há regras especiais, por exemplo para os elevadores e para as partes comuns afetadas ao uso exclusivo de algum condómino.'],
+      ['Administração', 'A administração das partes comuns compete à assembleia dos condóminos e a um administrador (art. 1430.º do CC).', 'As deliberações contrárias à lei ou a regulamentos podem ser impugnadas pelos condóminos que não as tenham aprovado, nos prazos do art. 1433.º do CC.']
+    ],
+    esquema: { tipo: 'tabela', cab: ['', 'Compropriedade', 'Propriedade horizontal'], linhas: [
+      ['Objeto', 'A mesma coisa, por inteiro', 'Frações autónomas e partes comuns do edifício'],
+      ['Direito de cada titular', 'Quota ideal', 'Propriedade exclusiva da fração + compropriedade das partes comuns'],
+      ['Saída da comunhão', 'Divisão a todo o tempo (art. 1412.º)', 'Não há divisão das partes comuns'],
+      ['Preferência', 'Sim (art. 1409.º)', 'Não, em regra, entre condóminos'],
+      ['Administração', 'Pelos consortes', 'Assembleia e administrador (art. 1430.º)']
+    ] },
+    exemplo: ['Guilherme e Helena são comproprietários de uma quinta, em partes iguais. Guilherme vende a sua metade a um amigo, Ivo, sem nada dizer a Helena. Helena quer ficar com essa metade pelo mesmo preço. Pode?',
+      'O comproprietário goza de direito de preferência na venda a estranhos da quota de outro consorte (art. 1409.º, n.º 1, do CC). Guilherme devia ter comunicado a Helena o projeto de venda e as suas condições (art. 1409.º, n.º 2, e art. 416.º do CC).',
+      'Não o tendo feito, Helena pode intentar ação de preferência, depositando o preço, nos termos do art. 1410.º do CC, no prazo de seis meses a contar do conhecimento dos elementos essenciais da alienação. Se a ação proceder, Helena substitui Ivo na posição de comprador.']
+    ,
+    erros: [
+      'Tratar a quota do comproprietário como uma parte física da coisa.',
+      'Pensar que um condómino pode pedir a divisão das partes comuns.',
+      'Esquecer o prazo de seis meses da ação de preferência.',
+      'Repartir as despesas do condomínio por igual, em vez de pela permilagem.'
+    ],
+    artigos: ['art. 1403.º do CC', 'art. 1406.º do CC', 'art. 1409.º do CC', 'art. 1410.º do CC', 'art. 1412.º do CC', 'art. 1414.º do CC', 'art. 1415.º do CC', 'art. 1417.º do CC', 'art. 1418.º do CC', 'art. 1424.º do CC', 'art. 1430.º do CC', 'art. 1433.º do CC']
+  },
+
+  menores: {
+    sub: 'Os direitos reais de gozo limitados: usufruto, uso e habitação, superfície e servidões.',
+    ideia: 'O proprietário pode separar algumas das faculdades do seu direito e atribuí-las a outra pessoa. Surgem assim os direitos reais limitados: o usufrutuário goza a coisa e os seus frutos, o superficiário constrói ou mantém uma obra em terreno alheio, e o dono de um prédio pode beneficiar de uma servidão sobre o prédio vizinho. Em todos, há um «dono» cujo direito fica comprimido enquanto o direito menor durar.',
+    conceitos: [
+      ['Usufruto', 'Direito de gozar, plenamente mas por tempo limitado, coisa ou direito de outrem, sem mudar a sua forma ou substância (art. 1439.º do CC). Não pode exceder a vida do usufrutuário; constituído a favor de pessoa coletiva, dura no máximo 30 anos (art. 1443.º do CC).'],
+      ['Uso e habitação', 'Faculdade de se servir de certa coisa alheia e haver os respetivos frutos na medida das necessidades do titular e da sua família; quando se refere a casa de morada, chama-se direito de habitação (art. 1484.º do CC).'],
+      ['Direito de superfície', 'Faculdade de construir ou manter, perpétua ou temporariamente, uma obra em terreno alheio, ou de nele fazer ou manter plantações (art. 1524.º do CC).'],
+      ['Servidão predial', 'Encargo imposto num prédio em proveito exclusivo de outro prédio pertencente a dono diferente (art. 1543.º do CC). Constitui-se por contrato, testamento, usucapião ou destinação do pai de família (art. 1547.º do CC).'],
+      ['Servidões legais', 'Servidões que podem ser impostas coercivamente, como a de passagem a favor de prédio encravado (art. 1550.º do CC).']
+    ],
+    regime: [
+      ['Direitos e deveres do usufrutuário', 'Cabe ao usufrutuário usar, fruir e gerir a coisa como faria um bom pai de família, respeitando o seu destino económico (art. 1446.º do CC).', 'Cabem-lhe as reparações ordinárias e os impostos e encargos anuais que incidam sobre o rendimento (arts. 1472.º e 1474.º do CC).'],
+      ['Servidões não aparentes', 'As servidões não aparentes, isto é, as que não se revelam por sinais visíveis e permanentes, não podem ser constituídas por usucapião (art. 1548.º do CC).', 'Uma servidão de passagem com caminho marcado e visível é aparente e pode ser adquirida por usucapião.'],
+      ['Extinção das servidões', 'Extinguem-se, nomeadamente, pela reunião dos dois prédios no mesmo dono, pelo não uso durante 20 anos, por usucapião da liberdade do prédio, por renúncia ou pelo decurso do prazo (art. 1569.º do CC).', 'As servidões constituídas por usucapião e as servidões legais podem ainda ser judicialmente declaradas extintas, a pedido do dono do prédio serviente, se se mostrarem desnecessárias ao prédio dominante (art. 1569.º, n.os 2 e 3, do CC).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Direito', 'Conteúdo', 'Duração'], linhas: [
+      ['Usufruto', 'Gozo pleno, sem alterar a substância', 'Vida do usufrutuário; 30 anos para pessoas coletivas'],
+      ['Uso e habitação', 'Gozo limitado às necessidades do titular e família', 'Como o usufruto'],
+      ['Superfície', 'Construir ou manter obra ou plantação em terreno alheio', 'Perpétua ou temporária'],
+      ['Servidão', 'Utilidade de um prédio a favor de outro', 'Em regra perpétua; extingue-se pelos modos legais']
+    ] },
+    exemplo: ['João tem um terreno sem acesso à via pública. Para lá chegar, passa há 25 anos por um caminho de terra bem marcado no terreno do vizinho, Luís. Luís põe agora um portão fechado. João tem algum direito?',
+      'O caminho é um sinal visível e permanente: a servidão de passagem é aparente e pode ser adquirida por usucapião (arts. 1547.º e 1548.º do CC). Com 25 anos de posse pública e pacífica, João pode invocar a aquisição da servidão (art. 1296.º do CC).',
+      'Independentemente disso, o terreno de João está encravado, pelo que João tem a faculdade de exigir a constituição de uma servidão legal de passagem sobre o prédio vizinho, mediante indemnização (art. 1550.º do CC). Luís não pode impedir a passagem com o portão.']
+    ,
+    erros: [
+      'Admitir a usucapião de servidões não aparentes.',
+      'Esquecer o limite de 30 anos do usufruto a favor de pessoa coletiva.',
+      'Confundir servidão predial (a favor de um prédio) com direito pessoal de passagem.',
+      'Ignorar a extinção das servidões pelo não uso durante 20 anos.'
+    ],
+    artigos: ['art. 1439.º do CC', 'art. 1443.º do CC', 'art. 1446.º do CC', 'art. 1484.º do CC', 'art. 1524.º do CC', 'art. 1543.º do CC', 'art. 1547.º do CC', 'art. 1548.º do CC', 'art. 1550.º do CC', 'art. 1569.º do CC']
+  },
+
+  viz: {
+    sub: 'Os limites que a lei impõe aos proprietários de prédios vizinhos: emissões, construções, janelas e árvores.',
+    ideia: 'O direito de propriedade não é ilimitado. Quando dois prédios estão próximos, o uso de um afeta o outro, e a lei estabelece um conjunto de restrições para garantir a convivência: limita os fumos, ruídos e cheiros, impõe distâncias para janelas e varandas, regula as árvores que invadem o vizinho e as águas que escorrem de um prédio para outro.',
+    conceitos: [
+      ['Emissões', 'O proprietário de um imóvel pode opor-se à emissão de fumo, fuligem, vapores, cheiros, calor ou ruídos, e à produção de trepidações e outros factos semelhantes, provenientes de prédio vizinho, quando importem prejuízo substancial ou excedam o que é próprio do uso normal do prédio de onde emanam (art. 1346.º do CC).'],
+      ['Janelas e varandas', 'Quem constrói não pode abrir janelas ou portas que deitem diretamente sobre o prédio vizinho sem deixar o intervalo de metro e meio (art. 1360.º, n.º 1, do CC); igual restrição vale para varandas, terraços e obras semelhantes servidas de parapeito (art. 1360.º, n.º 2).'],
+      ['Frestas e seteiras', 'São permitidas aberturas que não deem vistas sobre o vizinho, desde que respeitem certas dimensões e alturas (art. 1363.º do CC).'],
+      ['Servidão de vistas', 'Janelas abertas em contravenção da lei podem, pela usucapião, dar origem a uma servidão de vistas, que impede o vizinho de construir sem deixar o intervalo legal (art. 1362.º do CC).'],
+      ['Árvores e raízes', 'O proprietário pode arrancar e cortar as raízes que se introduzam no seu terreno e os ramos ou o tronco que sobre ele propendam, se o dono da árvore não o fizer no prazo de três dias após ser solicitado (art. 1366.º do CC).']
+    ],
+    regime: [
+      ['Critério das emissões', 'A lei não proíbe todas as emissões: só as que causem prejuízo substancial ou que não resultem da utilização normal do prédio.', 'Os tribunais ponderam o tipo de zona (residencial, industrial), a intensidade, o horário e a duração, e fazem prevalecer, em regra, os direitos de personalidade, como o descanso e a saúde, sobre interesses económicos.'],
+      ['Construções e escavações', 'O proprietário pode fazer escavações no seu prédio, mas não pode privar o prédio vizinho do apoio necessário para evitar desmoronamentos ou deslocações de terra (art. 1348.º do CC).', 'Se causar danos, deve indemnizar, ainda que tenha tomado as precauções julgadas necessárias.'],
+      ['Servidão de vistas constituída', 'Constituída a servidão de vistas, o vizinho só pode levantar edifício ou construção deixando entre ele e as aberturas o espaço mínimo de metro e meio, correspondente à extensão destas (art. 1362.º, n.º 2, do CC).', 'Assim, uma janela ilegal tolerada durante o prazo de usucapião passa a restringir o prédio vizinho.']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Que interferência?', 'Emissões, aberturas, construções, árvores, águas.'],
+      ['Que regra se aplica?', 'Arts. 1346.º a 1372.º do CC.'],
+      ['É lícita?', 'Prejuízo substancial? Utilização normal? Distâncias respeitadas?'],
+      ['Há servidão constituída?', 'Usucapião de vistas (art. 1362.º do CC).'],
+      ['Reação', 'Ação para cessação da interferência e indemnização.']
+    ] },
+    exemplo: ['Mafalda constrói uma casa e abre uma janela a 80 cm do terreno do vizinho, Nelson, com vista direta sobre o quintal dele. Nelson nada diz durante 22 anos. Agora quer construir um anexo encostado ao muro. Pode?',
+      'A janela foi aberta em contravenção do art. 1360.º, n.º 1, do CC, que exige o intervalo de metro e meio. Nelson podia ter exigido o seu fecho. Não o fez, e a situação manteve-se de forma pública e pacífica durante mais de 20 anos.',
+      'Constituiu-se, por usucapião, uma servidão de vistas a favor do prédio de Mafalda (arts. 1362.º, n.º 1, e 1296.º do CC). Nelson só pode construir deixando um espaço mínimo de metro e meio em relação à janela (art. 1362.º, n.º 2, do CC). O anexo encostado ao muro, em frente à janela, não é permitido.']
+    ,
+    erros: [
+      'Pensar que qualquer ruído ou cheiro do vizinho é ilícito.',
+      'Esquecer que uma janela ilegal tolerada pode gerar servidão de vistas.',
+      'Confundir janela com fresta, que não exige o intervalo de metro e meio.',
+      'Cortar logo os ramos da árvore do vizinho sem lhe pedir primeiro que o faça.'
+    ],
+    artigos: ['art. 1346.º do CC', 'art. 1348.º do CC', 'art. 1360.º do CC', 'art. 1362.º do CC', 'art. 1363.º do CC', 'art. 1366.º do CC']
+  },
+
+  reg: {
+    sub: 'Para que serve o registo predial: publicidade, prioridade, presunção de titularidade e proteção de terceiros.',
+    ideia: 'Em Portugal, a propriedade transmite-se pelo contrato, não pelo registo. Então para que serve o registo? Serve para dar publicidade à situação jurídica dos prédios e para resolver conflitos entre quem adquire do mesmo transmitente: em regra, quem regista primeiro ganha. O registo é, por isso, sobretudo declarativo, mas tem efeitos práticos decisivos.',
+    conceitos: [
+      ['Finalidade', 'O registo predial destina-se a dar publicidade à situação jurídica dos prédios, tendo em vista a segurança do comércio jurídico imobiliário (art. 1.º do Código do Registo Predial).'],
+      ['Eficácia perante terceiros', 'Perante terceiros, os factos sujeitos a registo só são eficazes a partir do momento em que são registados (art. 5.º do Código do Registo Predial). Entre as partes, produzem efeitos desde o contrato.'],
+      ['Terceiros para efeitos de registo', 'São aqueles que adquiriram do mesmo transmitente direitos que não podem coexistir (art. 5.º, n.º 4, do Código do Registo Predial).'],
+      ['Presunção', 'O registo definitivo constitui presunção de que o direito existe e pertence ao titular inscrito, nos precisos termos em que o registo o define (art. 7.º do Código do Registo Predial).'],
+      ['Prioridade', 'Quanto aos mesmos bens, o direito inscrito primeiro prevalece sobre os inscritos depois (art. 6.º do Código do Registo Predial).']
+    ],
+    regime: [
+      ['Dupla venda', 'Se A vende o mesmo prédio a B e, depois, a C, e C regista primeiro, C prevalece sobre B, porque ambos adquiriram do mesmo autor direitos incompatíveis.', 'B pode exigir a A indemnização pelos danos. A boa-fé de C é discutida: há quem a exija e quem considere bastar o registo prévio.'],
+      ['Inoponibilidade da nulidade', 'Quando é declarado nulo ou anulado um negócio sobre imóveis, isso não prejudica os direitos que um terceiro de boa-fé tenha adquirido onerosamente, se o registo da aquisição for anterior ao registo da ação, e se a ação não for proposta e registada nos três anos posteriores ao negócio (art. 291.º do CC).', 'É uma proteção excecional de terceiros, que não se confunde com o art. 5.º do Código do Registo Predial.'],
+      ['Registo e usucapião', 'O registo não impede a aquisição por usucapião por outrem, nem protege o titular inscrito contra uma usucapião já completada.', 'A presunção do registo pode ser ilidida, e a presunção da posse anterior ao registo prevalece (art. 1268.º do CC).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['O facto está sujeito a registo?', 'Aquisição, hipoteca, penhora, ação, etc.'],
+      ['Foi registado?', 'Se não, não é oponível a terceiros (art. 5.º do CRPred).'],
+      ['Há terceiros?', 'Adquiriram do mesmo autor direitos incompatíveis?'],
+      ['Prioridade', 'Quem registou primeiro (art. 6.º do CRPred)?'],
+      ['Exceções', 'Usucapião; art. 291.º do CC; presunções da posse.']
+    ] },
+    exemplo: ['Óscar vende a sua casa a Patrícia por escritura em março, mas Patrícia não regista. Em maio, Óscar vende a mesma casa a Quim, que regista de imediato. Quem é o dono?',
+      'Entre Óscar e Patrícia, a propriedade transmitiu-se com a escritura (art. 408.º, n.º 1, do CC). Mas Patrícia e Quim adquiriram do mesmo autor direitos incompatíveis: são terceiros para efeitos de registo (art. 5.º, n.º 4, do Código do Registo Predial).',
+      'A aquisição de Patrícia, não registada, não é oponível a Quim, que registou primeiro (arts. 5.º e 6.º do Código do Registo Predial). Quim fica com a casa. Patrícia pode exigir a Óscar a restituição do preço e indemnização, e Óscar pode ainda responder criminalmente, por burla, se tiver agido com essa intenção.']
+    ,
+    erros: [
+      'Dizer que a propriedade se transmite com o registo: transmite-se com o contrato.',
+      'Considerar «terceiro» qualquer pessoa estranha ao contrato, e não apenas quem adquiriu do mesmo autor direitos incompatíveis.',
+      'Confundir o art. 5.º do Código do Registo Predial com o art. 291.º do CC.',
+      'Pensar que o registo protege contra a usucapião.'
+    ],
+    artigos: ['art. 291.º do CC', 'art. 408.º do CC', 'art. 1268.º do CC']
+  }
+};
+
+/* Matéria explicada — Teoria Geral do Direito Civil (texto original do LEXDESK) */
+var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
+GUIAS.tgdc = {
+  pess: {
+    sub: 'Personalidade e capacidade jurídica, menoridade, regime do maior acompanhado e pessoas coletivas.',
+    ideia: 'Para ser titular de direitos e obrigações é preciso ter personalidade jurídica; para os exercer sozinho é preciso ter capacidade de exercício. Todas as pessoas singulares têm personalidade desde o nascimento completo e com vida, mas nem todas podem agir por si: os menores e, em certos termos, os maiores acompanhados precisam de quem os represente ou assista.',
+    conceitos: [
+      ['Personalidade jurídica', 'Adquire-se no momento do nascimento completo e com vida (art. 66.º, n.º 1, do CC). Os direitos que a lei reconhece aos nascituros dependem do seu nascimento (art. 66.º, n.º 2, do CC).'],
+      ['Capacidade de gozo e de exercício', 'A capacidade de gozo é a medida dos direitos e obrigações de que se pode ser titular (art. 67.º do CC); a capacidade de exercício é a aptidão para os exercer pessoal e livremente.'],
+      ['Menoridade', 'É menor quem não tiver completado 18 anos (art. 122.º do CC). Os menores carecem de capacidade para o exercício de direitos, salvo as exceções da lei (art. 123.º do CC), suprida pelas responsabilidades parentais ou pela tutela (art. 124.º do CC).'],
+      ['Maior acompanhado', 'O maior impossibilitado, por razões de saúde, deficiência ou comportamento, de exercer plena, pessoal e conscientemente os seus direitos beneficia de medidas de acompanhamento decididas pelo tribunal, à medida das suas necessidades (art. 138.º do CC).'],
+      ['Pessoas coletivas', 'Associações, fundações e sociedades, com personalidade jurídica própria; a sua capacidade abrange os direitos e deveres necessários ou úteis aos seus fins (art. 160.º do CC).']
+    ],
+    regime: [
+      ['Atos dos menores', 'Os negócios praticados pelo menor são anuláveis, a requerimento do progenitor, do tutor ou do próprio menor, dentro de um ano a contar da maioridade ou emancipação, conforme os casos (art. 125.º do CC).', 'São, porém, válidos certos atos, como os negócios próprios da vida corrente do menor, ao alcance da sua capacidade natural e de pequena importância (art. 127.º do CC).'],
+      ['Regime do acompanhamento', 'O acompanhamento é decidido pelo tribunal e limita-se ao necessário; a sentença define as medidas, que podem ir da simples assistência à representação em certos atos (arts. 140.º e 145.º do CC).', 'Os atos praticados pelo acompanhado em violação das medidas decretadas são anuláveis, nos termos do art. 154.º do CC. Ressalvam-se os direitos pessoais, como casar ou testar, salvo decisão expressa em contrário (art. 147.º do CC).'],
+      ['Direitos de personalidade', 'A lei protege os indivíduos contra qualquer ofensa ilícita ou ameaça de ofensa à sua personalidade física ou moral (art. 70.º do CC), incluindo o nome, a imagem e a reserva da intimidade da vida privada (arts. 72.º a 80.º do CC).', 'A pessoa ameaçada ou ofendida pode pedir providências adequadas para evitar a ameaça ou atenuar os efeitos da ofensa, além da indemnização.']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Quem praticou o ato?', 'Pessoa singular ou coletiva?'],
+      ['Tinha personalidade?', 'Nascimento completo e com vida; registo, nas sociedades.'],
+      ['Tinha capacidade de exercício?', 'Menor? Maior acompanhado com medidas aplicáveis?'],
+      ['O ato está nas exceções?', 'Atos da vida corrente (art. 127.º do CC); direitos pessoais do acompanhado.'],
+      ['Consequência e prazo', 'Anulabilidade, quem a pode invocar e até quando (arts. 125.º e 154.º do CC).']
+    ] },
+    exemplo: ['Tomás, com 16 anos, compra sozinho uma mota por 4.000 €, com dinheiro de uma herança. Os pais só sabem um mês depois e querem desfazer o negócio. Podem?',
+      'Tomás é menor (art. 122.º do CC) e não tem capacidade de exercício para este negócio, que não é um ato da vida corrente de pequena importância (art. 127.º, n.º 1, alínea b), do CC).',
+      'O negócio é anulável. Os pais, como titulares das responsabilidades parentais, podem pedir a anulação no prazo de um ano contado do conhecimento do negócio, enquanto Tomás for menor (art. 125.º, n.º 1, alínea a), do CC). Anulado, há restituição do que foi prestado (art. 289.º do CC).']
+    ,
+    erros: [
+      'Confundir capacidade de gozo com capacidade de exercício.',
+      'Tratar todos os atos de menores como nulos: em regra, são anuláveis.',
+      'Aplicar ao maior acompanhado o antigo regime da interdição.',
+      'Esquecer as exceções do art. 127.º do CC.'
+    ],
+    artigos: ['art. 66.º do CC', 'art. 67.º do CC', 'art. 70.º do CC', 'art. 122.º do CC', 'art. 123.º do CC', 'art. 125.º do CC', 'art. 127.º do CC', 'art. 138.º do CC', 'art. 145.º do CC', 'art. 147.º do CC', 'art. 154.º do CC', 'art. 160.º do CC']
+  },
+
+  coisas: {
+    sub: 'Noção e classificação das coisas: imóveis e móveis, coisas acessórias, frutos e benfeitorias.',
+    ideia: 'Coisa é tudo o que pode ser objeto de relações jurídicas (art. 202.º do CC). A classificação das coisas não é um exercício académico: decide a forma dos negócios (um imóvel exige escritura ou documento autenticado), o regime do registo, a extensão de uma venda (inclui as coisas acessórias?) e o que o possuidor pode reclamar ao restituir uma coisa (as benfeitorias que fez).',
+    conceitos: [
+      ['Imóveis', 'Os prédios rústicos e urbanos, as águas, as árvores e frutos enquanto ligados ao solo, os direitos inerentes aos imóveis e as partes integrantes (art. 204.º do CC).'],
+      ['Partes integrantes', 'Coisas móveis ligadas materialmente ao prédio com caráter de permanência, como os elevadores ou o sistema de aquecimento (art. 204.º, n.º 3, do CC). Seguem o prédio.'],
+      ['Coisas acessórias', 'Móveis que, sem serem partes integrantes, estão afetos de forma duradoura ao serviço ou ornamentação de outra (art. 210.º do CC). Os negócios sobre a coisa principal não as abrangem, salvo declaração em contrário.'],
+      ['Frutos', 'Tudo o que uma coisa produz de forma periódica, sem perder a sua substância; podem ser naturais ou civis (rendas, juros) (art. 212.º do CC).'],
+      ['Benfeitorias', 'Gastos com a conservação ou melhoria da coisa: necessárias (evitar a perda), úteis (aumentar o valor) ou voluptuárias (mero recreio) (art. 216.º do CC).']
+    ],
+    regime: [
+      ['Benfeitorias do possuidor', 'O possuidor, de boa ou de má-fé, tem direito a ser compensado pelas benfeitorias necessárias e a levantar as úteis, se o puder fazer sem detrimento da coisa; não podendo, o titular do direito paga-lhe o seu valor, calculado pelas regras do enriquecimento sem causa (art. 1273.º do CC).', 'Quanto às voluptuárias, o possuidor de boa-fé pode levantá-las sem detrimento da coisa; o de má-fé perde-as (art. 1275.º do CC).'],
+      ['Coisas fora do comércio', 'Ficam fora dos direitos privados as coisas do domínio público e as que, pela sua natureza, ninguém pode apropriar individualmente (art. 202.º, n.º 2, do CC).', 'Um negócio que tenha por objeto uma coisa fora do comércio é nulo (art. 280.º do CC).'],
+      ['Restituição e partilha de frutos', 'Quem for obrigado por lei a restituir frutos pode exigir o reembolso das despesas de cultura, sementes, matérias-primas e outros gastos de produção, até ao valor desses frutos (art. 215.º do CC).', 'Quando o direito aos frutos se transmite durante o período de produção, os frutos civis repartem-se dia a dia, em proporção da duração do direito (art. 213.º, n.º 2, do CC).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Figura', 'Ligação à coisa principal', 'Abrangida pelo negócio sobre a principal?'], linhas: [
+      ['Parte componente', 'Faz parte da própria coisa', 'Sim'],
+      ['Parte integrante', 'Ligação material permanente ao prédio', 'Sim (art. 204.º, n.º 3, do CC)'],
+      ['Coisa acessória', 'Afetação económica duradoura', 'Não, salvo declaração em contrário (art. 210.º, n.º 2, do CC)'],
+      ['Frutos', 'Produzidos periodicamente pela coisa', 'Depende do negócio e do momento']
+    ] },
+    exemplo: ['Ulisses vende a Vera uma moradia. Depois da escritura, retira a caldeira de aquecimento central embutida na parede e leva também os móveis da sala, que não estavam mencionados. Vera reclama ambos. Tem razão?',
+      'A caldeira embutida é uma coisa móvel fisicamente ligada ao prédio de forma permanente: é parte integrante e, como tal, imóvel (art. 204.º, n.º 3, do CC). Foi transmitida com a moradia, e Ulisses não a podia retirar.',
+      'Os móveis da sala não são partes integrantes; quando muito, seriam coisas acessórias, que não são abrangidas pela venda da coisa principal, salvo declaração em contrário (art. 210.º, n.º 2, do CC). Vera não tem direito a eles.']
+    ,
+    erros: [
+      'Confundir partes integrantes com coisas acessórias.',
+      'Esquecer que as voluptuárias do possuidor de má-fé se perdem a favor do titular.',
+      'Classificar as rendas como produtos e não como frutos civis.',
+      'Admitir negócios sobre coisas do domínio público.'
+    ],
+    artigos: ['art. 202.º do CC', 'art. 203.º do CC', 'art. 204.º do CC', 'art. 210.º do CC', 'art. 212.º do CC', 'art. 213.º do CC', 'art. 215.º do CC', 'art. 216.º do CC', 'art. 1273.º do CC', 'art. 1275.º do CC']
+  },
+
+  neg: {
+    sub: 'A declaração negocial: expressa e tácita, silêncio, forma, perfeição, interpretação e integração.',
+    ideia: 'Na base de todo o negócio jurídico estão declarações de vontade. O CC preocupa-se com três questões: como se manifesta a vontade (expressa, tácita, silêncio), que forma tem de revestir (a regra é a liberdade de forma, com muitas exceções) e como se interpreta quando o sentido é duvidoso. A regra de ouro da interpretação é a da impressão do destinatário: vale o sentido que um destinatário médio, colocado na posição do real declaratário, deduziria.',
+    conceitos: [
+      ['Declaração expressa e tácita', 'A declaração é expressa quando feita por palavras, por escrito ou por outro meio direto de manifestação; é tácita quando se infere de comportamentos que, muito provavelmente, a exprimem (art. 217.º do CC).'],
+      ['Silêncio', 'O silêncio vale como declaração negocial apenas quando esse valor lhe seja atribuído por lei, uso ou convenção (art. 218.º do CC).'],
+      ['Liberdade de forma', 'A validade da declaração negocial não depende de forma especial, salvo quando a lei a exigir (art. 219.º do CC). A falta da forma legalmente exigida gera nulidade (art. 220.º do CC).'],
+      ['Eficácia', 'A declaração que tem um destinatário torna-se eficaz quando chega ao poder do destinatário ou quando este dela toma conhecimento (art. 224.º, n.º 1, do CC).'],
+      ['Impressão do destinatário', 'A declaração vale com o sentido que um destinatário médio, colocado na posição do verdadeiro destinatário, retiraria do comportamento do declarante, a menos que este não pudesse razoavelmente contar com esse sentido (art. 236.º, n.º 1, do CC).']
+    ],
+    regime: [
+      ['Vontade real comum', 'Se o destinatário souber o que o declarante realmente quis, a declaração vale com esse sentido (art. 236.º, n.º 2, do CC).', 'Nos negócios formais, a declaração não pode valer com um sentido sem um mínimo de apoio no texto do documento (art. 238.º, n.º 1, do CC).'],
+      ['Integração', 'Na falta de disposição especial, a declaração é completada segundo a vontade que as partes teriam tido caso houvessem pensado no ponto em falta, ou segundo as exigências da boa-fé (art. 239.º do CC).', 'Antes de integrar, verifica-se se há normas supletivas aplicáveis ao tipo de contrato.'],
+      ['Formação do contrato', 'A proposta tem de ser completa, firme e formalmente adequada; a aceitação deve corresponder à proposta, valendo uma aceitação com modificações como rejeição e nova proposta (art. 233.º do CC).', 'Durante as negociações, as partes devem agir segundo as regras da boa-fé, respondendo pelos prejuízos causados (art. 227.º do CC).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Há declaração?', 'Expressa, tácita ou silêncio com valor legal ou convencional (arts. 217.º e 218.º do CC).'],
+      ['Chegou ao destinatário?', 'Eficácia pela receção ou conhecimento (art. 224.º do CC).'],
+      ['A forma foi respeitada?', 'Liberdade de forma, salvo exigência legal (arts. 219.º e 220.º do CC).'],
+      ['Que sentido tem?', 'Vontade real comum; impressão do destinatário (art. 236.º do CC).'],
+      ['Há lacunas?', 'Normas supletivas; vontade hipotética e boa-fé (art. 239.º do CC).']
+    ] },
+    exemplo: ['Xavier escreve a Zélia: «vendo-te o meu carro por 8.000 €; se não disseres nada até sexta, considero que aceitas». Zélia não responde. Há contrato?',
+      'O silêncio só vale como declaração negocial quando lei, uso ou convenção lhe atribuam esse valor (art. 218.º do CC). Uma das partes não pode, unilateralmente, atribuir ao silêncio da outra o valor de aceitação.',
+      'Não há lei, uso nem convenção prévia entre ambos. O silêncio de Zélia não vale como aceitação e não se formou qualquer contrato.']
+    ,
+    erros: [
+      'Atribuir valor de aceitação ao silêncio por imposição de uma das partes.',
+      'Interpretar a declaração segundo a vontade íntima do declarante, ignorando a impressão do destinatário.',
+      'Esquecer o limite do art. 238.º do CC nos negócios formais.',
+      'Tratar a falta de forma legal como anulabilidade: é nulidade.'
+    ],
+    artigos: ['art. 217.º do CC', 'art. 218.º do CC', 'art. 219.º do CC', 'art. 220.º do CC', 'art. 224.º do CC', 'art. 227.º do CC', 'art. 233.º do CC', 'art. 236.º do CC', 'art. 238.º do CC', 'art. 239.º do CC']
+  },
+
+  vic: {
+    sub: 'Divergências entre a vontade e a declaração (simulação, reserva mental, erro na declaração) e vícios da vontade (erro, dolo, coação, usura).',
+    ideia: 'Um negócio pode estar viciado por dois tipos de problemas. Nas divergências, o declarante declara algo diferente do que quer, por acordo com a outra parte (simulação), por engano (erro na declaração) ou de propósito (reserva mental). Nos vícios da vontade, a vontade formou-se mal: por um erro sobre a realidade, por engano provocado pela outra parte (dolo) ou por medo (coação). Cada figura tem requisitos e consequências próprias, que é preciso dominar.',
+    conceitos: [
+      ['Simulação', 'Acordo entre declarante e declaratário, no intuito de enganar terceiros, para emitir uma declaração que não corresponde à vontade real. O negócio simulado é nulo (art. 240.º do CC).'],
+      ['Simulação relativa', 'Quando, por detrás do negócio simulado, existe um negócio que as partes quiseram realmente (dissimulado), este vale se se verificarem os seus requisitos, incluindo os de forma (art. 241.º do CC).'],
+      ['Erro sobre o objeto ou a pessoa', 'Torna o negócio anulável se o declaratário conhecia ou não devia ignorar que o elemento sobre o qual recaiu o erro era essencial para o declarante (arts. 251.º e 247.º do CC).'],
+      ['Dolo', 'Sugestão ou artifício usado com intenção ou consciência de induzir ou manter em erro o autor da declaração (art. 253.º, n.º 1, do CC). O declarante enganado pode anular o negócio (art. 254.º do CC).'],
+      ['Coação moral', 'Declaração determinada pelo receio de um mal de que o declarante foi ilicitamente ameaçado com o fim de obter dele a declaração (art. 255.º do CC). Torna o negócio anulável (art. 256.º do CC).']
+    ],
+    regime: [
+      ['Simulação e terceiros', 'A nulidade do negócio simulado não pode ser arguida pelo simulador contra terceiro de boa-fé (art. 243.º, n.º 1, do CC).', 'A boa-fé consiste em desconhecer a simulação no momento em que se constituíram os direitos do terceiro (art. 243.º, n.º 2, do CC).'],
+      ['Erro sobre os motivos', 'O erro que recaia nos motivos determinantes da vontade, mas não sobre a pessoa ou o objeto, só é causa de anulação se as partes houverem reconhecido, por acordo, a essencialidade do motivo (art. 252.º, n.º 1, do CC).', 'Se incidir sobre as circunstâncias em que as partes assentaram o negócio, aplica-se o regime da alteração das circunstâncias (arts. 252.º, n.º 2, e 437.º do CC).'],
+      ['Usura', 'É anulável o negócio em que alguém, explorando a situação de necessidade, inexperiência, dependência ou fraqueza de outrem, obtém para si ou para terceiro benefícios excessivos ou injustificados (art. 282.º do CC).', 'Em vez da anulação, o lesado pode pedir que o negócio seja modificado segundo critérios de equidade (art. 283.º do CC).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Figura', 'Requisito central', 'Consequência'], linhas: [
+      ['Simulação', 'Acordo + divergência + intuito de enganar terceiros', 'Nulidade (art. 240.º do CC)'],
+      ['Reserva mental', 'Declaração contrária à vontade para enganar o declaratário', 'Irrelevante, salvo se conhecida (art. 244.º do CC)'],
+      ['Erro na declaração', 'Divergência não intencional; cognoscibilidade da essencialidade', 'Anulabilidade (art. 247.º do CC)'],
+      ['Erro-vício (pessoa/objeto)', 'Essencialidade cognoscível', 'Anulabilidade (art. 251.º do CC)'],
+      ['Dolo', 'Artifício + intenção de enganar + erro determinante', 'Anulabilidade (art. 254.º do CC)'],
+      ['Coação moral', 'Ameaça ilícita de um mal para obter a declaração', 'Anulabilidade (art. 256.º do CC)'],
+      ['Coação física', 'Ausência total de vontade de ação', 'Ineficácia (art. 246.º do CC)']
+    ] },
+    exemplo: ['Abel vende a casa ao filho, Bruno, por escritura, declarando um preço de 50.000 €, mas, na verdade, nada foi pago: Abel quis doar a casa a Bruno, prejudicando a filha, Carla. Abel morre. Carla quer reagir.',
+      'Há simulação relativa: declarou-se uma compra e venda, mas quis-se uma doação, com o intuito de enganar terceiros (art. 240.º do CC). A venda simulada é nula; a doação dissimulada vale se cumprir os seus requisitos, incluindo os de forma (art. 241.º do CC), e a escritura satisfaz a forma da doação de imóveis.',
+      'Carla, herdeira legitimária, pode arguir a simulação mesmo em vida do autor da sucessão, nos termos do art. 242.º, n.º 2, do CC. Valendo como doação, a liberalidade fica sujeita à colação e, se ofender a legítima, à redução por inoficiosidade.']
+    ,
+    erros: [
+      'Confundir simulação (acordo entre as partes) com reserva mental (unilateral).',
+      'Anular um negócio por erro sobre os motivos sem acordo sobre a essencialidade.',
+      'Tratar a coação física como causa de anulabilidade: o negócio não produz efeitos.',
+      'Esquecer a proteção dos terceiros de boa-fé na simulação.'
+    ],
+    artigos: ['art. 240.º do CC', 'art. 241.º do CC', 'art. 242.º do CC', 'art. 243.º do CC', 'art. 244.º do CC', 'art. 246.º do CC', 'art. 247.º do CC', 'art. 251.º do CC', 'art. 252.º do CC', 'art. 253.º do CC', 'art. 254.º do CC', 'art. 255.º do CC', 'art. 256.º do CC', 'art. 282.º do CC']
+  },
+
+  inval: {
+    sub: 'Nulidade e anulabilidade: causas, legitimidade, prazos, efeitos, confirmação, redução e conversão.',
+    ideia: 'Quando um negócio tem um vício, a lei reage com uma de duas formas de invalidade. A nulidade é a mais grave: protege interesses gerais, pode ser invocada por qualquer interessado a todo o tempo e é de conhecimento oficioso. A anulabilidade protege interesses particulares: só pode ser invocada pela pessoa protegida, dentro de um ano, e pode ser sanada por confirmação. Em ambas, declarada a invalidade, há restituição de tudo o que foi prestado.',
+    conceitos: [
+      ['Nulidade', 'Pode ser alegada sem limite de tempo por quem tenha interesse e declarável oficiosamente pelo tribunal (art. 286.º do CC). Causas típicas: falta de forma, objeto impossível ou contrário à lei, fim contrário à lei ou aos bons costumes, simulação (arts. 220.º, 280.º, 281.º e 240.º do CC).'],
+      ['Anulabilidade', 'Só pode ser arguida pelas pessoas em cujo interesse a lei a estabelece, dentro do ano subsequente à cessação do vício; enquanto o negócio não estiver cumprido, pode ser arguida sem dependência de prazo (art. 287.º do CC).'],
+      ['Confirmação', 'O negócio anulável é sanável mediante confirmação, pela pessoa a quem pertencer o direito de anulação, depois de cessado o vício e com conhecimento deste (art. 288.º do CC).'],
+      ['Redução', 'Se o vício atinge só uma parte do negócio, o resto mantém-se, a menos que se prove que as partes não o teriam celebrado sem essa parte (art. 292.º do CC).'],
+      ['Conversão', 'Um negócio nulo ou anulado pode valer como outro negócio, de tipo ou conteúdo diferente, se reunir os requisitos essenciais deste, de substância e de forma, e se o objetivo das partes permitir supor que o teriam querido (art. 293.º do CC).']
+    ],
+    regime: [
+      ['Efeitos retroativos', 'Tanto a declaração de nulidade como a anulação têm efeito retroativo, devendo devolver-se tudo o que foi prestado ou, não sendo possível em espécie, o respetivo valor (art. 289.º, n.º 1, do CC).', 'As obrigações recíprocas de restituição devem ser cumpridas simultaneamente (art. 290.º do CC).'],
+      ['Proteção de terceiros (imóveis)', 'Quando é declarado nulo ou anulado um negócio sobre imóveis ou sobre móveis sujeitos a registo, isso não afeta os direitos que um terceiro de boa-fé tenha adquirido onerosamente, se o registo da aquisição tiver sido feito antes do registo da ação de nulidade ou anulação (art. 291.º, n.º 1, do CC).', 'Esta proteção só funciona se a ação não for proposta e registada dentro dos três anos posteriores à conclusão do negócio (art. 291.º, n.º 2, do CC).'],
+      ['Abuso na invocação da nulidade', 'Em situações excecionais, a invocação da nulidade por falta de forma por quem a provocou ou dela beneficiou durante anos pode ser considerada abuso do direito (art. 334.º do CC).', 'É uma válvula de segurança, aplicada com prudência pela jurisprudência.']
+    ],
+    esquema: { tipo: 'tabela', cab: ['', 'Nulidade', 'Anulabilidade'], linhas: [
+      ['Quem invoca', 'Qualquer interessado; tribunal oficiosamente', 'Só o protegido pela norma'],
+      ['Prazo', 'A todo o tempo', '1 ano após cessar o vício; sem prazo se o negócio não estiver cumprido'],
+      ['Sanação', 'Não é sanável por confirmação', 'Sanável por confirmação (art. 288.º)'],
+      ['Efeitos da declaração', 'Retroativos; restituição (art. 289.º)', 'Retroativos; restituição (art. 289.º)']
+    ] },
+    exemplo: ['Daniela vende a Eduardo um apartamento por um simples documento escrito e assinado, sem escritura nem documento autenticado. Eduardo pagou e vive lá há dois anos. Daniela quer agora reaver o apartamento. Pode?',
+      'A compra e venda de imóveis tem de ser celebrada por escritura ou por documento particular autenticado (art. 875.º do CC). A inobservância da forma legal gera nulidade (art. 220.º do CC), que pode ser alegada sem limite de tempo por quem tenha interesse, incluindo a vendedora (art. 286.º do CC).',
+      'Declarada a nulidade, Daniela recupera o apartamento, mas tem de restituir o preço a Eduardo, simultaneamente (arts. 289.º e 290.º do CC). Em casos excecionais, se Daniela tivesse criado a confiança de que o negócio não seria posto em causa, a invocação poderia ser travada como abuso do direito (art. 334.º do CC).']
+    ,
+    erros: [
+      'Aplicar o prazo de um ano da anulabilidade à nulidade.',
+      'Pensar que a nulidade pode ser confirmada.',
+      'Esquecer a restituição recíproca e simultânea depois da invalidade.',
+      'Ignorar a redução e a conversão como formas de aproveitar o negócio.'
+    ],
+    artigos: ['art. 220.º do CC', 'art. 280.º do CC', 'art. 281.º do CC', 'art. 285.º do CC', 'art. 286.º do CC', 'art. 287.º do CC', 'art. 288.º do CC', 'art. 289.º do CC', 'art. 290.º do CC', 'art. 291.º do CC', 'art. 292.º do CC', 'art. 293.º do CC']
+  },
+
+  repr: {
+    sub: 'Representação voluntária e procuração, representação sem poderes e abuso de representação; condição e termo.',
+    ideia: 'Muitos negócios não são celebrados pelo próprio interessado, mas por um representante. Se tiver poderes, os efeitos produzem-se diretamente na esfera do representado. Se não tiver, o negócio fica em suspenso, à espera de ratificação. A condição e o termo, por seu lado, permitem às partes fazer depender os efeitos do negócio de um acontecimento futuro, incerto ou certo.',
+    conceitos: [
+      ['Representação', 'O negócio realizado pelo representante, em nome do representado e dentro dos poderes que tem, produz efeitos diretamente na esfera jurídica deste (art. 258.º do CC).'],
+      ['Procuração', 'Ato pelo qual alguém atribui a outrem, voluntariamente, poderes representativos. Salvo disposição em contrário, tem de ter a forma que a lei exige para o negócio que o procurador vai celebrar (art. 262.º do CC).'],
+      ['Representação sem poderes', 'O negócio celebrado em nome de outrem sem poderes de representação é ineficaz em relação a este, se não for por ele ratificado (art. 268.º, n.º 1, do CC).'],
+      ['Condição', 'As partes podem fazer depender de um facto futuro e incerto o início dos efeitos (condição suspensiva) ou a sua resolução (condição resolutiva) (art. 270.º do CC).'],
+      ['Termo', 'As partes podem estipular que os efeitos do negócio comecem ou cessem a partir de certo momento (art. 278.º do CC).']
+    ],
+    regime: [
+      ['Ratificação', 'A ratificação tem de obedecer à forma da procuração e tem eficácia retroativa, sem prejuízo dos direitos de terceiro (art. 268.º, n.º 2, do CC).', 'Considera-se negada se não for feita dentro do prazo fixado pela outra parte (art. 268.º, n.º 3, do CC).'],
+      ['Abuso de representação', 'O negócio celebrado pelo representante dentro dos limites formais dos poderes, mas contra o fim da representação, é ineficaz perante o representado se a outra parte conhecia ou devia conhecer o abuso (art. 269.º do CC).', 'Diferencia-se da falta de poderes: aqui, os poderes existem, mas são usados para fins diversos.'],
+      ['Pendência da condição', 'Enquanto a condição estiver pendente, quem contraiu uma obrigação sob condição suspensiva, ou adquiriu um direito sob condição resolutiva, deve agir segundo a boa-fé, para não comprometer a integridade do direito da outra parte (art. 272.º do CC).', 'Se a verificação da condição for impedida, contra as regras da boa-fé, por aquele a quem prejudica, tem-se por verificada (art. 275.º, n.º 2, do CC).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Agiu em nome de outrem?', 'Contemplatio domini.'],
+      ['Tinha poderes?', 'Lei, procuração (com a forma adequada, art. 262.º do CC).'],
+      ['Atuou dentro dos poderes?', 'Se não: representação sem poderes (art. 268.º do CC).'],
+      ['Usou-os para o fim próprio?', 'Se não: abuso de representação (art. 269.º do CC).'],
+      ['Efeitos', 'Na esfera do representado; ineficácia; ratificação.']
+    ] },
+    exemplo: ['Fernanda dá a Gonçalo uma procuração verbal para vender o seu terreno. Gonçalo vende-o a Helena por escritura. Fernanda arrepende-se e diz que não está vinculada. Tem razão?',
+      'A procuração deve revestir, salvo disposição em contrário, a forma que a lei impõe ao negócio a celebrar (art. 262.º, n.º 2, do CC). A venda de um terreno exige escritura ou documento particular autenticado; a procuração verbal é nula por falta de forma.',
+      'Gonçalo agiu, assim, sem poderes de representação válidos: a venda é ineficaz em relação a Fernanda, se esta não a ratificar (art. 268.º, n.º 1, do CC). Helena pode fixar um prazo para a ratificação e, sendo esta negada, exigir de Gonçalo a indemnização pelos danos sofridos.']
+    ,
+    erros: [
+      'Pensar que a procuração tem sempre forma livre.',
+      'Tratar o negócio celebrado sem poderes como nulo: é ineficaz quanto ao representado.',
+      'Confundir falta de poderes com abuso de representação.',
+      'Confundir condição (incerta) com termo (certo).'
+    ],
+    artigos: ['art. 258.º do CC', 'art. 262.º do CC', 'art. 268.º do CC', 'art. 269.º do CC', 'art. 270.º do CC', 'art. 272.º do CC', 'art. 275.º do CC', 'art. 278.º do CC']
+  },
+
+  tempo: {
+    sub: 'O tempo e as relações jurídicas: prescrição (ordinária, curta e presuntiva), suspensão, interrupção e caducidade.',
+    ideia: 'O tempo extingue direitos. Na prescrição, o direito não exercido durante o prazo legal torna-se inexigível: o devedor pode recusar o cumprimento. Na caducidade, o direito tem um prazo para ser exercido e, decorrido este, extingue-se. Distinguir as duas figuras é essencial, porque têm regimes muito diferentes quanto à suspensão, à interrupção e à invocação.',
+    conceitos: [
+      ['Prescrição ordinária', 'O prazo ordinário de prescrição é de vinte anos (art. 309.º do CC).'],
+      ['Prescrição de cinco anos', 'Prescrevem em cinco anos, por exemplo, as rendas, os juros convencionais ou legais e as quotas de amortização do capital pagáveis com os juros (art. 310.º do CC).'],
+      ['Prescrições presuntivas', 'Fundam-se na presunção de cumprimento e prescrevem em seis meses (por exemplo, créditos de estabelecimentos de alojamento e restauração) ou dois anos (por exemplo, créditos de comerciantes por objetos vendidos a não comerciantes) (arts. 312.º, 316.º e 317.º do CC). Só podem ser ilididas por confissão do devedor (art. 313.º do CC).'],
+      ['Invocação', 'O tribunal não pode suprir, de ofício, a prescrição: esta tem de ser invocada por aquele a quem aproveita (art. 303.º do CC).'],
+      ['Caducidade', 'Quando um direito deva ser exercido dentro de certo prazo, aplicam-se o regime da caducidade, salvo se a lei se refira expressamente à prescrição (art. 298.º, n.º 2, do CC).']
+    ],
+    regime: [
+      ['Interrupção da prescrição', 'A prescrição interrompe-se pela citação ou notificação judicial de qualquer ato que exprima, direta ou indiretamente, a intenção de exercer o direito (art. 323.º, n.º 1, do CC).', 'Se a citação não se fizer dentro de cinco dias depois de requerida, por causa não imputável ao requerente, tem-se a prescrição por interrompida logo que decorram os cinco dias (art. 323.º, n.º 2, do CC). Interrompe-se também pelo reconhecimento do direito pelo devedor (art. 325.º do CC). Inutiliza-se todo o tempo decorrido (art. 326.º do CC).'],
+      ['Suspensão da prescrição', 'A prescrição não começa nem corre em certas situações, por exemplo entre cônjuges ou entre quem exerce responsabilidades parentais e o menor (arts. 318.º a 322.º do CC).', 'Ao contrário da interrupção, a suspensão não apaga o tempo já decorrido: o prazo retoma de onde parou.'],
+      ['Regime da caducidade', 'O prazo de caducidade não se suspende nem se interrompe, senão nos casos em que a lei o determine (art. 328.º do CC). Só impede a caducidade a prática, dentro do prazo, do ato a que a lei atribua efeito impeditivo (art. 331.º do CC).', 'A caducidade estabelecida em matéria excluída da disponibilidade das partes é apreciada oficiosamente pelo tribunal (art. 333.º do CC).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['', 'Prescrição', 'Caducidade'], linhas: [
+      ['Fundamento', 'Inércia do titular; segurança', 'Prazo fixado para o exercício do direito'],
+      ['Suspensão e interrupção', 'Sim (arts. 318.º a 327.º do CC)', 'Em regra, não (art. 328.º do CC)'],
+      ['Conhecimento oficioso', 'Não; tem de ser invocada (art. 303.º do CC)', 'Sim, se em matéria indisponível (art. 333.º do CC)'],
+      ['Efeito', 'O devedor pode recusar o cumprimento', 'O direito extingue-se']
+    ] },
+    exemplo: ['Inês emprestou 5.000 € a João em 2003, com reembolso em 2004. Nunca mais falaram do assunto. Em 2025, Inês propõe uma ação de cobrança. João pode recusar pagar?',
+      'O crédito de reembolso está sujeito ao prazo ordinário de prescrição de vinte anos (art. 309.º do CC), contado desde que o direito podia ser exercido, ou seja, desde o vencimento, em 2004 (art. 306.º do CC). O prazo terminou em 2024.',
+      'Em 2025, o crédito está prescrito. Mas o tribunal não o pode declarar oficiosamente: João tem de invocar a prescrição na contestação (art. 303.º do CC). Se não o fizer, será condenado a pagar. Se pagar voluntariamente, não pode pedir a restituição, porque cumpriu uma obrigação natural (arts. 304.º, n.º 2, e 403.º do CC).']
+    ,
+    erros: [
+      'Conhecer oficiosamente da prescrição.',
+      'Aplicar à caducidade as causas de suspensão e interrupção da prescrição.',
+      'Esquecer a regra dos cinco dias do art. 323.º, n.º 2, do CC.',
+      'Confundir prescrição presuntiva com prescrição extintiva.'
+    ],
+    artigos: ['art. 298.º do CC', 'art. 303.º do CC', 'art. 304.º do CC', 'art. 306.º do CC', 'art. 309.º do CC', 'art. 310.º do CC', 'art. 312.º do CC', 'art. 313.º do CC', 'art. 316.º do CC', 'art. 317.º do CC', 'art. 318.º do CC', 'art. 323.º do CC', 'art. 325.º do CC', 'art. 326.º do CC', 'art. 328.º do CC', 'art. 331.º do CC', 'art. 333.º do CC']
+  },
+
+  exerc: {
+    sub: 'Exercício e tutela dos direitos: abuso do direito, colisão de direitos, ação direta, legítima defesa, estado de necessidade e ónus da prova.',
+    ideia: 'Ter um direito não significa poder exercê-lo de qualquer maneira. O exercício é ilegítimo quando excede de forma manifesta os limites da boa-fé, dos bons costumes ou da finalidade económico ou social do direito. E, em regra, quem quer fazer valer um direito tem de recorrer aos tribunais e provar os factos de que ele depende: a autotutela só é permitida em casos excecionais.',
+    conceitos: [
+      ['Abuso do direito', 'É ilegítimo o exercício de um direito quando o titular ultrapassa de forma manifesta os limites da boa-fé, dos bons costumes ou da finalidade social ou económico desse direito (art. 334.º do CC). Manifestações típicas: venire contra factum proprium, supressio, desequilíbrio no exercício.'],
+      ['Colisão de direitos', 'Se colidirem direitos iguais ou do mesmo tipo, os titulares devem ceder na medida do necessário; sendo desiguais, prevalece o que deva considerar-se superior (art. 335.º do CC).'],
+      ['Ação direta', 'É lícito o recurso à força para realizar ou assegurar o próprio direito quando a ação for indispensável, pela impossibilidade de recorrer a tempo aos meios coercivos normais, e o agente não exceda o necessário (art. 336.º do CC).'],
+      ['Legítima defesa e estado de necessidade', 'Excluem a ilicitude do ato destinado a afastar uma agressão atual e contrária à lei (art. 337.º do CC) ou a remover o perigo atual de um dano manifestamente superior (art. 339.º do CC).'],
+      ['Ónus da prova', 'Àquele que invocar um direito cabe fazer a prova dos factos constitutivos; a prova dos factos impeditivos, modificativos ou extintivos compete àquele contra quem a invocação é feita (art. 342.º do CC).']
+    ],
+    regime: [
+      ['Consequências do abuso', 'O abuso do direito torna ilegítimo o exercício e pode gerar responsabilidade civil, além de paralisar a pretensão do titular.', 'É de conhecimento oficioso, porque resulta de um limite legal ao exercício do direito.'],
+      ['Inversão do ónus da prova', 'O ónus inverte-se quando haja presunção legal, dispensa ou liberação do ónus, ou convenção válida, e também quando a parte contrária tiver culposamente tornado impossível a prova ao onerado (art. 344.º do CC).', 'Em caso de dúvida, os factos devem ser considerados constitutivos do direito (art. 342.º, n.º 3, do CC).'],
+      ['Presunções', 'Presunções são as ilações que a lei ou o julgador tira de um facto conhecido para firmar um facto desconhecido (art. 349.º do CC).', 'Quem tem a seu favor a presunção legal escusa de provar o facto a que ela conduz; as presunções legais podem, em regra, ser ilididas mediante prova em contrário (art. 350.º do CC).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['O direito existe?', 'Prova dos factos constitutivos (art. 342.º, n.º 1, do CC).'],
+      ['O exercício é legítimo?', 'Boa-fé, bons costumes, fim do direito (art. 334.º do CC).'],
+      ['Colide com outro direito?', 'Ceder na medida do necessário ou prevalência do superior (art. 335.º do CC).'],
+      ['Pode agir por si?', 'Só nos casos de ação direta, legítima defesa ou estado de necessidade (arts. 336.º a 339.º do CC).'],
+      ['Quem prova o quê?', 'Regras gerais e inversão (arts. 342.º a 344.º do CC).']
+    ] },
+    exemplo: ['Luísa arrendou um armazém a Mário e, durante 12 anos, aceitou que este pagasse a renda com 15 dias de atraso, sem nunca reclamar. Num mês, Luísa resolve o contrato invocando a mora reiterada. Mário diz que ela está a abusar. Tem razão?',
+      'Em abstrato, a mora reiterada pode fundamentar a resolução do arrendamento. Mas Luísa, durante 12 anos, criou em Mário a confiança legítima de que aceitava o pagamento com aquele atraso.',
+      'Vir agora invocar esse atraso para resolver o contrato, sem aviso prévio, contradiz o seu comportamento anterior e excede manifestamente os limites da boa-fé: é um caso típico de venire contra factum proprium, que torna ilegítimo o exercício do direito (art. 334.º do CC). Luísa pode, porém, exigir pontualidade para o futuro, avisando Mário.']
+    ,
+    erros: [
+      'Invocar o abuso do direito para qualquer exercício incómodo: tem de exceder manifestamente os limites.',
+      'Admitir a autotutela quando era possível recorrer aos tribunais em tempo útil.',
+      'Trocar o ónus da prova dos factos constitutivos e extintivos.',
+      'Esquecer que as presunções legais, em regra, admitem prova em contrário.'
+    ],
+    artigos: ['art. 334.º do CC', 'art. 335.º do CC', 'art. 336.º do CC', 'art. 337.º do CC', 'art. 339.º do CC', 'art. 342.º do CC', 'art. 344.º do CC', 'art. 349.º do CC', 'art. 350.º do CC']
+  }
+};
+
+/* Matéria explicada — Direito do Trabalho (texto original do LEXDESK) */
+var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
+GUIAS.trab = {
+  fontes: {
+    sub: 'De onde vêm as regras laborais: Constituição, Código do Trabalho, instrumentos de regulamentação coletiva e contrato, e como se articulam.',
+    ideia: 'O Direito do Trabalho nasceu para proteger a parte mais fraca de uma relação desigual. Por isso, as regras laborais têm uma hierarquia própria: a lei fixa mínimos, as convenções coletivas podem melhorá-los e o contrato individual só pode ir além deles em benefício do trabalhador. Perceber como se combinam estas fontes é o primeiro passo para resolver qualquer hipótese prática.',
+    conceitos: [
+      ['Fontes específicas', 'Além da lei, são fontes do Direito do Trabalho os instrumentos de regulamentação coletiva de trabalho (IRCT), negociais ou não negociais (arts. 1.º e 2.º do CT).'],
+      ['IRCT negociais', 'A convenção coletiva (contrato coletivo, acordo coletivo e acordo de empresa), o acordo de adesão e a decisão de arbitragem voluntária (art. 2.º, n.º 2, do CT).'],
+      ['IRCT não negociais', 'A portaria de extensão, a portaria de condições de trabalho e a decisão de arbitragem obrigatória ou necessária (art. 2.º, n.º 4, do CT).'],
+      ['Imperatividade relativa', 'Grande parte das normas do CT pode ser afastada por IRCT, mas há matérias em que só o pode ser em sentido mais favorável ao trabalhador (art. 3.º, n.º 3, do CT).'],
+      ['Contrato individual', 'Só pode afastar normas legais e convencionais quando estabeleça condições mais favoráveis ao trabalhador e as normas não o impeçam (arts. 3.º, n.º 4, e 476.º do CT).'],
+      ['Direitos fundamentais', 'A Constituição consagra a segurança no emprego e a proibição de despedimentos sem justa causa (art. 53.º da CRP), os direitos dos trabalhadores (art. 59.º) e a liberdade sindical e a greve (arts. 55.º a 57.º).']
+    ],
+    regime: [
+      ['Igualdade e não discriminação', 'O trabalhador tem direito a igualdade de oportunidades e de tratamento no acesso ao emprego, na formação, na promoção e nas condições de trabalho (art. 24.º do CT).', 'O empregador não pode praticar discriminação direta ou indireta; cabe a quem alega a discriminação identificar os colegas em relação aos quais se sente discriminado, e ao empregador provar que a diferença não assenta em fator de discriminação (art. 25.º do CT).'],
+      ['Assédio', 'É proibida a prática de assédio, entendido como comportamento indesejado com o objetivo ou efeito de perturbar ou constranger a pessoa, afetar a sua dignidade ou criar um ambiente hostil (art. 29.º do CT).', 'Constitui contraordenação muito grave e confere ao trabalhador direito a indemnização por danos patrimoniais e não patrimoniais.'],
+      ['Direitos de personalidade', 'O CT protege a reserva da intimidade da vida privada, os dados biométricos e a confidencialidade das mensagens do trabalhador (arts. 16.º a 22.º do CT).', 'O empregador não pode usar câmaras ou outros meios de vigilância à distância para avaliar o modo como o trabalhador desempenha as suas funções (art. 20.º do CT).']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Constituição', 'Há algum direito fundamental do trabalhador em causa?'],
+      ['Lei', 'O que diz o Código do Trabalho? A norma é imperativa, relativamente imperativa ou supletiva?'],
+      ['IRCT', 'Existe convenção coletiva ou portaria aplicável? Pode afastar a lei nessa matéria?'],
+      ['Contrato', 'O contrato estabelece condições mais favoráveis?'],
+      ['Usos', 'Há usos laborais relevantes que não contrariem a boa-fé (art. 1.º do CT)?']
+    ] },
+    exemplo: ['O contrato de Ana prevê 20 dias úteis de férias. O CT estabelece 22 dias úteis. A convenção coletiva aplicável prevê 25 dias. Quantos dias de férias tem Ana?',
+      'O período anual de férias tem a duração mínima de 22 dias úteis (art. 238.º, n.º 1, do CT). O contrato individual não pode estabelecer condições menos favoráveis do que a lei imperativa, pelo que a cláusula de 20 dias é substituída pela regra legal.',
+      'A convenção coletiva estabelece um regime mais favorável e é aplicável ao contrato. Ana tem direito a 25 dias úteis de férias. A articulação faz-se sempre no sentido de garantir ao trabalhador, pelo menos, o mínimo legal.']
+    ,
+    erros: [
+      'Pensar que o contrato individual pode prevalecer sobre a lei mesmo quando é menos favorável.',
+      'Confundir IRCT negociais com não negociais.',
+      'Ignorar que nem todas as normas do CT admitem afastamento por convenção coletiva.',
+      'Esquecer a regra especial do ónus da prova na discriminação.'
+    ],
+    artigos: ['art. 1.º do CT', 'art. 2.º do CT', 'art. 3.º do CT', 'art. 20.º do CT', 'art. 24.º do CT', 'art. 25.º do CT', 'art. 29.º do CT', 'art. 476.º do CT', 'art. 53.º da CRP', 'art. 59.º da CRP']
+  },
+
+  contr: {
+    sub: 'Quando há contrato de trabalho, a presunção legal, o período experimental e os contratos a termo.',
+    ideia: 'O contrato de trabalho distingue-se de outros contratos de prestação de serviço pela subordinação jurídica: o trabalhador presta a sua atividade sob a autoridade e a direção de outrem, mediante retribuição (art. 11.º do CT). Como esta subordinação é muitas vezes disfarçada (os chamados «falsos recibos verdes»), a lei estabelece uma presunção que facilita a prova. Uma vez celebrado, o contrato é, em regra, por tempo indeterminado; o contrato a termo é a exceção e tem de ser justificado.',
+    conceitos: [
+      ['Contrato de trabalho', 'Aquele pelo qual uma pessoa singular se compromete, contra retribuição, a prestar atividade a outrem, integrado na sua organização e sob a autoridade destas (art. 11.º do CT).'],
+      ['Presunção de laboralidade', 'Presume-se que há contrato de trabalho quando se verifiquem algumas das características do art. 12.º do CT: atividade em local do beneficiário, equipamentos deste, horário determinado por ele, pagamento periódico de quantia certa, funções de direção ou chefia.'],
+      ['Período experimental', 'Tempo inicial em que qualquer das partes pode, em regra, denunciar o contrato sem aviso prévio nem justa causa. No contrato por tempo indeterminado, dura em regra 90 dias, sendo mais longo para certas funções (art. 112.º do CT).'],
+      ['Contrato a termo', 'Só pode ser celebrado para satisfazer necessidades temporárias, objetivamente definidas, e pelo tempo estritamente necessário (art. 140.º, n.º 1, do CT). Exige forma escrita e indicação do motivo justificativo (art. 141.º do CT).'],
+      ['Termo certo e incerto', 'O termo certo tem duração máxima de dois anos (art. 148.º, n.º 1, do CT). O termo incerto dura enquanto se mantiver o motivo, com um limite máximo legal, e é usado, por exemplo, para substituir um trabalhador ausente.']
+    ],
+    regime: [
+      ['Ilisão da presunção', 'Verificados alguns dos indícios do art. 12.º, cabe ao beneficiário da atividade provar que não há subordinação jurídica.', 'A designação dada pelas partes ao contrato («prestação de serviços») é irrelevante: o que conta é o modo como a atividade é efetivamente prestada.'],
+      ['Conversão do contrato a termo', 'Considera-se sem termo o contrato celebrado fora dos casos admitidos, sem forma escrita, sem indicação do motivo justificativo, ou que ultrapasse os limites de duração ou de renovações (art. 147.º do CT).', 'O motivo justificativo tem de ser concreto e verificável: menções genéricas como «acréscimo de trabalho» sem factos que o demonstrem não bastam.'],
+      ['Renovação do termo certo', 'Na falta de estipulação em contrário e de declaração de cessação, o contrato a termo certo renova-se no fim do prazo (art. 149.º, n.º 2, do CT).', 'A renovação depende de se manterem os requisitos de admissibilidade, e o número e a duração das renovações estão sujeitos aos limites do art. 149.º do CT.']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Qualificar', 'Há subordinação jurídica? Verificar os indícios do art. 12.º do CT.'],
+      ['Duração', 'É por tempo indeterminado (regra) ou a termo (exceção)?'],
+      ['Se a termo', 'Motivo admitido (art. 140.º), forma escrita e motivo concreto (art. 141.º), limites (arts. 148.º e 149.º do CT).'],
+      ['Período experimental', 'Ainda decorre? Qual a duração aplicável (art. 112.º do CT)?'],
+      ['Consequência dos vícios', 'Conversão em contrato sem termo (art. 147.º do CT).']
+    ] },
+    exemplo: ['Bruno trabalha há três anos como designer para uma agência, com «contrato de prestação de serviços» e recibos verdes. Cumpre o horário da agência, nas suas instalações, com o computador desta, e recebe 1.400 € por mês. A agência quer pôr fim à relação sem mais. Pode?',
+      'Verificam-se vários indícios do art. 12.º, n.º 1, do CT: atividade em local do beneficiário, com equipamento deste, com horário por ele determinado e retribuição certa e periódica. Presume-se a existência de contrato de trabalho; a designação dada pelas partes não afasta a presunção.',
+      'Se a agência não provar a inexistência de subordinação, a relação é um contrato de trabalho por tempo indeterminado. Pôr-lhe fim sem justa causa nem procedimento constitui despedimento ilícito (art. 381.º do CT), com direito de Bruno à reintegração ou a indemnização, além das retribuições intercalares.']
+    ,
+    erros: [
+      'Qualificar o contrato pelo nome que as partes lhe deram.',
+      'Aceitar contratos a termo com motivos genéricos.',
+      'Esquecer que a consequência dos vícios do termo é a conversão em contrato sem termo, e não a nulidade.',
+      'Aplicar o mesmo período experimental a todos os trabalhadores.'
+    ],
+    artigos: ['art. 11.º do CT', 'art. 12.º do CT', 'art. 111.º do CT', 'art. 112.º do CT', 'art. 114.º do CT', 'art. 140.º do CT', 'art. 141.º do CT', 'art. 147.º do CT', 'art. 148.º do CT', 'art. 149.º do CT']
+  },
+
+  temp: {
+    sub: 'Limites do tempo de trabalho, horário, trabalho suplementar, férias, retribuição e subsídios.',
+    ideia: 'O tempo é o centro da relação laboral: o trabalhador vende uma parte do seu tempo, e a lei limita essa parte para proteger a saúde, a vida familiar e o descanso. A retribuição é a contrapartida, com garantias especiais, como a irredutibilidade e os subsídios de férias e de Natal.',
+    conceitos: [
+      ['Tempo de trabalho', 'Qualquer período durante o qual o trabalhador exerce a atividade ou permanece adstrito à sua realização, bem como certas interrupções e intervalos legalmente equiparados (art. 197.º do CT).'],
+      ['Limites máximos', 'O período normal de trabalho não pode exceder, em regra, oito horas diárias e quarenta semanais (art. 203.º, n.º 1, do CT).'],
+      ['Trabalho suplementar', 'O prestado fora do horário de trabalho. Só pode ser exigido em casos de acréscimo eventual e transitório de trabalho ou de força maior, tem limites anuais e é pago com acréscimo (arts. 226.º a 231.º e 268.º do CT).'],
+      ['Férias', 'Direito anual a um período mínimo de 22 dias úteis, irrenunciável, que não pode ser substituído por compensação económica, salvo nos casos previstos na lei (arts. 237.º e 238.º do CT).'],
+      ['Retribuição', 'A prestação a que o trabalhador tem direito como contrapartida do seu trabalho, incluindo a base e outras prestações regulares e periódicas (art. 258.º do CT). Presume-se retribuição qualquer prestação do empregador ao trabalhador.']
+    ],
+    regime: [
+      ['Irredutibilidade', 'É proibido ao empregador diminuir a retribuição, salvo nos casos previstos no CT ou em IRCT (art. 129.º, n.º 1, alínea d), do CT).', 'Esta garantia abrange as prestações com natureza retributiva, mas não necessariamente prémios ligados a resultados ou condições excecionais.'],
+      ['Subsídios', 'O trabalhador tem direito a subsídio de Natal de valor igual a um mês de retribuição, a pagar até 15 de dezembro (art. 263.º do CT), e a subsídio de férias (art. 264.º do CT).', 'No ano de admissão e no de cessação, os subsídios são proporcionais ao tempo de serviço.'],
+      ['Férias no ano de admissão', 'No ano da contratação, o trabalhador tem direito a dois dias úteis de férias por cada mês completo de duração do contrato, até 20 dias, gozados após seis meses de execução (art. 239.º do CT).', 'A violação culposa do direito a férias obriga o empregador a pagar uma compensação acrescida (art. 246.º do CT).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Matéria', 'Regra geral', 'Norma'], linhas: [
+      ['Período normal de trabalho', '8 horas/dia e 40 horas/semana', 'art. 203.º do CT'],
+      ['Férias', 'Mínimo de 22 dias úteis', 'art. 238.º do CT'],
+      ['Subsídio de Natal', 'Um mês de retribuição, até 15 de dezembro', 'art. 263.º do CT'],
+      ['Subsídio de férias', 'Retribuição base e outras prestações ligadas à execução do trabalho', 'art. 264.º do CT'],
+      ['Retribuição mínima', 'Fixada anualmente por diploma próprio', 'art. 273.º do CT']
+    ] },
+    exemplo: ['Carla é rececionista num hotel. O diretor diz-lhe que, a partir do próximo mês, o seu salário-base passa de 1.100 € para 950 €, por causa da quebra de reservas. Carla pode recusar?',
+      'É proibido ao empregador diminuir a retribuição, salvo nos casos previstos no CT ou em IRCT (art. 129.º, n.º 1, alínea d), do CT). Uma quebra de reservas não é, por si, fundamento legal para baixar o salário-base.',
+      'Carla pode recusar a redução e continuar a exigir 1.100 €. Se o empregador pagar menos, há falta culposa de pagamento pontual da retribuição, que pode fundamentar a resolução do contrato com justa causa pela trabalhadora (art. 394.º, n.º 2, alínea a), do CT), com direito a indemnização.']
+    ,
+    erros: [
+      'Admitir a renúncia às férias em troca de dinheiro fora dos casos legais.',
+      'Pensar que o empregador pode baixar o salário por dificuldades económicas sem base legal ou convencional.',
+      'Esquecer o carácter proporcional dos subsídios no ano de admissão e de cessação.',
+      'Confundir horário de trabalho com período normal de trabalho.'
+    ],
+    artigos: ['art. 129.º do CT', 'art. 197.º do CT', 'art. 203.º do CT', 'art. 226.º do CT', 'art. 237.º do CT', 'art. 238.º do CT', 'art. 239.º do CT', 'art. 258.º do CT', 'art. 263.º do CT', 'art. 264.º do CT', 'art. 273.º do CT']
+  },
+
+  disc: {
+    sub: 'O poder disciplinar do empregador: sanções, princípios, prazos e o procedimento disciplinar com intenção de despedimento.',
+    ideia: 'O empregador tem poder disciplinar sobre o trabalhador enquanto vigorar o contrato (art. 98.º do CT). Mas é um poder limitado: só pode aplicar as sanções previstas na lei, de forma proporcional, depois de ouvir o trabalhador e dentro de prazos curtos. Quando a sanção pretendida é o despedimento, o procedimento é mais exigente e qualquer falha pode tornar o despedimento ilícito.',
+    conceitos: [
+      ['Sanções disciplinares', 'Repreensão, repreensão registada, sanção pecuniária, perda de dias de férias, suspensão do trabalho com perda de retribuição e despedimento sem indemnização ou compensação (art. 328.º, n.º 1, do CT).'],
+      ['Proporcionalidade', 'A sanção deve ser proporcional à gravidade da infração e à culpabilidade do infrator, não podendo aplicar-se mais de uma pela mesma infração (art. 330.º, n.º 1, do CT).'],
+      ['Prazos', 'O procedimento deve iniciar-se nos 60 dias seguintes ao conhecimento da infração pelo empregador ou superior com competência disciplinar; o poder disciplinar prescreve um ano após a infração (art. 329.º, n.os 1 e 2, do CT).'],
+      ['Justa causa de despedimento', 'Comportamento culposo do trabalhador que, dada a sua gravidade e efeitos, torne impossível, de imediato e na prática, manter a relação de trabalho (art. 351.º, n.º 1, do CT).'],
+      ['Nota de culpa', 'Comunicação escrita da intenção de despedir, com a descrição circunstanciada dos factos imputados (art. 353.º, n.º 1, do CT).']
+    ],
+    regime: [
+      ['Procedimento para despedimento', 'Nota de culpa; resposta do trabalhador em 10 dias úteis, podendo consultar o processo e pedir diligências (art. 355.º do CT); instrução; pareceres das estruturas representativas; decisão escrita e fundamentada.', 'O empregador dispõe de 30 dias para decidir, após os pareceres ou o prazo para os emitir, sob pena de perder o direito de aplicar a sanção (art. 357.º, n.º 1, do CT).'],
+      ['Factos da decisão', 'Na decisão não podem ser invocados factos que não constem da nota de culpa nem da resposta do trabalhador, salvo se atenuarem a responsabilidade (art. 357.º, n.º 4, do CT).', 'A nota de culpa delimita a acusação, de forma semelhante à acusação em processo penal.'],
+      ['Suspensão preventiva', 'Com a nota de culpa, o empregador pode suspender o trabalhador se a sua presença se mostrar inconveniente, mantendo o pagamento da retribuição (art. 354.º do CT).', 'A suspensão preventiva não é uma sanção.']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Conhecimento', 'Data em que o empregador soube da infração: começa o prazo de 60 dias.'],
+      ['Nota de culpa', 'Factos concretos, datas, lugares (art. 353.º do CT).'],
+      ['Resposta', '10 dias úteis (art. 355.º do CT).'],
+      ['Instrução', 'Diligências requeridas pelo trabalhador, salvo se dilatórias.'],
+      ['Decisão', 'Escrita, fundamentada, em 30 dias (art. 357.º do CT).'],
+      ['Impugnação', 'Ação de apreciação da licitude no prazo de 60 dias (art. 387.º do CT).']
+    ] },
+    exemplo: ['A 2 de março, a diretora de uma loja descobre que o funcionário Diogo se apropriou de 300 € da caixa. Só a 20 de junho envia nota de culpa. Diogo responde e é despedido em julho. O despedimento é válido?',
+      'O procedimento disciplinar deve iniciar-se nos 60 dias seguintes ao conhecimento da infração por quem tem competência disciplinar (art. 329.º, n.º 2, do CT). De 2 de março a 20 de junho passaram mais de 60 dias.',
+      'O direito de exercer o poder disciplinar quanto àquela infração caducou. O despedimento é ilícito (art. 382.º, n.º 1, do CT), apesar da gravidade dos factos. Diogo pode impugná-lo no prazo de 60 dias (art. 387.º, n.º 2, do CT).']
+    ,
+    erros: [
+      'Contar o prazo de 60 dias a partir da infração, e não do conhecimento pelo empregador.',
+      'Fundamentar a decisão em factos que não constavam da nota de culpa.',
+      'Aplicar duas sanções pela mesma infração.',
+      'Redigir a nota de culpa com acusações genéricas, sem factos concretos.'
+    ],
+    artigos: ['art. 98.º do CT', 'art. 328.º do CT', 'art. 329.º do CT', 'art. 330.º do CT', 'art. 351.º do CT', 'art. 353.º do CT', 'art. 354.º do CT', 'art. 355.º do CT', 'art. 357.º do CT', 'art. 382.º do CT']
+  },
+
+  cess: {
+    sub: 'Formas de cessação: caducidade, revogação, despedimentos, resolução e denúncia pelo trabalhador, e as consequências da ilicitude.',
+    ideia: 'A Constituição proíbe os despedimentos sem justa causa (art. 53.º da CRP). Por isso, o CT enumera taxativamente as formas de pôr fim ao contrato e regula cada uma com detalhe. Do lado do empregador, os despedimentos têm de ter fundamento e procedimento; do lado do trabalhador, há maior liberdade, mas também deveres, como o aviso prévio na denúncia.',
+    conceitos: [
+      ['Modalidades', 'Caducidade, revogação, despedimento por facto imputável ao trabalhador, despedimento coletivo, despedimento por extinção de posto de trabalho, despedimento por inadaptação, resolução e denúncia pelo trabalhador (art. 340.º do CT).'],
+      ['Revogação', 'Acordo entre empregador e trabalhador para pôr fim ao contrato, em documento escrito assinado por ambos (art. 349.º do CT). O trabalhador pode, em regra, fazer cessar o acordo nos sete dias seguintes (art. 350.º do CT).'],
+      ['Despedimentos por causas objetivas', 'Coletivo, por extinção do posto e por inadaptação: assentam em motivos de mercado, estruturais, tecnológicos ou de adaptação, e conferem direito a compensação (arts. 359.º, 367.º e 373.º do CT).'],
+      ['Resolução pelo trabalhador', 'Cessação imediata do contrato com justa causa, por exemplo por falta culposa de pagamento pontual da retribuição ou ofensa à integridade física, liberdade ou honra do trabalhador (art. 394.º do CT).'],
+      ['Denúncia pelo trabalhador', 'Cessação sem justa causa, com aviso prévio de 30 ou 60 dias, consoante a antiguidade seja até dois anos ou superior (art. 400.º, n.º 1, do CT).']
+    ],
+    regime: [
+      ['Despedimento ilícito', 'É ilícito o despedimento por motivos discriminatórios, sem procedimento, ou com motivo declarado improcedente (art. 381.º do CT), e ainda nos casos especiais de cada modalidade.', 'A licitude só pode ser apreciada por tribunal judicial; o trabalhador opõe-se mediante requerimento em formulário próprio no prazo de 60 dias (art. 387.º do CT).'],
+      ['Efeitos da ilicitude', 'O empregador é condenado a indemnizar todos os danos e a reintegrar o trabalhador, pagando as retribuições que deixou de receber entre o despedimento e o trânsito da decisão (arts. 389.º e 390.º do CT).', 'Em vez da reintegração, o trabalhador pode optar por uma indemnização entre 15 e 45 dias de salário base (com diuturnidades) por cada ano de antiguidade (art. 391.º do CT).'],
+      ['Resolução com justa causa', 'O trabalhador comunica a resolução por escrito, com indicação sucinta dos factos, nos 30 dias seguintes ao conhecimento destes (art. 395.º, n.º 1, do CT).', 'Tem direito a indemnização entre 15 e 45 dias de salário base (com diuturnidades) por cada ano de antiguidade, com o mínimo de três meses (art. 396.º, n.º 1, do CT).']
+    ],
+    esquema: { tipo: 'tabela', cab: ['Iniciativa', 'Modalidade', 'Requisito central'], linhas: [
+      ['Ambos', 'Revogação', 'Acordo escrito (art. 349.º do CT)'],
+      ['Empregador', 'Despedimento com justa causa', 'Comportamento culposo grave e procedimento (arts. 351.º e seguintes)'],
+      ['Empregador', 'Coletivo, extinção do posto, inadaptação', 'Motivo objetivo, procedimento e compensação'],
+      ['Trabalhador', 'Resolução', 'Justa causa e comunicação em 30 dias (arts. 394.º e 395.º)'],
+      ['Trabalhador', 'Denúncia', 'Aviso prévio de 30 ou 60 dias (art. 400.º)'],
+      ['Lei', 'Caducidade', 'Termo, impossibilidade superveniente, reforma (art. 343.º)']
+    ] },
+    exemplo: ['Elsa, com seis anos de antiguidade, não recebe o salário há três meses. Quer sair da empresa, mas sem perder direitos. Que deve fazer?',
+      'O atraso culposo no pagamento do salário é justa causa de resolução do contrato pelo trabalhador (art. 394.º, n.º 2, alínea a), do CT); a falta prolongada por 60 dias presume-se culposa (art. 394.º, n.º 5, do CT).',
+      'Elsa deve comunicar a resolução por escrito, indicando sucintamente os factos, nos 30 dias seguintes ao conhecimento destes, contados nos termos do art. 395.º do CT. Tem direito às retribuições em dívida e a uma indemnização de 15 a 45 dias de salário base (com diuturnidades) por cada ano de antiguidade, com o mínimo de três meses (art. 396.º do CT).']
+    ,
+    erros: [
+      'Confundir resolução com justa causa (sem aviso prévio, com indemnização) e denúncia (com aviso prévio, sem indemnização).',
+      'Deixar passar o prazo de 60 dias para impugnar o despedimento.',
+      'Esquecer as retribuições intercalares em caso de despedimento ilícito.',
+      'Tratar a revogação como despedimento.'
+    ],
+    artigos: ['art. 340.º do CT', 'art. 343.º do CT', 'art. 349.º do CT', 'art. 350.º do CT', 'art. 381.º do CT', 'art. 387.º do CT', 'art. 389.º do CT', 'art. 390.º do CT', 'art. 391.º do CT', 'art. 394.º do CT', 'art. 395.º do CT', 'art. 396.º do CT', 'art. 400.º do CT', 'art. 53.º da CRP']
+  },
+
+  colet: {
+    sub: 'Sindicatos, comissões de trabalhadores, convenções coletivas e greve.',
+    ideia: 'O Direito Coletivo do Trabalho parte de uma ideia simples: sozinho, o trabalhador negoceia em desvantagem; em grupo, equilibra a relação. Por isso a lei protege a organização dos trabalhadores (sindicatos e comissões de trabalhadores), a negociação coletiva, que produz as convenções, e o direito de greve, como forma de pressão legítima.',
+    conceitos: [
+      ['Liberdade sindical', 'Os trabalhadores têm o direito de constituir associações sindicais e de nelas se filiarem, sem discriminação nem pressão (art. 55.º da CRP e art. 440.º do CT).'],
+      ['Convenção coletiva', 'Acordo celebrado entre associações sindicais e empregadores ou associações de empregadores, que regula as relações de trabalho: contrato coletivo, acordo coletivo ou acordo de empresa (art. 2.º, n.º 3, do CT).'],
+      ['Princípio da filiação', 'A convenção coletiva obriga, em regra, os empregadores que a subscrevem ou filiados nas associações outorgantes e os trabalhadores filiados nas associações sindicais outorgantes (art. 496.º do CT).'],
+      ['Portaria de extensão', 'Instrumento não negocial pelo qual o Governo estende a convenção a empregadores e trabalhadores não filiados do mesmo setor (art. 514.º do CT).'],
+      ['Greve', 'Direito dos trabalhadores, cuja decisão compete às associações sindicais e, em certos casos, a assembleias de trabalhadores (art. 57.º da CRP e art. 531.º do CT).']
+    ],
+    regime: [
+      ['Aviso prévio de greve', 'A entidade que decida a greve deve enviar aviso ao empregador e ao ministério responsável pela área laboral com a antecedência mínima de cinco dias úteis, ou dez dias úteis nos serviços essenciais (art. 534.º, n.º 1, do CT).', 'O aviso prévio deve conter uma proposta de serviços mínimos quando estes sejam devidos.'],
+      ['Serviços mínimos', 'Nas empresas que satisfazem necessidades sociais impreteríveis, como saúde, transportes ou energia, a greve deve assegurar a prestação dos serviços mínimos indispensáveis (art. 537.º do CT).', 'Os serviços mínimos são definidos por IRCT, acordo ou, na falta deles, por decisão administrativa ou arbitral, e devem respeitar a necessidade, adequação e proporcionalidade.'],
+      ['Proibição de substituição', 'O empregador não pode, durante a greve, substituir os grevistas por pessoas que, à data do aviso prévio, não trabalhavam no respetivo estabelecimento, nem contratar empresa para o efeito (art. 535.º do CT).', 'A violação constitui contraordenação muito grave. A participação na greve suspende os deveres de subordinação e de assiduidade e o direito à retribuição.'],
+      ['Vigência das convenções', 'A convenção vigora pelo prazo nela previsto e renova-se nos termos que estabeleça; a lei regula a sobrevigência e a caducidade depois de denunciada (arts. 499.º e 501.º do CT).', 'Os efeitos de certas matérias, como a retribuição, continuam a aplicar-se até que entre em vigor outro instrumento.']
+    ],
+    esquema: { tipo: 'passos', itens: [
+      ['Quem decide a greve?', 'Associação sindical ou, nos casos legais, assembleia de trabalhadores.'],
+      ['Aviso prévio', '5 dias úteis, ou 10 nos serviços essenciais (art. 534.º do CT).'],
+      ['Serviços mínimos', 'São devidos? Como foram definidos (art. 537.º do CT)?'],
+      ['Durante a greve', 'Proibição de substituição dos grevistas (art. 535.º do CT).'],
+      ['Efeitos', 'Suspensão de deveres e do direito à retribuição; proibição de discriminação.']
+    ] },
+    exemplo: ['Um sindicato de motoristas de autocarros urbanos decide uma greve de dois dias e envia o aviso prévio seis dias úteis antes. A empresa contrata motoristas de uma empresa de aluguer para assegurar as carreiras. Quid juris?',
+      'O transporte público de passageiros é um setor que satisfaz necessidades sociais impreteríveis (art. 537.º, n.º 2, do CT), pelo que o aviso prévio devia ter sido feito com dez dias úteis de antecedência (art. 534.º, n.º 1, do CT). Com seis dias, o aviso é insuficiente, o que pode tornar a greve ilícita e as faltas injustificadas.',
+      'Ainda assim, a empresa não pode substituir os grevistas por trabalhadores de outra empresa (art. 535.º do CT). A substituição constitui contraordenação muito grave. A forma lícita de proteger o interesse público é garantir os serviços mínimos.']
+    ,
+    erros: [
+      'Aplicar o aviso prévio de cinco dias úteis em setores essenciais.',
+      'Pensar que a empresa pode contratar terceiros para substituir grevistas.',
+      'Esquecer o princípio da filiação na aplicação das convenções.',
+      'Confundir portaria de extensão com convenção coletiva.'
+    ],
+    artigos: ['art. 2.º do CT', 'art. 440.º do CT', 'art. 496.º do CT', 'art. 499.º do CT', 'art. 501.º do CT', 'art. 514.º do CT', 'art. 531.º do CT', 'art. 534.º do CT', 'art. 535.º do CT', 'art. 537.º do CT', 'art. 55.º da CRP', 'art. 57.º da CRP']
   }
 };
 
@@ -12519,7 +13682,7 @@ libList = function () {
 setTimeout(leiMetaCarregar, 1500);
 
 /* ===== Matéria explicada: guias de estudo por tema ===== */
-var GUIA_ORD = ['obr', 'fam', 'pen', 'pp', 'pc', 'pex', 'con'];
+var GUIA_ORD = ['obr', 'fam', 'pen', 'pp', 'pc', 'pex', 'con', 'trab', 'reais', 'com', 'tgdc'];
 function guiasDe(d) { return (typeof GUIAS !== 'undefined' && GUIAS[d]) || {}; }
 function guiaTem(d, t) { return !!guiasDe(d)[t]; }
 function guiaN(d) { return Object.keys(guiasDe(d)).length; }
@@ -13918,7 +15081,7 @@ Store.connect();
 </script>
 <script>
 /* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='fff6db5a9609';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
+(function(){var B='6d86651b0b56';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>
