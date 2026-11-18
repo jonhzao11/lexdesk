@@ -1712,6 +1712,91 @@ span.rp-util{cursor:default}
 @media (max-width:1240px) and (min-width:1051px){.n2-b>svg:first-child{display:none}.n2-b{padding:8px 10px}}
 body.n2open .side{z-index:90}
 @media (max-width:1050px){.n2-k{display:none}.n2-m{max-height:calc(100vh - 140px);overflow-y:auto}}
+/* ===================== VISUAL PREMIUM (experimental) ===================== */
+html.prem{--p-bg:#09090B;--p-s1:#111114;--p-s2:#17171B;--p-ln:rgba(255,255,255,.07);--p-ln2:rgba(255,255,255,.13);--p-tx:#ECECEF;--p-mu:#8A8A96;--p-ac:#D4B47A;--p-ac2:#F1DDB0}
+html.prem,html.prem body{background:var(--p-bg)!important}
+html.prem body{color:var(--p-tx);font-feature-settings:"ss01","cv11";-webkit-font-smoothing:antialiased}
+html.prem body::before{background:radial-gradient(60% 50% at 50% -10%,rgba(212,180,122,.10),transparent 70%)!important;opacity:1}
+html.prem body::after{background:none!important}
+html.prem .main{position:relative}
+html.prem .main::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 50% 0%,#000 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 50% 0%,#000 20%,transparent 70%)}
+/* Barra superior em vidro */
+html.prem body.tn .side{background:rgba(9,9,11,.72)!important;background-image:none!important;backdrop-filter:saturate(160%) blur(18px);-webkit-backdrop-filter:saturate(160%) blur(18px);border-bottom:1px solid var(--p-ln)!important;box-shadow:none!important}
+html.prem .tn-brand .mark{background:linear-gradient(145deg,#2A2A30,#141417)!important;border:1px solid var(--p-ln2);box-shadow:none!important}
+html.prem .tn-brand .word span{color:var(--p-ac)!important}
+html.prem .n2-bar,html.prem .tn-bar{background:transparent!important;border-color:transparent!important;box-shadow:none!important}
+html.prem .n2-ind{background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+html.prem .n2-b{color:var(--p-mu);font-weight:500;letter-spacing:-.005em}
+html.prem .n2-b:hover,html.prem .n2-g.open>.n2-b,html.prem .n2-b.on{color:var(--p-tx)}
+html.prem .n2-b.on>svg:first-child{color:var(--p-ac)}
+html.prem .n2-b.on::after{background:var(--p-ac);box-shadow:0 0 12px rgba(212,180,122,.55);width:14px;margin-left:-7px;height:2px}
+html.prem .n2-m{background:rgba(20,20,24,.92)!important;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 30px 70px -20px rgba(0,0,0,.8),0 0 0 1px var(--p-ln2)!important;--n2t:rgba(255,255,255,.05)!important;--n2c:var(--p-ac)!important}
+html.prem .n2-mh{background:transparent!important;color:var(--p-tx);border-bottom:1px solid var(--p-ln)}
+html.prem .n2-mi{background:rgba(212,180,122,.12);color:var(--p-ac)}
+html.prem .n2-mh span{color:var(--p-mu);opacity:1}
+html.prem .n2-it b{color:var(--p-tx)!important}.html.prem .n2-it>span{color:var(--p-mu)}
+html.prem .n2-ii{background:rgba(255,255,255,.04)!important;color:var(--p-ac)!important;border:1px solid var(--p-ln)}
+html.prem .n2-mf{background:rgba(255,255,255,.02)!important;border-top-color:var(--p-ln)!important;color:var(--p-mu)!important}
+html.prem .n2-k kbd{background:transparent!important;border-color:var(--p-ln2)!important;color:var(--p-mu)}
+html.prem .main>.topbar .sino,html.prem .main>.topbar .acct,html.prem .main>.topbar .topsearch{background:rgba(255,255,255,.04)!important;border:1px solid var(--p-ln)!important;box-shadow:none!important;color:var(--p-tx)!important}
+html.prem .main>.topbar .sino:hover,html.prem .main>.topbar .acct:hover,html.prem .main>.topbar .topsearch:hover{border-color:var(--p-ln2)!important;background:rgba(255,255,255,.07)!important}
+/* Superfícies do painel */
+html.prem .hband,html.prem .bt,html.prem .card,html.prem .promo,html.prem .oa-c{background:var(--p-s1)!important;background-image:radial-gradient(420px circle at var(--mx,-999px) var(--my,-999px),rgba(212,180,122,.07),transparent 45%)!important;border:1px solid var(--p-ln)!important;box-shadow:none!important;border-radius:18px!important;transition:border-color .25s,transform .25s cubic-bezier(.2,.8,.2,1)}
+html.prem .bt:hover,html.prem .card:hover,html.prem .hband:hover,html.prem .promo:hover{border-color:var(--p-ln2)!important}
+html.prem .bt:hover{transform:translateY(-2px)}
+html.prem .hband{min-height:0;padding:28px 32px}
+html.prem .hband .hb-bal,html.prem .hband .hb-braco,html.prem .hband .hb-prato{opacity:.35;filter:grayscale(1)}
+html.prem .hband h1{font-weight:600;letter-spacing:-.03em}
+html.prem .hband h1 span,html.prem .hband h1 b{color:var(--p-ac)!important;background:none!important;-webkit-text-fill-color:currentColor}
+html.prem .hband .pd{background:var(--p-s2)!important;border:1px solid var(--p-ln)!important;box-shadow:none!important}
+html.prem .bt-dest{background:var(--p-s1)!important;background-image:radial-gradient(520px circle at var(--mx,-999px) var(--my,-999px),rgba(212,180,122,.09),transparent 45%),linear-gradient(180deg,rgba(212,180,122,.06),transparent 60%)!important;color:var(--p-tx)}
+html.prem .bt-dest::before{content:'';position:absolute;left:0;top:22px;bottom:22px;width:2px;border-radius:2px;background:linear-gradient(var(--p-ac),transparent)}
+html.prem .bt-dest .bt-l{color:var(--p-ac)!important}
+html.prem .bt-dest .bt-n{color:var(--p-tx)!important;font-weight:600;letter-spacing:-.035em}
+html.prem .bt-dest .bt-s{color:var(--p-mu)!important}
+html.prem .bt-n{font-variant-numeric:tabular-nums;letter-spacing:-.03em;font-weight:600}
+html.prem .bt-l,html.prem .bt-t{color:var(--p-mu)!important;font-weight:500}
+html.prem .card h2,html.prem .bt h2,html.prem .card h1{letter-spacing:-.02em;font-weight:600}
+html.prem .card h2::before{background:var(--p-ac)!important;border-radius:2px;width:6px!important;height:6px!important}
+html.prem .promo h2{color:var(--p-tx)!important;font-weight:600;letter-spacing:-.02em}
+html.prem .promo p{color:var(--p-mu)!important}
+html.prem .promo::before,html.prem .promo::after{display:none!important}
+html.prem .eyebrow{color:var(--p-ac)!important;letter-spacing:.14em}
+/* Botões e chips */
+html.prem .btn{background:rgba(255,255,255,.04)!important;border:1px solid var(--p-ln2)!important;color:var(--p-tx)!important;box-shadow:none!important;font-weight:500;transition:background .2s,border-color .2s,transform .15s}
+html.prem .btn:hover{background:rgba(255,255,255,.08)!important;border-color:rgba(255,255,255,.22)!important}
+html.prem .btn:active{transform:scale(.98)}
+html.prem .btn.pri,html.prem .btn.wine,html.prem .btn.gold{background:var(--p-tx)!important;color:#0A0A0C!important;border-color:transparent!important}
+html.prem .btn.pri:hover,html.prem .btn.wine:hover,html.prem .btn.gold:hover{background:#fff!important}
+html.prem .chip{background:rgba(255,255,255,.05)!important;color:var(--p-mu)!important;border:1px solid var(--p-ln)!important}
+html.prem .chip.ok{color:#7AD7A4!important}
+/* Calendário, horário e progresso mais sóbrios */
+html.prem .ws-c,html.prem .ws-a,html.prem [class*="ws-"] .oa-hz{filter:saturate(.55)}
+html.prem .ch-d.hoje,html.prem .ch-d.prox{border-color:var(--p-ac)!important}
+html.prem .mp svg circle,html.prem .mp svg path{filter:saturate(.6)}
+/* Entrada suave das secções */
+html.prem .main.prem-in>*:not(.topbar){animation:premUp .55s cubic-bezier(.2,.8,.2,1) both}
+html.prem .main.prem-in>*:nth-child(2){animation-delay:.02s}html.prem .main.prem-in>*:nth-child(3){animation-delay:.07s}html.prem .main.prem-in>*:nth-child(4){animation-delay:.12s}html.prem .main.prem-in>*:nth-child(5){animation-delay:.17s}html.prem .main.prem-in>*:nth-child(6){animation-delay:.22s}html.prem .main.prem-in>*:nth-child(n+7){animation-delay:.27s}
+@keyframes premUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+html.prem .bento>.bt{animation:premUp .55s cubic-bezier(.2,.8,.2,1) both}
+html.prem .bento>.bt:nth-child(2){animation-delay:.08s}html.prem .bento>.bt:nth-child(3){animation-delay:.14s}html.prem .bento>.bt:nth-child(4){animation-delay:.2s}
+@media (prefers-reduced-motion:reduce){html.prem .main.prem-in>*,html.prem .bento>.bt{animation:none!important}}
+html.prem ::selection{background:rgba(212,180,122,.3)}
+/* Interruptor */
+.prem-sw{gap:8px}.prem-k{width:26px;height:15px;border-radius:99px;background:rgba(127,127,140,.35);position:relative;display:inline-block;transition:background .2s}
+.prem-k i{position:absolute;top:2px;left:2px;width:11px;height:11px;border-radius:50%;background:#fff;transition:transform .2s}
+.prem-sw.on .prem-k{background:#D4B47A}.prem-sw.on .prem-k i{transform:translateX(11px)}
+html.prem .hband::before,html.prem .hband::after{display:none!important}
+html.prem .hband .pd{background:var(--p-s2)!important}
+html.prem .fx-c{background:var(--p-s2)!important;border:1px solid var(--p-ln)!important;box-shadow:none!important;transition:border-color .2s,transform .25s}
+html.prem .fx-c:hover{border-color:var(--p-ln2)!important;transform:translateY(-2px)}
+html.prem .fx-c>*:first-child{filter:grayscale(.75) brightness(.8) contrast(1.05);transition:filter .3s}
+html.prem .fx-c:hover>*:first-child{filter:grayscale(.2) brightness(.9)}
+html.prem .novo{background:rgba(212,180,122,.14)!important;color:var(--p-ac)!important}
+html.prem .oa-pxb{background:var(--p-s2)!important;border:1px solid var(--p-ln2)!important}
+html.prem .oa-pxb *{border-color:var(--p-ac)!important}
+html.prem .ch-d.prox{background:rgba(212,180,122,.12)!important;color:var(--p-ac2)!important}
+html.prem .seq-rk-ls .eu,html.prem .seq-rk .eu{background:rgba(212,180,122,.08)!important}
 
 </style>
 </head>
@@ -5412,7 +5497,7 @@ function vPainel() {
   }).join('');
   P.continuar = '<section class="grid2"><div class="card"><div class="row" style="justify-content:space-between"><h2>Continuar onde ficou</h2>' + (s.ws.length ? '<button class="btn sm" data-go="workspaces">Ver todos</button>' : '') + '</div>' + cont + '</div>' +
     '<div class="card"><h2>Taxa de acerto por disciplina</h2>' + prog + (s.tot ? '' : '<p class="foot" style="margin:0">Os valores aparecem à medida que faz simulações de exame.</p>') + '</div></section>';
-  P.mentoria = '<section class="promo"><div style="display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 320px"><span class="eyebrow" style="color:var(--gold)">Mentoria e explicações</span><h2 style="color:#fff;font-size:24px">Learn together. Share knowledge.</h2><p style="margin:0;color:#C3CCDB">Encontre explicadores, esclareça dúvidas ou partilhe o que sabe com outros estudantes de Direito.</p></div><div class="row"><button class="btn gold" data-a="conn-tab" data-id="aprender">Quero aprender</button><button class="btn ghost" data-a="conn-tab" data-id="ensinar">Quero ensinar</button></div></section>';
+  P.mentoria = '<section class="promo"><div style="display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 320px"><span class="eyebrow" style="color:var(--gold)">Mentoria e explicações</span><h2 style="color:#fff;font-size:24px">Aprender em conjunto. Partilhar conhecimento.</h2><p style="margin:0;color:#C3CCDB">Encontre explicadores, esclareça dúvidas ou partilhe o que sabe com outros estudantes de Direito.</p></div><div class="row"><button class="btn gold" data-a="conn-tab" data-id="aprender">Quero aprender</button><button class="btn ghost" data-a="conn-tab" data-id="ensinar">Quero ensinar</button></div></section>';
   // ferramentas + atividade
   var tools = [['exames', 'Simulador de exames', QUESTOES.length + ' questões com explicação e referência legal.'], ['casos', 'Casos práticos', 'Hipóteses com tópicos de correção.'], ['minutas', 'Gerador de minutas', 'Procuração, requerimento, petição inicial e contestação.'], ['biblioteca', 'Biblioteca jurídica', 'Diplomas essenciais e artigos-chave.']];
   var ult = s.at.slice().sort(function (a, b) { return b.createdAt - a.createdAt; }).slice(0, 4);
@@ -6047,7 +6132,7 @@ function updList(l) {
 /* ----- Mentoria e explicações ----- */
 function vConnect() {
   var t = S.connTab || 'inicio';
-  var hero = '<section class="hero conn"><div style="display:flex;flex-direction:column;gap:10px;max-width:640px"><span class="eyebrow" style="color:var(--gold)">Mentoria e explicações</span><h1 style="color:#fff;font-size:40px">Learn together. Share knowledge.</h1><p style="margin:0;color:#C3CCDB;font-size:17px">Uma comunidade para aprender e ensinar Direito.</p></div>' +
+  var hero = '<section class="hero conn"><div style="display:flex;flex-direction:column;gap:10px;max-width:640px"><span class="eyebrow" style="color:var(--gold)">Mentoria e explicações</span><h1 style="color:#fff;font-size:40px">Aprender em conjunto. Partilhar conhecimento.</h1><p style="margin:0;color:#C3CCDB;font-size:17px">Uma comunidade para aprender e ensinar Direito.</p></div>' +
     '<div class="choice"><button class="ch' + (t === 'aprender' ? ' on' : '') + '" data-a="conn-tab" data-id="aprender"><span class="cht">Quero aprender</span><span class="chd">Encontra explicadores e esclarece dúvidas.</span></button>' +
     '<button class="ch' + (t === 'ensinar' ? ' on' : '') + '" data-a="conn-tab" data-id="ensinar"><span class="cht">Quero ensinar</span><span class="chd">Partilha conhecimentos e oferece explicações.</span></button></div></section>';
   var h = hero;
@@ -11438,6 +11523,7 @@ function tmSeletor(sel) {
 function tmRegras(lista) {
   var out = '';
   Array.prototype.forEach.call(lista, function (r) {
+    if (r.type === 1 && /html\.prem/.test(r.selectorText)) return;
     if (r.type === 1) { var ds = tmBloco(r.style.cssText); if (ds.length) out += tmSeletor(r.selectorText) + '{' + ds.join(';') + '}\n'; }
     else if (r.type === 4) { var dentro = tmRegras(r.cssRules); if (dentro) out += '@media ' + r.media.mediaText + '{' + dentro + '}\n'; }
     else if (r.type === 12 && r.cssRules) { var d2 = tmRegras(r.cssRules); if (d2) out += '@supports ' + r.conditionText + '{' + d2 + '}\n'; }
@@ -11737,6 +11823,52 @@ var _openModal = openModal;
 openModal = function (t, b, a) { _openModal(t, b, a); fxEnhance(); };
 var _itemType = A['item-type'];
 A['item-type'] = function (el, ev) { _itemType(el, ev); fxEnhance(); };
+
+/* ---------- VISUAL PREMIUM (experimental): escuro, sóbrio e interativo ---------- */
+function premAtivo() { return lsGet('lexdesk_visual') === 'premium'; }
+var _temaPrefPrem = temaPref;
+temaPref = function () { return premAtivo() ? 'escuro' : _temaPrefPrem(); };
+function premAplicar(anim) {
+  var on = premAtivo(), html = document.documentElement;
+  if (on) temaAplicar('escuro', anim); else temaAplicar(_temaPrefPrem(), anim);
+  html.classList.toggle('prem', on);
+  var mc = document.querySelector('meta[name="theme-color"]'); if (mc && on) mc.setAttribute('content', '#09090B');
+}
+A['prem-toggle'] = function () {
+  var on = !premAtivo(); lsSet('lexdesk_visual', on ? 'premium' : 'classico');
+  premAplicar(true); closeModal && document.getElementById('ov') && closeModal(); render();
+  toast(on ? 'Visual premium ativado (experimental). Pode voltar ao clássico a qualquer momento.' : 'Voltou ao visual clássico.');
+};
+// O botão sol/lua desliga o visual premium quando se escolhe o modo claro
+var _temaPrem = A['tema'];
+A['tema'] = function () { if (premAtivo()) { lsSet('lexdesk_visual', 'classico'); document.documentElement.classList.remove('prem'); lsSet('lexdesk_tema', 'claro'); temaAplicar('claro', true); render(); toast('Voltou ao visual clássico, em modo claro.'); return; } _temaPrem.apply(this, arguments); };
+// Interruptor no fundo do painel e na conta
+var _vPainelPrem = typeof vPainel === 'function' ? vPainel : null;
+function premBtn() { var on = premAtivo(); return '<button class="btn sm prem-sw' + (on ? ' on' : '') + '" data-a="prem-toggle" aria-pressed="' + on + '"><span class="prem-k"><i></i></span>' + (on ? 'Visual premium · ligado' : 'Experimentar o visual premium') + '</button>'; }
+var _renderPrem = render;
+render = function () {
+  _renderPrem.apply(this, arguments);
+  if (S.view === 'painel') {
+    var r = document.querySelector('.main [data-a="painel-pers"]');
+    if (r && !document.querySelector('.main .prem-sw')) r.parentNode.insertAdjacentHTML('afterbegin', premBtn());
+  }
+  if (premAtivo()) { var m = document.querySelector('.main'); if (m && S.view !== premUltima) { m.classList.remove('prem-in'); void m.offsetWidth; m.classList.add('prem-in'); } premUltima = S.view; }
+};
+var premUltima = null;
+var _contaPrem = A['conta-menu'];
+if (_contaPrem) A['conta-menu'] = function () {
+  _contaPrem.apply(this, arguments);
+  var l = document.querySelector('.cm-g:last-of-type .cm-l'), gs = document.querySelectorAll('.cm-g');
+  var alvo = gs.length ? gs[gs.length - 1] : null; if (!alvo) return;
+  alvo.insertAdjacentHTML('beforebegin', '<div class="cm-g"><span class="cm-gt">Aparência</span><div class="cm-l"><button class="cm-i" data-a="prem-toggle"><span class="cm-ic">✦</span><span class="cm-tx"><b>Visual premium (experimental)</b><span>' + (premAtivo() ? 'Ligado · escuro, sóbrio e interativo' : 'Desligado · experimente o novo aspeto') + '</span></span><span class="cm-ch" aria-hidden="true">›</span></button></div></div>');
+};
+// Luz que segue o cursor nos cartões
+document.addEventListener('mousemove', function (ev) {
+  if (!document.documentElement.classList.contains('prem')) return;
+  var c = ev.target.closest && ev.target.closest('.bt, .card, .hband, .promo, .n2-i'); if (!c) return;
+  var r = c.getBoundingClientRect(); c.style.setProperty('--mx', (ev.clientX - r.left) + 'px'); c.style.setProperty('--my', (ev.clientY - r.top) + 'px');
+}, { passive: true });
+if (premAtivo()) premAplicar(false);
 
 /* ---------- arranque ---------- */
 Store.loadLocal();
