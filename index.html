@@ -1666,6 +1666,52 @@ span.rp-util{cursor:default}
 .ch-cta{text-align:left;cursor:pointer;font:inherit;color:inherit;gap:4px;padding:14px 16px;border:1px solid #E6C9CE;background:linear-gradient(135deg,#FBEFF1,#fff)}
 .ch-cta b{font-size:15px;color:#7B1E2B}.ch-cta span{font-size:13px;color:#4B5563;line-height:1.45}
 .ch-tb td:not(:first-child){white-space:nowrap}
+/* ---- Barra superior do estudante (n2) ---- */
+.n2-bar{position:relative;gap:2px;padding:5px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+.n2-ind{position:absolute;left:4px;top:5px;bottom:5px;width:0;border-radius:99px;background:rgba(255,255,255,.1);opacity:0;transition:transform .32s cubic-bezier(.2,.8,.2,1),width .32s cubic-bezier(.2,.8,.2,1),opacity .2s;pointer-events:none;z-index:0}
+.n2-b{position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;border:0;background:none;color:#C9D0DE;font:inherit;font-size:14px;font-weight:600;padding:8px 14px;border-radius:99px;cursor:pointer;white-space:nowrap;transition:color .2s}
+.n2-b>svg:first-child{width:16px;height:16px;opacity:.75;transition:opacity .2s,transform .25s}
+.n2-b:hover,.n2-g.open>.n2-b{color:#fff}.n2-b:hover>svg:first-child{opacity:1;transform:translateY(-1px)}
+.n2-b.on{color:#fff}
+.n2-b.on::after{content:'';position:absolute;left:50%;bottom:1px;width:18px;height:3px;margin-left:-9px;border-radius:3px;background:linear-gradient(90deg,#E8C77A,#D4A84B);box-shadow:0 0 10px rgba(232,199,122,.6)}
+.n2-b.on>svg:first-child{opacity:1;color:#E8C77A}
+.n2-b:focus-visible{outline:2px solid #E8C77A;outline-offset:1px}
+.n2-cv{width:11px;height:11px;opacity:.6;transition:transform .25s}
+.n2-g.open .n2-cv{transform:rotate(180deg)}
+.n2-g{position:relative;z-index:1}
+.n2-dot{width:7px;height:7px;border-radius:50%;background:#F59E0B;box-shadow:0 0 0 3px rgba(245,158,11,.25);animation:n2pulse 2s infinite}
+@keyframes n2pulse{0%,100%{box-shadow:0 0 0 2px rgba(245,158,11,.35)}50%{box-shadow:0 0 0 6px rgba(245,158,11,0)}}
+.n2-m{position:absolute;top:calc(100% + 14px);left:50%;width:min(560px,92vw);margin-left:calc(min(560px,92vw)/-2);padding:0;border-radius:20px;background:#fff;box-shadow:0 28px 60px -18px rgba(15,27,45,.45),0 0 0 1px rgba(15,27,45,.06);overflow:hidden;opacity:0;visibility:hidden;transform:translateY(-6px) scale(.98);transform-origin:top center;transition:opacity .18s,transform .22s cubic-bezier(.2,.8,.2,1),visibility 0s .22s;z-index:70}
+.n2-m::before{content:'';position:absolute;top:-14px;left:0;right:0;height:14px}
+.n2-g.open>.n2-m{opacity:1;visibility:visible;transform:none;transition:opacity .18s,transform .22s cubic-bezier(.2,.8,.2,1),visibility 0s}
+.n2-mh{display:flex;align-items:center;gap:12px;padding:16px 18px;color:#fff;background:var(--n2g)}
+.n2-mh b{display:block;font-size:16px}.n2-mh span{font-size:13px;opacity:.85}
+.n2-mi{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.18)}.n2-mi svg{width:20px;height:20px}
+.n2-m.c1{--n2g:linear-gradient(120deg,#1E3A8A,#2563EB);--n2t:#EFF4FF;--n2c:#1D4ED8}
+.n2-m.c2{--n2g:linear-gradient(120deg,#7B1E2B,#B4405A);--n2t:#FBEFF1;--n2c:#7B1E2B}
+.n2-m.c3{--n2g:linear-gradient(120deg,#0F766E,#14A38B);--n2t:#E9FBF6;--n2c:#0F766E}
+.n2-m.c4{--n2g:linear-gradient(120deg,#6D28D9,#9061F9);--n2t:#F3EEFF;--n2c:#6D28D9}
+.n2-mg{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:10px}
+.n2-i{display:flex;align-items:center;gap:12px;border:0;background:none;font:inherit;text-align:left;padding:10px;border-radius:14px;cursor:pointer;color:var(--ink);transition:background .15s,transform .15s;opacity:0;transform:translateY(4px)}
+.n2-g.open .n2-i{animation:n2in .28s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i) * 35ms)}
+@keyframes n2in{to{opacity:1;transform:none}}
+.n2-i:hover,.n2-i:focus-visible{background:var(--n2t);outline:none}
+.n2-i.on{background:var(--n2t)}
+.n2-ii{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--n2t);color:var(--n2c);transition:transform .2s}
+.n2-i:hover .n2-ii{transform:scale(1.08) rotate(-4deg)}
+.n2-ii svg{width:20px;height:20px}
+.n2-it{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}.n2-it b{font-size:14px;color:#0F1B3D}.n2-it>span{font-size:12.5px;color:#6B7280;line-height:1.4}
+.n2-ar{color:var(--n2c);font-size:18px;opacity:0;transform:translateX(-4px);transition:opacity .15s,transform .15s}
+.n2-i:hover .n2-ar{opacity:1;transform:none}
+.n2-mf{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 18px;border-top:1px solid #F0F1F4;background:#FAFBFC;font-size:12.5px;color:#4B5563}
+.n2-k{color:#9CA3AF;white-space:nowrap}.n2-k kbd{font:600 11px var(--sans);background:#fff;border:1px solid #E5E7EB;border-radius:5px;padding:1px 5px}
+@media (max-width:1050px){.n2-m{position:fixed;top:auto;left:12px;right:12px;width:auto;margin-left:0}.n2-mg{grid-template-columns:1fr}}
+@media (max-width:1250px){.n2-b{padding:8px 11px}}
+@media (prefers-reduced-motion:reduce){.n2-ind,.n2-m,.n2-i,.n2-ii{transition:none!important;animation:none!important;opacity:1!important;transform:none!important}}
+@media (max-width:1700px) and (min-width:1051px){body.n2 .main>.topbar .topsearch{width:auto;padding-left:12px;padding-right:12px}body.n2 .main>.topbar .topsearch span,body.n2 .main>.topbar .topsearch kbd{display:none}}
+@media (max-width:1240px) and (min-width:1051px){.n2-b>svg:first-child{display:none}.n2-b{padding:8px 10px}}
+body.n2open .side{z-index:90}
+@media (max-width:1050px){.n2-k{display:none}.n2-m{max-height:calc(100vh - 140px);overflow-y:auto}}
 
 </style>
 </head>
@@ -11196,6 +11242,129 @@ vGuia = function () {
   if (g.d === 'fam' && (g.t === 'legit' || g.t === 'imput')) h = h.replace('<aside class="gu-side">', '<aside class="gu-side"><button class="card ch-cta" data-go="calcheranca"><b>🧮 Calculadora da herança</b><span>Faça as contas passo a passo, com a fórmula de Coimbra ou de Lisboa.</span></button>');
   return h;
 };
+
+/* ---------- BARRA SUPERIOR DO ESTUDANTE DE LICENCIATURA (organizada por intenções) ---------- */
+I.spark = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg>';
+I.glos = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M8.5 13l2-6 2 6M9.2 11h2.6M15 8.5h2M15 11h2"/></svg>';
+I.calc = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16h.01M12 16h.01M15.5 16h.01"/></svg>';
+I.target = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></svg>';
+I.lei = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 21h10M5 7h14M5 7l-2.5 6a3 3 0 0 0 5 0L5 7zM19 7l-2.5 6a3 3 0 0 0 5 0L19 7z"/></svg>';
+I.cursoN = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg>';
+
+var N2 = {
+  grupos: [
+    { id: 'curso', nome: 'O meu curso', ic: 'cursoN', cor: 'c1', lema: 'O que tenho este semestre', itens: [
+      ['cadeiras', 'Cadeiras e horário', 'O plano de estudos, as aulas e as avaliações', 'layers'],
+      ['aula', 'Sala de aula', 'Tire notas, grave e transcreva as aulas', 'aula'],
+      ['apontamentos', 'Apontamentos', 'Partilhe e descarregue resumos por cadeira', 'note'],
+      ['workspaces', 'Preparar exame', 'Reúna legislação, notas e materiais por exame', 'folder']] },
+    { id: 'aprender', nome: 'Aprender', ic: 'book', cor: 'c2', lema: 'Perceber a matéria', itens: [
+      ['guias', 'Matéria explicada', 'Guias por tema, com esquemas e exemplos resolvidos', 'book'],
+      ['glossario', 'Glossário jurídico', 'Os conceitos explicados em linguagem simples', 'glos'],
+      ['atualidade', 'Atualidade jurídica', 'Novas leis, acórdãos e notícias', 'news']] },
+    { id: 'praticar', nome: 'Praticar', ic: 'target', cor: 'c3', lema: 'Testar o que sabe', itens: [
+      ['exames', 'Simulador de exames', 'Perguntas com correção e base legal', 'check'],
+      ['flashcards', 'Flashcards', 'Repetição espaçada para memorizar', 'layers'],
+      ['casos', 'Casos práticos', 'Hipóteses com método e resolução-modelo', 'scale'],
+      ['calcheranca', 'Calculadora da herança', 'Legítima e quota disponível, passo a passo', 'calc'],
+      ['minutas', 'Minutas', 'Gerador de peças processuais e contratos', 'file']] },
+    { id: 'lei', nome: 'Legislação', ic: 'lei', direto: 'biblioteca', vistas: ['biblioteca', 'lei'] },
+    { id: 'comunidade', nome: 'Comunidade', ic: 'users', cor: 'c4', lema: 'Estudar com os colegas', itens: [
+      ['chat', 'Chat da comunidade', 'Dúvidas e conversas por área', 'chat'],
+      ['mensagens', 'Mensagens', 'Conversas privadas', 'mail'],
+      ['salas', 'Salas de estudo', 'Estude em grupo, com temporizador', 'door'],
+      ['connect', 'Mentoria e explicações', 'Encontre mentores e explicadores', 'users'],
+      ['reputacao', 'Reputação', 'Os seus pontos e o ranking', 'badge']] }
+  ],
+  aberto: null, t: null
+};
+N2.dicas = {
+  curso: function () { var n = typeof cads === 'function' ? cads().length : 0; return n ? '📚 ' + plural(n, 'cadeira', 'cadeiras') + ' no seu plano' : '📚 Escolha as suas cadeiras no perfil académico'; },
+  aprender: function () { var n = typeof GUIAS !== 'undefined' ? Object.keys(GUIAS).reduce(function (s, k) { return s + Object.keys(GUIAS[k]).length; }, 0) : 0; return '📘 ' + n + ' guias e ' + (typeof GLOSS !== 'undefined' ? GLOSS.length : 0) + ' termos explicados'; },
+  praticar: function () { var n = 0; try { n = fcFila('todas', 'todos').length; } catch (e) { } return n ? '🃏 ' + plural(n, 'cartão', 'cartões') + ' para rever hoje' : '✍ ' + QUESTOES.length + ' perguntas e ' + CASOS.length + ' casos práticos'; },
+  comunidade: function () { return '💬 Ganhe reputação a ajudar os colegas'; }
+};
+function n2Badge(g) {
+  if (g.id === 'comunidade') { var d = sessaoAtiva() ? dmNaoLidas() : 0; return d ? '<span class="nbadge">' + d + '</span>' : ''; }
+  if (g.id === 'praticar') { var n = 0; try { n = fcFila('todas', 'todos').length; } catch (e) { } return n ? '<span class="n2-dot" title="' + plural(n, 'cartão', 'cartões') + ' para rever"></span>' : ''; }
+  return '';
+}
+function n2Ativo(g) { return g.direto ? g.vistas.indexOf(S.view) >= 0 : g.itens.some(function (x) { return x[0] === S.view || (x[0] === 'guias' && S.view === 'guia'); }); }
+function n2Menu(g) {
+  var dm = sessaoAtiva() ? dmNaoLidas() : 0;
+  return '<div class="n2-m ' + g.cor + '" role="menu" aria-label="' + esc(g.nome) + '"><div class="n2-mh"><span class="n2-mi">' + I[g.ic] + '</span><div><b>' + esc(g.nome) + '</b><span>' + esc(g.lema) + '</span></div></div><div class="n2-mg">' +
+    g.itens.map(function (x, i) {
+      var on = S.view === x[0] || (x[0] === 'guias' && S.view === 'guia'), lbl = x[0] === 'workspaces' ? wsNome() : x[1];
+      return '<button class="n2-i' + (on ? ' on' : '') + '" role="menuitem" data-go="' + x[0] + '" style="--i:' + i + '"><span class="n2-ii">' + (I[x[3]] || I.grid) + '</span><span class="n2-it"><b>' + esc(lbl) + (x[0] === 'mensagens' && dm ? ' <span class="nbadge">' + dm + '</span>' : '') + '</b><span>' + esc(x[2]) + '</span></span><span class="n2-ar">›</span></button>';
+    }).join('') + '</div><div class="n2-mf">' + (N2.dicas[g.id] ? esc(N2.dicas[g.id]()) : '') + '<span class="n2-k"><kbd>Ctrl</kbd> <kbd>K</kbd> pesquisar</span></div></div>';
+}
+var _renderSideN2 = renderSide;
+renderSide = function () {
+  document.body.classList.toggle('n2', tipoPerfil() === 'lic');
+  if (tipoPerfil() !== 'lic') return _renderSideN2();
+  document.body.classList.add('tn'); document.body.classList.toggle('bvp', S.view === 'bemvindo');
+  if (typeof VIEW_LBL !== 'undefined' && VIEW_LBL.workspaces) VIEW_LBL.workspaces[0] = wsNome();
+  var h = '<button class="brand nav tn-brand" data-go="painel" aria-label="LEXDESK, ir para o painel"><span class="mark logo">' + I.logo + '</span><span class="word"><b>LEX</b><span>DESK</span></span></button>';
+  h += '<nav class="tn-bar n2-bar" aria-label="Navegação principal"><span class="n2-ind" aria-hidden="true"></span>';
+  h += '<button class="n2-b' + (S.view === 'painel' ? ' on' : '') + '" data-go="painel"' + (S.view === 'painel' ? ' aria-current="page"' : '') + '>' + I.grid + '<span>Painel</span></button>';
+  N2.grupos.forEach(function (g) {
+    var on = n2Ativo(g);
+    if (g.direto) { h += '<button class="n2-b' + (on ? ' on' : '') + '" data-go="' + g.direto + '"' + (on ? ' aria-current="page"' : '') + '>' + I[g.ic] + '<span>' + esc(g.nome) + '</span></button>'; return; }
+    h += '<div class="n2-g' + (on ? ' on' : '') + (N2.aberto === g.id ? ' open' : '') + '" data-g="' + g.id + '"><button class="n2-b' + (on ? ' on' : '') + '" data-n2="' + g.id + '" aria-expanded="' + (N2.aberto === g.id) + '">' + I[g.ic] + '<span>' + esc(g.nome) + '</span>' + n2Badge(g) + '<svg class="n2-cv" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>' + n2Menu(g) + '</div>';
+  });
+  h += '</nav>';
+  $('#side').innerHTML = h;
+  setTimeout(n2IndAtivo, 0);
+};
+function n2Ind(el) {
+  var bar = document.querySelector('.n2-bar'), ind = bar && bar.querySelector('.n2-ind'); if (!ind) return;
+  if (!el) { ind.style.opacity = '0'; return; }
+  var rb = bar.getBoundingClientRect(), r = el.getBoundingClientRect();
+  ind.style.opacity = '1'; ind.style.width = r.width + 'px'; ind.style.transform = 'translateX(' + (r.left - rb.left + bar.scrollLeft - 4) + 'px)';
+}
+function n2IndAtivo() { n2Ind(document.querySelector('.n2-bar > .n2-b.on, .n2-bar > .n2-g.on > .n2-b')); }
+function n2Abrir(id) {
+  N2.aberto = id; document.body.classList.toggle('n2open', !!id);
+  if (id && window.innerWidth <= 1050) { var bar = document.querySelector('.n2-bar'), m = document.querySelector('.n2-g[data-g="' + id + '"] .n2-m'); if (bar && m) m.style.top = (bar.getBoundingClientRect().bottom + 10) + 'px'; }
+  [].forEach.call(document.querySelectorAll('.n2-g'), function (g) { var o = g.dataset.g === id; g.classList.toggle('open', o); var b = g.querySelector('.n2-b'); if (b) b.setAttribute('aria-expanded', o); });
+}
+var N2_HOVER = window.matchMedia ? window.matchMedia('(hover: hover) and (pointer: fine)').matches : true;
+document.addEventListener('mouseover', function (ev) {
+  var b = ev.target.closest && ev.target.closest('.n2-bar .n2-b'); if (b) n2Ind(b);
+  if (!N2_HOVER) return;
+  var g = ev.target.closest && ev.target.closest('.n2-g');
+  if (g) { clearTimeout(N2.t); if (N2.aberto !== g.dataset.g) N2.t = setTimeout(function () { n2Abrir(g.dataset.g); N2.hoverEm = Date.now(); }, N2.aberto ? 40 : 140); }
+});
+document.addEventListener('mouseout', function (ev) {
+  var bar = ev.target.closest && ev.target.closest('.n2-bar'); if (!bar) return;
+  var para = ev.relatedTarget;
+  if (para && bar.contains(para)) { if (!(para.closest && para.closest('.n2-g'))) { clearTimeout(N2.t); if (N2_HOVER) N2.t = setTimeout(function () { n2Abrir(null); }, 160); } return; }
+  clearTimeout(N2.t); if (N2_HOVER) N2.t = setTimeout(function () { n2Abrir(null); }, 220); n2IndAtivo();
+});
+document.addEventListener('click', function (ev) {
+  var b = ev.target.closest && ev.target.closest('[data-n2]');
+  if (b) { ev.preventDefault(); var id = b.dataset.n2; if (N2.aberto === id && Date.now() - (N2.hoverEm || 0) > 400) n2Abrir(null); else n2Abrir(id); return; }
+  if (ev.target.closest && ev.target.closest('.n2-i')) { n2Abrir(null); return; }
+  if (!(ev.target.closest && ev.target.closest('.n2-g'))) n2Abrir(null);
+}, true);
+document.addEventListener('keydown', function (ev) {
+  if (ev.key === 'Escape' && N2.aberto) { var id = N2.aberto; n2Abrir(null); var b = document.querySelector('[data-n2="' + id + '"]'); if (b) b.focus(); return; }
+  var b = ev.target.closest && ev.target.closest('[data-n2]');
+  if (b && (ev.key === 'ArrowDown' || ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); n2Abrir(b.dataset.n2); var p = b.parentNode.querySelector('.n2-i'); if (p) p.focus(); return; }
+  var it = ev.target.closest && ev.target.closest('.n2-i');
+  if (it && (ev.key === 'ArrowDown' || ev.key === 'ArrowUp')) { ev.preventDefault(); var l = [].slice.call(it.parentNode.querySelectorAll('.n2-i')), i = l.indexOf(it) + (ev.key === 'ArrowDown' ? 1 : -1); if (l[i]) l[i].focus(); }
+});
+window.addEventListener('resize', function () { n2IndAtivo(); });
+// As instituições passam para a conta do estudante
+var _contaMenuN2 = A['conta-menu'];
+if (_contaMenuN2) A['conta-menu'] = function () {
+  _contaMenuN2.apply(this, arguments);
+  if (tipoPerfil() !== 'lic') return;
+  var g = [].filter.call(document.querySelectorAll('.cm-g'), function (x) { var t = x.querySelector('.cm-gt'); return t && t.textContent === 'Estudos'; })[0], l = g && g.querySelector('.cm-l');
+  if (l) l.insertAdjacentHTML('beforeend', '<button class="cm-i" data-a="cm-inst"><span class="cm-ic">' + I.uni + '</span><span class="cm-tx"><b>Instituições de ensino</b><span>Faculdades, planos de estudos e contactos</span></span><span class="cm-ch" aria-hidden="true">›</span></button>');
+};
+
+A['cm-inst'] = function () { closeModal(); go('instituicoes'); };
 
 /* ---------- MODO NOTURNO ---------- */
 /* Gera automaticamente a versão escura de todas as regras CSS (e dos estilos em linha),
