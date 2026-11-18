@@ -1718,6 +1718,53 @@ body.tn .side{padding-left:max(24px,calc((100% - 1360px) / 2 + 32px))!important;
 body.tn .main>.topbar{right:max(24px,calc((100vw - 1360px) / 2 + 32px - 8px))!important}
 }
 @media (min-width:1051px){body.n2 .main>.topbar .topsearch{width:auto!important;padding-left:12px;padding-right:12px}body.n2 .main>.topbar .topsearch span,body.n2 .main>.topbar .topsearch kbd{display:none!important}.n2-b{padding:8px 12px}}
+/* ---- LexDesk Meet ---- */
+.mt-av{display:block;line-height:1.55}
+.mt-fil{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.mt-cid{width:auto;min-width:200px}
+.mt-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:1000px){.mt-grid{grid-template-columns:1fr}}
+.mt-mapw{padding:8px;gap:8px;position:sticky;top:84px}
+.mt-mapa{height:540px;border-radius:16px;overflow:hidden;background:#EEF1F5;z-index:0}
+@media (max-width:1000px){.mt-mapa{height:360px}.mt-mapw{position:static}}
+.mt-leg{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted);padding:2px 6px 4px}.mt-leg i{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--c);margin-right:5px;vertical-align:0}
+.mt-lista{display:flex;flex-direction:column;gap:10px}
+.mt-ev{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:12px 14px;border-radius:16px;border:1px solid var(--line);background:#fff;cursor:pointer;font:inherit;color:inherit;box-shadow:var(--sh1);transition:transform .15s,border-color .15s}
+.mt-ev:hover{transform:translateY(-1px);border-color:var(--c)}
+.mt-ev.canc{opacity:.6}
+.mt-ev-d{flex:none;width:52px;height:56px;border-radius:12px;background:color-mix(in srgb,var(--c) 12%,#fff);color:var(--c);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11.5px;font-weight:700;text-transform:uppercase}
+.mt-ev-d b{font-size:22px;line-height:1}
+.mt-ev-t{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.mt-ev-t b{font-size:15px;color:var(--navy)}.mt-ev-t>span:last-child{font-size:12.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mt-ev-k{font:700 11px var(--sans);letter-spacing:.04em;color:var(--c,#7B1E2B)}
+.mt-ev-n{flex:none;font:700 12.5px var(--sans);color:#15803D;background:#ECFDF3;border-radius:99px;padding:4px 10px}.mt-ev-n.cheio{color:#B42318;background:#FEF3F2}
+.mt-pin{background:none;border:0}
+.mt-pin span{display:grid;place-items:center;width:34px;height:34px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);background:var(--c);box-shadow:0 6px 14px rgba(0,0,0,.25);border:2px solid #fff;transition:transform .15s}
+.mt-pin span{font-size:16px;line-height:1}
+.mt-pin:hover span{transform:rotate(-45deg) scale(1.12)}
+.mt-pop{display:flex;flex-direction:column;gap:4px;min-width:200px;font-family:var(--sans)}.mt-pop b{font-size:14.5px;color:var(--navy)}.mt-pop span{font-size:12.5px;color:#4B5563}.mt-pop .btn{margin-top:6px;align-self:flex-start}
+.mt-det{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:1000px){.mt-det{grid-template-columns:1fr}}
+.mt-col{display:flex;flex-direction:column;gap:16px}
+.mt-info{border-top:4px solid var(--c)}
+.mt-fx{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:600px){.mt-fx{grid-template-columns:1fr}}
+.mt-fx>div{display:flex;flex-direction:column;gap:2px}.mt-fx b{font-size:15px;color:var(--navy)}.mt-fx span{font-size:13px;color:var(--muted)}
+.mt-k{font:800 10.5px var(--sans)!important;letter-spacing:.12em;text-transform:uppercase;color:#7B1E2B!important}
+.mt-bar{height:6px;border-radius:6px;background:#EEF0F4;overflow:hidden;margin-top:6px}.mt-bar i{display:block;height:100%;background:var(--c)}
+.mt-desc{margin:0;font-size:15px;line-height:1.7;color:var(--ink)}
+.mt-ps{display:flex;flex-direction:column;gap:6px}
+.mt-p{display:flex;align-items:center;gap:10px;padding:6px 8px;border-radius:10px}.mt-p:hover{background:#F7F8FB}.mt-p>span{flex:1;font-size:14px}
+.mt-den{align-self:flex-start;font-size:13px;color:var(--muted)}
+.mt-chat{gap:10px;position:sticky;top:84px}
+.mt-msgs{height:420px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;padding:8px;border-radius:12px;background:#F7F8FB}
+.mt-env{display:flex;gap:8px}.mt-env .in{flex:1}
+.mt-dica{font-size:12.5px;color:var(--muted);margin:0}
+.mt-form{display:flex;flex-direction:column;gap:10px}
+.mt-f2{display:grid;grid-template-columns:1fr 1.4fr;gap:10px}.mt-f3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media (max-width:600px){.mt-f2,.mt-f3{grid-template-columns:1fr}}
+.mt-canc{border-left:3px solid #B42318}
+.leaflet-container{font-family:var(--sans)}
+.mt-pin span i{font-style:normal;transform:rotate(45deg);display:block}
 
 </style>
 </head>
@@ -5281,7 +5328,7 @@ Store.attach = function (session) {
 };
 
 /* ---------- estado da interface ---------- */
-var VIEWS = ['painel', 'reputacao', 'flashcards', 'aula', 'lei', 'guias', 'guia', 'glossario', 'calcheranca', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
+var VIEWS = ['painel', 'reputacao', 'flashcards', 'aula', 'lei', 'guias', 'guia', 'glossario', 'calcheranca', 'meet', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
 var S = {
   view: 'painel', wsId: null, wsTab: '01', wsQ: '', q: '',
   libQ: '', libArea: 'Todas', libOpen: { cpc: true },
@@ -5366,6 +5413,7 @@ function render() {
     else if (v === 'guias') h = vGuias();
     else if (v === 'glossario') h = vGlossario();
     else if (v === 'calcheranca') h = vCalcHeranca();
+    else if (v === 'meet') h = vMeet();
     else if (v === 'guia') h = vGuia();
   else if (v === 'agenda') h = vAgenda();
   else if (v === 'dissertacao') h = vDissertacao();
@@ -8835,12 +8883,12 @@ renderSide = function () {
     var on = itens.indexOf(S.view) >= 0;
     return '<div class="tn-g' + (on ? ' on' : '') + '"><button class="tn-b" aria-haspopup="true">' + esc(nome) + (badge ? '<span class="nbadge">' + badge + '</span>' : '') + '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="tn-m" role="menu">' + html + (extra || '') + '</div></div>';
   };
-  var com = ['chat', 'mensagens', 'salas', 'connect', 'reputacao'];
+  var com = ['meet', 'chat', 'mensagens', 'salas', 'connect', 'reputacao'];
   $('#side').innerHTML = '<button class="brand nav tn-brand" data-go="painel" aria-label="LEXDESK, ir para o painel"><span class="mark logo">' + I.logo + '</span><span class="word"><b>LEX</b><span>DESK</span></span></button>' +
     '<div class="tn-bar">' +
     '<button class="tn-b' + (S.view === 'painel' ? ' on' : '') + '" data-go="painel">Painel</button>' +
     grupos.filter(function (g) { return g[1].length; }).map(function (g) { return grupo(g[0], g[1], g[1].map(nb).join('')); }).join('') +
-    grupo('Comunidade', com, item('chat', 'Chat da comunidade', I.chat) + item('mensagens', 'Mensagens' + (dmn ? ' <span class="nbadge">' + dmn + '</span>' : ''), I.mail) + item('salas', 'Salas de estudo', I.door) + item('connect', 'Mentoria e explicações', I.users) + item('reputacao', 'Reputação', I.badge), dmn) +
+    grupo('Comunidade', com, item('meet', 'LexDesk Meet', I.meet || I.users) + item('chat', 'Chat da comunidade', I.chat) + item('mensagens', 'Mensagens' + (dmn ? ' <span class="nbadge">' + dmn + '</span>' : ''), I.mail) + item('salas', 'Salas de estudo', I.door) + item('connect', 'Mentoria e explicações', I.users) + item('reputacao', 'Reputação', I.badge), dmn) +
     (t === 'lic' ? '' : grupo('Mais', mais, mais.map(nb).join(''), 0, '<div class="tn-sep"></div><button class="tn-i" data-a="onb-abrir">' + I.gear + '<span>' + PERFIS[t].ic + ' Perfil: ' + esc(PERFIS[t].curto) + ' · alterar</span></button>' + (t === 'lic' ? '<button class="tn-i" data-a="perfil-edit">' + I.cap + '<span>Perfil académico</span></button>' : '') + '<span class="tn-st">' + st + '</span>')) +
     '</div>';
 };
@@ -11372,6 +11420,226 @@ if (_contaMenuN2) A['conta-menu'] = function () {
 
 A['cm-inst'] = function () { closeModal(); go('instituicoes'); };
 
+/* ---------- LEXDESK MEET: eventos presenciais com mapa, inscrições e chat de cada evento ---------- */
+var MEET_CAT = {
+  convivio: ['Convívios', 'Jantares, cafés e encontros', '#B4405A', '☕'],
+  academico: ['Académicos', 'Grupos de estudo e preparação para exames', '#1E3A8A', '📚'],
+  festa: ['Festas', 'Festas universitárias e noites temáticas', '#7C3AED', '🎉'],
+  desporto: ['Desporto', 'Futebol, padel, caminhadas', '#0F766E', '⚽'],
+  networking: ['Networking', 'Encontros entre estudantes e profissionais', '#B45309', '🤝']
+};
+var MEET_CID = [['Lisboa', 38.7223, -9.1393], ['Porto', 41.1579, -8.6291], ['Coimbra', 40.2033, -8.4103], ['Braga', 41.5454, -8.4265], ['Aveiro', 40.6405, -8.6538], ['Faro', 37.0194, -7.9322], ['Évora', 38.571, -7.9135], ['Leiria', 39.7436, -8.8071], ['Viseu', 40.6566, -7.9125], ['Setúbal', 38.5244, -8.8882], ['Guimarães', 41.4425, -8.2918], ['Vila Real', 41.3006, -7.7441], ['Bragança', 41.8061, -6.7567], ['Castelo Branco', 39.8222, -7.4909], ['Covilhã', 40.2805, -7.5044], ['Santarém', 39.2362, -8.6859], ['Portalegre', 39.2967, -7.4285], ['Beja', 38.0151, -7.8632], ['Viana do Castelo', 41.6932, -8.8329], ['Guarda', 40.5373, -7.2676], ['Matosinhos', 41.1844, -8.6963], ['Almada', 38.679, -9.1569], ['Cascais', 38.6979, -9.4215], ['Oeiras', 38.6913, -9.3109], ['Sintra', 38.8029, -9.3817], ['Barcelos', 41.5388, -8.6151], ['Tomar', 39.6015, -8.4092], ['Funchal', 32.6669, -16.9241], ['Ponta Delgada', 37.7412, -25.6756], ['Angra do Heroísmo', 38.6553, -27.2207]];
+var MEET = { l: null, part: {}, cat: 'todas', cid: 'todas', meus: false, ev: null, msgs: [], subs: [], map: null, mk: [], leaflet: null, aviso: lsGet('lexdesk_meet_aviso') === 'ok' };
+I.meet = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>';
+function meetCid(n) { return MEET_CID.filter(function (c) { return c[0] === n; })[0] || null; }
+function meetData(e) { var d = new Date(e.inicio); return d.toLocaleDateString('pt-PT', { weekday: 'short', day: 'numeric', month: 'short' }) + ' · ' + d.toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' }); }
+function meetN(id) { return (MEET.part[id] || []).length; }
+function meetSou(id) { return (MEET.part[id] || []).indexOf(Store.uid) >= 0; }
+function meetCarregar() {
+  if (!SB || !sessaoAtiva()) return;
+  var desde = new Date(Date.now() - 6 * 3600e3).toISOString();
+  SB.from('eventos').select('*').gte('inicio', desde).order('inicio', { ascending: true }).limit(300).then(function (r) {
+    MEET.l = (r.data || []).filter(function (e) { return !e.cancelado || e.criador === Store.uid; });
+    var ids = MEET.l.map(function (e) { return e.id; });
+    if (!ids.length) { MEET.part = {}; meetPintar(); return; }
+    SB.from('evento_part').select('evento_id,user_id').in('evento_id', ids).then(function (p) {
+      MEET.part = {}; (p.data || []).forEach(function (x) { (MEET.part[x.evento_id] = MEET.part[x.evento_id] || []).push(x.user_id); });
+      loadNames(MEET.l.map(function (e) { return e.criador; })); meetPintar();
+    });
+  });
+}
+function meetFiltrados() {
+  return (MEET.l || []).filter(function (e) {
+    return (MEET.cat === 'todas' || e.categoria === MEET.cat) && (MEET.cid === 'todas' || e.cidade === MEET.cid) && (!MEET.meus || meetSou(e.id) || e.criador === Store.uid);
+  });
+}
+function meetCard(e) {
+  var c = MEET_CAT[e.categoria] || MEET_CAT.convivio, n = meetN(e.id), cheio = n >= e.max_part, sou = meetSou(e.id);
+  return '<button class="mt-ev' + (e.cancelado ? ' canc' : '') + '" data-a="meet-abrir" data-id="' + e.id + '" style="--c:' + c[2] + '"><span class="mt-ev-d"><b>' + new Date(e.inicio).getDate() + '</b>' + new Date(e.inicio).toLocaleDateString('pt-PT', { month: 'short' }).replace('.', '') + '</span><span class="mt-ev-t"><span class="mt-ev-k">' + c[3] + ' ' + c[0] + ' · ' + esc(e.cidade) + '</span><b>' + esc(e.titulo) + '</b><span>' + esc(meetData(e)) + ' · ' + esc(e.local) + '</span></span><span class="mt-ev-n' + (cheio ? ' cheio' : '') + '">' + (e.cancelado ? 'Cancelado' : sou ? '✓ Inscrito' : cheio ? 'Lotado' : n + '/' + e.max_part) + '</span></button>';
+}
+function vMeet() {
+  if (MEET.ev) return vMeetEvento();
+  var h = '<div class="head"><div><span class="eyebrow">Comunidade</span><h1>LexDesk Meet</h1><p class="sub">Conheça estudantes de Direito de todo o país: jantares, grupos de estudo, desporto, festas e networking, organizados pelos membros.</p></div>' + (sessaoAtiva() ? '<button class="btn wine" data-a="meet-novo">' + I.plus + 'Criar evento</button>' : '') + '</div>';
+  if (!sessaoAtiva()) return h + '<section class="promo"><div style="display:flex;flex-direction:column;gap:8px;flex:1 1 320px;min-width:0"><h2 style="color:#fff;font-size:26px">Encontros entre estudantes de Direito</h2><p style="margin:0;color:#CDD1E4">Os eventos e o mapa estão disponíveis para membros com conta.</p></div><div class="row"><button class="btn gold" data-a="login-open" data-id="registo">Criar conta</button><button class="btn ghost" data-a="login-open" data-id="entrar">Entrar</button></div></section>';
+  if (!MEET.aviso) h += '<div class="note mt-av"><b>Antes de ir a um encontro:</b> combine em locais públicos, avise alguém de confiança, nunca partilhe a morada pessoal e denuncie qualquer comportamento inadequado. Os eventos são da responsabilidade de quem os organiza. <button class="lk" data-a="meet-aviso">Compreendi</button></div>';
+  h += '<div class="mt-fil"><div class="est-ts">' + [['todas', 'Todos']].concat(Object.keys(MEET_CAT).map(function (k) { return [k, MEET_CAT[k][3] + ' ' + MEET_CAT[k][0]]; })).map(function (x) { return '<button class="est-t' + (MEET.cat === x[0] ? ' on' : '') + '" data-a="meet-cat" data-id="' + x[0] + '"><span>' + x[1] + '</span></button>'; }).join('') + '</div>' +
+    '<div class="row" style="gap:8px"><select class="in mt-cid" data-a2="meet-cid" aria-label="Cidade"><option value="todas">Todas as cidades</option>' + MEET_CID.map(function (c) { return '<option' + (MEET.cid === c[0] ? ' selected' : '') + '>' + c[0] + '</option>'; }).join('') + '</select><label class="check"><input type="checkbox" id="meet-meus"' + (MEET.meus ? ' checked' : '') + '> Os meus eventos</label></div></div>';
+  if (MEET.l === null) { meetCarregar(); return h + '<div class="empty">A carregar os eventos…</div>'; }
+  var l = meetFiltrados();
+  h += '<div class="mt-grid"><div class="card mt-mapw"><div id="meet-mapa" class="mt-mapa"></div><span class="mt-leg">' + Object.keys(MEET_CAT).map(function (k) { return '<i style="--c:' + MEET_CAT[k][2] + '"></i>' + MEET_CAT[k][0]; }).join('') + '</span></div>' +
+    '<div class="mt-lista" id="meet-lista">' + (l.length ? l.map(meetCard).join('') : '<div class="card"><div class="empty" style="border:0"><b>Ainda não há eventos' + (MEET.cid !== 'todas' ? ' em ' + esc(MEET.cid) : '') + '</b><span>Seja o primeiro: organize um café, um grupo de estudo ou um jogo de padel.</span><button class="btn wine" data-a="meet-novo">' + I.plus + 'Criar evento</button></div></div>') + '</div></div>';
+  setTimeout(meetMapa, 0);
+  return h;
+}
+function meetPintar() { if (S.view === 'meet') render(); }
+/* ----- Mapa (Leaflet + OpenStreetMap) ----- */
+function meetLeaflet(cb) {
+  if (window.L && window.L.map) return cb();
+  if (MEET.leaflet === 'erro') return;
+  if (MEET.leaflet) { MEET.leaflet.push(cb); return; }
+  MEET.leaflet = [cb];
+  var css = document.createElement('link'); css.rel = 'stylesheet'; css.href = 'leaflet.css'; document.head.appendChild(css);
+  var s = document.createElement('script'); s.src = 'leaflet.js';
+  s.onload = function () { var l = MEET.leaflet; MEET.leaflet = 'ok'; l.forEach(function (f) { f(); }); };
+  s.onerror = function () { MEET.leaflet = 'erro'; var m = document.getElementById('meet-mapa'); if (m) m.innerHTML = '<div class="empty" style="border:0">Não foi possível carregar o mapa. Os eventos continuam disponíveis na lista.</div>'; };
+  document.head.appendChild(s);
+}
+function meetMapa() {
+  var el = document.getElementById('meet-mapa'); if (!el) return;
+  meetLeaflet(function () {
+    el = document.getElementById('meet-mapa'); if (!el || el._lx) return; el._lx = 1;
+    if (MEET.map) { try { MEET.map.remove(); } catch (e) { } }
+    var m = L.map(el, { zoomControl: true, scrollWheelZoom: false, attributionControl: true }).setView([39.6, -8.1], 6);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18, subdomains: 'abcd', attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>' }).addTo(m);
+    MEET.map = m;
+    m.on('popupopen', function (ev) { var b = ev.popup.getElement && ev.popup.getElement().querySelector('[data-a="meet-abrir"]'); if (b) b.onclick = function (x) { x.preventDefault(); x.stopPropagation(); A['meet-abrir'](b); }; });
+    var l = meetFiltrados(), pts = [];
+    l.forEach(function (e) {
+      if (e.cancelado) return;
+      var c = MEET_CAT[e.categoria] || MEET_CAT.convivio;
+      var ic = L.divIcon({ className: 'mt-pin', html: '<span style="--c:' + c[2] + '"><i>' + c[3] + '</i></span>', iconSize: [34, 42], iconAnchor: [17, 40], popupAnchor: [0, -36] });
+      var mk = L.marker([e.lat, e.lng], { icon: ic, title: e.titulo }).addTo(m);
+      mk.bindPopup('<div class="mt-pop"><span class="mt-ev-k">' + c[0] + ' · ' + esc(e.cidade) + '</span><b>' + esc(e.titulo) + '</b><span>' + esc(meetData(e)) + '</span><span>' + meetN(e.id) + '/' + e.max_part + ' participantes</span><button class="btn sm wine" data-a="meet-abrir" data-id="' + e.id + '">Ver e aderir</button></div>');
+      pts.push([e.lat, e.lng]);
+    });
+    if (pts.length > 1) m.fitBounds(pts, { padding: [40, 40], maxZoom: 11 }); else if (pts.length === 1) m.setView(pts[0], 11);
+  });
+}
+/* ----- Página de um evento ----- */
+function meetEv() { return (MEET.l || []).filter(function (e) { return String(e.id) === String(MEET.ev); })[0]; }
+function vMeetEvento() {
+  var e = meetEv(); if (!e) { if (MEET.l === null) meetCarregar(); return '<div class="empty">A carregar o evento…</div>'; }
+  var c = MEET_CAT[e.categoria] || MEET_CAT.convivio, ps = MEET.part[e.id] || [], sou = meetSou(e.id), org = e.criador === Store.uid, n = ps.length, cheio = n >= e.max_part, passou = new Date(e.inicio) < new Date();
+  loadNames(ps);
+  var h = '<div class="head"><div><span class="crumb"><button data-a="meet-voltar">LexDesk Meet</button> / ' + esc(e.cidade) + '</span><h1>' + esc(e.titulo) + '</h1><p class="sub">' + c[3] + ' ' + c[0] + ' · organizado por ' + perfilLink(e.criador, org ? 'si' : chatNome(e.criador)) + '</p></div><div class="row">' +
+    (org ? '<button class="btn" data-a="meet-editar">Editar</button>' + (e.cancelado ? '' : '<button class="btn danger" data-a="meet-cancelar">Cancelar evento</button>') : sou ? '<button class="btn" data-a="meet-sair">Cancelar inscrição</button>' : (e.cancelado || passou) ? '' : cheio ? '<button class="btn" disabled>Lotado</button>' : '<button class="btn wine" data-a="meet-aderir">Aderir ao evento</button>') + '</div></div>';
+  if (e.cancelado) h += '<div class="note mt-canc">Este evento foi cancelado pelo organizador.</div>';
+  h += '<div class="mt-det"><div class="mt-col"><section class="card mt-info" style="--c:' + c[2] + '"><div class="mt-fx"><div><span class="mt-k">Quando</span><b>' + esc(new Date(e.inicio).toLocaleDateString('pt-PT', { weekday: 'long', day: 'numeric', month: 'long' })) + '</b><span>às ' + esc(new Date(e.inicio).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })) + '</span></div><div><span class="mt-k">Onde</span><b>' + esc(e.local) + '</b><span>' + esc(e.cidade) + ' · <a href="https://www.openstreetmap.org/?mlat=' + e.lat + '&mlon=' + e.lng + '#map=15/' + e.lat + '/' + e.lng + '" target="_blank" rel="noopener">ver no mapa</a></span></div><div><span class="mt-k">Lugares</span><b>' + n + ' / ' + e.max_part + '</b><div class="mt-bar"><i style="width:' + Math.min(100, Math.round(100 * n / e.max_part)) + '%"></i></div></div></div>' +
+    (e.descricao ? '<p class="mt-desc">' + esc(e.descricao).replace(/\n/g, '<br>') + '</p>' : '') + '</section>' +
+    '<section class="card"><div class="row" style="justify-content:space-between"><h2>Participantes</h2><span class="chip gray">' + plural(n, 'pessoa', 'pessoas') + '</span></div><div class="mt-ps">' + ps.map(function (u) { return '<div class="mt-p">' + avHtml(u, chatNome(u), 'pf-av xs') + '<span>' + perfilLink(u, u === Store.uid ? 'Eu' : chatNome(u)) + (u === e.criador ? ' <span class="chip gold">Organizador</span>' : '') + '</span>' + (org && u !== e.criador ? '<button class="icon-btn" data-a="meet-remover" data-id="' + u + '" aria-label="Remover participante" title="Remover participante">' + I.x + '</button>' : '') + '</div>'; }).join('') + '</div></section>' +
+    (!org ? '<button class="lk mt-den" data-a="meet-denunciar">Denunciar este evento</button>' : '') + '</div>';
+  h += '<section class="card mt-chat"><div class="row" style="justify-content:space-between"><h2>Chat do evento</h2><span class="chip gray">Só participantes</span></div>' +
+    (sou ? '<div class="mt-msgs" id="meet-msgs">' + meetMsgsHtml() + '</div><form class="mt-env"><input class="in" id="meet-txt" maxlength="2000" placeholder="Escreva uma mensagem ao grupo…" autocomplete="off"><button class="btn wine" type="submit" data-a="meet-env">Enviar</button></form><span class="mt-dica">Use o chat para se apresentar, combinar detalhes e avisar de alterações de última hora.</span>'
+      : '<div class="empty" style="border:0"><b>Chat reservado aos participantes</b><span>Adira ao evento para conversar com o grupo e combinar os detalhes.</span></div>') + '</section></div>';
+  setTimeout(function () { meetSubscrever(e.id, sou); var b = document.getElementById('meet-msgs'); if (b) b.scrollTop = b.scrollHeight; }, 0);
+  return h;
+}
+function meetMsgsHtml() {
+  if (!MEET.msgs.length) return '<div class="empty" style="border:0;margin:auto">Ainda sem mensagens. Apresente-se ao grupo!</div>';
+  var e = meetEv(), org = e && e.criador === Store.uid;
+  return MEET.msgs.map(function (m) { var mine = m.autor === Store.uid; return '<div class="smsg' + (mine ? ' me' : '') + '"><b>' + perfilLink(m.autor, mine ? 'Eu' : chatNome(m.autor)) + '</b> <span class="t">' + chatHora(m.created_at) + '</span><div>' + chatTexto(m.texto) + '</div>' + (mine || org ? '<span class="sa"><button class="icon-btn" data-a="meet-msg-del" data-id="' + m.id + '" aria-label="Apagar">' + I.trash + '</button></span>' : '') + '</div>'; }).join('');
+}
+function meetMsgsPintar() { var b = document.getElementById('meet-msgs'); if (!b) return; var perto = b.scrollHeight - b.scrollTop - b.clientHeight < 120; b.innerHTML = meetMsgsHtml(); if (perto) b.scrollTop = b.scrollHeight; }
+function meetSair() { MEET.subs.forEach(function (c) { try { SB.removeChannel(c); } catch (e) { } }); MEET.subs = []; MEET.subId = null; }
+function meetSubscrever(id, sou) {
+  if (MEET.subId === id + (sou ? '1' : '0')) return;
+  meetSair(); MEET.subId = id + (sou ? '1' : '0'); MEET.msgs = [];
+  if (sou) SB.from('evento_msgs').select('*').eq('evento_id', id).order('id', { ascending: true }).limit(300).then(function (r) { MEET.msgs = r.data || []; loadNames(MEET.msgs.map(function (m) { return m.autor; })); meetMsgsPintar(); var b = document.getElementById('meet-msgs'); if (b) b.scrollTop = b.scrollHeight; });
+  var f = 'evento_id=eq.' + id;
+  var ch = SB.channel('ev-' + id + '-' + Math.random().toString(36).slice(2, 6))
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'evento_msgs', filter: f }, function (p) {
+      if (p.eventType === 'INSERT' && !MEET.msgs.some(function (x) { return x.id === p.new.id; })) { MEET.msgs.push(p.new); if (!Social.names[p.new.autor]) loadNames([p.new.autor]); meetMsgsPintar(); }
+      else if (p.eventType === 'DELETE') { MEET.msgs = MEET.msgs.filter(function (x) { return x.id !== (p.old || {}).id; }); meetMsgsPintar(); }
+    })
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'evento_part', filter: f }, function () { meetRecarregarPart(id); })
+    .subscribe();
+  MEET.subs.push(ch);
+}
+function meetRecarregarPart(id) { SB.from('evento_part').select('evento_id,user_id').eq('evento_id', id).then(function (r) { var antes = meetSou(id); MEET.part[id] = (r.data || []).map(function (x) { return x.user_id; }); if (antes && !meetSou(id) && String(MEET.ev) === String(id)) toast('Já não está inscrito neste evento.'); if (String(MEET.ev) === String(id)) render(); }); }
+var _renderMeet = render;
+render = function () { if (S.view !== 'meet' || !MEET.ev) { if (MEET.subs.length) meetSair(); } _renderMeet.apply(this, arguments); };
+/* ----- Criar e editar ----- */
+function meetForm(e) {
+  e = e || {}; var d = e.inicio ? new Date(e.inicio) : new Date(Date.now() + 3 * 864e5), dd = ymd(d), hh = e.inicio ? d.toTimeString().slice(0, 5) : '20:00';
+  return '<div class="mt-form"><label class="f">Nome do evento<input class="in" id="mf-tit" maxlength="90" value="' + esc(e.titulo || '') + '" placeholder="Jantar de estudantes de Direito"></label>' +
+    '<label class="f">Categoria<select class="in" id="mf-cat">' + Object.keys(MEET_CAT).map(function (k) { return '<option value="' + k + '"' + (e.categoria === k ? ' selected' : '') + '>' + MEET_CAT[k][3] + ' ' + MEET_CAT[k][0] + ' — ' + MEET_CAT[k][1] + '</option>'; }).join('') + '</select></label>' +
+    '<label class="f">Descrição<textarea class="in" id="mf-desc" rows="4" maxlength="1500" placeholder="O que vão fazer, a quem se destina, o que levar…">' + esc(e.descricao || '') + '</textarea></label>' +
+    '<div class="mt-f2"><label class="f">Cidade<select class="in" id="mf-cid">' + MEET_CID.map(function (c) { return '<option' + (e.cidade === c[0] ? ' selected' : '') + '>' + c[0] + '</option>'; }).join('') + '</select></label><label class="f">Local (sítio público)<input class="in" id="mf-loc" maxlength="140" value="' + esc(e.local || '') + '" placeholder="Café Majestic, Rua de Santa Catarina"></label></div>' +
+    '<div class="mt-f3"><label class="f">Data<input class="in" type="date" id="mf-data" value="' + dd + '" min="' + ymd(new Date()) + '"></label><label class="f">Hora<input class="in" type="time" id="mf-hora" value="' + hh + '"></label><label class="f">Máximo de participantes<input class="in" type="number" id="mf-max" min="2" max="300" value="' + (e.max_part || 10) + '"></label></div>' +
+    '<p class="mt-dica">Indique um sítio público (café, restaurante, biblioteca, campo desportivo). Nunca publique moradas pessoais. Ao publicar, é criado automaticamente o chat do evento.</p></div>';
+}
+function meetLerForm() {
+  var t = $('#mf-tit').value.trim(), cid = meetCid($('#mf-cid').value), loc = $('#mf-loc').value.trim(), dt = new Date($('#mf-data').value + 'T' + ($('#mf-hora').value || '20:00')), mx = parseInt($('#mf-max').value, 10);
+  if (t.length < 3) { toast('Dê um nome ao evento (pelo menos 3 caracteres).'); return null; }
+  if (loc.length < 2) { toast('Indique o local do encontro.'); return null; }
+  if (!(dt > new Date())) { toast('A data e a hora têm de ser no futuro.'); return null; }
+  if (!(mx >= 2 && mx <= 300)) { toast('O número de participantes deve estar entre 2 e 300.'); return null; }
+  var h = estHash(t + loc), jit = function (k) { return ((h >> k) % 100 - 50) / 5000; };
+  return { titulo: t, categoria: $('#mf-cat').value, descricao: $('#mf-desc').value.trim(), cidade: cid[0], local: loc, lat: cid[1] + jit(1), lng: cid[2] + jit(7), inicio: dt.toISOString(), max_part: mx };
+}
+var A_MEET = {
+  'meet-novo': function () { if (!sessaoAtiva()) { A['login-open'] && A['login-open']({ dataset: { id: 'entrar' } }); return; } openModal('Criar evento', meetForm(), '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="meet-criar">Publicar evento</button>'); },
+  'meet-criar': function (el) {
+    var o = meetLerForm(); if (!o) return; el.disabled = true;
+    SB.from('eventos').insert(o).select('*').single().then(function (r) {
+      el.disabled = false; if (r.error) { toast(r.error.message || 'Não foi possível criar o evento.'); return; }
+      closeModal(); MEET.l = null; MEET.ev = r.data.id; toast('Evento publicado. O chat do evento já está aberto.'); go('meet'); meetCarregar();
+    });
+  },
+  'meet-editar': function () { var e = meetEv(); if (!e) return; openModal('Editar evento', meetForm(e), '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="meet-guardar">Guardar alterações</button>'); },
+  'meet-guardar': function (el) {
+    var o = meetLerForm(), e = meetEv(); if (!o || !e) return; el.disabled = true;
+    SB.from('eventos').update(o).eq('id', e.id).then(function (r) {
+      el.disabled = false; if (r.error) { toast(r.error.message || 'Não foi possível guardar.'); return; }
+      Object.assign(e, o); closeModal(); render(); toast('Evento atualizado.');
+      SB.from('evento_msgs').insert({ evento_id: e.id, texto: '📢 O organizador atualizou o evento: ' + meetData(e) + ' · ' + e.local + ', ' + e.cidade + '.' }).then(function () { });
+    });
+  },
+  'meet-cancelar': function () { openModal('Cancelar evento', '<p style="margin:0">Os participantes deixam de poder inscrever-se e é enviada uma mensagem automática para o chat. O evento fica visível como cancelado.</p>', '<button class="btn" data-a="close">Voltar</button><button class="btn danger" data-a="meet-cancelar-ok">Cancelar evento</button>'); },
+  'meet-cancelar-ok': function () {
+    var e = meetEv(); if (!e) return;
+    SB.from('eventos').update({ cancelado: true }).eq('id', e.id).then(function (r) {
+      if (r.error) { toast('Não foi possível cancelar.'); return; }
+      e.cancelado = true; closeModal(); render(); toast('Evento cancelado.');
+      SB.from('evento_msgs').insert({ evento_id: e.id, texto: '⚠️ Este evento foi cancelado pelo organizador.' }).then(function () { });
+    });
+  },
+  'meet-aderir': function (el) {
+    var e = meetEv(); if (!e) return; el.disabled = true;
+    SB.from('evento_part').insert({ evento_id: e.id, user_id: Store.uid }).then(function (r) {
+      el.disabled = false; if (r.error) { toast(r.error.message || 'Não foi possível aderir.'); return; }
+      (MEET.part[e.id] = MEET.part[e.id] || []).push(Store.uid); MEET.subId = null; render(); toast('Está inscrito. Apresente-se no chat do evento!');
+    });
+  },
+  'meet-sair': function () {
+    var e = meetEv(); if (!e) return;
+    SB.from('evento_part').delete().eq('evento_id', e.id).eq('user_id', Store.uid).then(function (r) {
+      if (r.error) { toast('Não foi possível cancelar a inscrição.'); return; }
+      MEET.part[e.id] = (MEET.part[e.id] || []).filter(function (u) { return u !== Store.uid; }); MEET.subId = null; render(); toast('Inscrição cancelada.');
+    });
+  },
+  'meet-remover': function (el) {
+    var e = meetEv(), u = el.dataset.id; if (!e) return;
+    SB.from('evento_part').delete().eq('evento_id', e.id).eq('user_id', u).then(function (r) { if (r.error) { toast('Não foi possível remover.'); return; } MEET.part[e.id] = (MEET.part[e.id] || []).filter(function (x) { return x !== u; }); render(); toast('Participante removido.'); });
+  },
+  'meet-env': function (el, ev) {
+    if (ev && ev.preventDefault) ev.preventDefault();
+    var e = meetEv(), i = $('#meet-txt'), t = i && i.value.trim(); if (!e || !t) return;
+    i.value = '';
+    SB.from('evento_msgs').insert({ evento_id: e.id, texto: t }).select('*').single().then(function (r) { if (r.error) { toast('Não foi possível enviar.'); i.value = t; return; } if (!MEET.msgs.some(function (x) { return x.id === r.data.id; })) { MEET.msgs.push(r.data); meetMsgsPintar(); } var b = document.getElementById('meet-msgs'); if (b) b.scrollTop = b.scrollHeight; });
+  },
+  'meet-msg-del': function (el) { var id = Number(el.dataset.id); SB.from('evento_msgs').delete().eq('id', id).then(function () { MEET.msgs = MEET.msgs.filter(function (x) { return x.id !== id; }); meetMsgsPintar(); }); },
+  'meet-denunciar': function () { openModal('Denunciar evento', '<label class="f">O que se passa com este evento?<textarea class="in" id="md-mot" rows="4" maxlength="600" placeholder="Descreva o problema (conteúdo inadequado, comportamento abusivo, suspeita de fraude…)"></textarea></label>', '<button class="btn" data-a="close">Cancelar</button><button class="btn danger" data-a="meet-denunciar-ok">Enviar denúncia</button>'); },
+  'meet-denunciar-ok': function () {
+    var e = meetEv(), m = $('#md-mot').value.trim(); if (!e) return; if (m.length < 3) { toast('Descreva brevemente o problema.'); return; }
+    SB.from('evento_denuncias').insert({ evento_id: e.id, motivo: m }).then(function (r) { closeModal(); toast(r.error ? 'Já tinha denunciado este evento.' : 'Denúncia enviada à moderação. Obrigado.'); });
+  },
+  'meet-abrir': function (el) { MEET.ev = el.dataset.id; if (S.view !== 'meet') go('meet'); else render(); window.scrollTo(0, 0); },
+  'meet-voltar': function () { MEET.ev = null; meetSair(); render(); },
+  'meet-cat': function (el) { MEET.cat = el.dataset.id; render(); },
+  'meet-aviso': function () { MEET.aviso = true; lsSet('lexdesk_meet_aviso', 'ok'); render(); }
+};
+Object.keys(A_MEET).forEach(function (k) { A[k] = A_MEET[k]; });
+document.addEventListener('change', function (ev) {
+  var t = ev.target; if (!t) return;
+  if (t.dataset && t.dataset.a2 === 'meet-cid') { MEET.cid = t.value; render(); }
+  else if (t.id === 'meet-meus') { MEET.meus = t.checked; render(); }
+});
+document.addEventListener('submit', function (ev) { if (ev.target && ev.target.classList && ev.target.classList.contains('mt-env')) { ev.preventDefault(); A['meet-env'](ev.target, ev); } });
+// Navegação: Meet como primeira opção da Comunidade
+NAV.meet = ['LexDesk Meet', 'meet'];
+if (typeof N2 !== 'undefined') N2.grupos.forEach(function (g) { if (g.id === 'comunidade' && !g.itens.some(function (x) { return x[0] === 'meet'; })) g.itens.unshift(['meet', 'LexDesk Meet', 'Eventos e encontros presenciais no mapa', 'meet']); });
+
 /* ---------- MODO NOTURNO ---------- */
 /* Gera automaticamente a versão escura de todas as regras CSS (e dos estilos em linha),
    convertendo as cores segundo o papel de cada propriedade: fundo, texto, contorno. */
@@ -11510,7 +11778,7 @@ A['tema'] = function () { var n = temaEscuro() ? 'claro' : 'escuro'; lsSet('lexd
 try { if (window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () { if (!lsGet('lexdesk_tema')) temaAplicar(temaPref()); }); } catch (e) { }
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
-var VIEW_LBL = { painel: ['Painel', I.grid], guias: ['Matéria explicada', I.book], guia: ['Guia de estudo', I.book], glossario: ['Glossário jurídico', I.book], calcheranca: ['Calculadora da herança', I.grid], reputacao: ['Reputação', I.badge], flashcards: ['Flashcards', I.layers], aula: ['Sala de aula', I.note], lei: ['Texto integral da lei', I.book], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Estudar e praticar', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
+var VIEW_LBL = { painel: ['Painel', I.grid], guias: ['Matéria explicada', I.book], guia: ['Guia de estudo', I.book], glossario: ['Glossário jurídico', I.book], calcheranca: ['Calculadora da herança', I.grid], meet: ['LexDesk Meet', I.grid], reputacao: ['Reputação', I.badge], flashcards: ['Flashcards', I.layers], aula: ['Sala de aula', I.note], lei: ['Texto integral da lei', I.book], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Estudar e praticar', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
 var isMac = /Mac|iPhone|iPad/.test(navigator.platform || '');
 
 /* ===== animação de entrada e contadores ===== */
