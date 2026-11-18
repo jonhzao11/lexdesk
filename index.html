@@ -2402,7 +2402,7 @@ DISC = {
 var TEMAS = {
   con: [['princ', 'Princípios fundamentais'], ['dir', 'Direitos fundamentais'], ['org', 'Órgãos de soberania'], ['leg', 'Competência legislativa'], ['fisc', 'Fiscalização da constitucionalidade'], ['rev', 'Revisão constitucional']],
   tgdc: [['pess', 'Pessoas e personalidade'], ['coisas', 'Coisas'], ['neg', 'Declaração negocial e forma'], ['vic', 'Vícios da vontade'], ['inval', 'Invalidade do negócio'], ['repr', 'Representação, condição e termo'], ['tempo', 'Prescrição e caducidade'], ['exerc', 'Exercício e prova dos direitos']],
-  obr: [['fontes', 'Fontes das obrigações'], ['rc', 'Responsabilidade civil'], ['modal', 'Modalidades e transmissão'], ['cumpr', 'Cumprimento e extinção'], ['inc', 'Não cumprimento e mora'], ['garant', 'Garantias'], ['contr', 'Contratos em especial']],
+  obr: [['fontes', 'Fontes das obrigações'], ['rc', 'Responsabilidade civil'], ['modal', 'Modalidades e transmissão'], ['cumpr', 'Cumprimento e extinção'], ['inc', 'Não cumprimento e mora'], ['garant', 'Garantias'], ['contr', 'Contratos em especial'], ['promessa', 'Contrato-promessa'], ['compra', 'Compra e venda'], ['arrend', 'Arrendamento urbano'], ['empreit', 'Empreitada'], ['mandato', 'Mandato, comodato, mútuo e depósito']],
   reais: [['geral', 'Princípios e noções gerais'], ['posse', 'Posse'], ['aquis', 'Usucapião e outras formas de aquisição'], ['compr', 'Compropriedade e propriedade horizontal'], ['menores', 'Usufruto, superfície e servidões'], ['viz', 'Relações de vizinhança'], ['reg', 'Registo predial']],
   fam: [['prom', 'Promessa de casamento'], ['casam', 'Casamento: impedimentos e invalidade'], ['conv', 'Convenção antenupcial'], ['regimes', 'Regimes de bens'], ['admin', 'Administração e disposição dos bens'], ['divid', 'Dívidas dos cônjuges'], ['div', 'Divórcio e união de facto'], ['filia', 'Filiação, parentesco e alimentos'], ['sucg', 'Sucessão em geral'], ['indig', 'Capacidade, indignidade e deserdação'], ['chamam', 'Representação, transmissão e acrescer'], ['acei', 'Aceitação, repúdio e herança jacente'], ['sleg', 'Sucessão legítima'], ['legit', 'Sucessão legitimária e cálculo da legítima'], ['imput', 'Imputação, colação e redução'], ['test', 'Testamento e herança'], ['pacto', 'Sucessão contratual'], ['cabeca', 'Administração da herança e cabeça-de-casal'], ['partilha', 'Partilha']],
   pen: [['lei', 'Lei penal e princípios'], ['facto', 'Facto, dolo e negligência'], ['imp', 'Causalidade e imputação objetiva'], ['omis', 'Crimes omissivos'], ['just', 'Causas de justificação'], ['culpa', 'Culpa e erro'], ['erro', 'O erro em direito penal'], ['tent', 'Tentativa e comparticipação'], ['part', 'Autoria e participação'], ['conc', 'Concurso de crimes'], ['penas', 'Penas e sua aplicação'], ['subst', 'Penas de substituição'], ['extin', 'Prescrição e extinção da responsabilidade'], ['esp', 'Crimes em especial']],
@@ -4233,6 +4233,57 @@ var CASOS_MODELO = {
   N('exerc', 'tgq22', 'Àquele que invocar um direito cabe provar:', ['Os factos constitutivos do direito alegado', 'Os factos extintivos', 'Todos os factos do processo', 'Nada, se houver documento'], 'Art. 342.º, n.º 1, do CC.');
 })();
 
+/* ---------- OBRIGAÇÕES E CONTRATOS EM ESPECIAL: casos práticos com resolução-modelo e questões (texto original do LEXDESK) ---------- */
+(function () {
+  function C(id, titulo, enunciado, perguntas, topicos, modelo) { CASOS.push({ id: id, d: 'obr', titulo: titulo, enunciado: enunciado, perguntas: perguntas, topicos: topicos }); CASOS_MODELO[id] = modelo; }
+
+  C('caso-obr1', 'A moradia prometida duas vezes',
+    'Alberto prometeu vender a Beatriz uma moradia por 300.000 €, em contrato escrito assinado por ambos, com reconhecimento presencial das assinaturas e certificação da licença de utilização. Beatriz entregou 30.000 € e foi viver para a casa. Meses depois, Alberto recusa-se a marcar a escritura, dizendo que recebeu uma oferta melhor, mas ainda não vendeu a ninguém.',
+    ['Que natureza tem a quantia entregue?', 'Beatriz pode obter a moradia através do tribunal?', 'Se Alberto vender entretanto a um terceiro, que direitos restam a Beatriz?'],
+    ['Presunção de sinal na promessa de compra e venda (art. 441.º do CC).', 'Execução específica; o sinal não a afasta nas promessas do art. 410.º, n.º 3 (art. 830.º, n.os 1 a 3, do CC).', 'Sinal em dobro ou valor atualizado com tradição; direito de retenção (arts. 442.º e 755.º, n.º 1, alínea f), do CC); falta de eficácia real.'],
+    [['Na promessa de compra e venda, presume-se que tem caráter de sinal toda a quantia entregue pelo promitente-comprador ao promitente-vendedor, ainda que a título de antecipação do preço (art. 441.º do CC). Os 30.000 € valem como sinal.'],
+      ['A recusa de Alberto em celebrar o contrato prometido permite a Beatriz pedir a execução específica, obtendo uma sentença que produza os efeitos da declaração de Alberto (art. 830.º, n.º 1, do CC). Embora o sinal faça normalmente presumir a exclusão da execução específica, essa presunção não vale nas promessas relativas a edifícios abrangidas pelo art. 410.º, n.º 3, do CC (art. 830.º, n.º 3). Beatriz deverá depositar o preço em falta, se Alberto invocar a exceção de não cumprimento.'],
+      ['A venda a terceiro torna impossível a execução específica, porque a promessa não tem eficácia real e não é oponível ao adquirente. Beatriz pode exigir o sinal em dobro (60.000 €) ou, porque houve tradição da coisa, o valor da moradia à data do incumprimento, deduzido do preço e acrescido do sinal (art. 442.º, n.º 2, do CC). Goza ainda de direito de retenção sobre a moradia pelo seu crédito (art. 755.º, n.º 1, alínea f), do CC), que pode opor ao terceiro adquirente.']]);
+
+  C('caso-obr2', 'A máquina de lavar e o telhado',
+    'Carla, consumidora, comprou numa loja uma máquina de lavar que deixou de centrifugar ao fim de 14 meses. A loja diz que «a garantia é só de um ano». Noutra situação, Carla contratou um empreiteiro para refazer o telhado da sua casa; 18 meses depois da entrega, aparecem infiltrações graves e Carla denuncia-as no dia seguinte.',
+    ['A loja tem razão?', 'Quanto ao telhado, que direitos tem Carla e por que ordem?', 'Ainda está a tempo?'],
+    ['Regime da venda de bens de consumo: garantia legal, em regra, de três anos para bens móveis; a loja não a pode reduzir para um ano.', 'Empreitada: eliminação ou nova construção; redução do preço ou resolução; indemnização (arts. 1221.º a 1223.º do CC).', 'Denúncia em 30 dias (art. 1220.º); caducidade (art. 1224.º); regime dos imóveis de longa duração (art. 1225.º do CC).'],
+    [['Não. Numa venda de um profissional a um consumidor aplica-se o regime especial da conformidade dos bens de consumo, que confere ao consumidor uma garantia legal, em regra, de três anos a contar da entrega para bens móveis novos. A loja não pode afastar ou reduzir essa garantia legal. Carla pode exigir a reparação ou a substituição da máquina e, verificados os pressupostos legais, a redução do preço ou a resolução.'],
+      ['Há um defeito na obra (art. 1208.º do CC). Carla deve exigir primeiro a eliminação do defeito ou, se não puder ser eliminado, nova construção (art. 1221.º do CC). Não sendo eliminados os defeitos, pode pedir a redução do preço ou a resolução do contrato, se os defeitos tornarem a obra inadequada ao fim (art. 1222.º do CC). Em qualquer caso, tem direito a indemnização nos termos gerais (art. 1223.º do CC).'],
+      ['Carla denunciou os defeitos no dia seguinte ao seu descobrimento, dentro dos 30 dias do art. 1220.º do CC. Como a obra foi aceite e os defeitos eram desconhecidos, o prazo de um ano conta-se da denúncia, mas os direitos não podem ser exercidos depois de dois anos sobre a entrega (art. 1224.º, n.º 2, do CC): Carla tem cerca de seis meses para agir. Se as infiltrações constituírem defeito grave num imóvel de longa duração, beneficia ainda do prazo de cinco anos do art. 1225.º do CC.']]);
+
+  C('caso-obr3', 'A renda atrasada e o mandato revogado',
+    'Daniel arrenda a Elsa um apartamento desde 2023. Elsa não paga as rendas de janeiro, fevereiro, março e abril. Daniel deu a Fábio, advogado, mandato remunerado por um ano para tratar do assunto, mas, ao fim de dois meses, revogou-o sem explicação, por ter encontrado um advogado mais barato.',
+    ['Daniel pode resolver o arrendamento? Como?', 'Elsa pode evitar a resolução?', 'Daniel podia revogar o mandato? Deve alguma coisa a Fábio?'],
+    ['Mora igual ou superior a três meses (art. 1083.º, n.º 3, do CC); resolução por comunicação (art. 1084.º do CC).', 'Pagamento das rendas e da indemnização no prazo legal (arts. 1041.º e 1084.º do CC).', 'Livre revogabilidade do mandato (art. 1170.º do CC) e dever de indemnizar (art. 1172.º do CC).'],
+    [['Sim. A mora igual ou superior a três meses no pagamento da renda torna inexigível ao senhorio a manutenção do arrendamento (art. 1083.º, n.º 3, do CC). A resolução com este fundamento opera por comunicação do senhorio ao arrendatário, na qual se invoque fundamentadamente a obrigação incumprida (art. 1084.º, n.º 2, do CC).'],
+      ['A resolução fica sem efeito se Elsa puser fim à mora no prazo de um mês a contar da comunicação, pagando as rendas em atraso e a indemnização legal de 20% (arts. 1041.º, n.º 1, e 1084.º, n.º 3, do CC). Esta faculdade só pode ser usada uma vez em relação a cada contrato.'],
+      ['O mandato é livremente revogável por qualquer das partes, ainda que haja convenção em contrário (art. 1170.º, n.º 1, do CC): Daniel podia revogá-lo. Porém, tratando-se de mandato oneroso conferido por certo tempo e revogado sem justa causa antes do termo, Daniel deve indemnizar Fábio pelo prejuízo sofrido (art. 1172.º, alínea c), do CC).']]);
+
+  function N(t, id, q, o, e) { QUESTOES.push({ id: id, d: 'obr', t: t, q: q, o: o, a: 0, e: e }); }
+  N('promessa', 'oq1', 'Ao contrato-promessa aplicam-se, em regra:', ['As disposições do contrato prometido, exceto as relativas à forma e as que não se lhe devam estender', 'Apenas as regras gerais dos negócios jurídicos', 'Exatamente as mesmas regras do contrato prometido, incluindo a forma', 'As regras da doação'], 'Art. 410.º, n.º 1, do CC.');
+  N('promessa', 'oq2', 'Se o promitente que recebeu o sinal deixar de cumprir, o outro pode exigir:', ['O dobro do que prestou', 'Apenas a devolução do sinal', 'O triplo do sinal', 'O preço total'], 'Art. 442.º, n.º 2, do CC.');
+  N('promessa', 'oq3', 'Na falta de convenção, o sinal:', ['Faz presumir que as partes excluíram a execução específica', 'Impõe sempre a execução específica', 'Não tem qualquer relevância para a execução específica', 'Torna a promessa nula'], 'Art. 830.º, n.º 2, do CC.');
+  N('promessa', 'oq4', 'Para ser oponível a terceiros, a promessa de venda de um imóvel tem de:', ['Ter eficácia real, por declaração expressa, forma adequada e registo', 'Ter sinal', 'Ser celebrada perante testemunhas', 'Ter prazo'], 'Art. 413.º do CC.');
+  N('compra', 'oq5', 'A venda de bens alheios é:', ['Nula, mas o vendedor não pode invocar essa nulidade contra o comprador de boa-fé', 'Anulável pelo vendedor', 'Válida', 'Ineficaz apenas perante o dono'], 'Art. 892.º do CC.');
+  N('compra', 'oq6', 'Num contrato de compra e venda de um móvel regido só pelo Código Civil, o comprador deve denunciar o defeito:', ['Até 30 dias depois de conhecido e dentro de seis meses após a entrega', 'Em qualquer altura', 'No prazo de 10 anos', 'No dia da entrega'], 'Art. 916.º, n.º 2, do CC.');
+  N('compra', 'oq7', 'Na venda a prestações, a falta de pagamento de uma só prestação que não exceda a oitava parte do preço:', ['Não dá lugar à resolução, salvo convenção em contrário', 'Dá sempre direito à resolução', 'Torna o contrato nulo', 'Obriga à restituição do bem'], 'Art. 934.º do CC.');
+  N('compra', 'oq8', 'Nos contratos de alienação, a reserva de propriedade permite ao alienante:', ['Manter a propriedade até ao cumprimento das obrigações da outra parte', 'Recusar a entrega da coisa sem motivo', 'Vender a coisa a terceiro livremente', 'Aumentar o preço'], 'Art. 409.º do CC.');
+  N('arrend', 'oq9', 'A mora do arrendatário no pagamento da renda cessa sem a indemnização de 20% se pagar:', ['No prazo de oito dias', 'No prazo de 30 dias', 'Até ao fim do ano', 'Quando o senhorio o interpelar'], 'Art. 1041.º, n.º 2, do CC.');
+  N('arrend', 'oq10', 'É inexigível ao senhorio a manutenção do arrendamento em caso de mora no pagamento da renda:', ['Igual ou superior a três meses', 'De um dia', 'Superior a 15 dias', 'Superior a um ano'], 'Art. 1083.º, n.º 3, do CC.');
+  N('arrend', 'oq11', 'No arrendamento habitacional com prazo certo, o prazo não pode, em regra, ser:', ['Inferior a um nem superior a 30 anos', 'Inferior a cinco anos', 'Superior a 10 anos', 'Inferior a seis meses'], 'Art. 1095.º, n.º 1, do CC.');
+  N('arrend', 'oq12', 'O senhorio pode denunciar um arrendamento de duração indeterminada:', ['Apenas nos casos previstos na lei, como a necessidade de habitação própria', 'Livremente, com 30 dias de antecedência', 'Nunca', 'Apenas com acordo do arrendatário'], 'Art. 1101.º do CC.');
+  N('empreit', 'oq13', 'Na empreitada, o dono da obra deve denunciar os defeitos:', ['Nos 30 dias seguintes ao seu descobrimento', 'Num ano a contar da entrega', 'Em cinco anos', 'A todo o tempo'], 'Art. 1220.º, n.º 1, do CC.');
+  N('empreit', 'oq14', 'Perante defeitos da obra, o primeiro direito do dono da obra é:', ['Exigir a eliminação dos defeitos ou nova construção', 'Resolver o contrato', 'Reduzir o preço', 'Recusar o pagamento total'], 'Art. 1221.º do CC.');
+  N('empreit', 'oq15', 'O dono da obra pode desistir da empreitada:', ['A todo o tempo, indemnizando o empreiteiro', 'Apenas antes do início da obra', 'Só com justa causa', 'Nunca'], 'Art. 1229.º do CC.');
+  N('empreit', 'oq16', 'Nos imóveis destinados a longa duração, o empreiteiro responde por defeitos graves durante:', ['Cinco anos a contar da entrega', 'Um ano', 'Dois anos', '20 anos'], 'Art. 1225.º, n.º 1, do CC.');
+  N('mandato', 'oq17', 'O mandato é, em regra:', ['Livremente revogável por qualquer das partes', 'Irrevogável', 'Revogável apenas pelo mandatário', 'Revogável só com autorização judicial'], 'Art. 1170.º, n.º 1, do CC.');
+  N('mandato', 'oq18', 'O mútuo de valor superior a 25.000 € só é válido se for celebrado por:', ['Escritura pública ou documento particular autenticado', 'Documento assinado pelo mutuário', 'Forma verbal', 'Mensagem eletrónica'], 'Art. 1143.º do CC.');
+  N('mandato', 'oq19', 'O comodato é um contrato:', ['Gratuito', 'Sempre oneroso', 'Presumidamente oneroso', 'Real e oneroso'], 'Art. 1129.º do CC.');
+  N('mandato', 'oq20', 'O mandato que tem por objeto atos que o mandatário pratica por profissão presume-se:', ['Oneroso', 'Gratuito', 'Nulo', 'Irrevogável'], 'Art. 1158.º, n.º 1, do CC.');
+})();
+
 /* Matéria explicada — Direito Comercial e das Sociedades (texto original do LEXDESK) */
 var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
 GUIAS.com = {
@@ -5558,6 +5609,183 @@ GUIAS.obr = {
   }
 };
 
+/* Matéria explicada — Obrigações e Contratos em especial, temas de aprofundamento (texto original do LEXDESK) */
+var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
+GUIAS.obr = GUIAS.obr || {};
+
+GUIAS.obr.promessa = {
+  sub: 'Contrato-promessa: forma, sinal, incumprimento, execução específica e eficácia real.',
+  ideia: 'No contrato-promessa, as partes não celebram ainda o negócio que pretendem: obrigam-se a celebrá-lo mais tarde. É talvez o contrato mais testado em exame, porque cruza regras de forma, de incumprimento e de garantias. A grande questão é sempre a mesma: se uma das partes falha, o que pode a outra exigir? Ficar com o sinal ou recebê-lo em dobro, pedir o valor da coisa, ou obter do tribunal o próprio contrato prometido?',
+  conceitos: [
+    ['Princípio da equiparação', 'Aplicam-se ao contrato-promessa as regras do contrato prometido, exceto as relativas à forma e as que, pela sua razão de ser, não lhe devam ser estendidas (art. 410.º, n.º 1, do CC).'],
+    ['Forma', 'Se o contrato prometido exigir documento, a promessa tem de constar de documento assinado pela parte ou partes que se vinculam (art. 410.º, n.º 2, do CC). Na promessa de compra e venda de edifício ou fração, exige-se ainda que as assinaturas sejam reconhecidas presencialmente e que se certifique a existência de licença de utilização (art. 410.º, n.º 3, do CC).'],
+    ['Sinal', 'Coisa entregue por um contraente ao outro como garantia do cumprimento. Na promessa de compra e venda, presume-se que tem caráter de sinal toda a quantia entregue pelo promitente-comprador (art. 441.º do CC).'],
+    ['Execução específica', 'Se uma parte não cumprir a promessa, a outra pode obter sentença que produza os efeitos da declaração negocial do faltoso, salvo convenção em contrário ou se a natureza da obrigação a isso se opuser (art. 830.º, n.º 1, do CC).'],
+    ['Eficácia real', 'Nas promessas sobre imóveis ou móveis sujeitos a registo, as partes podem atribuir eficácia real à promessa, por declaração expressa, forma adequada e registo; a promessa passa a ser oponível a terceiros (art. 413.º do CC).']
+  ],
+  regime: [
+    ['Incumprimento com sinal', 'Se quem constituiu o sinal não cumprir, o outro pode fazer sua a coisa entregue; se não cumprir quem o recebeu, o outro pode exigir o dobro do que prestou (art. 442.º, n.º 2, do CC).', 'Havendo tradição da coisa, o promitente-comprador pode, em alternativa, exigir o valor da coisa à data do incumprimento, deduzido do preço convencionado e acrescido do sinal (art. 442.º, n.º 2, parte final, do CC). Salvo estipulação em contrário, não há outra indemnização (art. 442.º, n.º 4).'],
+    ['Execução específica e sinal', 'A existência de sinal faz presumir uma convenção contra a execução específica (art. 830.º, n.º 2, do CC).', 'Esta presunção não vale nas promessas abrangidas pelo art. 410.º, n.º 3, do CC (edifícios e frações para habitação), em que a execução específica não pode ser afastada (art. 830.º, n.º 3, do CC).'],
+    ['Direito de retenção', 'Se a coisa já lhe foi entregue, o promitente-comprador goza de direito de retenção sobre ela pelo crédito resultante do incumprimento imputável à outra parte (art. 755.º, n.º 1, alínea f), do CC).', 'É uma garantia forte, que prevalece sobre a hipoteca, ainda que registada anteriormente (art. 759.º, n.º 2, do CC). A jurisprudência uniformizada limita-a, na insolvência, ao promitente-comprador consumidor.']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['A promessa é válida?', 'Forma do art. 410.º, n.os 2 e 3, do CC.'],
+    ['Houve incumprimento definitivo?', 'Mora convertida (art. 808.º) ou recusa categórica.'],
+    ['Há sinal?', 'Perda ou restituição em dobro (art. 442.º, n.º 2).'],
+    ['Houve tradição?', 'Valor atualizado da coisa e direito de retenção (arts. 442.º e 755.º).'],
+    ['É possível a execução específica?', 'Art. 830.º do CC, com as presunções e exceções.'],
+    ['Há eficácia real?', 'Oponibilidade a terceiros adquirentes (art. 413.º do CC).']
+  ] },
+  exemplo: ['Nádia prometeu vender a Óscar um apartamento por 200.000 €, recebendo 20.000 € de sinal, e entregou-lhe logo as chaves. Antes da escritura, Nádia vendeu o apartamento a um terceiro por 260.000 €. Que direitos tem Óscar?',
+    'A venda a terceiro tornou impossível o cumprimento da promessa por facto imputável a Nádia: há incumprimento definitivo. Como recebeu o sinal, Nádia deve restituí-lo em dobro: 40.000 € (art. 442.º, n.º 2, do CC).',
+    'Como houve tradição da coisa, Óscar pode, em alternativa, exigir o valor do apartamento à data do incumprimento, deduzido do preço convencionado e acrescido do sinal (art. 442.º, n.º 2, do CC). Óscar goza de direito de retenção sobre o apartamento pelo seu crédito (art. 755.º, n.º 1, alínea f), do CC). Sem eficácia real, não pode opor a promessa ao terceiro adquirente nem pedir a execução específica contra ele.']
+  ,
+  erros: [
+    'Pedir execução específica contra um terceiro adquirente numa promessa sem eficácia real.',
+    'Acumular o dobro do sinal com outra indemnização, sem estipulação nesse sentido.',
+    'Esquecer que o sinal faz presumir a exclusão da execução específica, salvo nas promessas do art. 410.º, n.º 3.',
+    'Exigir para a promessa a mesma forma do contrato prometido.'
+  ],
+  artigos: ['art. 410.º do CC', 'art. 411.º do CC', 'art. 413.º do CC', 'art. 440.º do CC', 'art. 441.º do CC', 'art. 442.º do CC', 'art. 755.º do CC', 'art. 759.º do CC', 'art. 808.º do CC', 'art. 830.º do CC']
+};
+
+GUIAS.obr.compra = {
+  sub: 'Compra e venda: efeitos, venda de bens alheios, venda de coisa onerada e defeituosa, venda a prestações e reserva de propriedade.',
+  ideia: 'A compra e venda transmite a propriedade por mero efeito do contrato e obriga o vendedor a entregar a coisa e o comprador a pagar o preço (arts. 874.º e 879.º do CC). Os problemas surgem quando a coisa não é do vendedor, quando tem ónus escondidos ou quando tem defeitos. Em cada caso, a lei dá ao comprador meios próprios e prazos curtos, que é essencial conhecer.',
+  conceitos: [
+    ['Efeitos essenciais', 'Transmissão da propriedade ou do direito, obrigação de entregar a coisa e obrigação de pagar o preço (art. 879.º do CC).'],
+    ['Forma', 'A venda de imóveis exige escritura pública ou documento particular autenticado, sob pena de nulidade (art. 875.º do CC).'],
+    ['Venda de bens alheios', 'Quem vende o que não é seu, sem ter poderes para tal, celebra um negócio nulo; contudo, essa nulidade não pode ser invocada pelo vendedor contra um comprador que estava de boa-fé (art. 892.º do CC). O vendedor fica obrigado a convalidar o contrato, adquirindo o bem (art. 897.º do CC).'],
+    ['Venda de coisa defeituosa', 'Se a coisa sofrer de vício que a desvalorize ou impeça a realização do fim, ou não tiver as qualidades asseguradas, aplica-se o regime da venda de bens onerados, com as especialidades dos arts. 913.º e seguintes do CC: anulação, redução do preço, reparação ou substituição e indemnização.'],
+    ['Reserva de propriedade', 'Nos contratos de alienação, o alienante pode manter-se proprietário enquanto o adquirente não cumprir, no todo ou em parte, aquilo a que se obrigou (art. 409.º do CC).']
+  ],
+  regime: [
+    ['Denúncia dos defeitos', 'O comprador tem de comunicar o vício ao vendedor nos 30 dias seguintes à descoberta, sem ultrapassar seis meses desde a entrega; nos imóveis, os prazos são de um e de cinco anos (art. 916.º do CC).', 'A ação caduca se a denúncia não for feita nestes prazos ou se decorrerem seis meses sobre ela (art. 917.º do CC). Se o vendedor tiver agido com dolo, não é necessária a denúncia.'],
+    ['Vendas a consumidores', 'Quando o comprador é consumidor e o vendedor um profissional, aplica-se um regime especial de conformidade dos bens, com prazos de garantia mais longos (em regra, três anos para bens móveis) e direitos de reparação, substituição, redução do preço ou resolução.', 'Neste regime, presume-se que a falta de conformidade que se manifeste num certo período após a entrega já existia nessa data, cabendo ao profissional provar o contrário.'],
+    ['Venda a prestações', 'A falta de pagamento de uma só prestação que não exceda a oitava parte do preço não dá lugar à resolução, nem faz perder o benefício do prazo quanto às restantes, salvo convenção em contrário (art. 934.º do CC).', 'Resolvido o contrato, o vendedor tem de restituir as prestações recebidas, podendo reter uma indemnização, se tiver sido estipulada.']
+  ],
+  esquema: { tipo: 'tabela', cab: ['Problema', 'Regime', 'Prazo-chave'], linhas: [
+    ['Coisa alheia', 'Nulidade; convalidação; indemnização (arts. 892.º e seguintes do CC)', 'Nulidade invocável a todo o tempo'],
+    ['Coisa onerada', 'Anulação ou redução do preço; expurgação (arts. 905.º e seguintes do CC)', 'Prazos da anulabilidade'],
+    ['Coisa defeituosa (CC)', 'Reparação, substituição, redução, anulação, indemnização (arts. 913.º e seguintes)', 'Denúncia: 30 dias / 6 meses (móveis); 1 / 5 anos (imóveis)'],
+    ['Venda a consumidor', 'Regime especial de conformidade', 'Garantia legal, em regra, de 3 anos (móveis)']
+  ] },
+  exemplo: ['Paula comprou a Quintino, particular, um carro usado, que este garantiu «nunca ter tido um acidente». Três meses depois, uma oficina deteta que o carro teve um acidente grave, com reparação mal feita no chassis. Paula avisa Quintino 45 dias depois de saber. Que direitos tem?',
+    'A coisa não tem a qualidade assegurada pelo vendedor e o vício desvaloriza-a: aplica-se o regime da venda de coisa defeituosa (art. 913.º do CC). Paula poderia pedir a reparação ou a substituição, a redução do preço ou a anulação, e indemnização.',
+    'Porém, a denúncia tinha de ser feita até 30 dias depois de conhecido o defeito (art. 916.º, n.º 2, do CC). Feita aos 45 dias, é tardia, e os direitos caducam (art. 917.º do CC). Paula só escapa a esta consequência se provar que Quintino agiu com dolo, sabendo do acidente, caso em que a denúncia não é necessária (art. 916.º, n.º 1, do CC) e pode ainda anular por dolo (art. 254.º do CC).']
+  ,
+  erros: [
+    'Esquecer os prazos de denúncia dos defeitos, que são curtos.',
+    'Aplicar o regime do Código Civil a uma venda de profissional a consumidor, ignorando o regime especial.',
+    'Permitir ao vendedor invocar a nulidade da venda de bem alheio contra o comprador de boa-fé.',
+    'Resolver uma venda a prestações pela falta de uma prestação inferior a um oitavo do preço.'
+  ],
+  artigos: ['art. 409.º do CC', 'art. 874.º do CC', 'art. 875.º do CC', 'art. 879.º do CC', 'art. 892.º do CC', 'art. 897.º do CC', 'art. 905.º do CC', 'art. 913.º do CC', 'art. 914.º do CC', 'art. 916.º do CC', 'art. 917.º do CC', 'art. 934.º do CC']
+};
+
+GUIAS.obr.arrend = {
+  sub: 'Arrendamento urbano: forma, rendas e mora, duração e renovação, oposição à renovação, denúncia e resolução.',
+  ideia: 'O arrendamento é a locação de um imóvel. Por estar em causa a habitação ou a atividade económica do arrendatário, a lei protege-o com regras imperativas: limita a liberdade do senhorio de pôr fim ao contrato e regula com precisão os prazos de comunicação. Saber distinguir oposição à renovação, denúncia e resolução é a chave para qualquer hipótese.',
+  conceitos: [
+    ['Locação e arrendamento', 'Na locação, alguém compromete-se a deixar outrem usar e fruir temporariamente uma coisa, recebendo por isso uma retribuição; diz-se arrendamento quando versa sobre coisa imóvel (arts. 1022.º e 1023.º do CC).'],
+    ['Forma', 'O contrato de arrendamento urbano deve ser celebrado por escrito (art. 1069.º do CC).'],
+    ['Prazo certo', 'No arrendamento habitacional com prazo certo, o prazo não pode ser inferior a um nem superior a 30 anos, salvo contratos para fins especiais transitórios (art. 1095.º do CC). Salvo estipulação em contrário, renova-se automaticamente por períodos iguais ou de três anos, se aquele for inferior (art. 1096.º do CC).'],
+    ['Mora do arrendatário', 'Em mora, o senhorio pode exigir, além das rendas em atraso, uma indemnização de 20% do que for devido, salvo se resolver o contrato; a mora cessa sem consequências se o arrendatário pagar no prazo de oito dias (art. 1041.º do CC).'],
+    ['Resolução', 'Qualquer das partes pode resolver o contrato com base em incumprimento que, pela sua gravidade ou consequências, torne inexigível à outra a manutenção do arrendamento (art. 1083.º do CC).']
+  ],
+  regime: [
+    ['Falta de pagamento da renda', 'É inexigível ao senhorio a manutenção do contrato em caso de mora igual ou superior a três meses no pagamento da renda, ou de mora superior a oito dias por mais de quatro vezes, seguidas ou interpoladas, num período de 12 meses (art. 1083.º, n.os 3 e 4, do CC).', 'A resolução por falta de pagamento opera por comunicação ao arrendatário (art. 1084.º do CC), mas fica sem efeito se este pagar no prazo legal, uma única vez com referência a cada contrato.'],
+    ['Oposição à renovação', 'O senhorio pode impedir a renovação mediante comunicação com antecedência mínima de 240 dias, 120 dias, 60 dias ou um terço da duração, consoante a duração do contrato (art. 1097.º do CC); o arrendatário, com prazos menores (art. 1098.º do CC).', 'A lei limita ainda a oposição do senhorio à primeira renovação em certos contratos, para garantir uma duração mínima efetiva ao arrendatário.'],
+    ['Denúncia de contratos de duração indeterminada', 'O senhorio só pode denunciar o contrato de duração indeterminada nos casos previstos: necessidade de habitação própria ou dos descendentes em 1.º grau, demolição ou obras profundas, ou mediante comunicação com antecedência não inferior a cinco anos (art. 1101.º do CC).', 'O arrendatário pode denunciar com aviso prévio, nos termos do art. 1100.º do CC.']
+  ],
+  esquema: { tipo: 'tabela', cab: ['Figura', 'Quem', 'Fundamento', 'Norma'], linhas: [
+    ['Oposição à renovação', 'Senhorio ou arrendatário', 'Fim do prazo; sem justificação', 'arts. 1097.º e 1098.º do CC'],
+    ['Denúncia', 'Arrendatário; senhorio só em casos legais', 'Contratos de duração indeterminada', 'arts. 1100.º e 1101.º do CC'],
+    ['Resolução', 'Qualquer das partes', 'Incumprimento grave', 'arts. 1083.º e 1084.º do CC'],
+    ['Caducidade', 'Lei', 'Termo, morte do arrendatário (com transmissões), perda da coisa', 'art. 1051.º do CC']
+  ] },
+  exemplo: ['Rita, senhoria, quer recuperar o apartamento arrendado a Sónia há quatro anos, por um contrato de cinco anos com renovação automática. Sónia paga sempre a renda com 10 dias de atraso, o que já aconteceu seis vezes no último ano. Que vias tem Rita?',
+    'A mora superior a oito dias no pagamento da renda, por mais de quatro vezes num período de 12 meses, torna inexigível ao senhorio a manutenção do arrendamento (art. 1083.º, n.º 4, do CC). Rita pode resolver o contrato por comunicação a Sónia, nos termos do art. 1084.º do CC.',
+    'Em alternativa, Rita pode opor-se à renovação do contrato no fim do prazo de cinco anos, comunicando-o com a antecedência mínima de 120 dias, aplicável aos contratos com duração entre um e seis anos (art. 1097.º, n.º 1, alínea b), do CC). Esta via não depende de qualquer incumprimento.']
+  ,
+  erros: [
+    'Confundir oposição à renovação (fim do prazo) com denúncia (contratos sem prazo).',
+    'Pensar que o senhorio pode denunciar livremente um contrato de duração indeterminada.',
+    'Esquecer que a mora no pagamento cessa se o arrendatário pagar em oito dias.',
+    'Não respeitar os prazos de antecedência das comunicações.'
+  ],
+  artigos: ['art. 1022.º do CC', 'art. 1023.º do CC', 'art. 1041.º do CC', 'art. 1051.º do CC', 'art. 1069.º do CC', 'art. 1083.º do CC', 'art. 1084.º do CC', 'art. 1095.º do CC', 'art. 1096.º do CC', 'art. 1097.º do CC', 'art. 1098.º do CC', 'art. 1100.º do CC', 'art. 1101.º do CC']
+};
+
+GUIAS.obr.empreit = {
+  sub: 'Empreitada: obrigações das partes, alterações, defeitos da obra, prazos de denúncia e caducidade, e desistência do dono da obra.',
+  ideia: 'Na empreitada, alguém obriga-se a realizar uma obra mediante um preço (art. 1207.º do CC). A obra tem de ser executada em conformidade com o convencionado e sem vícios. Quando há defeitos, a lei estabelece uma ordem de remédios (primeiro a eliminação ou nova construção, depois a redução do preço ou a resolução) e prazos curtos, cujo desrespeito faz caducar os direitos do dono da obra.',
+  conceitos: [
+    ['Empreitada', 'Acordo em que alguém assume, perante outrem, o encargo de executar determinada obra em troca de um preço (art. 1207.º do CC).'],
+    ['Execução conforme', 'A obra tem de corresponder ao acordado e não pode ter vícios que lhe retirem ou diminuam o valor ou a tornem imprópria para o uso normal ou para o uso que as partes previram (art. 1208.º do CC).'],
+    ['Verificação e aceitação', 'Antes de a aceitar, o dono da obra tem de a examinar, para confirmar que corresponde ao acordado e não tem vícios; a aceitação sem reserva, com conhecimento dos defeitos, exonera o empreiteiro (arts. 1218.º e 1219.º do CC).'],
+    ['Direitos perante defeitos', 'Eliminação dos defeitos ou nova construção; não sendo eliminados, redução do preço ou resolução, se tornarem a obra inadequada ao fim; e indemnização nos termos gerais (arts. 1221.º a 1223.º do CC).'],
+    ['Desistência', 'O dono da obra pode desistir a todo o tempo, ainda que iniciada a execução, desde que indemnize o empreiteiro dos gastos, do trabalho e do proveito que poderia tirar da obra (art. 1229.º do CC).']
+  ],
+  regime: [
+    ['Prazos', 'O dono da obra deve denunciar os defeitos nos 30 dias seguintes ao seu descobrimento, sob pena de caducidade (art. 1220.º do CC). Os direitos caducam se não forem exercidos dentro de um ano a contar da recusa da aceitação ou da aceitação com reserva (art. 1224.º, n.º 1, do CC).', 'Se os defeitos eram desconhecidos e a obra foi aceite, o prazo de um ano conta-se da denúncia, não podendo ser exercidos depois de decorridos dois anos sobre a entrega (art. 1224.º, n.º 2, do CC).'],
+    ['Imóveis de longa duração', 'Nos imóveis destinados a longa duração, se, nos cinco anos seguintes à entrega, a obra ruir ou apresentar defeitos graves por vício do solo ou da construção, a responsabilidade do empreiteiro abrange tanto o dono da obra como quem lhe venha a adquirir o imóvel (art. 1225.º, n.º 1, do CC).', 'Neste caso, a denúncia deve ser feita no ano seguinte ao conhecimento do defeito e a indemnização pedida no ano seguinte à denúncia (art. 1225.º, n.os 2 e 3, do CC).'],
+    ['Alterações', 'O empreiteiro não pode, sem autorização do dono da obra, fazer alterações ao plano convencionado (art. 1214.º do CC).', 'As alterações necessárias, por exemplo por imposição legal, e as exigidas pelo dono da obra têm regimes próprios quanto ao preço e ao prazo (arts. 1215.º e 1216.º do CC).']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['Há defeito?', 'Desconformidade com o convencionado ou vício (art. 1208.º do CC).'],
+    ['Foi denunciado a tempo?', '30 dias após a descoberta (art. 1220.º); imóveis de longa duração: 1 ano (art. 1225.º).'],
+    ['Que direito exercer primeiro?', 'Eliminação ou nova construção (art. 1221.º).'],
+    ['E se não for eliminado?', 'Redução do preço ou resolução (art. 1222.º); indemnização (art. 1223.º).'],
+    ['Dentro de que prazo?', 'Caducidade do art. 1224.º ou do art. 1225.º do CC.']
+  ] },
+  exemplo: ['Tiago contratou um empreiteiro para remodelar a cozinha. Dois meses após a entrega, descobre infiltrações causadas por uma canalização mal ligada e avisa o empreiteiro uma semana depois. O empreiteiro nada faz. Tiago quer contratar outra empresa e cobrar a fatura ao primeiro. Pode?',
+    'Há um defeito de execução (art. 1208.º do CC), denunciado dentro dos 30 dias seguintes ao descobrimento (art. 1220.º do CC). O primeiro direito de Tiago é exigir a eliminação do defeito (art. 1221.º do CC).',
+    'Perante a recusa ou inércia do empreiteiro, Tiago pode exigir a redução do preço ou, se o defeito tornar a obra inadequada ao fim, a resolução (art. 1222.º do CC), bem como indemnização (art. 1223.º do CC). A jurisprudência admite ainda, em caso de urgência ou de recusa inequívoca, que o dono da obra mande eliminar o defeito por terceiro e exija o custo ao empreiteiro. Tiago deve exercer os seus direitos dentro do prazo do art. 1224.º do CC.']
+  ,
+  erros: [
+    'Saltar logo para a resolução sem exigir primeiro a eliminação dos defeitos.',
+    'Esquecer o prazo de 30 dias para denunciar.',
+    'Tratar defeitos de uma empreitada com as regras da venda de coisa defeituosa.',
+    'Pensar que o dono da obra não pode desistir depois de a obra começar.'
+  ],
+  artigos: ['art. 1207.º do CC', 'art. 1208.º do CC', 'art. 1214.º do CC', 'art. 1218.º do CC', 'art. 1219.º do CC', 'art. 1220.º do CC', 'art. 1221.º do CC', 'art. 1222.º do CC', 'art. 1223.º do CC', 'art. 1224.º do CC', 'art. 1225.º do CC', 'art. 1229.º do CC']
+};
+
+GUIAS.obr.mandato = {
+  sub: 'Mandato, depósito, comodato e mútuo: noções, forma, obrigações das partes e cessação.',
+  ideia: 'Estes contratos têm em comum a confiança: confia-se a outrem a prática de atos (mandato), a guarda de uma coisa (depósito), o uso gratuito de uma coisa (comodato) ou dinheiro para devolver (mútuo). Cada um tem regras próprias sobre forma, gratuitidade e a forma de pôr fim ao contrato, que importa distinguir.',
+  conceitos: [
+    ['Mandato', 'Acordo em que alguém assume o encargo de realizar atos jurídicos por conta de outrem (art. 1157.º do CC). Na dúvida, entende-se que não é remunerado; mas, quando os atos pertencem à atividade profissional do mandatário, a presunção inverte-se e entende-se que é pago (art. 1158.º do CC).'],
+    ['Mandato com e sem representação', 'Se o mandatário tiver poderes para agir em nome do mandante, aplicam-se também as regras da representação (art. 1178.º do CC); se atuar em seu próprio nome, é ele quem fica titular dos direitos e vinculado às obrigações do negócio, devendo depois transferi-los para o mandante (arts. 1180.º e 1181.º do CC).'],
+    ['Depósito', 'Entrega de uma coisa, móvel ou imóvel, a alguém que fica encarregado de a guardar e de a devolver quando lha pedirem (art. 1185.º do CC).'],
+    ['Comodato', 'Empréstimo sem contrapartida de uma coisa determinada, que quem a recebe pode usar e depois tem de devolver (art. 1129.º do CC).'],
+    ['Mútuo', 'Empréstimo de dinheiro ou de outra coisa fungível, em que o beneficiário devolve não a mesma coisa, mas igual quantidade do mesmo género e qualidade (art. 1142.º do CC).']
+  ],
+  regime: [
+    ['Revogação do mandato', 'O mandato é livremente revogável por qualquer das partes, mesmo havendo convenção em contrário; quando o mandato serve igualmente o interesse do mandatário ou de um terceiro, o mandante só pode pôr-lhe fim com acordo do interessado ou com justa causa (art. 1170.º do CC).', 'Quem revogar deve indemnizar a outra parte nos casos do art. 1172.º do CC, por exemplo se tiver sido convencionada a irrevogabilidade ou se o mandato oneroso tiver sido conferido por certo tempo.'],
+    ['Forma do mútuo', 'Acima de 25.000 €, o empréstimo exige escritura pública ou documento particular autenticado; o de valor superior a 2.500 € exige documento assinado pelo mutuário (art. 1143.º do CC).', 'O mútuo presume-se oneroso em caso de dúvida (art. 1145.º do CC). A falta de forma gera nulidade, com restituição do que foi prestado (art. 289.º do CC).'],
+    ['Restituição no comodato', 'Se não tiver sido convencionado prazo, o comodatário deve restituir a coisa logo que lhe seja exigida, salvo se tiver sido emprestada para um uso determinado, caso em que a restituição se faz quando esse uso terminar (art. 1137.º do CC).', 'O comodatário deve guardar e conservar a coisa, não a podendo aplicar a fim diverso nem proporcionar o seu uso a terceiro sem autorização (art. 1135.º do CC).']
+  ],
+  esquema: { tipo: 'tabela', cab: ['Contrato', 'Objeto', 'Gratuito ou oneroso', 'Nota-chave'], linhas: [
+    ['Mandato', 'Prática de atos jurídicos por conta de outrem', 'Presume-se gratuito, salvo atos de profissão', 'Livremente revogável (art. 1170.º)'],
+    ['Depósito', 'Guarda e restituição de uma coisa', 'Pode ser gratuito ou oneroso', 'Restituição quando exigida (art. 1185.º)'],
+    ['Comodato', 'Uso de coisa não fungível', 'Sempre gratuito', 'Restituição quando exigida, salvo uso determinado (art. 1137.º)'],
+    ['Mútuo', 'Dinheiro ou coisa fungível', 'Presume-se oneroso em caso de dúvida', 'Forma depende do valor (art. 1143.º)']
+  ] },
+  exemplo: ['Vítor emprestou a Xénia 30.000 € por mensagem de telemóvel, para ela comprar um carro. Xénia não paga e diz que o contrato é nulo. Vítor perde o dinheiro?',
+    'Um empréstimo acima de 25.000 € exige escritura pública ou documento particular autenticado (art. 1143.º do CC). Uma troca de mensagens não satisfaz esta forma: o contrato é nulo por falta de forma (art. 220.º do CC).',
+    'A nulidade não significa que Vítor perca o dinheiro. Declarado nulo o negócio, cada parte devolve o que recebeu (art. 289.º, n.º 1, do CC): Xénia tem de devolver os 30.000 €. O que Vítor perde são os juros convencionados, se os houvesse, ficando apenas com os juros de mora a partir da interpelação.']
+  ,
+  erros: [
+    'Pensar que a nulidade do mútuo por falta de forma faz perder o capital emprestado.',
+    'Considerar o mandato irrevogável só porque as partes o disseram.',
+    'Confundir comodato (coisa não fungível, restituição da mesma coisa) com mútuo (coisa fungível, restituição de outro tanto).',
+    'Esquecer a presunção de onerosidade do mandato profissional.'
+  ],
+  artigos: ['art. 1129.º do CC', 'art. 1135.º do CC', 'art. 1137.º do CC', 'art. 1142.º do CC', 'art. 1143.º do CC', 'art. 1145.º do CC', 'art. 1157.º do CC', 'art. 1158.º do CC', 'art. 1170.º do CC', 'art. 1172.º do CC', 'art. 1178.º do CC', 'art. 1180.º do CC', 'art. 1181.º do CC', 'art. 1185.º do CC']
+};
+
 /* Matéria explicada — Direito Processual Civil */
 var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
 GUIAS.pc = {
@@ -5573,7 +5801,7 @@ GUIAS.pc = {
     ],
     regime: [
       ['Legitimidade', 'O autor é parte legítima quando tem interesse direto em demandar; o réu, quando tem interesse direto em contradizer (art. 30.º, n.º 1, do CPC). Na falta de indicação da lei em contrário, são titulares do interesse relevante os sujeitos da relação controvertida tal como é configurada pelo autor (art. 30.º, n.º 3, do CPC).', 'Litisconsórcio necessário: se a lei ou o negócio exigirem a intervenção de todos os interessados, ou se ela for necessária para que a decisão produza o seu efeito útil normal, a falta de qualquer deles gera ilegitimidade (art. 33.º do CPC). Sanável por intervenção principal provocada.'],
-      ['Patrocínio judiciário obrigatório', 'É obrigatória a constituição de advogado nas causas de competência de tribunais com alçada em que seja admissível recurso ordinário, nas causas em que seja sempre admissível recurso e nos recursos e causas propostas nos tribunais superiores (art. 40.º do CPC).'],
+      ['Patrocínio judiciário obrigatório', 'É obrigatória a constituição de advogado quando a causa, cabendo a um tribunal com alçada, comporte recurso ordinário, nas causas em que seja sempre admissível recurso e nos recursos e causas propostas nos tribunais superiores (art. 40.º do CPC).'],
       ['Competência', 'Internacional: determina se os tribunais portugueses podem julgar (art. 59.º do CPC e regulamentos europeus). Interna, em razão da matéria (art. 64.º do CPC), da hierarquia (art. 67.º do CPC), do valor e do território. Exemplo de regra territorial: a ação destinada a exigir o cumprimento de obrigações é proposta no tribunal do domicílio do réu, podendo o credor optar pelo do lugar do cumprimento quando o réu seja pessoa coletiva ou quando, situando-se o domicílio do credor na área metropolitana de Lisboa ou do Porto, o réu tenha domicílio na mesma área (art. 71.º, n.º 1, do CPC).', 'A incompetência absoluta (por exemplo, infração das regras de competência em razão da matéria ou da hierarquia) é de conhecimento oficioso (arts. 96.º e 97.º do CPC); a incompetência relativa tem regime mais restrito (arts. 102.º e 104.º do CPC).'],
       ['Exceções dilatórias', 'Obstam a que o tribunal conheça do mérito da causa e dão lugar à absolvição da instância ou à remessa do processo para outro tribunal (art. 576.º, n.º 2, do CPC). A lista exemplificativa consta do art. 577.º do CPC. Em regra, são de conhecimento oficioso (art. 578.º do CPC). O juiz deve providenciar pelo seu suprimento sempre que sejam sanáveis (art. 6.º, n.º 2, do CPC).']
     ],
@@ -5643,13 +5871,15 @@ GUIAS.pc = {
       ['Prazo dilatório', 'Difere para certo momento a possibilidade de realização de um ato ou o início da contagem de um outro prazo (art. 139.º, n.º 2, do CPC) — por exemplo, a dilação da citação (art. 245.º do CPC).'],
       ['Prazo perentório', 'O seu decurso extingue o direito de praticar o ato (art. 139.º, n.º 3, do CPC), salvo justo impedimento ou o pagamento da multa dos três dias úteis.'],
       ['Continuidade', 'O prazo corre seguido, incluindo sábados, domingos e feriados; só se suspende nas férias judiciais (art. 138.º, n.º 1, do CPC). Quando termine em dia em que os tribunais estejam encerrados, transfere-se para o primeiro dia útil seguinte (art. 138.º, n.º 2, do CPC).'],
-      ['Férias judiciais', 'Decorrem de 22 de dezembro a 3 de janeiro, do domingo de Ramos à segunda-feira de Páscoa e de 16 de julho a 31 de agosto (art. 28.º da Lei da Organização do Sistema Judiciário).'],
+      ['Férias judiciais', 'Há três períodos: entre 22 de dezembro e 3 de janeiro; desde o domingo de Ramos até à segunda-feira a seguir à Páscoa; no verão, entre 16 de julho e o último dia de agosto (art. 28.º da Lei da Organização do Sistema Judiciário).'],
       ['Justo impedimento', 'Evento não imputável à parte nem aos seus representantes ou mandatários que obste à prática atempada do ato (art. 140.º do CPC). A parte deve requerer a prática do ato logo que cesse o impedimento, oferecendo a prova.']
     ],
     regime: [
       ['A multa dos três dias', 'Independentemente de justo impedimento, o ato pode ser praticado dentro dos três primeiros dias úteis subsequentes ao termo do prazo, ficando a sua validade dependente do pagamento imediato de uma multa (art. 139.º, n.º 5, do CPC). O valor aumenta com cada dia: 10 %, 25 % e 40 % da taxa de justiça, com os limites previstos na lei.'],
       ['Contagem passo a passo', 'O prazo começa a correr no dia seguinte ao do evento que o desencadeia (por exemplo, a notificação). As notificações eletrónicas aos mandatários presumem-se feitas no terceiro dia posterior ao do seu envio ou no primeiro dia útil seguinte a esse, quando o não seja (art. 248.º do CPC). Na citação, ao prazo de defesa acresce, nos casos do art. 245.º do CPC, uma dilação.'],
       ['Apresentação das peças', 'Os atos processuais das partes que devam ser praticados por escrito são apresentados a juízo por transmissão eletrónica de dados, valendo como data da prática do ato a da respetiva expedição (art. 144.º do CPC).'],
+      ['Quando se considera feita a citação', 'Na citação postal, a data relevante é a da assinatura do aviso de receção, ainda que este seja assinado por terceiro (art. 230.º, n.º 1, do CPC). Havendo domicílio convencionado e tendo sido deixado aviso, a citação considera-se feita no 8.º dia posterior à data certificada pelo distribuidor postal (art. 230.º, n.º 2, do CPC). Na citação edital, conta-se a partir da publicação do anúncio.', 'Este é o «dia zero»: a dilação e o prazo de defesa só começam a contar depois dele. No processo executivo não há domicílio convencionado, pelo que esta segunda hipótese raramente se coloca aí.'],
+      ['As dilações somam-se ao prazo', 'Acrescem 5 dias se a citação foi feita em pessoa diversa do réu, incluindo a citação com hora certa feita a terceiro ou por afixação, ou se o réu foi citado fora da comarca sede do tribunal (art. 245.º, n.º 1, do CPC); 15 dias entre o continente e as Regiões Autónomas, ou entre ilhas (art. 245.º, n.º 2); 30 dias se a citação foi feita no estrangeiro, por edital ou nos casos de domicílio convencionado (art. 245.º, n.º 3).', 'A dilação conta-se primeiro e o prazo de defesa começa a correr quando ela termina. Entende-se, em regra, que as duas dilações de 5 dias do n.º 1 se somam; a de 15 dias substitui a da comarca, por força da ressalva do n.º 1, alínea b).'],
       ['Prazos mais frequentes', 'Contestação: 30 dias (art. 569.º do CPC). Prazo supletivo para outros atos: 10 dias (art. 149.º do CPC). Recurso: 30 dias, reduzido a 15 dias nos processos urgentes e nos casos do art. 644.º, n.º 2, do CPC (art. 638.º do CPC). Embargos de executado: 20 dias (art. 728.º do CPC).']
     ],
     esquema: { tipo: 'passos', itens: [
@@ -5661,7 +5891,7 @@ GUIAS.pc = {
     ] },
     exemplo: ['C é citado pessoalmente, sem dilação, a 1 de julho para contestar uma ação declarativa comum. Até quando pode contestar sem multa?',
       'O prazo de contestação é de 30 dias (art. 569.º do CPC) e começa a correr no dia seguinte à citação, 2 de julho. Corre seguido até 15 de julho (14 dias).',
-      'De 16 de julho a 31 de agosto há férias judiciais e o prazo suspende-se (art. 138.º, n.º 1, do CPC), porque o processo não é urgente. Retoma a 1 de setembro, faltando 16 dias: termina a 16 de setembro. Se esse dia for sábado, domingo ou feriado, passa para o primeiro dia útil seguinte (art. 138.º, n.º 2, do CPC).',
+      'Entre 16 de julho e o fim de agosto decorrem as férias judiciais e o prazo suspende-se (art. 138.º, n.º 1, do CPC), porque o processo não é urgente. Retoma a 1 de setembro, faltando 16 dias: termina a 16 de setembro. Se esse dia for sábado, domingo ou feriado, passa para o primeiro dia útil seguinte (art. 138.º, n.º 2, do CPC).',
       'Depois disso, C ainda pode contestar nos três dias úteis seguintes, pagando a multa do art. 139.º, n.º 5, do CPC.']
     ,
     erros: [
@@ -5670,7 +5900,7 @@ GUIAS.pc = {
       'Esquecer a dilação na citação (art. 245.º do CPC) ou as presunções de notificação (art. 248.º do CPC).',
       'Confundir prazos processuais (CPC) com prazos substantivos, como a prescrição e a caducidade (art. 279.º do CC).'
     ],
-    artigos: ['art. 138.º do CPC', 'art. 139.º do CPC', 'art. 140.º do CPC', 'art. 144.º do CPC', 'art. 149.º do CPC', 'art. 245.º do CPC', 'art. 248.º do CPC', 'art. 569.º do CPC', 'art. 638.º do CPC']
+    artigos: ['art. 138.º do CPC', 'art. 139.º do CPC', 'art. 140.º do CPC', 'art. 144.º do CPC', 'art. 149.º do CPC', 'art. 230.º do CPC', 'art. 245.º do CPC', 'art. 248.º do CPC', 'art. 569.º do CPC', 'art. 638.º do CPC']
   },
 
   prova: {
@@ -5833,7 +6063,7 @@ GUIAS.pex.geral = {
     regime: [
       ['Oposição à execução', 'O executado pode opor-se à execução por embargos no prazo de 20 dias a contar da citação (art. 728.º, n.º 1, do CPC).', 'Fundada em sentença, a oposição só pode ter os fundamentos taxativos do art. 729.º do CPC (por exemplo, inexistência ou inexequibilidade do título, falta de pressupostos processuais, factos extintivos posteriores ao encerramento da discussão no processo declarativo, provados por documento). Fundada noutro título, pode alegar, além desses, quaisquer fundamentos que seria lícito deduzir como defesa no processo de declaração (art. 731.º do CPC).'],
       ['Penhora: o que pode ser penhorado', 'Estão sujeitos à execução todos os bens do devedor suscetíveis de penhora que, nos termos da lei substantiva, respondem pela dívida exequenda (art. 735.º, n.º 1, do CPC). Há bens absolutamente impenhoráveis (art. 736.º do CPC) — por exemplo, os bens imprescindíveis a qualquer economia doméstica que se encontrem na residência permanente do executado — e bens relativamente impenhoráveis (art. 737.º do CPC).'],
-      ['Penhora de rendimentos', 'São impenhoráveis dois terços da parte líquida dos vencimentos, salários, prestações periódicas pagas a título de aposentação ou de qualquer outra regalia social, ou de natureza semelhante (art. 738.º, n.º 1, do CPC), com o limite máximo de três salários mínimos e o limite mínimo de um salário mínimo nacional, quando o executado não tenha outro rendimento (art. 738.º, n.º 3, do CPC).'],
+      ['Penhora de rendimentos', 'São impenhoráveis dois terços da parte líquida dos vencimentos, salários, prestações periódicas pagas a título de aposentação ou de qualquer outra regalia social, ou de natureza semelhante (art. 738.º, n.º 1, do CPC), não podendo a parte protegida ultrapassar o triplo do salário mínimo nem ficar abaixo de um salário mínimo, quando o executado não tenha outro rendimento (art. 738.º, n.º 3, do CPC).'],
       ['Ordem da penhora', 'A penhora começa pelos bens cujo valor pecuniário seja de mais fácil realização e se mostre adequado ao montante do crédito do exequente (art. 751.º, n.º 1, do CPC).'],
       ['Embargos de terceiro', 'Se a penhora ofender a posse ou qualquer direito incompatível com a realização ou o âmbito da diligência, de que seja titular quem não é parte na causa, pode o lesado fazê-lo valer, deduzindo embargos de terceiro (art. 342.º do CPC).']
     ],
@@ -15081,7 +15311,7 @@ Store.connect();
 </script>
 <script>
 /* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='6d86651b0b56';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
+(function(){var B='e342b7a557b6';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>
