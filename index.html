@@ -2400,7 +2400,7 @@ var TEMAS = {
   obr: [['fontes', 'Fontes das obrigações'], ['rc', 'Responsabilidade civil'], ['modal', 'Modalidades e transmissão'], ['cumpr', 'Cumprimento e extinção'], ['inc', 'Não cumprimento e mora'], ['garant', 'Garantias'], ['contr', 'Contratos em especial']],
   reais: [['geral', 'Princípios e noções gerais'], ['posse', 'Posse'], ['aquis', 'Usucapião e outras formas de aquisição'], ['compr', 'Compropriedade e propriedade horizontal'], ['menores', 'Usufruto, superfície e servidões'], ['viz', 'Relações de vizinhança'], ['reg', 'Registo predial']],
   fam: [['prom', 'Promessa de casamento'], ['casam', 'Casamento: impedimentos e invalidade'], ['conv', 'Convenção antenupcial'], ['regimes', 'Regimes de bens'], ['admin', 'Administração e disposição dos bens'], ['divid', 'Dívidas dos cônjuges'], ['div', 'Divórcio e união de facto'], ['filia', 'Filiação, parentesco e alimentos'], ['sucg', 'Sucessão em geral'], ['sleg', 'Sucessão legítima'], ['legit', 'Sucessão legitimária e cálculo da legítima'], ['imput', 'Imputação, colação e redução'], ['test', 'Testamento e herança'], ['pacto', 'Sucessão contratual']],
-  pen: [['lei', 'Lei penal e princípios'], ['facto', 'Facto, dolo e negligência'], ['just', 'Causas de justificação'], ['culpa', 'Culpa e erro'], ['tent', 'Tentativa e comparticipação'], ['penas', 'Penas e sua aplicação'], ['esp', 'Crimes em especial']],
+  pen: [['lei', 'Lei penal e princípios'], ['facto', 'Facto, dolo e negligência'], ['imp', 'Causalidade e imputação objetiva'], ['omis', 'Crimes omissivos'], ['just', 'Causas de justificação'], ['culpa', 'Culpa e erro'], ['erro', 'O erro em direito penal'], ['tent', 'Tentativa e comparticipação'], ['part', 'Autoria e participação'], ['conc', 'Concurso de crimes'], ['penas', 'Penas e sua aplicação'], ['subst', 'Penas de substituição'], ['extin', 'Prescrição e extinção da responsabilidade'], ['esp', 'Crimes em especial']],
   adm: [['org', 'Organização administrativa'], ['princ', 'Princípios da atividade administrativa'], ['proc', 'Procedimento administrativo'], ['ato', 'Ato administrativo'], ['inval', 'Invalidade, revogação e anulação'], ['regul', 'Regulamentos e contratos'], ['cont', 'Contencioso administrativo']],
   com: [['atos', 'Atos de comércio e comerciantes'], ['tit', 'Títulos de crédito'], ['socg', 'Sociedades: parte geral'], ['tipos', 'Tipos de sociedades'], ['orgs', 'Órgãos, quotas e deliberações'], ['insolv', 'Insolvência e recuperação']],
   pc: [['princ', 'Princípios e pressupostos'], ['artic', 'Petição, citação e defesa'], ['prazos', 'Prazos e atos processuais'], ['prova', 'Instrução e prova'], ['sent', 'Sentença e caso julgado'], ['rec', 'Recursos'], ['caut', 'Procedimentos cautelares'], ['exec', 'Ação executiva']],
@@ -3704,6 +3704,122 @@ var CASOS_MODELO = {
     ['Nulidade insanável', 'pp', 'Vício grave de um ato processual, previsto no art. 119.º do CPP, que deve ser declarado oficiosamente em qualquer fase do procedimento.', 'art. 119.º do CPP', ['nulidades insanáveis']],
     ['Irregularidade processual', 'pp', 'Vício de um ato processual a que a lei não atribui a consequência de nulidade. Só invalida o ato se for arguido no próprio ato ou nos três dias seguintes.', 'art. 123.º do CPP', ['irregularidade']],
     ['Contumácia', 'pp', 'Situação do arguido que não é possível notificar para o julgamento nem deter. É declarada pelo tribunal e implica, entre outros efeitos, a suspensão dos termos do processo até que se apresente ou seja detido.', 'arts. 335.º a 337.º do CPP', ['arguido contumaz']]
+  ].forEach(function (g) { GLOSS.push(g); });
+})();
+
+/* ---------- DIREITO PENAL: casos práticos com resolução-modelo, questões e termos do glossário (texto original do LEXDESK) ---------- */
+(function () {
+  function C(id, titulo, enunciado, perguntas, topicos, modelo) { CASOS.push({ id: id, d: 'pen', titulo: titulo, enunciado: enunciado, perguntas: perguntas, topicos: topicos }); CASOS_MODELO[id] = modelo; }
+
+  C('caso-pen3', 'A facada e o erro do hospital',
+    'Numa discussão à porta de um bar, Bruno espeta uma navalha no abdómen de Carlos, querendo feri-lo, mas sem pensar em matá-lo. Carlos é levado ao hospital, onde é operado com sucesso. Dois dias depois, uma enfermeira administra-lhe, por distração, um medicamento a que Carlos era alérgico, como constava da ficha. Carlos morre do choque alérgico.',
+    ['Bruno responde pela morte de Carlos?', 'Por que crime responde Bruno?', 'E a enfermeira?'],
+    ['Imputação objetiva: o resultado morte concretiza o risco criado pela facada ou um risco novo e autónomo (erro grosseiro de terceiro)? (art. 10.º, n.º 1, do CP).', 'Ofensa à integridade física grave ou qualificada, conforme as circunstâncias (arts. 144.º e 145.º do CP); afastado o crime agravado pelo resultado (art. 147.º do CP) se a morte não for imputável.', 'Homicídio por negligência (art. 137.º do CP): violação de um dever de cuidado elementar.'],
+    [['Há nexo causal naturalístico: sem a facada, Carlos não estaria no hospital. Mas a imputação objetiva exige que o resultado seja a concretização do risco criado pelo agente. O risco da facada foi controlado pela cirurgia, que correu bem. A morte resulta de um risco novo, criado pela violação grosseira de um dever de cuidado por parte de terceiro (administrar um medicamento contraindicado que constava da ficha). Este erro não é um desenvolvimento previsível do risco da facada. A morte não é imputável a Bruno (art. 10.º, n.º 1, do CP).'],
+      ['Bruno quis ferir Carlos, com dolo direto quanto à ofensa (art. 14.º, n.º 1, do CP). Responde por ofensa à integridade física, cuja qualificação depende das consequências efetivas: se a lesão abdominal pôs em perigo a vida de Carlos, há ofensa grave (art. 144.º, alínea d), do CP); o uso de uma navalha pode ainda qualificar a ofensa (art. 145.º, por referência ao art. 132.º, n.º 2, do CP). Não responde pelo crime agravado pelo resultado morte (art. 147.º do CP), porque esse resultado não lhe é objetivamente imputável.'],
+      ['A enfermeira violou um dever objetivo de cuidado elementar (verificar a ficha antes de administrar o medicamento) e tinha capacidade para o cumprir. A morte é a concretização direta desse risco. Responde por homicídio por negligência (art. 137.º do CP), eventualmente grosseira (art. 137.º, n.º 2, do CP), se a falta de cuidado for especialmente grave.']]);
+
+  C('caso-pen4', 'O pai que não voltou a casa',
+    'Diogo vive sozinho com a filha de dois anos. Uma noite, depois de a deitar, sai para ir a uma festa e só regressa no dia seguinte à tarde. Durante a noite, a criança acorda, cai da cama e fica ferida, sem que ninguém a ajude. Uma vizinha, Eva, ouviu o choro durante horas e nada fez. A criança sofre lesões graves, que um socorro atempado teria evitado.',
+    ['Diogo pode ser punido pelas lesões, apesar de não ter feito nada?', 'E Eva?', 'Há outros crimes a considerar?'],
+    ['Comissão por omissão: dever de garante dos pais (art. 10.º do CP; art. 1878.º do CC); juízo hipotético sobre a evitabilidade.', 'Eva não tem dever de garante: possível omissão de auxílio (art. 200.º do CP).', 'Exposição ou abandono (art. 138.º do CP) e violência doméstica, conforme os factos.'],
+    [['Sim. As lesões são o resultado de um crime de ofensa à integridade física, e o art. 10.º, n.º 1, do CP equipara à ação adequada a produzir o resultado a omissão da ação adequada a evitá-lo. Para que a omissão seja punível, é preciso que o omitente tenha um dever jurídico, pessoal, de impedir o resultado (art. 10.º, n.º 2, do CP). Diogo, como pai, tem um dever legal de proteção da filha (art. 1878.º do CC). Ao deixá-la sozinha, não praticou a ação devida, e um socorro atempado teria evitado as lesões graves. Responde por ofensa à integridade física grave por omissão (arts. 10.º e 144.º ou 148.º do CP), consoante tenha atuado com dolo (pelo menos eventual) ou com negligência, com possibilidade de atenuação especial (art. 10.º, n.º 3, do CP).'],
+      ['Eva não tem qualquer dever jurídico de garante em relação à criança, pelo que não responde pelas lesões. Pode, contudo, responder por omissão de auxílio (art. 200.º do CP), se a situação revelava, de forma percetível, um perigo grave para a integridade física da criança e se podia ajudar (por exemplo, chamando as autoridades) sem risco para si.'],
+      ['Diogo deixou a filha, incapaz de se defender, numa situação em que a sua vida podia ficar em perigo, violando os deveres de guarda. Os factos podem integrar o crime de exposição ou abandono (art. 138.º do CP). A relação entre este crime e a ofensa à integridade física por omissão deve ser analisada à luz do concurso de crimes, verificando se um consome o outro.']]);
+
+  C('caso-pen5', 'O vulto no quintal',
+    'Fábio, que vive numa zona onde houve vários assaltos, ouve barulho no quintal às duas da manhã. Pega numa caçadeira e, vendo um vulto junto à janela, dispara para as pernas, convencido de que é um ladrão que se prepara para entrar. Era o vizinho, Gil, que tinha saltado o muro para recuperar o cão. Gil fica ferido. Fábio afirma que, de qualquer forma, «qualquer pessoa pode disparar sobre quem lhe entra em casa».',
+    ['Fábio agiu em legítima defesa?', 'Que relevância tem o erro de Fábio?', 'E a sua convicção de que «pode sempre disparar»?'],
+    ['Pressupostos da legítima defesa (art. 32.º do CP): agressão atual e ilícita; não existia.', 'Erro quanto aos factos que justificariam a conduta: afasta o dolo (art. 16.º, n.º 2, do CP); ressalva da negligência (art. 16.º, n.º 3, e art. 148.º do CP).', 'Erro sobre os limites da legítima defesa (necessidade do meio) como erro sobre a ilicitude (art. 17.º do CP), em regra censurável.'],
+    [['Não. A legítima defesa pressupõe uma agressão atual e ilícita a interesses juridicamente protegidos (art. 32.º do CP). Gil não estava a agredir nenhum bem de Fábio: estava apenas a recuperar o cão. Falta o pressuposto objetivo da causa de justificação, pelo que o facto é ilícito.'],
+      ['Fábio supôs erradamente uma agressão em curso. Trata-se de um erro sobre um estado de coisas que, se existisse, excluiria a ilicitude: exclui o dolo (art. 16.º, n.º 2, do CP). Fica ressalvada a negligência (art. 16.º, n.º 3, do CP): Fábio podia e devia ter verificado quem era antes de disparar, por exemplo acendendo a luz ou interpelando o vulto. Responde por ofensa à integridade física por negligência (art. 148.º do CP), crime que depende de queixa.'],
+      ['Mesmo que houvesse um assalto, disparar logo uma caçadeira poderia não ser o meio necessário para repelir a agressão (art. 32.º do CP). A convicção de que «pode sempre disparar» é um erro sobre os limites da causa de justificação, que não incide sobre factos mas sobre a valoração jurídica. É tratado como erro sobre a ilicitude (art. 17.º do CP) e, em regra, é censurável, porque revela uma atitude descuidada perante o valor da vida e da integridade física. Na solução da pergunta anterior, porém, este ponto fica prejudicado, porque o dolo já foi excluído.']]);
+
+  C('caso-pen6', 'O assalto que correu mal',
+    'Hélio planeia assaltar uma bomba de gasolina e convida Ivo e João. Combinam que Hélio entra com uma pistola descarregada para assustar o funcionário, Ivo leva o dinheiro da caixa e João fica no carro, ao volante, pronto para fugir. Kátia, namorada de Hélio, empresta-lhes o carro sabendo para que serve. Durante o assalto, o funcionário resiste e Ivo, que tinha levado às escondidas uma faca, fere-o gravemente. Já depois de entrarem, João arrepende-se e vai-se embora com o carro, mas os outros fogem a pé com o dinheiro.',
+    ['Como respondem Hélio, Ivo e João pelo roubo?', 'Quem responde pela ofensa grave ao funcionário?', 'A desistência de João tem efeitos? E Kátia?'],
+    ['Coautoria (art. 26.º do CP): plano comum e execução conjunta, com divisão de tarefas; o motorista com papel essencial.', 'Excesso do coautor: só responde quem o praticou ou quem o aceitou como possível no acordo.', 'Desistência em comparticipação (art. 25.º do CP); cumplicidade (art. 27.º do CP).'],
+    [['Os três decidiram em conjunto e repartiram tarefas essenciais ao plano: ameaçar, retirar o dinheiro e assegurar a fuga. Cada um tinha o domínio funcional do facto, porque sem a sua contribuição o plano não funcionaria como foi pensado. São coautores do crime de roubo (arts. 26.º, 3.ª proposição, e 210.º do CP). O uso de uma arma aparente (pistola descarregada) é relevante para a qualificação, nos termos do art. 210.º, n.º 2, alínea b), e do art. 204.º, n.º 2, alínea f), do CP.'],
+      ['A ofensa grave com a faca não fazia parte do plano: o acordo previa apenas intimidar o funcionário com uma arma descarregada, e Ivo levou a faca às escondidas. Ivo responde pelo roubo qualificado por ter infligido ofensa à integridade física grave (art. 210.º, n.º 2, alínea a), do CP), ou, segundo outra construção, em concurso com a ofensa grave (art. 144.º do CP). Quanto a Hélio e João, a ofensa grave é um excesso de um coautor, fora do acordo. A lei refere a ofensa causada por «qualquer dos agentes», mas a agravação só lhes pode ser imputada se a tiverem causado, pelo menos, com negligência (art. 18.º do CP), o que pressupõe que fosse previsível. Como a faca estava escondida e o plano excluía violência física, não lhes é imputável: respondem pelo roubo nos termos já vistos.'],
+      ['João limitou-se a ir embora, sem impedir a consumação nem se esforçar seriamente por a impedir: os outros consumaram o roubo. Pelo art. 25.º do CP, a desistência em comparticipação só afasta a punição de quem impede ou se esforça seriamente por impedir a consumação ou o resultado. João continua punível como coautor, embora o arrependimento possa relevar na medida da pena. Kátia prestou auxílio material doloso, sem tomar parte na execução: é cúmplice, punida com a pena do autor especialmente atenuada (art. 27.º do CP).']]);
+
+  C('caso-pen7', 'O tesoureiro e as quotas',
+    'Luís é tesoureiro de uma associação recreativa. Durante oito meses, sempre que recebe as quotas mensais em numerário, fica com parte do dinheiro, aproveitando o facto de a direção nunca conferir as contas. Num dos meses, para esconder o desvio, altera o livro de caixa. Descoberto, é acusado de oito crimes de abuso de confiança e de um crime de falsificação de documento.',
+    ['Quantos crimes de abuso de confiança cometeu Luís?', 'Que relação há entre o abuso de confiança e a falsificação?', 'Como se determina a pena?'],
+    ['Crime continuado (art. 30.º, n.º 2, do CP): mesmo bem jurídico, homogeneidade e situação exterior que diminui consideravelmente a culpa (falta de controlo).', 'Concurso efetivo entre abuso de confiança (art. 205.º do CP) e falsificação (art. 256.º do CP): bens jurídicos distintos.', 'Punição do crime continuado (art. 79.º do CP) e pena única (art. 77.º do CP).'],
+    [['Cada apropriação preenche o tipo de abuso de confiança (art. 205.º do CP), porque Luís recebia o dinheiro por título que o obrigava a entregá-lo à associação. Em princípio haveria oito crimes (art. 30.º, n.º 1, do CP). Contudo, as condutas protegem o mesmo bem jurídico, foram executadas da mesma forma e foram facilitadas pela ausência de controlo da direção, uma situação exterior que diminui consideravelmente a culpa. Estão reunidos os pressupostos do crime continuado (art. 30.º, n.º 2, do CP): Luís cometeu um só crime de abuso de confiança, na forma continuada.'],
+      ['A falsificação do livro de caixa protege um bem jurídico diferente (a segurança e a credibilidade dos documentos) e não é um meio necessário do abuso de confiança, que já estava consumado. Há concurso efetivo entre o crime continuado de abuso de confiança e o crime de falsificação de documento (art. 256.º do CP). Não se pode incluir a falsificação na continuação, porque esta exige que os crimes protejam fundamentalmente o mesmo bem jurídico.'],
+      ['O crime continuado é punido com a pena prevista para o ato mais grave da continuação (art. 79.º, n.º 1, do CP): atende-se ao mês em que o valor desviado foi maior, para determinar a moldura (simples ou agravada, consoante o valor, art. 205.º, n.º 4, do CP). Fixadas as penas do abuso de confiança e da falsificação, o tribunal aplica uma pena única, cuja moldura vai da mais elevada das penas concretas à sua soma (art. 77.º, n.º 2, do CP), considerando em conjunto os factos e a personalidade de Luís.']]);
+
+  C('caso-pen8', 'Prisão, suspensão ou trabalho?',
+    'Mariana, 24 anos, estudante, sem antecedentes, é julgada por um crime de furto simples (art. 203.º do CP, prisão até 3 anos ou multa), cometido em 2020, quando furtou um computador portátil num café. Confessou, devolveu o computador e pediu desculpa ao lesado. Foi constituída arguida em 2021 e acusada em 2023. O tribunal entende que a pena adequada seria de 6 meses de prisão.',
+    ['O procedimento criminal está prescrito?', 'O tribunal devia ter escolhido logo a prisão?', 'Fixada a prisão em 6 meses, que alternativas existem?'],
+    ['Prazo de 5 anos (art. 118.º, n.º 1, alínea c), do CP); interrupção com a constituição de arguido e com a notificação da acusação (art. 121.º do CP); limite máximo do art. 121.º, n.º 3.', 'Preferência pela pena não privativa da liberdade (art. 70.º do CP).', 'Multa de substituição (art. 45.º do CP), trabalho a favor da comunidade (art. 58.º do CP), suspensão (art. 50.º do CP) e permanência na habitação (art. 43.º do CP).'],
+    [['O furto simples é punível com prisão até 3 anos, pelo que o prazo de prescrição é de 5 anos (art. 118.º, n.º 1, alínea c), do CP), contado da consumação em 2020 (art. 119.º, n.º 1, do CP). A constituição de arguido em 2021 interrompeu o prazo (art. 121.º, n.º 1, alínea a), do CP), que recomeçou a correr. A notificação da acusação, em 2023, interrompeu-o de novo e suspendeu-o a partir daí (arts. 120.º, n.º 1, alínea b), e 121.º, n.º 1, alínea b), do CP). Não está, por isso, prescrito, sem prejuízo do limite máximo do art. 121.º, n.º 3 (5 anos mais metade, isto é, 7 anos e 6 meses, acrescidos do tempo de suspensão).'],
+      ['Não. O furto simples é punível, em alternativa, com prisão ou multa. O tribunal tem de dar preferência à multa sempre que esta baste, de modo adequado, para alcançar os fins da pena (art. 70.º do CP). Perante uma arguida jovem, sem antecedentes, que confessou, reparou o dano e pediu desculpa, a multa parece suficiente. Optar pela prisão exige uma fundamentação reforçada, baseada em exigências concretas de prevenção.'],
+      ['Ainda que o tribunal fixasse 6 meses de prisão, teria de a substituir por multa ou outra pena não privativa da liberdade, salvo se a execução da prisão fosse exigida pela necessidade de prevenir futuros crimes (art. 45.º, n.º 1, do CP), o que não é o caso. Teria ainda de ponderar o trabalho a favor da comunidade, com a aceitação de Mariana (art. 58.º do CP), e a suspensão da execução (art. 50.º do CP). A sentença que não fundamente a recusa destas alternativas incorre em omissão de pronúncia.']]);
+
+  /* Questões do simulador */
+  function N(t, id, q, o, e) { QUESTOES.push({ id: id, d: 'pen', t: t, q: q, o: o, a: 0, e: e }); }
+  N('imp', 'pe1', 'Segundo o art. 10.º, n.º 1, do CP, para haver imputação do resultado, a ação tem de ser:', ['Adequada a produzi-lo', 'Condição sem a qual o resultado não se produziria, e nada mais', 'Dolosa', 'Praticada no lugar do resultado'], 'O CP acolhe a causalidade adequada, que a doutrina complementa com o critério do risco.');
+  N('imp', 'pe2', 'Quem desvia um perigo que ameaçava a vítima, causando-lhe um dano menor:', ['Não cria um risco proibido, pelo que o dano não lhe é imputado', 'Responde sempre pelo dano, mas justificado por estado de necessidade', 'Responde por negligência', 'Comete um crime de perigo'], 'É o caso da diminuição do risco: falta logo a imputação objetiva.');
+  N('imp', 'pe3', 'Na imputação objetiva, exige-se que o resultado seja:', ['A concretização do risco criado ou aumentado pelo agente', 'Previsível para a vítima', 'Desejado pelo agente', 'Imediato em relação à conduta'], 'O resultado tem de materializar o risco não permitido criado pelo agente.');
+  N('omis', 'pe4', 'Um resultado só pode ser imputado a quem nada fez quando o omitente:', ['Tinha um dever jurídico que pessoalmente o obrigava a evitar o resultado', 'Assistiu ao resultado', 'Tinha um dever moral de ajudar', 'Era maior de idade'], 'Art. 10.º, n.º 2, do CP.');
+  N('omis', 'pe5', 'Na comissão por omissão, a pena:', ['Pode ser especialmente atenuada', 'É sempre agravada', 'É a da omissão de auxílio', 'É obrigatoriamente reduzida a metade'], 'Art. 10.º, n.º 3, do CP.');
+  N('omis', 'pe6', 'A omissão de auxílio (art. 200.º do CP) é um crime:', ['Omissivo próprio', 'Omissivo impróprio', 'De resultado', 'Exclusivamente negligente'], 'O tipo descreve a própria omissão, sem exigir resultado.');
+  N('omis', 'pe7', 'Tradicionalmente, são fontes do dever de garante:', ['A lei, o contrato e a ingerência', 'Apenas a lei', 'A amizade e a vizinhança', 'Apenas o contrato de trabalho'], 'A doutrina acrescenta hoje outras situações, como as comunidades de vida ou de perigo.');
+  N('erro', 'pe8', 'O erro sobre os pressupostos de facto de uma causa de justificação:', ['Exclui o dolo, ficando ressalvada a negligência', 'Exclui sempre a culpa', 'É irrelevante', 'É tratado como erro sobre a ilicitude'], 'Art. 16.º, n.os 2 e 3, do CP.');
+  N('erro', 'pe9', 'O erro sobre a ilicitude censurável:', ['Mantém a punição pelo crime doloso, com pena que pode ser especialmente atenuada', 'Exclui o dolo', 'Exclui a culpa', 'Converte o crime em negligente'], 'Art. 17.º, n.º 2, do CP.');
+  N('erro', 'pe10', 'A, querendo matar B, dispara sobre um homem que julga ser B, mas que é C. O erro sobre a identidade da vítima:', ['É irrelevante: A responde por homicídio doloso consumado de C', 'Exclui o dolo quanto a C', 'Gera apenas tentativa de homicídio de B', 'Exclui a culpa'], 'Sendo os objetos equivalentes, o erro sobre o objeto não afasta o dolo.');
+  N('erro', 'pe11', 'O desconhecimento de uma proibição cujo conhecimento era razoavelmente indispensável para tomar consciência da ilicitude:', ['Exclui o dolo', 'Exclui sempre a culpa', 'É irrelevante, porque a ignorância da lei não aproveita', 'Só atenua a pena'], 'Art. 16.º, n.º 1, segunda parte, do CP.');
+  N('part', 'pe12', 'É punível como autor quem, com dolo, leva outra pessoa a praticar o crime:', ['Se o crime tiver, pelo menos, começado a ser executado', 'Mesmo que o crime não chegue a ser tentado', 'Apenas se pagar ao executor', 'Só nos crimes contra as pessoas'], 'Instigação, art. 26.º, 4.ª proposição, do CP.');
+  N('part', 'pe13', 'Ao cúmplice aplica-se:', ['A pena fixada para o autor, especialmente atenuada', 'Metade da pena do autor', 'A mesma pena do autor', 'Sempre pena de multa'], 'Art. 27.º, n.º 2, do CP.');
+  N('part', 'pe14', 'Cada comparticipante é punido:', ['Segundo a sua culpa, independentemente da culpa dos outros', 'Segundo a culpa do autor principal', 'Com a pena do comparticipante mais culpado', 'Apenas se todos forem imputáveis'], 'Art. 29.º do CP.');
+  N('part', 'pe15', 'Quem usa como instrumento uma pessoa inimputável para cometer um crime é:', ['Autor mediato', 'Cúmplice', 'Instigador', 'Coautor'], 'Executa o facto por intermédio de outrem (art. 26.º, 2.ª proposição, do CP).');
+  N('part', 'pe16', 'A desistência de um comparticipante só o isenta de pena se:', ['Impedir ou se esforçar seriamente por impedir a consumação ou o resultado', 'Abandonar o local antes da consumação', 'Confessar depois do crime', 'Devolver a sua parte do produto do crime'], 'Art. 25.º do CP.');
+  N('conc', 'pe17', 'O número de crimes determina-se:', ['Pelo número de tipos efetivamente preenchidos ou de vezes que o mesmo tipo é preenchido', 'Pelo número de ações físicas', 'Pelo número de vítimas, em qualquer caso', 'Pela vontade do agente'], 'Art. 30.º, n.º 1, do CP.');
+  N('conc', 'pe18', 'O crime continuado não abrange:', ['Crimes contra bens eminentemente pessoais', 'Crimes contra o património', 'Crimes de falsificação', 'Crimes praticados por funcionários'], 'Art. 30.º, n.º 3, do CP.');
+  N('conc', 'pe19', 'O crime continuado é punido com:', ['A pena prevista para o ato mais grave da continuação', 'A soma das penas de cada conduta', 'A pena da primeira conduta', 'Uma pena única nos termos do art. 77.º'], 'Art. 79.º, n.º 1, do CP.');
+  N('conc', 'pe20', 'No concurso de crimes, a pena única não pode exceder, tratando-se de prisão:', ['25 anos', '20 anos', '30 anos', 'A soma das penas, sem limite'], 'Art. 77.º, n.º 2, do CP.');
+  N('conc', 'pe21', 'O limite mínimo da moldura da pena única é:', ['A mais elevada das penas concretamente aplicadas', 'A soma das penas', 'A pena mínima do crime mais grave', 'Um mês de prisão'], 'Art. 77.º, n.º 2, do CP.');
+  N('conc', 'pe22', 'Quando um tipo contém todos os elementos de outro e mais algum, há uma relação de:', ['Especialidade', 'Consunção', 'Subsidiariedade', 'Concurso efetivo'], 'Aplica-se apenas o tipo especial.');
+  N('subst', 'pe23', 'A pena de prisão é substituída por multa quando aplicada em medida não superior a:', ['1 ano', '2 anos', '3 anos', '5 anos'], 'Art. 45.º, n.º 1, do CP.');
+  N('subst', 'pe24', 'Suspender a prisão é possível se a pena aplicada não exceder:', ['5 anos', '3 anos', '2 anos', '8 anos'], 'Art. 50.º, n.º 1, do CP.');
+  N('subst', 'pe25', 'O trabalho comunitário pode substituir a prisão não superior a 2 anos e depende de:', ['Aceitação do condenado', 'Pedido do Ministério Público', 'Acordo do ofendido', 'Pagamento prévio de caução'], 'Art. 58.º, n.os 1 e 5, do CP.');
+  N('subst', 'pe26', 'Se ao crime forem aplicáveis, em alternativa, prisão ou multa, o tribunal:', ['Dá preferência à multa sempre que esta baste, de modo adequado, para alcançar os fins da pena', 'Escolhe livremente', 'Aplica sempre prisão suspensa', 'Aplica ambas'], 'Art. 70.º do CP.');
+  N('subst', 'pe27', 'O período de suspensão da execução da pena é fixado entre:', ['1 e 5 anos', '6 meses e 3 anos', '2 e 8 anos', '1 e 10 anos'], 'Art. 50.º, n.º 5, do CP.');
+  N('subst', 'pe28', 'A admoestação pode ser aplicada quando a pena de multa a aplicar não exceda:', ['240 dias e o dano tiver sido reparado', '360 dias', '120 dias, sem outros requisitos', '90 dias e haja confissão'], 'Art. 60.º, n.os 1 e 2, do CP.');
+  N('extin', 'pe29', 'Um crime punível com prisão até 3 anos prescreve, em regra, em:', ['5 anos', '2 anos', '10 anos', '3 anos'], 'Art. 118.º, n.º 1, alínea c), do CP.');
+  N('extin', 'pe30', 'Nos crimes permanentes, o prazo de prescrição do procedimento corre:', ['A partir do dia em que a consumação termina', 'Desde o início da conduta', 'Desde a apresentação de queixa', 'Desde a constituição de arguido'], 'Art. 119.º, n.º 2, alínea a), do CP.');
+  N('extin', 'pe31', 'É causa de interrupção da prescrição do procedimento:', ['A constituição de arguido', 'A apresentação de queixa', 'A abertura de inquérito', 'A detenção em flagrante delito sem constituição de arguido'], 'Art. 121.º, n.º 1, alínea a), do CP.');
+  N('extin', 'pe32', 'Ressalvado o tempo de suspensão, a prescrição do procedimento ocorre sempre que tiver decorrido:', ['O prazo normal acrescido de metade', 'O dobro do prazo normal', 'O prazo normal, sem acréscimo', 'O triplo do prazo normal'], 'Art. 121.º, n.º 3, do CP.');
+  N('extin', 'pe33', 'Para calcular o prazo de prescrição do procedimento, atende-se:', ['Ao máximo da pena do tipo, sem circunstâncias agravantes ou atenuantes', 'À pena concreta que vier a ser aplicada', 'À pena mínima do tipo', 'À pena pedida pelo Ministério Público'], 'Art. 118.º, n.º 2, do CP.');
+  N('extin', 'pe34', 'A amnistia:', ['Extingue o procedimento e, havendo condenação, faz cessar a execução da pena', 'É concedida individualmente pelo Presidente da República', 'Apenas reduz a pena', 'Só se aplica a crimes particulares'], 'Art. 128.º, n.º 2, do CP.');
+
+  /* Termos do glossário */
+  [
+    ['Imputação objetiva', 'pen', 'Juízo que permite atribuir um resultado a uma conduta. Exige que o agente tenha criado ou aumentado um risco não permitido e que esse risco se tenha concretizado no resultado.', 'art. 10.º do CP', ['imputação do resultado']],
+    ['Causalidade adequada', 'pen', 'Critério segundo o qual só é causa jurídica de um resultado a conduta que, segundo as regras da experiência, era apta a produzi-lo.', 'art. 10.º, n.º 1, do CP', ['teoria da causalidade adequada']],
+    ['Risco permitido', 'pen', 'Perigo que o direito tolera por estar ligado a atividades socialmente úteis, como conduzir respeitando as regras. Quem atua dentro dele não responde pelo resultado.', 'art. 10.º do CP', []],
+    ['Dever de garante', 'pen', 'Dever jurídico que obriga uma pessoa a evitar um resultado, por força da lei, de um contrato ou de um comportamento anterior perigoso. Só quem o tem pode cometer um crime de resultado por omissão.', 'art. 10.º, n.º 2, do CP', ['posição de garante', 'garante']],
+    ['Comissão por omissão', 'pen', 'Forma de cometer um crime de resultado sem agir, por não praticar a ação que o teria evitado, tendo o dever jurídico de o fazer.', 'art. 10.º do CP', ['omissão imprópria']],
+    ['Omissão de auxílio', 'pen', 'Crime de quem não presta o auxílio necessário a pessoa em grave perigo para a vida, o corpo ou a liberdade, quando o podia fazer sem risco grave.', 'art. 200.º do CP', []],
+    ['Ingerência', 'pen', 'Fonte do dever de garante: quem, com o seu comportamento anterior, cria um perigo para outrem fica obrigado a impedir que ele se converta em dano.', 'art. 10.º, n.º 2, do CP', []],
+    ['Legítima defesa putativa', 'pen', 'Situação em que o agente julga, erradamente, estar a ser agredido e se defende. É um erro sobre os pressupostos da legítima defesa, que exclui o dolo.', 'art. 16.º, n.º 2, do CP', []],
+    ['Erro sobre o objeto', 'pen', 'Engano sobre a identidade da vítima ou do objeto do crime. Se os objetos forem equivalentes, não afasta o dolo.', 'art. 16.º do CP', ['error in persona']],
+    ['Aberratio ictus', 'pen', 'Erro na execução: o agente visa uma pessoa ou objeto, mas, por falha na execução, atinge outro. Costuma resolver-se pelo concurso entre a tentativa contra o visado e o crime negligente contra o atingido.', 'arts. 16.º, 22.º e 23.º do CP', ['erro na execução']],
+    ['Autoria mediata', 'pen', 'Forma de autoria em que o agente executa o crime por intermédio de outra pessoa, que usa como instrumento.', 'art. 26.º do CP', ['autor mediato']],
+    ['Coautoria', 'pen', 'Forma de autoria em que vários agentes, por acordo, tomam parte direta na execução, cada um com uma contribuição essencial para o plano comum.', 'art. 26.º do CP', ['coautor', 'coautores']],
+    ['Instigação', 'pen', 'Determinar dolosamente outra pessoa a praticar um crime. O instigador é punido como autor, desde que haja pelo menos começo de execução.', 'art. 26.º do CP', ['instigador']],
+    ['Domínio do facto', 'pen', 'Critério doutrinal para distinguir autor de participante: é autor quem controla a realização do crime, decidindo se e como ele acontece.', 'art. 26.º do CP', []],
+    ['Crime continuado', 'pen', 'Várias realizações do mesmo crime, ou de crimes que protegem o mesmo bem jurídico, praticadas de forma homogénea numa mesma situação exterior que diminui a culpa. Contam como um só crime.', 'arts. 30.º, n.º 2, e 79.º do CP', ['continuação criminosa']],
+    ['Concurso aparente', 'pen', 'Situação em que os factos parecem preencher vários tipos, mas só um se aplica, por especialidade, subsidiariedade ou consunção.', 'art. 30.º do CP', ['concurso de normas']],
+    ['Pena única', 'pen', 'Pena aplicada a quem cometeu vários crimes antes de a condenação por qualquer deles transitar em julgado, fixada a partir das penas parcelares.', 'art. 77.º do CP', ['cúmulo jurídico']],
+    ['Penas de substituição', 'pen', 'Penas que substituem a prisão efetiva quando bastam para as finalidades da punição: multa, trabalho comunitário, suspensão da prisão, entre outras.', 'arts. 45.º, 50.º e 58.º do CP', ['pena de substituição']],
+    ['Trabalho a favor da comunidade', 'pen', 'Pena de substituição da prisão até 2 anos, cumprida com trabalho gratuito em favor da comunidade, com a aceitação do condenado.', 'art. 58.º do CP', []],
+    ['Admoestação', 'pen', 'Censura solene e oral feita pelo tribunal, em substituição de uma multa até 240 dias, quando o dano foi reparado.', 'art. 60.º do CP', []],
+    ['Interrupção da prescrição', 'pen', 'Facto, como o momento em que alguém é constituído arguido ou notificado da acusação, que inutiliza o tempo já decorrido e faz começar um novo prazo de prescrição.', 'art. 121.º do CP', []],
+    ['Amnistia', 'pen', 'Medida de clemência aprovada por lei que extingue o procedimento criminal e, havendo condenação, faz cessar a pena e os seus efeitos.', 'art. 128.º do CP', ['perdão genérico', 'indulto']]
   ].forEach(function (g) { GLOSS.push(g); });
 })();
 
@@ -5197,6 +5313,255 @@ GUIAS.pen = {
     ],
     artigos: ['art. 131.º do CP', 'art. 132.º do CP', 'art. 133.º do CP', 'art. 143.º do CP', 'art. 152.º do CP', 'art. 180.º do CP', 'art. 203.º do CP', 'art. 205.º do CP', 'art. 210.º do CP', 'art. 217.º do CP']
   }
+};
+
+/* Matéria explicada — Direito Penal, temas de aprofundamento da teoria do crime e das consequências jurídicas (texto original do LEXDESK) */
+var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
+GUIAS.pen = GUIAS.pen || {};
+
+GUIAS.pen.imp = {
+  sub: 'Quando é que um resultado pode ser atribuído a uma conduta: causalidade, risco proibido e os casos difíceis.',
+  ideia: 'Nos crimes de resultado (homicídio, ofensa à integridade física, dano…) não basta que o agente tenha atuado e que o resultado se tenha produzido. É preciso que o resultado lhe possa ser imputado. O art. 10.º, n.º 1, do CP exige uma ação «adequada» a produzi-lo, e a doutrina dominante completa esse critério com a ideia de risco: o agente responde pelo resultado quando criou ou aumentou um risco não permitido e foi esse risco, e não outro, que se materializou no resultado.',
+  conceitos: [
+    ['Causalidade naturalística', 'Primeiro filtro: sem a conduta, o resultado teria acontecido como aconteceu? Se teria, não há sequer ligação causal. É um teste necessário, mas insuficiente, porque quase tudo é causa de quase tudo.'],
+    ['Causalidade adequada', 'A conduta só é causa jurídica do resultado se, segundo as regras da experiência e o conhecimento de um observador avisado colocado no momento da ação, era idónea a produzi-lo. Ficam de fora os resultados devidos a processos causais extraordinários (art. 10.º, n.º 1, do CP).'],
+    ['Criação de um risco não permitido', 'O agente tem de ter criado ou aumentado um perigo que o direito desaprova. Quem conduz respeitando todas as regras cria um risco permitido; se mesmo assim ocorrer um acidente, o resultado não lhe é imputado.'],
+    ['Concretização do risco', 'O resultado tem de ser a realização do risco criado pelo agente, e não de outro risco. Se a vítima, levemente ferida, morre num incêndio no hospital, o resultado materializa o risco do incêndio, não o da agressão.'],
+    ['Âmbito de proteção da norma', 'A norma de cuidado violada tem de existir precisamente para evitar resultados daquele tipo. Se o resultado ocorre fora dessa finalidade, não é imputado.']
+  ],
+  regime: [
+    ['Diminuição do risco', 'Quem desvia um perigo que ameaçava a vítima, reduzindo-o, não cria um risco proibido, mesmo que cause um dano menor. Exemplo: empurrar alguém para o evitar ser atropelado, causando-lhe uma entorse.', 'Nestes casos não há imputação objetiva. Não é preciso recorrer às causas de justificação.'],
+    ['Comportamento lícito alternativo', 'Se se provar que o resultado teria ocorrido, com toda a probabilidade, mesmo que o agente tivesse cumprido o dever de cuidado, discute-se se o resultado lhe deve ser imputado.', 'Há quem exclua a imputação sempre que o comportamento correto não teria evitado o resultado; outra corrente imputa o resultado se a violação do dever aumentou de forma relevante o risco de ele se produzir. Nas hipóteses práticas, convém expor as duas.'],
+    ['Intervenção de terceiro ou da própria vítima', 'A conduta dolosa e autónoma de um terceiro pode interromper a ligação entre a primeira conduta e o resultado. O mesmo pode acontecer quando a vítima, consciente do perigo, se coloca livremente em risco.', 'A responsabilidade do primeiro agente mantém-se, porém, se o comportamento posterior era previsível e estava abrangido pelo risco que ele criou (por exemplo, a negligência médica corrente no tratamento de uma ferida grave).']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['Nexo causal', 'Sem a conduta, o resultado teria ocorrido nos mesmos termos?'],
+    ['Adequação', 'A conduta era, em geral, apta a produzir aquele resultado?'],
+    ['Risco proibido', 'O agente criou ou aumentou um risco não permitido?'],
+    ['Concretização', 'Foi esse risco que se materializou no resultado?'],
+    ['Fim da norma', 'O resultado está dentro do que a norma de cuidado pretendia evitar?']
+  ] },
+  exemplo: ['A dá uma bofetada a B, que tem uma doença cardíaca rara, desconhecida de todos. Com o susto, B sofre um enfarte e morre. A responde pela morte?',
+    'Há nexo causal naturalístico: sem a bofetada, B não teria morrido naquele momento. Mas, segundo o juízo de adequação, uma bofetada não é, em geral, apta a causar a morte de uma pessoa, e a doença era desconhecida e não cognoscível por A. O resultado deveu-se a um processo causal extraordinário (art. 10.º, n.º 1, do CP).',
+    'A morte não é imputável a A. Responde apenas pelo que lhe pode ser atribuído: a ofensa à integridade física simples (art. 143.º do CP). Se A conhecesse a doença, a solução mudaria, porque o juízo de adequação atende também aos conhecimentos especiais do agente.']
+  ,
+  erros: [
+    'Ficar pela causalidade naturalística e esquecer o juízo de adequação.',
+    'Imputar o resultado a quem atuou dentro do risco permitido.',
+    'Ignorar os conhecimentos especiais do agente no juízo de adequação.',
+    'Confundir a falta de imputação objetiva com uma causa de justificação.'
+  ],
+  artigos: ['art. 10.º do CP', 'art. 13.º do CP', 'art. 15.º do CP', 'art. 18.º do CP', 'art. 143.º do CP']
+};
+
+GUIAS.pen.omis = {
+  sub: 'Crimes omissivos próprios e impróprios, o dever de garante e as suas fontes.',
+  ideia: 'Também se pode cometer um crime sem fazer nada. Nalguns casos, a lei pune diretamente a omissão de um certo comportamento (omissão própria, por exemplo a omissão de auxílio). Noutros, o agente responde por um crime de resultado, como o homicídio, por não ter evitado o resultado que tinha o dever jurídico de evitar (omissão imprópria, art. 10.º do CP). A pergunta-chave é sempre: tinha esta pessoa uma posição de garante?',
+  conceitos: [
+    ['Omissão própria', 'O tipo descreve a própria omissão, sem exigir um resultado. Exemplo: não prestar o auxílio necessário a quem está em grave perigo para a vida (art. 200.º do CP).'],
+    ['Omissão imprópria', 'Comissão por omissão: o agente responde por um crime de resultado porque, tendo o dever de o evitar, não praticou a ação adequada a impedi-lo (art. 10.º, n.os 1 e 2, do CP).'],
+    ['Dever de garante', 'Dever jurídico que obriga pessoalmente o omitente a evitar o resultado (art. 10.º, n.º 2, do CP). Não basta um dever moral ou de solidariedade geral.'],
+    ['Fontes do dever', 'Tradicionalmente: a lei, o contrato e a ingerência (criação prévia do perigo). A doutrina mais recente aponta também situações de proteção de certos bens (relações familiares próximas, comunidades de vida ou de perigo) e de vigilância de fontes de perigo.'],
+    ['Atenuação', 'Nos casos de comissão por omissão, a pena pode ser especialmente atenuada (art. 10.º, n.º 3, do CP).']
+  ],
+  regime: [
+    ['Estrutura da omissão imprópria', 'Verifica-se se ocorreu um resultado típico, se o agente podia ter praticado a ação que o evitaria, se essa ação, com uma probabilidade próxima da certeza, teria evitado o resultado, e se o agente estava numa posição de garante.', 'Só depois se passa ao tipo subjetivo (dolo ou negligência), à ilicitude e à culpa, como em qualquer crime.'],
+    ['Ingerência', 'Quem, com o seu comportamento anterior, cria um perigo para outrem, fica obrigado a impedir que esse perigo se transforme em dano.', 'Discute-se se o comportamento anterior tem de ser ilícito. Há quem baste com a criação de um perigo especial, e quem exija que seja contrário ao dever.'],
+    ['Relação com a omissão de auxílio', 'Quem não tem dever de garante mas não presta auxílio a pessoa em grave perigo para a vida ou a integridade física pode responder pelo crime de omissão de auxílio (art. 200.º do CP).', 'Se tiver dever de garante, responde pelo crime de resultado em comissão por omissão, e a omissão de auxílio fica consumida.']
+  ],
+  esquema: { tipo: 'tabela', cab: ['', 'Omissão própria', 'Omissão imprópria'], linhas: [
+    ['Base legal', 'O próprio tipo (por exemplo, art. 200.º do CP)', 'Art. 10.º do CP + tipo de resultado'],
+    ['Resultado', 'Não é exigido', 'É exigido (morte, lesão…)'],
+    ['Quem pode cometer', 'Qualquer pessoa na situação descrita', 'Apenas quem tem dever de garante'],
+    ['Pena', 'A do tipo omissivo', 'A do crime de resultado, que pode ser especialmente atenuada']
+  ] },
+  exemplo: ['C, nadador-salvador contratado por uma praia, vê um banhista em dificuldades mas, por estar a falar ao telemóvel, não intervém. O banhista morre afogado. Outro banhista, D, também viu e não fez nada. Como respondem?',
+    'C tem um dever de garante de origem contratual: foi contratado precisamente para vigiar e socorrer os banhistas. Podia ter agido e, com elevada probabilidade, teria evitado a morte. Responde por homicídio em comissão por omissão (arts. 10.º e 131.º ou 137.º do CP, consoante o dolo ou a negligência), com possibilidade de atenuação especial (art. 10.º, n.º 3).',
+    'D não tem dever de garante. Não responde pela morte, mas pode responder por omissão de auxílio (art. 200.º do CP), se podia ajudar sem risco grave para si.']
+  ,
+  erros: [
+    'Punir qualquer pessoa que assiste a um resultado como se o tivesse causado: falta o dever de garante.',
+    'Fundar o dever de garante num mero dever moral.',
+    'Esquecer o juízo hipotético: a ação devida teria evitado o resultado?',
+    'Não referir a atenuação especial do art. 10.º, n.º 3, do CP.'
+  ],
+  artigos: ['art. 10.º do CP', 'art. 131.º do CP', 'art. 137.º do CP', 'art. 200.º do CP']
+};
+
+GUIAS.pen.erro = {
+  sub: 'Erro sobre os elementos do tipo, sobre a situação que justificaria o facto e sobre a ilicitude.',
+  ideia: 'O erro é um dos temas mais testados. A lei distingue dois grandes grupos. No primeiro, o agente engana-se sobre a realidade, ou desconhece uma proibição que não é evidente: o erro exclui o dolo (art. 16.º do CP), embora possa ficar a negligência. No segundo, o agente conhece a realidade mas acha, erradamente, que o que faz é permitido: o erro só exclui a culpa se não for censurável (art. 17.º do CP). Saber em que grupo cai o erro é meio caminho para a resposta.',
+  conceitos: [
+    ['Erro sobre os elementos do tipo', 'O agente não sabe que está a preencher um elemento do tipo. Exemplo: leva o casaco de outra pessoa convencido de que é o seu. Exclui o dolo (art. 16.º, n.º 1, primeira parte, do CP).'],
+    ['Erro sobre proibições', 'O agente desconhece uma proibição cujo conhecimento era razoavelmente indispensável para perceber que o facto é ilícito, porque o facto, em si, não é evidentemente desvalioso. Também exclui o dolo (art. 16.º, n.º 1, segunda parte, do CP).'],
+    ['Erro sobre a situação que justificaria o facto', 'O agente supõe uma situação de facto que, se existisse, justificaria a conduta. Exemplo: julga que vai ser agredido e defende-se, mas era uma brincadeira. Exclui o dolo (art. 16.º, n.º 2, do CP).'],
+    ['Erro sobre a ilicitude', 'O agente conhece todos os factos, mas não tem consciência de que a conduta é ilícita. Exclui a culpa se o erro não for censurável; sendo censurável, pune-se o crime doloso com pena que pode ser especialmente atenuada (art. 17.º do CP).'],
+    ['Censurabilidade', 'O erro é censurável quando revela uma atitude de indiferença ou descuido perante os valores do direito. Não basta perguntar se o agente podia ter-se informado; pergunta-se se o erro assenta numa atitude que merece censura.']
+  ],
+  regime: [
+    ['Ressalva da negligência', 'Excluído o dolo por força do art. 16.º, o agente pode ainda ser punido por negligência, se o crime a admitir e o erro for devido a falta de cuidado (art. 16.º, n.º 3, do CP).', 'Por isso, num erro sobre o tipo, a análise continua: o crime tem forma negligente (art. 13.º do CP)? O agente violou um dever de cuidado?'],
+    ['Erro sobre o objeto e erro na execução', 'No erro sobre a identidade da vítima (julga que é X, mas é Y), se os objetos forem equivalentes, o erro é irrelevante: há crime doloso consumado contra Y.', 'No erro na execução (aponta a X, mas acerta em Y), a solução mais seguida é o concurso entre tentativa contra X e crime negligente contra Y, se houver negligência.'],
+    ['Erro sobre o processo causal', 'Se o resultado se produz por um caminho diferente do imaginado, o erro só é relevante quando o desvio for essencial, ou seja, fora do que era previsível.', 'Desvios irrelevantes não afastam o dolo do crime consumado.']
+  ],
+  esquema: { tipo: 'tabela', cab: ['Tipo de erro', 'Base', 'Efeito'], linhas: [
+    ['Sobre elementos de facto ou de direito do tipo', 'Art. 16.º, n.º 1, 1.ª parte, do CP', 'Exclui o dolo; resta a negligência'],
+    ['Sobre proibições não evidentes', 'Art. 16.º, n.º 1, 2.ª parte, do CP', 'Exclui o dolo; resta a negligência'],
+    ['Sobre pressupostos de causa de justificação ou de desculpa', 'Art. 16.º, n.º 2, do CP', 'Exclui o dolo; resta a negligência'],
+    ['Sobre a ilicitude (falta de consciência do ilícito)', 'Art. 17.º do CP', 'Não censurável: exclui a culpa. Censurável: crime doloso, atenuação especial facultativa']
+  ] },
+  exemplo: ['E, ao entrar em casa às três da manhã, vê um vulto no corredor com algo na mão e, convencido de que é um assaltante armado, atinge-o com um bastão. Era o filho, que tinha chegado de viagem mais cedo e trazia o telemóvel. O filho fica ferido. Quid juris?',
+    'E representou corretamente que estava a ofender a integridade física de uma pessoa, mas supôs uma agressão atual e ilícita que, se existisse, justificaria a sua conduta em legítima defesa (art. 32.º do CP). É um erro sobre a situação que justificaria o facto, que exclui o dolo (art. 16.º, n.º 2, do CP).',
+    'Fica ressalvada a negligência (art. 16.º, n.º 3, do CP). Deve perguntar-se se E podia e devia ter verificado melhor a situação antes de atacar (por exemplo, acendendo a luz). Se sim, responde por ofensa à integridade física por negligência (art. 148.º do CP), crime que depende de queixa.']
+  ,
+  erros: [
+    'Tratar o erro sobre a legítima defesa putativa pelo art. 17.º: é o art. 16.º, n.º 2, do CP.',
+    'Esquecer a ressalva da negligência depois de excluir o dolo.',
+    'Considerar o erro sobre a ilicitude automaticamente desculpável.',
+    'Confundir erro sobre o objeto (irrelevante, se os objetos forem equivalentes) com erro na execução.'
+  ],
+  artigos: ['art. 13.º do CP', 'art. 14.º do CP', 'art. 16.º do CP', 'art. 17.º do CP', 'art. 32.º do CP', 'art. 148.º do CP']
+};
+
+GUIAS.pen.part = {
+  sub: 'Quem é autor e quem é cúmplice: autoria imediata e mediata, coautoria, instigação, cumplicidade e desistência em comparticipação.',
+  ideia: 'Quando várias pessoas participam num crime, é preciso distinguir o papel de cada uma. O CP adota uma conceção restritiva de autor, inspirada na ideia de domínio do facto: é autor quem tem nas mãos o «se» e o «como» do crime. O cúmplice apenas ajuda num facto que é de outrem e tem a pena especialmente atenuada (arts. 26.º e 27.º do CP).',
+  conceitos: [
+    ['Autoria imediata', 'Quem executa o facto por si mesmo (art. 26.º, 1.ª proposição, do CP).'],
+    ['Autoria mediata', 'Quem comete o crime servindo-se de outra pessoa, que usa como instrumento, por exemplo porque o executor está em erro, é inimputável ou é coagido (art. 26.º, 2.ª proposição, do CP).'],
+    ['Coautoria', 'Quem toma parte direta na execução, em conjunto com outros e segundo um acordo. Exige uma decisão conjunta e uma execução conjunta, em que cada um tem o domínio funcional do facto (art. 26.º, 3.ª proposição, do CP).'],
+    ['Instigação', 'Quem, com dolo, faz nascer noutra pessoa a decisão de cometer o crime, se este chegar pelo menos a ser começado. É punido como autor (art. 26.º, 4.ª proposição, do CP).'],
+    ['Cumplicidade', 'Quem, dolosamente e por qualquer forma, presta ajuda, material ou moral, a um crime doloso cometido por outra pessoa. A pena é a do autor, especialmente atenuada (art. 27.º do CP).']
+  ],
+  regime: [
+    ['Acessoriedade', 'A instigação e a cumplicidade dependem do facto principal: só há punição se o autor tiver, pelo menos, começado a executar o crime (arts. 26.º, parte final, e 27.º do CP).', 'O facto principal tem de ser típico e ilícito; não precisa de ser culposo, porque cada interveniente responde na medida da própria culpa (art. 29.º do CP).'],
+    ['Qualidades especiais', 'Se a ilicitude depender de qualidades ou relações especiais do agente (por exemplo, ser funcionário no peculato), basta que existam num dos comparticipantes para a pena se aplicar a todos (art. 28.º, n.º 1, do CP).', 'O tribunal pode, consideradas as circunstâncias, aplicar ao comparticipante sem essa qualidade a pena que teria sem esta regra (art. 28.º, n.º 2, do CP).'],
+    ['Excesso do coautor', 'Cada coautor responde pelo que foi acordado e pelo que é previsível como desenvolvimento normal do plano. O excesso de um dos coautores, fora do acordo, não é imputado aos outros.', 'Exemplo: se o plano era furtar e um deles mata o vigilante, os restantes não respondem pelo homicídio, salvo se o tinham admitido, ainda que como possível.'],
+    ['Desistência em comparticipação', 'Não é punível a tentativa do comparticipante que, por vontade própria, evitar a consumação ou o resultado, nem a de quem fizer um esforço sério para o impedir, ainda que os outros prossigam a execução (art. 25.º do CP).', 'A desistência é pessoal: só beneficia quem desiste.']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['Quem executou?', 'Identificar o executor e verificar se é autor imediato.'],
+    ['Havia instrumentalização?', 'Se o executor foi usado como instrumento, o «homem de trás» é autor mediato.'],
+    ['Havia acordo e execução conjunta?', 'Coautoria: cada um realiza uma parte essencial do plano.'],
+    ['Alguém fez nascer a decisão?', 'Instigação, se houve pelo menos começo de execução.'],
+    ['Alguém só ajudou?', 'Cumplicidade: auxílio material ou moral, sem domínio do facto.'],
+    ['Pena de cada um', 'Segundo a própria culpa (art. 29.º); atenuação do cúmplice (art. 27.º, n.º 2, do CP).']
+  ] },
+  exemplo: ['F convence G a assaltar uma ourivesaria. H empresta o carro, sabendo para que serve. Na noite combinada, G e I entram na loja: I partiu a montra e G recolheu as joias. H ficou em casa. Como responde cada um?',
+    'G e I são coautores do furto qualificado: decidiram em conjunto e cada um executou uma parte essencial do plano (art. 26.º, 3.ª proposição, do CP). F, que fez nascer em G a decisão de praticar o crime, é instigador e é punido como autor, porque houve execução (art. 26.º, 4.ª proposição).',
+    'H prestou um auxílio material que facilitou o crime, sem tomar parte na execução nem ter domínio do facto: é cúmplice, com a pena do autor especialmente atenuada (art. 27.º do CP).']
+  ,
+  erros: [
+    'Chamar cúmplice a quem tomou parte direta na execução: é coautor.',
+    'Punir a instigação sem que o crime tenha sido sequer começado.',
+    'Imputar a todos os coautores o excesso de um deles, sem verificar se estava abrangido pelo acordo.',
+    'Esquecer que a desistência de um comparticipante não aproveita aos outros.'
+  ],
+  artigos: ['art. 25.º do CP', 'art. 26.º do CP', 'art. 27.º do CP', 'art. 28.º do CP', 'art. 29.º do CP']
+};
+
+GUIAS.pen.conc = {
+  sub: 'Um ou vários crimes? Concurso efetivo e aparente, crime continuado e a pena única.',
+  ideia: 'Depois de verificar que o agente cometeu crimes, falta contá-los. O CP manda contar pelo número de tipos efetivamente preenchidos ou pelas vezes que um mesmo tipo é preenchido (art. 30.º, n.º 1). Mas há falsos concursos, em que um tipo absorve o outro, e há o crime continuado, que trata como um só crime várias condutas praticadas numa situação que diminui a culpa. Contados os crimes, aplica-se uma pena única.',
+  conceitos: [
+    ['Concurso efetivo', 'O agente pratica vários crimes, que se juntam: com uma só ação (concurso ideal) ou com várias ações (concurso real). Ambos são punidos da mesma forma, com uma pena única (art. 77.º do CP).'],
+    ['Concurso aparente', 'Os factos parecem preencher vários tipos, mas um deles esgota o desvalor do comportamento e afasta os outros. Formas habituais: especialidade, subsidiariedade e consunção.'],
+    ['Especialidade', 'O tipo especial contém todos os elementos do tipo geral e mais algum. Aplica-se só o especial. Exemplo: o homicídio qualificado afasta o homicídio simples.'],
+    ['Subsidiariedade', 'A norma só se aplica se não for aplicável outra mais grave, por vezes de forma expressa («quando outra norma não preveja pena mais grave»).'],
+    ['Consunção', 'O crime mais grave inclui, segundo a experiência, a prática do menos grave, que fica consumido. Exemplo frequente: o dano da porta arrombada no furto qualificado por arrombamento.'],
+    ['Crime continuado', 'Várias realizações do mesmo tipo, ou de tipos que protejam fundamentalmente o mesmo bem jurídico, executadas de forma homogénea e no quadro de uma mesma circunstância externa que reduza bastante a culpa (art. 30.º, n.º 2, do CP).']
+  ],
+  regime: [
+    ['Pena única', 'No concurso efetivo, o tribunal fixa primeiro a pena de cada crime e depois uma pena única. A moldura tem como limite mínimo a mais elevada das penas concretas e como limite máximo a sua soma, sem ultrapassar 25 anos de prisão ou 900 dias de multa (art. 77.º, n.º 2, do CP).', 'Na medida da pena única, consideram-se em conjunto os factos e a personalidade do agente (art. 77.º, n.º 1, do CP). Se o concurso só for conhecido depois de uma condenação, aplicam-se as regras do art. 78.º do CP.'],
+    ['Crime continuado', 'É punido com a pena prevista para o ato mais grave da continuação (art. 79.º, n.º 1, do CP).', 'Não abrange os crimes contra bens eminentemente pessoais (art. 30.º, n.º 3, do CP), como a vida ou a liberdade sexual. O fundamento é a diminuição considerável da culpa por uma situação exterior que facilita a repetição, e não a mera conveniência do agente.'],
+    ['Crimes contra várias vítimas', 'Em regra, nos crimes contra bens pessoais, há tantos crimes quantas as vítimas, mesmo com uma só ação.', 'Por exemplo, uma única explosão que fere três pessoas dá origem a três crimes de ofensa à integridade física, em concurso ideal.']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['Que tipos foram preenchidos?', 'Listar todos, com os factos correspondentes.'],
+    ['Há concurso aparente?', 'Especialidade, subsidiariedade ou consunção eliminam tipos.'],
+    ['Há crime continuado?', 'Mesmo bem jurídico, homogeneidade e situação exterior que diminui a culpa (art. 30.º, n.º 2).'],
+    ['Quantos crimes restam?', 'Concurso efetivo, ideal ou real (art. 30.º, n.º 1).'],
+    ['Pena única', 'Penas parcelares e moldura do art. 77.º do CP.']
+  ] },
+  exemplo: ['J, caixa de um supermercado, apercebe-se de que o sistema de registo tem uma falha e, durante três meses, retira pequenas quantias da caixa no fim de cada turno, sempre da mesma forma. Quantos crimes cometeu?',
+    'Cada apropriação preenche o tipo de abuso de confiança ou de furto, consoante se considere que J tinha ou não a posse do dinheiro. Em princípio, haveria tantos crimes quantas as apropriações (art. 30.º, n.º 1, do CP).',
+    'Contudo, as condutas são homogéneas, protegem o mesmo bem jurídico (património) e foram facilitadas pela mesma falha do sistema, uma situação exterior que diminui consideravelmente a culpa. Estão reunidos os requisitos do crime continuado (art. 30.º, n.º 2, do CP), punido com a pena da conduta mais grave (art. 79.º, n.º 1, do CP).']
+  ,
+  erros: [
+    'Somar as penas em vez de construir a moldura da pena única do art. 77.º.',
+    'Aplicar o crime continuado a crimes contra a vida ou a liberdade sexual.',
+    'Ver crime continuado onde a repetição se deve à mera persistência do agente, e não a uma situação exterior.',
+    'Esquecer o concurso aparente e condenar por dois tipos que se excluem.'
+  ],
+  artigos: ['art. 30.º do CP', 'art. 77.º do CP', 'art. 78.º do CP', 'art. 79.º do CP']
+};
+
+GUIAS.pen.subst = {
+  sub: 'Alternativas à prisão efetiva: multa de substituição, trabalho comunitário, suspensão da prisão, permanência na habitação e admoestação.',
+  ideia: 'A prisão é a última resposta do sistema. Depois de fixar a medida concreta da pena de prisão, o tribunal tem o dever de verificar se uma pena de substituição basta, de modo adequado, para alcançar os fins da pena. Se realizar, tem de a aplicar: não é um favor, é uma imposição legal, decorrente do princípio de que a pena privativa da liberdade é a ultima ratio (art. 70.º do CP).',
+  conceitos: [
+    ['Preferência pela pena não privativa', 'Se ao crime forem aplicáveis, em alternativa, prisão ou multa, o tribunal dá preferência à multa sempre que esta bastar, de modo adequado, para alcançar os fins da pena (art. 70.º do CP).'],
+    ['Multa de substituição', 'A prisão aplicada em medida não superior a um ano é trocada por multa ou por outra pena não detentiva da liberdade, salvo se a necessidade de evitar novos crimes exigir o cumprimento da prisão futuros crimes (art. 45.º do CP).'],
+    ['Trabalho a favor da comunidade', 'A prisão não superior a dois anos pode ser substituída por trabalho gratuito em favor do Estado ou de entidades de interesse comunitário, à razão de uma hora por cada dia de prisão, até 480 horas, e só com a aceitação do condenado (art. 58.º, n.os 1, 3 e 5, do CP).'],
+    ['Suspensão da execução', 'A prisão não superior a cinco anos é suspensa se a simples censura do facto e a ameaça da prisão bastarem para as finalidades da punição, por um período de um a cinco anos, com ou sem deveres, regras de conduta ou regime de prova (art. 50.º do CP).'],
+    ['Regime de permanência na habitação', 'Forma de execução da prisão efetiva não superior a dois anos, com vigilância eletrónica e consentimento do condenado, quando realiza adequadamente as finalidades da execução (art. 43.º do CP).']
+  ],
+  regime: [
+    ['Ordem de análise', 'Fixada a pena de prisão, o tribunal percorre as penas de substituição aplicáveis àquela medida e fundamenta por que aplica ou rejeita cada uma.', 'A falta de ponderação de uma pena de substituição aplicável é um vício da sentença, por omissão de pronúncia.'],
+    ['Critério', 'As penas de substituição dependem de um juízo de prognose favorável e das exigências de prevenção, sobretudo especial, e não da gravidade da culpa, que já foi considerada na medida da pena.', 'As exigências de prevenção geral (defesa do ordenamento jurídico) funcionam como limite: a substituição não deve ser aplicada se puser em causa a confiança da comunidade na validade da norma violada.'],
+    ['Revogação da suspensão', 'A suspensão é revogada se o condenado violar de forma grave ou reiterada as obrigações que lhe foram impostas, ou voltar a cometer um crime e por ele for condenado, revelando que as finalidades da suspensão não puderam ser alcançadas (art. 56.º do CP).', 'Antes de revogar, o tribunal pondera medidas menos drásticas, como prorrogar o período de suspensão ou impor novos deveres (art. 55.º do CP).']
+  ],
+  esquema: { tipo: 'tabela', cab: ['Pena', 'Prisão aplicada até', 'Nota'], linhas: [
+    ['Multa de substituição', '1 ano', 'Regra, salvo necessidade de prevenção (art. 45.º do CP)'],
+    ['Trabalho a favor da comunidade', '2 anos', 'Com aceitação do condenado (art. 58.º, n.º 5, do CP)'],
+    ['Permanência na habitação', '2 anos', 'Forma de execução, com consentimento (art. 43.º do CP)'],
+    ['Suspensão da execução', '5 anos', 'Período de 1 a 5 anos (art. 50.º do CP)'],
+    ['Admoestação', 'Multa até 240 dias', 'Com reparação do dano (art. 60.º do CP)']
+  ] },
+  exemplo: ['K, de 22 anos, sem antecedentes, é condenado a 18 meses de prisão por furto qualificado. Trabalha, confessou e devolveu os bens. Que penas de substituição deve o tribunal ponderar?',
+    'A multa de substituição está excluída, porque a pena excede um ano (art. 45.º do CP). Devem ser ponderados o trabalho a favor da comunidade (até dois anos, art. 58.º do CP), o regime de permanência na habitação (art. 43.º do CP) e a suspensão da execução (até cinco anos, art. 50.º do CP).',
+    'Perante a idade, a ausência de antecedentes, a confissão e a reparação, o juízo de prognose é favorável. A suspensão da execução, eventualmente com regime de prova ou com deveres, parece bastar, de modo adequado, para alcançar os fins da pena. A sentença tem de fundamentar a escolha.']
+  ,
+  erros: [
+    'Não ponderar as penas de substituição aplicáveis depois de fixar a prisão.',
+    'Recusar a suspensão invocando apenas a gravidade do crime.',
+    'Aplicar trabalho a favor da comunidade sem a aceitação do condenado.',
+    'Esquecer que a multa de substituição só existe para penas de prisão até um ano.'
+  ],
+  artigos: ['art. 40.º do CP', 'art. 43.º do CP', 'art. 45.º do CP', 'art. 50.º do CP', 'art. 55.º do CP', 'art. 56.º do CP', 'art. 58.º do CP', 'art. 60.º do CP', 'art. 70.º do CP']
+};
+
+GUIAS.pen.extin = {
+  sub: 'Prescrição do procedimento e da pena, desistência da queixa, morte, amnistia, perdão genérico e indulto.',
+  ideia: 'Há casos em que, mesmo havendo crime, o Estado já não pode punir. O mais importante é a prescrição: o decurso do tempo apaga a necessidade da pena e torna mais difícil a prova. Distingue-se a prescrição do procedimento criminal (o processo já não pode prosseguir) da prescrição da pena (a pena aplicada já não pode ser executada).',
+  conceitos: [
+    ['Prescrição do procedimento', 'O procedimento extingue-se quando decorrem, desde a prática do crime, os prazos do art. 118.º do CP, que dependem do limite máximo da pena aplicável: 15, 10, 5 ou 2 anos.'],
+    ['Início do prazo', 'Conta-se a partir do dia da consumação; nos crimes permanentes, desde o dia em que cessou a consumação; no crime continuado, desde o dia do último ato (art. 119.º do CP).'],
+    ['Suspensão e interrupção', 'Na suspensão, o prazo deixa de correr durante certo tempo e depois retoma (art. 120.º do CP). Na interrupção, o tempo decorrido fica sem efeito e começa a correr novo prazo (art. 121.º do CP), por exemplo com a constituição de arguido ou com a notificação da acusação.'],
+    ['Limite máximo', 'Ainda que haja interrupções, a prescrição ocorre sempre quando, desde o início e descontado o tempo de suspensão, passar o prazo normal acrescido de metade (art. 121.º, n.º 3, do CP).'],
+    ['Outras causas', 'A morte do agente, a amnistia, o perdão genérico e o indulto (arts. 127.º e 128.º do CP), e, nos crimes semipúblicos e particulares, a desistência da queixa (art. 116.º do CP).']
+  ],
+  regime: [
+    ['Prazos do procedimento', '15 anos para crimes com pena máxima superior a 10 anos (e alguns crimes enumerados, como a corrupção); 10 anos para pena máxima igual ou superior a 5 anos e até 10; 5 anos para pena máxima igual ou superior a 1 ano e inferior a 5; 2 anos nos restantes casos (art. 118.º, n.º 1, do CP).', 'Para determinar o prazo, conta o máximo da pena dos elementos que pertencem ao tipo de crime, sem atender às circunstâncias agravantes ou atenuantes, e nunca a pena concreta (art. 118.º, n.º 2, do CP).'],
+    ['Prescrição das penas', 'As penas prescrevem em 20, 15, 10 ou 4 anos, consoante a sua gravidade (art. 122.º do CP), contados do trânsito em julgado da decisão.', 'Também aqui há causas de suspensão e de interrupção (arts. 125.º e 126.º do CP).'],
+    ['Amnistia, perdão e indulto', 'A amnistia extingue o procedimento e, havendo condenação, faz cessar a execução da pena e os seus efeitos. O perdão genérico apaga a pena, total ou parcialmente. O indulto é concedido individualmente pelo Presidente da República (arts. 127.º e 128.º do CP).', 'São medidas de clemência que dependem de lei (amnistia e perdão genérico) ou de decisão presidencial (indulto).']
+  ],
+  esquema: { tipo: 'tabela', cab: ['Pena máxima do crime', 'Prescrição do procedimento'], linhas: [
+    ['Superior a 10 anos (e crimes enumerados)', '15 anos'],
+    ['Igual ou superior a 5 e até 10 anos', '10 anos'],
+    ['Igual ou superior a 1 e inferior a 5 anos', '5 anos'],
+    ['Restantes casos', '2 anos']
+  ] },
+  exemplo: ['L cometeu um crime de ofensa à integridade física simples (art. 143.º do CP, pena de prisão até 3 anos ou multa) a 10 de janeiro de 2019. Foi constituído arguido a 5 de março de 2023 e acusado a 20 de setembro de 2025. O procedimento prescreveu?',
+    'A pena máxima é de 3 anos, pelo que o prazo é de 5 anos (art. 118.º, n.º 1, alínea c), do CP), contado desde 10 de janeiro de 2019 (art. 119.º, n.º 1, do CP). A constituição de arguido, a 5 de março de 2023, ocorreu antes de o prazo terminar e interrompeu-o (art. 121.º, n.º 1, alínea a), do CP), fazendo começar um novo prazo de 5 anos.',
+    'A notificação da acusação voltou a interromper o prazo. Há, porém, o limite máximo do art. 121.º, n.º 3: 5 anos mais metade, ou seja, 7 anos e 6 meses desde 10 de janeiro de 2019, somando-se o tempo de suspensão que tenha existido (por exemplo, a partir da notificação da acusação, nos termos do art. 120.º do CP). É esse cálculo que decide se o processo ainda pode prosseguir.']
+  ,
+  erros: [
+    'Calcular o prazo pela pena concreta em vez do limite máximo abstrato.',
+    'Esquecer que a interrupção reinicia o prazo, mas não ultrapassa o limite do art. 121.º, n.º 3.',
+    'Confundir prescrição do procedimento com prescrição da pena.',
+    'Contar o prazo de um crime permanente desde o início da conduta.'
+  ],
+  artigos: ['art. 116.º do CP', 'art. 118.º do CP', 'art. 119.º do CP', 'art. 120.º do CP', 'art. 121.º do CP', 'art. 122.º do CP', 'art. 127.º do CP', 'art. 128.º do CP']
 };
 
 /* Matéria explicada — Direito Processual Penal (texto original do LEXDESK) */
@@ -12873,7 +13238,7 @@ Store.connect();
 </script>
 <script>
 /* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='aa745593292e';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
+(function(){var B='d98da0bab3f6';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>
