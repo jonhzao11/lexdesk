@@ -2749,7 +2749,7 @@ function discsAtivas() { return Object.keys(DISC).filter(function (k) { return !
   var D = {}; Object.keys(DISC).forEach(function (k) {
     D[k] = DISC[k];
     if (k === 'adm') { D.trab = { nome: 'Direito do Trabalho', curto: 'Trabalho', chave: ['trabalho', 'laboral'] }; D.fisc = { nome: 'Direito Fiscal', curto: 'Fiscal', chave: ['fiscal', 'tributário', 'finanças públicas'] }; }
-    if (k === 'com') { D.dip = { nome: 'Direito Internacional Público', curto: 'Internacional Público', chave: ['internacional público'] }; }
+    if (k === 'com') { D.dip = { nome: 'Direito Internacional Público', curto: 'Internacional Público', chave: ['internacional público'] }; D.dipr = { nome: 'Direito Internacional Privado', curto: 'Internacional Privado', chave: ['internacional privado', 'conflitos de leis'] }; }
     if (k === 'pc') { D.pex = { nome: 'Processo Executivo', curto: 'Processo Executivo', chave: ['processo executivo', 'ação executiva', 'acção executiva'] }; }
   });
   DISC = D;
@@ -2758,6 +2758,7 @@ function discsAtivas() { return Object.keys(DISC).filter(function (k) { return !
   TEMAS.trab = [['fontes', 'Fontes e princípios'], ['contr', 'Contrato de trabalho e modalidades'], ['temp', 'Tempo de trabalho, férias e retribuição'], ['disc', 'Poder disciplinar'], ['cess', 'Cessação do contrato'], ['colet', 'Direito coletivo']];
   TEMAS.fisc = [['princ', 'Princípios e fontes'], ['rel', 'Relação jurídica tributária'], ['proc', 'Procedimento e garantias'], ['cont', 'Contencioso e execução fiscal'], ['imp', 'Impostos em especial']];
   TEMAS.dip = [['fontes', 'Fontes'], ['trat', 'Direito dos tratados'], ['rel', 'Direito Internacional e direito interno'], ['suj', 'Sujeitos e organizações internacionais'], ['paz', 'Uso da força e resolução de litígios'], ['esp', 'Espaços, imunidades e responsabilidade'], ['dh', 'Proteção internacional dos direitos humanos']];
+  TEMAS.dipr = [['geral', 'Objeto, fontes e método'], ['regra', 'A regra de conflitos'], ['qualif', 'Qualificação'], ['reenvio', 'Reenvio (devolução)'], ['limites', 'Ordem pública, fraude e plurilegislação'], ['pessoal', 'Estatuto pessoal, família e sucessões'], ['romai', 'Contratos: Regulamento Roma I'], ['romaii', 'Responsabilidade extracontratual: Roma II'], ['compet', 'Competência internacional'], ['reconh', 'Reconhecimento de sentenças estrangeiras']];
   TEMAS.pex = [['geral', 'Título e pressupostos'], ['formas', 'Formas do processo e tramitação'], ['opos', 'Oposição e embargos'], ['penh', 'Penhora'], ['venda', 'Concurso de credores e venda'], ['outras', 'Outras execuções e injunção']];
   QUESTOES.forEach(function (q) { if (q.id === 'pc36') { q.d = 'pex'; q.t = 'geral'; } if (q.id === 'pc37') { q.d = 'pex'; q.t = 'formas'; } });
 
@@ -4375,6 +4376,70 @@ var CASOS_MODELO = {
   N('mandato', 'oq20', 'O mandato que tem por objeto atos que o mandatário pratica por profissão presume-se:', ['Oneroso', 'Gratuito', 'Nulo', 'Irrevogável'], 'Art. 1158.º, n.º 1, do CC.');
 })();
 
+/* ---------- DIREITO INTERNACIONAL PRIVADO: casos práticos com resolução-modelo, questões e glossário (texto original do LEXDESK) ---------- */
+(function () {
+  function C(id, titulo, enunciado, perguntas, topicos, modelo) { CASOS.push({ id: id, d: 'dipr', titulo: titulo, enunciado: enunciado, perguntas: perguntas, topicos: topicos }); CASOS_MODELO[id] = modelo; }
+
+  C('caso-dipr1', 'As cadeiras de Valência',
+    'A Cadeiral, Lda., com sede em Paços de Ferreira, fabrica cadeiras de design e vende-as através de um site disponível em português, espanhol e inglês, com preços em euros e entregas em toda a Península. Em março de 2025, Inés, residente em Valência, encomendou pelo site seis cadeiras para a sua casa. As condições gerais, aceites com um clique, dizem que «o contrato se rege pela lei portuguesa» e que «os tribunais de Paços de Ferreira são os únicos competentes». As cadeiras chegaram com defeitos e Inés recusou pagar o resto do preço. A Cadeiral quer processá-la em Portugal.',
+    ['O caso cabe no Regulamento Roma I? Que lei se aplica?', 'A escolha da lei portuguesa é válida? Que limites tem?', 'A Cadeiral pode processar Inés em Paços de Ferreira?'],
+    ['Âmbitos material, universal e temporal do Roma I (arts. 1.º, 2.º e 28.º).', 'Contrato de consumo com atividade dirigida a Espanha (art. 6.º, n.os 1 e 2, do Roma I).', 'Competência em matéria de consumo no Bruxelas I bis (arts. 17.º a 19.º).'],
+    [['O contrato é internacional (partes em Estados diferentes, entrega em Espanha), versa sobre obrigações contratuais em matéria civil e comercial (art. 1.º), foi celebrado depois de 17 de dezembro de 2009 (art. 28.º) e o Regulamento tem aplicação universal (art. 2.º). Inés compra para uso pessoal a um profissional que dirige a sua atividade a Espanha (site em espanhol, entregas no país): é um contrato de consumo regido pelo art. 6.º.'],
+      ['As partes podem escolher a lei aplicável (art. 6.º, n.º 2, que remete para o art. 3.º), pelo que a escolha da lei portuguesa é válida. Mas essa escolha não pode privar Inés da proteção das normas imperativas da lei espanhola, a da sua residência habitual, que seria aplicável na falta de escolha. Se o regime espanhol de garantia dos bens de consumo for mais favorável num certo ponto, Inés pode invocá-lo.'],
+      ['Não. Em matéria de contratos de consumo, o profissional só pode demandar o consumidor nos tribunais do Estado-Membro do domicílio deste (art. 18.º, n.º 2, do Bruxelas I bis). O pacto de jurisdição a favor de Paços de Ferreira, celebrado antes do litígio e contra a consumidora, não produz efeitos (art. 19.º). A Cadeiral terá de propor a ação em Espanha; só se Inés comparecer sem arguir a incompetência é que o tribunal português se tornaria competente (art. 26.º, com o dever de a informar previsto no seu n.º 2).']]);
+
+  C('caso-dipr2', 'O testamento do avô brasileiro',
+    'Mário, de nacionalidade brasileira, viveu os últimos 30 anos no Porto, onde morreu em 2014, deixando um apartamento no Porto e contas bancárias em Portugal. Tinha um filho e uma filha. Pouco antes de morrer, casou-se em Lisboa com Rita, portuguesa, sem convenção antenupcial. Discute-se a lei aplicável à sucessão. A lei brasileira manda aplicar à sucessão a lei do último domicílio do falecido.',
+    ['Que regra de conflitos rege a sucessão? Porque não se aplica o regulamento europeu das sucessões?', 'Há reenvio? Para que lei?', 'Que lei regula as relações entre Mário e Rita enquanto cônjuges?'],
+    ['Art. 62.º do CC; âmbito temporal do Regulamento (UE) n.º 650/2012.', 'Retorno ao direito português (art. 18.º do CC) e requisitos do n.º 2 em matéria de estatuto pessoal.', 'Art. 52.º do CC: nacionalidades diferentes, residência habitual comum.'],
+    [['Mário morreu em 2014, antes de 17 de agosto de 2015, data a partir da qual o regulamento europeu das sucessões se aplica às sucessões abertas. Aplica-se, por isso, o art. 62.º do CC: a sucessão rege-se pela lei pessoal do autor da sucessão ao tempo do falecimento. Sendo Mário brasileiro, a lei pessoal é a da nacionalidade (art. 31.º, n.º 1, do CC): a lei brasileira.'],
+      ['A regra de conflitos brasileira manda aplicar a lei do último domicílio do falecido, que era Portugal: há retorno ao direito português (art. 18.º, n.º 1, do CC). Como a sucessão é matéria de estatuto pessoal, o retorno só é aceite se o interessado tiver residência habitual em Portugal ou se a lei da sua residência considerar competente o direito português (art. 18.º, n.º 2). Mário residia habitualmente no Porto: o retorno é aceite e aplica-se o direito sucessório português, salvo se daí resultar a invalidade de um negócio ou estado, nos termos do art. 19.º.'],
+      ['Mário e Rita tinham nacionalidades diferentes, pelo que não há lei nacional comum. Aplica-se a lei da residência habitual comum (art. 52.º, n.º 2, do CC), que era Portugal. O regime de bens, na falta de convenção, seria determinado pela regra própria (art. 53.º do CC), ainda anterior ao regulamento europeu dos regimes matrimoniais, que só se aplica a casamentos celebrados a partir de 29 de janeiro de 2019.']]);
+
+  C('caso-dipr3', 'O acidente na A-6',
+    'Tiago, residente em Viseu, conduzia em Espanha um carro alugado em Salamanca quando provocou um acidente que feriu Laura, residente em Madrid, e Nuno, amigo de Tiago e também residente em Viseu, que seguia no carro. Laura e Nuno querem ser indemnizados. Laura pretende propor a ação em Madrid; Nuno, em Viseu.',
+    ['Que lei rege a responsabilidade de Tiago perante Laura? E perante Nuno?', 'Que tribunais são competentes?', 'Que papel têm as regras de trânsito espanholas?'],
+    ['Roma II: regra geral (art. 4.º, n.º 1) e residência habitual comum (art. 4.º, n.º 2).', 'Bruxelas I bis: domicílio do réu (art. 4.º) e lugar do facto danoso (art. 7.º, n.º 2).', 'Regras de segurança e conduta (art. 17.º do Roma II).'],
+    [['Perante Laura, aplica-se a lei do país onde o dano ocorreu, Espanha (art. 4.º, n.º 1, do Roma II), porque lesante e lesada não residem no mesmo país. Perante Nuno, ambos tinham residência habitual em Portugal no momento do dano, pelo que se aplica a lei portuguesa (art. 4.º, n.º 2). A cláusula de exceção (art. 4.º, n.º 3) só funcionaria perante uma conexão manifestamente mais estreita com outro país. Nota: Espanha é parte da Convenção da Haia de 1971 sobre acidentes de viação, que os seus tribunais aplicam com prevalência sobre o Roma II; num caso real, isso deve ser verificado no foro escolhido.'],
+      ['Tiago está domiciliado em Portugal: pode ser demandado em Portugal (art. 4.º do Bruxelas I bis). Em matéria extracontratual, também pode ser demandado no país onde o dano aconteceu, Espanha (art. 7.º, n.º 2). Laura pode, assim, escolher Madrid ou um tribunal português; Nuno pode demandar em Viseu. Em ação direta contra a seguradora, há ainda as regras de seguros (arts. 11.º e 13.º).'],
+      ['Mesmo quando a lei portuguesa rege a responsabilidade perante Nuno, a conduta de Tiago é avaliada tendo em conta, como questão de facto e na medida adequada, as regras de segurança e de conduta em vigor em Espanha, onde ocorreu o acidente (art. 17.º do Roma II). Velocidade máxima, prioridades e outras regras de trânsito são as espanholas.']]);
+
+  function N(t, id, q, o, e) { QUESTOES.push({ id: id, d: 'dipr', t: t, q: q, o: o, a: 0, e: e }); }
+  N('geral', 'dq1', 'Perante uma relação privada internacional, que fonte se verifica em primeiro lugar?', ['Os regulamentos da União Europeia aplicáveis', 'O Código Civil', 'O Código de Processo Civil', 'A lei do Estado do autor'], 'Os regulamentos europeus prevalecem nas matérias que regulam; o CC só intervém fora do seu âmbito.');
+  N('geral', 'dq2', 'A regra de conflitos:', ['Indica a lei que vai resolver a questão', 'Resolve diretamente o litígio', 'Só se aplica a contratos', 'Só designa a lei portuguesa'], 'É uma norma de remissão: designa o ordenamento competente.');
+  N('regra', 'dq3', 'Uma conexão que considera suficiente a observância de uma de várias leis é:', ['Alternativa', 'Cumulativa', 'Subsidiária', 'Única'], 'Exemplo: forma da declaração negocial (art. 36.º do CC).');
+  N('regra', 'dq4', 'Em regra, a remissão do CC para uma lei estrangeira abrange:', ['Apenas as normas materiais dessa lei', 'Também as suas regras de conflitos', 'Só as normas constitucionais', 'Só as normas processuais'], 'Art. 16.º do CC, salvo reenvio admitido.');
+  N('qualif', 'dq5', 'Segundo o art. 15.º do CC, a competência atribuída a uma lei abrange as normas que:', ['Pelo que dizem e pelo papel que cumprem, pertencem ao instituto da regra de conflitos', 'Têm o mesmo nome que o conceito-quadro', 'O juiz entender mais justas', 'Constam do código civil desse Estado'], 'Qualificação pelo conteúdo e função das normas.');
+  N('reenvio', 'dq6', 'Se o DIP da lei designada remeter para o direito interno português, há:', ['Retorno', 'Transmissão', 'Fraude à lei', 'Qualificação'], 'Art. 18.º do CC.');
+  N('reenvio', 'dq7', 'Não há reenvio, segundo o CC, quando:', ['Dele resulte a invalidade de um negócio que seria válido segundo a lei designada', 'A lei designada for europeia', 'O caso envolver bens móveis', 'As partes forem comerciantes'], 'Art. 19.º, n.º 1, do CC.');
+  N('reenvio', 'dq8', 'No Regulamento Roma I, o reenvio:', ['É excluído', 'É sempre admitido', 'Só é admitido no consumo', 'Depende do juiz'], 'Art. 20.º do Regulamento Roma I.');
+  N('limites', 'dq9', 'A ordem pública internacional afasta:', ['Os preceitos da lei estrangeira cuja aplicação ofenda princípios fundamentais do foro', 'Toda a lei estrangeira designada', 'As normas portuguesas imperativas', 'A regra de conflitos'], 'Art. 22.º, n.º 1, do CC.');
+  N('limites', 'dq10', 'Se for competente, em razão da nacionalidade, a lei de um Estado plurilegislativo, o sistema aplicável é fixado:', ['Pelo direito interno desse Estado', 'Pelo juiz português livremente', 'Pela lei da capital desse Estado', 'Pela lei portuguesa'], 'Art. 20.º, n.º 1, do CC.');
+  N('limites', 'dq11', 'Se não for possível apurar o conteúdo da lei estrangeira aplicável:', ['Recorre-se à lei subsidiariamente competente', 'O juiz abstém-se de decidir', 'A ação improcede', 'Aplica-se a lei do autor'], 'Art. 23.º, n.º 2, do CC.');
+  N('pessoal', 'dq12', 'No Código Civil, a lei pessoal das pessoas singulares é a:', ['Da nacionalidade', 'Da residência habitual', 'Do domicílio voluntário', 'Do lugar de nascimento'], 'Art. 31.º, n.º 1, do CC.');
+  N('pessoal', 'dq13', 'A lei pessoal das pessoas coletivas é a do Estado:', ['Da sede principal e efetiva da administração', 'Da constituição', 'Da nacionalidade dos sócios', 'Onde exercem mais atividade'], 'Art. 33.º, n.º 1, do CC.');
+  N('pessoal', 'dq14', 'Cônjuges de nacionalidades diferentes, sem residência habitual comum: as relações entre eles regem-se pela lei:', ['Do país com que a vida familiar esteja mais estreitamente conexa', 'Do marido', 'Do lugar do casamento', 'Portuguesa'], 'Art. 52.º, n.º 2, do CC.');
+  N('romai', 'dq15', 'O Regulamento Roma I aplica-se a contratos celebrados:', ['A partir de 17 de dezembro de 2009', 'A partir de 1 de janeiro de 2000', 'Desde 10 de janeiro de 2015', 'Em qualquer data'], 'Art. 28.º do Regulamento Roma I.');
+  N('romai', 'dq16', 'Na falta de escolha, o contrato de compra e venda de mercadorias rege-se, segundo o Roma I, pela lei da residência habitual:', ['Do vendedor', 'Do comprador', 'De quem paga', 'Do transportador'], 'Art. 4.º, n.º 1, alínea a), do Regulamento Roma I.');
+  N('romai', 'dq17', 'Num contrato de consumo abrangido pelo art. 6.º do Roma I, a escolha de lei:', ['É admitida, mas não priva o consumidor da proteção imperativa da lei da sua residência habitual', 'É proibida', 'Prevalece sempre', 'Só vale se for a lei do profissional'], 'Regulamento Roma I, art. 6.º, n.º 2.');
+  N('romaii', 'dq18', 'A regra geral do Roma II manda aplicar a lei do país:', ['Onde ocorre o dano', 'Onde ocorre o facto gerador', 'Da nacionalidade do lesado', 'Do tribunal'], 'Art. 4.º, n.º 1, do Regulamento Roma II.');
+  N('romaii', 'dq19', 'Se lesante e lesado residem habitualmente no mesmo país no momento do dano, aplica-se:', ['A lei desse país', 'A lei do lugar do dano', 'A lei do foro', 'A lei mais favorável ao lesado'], 'Art. 4.º, n.º 2, do Regulamento Roma II.');
+  N('compet', 'dq20', 'No Bruxelas I bis, a regra geral de competência é a do:', ['Domicílio do réu', 'Domicílio do autor', 'Lugar do contrato', 'Lugar do pagamento'], 'Art. 4.º do Regulamento Bruxelas I bis.');
+  N('compet', 'dq21', 'Na venda de bens, o lugar de cumprimento relevante para o art. 7.º, n.º 1, do Bruxelas I bis é:', ['O lugar de entrega dos bens', 'O lugar do pagamento', 'O domicílio do vendedor', 'O lugar da celebração'], 'Art. 7.º, n.º 1, alínea b), do Regulamento Bruxelas I bis.');
+  N('compet', 'dq22', 'Litígios sobre direitos reais sobre imóveis são da competência exclusiva dos tribunais:', ['Do Estado da situação do imóvel', 'Do domicílio do réu', 'Do domicílio do autor', 'Escolhidos pelas partes'], 'Art. 24.º do Bruxelas I bis; no direito interno, art. 63.º do CPC.');
+  N('reconh', 'dq23', 'Para revisão e confirmação de sentença estrangeira é competente:', ['O Tribunal da Relação do domicílio da pessoa contra quem se quer fazer valer a sentença', 'O tribunal de comarca', 'O Supremo Tribunal de Justiça', 'O Tribunal Constitucional'], 'Art. 979.º do CPC.');
+  N('reconh', 'dq24', 'Uma decisão de um tribunal de outro Estado-Membro abrangida pelo Bruxelas I bis:', ['É reconhecida sem necessidade de qualquer processo', 'Precisa sempre de revisão e confirmação', 'Não produz efeitos em Portugal', 'Só vale com acordo do réu'], 'Art. 36.º do Regulamento Bruxelas I bis.');
+
+  if (typeof GLOSS !== 'undefined') {
+    GLOSS.push(['Regra de conflitos', 'dipr', 'Norma que, perante uma situação internacional, indica o ordenamento cujas normas materiais a vão regular, através de um elemento de conexão.', 'CC, art. 14.º e seguintes', ['norma de conflitos']]);
+    GLOSS.push(['Elemento de conexão', 'dipr', 'Facto que liga a situação a um ordenamento, como a nacionalidade, a residência habitual ou o lugar da situação da coisa.', '', ['conexão']]);
+    GLOSS.push(['Reenvio', 'dipr', 'Situação em que o DIP da lei designada remete para outra lei: transmissão (terceira lei) ou retorno (lei do foro).', 'arts. 17.º a 19.º do CC', ['devolução', 'transmissão de competência', 'retorno']]);
+    GLOSS.push(['Ordem pública internacional', 'dipr', 'Limite que afasta os preceitos da lei estrangeira cuja aplicação ofenda princípios fundamentais do Estado do foro.', 'art. 22.º do CC', []]);
+    GLOSS.push(['Prestação característica', 'dipr', 'Prestação que identifica o tipo de contrato, normalmente a não pecuniária; serve para determinar a lei aplicável na falta de escolha.', 'art. 4.º do Regulamento Roma I', []]);
+    GLOSS.push(['Lex loci damni', 'dipr', 'Lei do país onde ocorre o dano; regra geral da responsabilidade extracontratual no direito europeu.', 'art. 4.º do Regulamento Roma II', ['lugar do dano']]);
+  }
+})();
+
 /* Matéria explicada — Direito Comercial e das Sociedades (texto original do LEXDESK) */
 var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
 GUIAS.com = {
@@ -4800,6 +4865,350 @@ GUIAS.con = {
     ],
     artigos: ['art. 284.º da CRP', 'art. 285.º da CRP', 'art. 286.º da CRP', 'art. 287.º da CRP', 'art. 288.º da CRP', 'art. 289.º da CRP']
   }
+};
+
+/* Matéria explicada — Direito Internacional Privado (texto original do LEXDESK) */
+var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
+GUIAS.dipr = GUIAS.dipr || {};
+
+GUIAS.dipr.geral = {
+  sub: 'O que estuda o Direito Internacional Privado, que fontes usa e porque recorre a regras de conflitos.',
+  ideia: 'Sempre que uma relação entre particulares toca mais do que um país (um casamento entre um português e uma brasileira, uma venda de Lisboa para Madrid, um acidente em França com carros portugueses), surge a pergunta: que lei se aplica e que tribunal decide? O Direito Internacional Privado responde a estas perguntas. Em regra, não resolve diretamente o litígio: escolhe o ordenamento cujas normas materiais o vão resolver.',
+  conceitos: [
+    ['Relação privada internacional', 'Relação entre particulares (ou em que o Estado age sem poderes de autoridade) que tem contactos relevantes com mais de um ordenamento jurídico: nacionalidade ou residência das partes, lugar da celebração, da execução, do facto ou da situação dos bens.'],
+    ['Três grandes questões', 'Que lei se aplica (conflitos de leis), que tribunal é competente (competência internacional) e que efeitos tem em Portugal uma sentença estrangeira (reconhecimento). Alguns programas incluem ainda a nacionalidade e a condição dos estrangeiros.'],
+    ['Regra de conflitos', 'Norma que não decide o caso, mas indica qual o ordenamento competente para o decidir, através de um elemento de conexão (por exemplo, a nacionalidade ou o lugar da situação da coisa).'],
+    ['Princípio da não transatividade', 'Uma lei só deve ser aplicada a factos com os quais tenha contacto relevante: seria injusto surpreender as partes com uma lei com a qual a situação nada tem a ver.'],
+    ['Fontes', 'Fontes internas (sobretudo as normas de conflitos do Código Civil, que começam no art. 14.º, e normas do CPC), convenções internacionais e, cada vez mais, regulamentos da União Europeia, que prevalecem sobre o direito interno nas matérias que regulam (art. 8.º, n.º 4, da CRP).']
+  ],
+  regime: [
+    ['Ordem de consulta das fontes', 'Perante um caso, verifica-se primeiro se há um regulamento europeu aplicável (Roma I, Roma II, Bruxelas I bis, sucessões, divórcio, regimes de bens…); depois, convenções internacionais em vigor em Portugal; só na falta destes se aplica o Código Civil.', 'Os regulamentos têm âmbitos material, espacial e temporal próprios, que devem ser verificados antes de os aplicar.'],
+    ['Método conflitual e alternativas', 'O método clássico (regra de conflitos bilateral) convive com normas de aplicação imediata, que se aplicam a certas situações internacionais qualquer que seja a lei designada, e com direito material uniforme, como a Convenção de Viena sobre compra e venda internacional.', 'Instrumentos de soft law, como os princípios elaborados pelo UNIDROIT para os contratos do comércio internacional, podem ser escolhidos pelas partes em arbitragem ou servir de inspiração, mas não são «lei» para efeitos de escolha perante um tribunal estadual no âmbito do Regulamento Roma I.'],
+    ['Justiça conflitual', 'O objetivo da regra de conflitos é escolher a lei mais adequada à situação (justiça formal), garantindo harmonia internacional de decisões, previsibilidade e respeito pelas expectativas das partes.', 'A justiça material do caso intervém através de exceções, como a ordem pública internacional, e de conexões com finalidade material (por exemplo, as que favorecem a validade de um ato).']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['A situação é internacional?', 'Há contactos relevantes com mais de um ordenamento.'],
+    ['Que questão se coloca?', 'Lei aplicável, tribunal competente ou reconhecimento de sentença.'],
+    ['Que fonte se aplica?', 'Regulamento europeu, depois convenção, depois CC/CPC.'],
+    ['Qual a regra de conflitos?', 'Ver que matéria abrange e que facto usa para escolher o país.'],
+    ['Há limites?', 'Reenvio, ordem pública, fraude, normas de aplicação imediata.']
+  ] },
+  exemplo: ['Uma empresa portuguesa vende máquinas a uma empresa italiana; as máquinas avariam e a compradora quer ser indemnizada. Por onde começa a análise?',
+    'A relação é internacional: as partes têm sede em Estados diferentes e a mercadoria atravessa fronteiras. Colocam-se duas perguntas autónomas: que tribunal pode julgar e que lei se aplica.',
+    'A competência resolve-se, em princípio, pelo Regulamento Bruxelas I bis; a lei aplicável, pelo Regulamento Roma I (ou, antes deste, pela Convenção de Viena sobre compra e venda internacional, de que Portugal é parte, se estiverem verificados os respetivos pressupostos). O Código Civil só intervém se nenhum destes instrumentos se aplicar.']
+  ,
+  erros: [
+    'Ir diretamente ao Código Civil sem verificar se há regulamento europeu aplicável.',
+    'Confundir a pergunta «que tribunal?» com a pergunta «que lei?»: são independentes.',
+    'Pensar que a regra de conflitos resolve o caso; ela apenas indica a lei que o resolve.'
+  ],
+  artigos: ['art. 8.º da CRP', 'art. 14.º do CC', 'art. 15.º do CC', 'art. 16.º do CC']
+};
+
+GUIAS.dipr.regra = {
+  sub: 'Estrutura da regra de conflitos, tipos de conexão, conflito móvel e normas de aplicação imediata.',
+  ideia: 'A regra de conflitos tem uma estrutura própria: descreve uma categoria de questões jurídicas (o conceito-quadro), escolhe um elemento de facto para a ligar a um país (o elemento de conexão) e manda aplicar a lei desse país. Perceber esta estrutura é a base de toda a parte geral.',
+  conceitos: [
+    ['Conceito-quadro', 'Parte da regra que delimita a matéria abrangida, como «capacidade», «forma da declaração» ou «relações entre os cônjuges». É nele que se faz a qualificação.'],
+    ['Elemento de conexão', 'Facto ou circunstância que liga a situação a um ordenamento: nacionalidade, residência habitual, lugar da situação da coisa, lugar da celebração, vontade das partes.'],
+    ['Consequência jurídica', 'A aplicação da lei designada pelo elemento de conexão.'],
+    ['Regra bilateral', 'Pode designar a lei portuguesa ou uma lei estrangeira, conforme os factos; é o modelo do nosso Código Civil (por exemplo, o art. 46.º sujeita os direitos reais à lei do país onde o bem se encontra, seja ele qual for).'],
+    ['Normas de aplicação imediata', 'Normas materiais que, pela importância dos interesses que protegem, se aplicam a certas situações internacionais independentemente da lei designada pela regra de conflitos. Exemplo no direito europeu: art. 9.º do Regulamento Roma I.']
+  ],
+  regime: [
+    ['Conexão única ou múltipla', 'A conexão pode ser única ou múltipla. Na múltipla, pode ser subsidiária (uma conexão só funciona na falta da anterior), alternativa (basta que uma das leis conduza a certo resultado, por exemplo a validade formal) ou cumulativa (exige-se o acordo de várias leis).', 'As conexões alternativas exprimem o favor negotii; as cumulativas tornam o resultado mais exigente e protegem a parte mais fraca ou interesses de ordem pública.'],
+    ['Conflito móvel', 'Quando o elemento de conexão muda no tempo (por exemplo, alguém muda de nacionalidade), é preciso saber em que momento se fixa. Muitas regras dizem-no expressamente: a lei pessoal ao tempo da morte para as sucessões (art. 62.º do CC) ou a nacionalidade comum ao tempo da celebração do casamento para as convenções antenupciais (art. 53.º do CC).', 'Na falta de indicação, procura-se o momento adequado à natureza da questão, protegendo os direitos já constituídos.'],
+    ['Referência material', 'Em regra, a remissão para a lei estrangeira abrange apenas as suas normas materiais, e não as suas regras de conflitos (art. 16.º do CC), salvo os casos de reenvio admitidos nos arts. 17.º e 18.º.', 'Nos regulamentos europeus, o reenvio é em regra excluído (por exemplo, art. 20.º do Regulamento Roma I).']
+  ],
+  esquema: { tipo: 'tabela', cab: ['Tipo de conexão', 'Como funciona', 'Exemplo'], linhas: [
+    ['Única', 'Uma só lei designada', 'Direitos reais: país onde o bem está (art. 46.º do CC)'],
+    ['Subsidiária', 'A segunda só se aplica na falta da primeira', 'Relações entre cônjuges: nacionalidade comum, depois residência habitual comum (art. 52.º do CC)'],
+    ['Alternativa', 'Basta uma das leis indicadas', 'Forma da declaração negocial (art. 36.º do CC)'],
+    ['Cumulativa', 'Exigem-se várias leis', 'Capacidade para casar: lei pessoal de cada nubente (art. 49.º do CC)']
+  ] },
+  exemplo: ['Um contrato celebrado em Paris por dois portugueses é formalmente inválido segundo a lei francesa, mas válido segundo a lei portuguesa, que rege a substância do negócio. É formalmente válido?',
+    'A forma da declaração negocial é regulada pelo art. 36.º do CC, que usa uma conexão alternativa: basta que a forma observe a lei aplicável à substância do negócio ou a lei do lugar em que a declaração é feita.',
+    'Como a lei portuguesa rege a substância e considera a forma suficiente, o contrato é formalmente válido, ainda que não cumpra a lei francesa. Se fosse um contrato abrangido pelo Regulamento Roma I, a solução seria semelhante, por força da conexão alternativa do seu art. 11.º.']
+  ,
+  erros: [
+    'Confundir conexão alternativa com cumulativa.',
+    'Esquecer em que momento se fixa o elemento de conexão (conflito móvel).',
+    'Aplicar as regras de conflitos da lei estrangeira designada, fora dos casos de reenvio.'
+  ],
+  artigos: ['art. 16.º do CC', 'art. 36.º do CC', 'art. 46.º do CC', 'art. 49.º do CC', 'art. 52.º do CC', 'art. 53.º do CC', 'art. 62.º do CC']
+};
+
+GUIAS.dipr.qualif = {
+  sub: 'Como se decide que regra de conflitos se aplica: o art. 15.º do CC e os conflitos de qualificações.',
+  ideia: 'Antes de aplicar uma regra de conflitos, é preciso saber se a questão cabe no seu conceito-quadro. É uma questão de sucessão ou de regime de bens? De forma ou de substância? Esta operação chama-se qualificação. O nosso Código resolve-a de forma original: olha para o conteúdo das normas materiais da lei designada e para a função que elas desempenham.',
+  conceitos: [
+    ['Qualificação', 'Operação pela qual se reconduz uma questão jurídica concreta ao conceito-quadro de uma regra de conflitos.'],
+    ['Art. 15.º do CC', 'Quando uma lei é chamada, só se aplicam dela as normas que, olhando ao que dizem e ao papel que cumprem no seu sistema, pertencem ao instituto que a regra de conflitos tem em vista.'],
+    ['Interpretação autónoma', 'Os conceitos-quadro devem ser interpretados à luz do DIP do foro e não segundo as categorias internas de nenhuma lei material. Nos regulamentos europeus, a interpretação é autónoma e uniforme, fixada pelo Tribunal de Justiça.'],
+    ['Conflito positivo', 'Duas leis, chamadas por regras de conflitos diferentes, querem aplicar-se à mesma questão com soluções incompatíveis.'],
+    ['Conflito negativo', 'Nenhuma das leis potencialmente aplicáveis tem normas que caibam nos conceitos-quadro que as designam, criando um vazio.']
+  ],
+  regime: [
+    ['Passos da qualificação', 'Primeiro interpreta-se o conceito-quadro; depois identificam-se as leis potencialmente aplicáveis e as normas materiais relevantes; por fim verifica-se se essas normas, pelo seu conteúdo e função, cabem no conceito-quadro da regra que designou a respetiva lei.', 'Não se qualificam factos em abstrato: qualificam-se normas materiais de uma lei designada.'],
+    ['Conflitos positivos', 'Resolvem-se por critérios de hierarquia: por exemplo, a lei que rege o estatuto patrimonial (regime de bens) tende a prevalecer sobre a que rege as sucessões quando ambas reclamam a mesma questão, e as normas de substância prevalecem sobre as de forma.', 'Na falta de critério, procura-se a solução que respeite a coerência entre as leis em presença.'],
+    ['Conflitos negativos', 'Resolvem-se, em regra, por qualificação subsidiária: alarga-se o conceito-quadro de uma das regras para abranger as normas que de outro modo ficariam sem aplicação, ou aplica-se a lei que de outro modo seria afastada.', 'O objetivo é evitar que a situação fique sem regime material.']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['Interpretar o conceito-quadro', 'Segundo o DIP do foro (ou de forma autónoma, nos regulamentos).'],
+    ['Identificar as leis em presença', 'As leis designadas pelas regras de conflitos potencialmente aplicáveis.'],
+    ['Selecionar as normas materiais', 'As normas dessas leis que regulam a questão.'],
+    ['Testar conteúdo e função', 'Cada norma cabe no conceito-quadro que designou a sua lei? (art. 15.º do CC)'],
+    ['Resolver conflitos', 'Positivos por hierarquia; negativos por qualificação subsidiária.']
+  ] },
+  exemplo: ['Um casal de nacionalidades diferentes casou sem convenção. Morre o marido. A lei que rege o regime de bens atribui ao cônjuge sobrevivo uma parte dos bens comuns; a lei que rege a sucessão atribui-lhe uma quota hereditária elevada. O viúvo pode cumular as duas vantagens?',
+    'Há que qualificar as duas normas. A primeira, pelo seu conteúdo e função, liquida o património comum do casal: pertence ao regime matrimonial. A segunda atribui direitos pela morte do de cujus: pertence à sucessão. Cada lei é aplicada na sua função (art. 15.º do CC).',
+    'Se a cumulação conduzir a um resultado que nenhuma das leis admitiria isoladamente, a doutrina admite um ajustamento, de modo a respeitar o equilíbrio pretendido por cada sistema.']
+  ,
+  erros: [
+    'Qualificar segundo as categorias do direito material português.',
+    'Esquecer que no art. 15.º se qualificam normas materiais, pelo conteúdo e pela função.',
+    'Ignorar a interpretação autónoma dos conceitos dos regulamentos europeus.'
+  ],
+  artigos: ['art. 15.º do CC', 'art. 52.º do CC', 'art. 53.º do CC', 'art. 62.º do CC']
+};
+
+GUIAS.dipr.reenvio = {
+  sub: 'Quando a lei estrangeira designada remete para outra lei: transmissão, retorno e os limites dos arts. 17.º a 19.º do CC.',
+  ideia: 'Pode suceder que a regra de conflitos portuguesa mande aplicar a lei de um país cujas próprias regras de conflitos remetem para outra lei. Em princípio, o Código ignora essa remissão (art. 16.º). Mas aceita-a em certas condições, para obter harmonia entre as decisões dos vários países envolvidos. Os regulamentos europeus, pelo contrário, excluem em regra o reenvio.',
+  conceitos: [
+    ['Reenvio', 'Situação em que a regra de conflitos da lei designada aponta para lei diferente daquela que a designou.'],
+    ['Transmissão (art. 17.º do CC)', 'A lei designada remete para uma terceira lei, que se considera competente para regular o caso.'],
+    ['Retorno (art. 18.º do CC)', 'A lei designada remete de volta para a lei portuguesa.'],
+    ['Referência global', 'Remissão que abrange também as regras de conflitos da lei designada; é o pressuposto do reenvio.'],
+    ['Harmonia de decisões', 'Fim que justifica o reenvio: que o caso seja decidido do mesmo modo nos países com que está ligado.']
+  ],
+  regime: [
+    ['Transmissão', 'Se o DIP da lei designada remeter para outra lei e esta se considerar competente, aplica-se esta última (art. 17.º, n.º 1, do CC).', 'Quando a lei designada é a lei pessoal, a transmissão não funciona se o interessado viver habitualmente em Portugal, ou num país que mande aplicar a lei interna do Estado da sua nacionalidade, com as ressalvas do n.º 3 (art. 17.º, n.os 2 e 3, do CC).'],
+    ['Retorno', 'Se o DIP da lei designada remeter para o direito interno português, é este o aplicável (art. 18.º, n.º 1, do CC).', 'No estatuto pessoal, o retorno só é aceite se o interessado tiver residência habitual em Portugal ou se a lei do país da sua residência habitual também considerar competente o direito interno português (art. 18.º, n.º 2, do CC).'],
+    ['Limites gerais', 'Não há reenvio se da sua aplicação resultar a invalidade ou ineficácia de um negócio que seria válido ou eficaz segundo a regra fixada no art. 16.º, ou tornar ilegítimo um estado pessoal que, sem ele, seria legítimo (art. 19.º, n.º 1, do CC).', 'Também não há reenvio quando foram as próprias partes a escolher a lei estrangeira, nos casos em que a lei lhes permite essa escolha (art. 19.º, n.º 2, do CC).']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['A fonte admite reenvio?', 'Regulamentos europeus: em regra, não. Código Civil: arts. 17.º a 19.º.'],
+    ['Para onde remete o DIP da lei designada?', 'Para uma terceira lei (transmissão) ou para a lei portuguesa (retorno).'],
+    ['A lei final aceita a competência?', 'Pressuposto da transmissão (art. 17.º, n.º 1).'],
+    ['É matéria de estatuto pessoal?', 'Verificar os limites dos arts. 17.º, n.os 2 e 3, e 18.º, n.º 2.'],
+    ['O reenvio invalida um negócio ou estado?', 'Então afasta-se (art. 19.º).']
+  ] },
+  exemplo: ['Um cidadão do país A, residente no país B, morre deixando bens móveis em Portugal. A regra portuguesa do CC aponta para a lei da nacionalidade (A); a regra de conflitos de A manda aplicar a lei da residência habitual (B), e B considera-se competente. Que lei se aplica, segundo o CC?',
+    'Há transmissão: a lei designada (A) remete para uma terceira lei (B), que aceita a competência. Em princípio, aplica-se a lei de B (art. 17.º, n.º 1, do CC). Como é matéria de estatuto pessoal, verifica-se ainda o art. 17.º, n.º 2: o interessado não residia em Portugal; se B não considerar competente a lei de A, a transmissão mantém-se.',
+    'Atenção: para mortes ocorridas a partir de 17 de agosto de 2015, as sucessões passaram a reger-se pelo Regulamento europeu das sucessões, que usa como regra a residência habitual do falecido e tem regras próprias sobre reenvio. O exemplo serve para treinar o regime do CC.']
+  ,
+  erros: [
+    'Aplicar o reenvio do CC a matérias reguladas por regulamentos que o excluem.',
+    'Esquecer os limites especiais do estatuto pessoal.',
+    'Admitir reenvio que invalida um negócio válido segundo a lei designada (art. 19.º, n.º 1).'
+  ],
+  artigos: ['art. 16.º do CC', 'art. 17.º do CC', 'art. 18.º do CC', 'art. 19.º do CC', 'art. 62.º do CC']
+};
+
+GUIAS.dipr.limites = {
+  sub: 'Ordem pública internacional, fraude à lei, ordenamentos plurilegislativos e conhecimento do direito estrangeiro.',
+  ideia: 'Designada a lei estrangeira, ainda pode haver obstáculos à sua aplicação: o resultado pode chocar princípios fundamentais do foro (ordem pública), a conexão pode ter sido manipulada (fraude), o Estado designado pode ter várias leis internas (plurilegislação) ou o conteúdo da lei pode ser difícil de apurar. O Código Civil responde a cada um destes problemas.',
+  conceitos: [
+    ['Ordem pública internacional', 'Afastam-se os preceitos da lei estrangeira designada cuja aplicação, no caso, choque com os princípios essenciais do Estado português (art. 22.º, n.º 1, do CC).'],
+    ['Fraude à lei', 'Não contam, para escolher a lei aplicável, as situações criadas de propósito para fugir à lei que normalmente seria competente, como uma mudança de nacionalidade só para escapar a uma proibição (art. 21.º do CC).'],
+    ['Ordenamento plurilegislativo', 'Estado com várias ordens jurídicas internas, territoriais ou pessoais, como Espanha, o Reino Unido ou os Estados Unidos. O art. 20.º do CC indica como escolher entre elas.'],
+    ['Conhecimento do direito estrangeiro', 'O direito estrangeiro é aplicado oficiosamente e interpretado dentro do sistema a que pertence (art. 23.º do CC); a parte que dele se serve tem o ónus de o provar, sem que isso dispense o juiz de o investigar por iniciativa própria (art. 348.º do CC).'],
+    ['Normas de aplicação imediata do foro', 'Funcionam antes da regra de conflitos: aplicam-se independentemente da lei designada. Distinguem-se da ordem pública, que atua depois, contra o resultado da lei estrangeira.']
+  ],
+  regime: [
+    ['Como atua a ordem pública', 'É excecional, atual (avalia-se no momento da decisão) e depende da intensidade da ligação do caso ao foro. Afasta apenas os preceitos estrangeiros chocantes, e o vazio preenche-se com outras normas mais adequadas dessa mesma lei estrangeira ou, se não as houver, com o direito interno português (art. 22.º, n.º 2, do CC).', 'Tem efeito atenuado quando se trata de reconhecer efeitos de situações já constituídas no estrangeiro.'],
+    ['Plurilegislação', 'Se, em razão da nacionalidade, a lei competente for a de um Estado com vários sistemas locais, é o direito interno desse Estado que fixa qual deles se aplica; na falta de normas internas, recorre-se ao DIP desse Estado; se ainda não for suficiente, considera-se como lei pessoal a da residência habitual (art. 20.º do CC).', 'Nos regulamentos europeus (por exemplo, art. 22.º do Regulamento Roma I), cada unidade territorial com regras próprias é tratada como um país para determinar a lei aplicável, o que leva diretamente à lei dessa unidade.'],
+    ['Impossibilidade de apurar o conteúdo', 'Se não se conseguir saber o que diz a lei estrangeira, passa-se à lei chamada a título subsidiário e, em último caso, ao direito comum português (art. 23.º, n.º 2, e art. 348.º, n.º 3, do CC).', 'O juiz não pode deixar de decidir por desconhecer a lei estrangeira.']
+  ],
+  esquema: { tipo: 'tabela', cab: ['Figura', 'Problema', 'Consequência', 'Norma'], linhas: [
+    ['Ordem pública', 'O resultado da lei estrangeira choca princípios fundamentais', 'Afasta-se o preceito; substitui-se', 'art. 22.º do CC'],
+    ['Fraude à lei', 'A conexão foi manipulada para fugir à lei competente', 'Ignora-se a situação fraudulenta', 'art. 21.º do CC'],
+    ['Plurilegislação', 'Estado com várias leis internas', 'Direito interlocal; DIP desse Estado; residência', 'art. 20.º do CC'],
+    ['Direito estrangeiro', 'Conteúdo desconhecido', 'Lei subsidiária; depois direito português', 'arts. 23.º e 348.º do CC']
+  ] },
+  exemplo: ['Dois nacionais de um Estado espanhol com direito civil foral vivem em Lisboa. Discute-se o regime de bens do casamento e a regra de conflitos aplicável manda atender à lei da nacionalidade comum. Que direito espanhol se aplica?',
+    'Espanha é um Estado plurilegislativo em matéria civil. Segundo o art. 20.º, n.º 1, do CC, é o direito interlocal espanhol que indica qual dos sistemas se aplica. O Código Civil espanhol resolve estes conflitos através da vecindad civil das pessoas, que depende sobretudo do nascimento, da residência prolongada e de declarações de opção.',
+    'Determinada a vecindad civil dos cônjuges, aplica-se o direito civil correspondente (comum, catalão, navarro…). Se a matéria estivesse abrangida por um regulamento europeu com regra semelhante à do art. 22.º do Roma I, cada unidade territorial seria tratada como um país.']
+  ,
+  erros: [
+    'Usar a ordem pública para afastar toda a lei estrangeira, e não só o preceito chocante.',
+    'Confundir normas de aplicação imediata com ordem pública.',
+    'Aplicar o «direito espanhol» sem determinar qual dos sistemas internos é competente.'
+  ],
+  artigos: ['art. 20.º do CC', 'art. 21.º do CC', 'art. 22.º do CC', 'art. 23.º do CC', 'art. 348.º do CC']
+};
+
+GUIAS.dipr.pessoal = {
+  sub: 'Lei pessoal, capacidade, pessoas coletivas, casamento, relações entre cônjuges e a influência dos regulamentos europeus.',
+  ideia: 'No Código Civil português, a regra é que o estado e a capacidade das pessoas seguem a lei da nacionalidade. Este «estatuto pessoal» abrange também, em grande parte, a família e as sucessões. Hoje, porém, muitas destas matérias estão reguladas por regulamentos europeus que privilegiam a residência habitual, pelo que é essencial saber qual a fonte aplicável.',
+  conceitos: [
+    ['Lei pessoal', 'É a da nacionalidade do indivíduo (art. 31.º, n.º 1, do CC). Para os apátridas, é a da residência habitual (art. 32.º do CC).'],
+    ['Âmbito', 'Cabem na lei pessoal o estado e a capacidade das pessoas, a família e a sucessão por morte, com as exceções previstas na lei (art. 25.º do CC).'],
+    ['Proteção do comércio jurídico', 'O negócio celebrado em Portugal por quem é incapaz segundo a sua lei pessoal não pode ser anulado com esse fundamento se a lei interna portuguesa o considerasse capaz. A proteção cai se a outra parte conhecia a incapacidade, ou se o negócio for unilateral, de família ou sucessões, ou dispuser de imóveis situados no estrangeiro (art. 28.º do CC).'],
+    ['Pessoas coletivas', 'A sua lei pessoal é a do país onde funciona, de facto, a administração central (sede principal e efetiva), e não necessariamente a sede dos estatutos (art. 33.º do CC).'],
+    ['Casamento', 'A capacidade para contrair casamento é regulada, em relação a cada nubente, pela respetiva lei pessoal (art. 49.º do CC); a forma, pela lei do lugar da celebração, com especialidades para os portugueses (arts. 50.º e 51.º do CC).']
+  ],
+  regime: [
+    ['Relações entre cônjuges', 'Primeiro, a lei da nacionalidade dos dois; se não a tiverem em comum, a do país onde ambos vivem habitualmente; e, se nem isso existir, a do país a que a vida da família está mais ligada (art. 52.º do CC).', 'Esta é uma conexão subsidiária típica, que aparece também noutras normas da família.'],
+    ['Reconhecimento de situações constituídas no estrangeiro', 'Portugal aceita os negócios feitos por alguém no país onde vive habitualmente, segundo a lei desse país, se essa lei se considerar aplicável (art. 31.º, n.º 2, do CC).', 'É uma manifestação da tutela das expectativas e dos direitos adquiridos.'],
+    ['O peso dos regulamentos europeus', 'Divórcio e separação (Regulamento Roma III, em Estados que participam na cooperação reforçada, incluindo Portugal), regimes matrimoniais (para casamentos celebrados ou escolhas de lei feitas a partir de 29 de janeiro de 2019), obrigações de alimentos e sucessões (mortes a partir de 17 de agosto de 2015) têm hoje regimes europeus próprios.', 'Nestas matérias, as regras do CC só se aplicam fora do âmbito temporal ou material desses regulamentos. Nas sucessões, a regra europeia é a lei da última residência habitual do falecido, que pode escolher a lei da sua nacionalidade.']
+  ],
+  esquema: { tipo: 'tabela', cab: ['Matéria', 'Regra do CC', 'Atenção'], linhas: [
+    ['Estado e capacidade', 'Nacionalidade (arts. 25.º e 31.º)', 'Proteção do comércio local (art. 28.º)'],
+    ['Pessoas coletivas', 'Sede principal e efetiva (art. 33.º)', ''],
+    ['Casamento', 'Capacidade: lei pessoal de cada nubente (art. 49.º)', 'Forma: lugar da celebração (art. 50.º)'],
+    ['Relações entre cônjuges', 'Nacionalidade comum, residência comum, conexão mais estreita (art. 52.º)', 'Regimes de bens: regulamento europeu desde 2019'],
+    ['Sucessões', 'Lei pessoal ao tempo da morte (art. 62.º)', 'Mortes desde 17.8.2015: regulamento europeu']
+  ] },
+  exemplo: ['Um jovem de 17 anos, nacional de um país onde a maioridade é aos 21, mas residente em Portugal, compra uma mota num stand em Lisboa. Mais tarde, quer anular o negócio por incapacidade. Pode?',
+    'A capacidade rege-se pela lei pessoal, a da nacionalidade (arts. 25.º e 31.º, n.º 1, do CC). Segundo essa lei, o jovem é menor; mas também o seria segundo a lei portuguesa, porque tem 17 anos.',
+    'A exceção do art. 28.º do CC só protege a contraparte quando o declarante seria capaz segundo a lei portuguesa. Como não seria, a exceção não se aplica, e o negócio é anulável nos termos da lei pessoal. Se o jovem tivesse 19 anos, o stand, desde que não soubesse da incapacidade, poderia invocar o art. 28.º para impedir a anulação.']
+  ,
+  erros: [
+    'Aplicar o art. 62.º do CC a uma morte ocorrida depois de agosto de 2015, esquecendo o regulamento das sucessões.',
+    'Confundir sede estatutária com sede principal e efetiva da administração.',
+    'Aplicar o art. 28.º do CC sem verificar se o declarante seria capaz segundo a lei portuguesa.'
+  ],
+  artigos: ['art. 25.º do CC', 'art. 28.º do CC', 'art. 31.º do CC', 'art. 32.º do CC', 'art. 33.º do CC', 'art. 49.º do CC', 'art. 50.º do CC', 'art. 51.º do CC', 'art. 52.º do CC', 'art. 62.º do CC']
+};
+
+GUIAS.dipr.romai = {
+  sub: 'Lei aplicável aos contratos: âmbitos, escolha de lei, critérios supletivos, contratos com parte fraca e normas imperativas.',
+  ideia: 'O Regulamento (CE) n.º 593/2008, conhecido por Roma I, escolhe a lei que rege os contratos civis e comerciais com elementos estrangeiros e substituiu, nos contratos por ele abrangidos, os arts. 41.º e 42.º do CC. Assenta na liberdade de escolha das partes; na falta de escolha, procura a lei mais ligada ao contrato e protege especialmente consumidores, trabalhadores e segurados.',
+  conceitos: [
+    ['Âmbito material', 'Contratos civis e comerciais, com exclusões expressas: estado e capacidade das pessoas singulares (salvo o art. 13.º), obrigações de família e sucessões, títulos de crédito, convenções de arbitragem e de foro, direito das sociedades, representação orgânica e voluntária perante terceiros, trusts, entre outras (art. 1.º).'],
+    ['Aplicação universal', 'Pode conduzir à lei de qualquer país, mesmo de fora da União (art. 2.º).'],
+    ['Âmbito temporal', 'Aplica-se aos contratos celebrados a partir de 17 de dezembro de 2009 (art. 28.º).'],
+    ['Escolha de lei', 'As partes podem eleger a lei do contrato, expressamente ou de forma que resulte com clareza do clausulado ou do contexto, para o todo ou só para uma parte (art. 3.º, n.º 1).'],
+    ['Prestação característica', 'A prestação que dá ao contrato a sua identidade, normalmente a não pecuniária (entregar a coisa, prestar o serviço). Na falta de escolha, é a residência habitual de quem a realiza que conta, nos casos não previstos no n.º 1 (art. 4.º, n.º 2).']
+  ],
+  regime: [
+    ['Falta de escolha', 'O art. 4.º, n.º 1, fixa a lei para contratos típicos: compra e venda de mercadorias, lei da residência habitual do vendedor; prestação de serviços, a do prestador; direitos reais ou arrendamento de imóveis, a do lugar da situação; franquia, a do franqueado; distribuição, a do distribuidor.', 'Se o contrato estiver manifestamente mais ligado a outro país, aplica-se a lei desse país (art. 4.º, n.º 3); se não for possível determinar a lei pelos n.os 1 e 2, aplica-se a do país com que tenha conexão mais estreita (art. 4.º, n.º 4).'],
+    ['Limites à escolha', 'Se todos os elementos, salvo a escolha, se situarem num só país, a escolha não prejudica as normas imperativas desse país (art. 3.º, n.º 3); se se situarem todos na União, não prejudica o direito europeu imperativo (art. 3.º, n.º 4).', 'Nos contratos de consumo (art. 6.º) e de trabalho (art. 8.º), a escolha nunca retira à parte mais fraca a proteção imperativa da lei que, sem escolha, lhe seria aplicada.'],
+    ['Consumidores e trabalhadores', 'O contrato de consumo rege-se pela lei da residência habitual do consumidor, se o profissional exercer aí a sua atividade ou a dirigir, por qualquer meio, a esse país (art. 6.º, n.º 1). Sem escolha, o contrato de trabalho segue a lei do país onde o trabalhador costuma trabalhar, ou de onde parte para trabalhar (art. 8.º, n.º 2).', 'Também há regras especiais para transporte (art. 5.º) e seguros (art. 7.º). As normas de aplicação imediata do foro aplicam-se sempre (art. 9.º); o reenvio é excluído (art. 20.º) e a ordem pública pode afastar a lei designada (art. 21.º).']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['O contrato é internacional?', 'Elementos ligados a mais de um país (ou só a escolha de lei: art. 3.º, n.º 3).'],
+    ['Âmbitos', 'Material (art. 1.º), universal (art. 2.º), temporal (art. 28.º).'],
+    ['É contrato especial?', 'Transporte, consumo, seguro, trabalho (arts. 5.º a 8.º).'],
+    ['Há escolha de lei?', 'Art. 3.º e respetivos limites.'],
+    ['Falta de escolha', 'Art. 4.º: n.º 1, n.º 2, cláusula de exceção (n.º 3), n.º 4.'],
+    ['Correções finais', 'Normas de aplicação imediata (art. 9.º), forma (art. 11.º), ordem pública (art. 21.º).']
+  ] },
+  exemplo: ['Uma loja online com sede em Itália vende um portátil a Rui, residente em Coimbra, através de um site em português com entregas para Portugal. As condições gerais escolhem a lei italiana. O portátil avaria ao fim de 18 meses. Que lei protege Rui?',
+    'É um contrato de consumo: Rui adquire para uso pessoal a um profissional que dirige a sua atividade a Portugal (site em português, entregas no país). Aplica-se o art. 6.º do Roma I.',
+    'A escolha da lei italiana é válida (art. 6.º, n.º 2), mas não pode privar Rui da proteção das normas imperativas da lei portuguesa, a da sua residência habitual. Rui pode invocar a garantia legal do regime português de venda de bens de consumo se for mais favorável. Quanto ao tribunal, as regras de proteção do consumidor do Bruxelas I bis permitem-lhe demandar em Portugal (art. 18.º).']
+  ,
+  erros: [
+    'Aplicar o art. 4.º sem primeiro verificar se o contrato é de consumo ou de trabalho.',
+    'Admitir que a escolha de lei afasta toda a proteção do consumidor.',
+    'Aplicar os arts. 41.º e 42.º do CC a contratos abrangidos pelo Roma I.',
+    'Admitir reenvio no Roma I (art. 20.º).'
+  ],
+  artigos: ['art. 41.º do CC', 'art. 42.º do CC']
+};
+
+GUIAS.dipr.romaii = {
+  sub: 'Lei aplicável às obrigações extracontratuais: regra geral, residência comum, cláusula de exceção, escolha e regimes especiais.',
+  ideia: 'O Regulamento (CE) n.º 864/2007, ou Roma II, determina a lei aplicável à responsabilidade extracontratual e a outras obrigações não contratuais (enriquecimento sem causa, gestão de negócios, culpa na formação dos contratos). Substituiu, no seu âmbito, o art. 45.º do CC. A regra base é simples: conta o país onde o prejuízo se produz.',
+  conceitos: [
+    ['Âmbito', 'Obrigações extracontratuais em matéria civil e comercial, com exclusões como as obrigações de família, as relativas a títulos de crédito, direito das sociedades, danos nucleares e a violação da privacidade e dos direitos de personalidade, incluindo a difamação (art. 1.º).'],
+    ['Âmbito temporal', 'Vale para factos danosos ocorridos desde 11 de janeiro de 2009, data em que começou a aplicar-se (arts. 31.º e 32.º).'],
+    ['Lex loci damni', 'Conta o país em que o prejuízo direto se produz, e não aquele onde aconteceu o facto que o causou nem aqueles onde se sentem consequências indiretas (art. 4.º, n.º 1).'],
+    ['Residência habitual comum', 'Se lesante e lesado tiverem residência habitual no mesmo país no momento do dano, aplica-se a lei desse país (art. 4.º, n.º 2).'],
+    ['Cláusula de exceção', 'Quando tudo indica, com clareza, que o caso está muito mais ligado a outro país (por exemplo, por existir já um contrato entre as partes), é a lei desse país que se aplica (art. 4.º, n.º 3).']
+  ],
+  regime: [
+    ['Escolha de lei', 'As partes podem escolher a lei aplicável por acordo posterior ao facto danoso; se todas exercerem atividade comercial, também por acordo livremente negociado antes do facto (art. 14.º, n.º 1).', 'A escolha não prejudica direitos de terceiros nem as normas imperativas do país onde se situam todos os elementos (art. 14.º, n.os 2 e 3).'],
+    ['Regras especiais', 'Responsabilidade por produtos defeituosos (art. 5.º), concorrência desleal (art. 6.º), danos ambientais, em que o lesado pode optar pela lei do país do facto gerador (art. 7.º), propriedade intelectual (art. 8.º) e greve (art. 9.º).', 'Regras próprias também para enriquecimento sem causa, gestão de negócios e culpa in contrahendo (arts. 10.º a 12.º).'],
+    ['Regras de segurança e conduta', 'Na avaliação do comportamento do responsável, tem-se em conta, como questão de facto e na medida adequada, as regras de segurança e de comportamento do lugar e do momento em que o facto aconteceu (art. 17.º).', 'Por exemplo, as regras de trânsito do país onde o acidente aconteceu.']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['Âmbito do Roma II', 'Material (art. 1.º) e temporal (arts. 31.º e 32.º).'],
+    ['Há escolha válida?', 'Art. 14.º.'],
+    ['Há regra especial?', 'Arts. 5.º a 9.º.'],
+    ['Residência habitual comum?', 'Art. 4.º, n.º 2.'],
+    ['Regra geral', 'Lugar do dano (art. 4.º, n.º 1).'],
+    ['Cláusula de exceção', 'Conexão manifestamente mais estreita (art. 4.º, n.º 3).']
+  ] },
+  exemplo: ['Ana e Bruno, ambos residentes em Braga, vão de férias a Espanha num carro de Bruno. Num despiste em Sevilha, Ana fica ferida. Que lei rege a responsabilidade de Bruno?',
+    'É uma obrigação extracontratual abrangida pelo Roma II. A regra geral apontaria para a lei espanhola, lugar do dano (art. 4.º, n.º 1).',
+    'Mas lesante e lesada tinham residência habitual no mesmo país, Portugal, no momento do dano: aplica-se a lei portuguesa (art. 4.º, n.º 2). As regras de trânsito espanholas são tidas em conta para avaliar a conduta de Bruno (art. 17.º). Nota: nos acidentes de viação, há ainda que verificar a Convenção da Haia de 1971, que prevalece nos Estados que a ratificaram.']
+  ,
+  erros: [
+    'Aplicar a lei do lugar do facto em vez da do dano.',
+    'Esquecer a residência habitual comum (art. 4.º, n.º 2).',
+    'Aplicar o Roma II a ofensas aos direitos de personalidade, que estão excluídas.'
+  ],
+  artigos: ['art. 45.º do CC']
+};
+
+GUIAS.dipr.compet = {
+  sub: 'Que tribunal pode julgar: Regulamento Bruxelas I bis e as regras do CPC.',
+  ideia: 'Antes de escolher a lei, é preciso saber que tribunal pode julgar o litígio. Na União Europeia, em matéria civil e comercial, a resposta está no Regulamento (UE) n.º 1215/2012 (Bruxelas I bis). A regra base é o tribunal do domicílio do réu, mas há foros alternativos, regras que protegem a parte mais fraca e competências exclusivas. O CPC só intervém quando o regulamento não se aplica.',
+  conceitos: [
+    ['Âmbito', 'Matéria civil e comercial, excluindo, entre outras, o estado e a capacidade das pessoas, regimes matrimoniais, sucessões, insolvência, segurança social, arbitragem e obrigações de alimentos (art. 1.º do Regulamento).'],
+    ['Âmbito temporal', 'Abrange as ações propostas desde 10 de janeiro de 2015 (art. 66.º).'],
+    ['Regra geral', 'Quem tem domicílio num Estado-Membro é, em princípio, processado nesse Estado, seja qual for a sua nacionalidade (art. 4.º).'],
+    ['Foros especiais', 'Nos contratos, pode também demandar-se no lugar de cumprimento da obrigação em causa: na venda de bens, onde foram ou deviam ser entregues; nos serviços, onde foram ou deviam ser prestados (art. 7.º, n.º 1). Na responsabilidade extracontratual, onde o dano aconteceu ou pode acontecer (art. 7.º, n.º 2).'],
+    ['Competências exclusivas', 'Por exemplo, direitos reais e arrendamento de imóveis: tribunais do Estado da situação do imóvel; validade de inscrições em registos públicos: Estado do registo (art. 24.º).']
+  ],
+  regime: [
+    ['Proteção da parte mais fraca', 'O consumidor pode demandar o profissional no seu próprio domicílio e só pode ser demandado aí (arts. 17.º e 18.º); o trabalhador pode demandar no lugar habitual do trabalho e só pode ser demandado no seu domicílio (arts. 20.º a 23.º).', 'Os pactos de jurisdição contra estas partes só valem em casos restritos, por exemplo se forem posteriores ao litígio (art. 19.º e art. 23.º).'],
+    ['Pactos e comparência', 'As partes podem atribuir competência aos tribunais de um Estado-Membro, por escrito ou forma equivalente; a competência é exclusiva salvo acordo em contrário (art. 25.º). O tribunal em que o réu compareça sem arguir a incompetência torna-se competente, salvo competência exclusiva (art. 26.º).', 'A litispendência entre tribunais de Estados-Membros resolve-se a favor do tribunal demandado em primeiro lugar (art. 29.º).'],
+    ['Regras do CPC', 'Fora do âmbito do regulamento, Portugal tem competência internacional sempre que se preencha um dos critérios do art. 62.º do CPC (por exemplo, a ação poder ser proposta em Portugal segundo as regras de competência territorial, ter ocorrido em Portugal o facto em que a ação se funda, ou parte dele, ou o direito não poder tornar-se efetivo senão por ação proposta em Portugal).', 'O art. 63.º do CPC fixa competências exclusivas e o art. 94.º regula os pactos de jurisdição; a infração das regras de competência internacional gera incompetência absoluta (art. 96.º do CPC).']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['O regulamento aplica-se?', 'Matéria civil e comercial (art. 1.º); ações desde 10.1.2015 (art. 66.º).'],
+    ['Há competência exclusiva?', 'Art. 24.º: prevalece sobre tudo.'],
+    ['Há parte mais fraca?', 'Seguros, consumo, trabalho (arts. 10.º a 23.º).'],
+    ['Há pacto de jurisdição ou comparência?', 'Arts. 25.º e 26.º.'],
+    ['Regra geral e foros especiais', 'Domicílio do réu (art. 4.º) ou foros do art. 7.º.'],
+    ['Réu fora da UE?', 'Em regra, aplica-se o direito interno (CPC, arts. 59.º, 62.º e 63.º).']
+  ] },
+  exemplo: ['Uma empresa de Aveiro vendeu mobiliário a uma empresa de Lyon, com entrega em Lyon. A compradora não paga. A empresa portuguesa pode propor a ação em Aveiro?',
+    'É matéria civil e comercial e a ré está domiciliada num Estado-Membro: aplica-se o Bruxelas I bis. A regra geral (art. 4.º) aponta para os tribunais franceses, do domicílio da ré.',
+    'Em alternativa, em matéria contratual, pode demandar-se no lugar de cumprimento; na venda de bens, esse lugar é o da entrega (art. 7.º, n.º 1, alínea b)), ou seja, Lyon. Logo, sem pacto de jurisdição a favor de Portugal (art. 25.º), a ação não pode ser proposta em Aveiro.']
+  ,
+  erros: [
+    'Aplicar o CPC quando o réu está domiciliado num Estado-Membro e a matéria cabe no regulamento.',
+    'Considerar o lugar do pagamento como lugar de cumprimento numa venda de bens.',
+    'Esquecer as competências exclusivas do art. 24.º.'
+  ],
+  artigos: ['art. 59.º do CPC', 'art. 62.º do CPC', 'art. 63.º do CPC', 'art. 94.º do CPC', 'art. 96.º do CPC']
+};
+
+GUIAS.dipr.reconh = {
+  sub: 'Efeitos em Portugal de sentenças estrangeiras: revisão e confirmação no CPC e reconhecimento automático no direito europeu.',
+  ideia: 'Uma sentença proferida no estrangeiro não produz, por si, efeitos em Portugal. Para ter força executiva ou valor de caso julgado, precisa, em regra, de ser revista e confirmada por um tribunal português. No espaço europeu, porém, o princípio é o oposto: as decisões circulam livremente, sem processo prévio, salvo motivos de recusa limitados.',
+  conceitos: [
+    ['Revisão e confirmação', 'Processo pelo qual um tribunal português verifica se uma decisão estrangeira cumpre certos requisitos, sem reapreciar o mérito, para que produza efeitos em Portugal (arts. 978.º e seguintes do CPC).'],
+    ['Tribunal competente', 'O Tribunal da Relação da área em que está domiciliada a pessoa contra quem se pretende fazer valer a sentença (art. 979.º do CPC).'],
+    ['Revisão formal', 'O sistema português é essencialmente de controlo formal: verifica-se a autenticidade, o trânsito em julgado, a competência do tribunal de origem, a ausência de litispendência ou caso julgado, o respeito pelo contraditório e a compatibilidade com a ordem pública internacional (art. 980.º do CPC).'],
+    ['Reconhecimento automático', 'No Bruxelas I bis, uma sentença de um Estado-Membro vale nos restantes sem processo prévio de reconhecimento (art. 36.º) e têm força executória sem declaração de executoriedade (art. 39.º).'],
+    ['Motivos de recusa', 'Contrariedade manifesta à ordem pública, falta de citação em tempo útil do réu revel, incompatibilidade com outra decisão ou violação de certas regras de competência protetoras (art. 45.º do Regulamento).']
+  ],
+  regime: [
+    ['Requisitos do art. 980.º do CPC', 'Não haver dúvidas sobre a autenticidade e a inteligência da decisão; ter transitado em julgado; o tribunal estrangeiro não ter obtido competência por fraude nem ter decidido matéria reservada aos tribunais portugueses; não haver litispendência ou caso julgado em Portugal; ter o réu sido regularmente citado, com observância do contraditório e da igualdade; e o resultado não chocar de forma manifesta os princípios essenciais da ordem jurídica portuguesa.', 'O tribunal verifica oficiosamente alguns destes requisitos (art. 984.º do CPC).'],
+    ['Impugnação e revisão de mérito limitada', 'O pedido pode ser impugnado com os fundamentos do art. 983.º do CPC. Quando o condenado é português (pessoa singular ou coletiva), pode ainda alegar-se em que o resultado da ação lhe teria sido mais favorável se o tribunal estrangeiro tivesse aplicado o direito material português, quando este devesse ser aplicado segundo as normas de conflitos portuguesas (art. 983.º, n.º 2, do CPC).', 'É o único ponto em que se pode olhar para o mérito.'],
+    ['Âmbito do regime europeu', 'O reconhecimento automático abrange as decisões dadas em ações propostas desde 10 de janeiro de 2015 no âmbito do regulamento.', 'Há regimes europeus próprios em matéria de família, alimentos e sucessões; fora deles, e para decisões de Estados terceiros, aplica-se o CPC ou convenções bilaterais.']
+  ],
+  esquema: { tipo: 'tabela', cab: ['Origem da decisão', 'Regime', 'Procedimento'], linhas: [
+    ['Estado-Membro (civil e comercial)', 'Bruxelas I bis', 'Reconhecimento automático; recusa só a pedido (arts. 36.º, 39.º e 45.º)'],
+    ['Estado-Membro (família, sucessões…)', 'Regulamento próprio', 'Regras do regulamento aplicável'],
+    ['Estado terceiro', 'CPC (ou convenção)', 'Revisão e confirmação na Relação (arts. 978.º a 985.º)']
+  ] },
+  exemplo: ['Um tribunal brasileiro condenou uma empresa com sede em Setúbal a pagar 50.000 € a um fornecedor brasileiro. O fornecedor quer executar a sentença em Portugal. Como deve proceder?',
+    'O Brasil é um Estado terceiro, pelo que não se aplica o Bruxelas I bis. A sentença tem de ser revista e confirmada pelo Tribunal da Relação de Évora, área do domicílio da empresa (arts. 978.º e 979.º do CPC).',
+    'A Relação verifica os requisitos do art. 980.º do CPC (autenticidade, trânsito em julgado, competência não fraudulenta, ausência de litispendência, contraditório e ordem pública), sem rever o mérito. Confirmada a sentença, o fornecedor pode instaurar a execução em Portugal.']
+  ,
+  erros: [
+    'Exigir revisão e confirmação para uma sentença de outro Estado-Membro abrangida pelo Bruxelas I bis.',
+    'Pensar que a Relação reaprecia o mérito da causa.',
+    'Propor a revisão no tribunal de 1.ª instância.'
+  ],
+  artigos: ['art. 978.º do CPC', 'art. 979.º do CPC', 'art. 980.º do CPC', 'art. 983.º do CPC', 'art. 984.º do CPC']
 };
 
 /* Matéria explicada — Direito da Família e das Sucessões */
@@ -14010,7 +14419,7 @@ libList = function () {
 setTimeout(leiMetaCarregar, 1500);
 
 /* ===== Matéria explicada: guias de estudo por tema ===== */
-var GUIA_ORD = ['obr', 'fam', 'pen', 'pp', 'pc', 'pex', 'con', 'trab', 'reais', 'com', 'tgdc'];
+var GUIA_ORD = ['obr', 'fam', 'pen', 'pp', 'pc', 'pex', 'con', 'trab', 'reais', 'com', 'tgdc', 'dipr'];
 function guiasDe(d) { return (typeof GUIAS !== 'undefined' && GUIAS[d]) || {}; }
 function guiaTem(d, t) { return !!guiasDe(d)[t]; }
 function guiaN(d) { return Object.keys(guiasDe(d)).length; }
@@ -15451,7 +15860,7 @@ Store.connect();
 </script>
 <script>
 /* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='41685a17171c';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
+(function(){var B='01348fe66aba';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>
