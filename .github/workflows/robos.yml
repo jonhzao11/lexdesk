@@ -1,0 +1,124 @@
+name: Robôs de teste
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 5 * * *'   # todos os dias, às 05:17 (UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: robos
+  cancel-in-progress: true
+
+jobs:
+  robos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      SUPABASE_URL: https://cggfztvwcnbmpkkxglhd.supabase.co
+      SUPABASE_KEY: sb_publishable_8MGUDrdI2INrA_aXwCQYZA_Tv-fc_3a
+      ROBOS_TOKEN: ${{ secrets.ROBOS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar o navegador dos robôs
+        run: |
+          pip install --quiet playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Pôr os robôs a trabalhar
+        id: robos
+        continue-on-error: true
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then MODO=--rapido; else MODO=; fi
+          python tests/robos.py index.html $MODO
+
+      - name: Relatório
+        if: always()
+        run: |
+          [ -f robos-relatorio.md ] && cat robos-relatorio.md >> "$GITHUB_STEP_SUMMARY" || echo "Sem relatório." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Pontos dos robôs no ranking e erros dos utilizadores
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          tok = os.environ.get('ROBOS_TOKEN')
+          url, key = os.environ['SUPABASE_URL'], os.environ['SUPABASE_KEY']
+          def rpc(nome, corpo):
+              r = urllib.request.Request(f'{url}/rest/v1/rpc/{nome}', data=json.dumps(corpo).encode(), method='POST',
+                  headers={'apikey': key, 'Authorization': f'Bearer {key}', 'Content-Type': 'application/json'})
+              return json.loads(urllib.request.urlopen(r, timeout=30).read() or 'null')
+          resumo = open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8')
+          if not tok:
+              resumo.write('\n> Segredo ROBOS_TOKEN não definido: os robôs não somaram pontos nem leram o registo de erros.\n')
+              raise SystemExit(0)
+          try:
+              rel = json.load(open('robos-relatorio.json', encoding='utf-8'))
+              n = rpc('robo_registar', {'p_tok': tok, 'p_eventos': rel.get('eventos', [])})
+              resumo.write(f'\n**Ranking:** {n} atividade(s) registada(s) para os robôs.\n')
+          except Exception as e:
+              resumo.write(f'\n**Ranking:** não foi possível registar os pontos ({e}).\n')
+          try:
+              erros = rpc('erros_resumo', {'p_tok': tok, 'p_horas': 24}) or []
+              json.dump(erros, open('erros-utilizadores.json', 'w', encoding='utf-8'), ensure_ascii=False)
+              resumo.write(f'\n### Erros dos utilizadores nas últimas 24 horas: {len(erros)}\n')
+              if erros:
+                  resumo.write('\n| Ocorrências | Página | Dispositivo | Mensagem |\n|---|---|---|---|\n')
+                  for e in erros[:30]:
+                      msg = str(e.get('msg', '')).replace('|', '/').replace('\n', ' ')[:160]
+                      resumo.write(f"| {e.get('n')} | {e.get('vista') or '—'} | {e.get('disp') or '—'} | {msg} |\n")
+          except Exception as e:
+              resumo.write(f'\nNão foi possível ler o registo de erros ({e}).\n')
+          PY
+
+      - name: Guardar o relatório
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-robos
+          path: |
+            robos-relatorio.json
+            robos-relatorio.md
+            erros-utilizadores.json
+          if-no-files-found: ignore
+
+      - name: Abrir um aviso (issue) se houver problemas
+        if: always() && github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json, os, subprocess, datetime
+          probs = []
+          try: probs = json.load(open('robos-relatorio.json', encoding='utf-8')).get('problemas', [])
+          except Exception: probs = [{'robo': '—', 'onde': 'execução', 'tipo': 'sem relatório', 'detalhe': 'os robôs não chegaram ao fim'}]
+          erros = []
+          try: erros = json.load(open('erros-utilizadores.json', encoding='utf-8'))
+          except Exception: pass
+          if not probs and not erros:
+              raise SystemExit(0)
+          corpo = open('robos-relatorio.md', encoding='utf-8').read() if os.path.exists('robos-relatorio.md') else ''
+          if erros:
+              corpo += f'\n### Erros dos utilizadores nas últimas 24 horas ({len(erros)})\n\n' + '\n'.join(f"- {e.get('n')}× em «{e.get('vista') or '—'}» ({e.get('disp') or '—'}): {str(e.get('msg',''))[:200]}" for e in erros[:30])
+          corpo += f"\n\nExecução: {os.environ['GITHUB_SERVER_URL']}/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}\n"
+          titulo = f'Robôs: problemas encontrados em {datetime.date.today().isoformat()}'
+          existe = subprocess.run(['gh', 'issue', 'list', '--state', 'open', '--search', titulo + ' in:title', '--json', 'number', '-q', '.[0].number'], capture_output=True, text=True).stdout.strip()
+          if existe:
+              subprocess.run(['gh', 'issue', 'comment', existe, '--body', corpo], check=False)
+          else:
+              subprocess.run(['gh', 'issue', 'create', '--title', titulo, '--body', corpo], check=False)
+          PY
+
+      - name: Falhar se os robôs encontraram problemas
+        if: steps.robos.outcome == 'failure'
+        run: exit 1

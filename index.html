@@ -1968,6 +1968,9 @@ html.dark .ch-sm,html.dark .ch-why,html.dark .ch-e span{color:#A9B1C2}html.dark 
 html.dark .ch-li,html.dark .ch-e{background:#1A2233;border-color:#2C3548}html.dark .ch-e.on{background:rgba(123,30,43,.25)}
 .cx-grid .ch-pa{grid-template-columns:28px minmax(0,1fr)}.ch-tb td.cx-w{white-space:normal;min-width:180px}
 @media (min-width:1100px){.cx-nav{grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}.cx-t{padding:9px 11px}.cx-t span{display:none}.cx-t b{font-size:13.5px}}
+.robo-av{display:grid;place-items:center;background:#EEF0F5!important;color:inherit!important;font-size:14px}.pd-rk-l.robo,.seq-rk-l.robo{cursor:default}.seq-rk-l.robo:hover{background:none}
+.robo-chip{margin-left:6px;font-size:11px}.robo-tag{font-size:10.5px;color:#6B7280;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+html.dark .robo-av{background:#1A2233!important}html.dark .robo-tag{color:#A9B1C2}
 
 </style>
 </head>
@@ -13069,7 +13072,7 @@ function seqRankHtml() {
   var l = SEQR.l;
   if (!l) return cab + '<p class="seq-rk-v">A carregar…</p></div>';
   var top = l.slice(0, 5), eu = l.filter(function (r) { return r.eu; })[0];
-  var linha = function (r) { var med = r.pos === 1 ? '🥇' : r.pos === 2 ? '🥈' : r.pos === 3 ? '🥉' : r.pos + '.'; return '<button class="seq-rk-l' + (r.eu ? ' eu' : '') + '" data-a="perfil-ver" data-id="' + r.user_id + '"><span class="seq-rk-p">' + med + '</span>' + avHtml(r.user_id, r.nome || 'Membro') + '<span class="seq-rk-n">' + esc(r.eu ? 'Eu' : (r.nome || 'Membro')) + '</span><span class="seq-rk-d">' + rpFmt(r.total) + ' RP</span></button>'; };
+  var linha = function (r) { var med = r.pos === 1 ? '🥇' : r.pos === 2 ? '🥈' : r.pos === 3 ? '🥉' : r.pos + '.'; if (r.robo) return '<div class="seq-rk-l robo" title="Robô de teste automático do LEXDESK"><span class="seq-rk-p">' + med + '</span><span class="av robo-av" aria-hidden="true">🤖</span><span class="seq-rk-n">' + esc(r.nome) + ' <small class="robo-tag">robô</small></span><span class="seq-rk-d">' + rpFmt(r.total) + ' RP</span></div>'; return '<button class="seq-rk-l' + (r.eu ? ' eu' : '') + '" data-a="perfil-ver" data-id="' + r.user_id + '"><span class="seq-rk-p">' + med + '</span>' + avHtml(r.user_id, r.nome || 'Membro') + '<span class="seq-rk-n">' + esc(r.eu ? 'Eu' : (r.nome || 'Membro')) + '</span><span class="seq-rk-d">' + rpFmt(r.total) + ' RP</span></button>'; };
   return cab + (top.length ? '<div class="seq-rk-ls">' + top.map(linha).join('') + (eu && top.indexOf(eu) < 0 ? '<div class="seq-rk-sep">…</div>' + linha(eu) : '') + '</div>' : '') +
     '<p class="seq-rk-v">' + (eu ? '' : 'Ainda não tem pontos. ') + 'Cada 7 dias seguidos de estudo valem <b>+20 RP</b>.</p></div>';
 }
@@ -14088,8 +14091,9 @@ function vReputacao() {
   h += '<div class="grid2"><div class="card"><h2>Conquistas académicas</h2><div class="rp-conq">' + conq.map(function (c) { return '<span class="rp-cq' + (c[2] ? ' on' : '') + '" title="' + esc(c[1]) + (c[2] ? ' · obtida' : ' · por obter') + '"><i>' + c[0] + '</i>' + esc(c[1]) + '</span>'; }).join('') + '</div></div>' +
     '<div class="card"><h2>Atividade recente</h2>' + ((d.recentes || []).length ? '<div class="rp-hist">' + d.recentes.map(function (e) { return '<div class="rp-he"><span>' + esc(RP_TIPO_LBL[e.tipo] || e.tipo) + '<small>' + quando(new Date(e.criado_em).getTime()) + '</small></span><b>+' + e.pontos + '</b></div>'; }).join('') + '</div>' : '<div class="empty"><span>Ainda não ganhou pontos. Comece por responder à pergunta do dia (+5 RP) ou a uma dúvida da comunidade (+5 RP).</span><div class="row" style="justify-content:center"><button class="btn sm" data-a="conn-tab" data-id="aprender">Ver dúvidas</button><button class="btn sm wine" data-a="ap-novo-rp">Partilhar apontamentos</button></div></div>') + '</div></div>';
   h += '<div class="card"><div class="row" style="justify-content:space-between"><h2>Ranking da comunidade</h2><span class="chip gray">Top 10</span></div>' + (RP.rank ? (RP.rank.length ? '<div class="pd-rk">' + RP.rank.map(function (r) {
-    Social.prof[r.user_id] = Social.prof[r.user_id] || { nome: r.nome, estado: r.estado, avatar_url: r.avatar_url }; RP.tot[r.user_id] = Number(r.total);
+    if (!r.robo) Social.prof[r.user_id] = Social.prof[r.user_id] || { nome: r.nome, estado: r.estado, avatar_url: r.avatar_url }; RP.tot[r.user_id] = Number(r.total);
     var med = r.pos == 1 ? '🥇' : r.pos == 2 ? '🥈' : r.pos == 3 ? '🥉' : r.pos + '.º';
+    if (r.robo) return '<div class="pd-rk-l robo" title="Robô de teste automático do LEXDESK"><span class="pd-rk-p">' + med + '</span><span class="av robo-av" aria-hidden="true">🤖</span><span class="pd-rk-n"><b>' + esc(r.nome) + '</b><span class="chip gray robo-chip">Robô de teste</span></span><b class="pd-rk-pt">' + rpFmt(r.total) + ' RP</b></div>';
     return '<div class="pd-rk-l' + (r.eu ? ' eu' : '') + '"><span class="pd-rk-p">' + med + '</span>' + avHtml(r.user_id, r.nome) + '<span class="pd-rk-n"><b>' + esc(r.nome || 'Membro LEXDESK') + (r.eu ? ' (eu)' : '') + '</b>' + estadoChip(r.user_id) + '</span><b class="pd-rk-pt">' + rpFmt(r.total) + ' RP</b></div>';
   }).join('') + '</div>' : '<div class="empty"><span>Ainda ninguém tem pontos. Seja o primeiro!</span></div>') : '<p style="margin:0;color:var(--muted)">A carregar…</p>') + '</div>';
   return h + rpTabelas(nv.i);
@@ -15785,6 +15789,28 @@ A['cx-limpar'] = function () { var c = cxEst(); c.v[c.t] = JSON.parse(JSON.strin
 A['cx-add'] = function () { var v = cxV('cumulo'); v.penas.push({ t: 'p', a: '', m: '' }); cxGuardar(); render(); };
 A['cx-del'] = function (el) { var v = cxV('cumulo'); v.penas.splice(Number(el.dataset.id), 1); cxGuardar(); render(); };
 
+/* ---------- REGISTO DE ERROS DO NAVEGADOR (sem dados pessoais; ignorado em testes automáticos) ---------- */
+(function () {
+  var enviados = {}, n = 0;
+  function disp() {
+    var ua = navigator.userAgent || '', b = /Edg\//.test(ua) ? 'Edge' : /OPR\//.test(ua) ? 'Opera' : /Firefox\//.test(ua) ? 'Firefox' : /Chrome\//.test(ua) ? 'Chrome' : /Safari\//.test(ua) ? 'Safari' : 'Outro';
+    var so = /iPhone|iPad|iPod/.test(ua) ? 'iOS' : /Android/.test(ua) ? 'Android' : /Mac OS X/.test(ua) ? 'macOS' : /Windows/.test(ua) ? 'Windows' : /Linux/.test(ua) ? 'Linux' : 'Outro';
+    return (innerWidth < 760 ? 'móvel' : 'computador') + ' · ' + so + ' · ' + b;
+  }
+  function limpar(t) { return String(t || '').replace(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/gi, '<id>').replace(/[\w.+-]+@[\w-]+\.[\w.]+/g, '<email>'); }
+  function registar(msg, fonte, linha, col, stack) {
+    try {
+      if (navigator.webdriver || window.__db || location.protocol === 'file:' || !SB) return;
+      msg = limpar(msg); if (!msg || /^Script error\.?$/i.test(msg) || /ResizeObserver loop/i.test(msg)) return;
+      fonte = String(fonte || ''); if (/^(chrome|moz|safari)-extension:/.test(fonte)) return;
+      if (enviados[msg] || n >= 5) return; enviados[msg] = 1; n++;
+      SB.rpc('erro_registar', { p_msg: msg, p_fonte: fonte.replace(location.origin, '').split('?')[0], p_linha: linha || null, p_col: col || null, p_stack: limpar(stack).slice(0, 2000), p_vista: (typeof S !== 'undefined' && S.view) || '', p_disp: disp(), p_versao: window.__LXV || '' }).then(function () { }, function () { });
+    } catch (e) { }
+  }
+  window.addEventListener('error', function (ev) { if (ev && ev.message) registar(ev.message, ev.filename, ev.lineno, ev.colno, ev.error && ev.error.stack); });
+  window.addEventListener('unhandledrejection', function (ev) { var r = ev && ev.reason; registar('Promessa rejeitada: ' + (r && (r.message || r)) , '', 0, 0, r && r.stack); });
+})();
+
 /* ---------- MAPA DO PROCESSO PENAL (fases, quem decide, prazos e reações) ---------- */
 var MPP = [
   { id: 'not', nome: 'Notícia do crime', curto: 'Notícia', quem: 'Ministério Público e órgãos de polícia criminal', tema: 'queixa',
@@ -16755,7 +16781,7 @@ Store.connect();
 </script>
 <script>
 /* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='73ddd40465e2';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
+(function(){var B='a2f8adceb5c5';window.__LXV=B;function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>
