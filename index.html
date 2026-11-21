@@ -15982,6 +15982,7 @@ function exrTipo(t) {
 }
 function exrCotacao(t) { var m = t.match(/\(\s*(\d+(?:[.,]\d+)?)\s*(?:valores|valor|val\.?|v\.?)\s*\)/i) || t.match(/cota[cç][aã]o\s*[:\-–]?\s*(\d+(?:[.,]\d+)?)/i); return m ? parseFloat(m[1].replace(',', '.')) : null; }
 function exrAnalisar(txt) {
+  txt = String(txt || '').replace(/\b(grupo|parte)\s+([\[\]|lI1]{1,3}|[IVX]*[\[\]|l1][IVX]*)(?=[\s.:–-]|$)/gim, function (m, g, n) { return g + ' ' + (n.replace(/[\[\]|]/g, '').replace(/[l1]/g, 'I') || 'I'); });
   var t = String(txt || '').replace(/\r/g, '').replace(/[ \t]+/g, ' ').replace(/\n{3,}/g, '\n\n').trim(), n = norm(t);
   var a = { chars: t.length, palavras: exPal(t) };
   // duração
@@ -17189,7 +17190,7 @@ Store.connect();
 </script>
 <script>
 /* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='4e6649496733';window.__LXV=B;function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
+(function(){var B='aeb1757892d1';window.__LXV=B;function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>
