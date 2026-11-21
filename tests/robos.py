@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Contas automáticas de teste do LEXDESK: Lex, Ratio e Codex.
+"""Contas automáticas de teste do LEXDESK: Tomás Ferreira, Inês Carvalho e Rodrigo Matos.
 
 Abrem o site com uma base de dados simulada (nunca tocam nos dados reais) e:
-  - Lex (explorador): percorre todas as páginas (computador e telemóvel, claro e escuro) e carrega nos botões;
-  - Ratio (calculista): testa as calculadoras com valores normais, extremos e inválidos, e confere resultados conhecidos;
-  - Codex (estudante): faz uma simulação de exame, uma sessão de flashcards e abre casos práticos.
+  - Tomás Ferreira (explorador): percorre todas as páginas (computador e telemóvel, claro e escuro) e carrega nos botões;
+  - Inês Carvalho (calculista): testa as calculadoras com valores normais, extremos e inválidos, e confere resultados conhecidos;
+  - Rodrigo Matos (estudante): faz uma simulação de exame, uma sessão de flashcards e abre casos práticos.
 
 Uso:  python tests/robos.py [caminho/para/index.html] [--rapido]
 Gera robos-relatorio.json e robos-relatorio.md e termina com código 1 se encontrar erros.
@@ -43,7 +43,7 @@ def servir():
 URL = None
 problemas = []   # {robo, onde, tipo, detalhe}
 feito = {'explorador': 0, 'calculista': 0, 'estudante': 0}
-NOMES = {'explorador': 'Lex', 'calculista': 'Ratio', 'estudante': 'Codex'}
+NOMES = {'explorador': 'Tomás Ferreira', 'calculista': 'Inês Carvalho', 'estudante': 'Rodrigo Matos'}
 
 
 def problema(robo, onde, tipo, detalhe):
