@@ -148,6 +148,31 @@ async def explorador(b):
     await ctx.close()
 
 
+async def minutas(b):
+    ctx, pg = await nova_pagina(b, 1440, 900)
+    await ir(pg, 'minutas')
+    if await pg.locator('[data-a="min-back"]').count():
+        await pg.locator('[data-a="min-back"]').first.click(); await pg.wait_for_timeout(200)
+    ids = await pg.evaluate("[...document.querySelectorAll('[data-a=min-open]')].map(e => e.dataset.id)")
+    if len(ids) < 10:
+        problema('explorador', 'gerador de minutas', 'minutas em falta', f'só {len(ids)} modelos')
+    for i in ids:
+        await ir(pg, 'minutas')
+        if await pg.locator('[data-a="min-back"]').count():
+            await pg.locator('[data-a="min-back"]').first.click(); await pg.wait_for_timeout(120)
+        await pg.locator(f'[data-a="min-open"][data-id="{i}"]').first.click(); await pg.wait_for_timeout(200)
+        t = await pg.evaluate("(document.querySelector('#min-prev') || {}).innerText || ''")
+        if len(t) < 100:
+            problema('explorador', f'minuta {i}', 'minuta vazia', t[:80])
+        for l in LIXO:
+            if l in t:
+                problema('explorador', f'minuta {i}', 'texto inválido na minuta', l)
+        for e in tirar_erros(pg):
+            problema('explorador', f'minuta {i}', 'erro de JavaScript', e)
+        feito['explorador'] += 1
+    await ctx.close()
+
+
 # ---------------- Robô Calculista ----------------
 CASOS_CALC = {
     'custas': [({'valor': '30000'}, '510,00'), ({'valor': '300000'}, None), ({'valor': '0'}, None), ({'valor': '-5'}, None), ({'valor': 'abc'}, None)],
@@ -354,6 +379,8 @@ async def main():
             print(f'— {NOMES[nome]} ({nome})', flush=True)
             try:
                 await f(b)
+                if nome == 'explorador':
+                    await minutas(b)
             except Exception as e:
                 problema(nome, 'execução', 'o robô parou', repr(e))
             print(f'  {feito[nome]} verificações', flush=True)

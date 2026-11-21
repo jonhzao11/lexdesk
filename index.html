@@ -1998,6 +1998,12 @@ html.dark .ex-real-cta{background:linear-gradient(135deg,rgba(123,30,43,.22),tra
 html.dark .exr-drop{background:#1A2233;border-color:#2C3548}html.dark .exr-enun,html.dark .exr-sua p{background:#1A2233}html.dark .exr-barra{background:#0B1222;border:1px solid #2C3548}
 html.dark .exr-ck .ok{background:rgba(21,128,61,.18);color:#86EFAC}html.dark .exr-ck .no{background:rgba(185,28,28,.18);color:#FCA5A5}
 .exr-up+.a .li .tx b,.exr-c h2{word-break:break-word}.ex-esq+*{margin-top:0}.split .ch-tb td:first-child{white-space:nowrap}
+/* ---- Minutas: dados do escritório e áreas ---- */
+.min-esc{display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}
+.min-esc>div{display:flex;flex-direction:column;gap:2px}.min-esc b{font-size:16px}.min-esc span:not(.eyebrow){font-size:13.5px;color:var(--muted)}
+.min-areas{flex-wrap:wrap;margin-bottom:6px}.min-grp{margin-top:18px}.min-grp h2{font-size:17px;margin:0 0 10px}
+.min-esc-n{margin-bottom:12px}
+@media (max-width:640px){.min-esc{flex-direction:column;align-items:flex-start}.min-areas{overflow-x:auto;flex-wrap:nowrap}}
 
 </style>
 </head>
@@ -9696,6 +9702,271 @@ var MINUTAS = [
   });
 })();
 
+/* LEXDESK — minutas para a prática profissional: cobrança, execução, cautelares, recursos, penal e cartas (modelos originais) */
+(function () {
+  if (typeof MINUTAS === 'undefined') return;
+  var A = function (l, out, n, vazio) { (l.length ? l : [vazio]).forEach(function (f) { n.v++; out.push(n.v + '.º', f, ''); }); };
+  var L = function (l, out, vazio) { if (l.length) l.forEach(function (t, i) { out.push((i + 1) + '. ' + t); }); else out.push('1. ' + (vazio || '[NOME, PROFISSÃO E MORADA]')); };
+  var fecho = function (p, out, quem) { out.push('', _v(p.local, 'LOCAL') + ', ' + _hoje() + '.', '', quem || 'O(A) Advogado(a),', '', '_______________________________'); return out.join('\n'); };
+  var cab = function (p, juiz) { var c = [juiz === false ? 'Ex.mo(a) Sr.(a) Procurador(a) da República' : 'Exmo.(a) Senhor(a) Juiz(a) de Direito', _v(p.tribunal, 'TRIBUNAL E JUÍZO')]; if ((p.proc || '').trim()) c.push('Processo n.º ' + p.proc.trim()); c.push(''); return c; };
+  var T = { k: 'tribunal', l: 'Tribunal e juízo' }, P = { k: 'proc', l: 'N.º do processo' }, LOC = { k: 'local', l: 'Local' };
+  var ident = function (pre, quem) { return [{ k: pre + 'nome', l: quem + ' — nome' }, { k: pre + 'estado', l: quem + ' — estado civil' }, { k: pre + 'prof', l: quem + ' — profissão' }, { k: pre + 'cc', l: quem + ' — n.º de identificação civil' }, { k: pre + 'nif', l: quem + ' — NIF' }, { k: pre + 'morada', l: quem + ' — morada ou sede' }]; };
+
+  /* ===== COBRANÇA E EXECUÇÃO ===== */
+  MINUTAS.push({
+    id: 'injuncao', nome: 'Requerimento de injunção (guião)', area: 'Cobrança e execução',
+    desc: 'Dados e exposição dos factos para o formulário de injunção: obrigações contratuais até 15 000 € ou transações comerciais.',
+    base: 'Regime anexo ao DL n.º 269/98: obrigações pecuniárias emergentes de contratos até 15 000 € e, sem limite, transações comerciais (DL n.º 62/2013). Requisitos do requerimento: art. 10.º do regime anexo. Oposição: 15 dias. Sem oposição, aposição de fórmula executória; execução em processo sumário (art. 550.º, n.º 2, al. b), do CPC).',
+    campos: ident('a_', 'Requerente').concat(ident('r_', 'Requerido')).concat([
+      { k: 'contrato', l: 'Contrato (tipo e data)', ph: 'contrato de prestação de serviços de 3 de março de 2026' },
+      { k: 'factos', l: 'Exposição sucinta dos factos (uma frase por linha)', t: 'area' },
+      { k: 'capital', l: 'Capital em dívida (€)' }, { k: 'juros', l: 'Juros de mora vencidos (€)' }, { k: 'outras', l: 'Outras quantias (€, ex.: indemnização do DL n.º 62/2013)' },
+      { k: 'taxa', l: 'Taxa de juro aplicada', ph: 'taxa supletiva comercial em vigor' },
+      { k: 'tc', l: 'Trata-se de transação comercial (DL n.º 62/2013)', t: 'check' },
+      { k: 'tribunal', l: 'Tribunal competente se houver oposição', ph: 'Juízo Local Cível do Porto' },
+      { k: 'distrib', l: 'Pretende a distribuição como ação se a notificação se frustrar', t: 'check' }, LOC]),
+    gerar: function (p) {
+      var f = _linhas(p.factos), num = function (x) { return Number(String(x || '').replace(/\./g, '').replace(',', '.')) || 0; }, tot = num(p.capital) + num(p.juros) + num(p.outras);
+      var out = ['REQUERIMENTO DE INJUNÇÃO — DADOS PARA O FORMULÁRIO', '', 'REQUERENTE: ' + _ident(p, 'a_') + '.', '', 'REQUERIDO: ' + _ident(p, 'r_') + '.', '', 'NATUREZA: ' + (p.tc ? 'transação comercial (DL n.º 62/2013).' : 'obrigação pecuniária emergente de contrato de valor não superior a 15 000 €.'), '', 'EXPOSIÇÃO SUCINTA DOS FACTOS:'];
+      (f.length ? f : ['No âmbito de ' + _v(p.contrato, 'CONTRATO') + ', o requerente forneceu/prestou [BENS OU SERVIÇOS] ao requerido.', 'O preço, no valor de [VALOR], venceu-se em [DATA], sem que o requerido o tenha pago, apesar de interpelado.']).forEach(function (x, i) { out.push((i + 1) + '. ' + x); });
+      out.push('', 'PEDIDO:', '— Capital: ' + _euros(p.capital), '— Juros de mora vencidos (' + _v(p.taxa, 'TAXA') + '): ' + _euros(p.juros), '— Outras quantias: ' + _euros(p.outras || '0'), '— Total: ' + (tot ? _euros(String(tot).replace('.', ',')) : '[TOTAL]'), '— Juros vincendos até integral pagamento.', '',
+        'TRIBUNAL COMPETENTE EM CASO DE OPOSIÇÃO: ' + _v(p.tribunal, 'TRIBUNAL'), 'DISTRIBUIÇÃO SE FRUSTRADA A NOTIFICAÇÃO: ' + (p.distrib ? 'Sim' : 'Não'), '', 'Nota: o requerimento é apresentado por via eletrónica no Balcão Nacional de Injunções, com o pagamento da taxa de justiça (Tabela II do RCP).');
+      return fecho(p, out);
+    }
+  });
+
+  MINUTAS.push({
+    id: 'req_exec', nome: 'Requerimento executivo', area: 'Cobrança e execução',
+    desc: 'Execução para pagamento de quantia certa com base em sentença, injunção com fórmula executória ou título extrajudicial.',
+    base: 'Requerimento executivo: art. 724.º do CPC. Títulos executivos: art. 703.º. Forma sumária ou ordinária: art. 550.º. Juros de mora abrangidos pelo título: art. 703.º, n.º 2.',
+    campos: [T].concat(ident('a_', 'Exequente')).concat(ident('r_', 'Executado')).concat([
+      { k: 'titulo', l: 'Título executivo', t: 'select', o: ['sentença condenatória', 'requerimento de injunção com fórmula executória', 'documento autenticado que importa reconhecimento de obrigação', 'título de crédito (letra, livrança ou cheque)'] },
+      { k: 'forma', l: 'Forma do processo', t: 'select', o: ['sumária', 'ordinária'] },
+      { k: 'factos', l: 'Factos que fundamentam o pedido, se não constarem do título (um por linha)', t: 'area' },
+      { k: 'capital', l: 'Capital (€)' }, { k: 'juros', l: 'Juros vencidos (€)' },
+      { k: 'bens', l: 'Bens que indica à penhora (um por linha)', t: 'area', ph: 'Saldo de contas bancárias\nVencimento auferido junto de…' },
+      { k: 'ae', l: 'Agente de execução designado' }, LOC]),
+    gerar: function (p) {
+      var n = { v: 0 }, num = function (x) { return Number(String(x || '').replace(/\./g, '').replace(',', '.')) || 0; }, tot = num(p.capital) + num(p.juros);
+      var out = cab(p).concat([_ident(p, 'a_') + ',', '', 'vem instaurar', '', 'EXECUÇÃO PARA PAGAMENTO DE QUANTIA CERTA, SOB A FORMA ' + (p.forma || 'sumária').toUpperCase() + ',', '', 'contra ' + _ident(p, 'r_') + ',', '', 'com os fundamentos seguintes:', '']);
+      A(['O exequente é titular de ' + (p.titulo || 'sentença condenatória') + ', que se junta e constitui título executivo (art. 703.º do CPC).'].concat(_linhas(p.factos)).concat(['A obrigação é certa, exigível e líquida, ascendendo o capital a ' + _euros(p.capital) + ' e os juros de mora vencidos a ' + _euros(p.juros) + '.', 'O executado não pagou, apesar de interpelado para o efeito.']), out, n, '');
+      out.push('PEDIDO: pagamento de ' + (tot ? _euros(String(tot).replace('.', ',')) : '[TOTAL]') + ', acrescido dos juros vincendos à taxa legal até integral pagamento e das custas.', '', 'BENS À PENHORA:');
+      var b = _linhas(p.bens); if (b.length) b.forEach(function (x) { out.push('— ' + x); }); else out.push('— [BENS CONHECIDOS DO EXECUTADO, COM AS INDICAÇÕES NECESSÁRIAS]');
+      out.push('', 'AGENTE DE EXECUÇÃO: ' + _v(p.ae, 'NOME E N.º DE CÉDULA'), '', 'Valor: ' + (tot ? _euros(String(tot).replace('.', ',')) : '[VALOR]') + '.', '', 'Junta: título executivo, procuração forense e comprovativo do pagamento da taxa de justiça.');
+      return fecho(p, out);
+    }
+  });
+
+  MINUTAS.push({
+    id: 'embargos', nome: 'Embargos de executado', area: 'Cobrança e execução',
+    desc: 'Oposição à execução, por apenso, com os fundamentos admitidos para o tipo de título.',
+    base: 'Prazo: 20 dias a contar da citação (art. 728.º, n.º 1, do CPC). Fundamentos: sentença (art. 729.º), injunção com fórmula executória (art. 857.º), outros títulos (art. 731.º: qualquer defesa admissível no processo de declaração). Indeferimento liminar e contestação do exequente em 20 dias: art. 732.º.',
+    campos: [T, P, { k: 'exec', l: 'Nome do executado (embargante)' }, { k: 'exeq', l: 'Nome do exequente (embargado)' },
+      { k: 'titulo', l: 'Título da execução', t: 'select', o: ['sentença', 'requerimento de injunção com fórmula executória', 'outro título (documento ou título de crédito)'] },
+      { k: 'fund', l: 'Fundamentos da oposição (um artigo por linha)', t: 'area', ph: 'A obrigação exequenda foi integralmente paga em…' },
+      { k: 'susp', l: 'Requerer a suspensão da execução mediante caução', t: 'check' },
+      { k: 'testemunhas', l: 'Rol de testemunhas (uma por linha)', t: 'area' }, LOC],
+    gerar: function (p) {
+      var n = { v: 0 }, out = cab(p).concat([_v(p.exec, 'EXECUTADO') + ', executado nos autos de execução que lhe move ' + _v(p.exeq, 'EXEQUENTE') + ', citado para o efeito, deduz', '', 'OPOSIÇÃO À EXECUÇÃO MEDIANTE EMBARGOS DE EXECUTADO,', '', 'a autuar por apenso, pelos motivos seguintes:', '']);
+      A(_linhas(p.fund), out, n, '[FUNDAMENTOS ADMITIDOS PARA O TÍTULO: ' + (/^senten/.test(p.titulo || 'senten') ? 'ART. 729.º DO CPC' : /injun/.test(p.titulo || '') ? 'ARTS. 857.º E 729.º DO CPC' : 'ART. 731.º DO CPC — QUALQUER DEFESA ADMISSÍVEL NA AÇÃO DECLARATIVA') + ']');
+      out.push('Termos em que devem os embargos ser recebidos e julgados procedentes, declarando-se extinta a execução' + (p.susp ? ', requerendo-se desde já a suspensão da execução mediante a prestação de caução' : '') + '.', '', 'Junta: procuração forense e comprovativo do pagamento da taxa de justiça.', '', 'Rol de testemunhas:');
+      L(_linhas(p.testemunhas), out); return fecho(p, out);
+    }
+  });
+
+  MINUTAS.push({
+    id: 'cautelar', nome: 'Procedimento cautelar (comum ou arresto)', area: 'Cobrança e execução',
+    desc: 'Requerimento inicial de providência cautelar não especificada ou de arresto, com prova sumária.',
+    base: 'Providência comum: fundado receio de lesão grave e dificilmente reparável (art. 362.º do CPC); prova sumária e justificação do receio com a petição (art. 365.º); contraditório, salvo risco para a eficácia (art. 366.º). Arresto: justificado receio de perda da garantia patrimonial (art. 391.º); factos que tornam provável o crédito e relação dos bens (art. 392.º).',
+    campos: [T].concat(ident('a_', 'Requerente')).concat(ident('r_', 'Requerido')).concat([
+      { k: 'tipo', l: 'Providência', t: 'select', o: ['providência cautelar não especificada', 'arresto'] },
+      { k: 'direito', l: 'O direito (ou o crédito) do requerente — factos (um por linha)', t: 'area' },
+      { k: 'receio', l: 'O receio de lesão (ou de perda da garantia patrimonial) — factos (um por linha)', t: 'area' },
+      { k: 'medida', l: 'Providência concreta pedida / bens a arrestar', t: 'area' },
+      { k: 'semaudiencia', l: 'Requerer o decretamento sem audição prévia do requerido', t: 'check' },
+      { k: 'valor', l: 'Valor (€)' }, { k: 'testemunhas', l: 'Testemunhas (uma por linha)', t: 'area' }, LOC]),
+    gerar: function (p) {
+      var arr = /arresto/.test(p.tipo || ''), n = { v: 0 }, out = cab(p).concat([_ident(p, 'a_') + ',', '', 'vem requerer', '', (arr ? 'ARRESTO' : 'PROCEDIMENTO CAUTELAR COMUM') + ',', '', 'contra ' + _ident(p, 'r_') + ',', '', 'com os fundamentos seguintes:', '', 'I — ' + (arr ? 'DO CRÉDITO' : 'DO DIREITO AMEAÇADO'), '']);
+      A(_linhas(p.direito), out, n, arr ? '[FACTOS QUE TORNAM PROVÁVEL A EXISTÊNCIA DO CRÉDITO]' : '[FACTOS QUE MOSTRAM A EXISTÊNCIA PROVÁVEL DO DIREITO]');
+      out.push('II — ' + (arr ? 'DO JUSTIFICADO RECEIO DE PERDA DA GARANTIA PATRIMONIAL' : 'DO FUNDADO RECEIO DE LESÃO GRAVE E DIFICILMENTE REPARÁVEL'), '');
+      A(_linhas(p.receio), out, n, '[FACTOS CONCRETOS QUE JUSTIFICAM O RECEIO: ALIENAÇÃO DE BENS, OCULTAÇÃO, DANO IMINENTE]');
+      out.push('III — DO DIREITO', ''); n.v++;
+      out.push(n.v + '.º', arr ? 'Verificam-se os pressupostos do arresto: probabilidade do crédito e justificado receio de perda da garantia patrimonial (arts. 391.º e 392.º do CPC; art. 619.º do CC).' : 'Verificam-se os pressupostos da providência: probabilidade séria do direito, fundado receio de lesão grave e dificilmente reparável e adequação da medida requerida (arts. 362.º e 368.º do CPC).', '');
+      if (p.semaudiencia) { n.v++; out.push(n.v + '.º', 'A audição prévia do requerido poria em risco sério o fim e a eficácia da providência, pelo que se requer que seja decretada sem a sua audição (art. 366.º, n.º 1, do CPC).', ''); }
+      out.push('Termos em que requer que seja decretada a seguinte providência:', _v(p.medida, arr ? 'ARRESTO DOS BENS RELACIONADOS, COM AS INDICAÇÕES NECESSÁRIAS À DILIGÊNCIA' : 'PROVIDÊNCIA CONCRETA'), '', 'Valor: ' + _euros(p.valor) + '.', '', 'Prova: documentos juntos e testemunhas, a apresentar:'); L(_linhas(p.testemunhas), out);
+      out.push('', 'Junta: documentos, procuração forense e comprovativo do pagamento da taxa de justiça.'); return fecho(p, out);
+    }
+  });
+
+  MINUTAS.push({
+    id: 'recurso_civil', nome: 'Alegações de recurso (apelação)', area: 'Recursos',
+    desc: 'Requerimento de interposição e alegações com conclusões; impugnação da matéria de facto, se a houver.',
+    base: 'Prazo: 30 dias (15 nos processos urgentes e nas apelações do art. 644.º, n.º 2) a contar da notificação (art. 638.º, n.º 1, do CPC), com acréscimo de 10 dias se se reapreciar prova gravada (n.º 7). Conclusões: art. 639.º. Impugnação da matéria de facto, sob pena de rejeição: art. 640.º.',
+    campos: [T, P, { k: 'rec', l: 'Recorrente' }, { k: 'qual', l: 'Qualidade', t: 'select', o: ['Autor', 'Réu'] }, { k: 'decisao', l: 'Decisão recorrida', ph: 'sentença de 10 de novembro de 2026' },
+      { k: 'efeito', l: 'Efeito pretendido', t: 'select', o: ['devolutivo', 'suspensivo (mediante caução)'] },
+      { k: 'factos', l: 'Impugnação da matéria de facto: pontos, provas e passagens da gravação (um por linha; vazio se não houver)', t: 'area' },
+      { k: 'direito', l: 'Alegações de direito (um parágrafo por linha)', t: 'area' },
+      { k: 'concl', l: 'Conclusões (uma por linha)', t: 'area' },
+      { k: 'pedido', l: 'O que se pede ao tribunal superior', ph: 'revogar a sentença recorrida e substituí-la por outra que julgue a ação procedente' }, LOC],
+    gerar: function (p) {
+      var f = _linhas(p.factos), d = _linhas(p.direito), c = _linhas(p.concl);
+      var out = cab(p).concat([_v(p.rec, 'RECORRENTE') + ', ' + (p.qual || 'Autor') + ' nos autos, não se conformando com a ' + _v(p.decisao, 'DECISÃO') + ', vem dela interpor recurso de APELAÇÃO para o Tribunal da Relação, com subida imediata, nos próprios autos e efeito ' + (p.efeito || 'devolutivo') + ', juntando as respetivas alegações.', '', 'Junta: alegações e comprovativo do pagamento da taxa de justiça.', '', '— — —', '', 'ALEGAÇÕES', '', 'Venerandos Juízes Desembargadores,', '']);
+      if (f.length) { out.push('I — DA IMPUGNAÇÃO DA MATÉRIA DE FACTO (art. 640.º do CPC)', ''); f.forEach(function (x) { out.push('— ' + x); }); out.push(''); }
+      out.push((f.length ? 'II' : 'I') + ' — DO DIREITO', ''); (d.length ? d : ['[ERRO DE JULGAMENTO, NORMAS VIOLADAS E INTERPRETAÇÃO DEFENDIDA]']).forEach(function (x) { out.push(x, ''); });
+      out.push('CONCLUSÕES', ''); (c.length ? c : ['[SÍNTESE DOS FUNDAMENTOS: NORMAS VIOLADAS, SENTIDO EM QUE DEVIAM SER APLICADAS]']).forEach(function (x, i) { out.push(String.fromCharCode(65 + (i % 26)) + (i >= 26 ? Math.floor(i / 26) : '') + ') ' + x); });
+      out.push('', 'Termos em que deve o recurso ser julgado procedente e, em consequência, ' + _v(p.pedido, 'PEDIDO') + '.', '', 'Assim se fará JUSTIÇA.'); return fecho(p, out);
+    }
+  });
+
+  /* ===== PROCESSO PENAL ===== */
+  MINUTAS.push({
+    id: 'queixa', nome: 'Queixa-crime', area: 'Processo Penal',
+    desc: 'Queixa ao Ministério Público, com declaração de que pretende constituir-se assistente.',
+    base: 'Legitimidade e forma: arts. 49.º e 246.º do CPP. Prazo: 6 meses a contar do conhecimento do facto e dos autores (art. 115.º, n.º 1, do CP). Declaração de constituição de assistente na denúncia: art. 246.º, n.º 4, do CPP. Nos crimes particulares, a constituição de assistente é obrigatória (art. 50.º).',
+    campos: [{ k: 'tribunal', l: 'DIAP / Procuradoria', ph: 'DIAP de Braga' }].concat(ident('a_', 'Queixoso')).concat([{ k: 'denunciado', l: 'Denunciado (nome e elementos conhecidos)', ph: 'desconhecido' },
+      { k: 'factos', l: 'Factos (um por linha: data, hora, local, o que aconteceu)', t: 'area' }, { k: 'crime', l: 'Crime(s) que entende verificar-se', ph: 'ameaça (art. 153.º do CP)' },
+      { k: 'assist', l: 'Declara que pretende constituir-se assistente', t: 'check' }, { k: 'pic', l: 'Declara que pretende deduzir pedido de indemnização civil', t: 'check' },
+      { k: 'testemunhas', l: 'Testemunhas (uma por linha)', t: 'area' }, { k: 'docs', l: 'Documentos juntos (uma por linha)', t: 'area' }, LOC]),
+    gerar: function (p) {
+      var n = { v: 0 }, out = ['Ex.mo(a) Sr.(a) Procurador(a) da República', _v(p.tribunal, 'DIAP'), '', _ident(p, 'a_') + ',', '', 'vem apresentar', '', 'QUEIXA-CRIME', '', 'contra ' + _v(p.denunciado, 'DENUNCIADO') + ', pelos factos seguintes:', ''];
+      A(_linhas(p.factos), out, n, '[NO DIA …, PELAS … HORAS, EM …, O DENUNCIADO …]');
+      out.push('Tais factos são suscetíveis de integrar a prática de ' + _v(p.crime, 'CRIME') + ', pelo que se requer a instauração do respetivo procedimento criminal.', '');
+      if (p.assist) out.push('O(A) queixoso(a) declara que pretende constituir-se assistente (art. 246.º, n.º 4, do CPP).');
+      if (p.pic) out.push('Mais declara que pretende deduzir pedido de indemnização civil (art. 75.º, n.º 2, do CPP).');
+      out.push('', 'Prova testemunhal:'); L(_linhas(p.testemunhas), out);
+      var d = _linhas(p.docs); if (d.length) { out.push('', 'Documentos:'); d.forEach(function (x) { out.push('— ' + x); }); }
+      return fecho(p, out, p.assist ? 'O(A) Queixoso(a) / O(A) Advogado(a),' : 'O(A) Queixoso(a),');
+    }
+  });
+
+  MINUTAS.push({
+    id: 'req_assistente', nome: 'Requerimento de constituição de assistente', area: 'Processo Penal',
+    desc: 'Pedido de admissão como assistente, com indicação da legitimidade e do momento processual.',
+    base: 'Quem pode ser assistente: art. 68.º, n.º 1, do CPP. Momento: art. 68.º, n.º 3 (até 5 dias antes do debate instrutório ou do julgamento; no prazo dos arts. 284.º e 287.º, n.º 1, al. b); no prazo de recurso). Representação por advogado: art. 70.º. Taxa de justiça: art. 519.º.',
+    campos: [T, P, { k: 'nome', l: 'Nome do requerente' }, { k: 'leg', l: 'Fundamento da legitimidade', t: 'select', o: ['ofendido, titular dos interesses protegidos pela incriminação (art. 68.º, n.º 1, al. a))', 'pessoa de cuja queixa ou acusação particular depende o procedimento (art. 68.º, n.º 1, al. b))', 'familiar do ofendido falecido (art. 68.º, n.º 1, al. c))'] },
+      { k: 'fim', l: 'Finalidade imediata (opcional)', ph: 'deduzir acusação nos termos do art. 284.º do CPP' }, LOC],
+    gerar: function (p) {
+      var out = cab(p).concat([_v(p.nome, 'REQUERENTE') + ', nos autos à margem referenciados, vem requerer a sua admissão a intervir como', '', 'ASSISTENTE,', '', 'nos termos seguintes:', '', '1.º', 'O(A) requerente tem legitimidade, na qualidade de ' + (p.leg || 'ofendido(a)') + '.', '', '2.º', 'O requerimento é tempestivo, nos termos do art. 68.º, n.º 3, do CPP' + ((p.fim || '').trim() ? ', visando ' + p.fim.trim() : '') + '.', '', '3.º', 'Está representado(a) por advogado, conforme procuração que se junta (art. 70.º do CPP), e junta o comprovativo do pagamento da taxa de justiça devida (art. 519.º).', '', 'Termos em que requer a V. Ex.ª que, ouvidos o Ministério Público e o arguido, seja admitido(a) a intervir nos autos como assistente.', '', 'Pede deferimento.']);
+      return fecho(p, out);
+    }
+  });
+
+  MINUTAS.push({
+    id: 'rai', nome: 'Requerimento de abertura de instrução', area: 'Processo Penal',
+    desc: 'Pelo arguido (contra a acusação) ou pelo assistente (contra o arquivamento), com atos de instrução e prova.',
+    base: 'Prazo: 20 dias a contar da notificação da acusação ou do arquivamento (art. 287.º, n.º 1, do CPP). Conteúdo: razões de facto e de direito, atos de instrução, meios de prova e factos a provar; até 20 testemunhas (n.º 2). O requerimento do assistente deve narrar os factos e indicar as normas, como uma acusação (art. 283.º, n.º 3, als. b) e d), por remissão do n.º 2).',
+    campos: [{ k: 'tribunal', l: 'Juízo de instrução criminal' }, P, { k: 'nome', l: 'Requerente' }, { k: 'qual', l: 'Qualidade', t: 'select', o: ['arguido', 'assistente'] },
+      { k: 'contra', l: 'Decisão contra a qual reage', ph: 'despacho de acusação de 4 de novembro de 2026' },
+      { k: 'razoes', l: 'Razões de facto e de direito da discordância (um artigo por linha)', t: 'area' },
+      { k: 'factos', l: 'Só o assistente: factos imputados ao arguido (um artigo por linha)', t: 'area' }, { k: 'normas', l: 'Só o assistente: crime e normas aplicáveis' },
+      { k: 'atos', l: 'Atos de instrução requeridos (um por linha)', t: 'area', ph: 'Inquirição das testemunhas abaixo indicadas\nJunção de documentos' },
+      { k: 'testemunhas', l: 'Testemunhas (até 20; uma por linha)', t: 'area' }, LOC],
+    gerar: function (p) {
+      var ass = (p.qual || 'arguido') === 'assistente', n = { v: 0 };
+      var out = ['Exmo.(a) Senhor(a) Juiz(a) de Instrução Criminal', _v(p.tribunal, 'JUÍZO DE INSTRUÇÃO CRIMINAL'), 'Processo n.º ' + _v(p.proc, 'N.º DO PROCESSO'), '', _v(p.nome, 'REQUERENTE') + ', ' + (p.qual || 'arguido') + ' nos autos, notificado(a) do ' + _v(p.contra, 'DESPACHO') + ' e com ele não se conformando, vem requerer a', '', 'ABERTURA DA INSTRUÇÃO,', '', 'nos termos do art. 287.º do Código de Processo Penal e com os fundamentos seguintes:', '', 'I — DAS RAZÕES DE DISCORDÂNCIA', ''];
+      A(_linhas(p.razoes), out, n, ass ? '[POR QUE RAZÃO OS INDÍCIOS RECOLHIDOS IMPUNHAM A ACUSAÇÃO]' : '[POR QUE RAZÃO OS INDÍCIOS NÃO SÃO SUFICIENTES OU OS FACTOS NÃO CONSTITUEM CRIME]');
+      if (ass) { out.push('II — DOS FACTOS IMPUTADOS AO ARGUIDO', ''); A(_linhas(p.factos), out, n, '[NARRAÇÃO, POR ARTIGOS, DOS FACTOS COM TEMPO, LUGAR E MODO, E DO ELEMENTO SUBJETIVO]'); n.v++; out.push(n.v + '.º', 'Com tal conduta, praticou o arguido ' + _v(p.normas, 'CRIME E NORMAS APLICÁVEIS') + '.', ''); }
+      out.push((ass ? 'III' : 'II') + ' — DOS ATOS DE INSTRUÇÃO E DA PROVA', ''); var at = _linhas(p.atos); (at.length ? at : ['[ATOS DE INSTRUÇÃO E FACTOS QUE COM ELES SE PRETENDE PROVAR]']).forEach(function (x) { out.push('— ' + x); });
+      out.push('', 'Testemunhas:'); L(_linhas(p.testemunhas), out);
+      out.push('', 'Termos em que requer a abertura da instrução e, a final, a prolação de despacho de ' + (ass ? 'pronúncia do arguido pelos factos e crime acima descritos' : 'não pronúncia do arguido') + '.'); return fecho(p, out);
+    }
+  });
+
+  MINUTAS.push({
+    id: 'contestacao_penal', nome: 'Contestação criminal e rol de testemunhas', area: 'Processo Penal',
+    desc: 'Defesa escrita do arguido antes do julgamento, com indicação da prova.',
+    base: 'Prazo: 20 dias a contar da notificação do despacho para apresentação de contestação (arts. 311.º-A e 311.º-B, n.º 1, do CPP). Deduzida por artigos e acompanhada da prova, aplicando-se o art. 283.º, n.º 3, al. e) (até 20 testemunhas).',
+    campos: [T, P, { k: 'arg', l: 'Nome do arguido' }, { k: 'defesa', l: 'Defesa (um artigo por linha)', t: 'area', ph: 'O arguido não se encontrava no local à hora indicada…' },
+      { k: 'abono', l: 'Factos sobre a personalidade e condições de vida (um por linha)', t: 'area' },
+      { k: 'testemunhas', l: 'Testemunhas de factos (uma por linha)', t: 'area' }, { k: 'abonatorias', l: 'Testemunhas abonatórias (até 5; uma por linha)', t: 'area' }, LOC],
+    gerar: function (p) {
+      var n = { v: 0 }, out = cab(p).concat([_v(p.arg, 'ARGUIDO') + ', arguido nos autos à margem identificados, notificado para o efeito, vem apresentar a sua', '', 'CONTESTAÇÃO,', '', 'nos termos seguintes:', '']);
+      A(_linhas(p.defesa), out, n, 'O arguido oferece o merecimento dos autos, reservando a sua defesa para a audiência de julgamento.');
+      var ab = _linhas(p.abono); if (ab.length) { out.push('DAS CONDIÇÕES PESSOAIS DO ARGUIDO', ''); A(ab, out, n, ''); }
+      out.push('Termos em que deve o arguido ser absolvido do crime de que vem acusado.', '', 'PROVA', '', 'Testemunhas (a notificar):'); L(_linhas(p.testemunhas), out);
+      var abt = _linhas(p.abonatorias); if (abt.length) { out.push('', 'Testemunhas que depõem apenas sobre a personalidade e o caráter do arguido:'); L(abt, out); }
+      return fecho(p, out, 'O(A) Defensor(a),');
+    }
+  });
+
+  MINUTAS.push({
+    id: 'recurso_penal', nome: 'Motivação de recurso penal', area: 'Recursos',
+    desc: 'Requerimento de interposição com motivação e conclusões, incluindo impugnação da matéria de facto.',
+    base: 'Prazo: 30 dias a contar da notificação ou do depósito da sentença (art. 411.º, n.º 1, do CPP); o requerimento é sempre motivado (n.º 3). Motivação e conclusões: art. 412.º, n.os 1 e 2. Matéria de facto: pontos, provas e passagens da gravação (n.os 3 e 4).',
+    campos: [T, P, { k: 'rec', l: 'Recorrente' }, { k: 'qual', l: 'Qualidade', t: 'select', o: ['arguido', 'assistente'] }, { k: 'decisao', l: 'Decisão recorrida' },
+      { k: 'factos', l: 'Matéria de facto: pontos, provas e passagens (um por linha; vazio se não houver)', t: 'area' },
+      { k: 'direito', l: 'Motivação de direito (um parágrafo por linha)', t: 'area' }, { k: 'concl', l: 'Conclusões (uma por linha)', t: 'area' },
+      { k: 'pedido', l: 'Pedido', ph: 'revogar a sentença e absolver o arguido' }, LOC],
+    gerar: function (p) {
+      var f = _linhas(p.factos), d = _linhas(p.direito), c = _linhas(p.concl);
+      var out = cab(p).concat([_v(p.rec, 'RECORRENTE') + ', ' + (p.qual || 'arguido') + ' nos autos, não se conformando com a ' + _v(p.decisao, 'DECISÃO') + ', vem dela interpor recurso para o Tribunal da Relação, com a motivação seguinte.', '', '— — —', '', 'MOTIVAÇÃO', '', 'Venerandos Juízes Desembargadores,', '']);
+      if (f.length) { out.push('I — DA MATÉRIA DE FACTO (art. 412.º, n.os 3 e 4, do CPP)', ''); f.forEach(function (x) { out.push('— ' + x); }); out.push(''); }
+      out.push((f.length ? 'II' : 'I') + ' — DO DIREITO', ''); (d.length ? d : ['[ERRO DE DIREITO, NORMAS VIOLADAS E INTERPRETAÇÃO DEFENDIDA]']).forEach(function (x) { out.push(x, ''); });
+      out.push('CONCLUSÕES', ''); (c.length ? c : ['[NORMAS VIOLADAS; SENTIDO EM QUE FORAM INTERPRETADAS E SENTIDO EM QUE O DEVIAM TER SIDO]']).forEach(function (x, i) { out.push((i + 1) + '. ' + x); });
+      out.push('', 'Termos em que deve o recurso ser julgado procedente e, em consequência, ' + _v(p.pedido, 'PEDIDO') + '.'); return fecho(p, out, p.qual === 'arguido' ? 'O(A) Defensor(a),' : 'O(A) Advogado(a),');
+    }
+  });
+
+  /* ===== CARTAS E COMUNICAÇÕES ===== */
+  MINUTAS.push({
+    id: 'carta_interpelacao', nome: 'Carta de interpelação (constituição em mora)', area: 'Cartas e comunicações',
+    desc: 'Interpelação extrajudicial para pagamento, com prazo admonitório opcional.',
+    base: 'Constituição em mora por interpelação: art. 805.º, n.º 1, do CC. Juros de mora: art. 806.º. Prazo admonitório: decorrido sem cumprimento, a obrigação considera-se definitivamente não cumprida (art. 808.º, n.º 1). Enviar por carta registada com aviso de receção.',
+    campos: [{ k: 'remet', l: 'Remetente (cliente)' }, { k: 'dest', l: 'Destinatário' }, { k: 'destmorada', l: 'Morada do destinatário' },
+      { k: 'origem', l: 'Origem da dívida', ph: 'fatura n.º 123, de 2 de setembro de 2026, relativa a serviços de consultoria' }, { k: 'valor', l: 'Valor em dívida (€)' },
+      { k: 'prazo', l: 'Prazo para pagar (dias)', ph: '8' }, { k: 'iban', l: 'IBAN para pagamento' },
+      { k: 'adm', l: 'Prazo admonitório: o não pagamento leva à resolução do contrato (art. 808.º do CC)', t: 'check' },
+      { k: 'mand', l: 'Enviada pelo advogado, em representação do cliente', t: 'check' }, LOC],
+    gerar: function (p) {
+      var out = [_v(p.dest, 'DESTINATÁRIO'), _v(p.destmorada, 'MORADA'), '', 'Carta registada com aviso de receção', '', _v(p.local, 'LOCAL') + ', ' + _hoje(), '', 'Assunto: Interpelação para pagamento', '', 'Ex.mo(a) Senhor(a),', '',
+        (p.mand ? 'Na qualidade de mandatário(a) de ' + _v(p.remet, 'CLIENTE') + ', e em sua representação, ' : '') + 'vimos interpelar V. Ex.ª para o pagamento da quantia de ' + _euros(p.valor) + ', referente a ' + _v(p.origem, 'ORIGEM DA DÍVIDA') + ', que se encontra vencida e por pagar.', '',
+        'Solicitamos que o pagamento seja efetuado no prazo de ' + _v(p.prazo, 'N.º') + ' dias a contar da receção desta carta, por transferência para o IBAN ' + _v(p.iban, 'IBAN') + '.', '',
+        'A partir da receção da presente interpelação, V. Ex.ª fica constituído(a) em mora, sendo devidos juros à taxa legal até integral pagamento (arts. 805.º e 806.º do Código Civil).', ''];
+      if (p.adm) out.push('Mais se comunica que, decorrido aquele prazo sem pagamento, a obrigação se considerará definitivamente incumprida, para todos os efeitos do art. 808.º do Código Civil, com a consequente resolução do contrato.', '');
+      out.push('Na falta de pagamento, serão desencadeados os meios judiciais adequados à cobrança do crédito, com os inerentes encargos.', '', 'Com os melhores cumprimentos,', '', '_______________________________', p.mand ? _v(p.adv, 'ADVOGADO(A)') + ((p.ced || '').trim() ? ', cédula profissional n.º ' + p.ced.trim() : '') : _v(p.remet, 'REMETENTE'));
+      return out.join('\n');
+    }
+  });
+
+  MINUTAS.push({
+    id: 'carta_resolucao', nome: 'Carta de resolução de contrato', area: 'Cartas e comunicações',
+    desc: 'Declaração de resolução por incumprimento definitivo ou perda de interesse, com pedido de restituição.',
+    base: 'Resolução fundada na lei ou em convenção (art. 432.º do CC), por declaração à outra parte (art. 436.º, n.º 1). Incumprimento definitivo: impossibilidade culposa (art. 801.º, n.º 2), perda objetiva do interesse ou prazo admonitório (art. 808.º). Efeitos restitutivos: arts. 433.º e 289.º.',
+    campos: [{ k: 'remet', l: 'Remetente' }, { k: 'dest', l: 'Destinatário' }, { k: 'destmorada', l: 'Morada do destinatário' },
+      { k: 'contrato', l: 'Contrato', ph: 'contrato de empreitada celebrado em 5 de maio de 2026' },
+      { k: 'fund', l: 'Fundamento', t: 'select', o: ['decurso do prazo admonitório fixado (art. 808.º do CC)', 'perda objetiva do interesse na prestação (art. 808.º do CC)', 'cláusula resolutiva expressa do contrato', 'impossibilidade culposa da prestação (art. 801.º do CC)'] },
+      { k: 'factos', l: 'Factos do incumprimento (um por linha)', t: 'area' }, { k: 'rest', l: 'O que se pede que seja restituído', ph: 'a quantia de 5.000,00 € paga a título de adiantamento' },
+      { k: 'prazo', l: 'Prazo para restituir (dias)', ph: '10' }, LOC],
+    gerar: function (p) {
+      var f = _linhas(p.factos), out = [_v(p.dest, 'DESTINATÁRIO'), _v(p.destmorada, 'MORADA'), '', 'Carta registada com aviso de receção', '', _v(p.local, 'LOCAL') + ', ' + _hoje(), '', 'Assunto: Resolução do ' + _v(p.contrato, 'CONTRATO'), '', 'Ex.mo(a) Senhor(a),', ''];
+      (f.length ? f : ['[DESCRIÇÃO DO INCUMPRIMENTO: O QUE DEVIA SER FEITO, ATÉ QUANDO, E O QUE NÃO FOI FEITO]']).forEach(function (x) { out.push(x, ''); });
+      out.push('Verificando-se o fundamento de ' + (p.fund || 'decurso do prazo admonitório fixado (art. 808.º do CC)') + ', comunico, nos termos do art. 436.º, n.º 1, do Código Civil, a RESOLUÇÃO do ' + _v(p.contrato, 'CONTRATO') + ', com efeitos a partir da receção desta carta.', '',
+        'Em consequência, solicito a restituição de ' + _v(p.rest, 'PRESTAÇÕES A RESTITUIR') + ' no prazo de ' + _v(p.prazo, 'N.º') + ' dias, sem prejuízo da indemnização pelos danos sofridos.', '', 'Com os melhores cumprimentos,', '', '_______________________________', _v(p.remet, 'REMETENTE'));
+      return out.join('\n');
+    }
+  });
+
+  MINUTAS.push({
+    id: 'carta_arrendamento', nome: 'Comunicação ao arrendatário', area: 'Cartas e comunicações',
+    desc: 'Resolução por falta de pagamento de rendas ou oposição à renovação do contrato pelo senhorio.',
+    base: 'Resolução por mora igual ou superior a três meses (art. 1083.º, n.º 3, do CC), por comunicação ao arrendatário (art. 1084.º, n.º 2); fica sem efeito se este puser fim à mora num mês, uma única vez por contrato (n.os 3 e 4). Esta comunicação faz-se por notificação judicial avulsa ou contacto pessoal de advogado, solicitador ou agente de execução (art. 9.º, n.º 7, da Lei n.º 6/2006, NRAU). Oposição à renovação: antecedência do art. 1097.º do CC, por carta registada com aviso de receção.',
+    campos: [{ k: 'senh', l: 'Senhorio' }, { k: 'arr', l: 'Arrendatário' }, { k: 'imovel', l: 'Imóvel arrendado' }, { k: 'data', l: 'Data e prazo do contrato', ph: 'contrato de 1 de janeiro de 2022, pelo prazo de cinco anos' },
+      { k: 'tipo', l: 'Comunicação', t: 'select', o: ['Resolução por falta de pagamento de rendas', 'Oposição à renovação pelo senhorio'] },
+      { k: 'rendas', l: 'Rendas em dívida (meses e valores)', ph: 'setembro, outubro e novembro de 2026, de 650,00 € cada' }, { k: 'total', l: 'Total em dívida (€)' },
+      { k: 'termo', l: 'Data do termo do contrato (oposição à renovação)' }, { k: 'entrega', l: 'Prazo para entrega do locado' }, LOC],
+    gerar: function (p) {
+      var res = /^Resolu/.test(p.tipo || 'Resolu'), out = [_v(p.arr, 'ARRENDATÁRIO'), _v(p.imovel, 'IMÓVEL'), '', res ? '(Comunicação a efetuar por notificação judicial avulsa ou contacto pessoal de advogado, solicitador ou agente de execução)' : 'Carta registada com aviso de receção', '', _v(p.local, 'LOCAL') + ', ' + _hoje(), '', 'Assunto: ' + (res ? 'Resolução do contrato de arrendamento por falta de pagamento de rendas' : 'Oposição à renovação do contrato de arrendamento'), '', 'Ex.mo(a) Senhor(a),', ''];
+      if (res) out.push('Na qualidade de senhorio do imóvel acima identificado, objeto do ' + _v(p.data, 'CONTRATO') + ', comunico que se encontram por pagar as rendas de ' + _v(p.rendas, 'MESES E VALORES') + ', no total de ' + _euros(p.total) + ', numa mora igual ou superior a três meses.', '',
+        'Nos termos dos arts. 1083.º, n.º 3, e 1084.º, n.º 2, do Código Civil, declaro RESOLVIDO o contrato de arrendamento, devendo o locado ser entregue livre de pessoas e bens até ' + _v(p.entrega, 'DATA') + '.', '',
+        'Mais informo que a resolução fica sem efeito se, no prazo de um mês, puser fim à mora, pagando as rendas em dívida (art. 1084.º, n.º 3, do Código Civil).');
+      else out.push('Na qualidade de senhorio do imóvel acima identificado, objeto do ' + _v(p.data, 'CONTRATO') + ', comunico, nos termos do art. 1097.º do Código Civil, a minha oposição à renovação do contrato, que cessa assim no seu termo, em ' + _v(p.termo, 'DATA DO TERMO') + '.', '',
+        'Nessa data, o locado deverá ser entregue livre de pessoas e bens e no estado em que foi recebido, ressalvadas as deteriorações inerentes a uma prudente utilização.');
+      out.push('', 'Com os melhores cumprimentos,', '', '_______________________________', _v(p.senh, 'SENHORIO'));
+      return out.join('\n');
+    }
+  });
+})();
+
 </script>
 <script>
 /* ---------- SERVIDOR LEXDESK (Supabase): contas, dados e ficheiros ---------- */
@@ -16757,6 +17028,60 @@ vGuia = function () {
   return h.replace('<aside class="gu-side">', '<aside class="gu-side"><button class="card ch-cta" data-a="min-open" data-id="' + m.id + '"><b>📝 Minuta: ' + esc(m.nome) + '</b><span>Preencha os campos e obtenha a peça estruturada, pronta a rever.</span></button>');
 };
 
+/* ---------- MINUTAS: dados do escritório, assinatura automática e lista por área ---------- */
+function escDados() { var d = null; try { d = JSON.parse(lsGet('lexdesk_escritorio') || 'null'); } catch (e) { } return d || {}; }
+function escTem() { var d = escDados(); return !!(d.adv || '').trim(); }
+function escAssinatura(d) {
+  var l = [d.adv.trim()]; if ((d.ced || '').trim()) l.push('Cédula profissional n.º ' + d.ced.trim());
+  if ((d.advmorada || '').trim()) l.push('Domicílio profissional: ' + d.advmorada.trim());
+  var c = [(d.tel || '').trim(), (d.email || '').trim()].filter(Boolean).join(' · '); if (c) l.push(c);
+  return l.join('\n');
+}
+(function () {
+  if (typeof MINUTAS === 'undefined') return;
+  MINUTAS.forEach(function (m) {
+    var g = m.gerar;
+    m.gerar = function (p) {
+      var d = escDados(), q = {}; Object.keys(p || {}).forEach(function (k) { q[k] = p[k]; });
+      ['adv', 'ced', 'advmorada', 'local'].forEach(function (k) { if (!String(q[k] || '').trim() && (d[k] || '').trim()) q[k] = d[k]; });
+      var t = g(q);
+      if (!(d.adv || '').trim() || m.id === 'acusacao_mp' || m.id === 'procuracao') return t;
+      return t.replace(/(O\(A\) (?:Advogado\(a\)|Defensor\(a\)),|O\(A\) Queixoso\(a\) \/ O\(A\) Advogado\(a\),)(\ncom domicílio profissional em [^\n]*)?\n\n_{10,}$/, function (x, quem) { return quem + '\n\n_______________________________\n' + escAssinatura(d); });
+    };
+  });
+})();
+function escModal() {
+  var d = escDados(), f = function (k, l, ph) { return '<label class="f">' + esc(l) + '<input class="in" id="esc-' + k + '" value="' + esc(d[k] || '') + '" placeholder="' + esc(ph || '') + '"></label>'; };
+  openModal('Dados do escritório', '<p style="margin:0;font-size:14px;color:var(--muted)">Ficam guardados neste dispositivo e preenchem automaticamente a identificação e a assinatura do mandatário em todas as minutas.</p>' +
+    f('adv', 'Nome do advogado(a) / solicitador(a)', 'Dr.(a) …') + f('ced', 'N.º da cédula profissional') + f('advmorada', 'Domicílio profissional') + f('tel', 'Telefone') + f('email', 'Email profissional') + f('local', 'Localidade (para a data)', 'Porto'),
+    '<button class="btn" data-a="close">Cancelar</button>' + (escTem() ? '<button class="btn" data-a="esc-limpar">Apagar dados</button>' : '') + '<button class="btn pri" data-a="esc-guardar">Guardar</button>');
+}
+A['esc-editar'] = function () { escModal(); };
+A['esc-guardar'] = function () { var d = {}; ['adv', 'ced', 'advmorada', 'tel', 'email', 'local'].forEach(function (k) { var e = $('#esc-' + k); d[k] = e ? e.value.trim().slice(0, 200) : ''; }); lsSet('lexdesk_escritorio', JSON.stringify(d)); closeModal(); toast('Dados do escritório guardados.'); render(); };
+A['esc-limpar'] = function () { lsSet('lexdesk_escritorio', ''); closeModal(); toast('Dados do escritório apagados.'); render(); };
+var MIN_AREAS = ['Geral', 'Processo Civil', 'Cobrança e execução', 'Recursos', 'Processo Penal', 'Cartas e comunicações'];
+vMinutas = function () {
+  var d = escDados(), f = S.minArea || 'Todas', areas = ['Todas'].concat(MIN_AREAS.filter(function (a) { return MINUTAS.some(function (m) { return m.area === a; }); })).concat(MINUTAS.map(function (m) { return m.area; }).filter(function (a, i, l) { return MIN_AREAS.indexOf(a) < 0 && l.indexOf(a) === i; }));
+  var h = '<div class="head"><div><h1>Gerador de minutas</h1><p class="sub">' + MINUTAS.length + ' modelos para estudantes e profissionais. Preencha os campos e obtenha a peça estruturada, pronta a rever, copiar ou descarregar em Word.</p></div></div>';
+  h += '<section class="card min-esc"><div><span class="eyebrow">Dados do escritório</span>' + (escTem() ? '<b>' + esc(d.adv) + '</b><span>' + esc([d.ced ? 'Cédula n.º ' + d.ced : '', d.advmorada || ''].filter(Boolean).join(' · ')) + '</span>' : '<b>Preencha uma vez, use em todas as peças</b><span>Nome, cédula e domicílio profissional entram automaticamente na identificação e na assinatura.</span>') + '</div><button class="btn' + (escTem() ? '' : ' wine') + '" data-a="esc-editar">' + (escTem() ? 'Editar' : 'Preencher') + '</button></section>';
+  h += '<div class="seg min-areas" role="group" aria-label="Área">' + areas.map(function (a) { var n = a === 'Todas' ? MINUTAS.length : MINUTAS.filter(function (m) { return m.area === a; }).length; return '<button class="' + (f === a ? 'on' : '') + '" data-a="min-area" data-id="' + esc(a) + '">' + esc(a) + ' <span class="ex-n">' + n + '</span></button>'; }).join('') + '</div>';
+  var grupos = (f === 'Todas' ? areas.slice(1) : [f]);
+  h += grupos.map(function (a) {
+    var l = MINUTAS.filter(function (m) { return m.area === a; }); if (!l.length) return '';
+    return '<section class="min-grp"><h2>' + esc(a) + '</h2><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">' + l.map(function (m) {
+      return '<button class="card" data-a="min-open" data-id="' + m.id + '" style="text-align:left;cursor:pointer;font:inherit;color:inherit"><span class="wsic">' + I.file + '</span><span class="ttl">' + esc(m.nome) + '</span><span style="font-size:14px;color:var(--muted);line-height:1.6">' + esc(m.desc) + '</span></button>';
+    }).join('') + '</div></section>';
+  }).join('');
+  return h + '<div class="note">As minutas são pontos de partida. Revise sempre o conteúdo, os prazos e os requisitos formais aplicáveis ao caso concreto antes de as utilizar.</div>';
+};
+A['min-area'] = function (el) { S.minArea = el.dataset.id; render(); };
+var _vMinutaESC = vMinuta;
+vMinuta = function () {
+  var h = _vMinutaESC();
+  var aviso = escTem() ? '<div class="note min-esc-n">✓ Assinatura e dados do mandatário preenchidos com os <button class="lnk" data-a="esc-editar">dados do escritório</button>.</div>' : '<div class="note min-esc-n">Dica: guarde os <button class="lnk" data-a="esc-editar">dados do escritório</button> para que a assinatura seja preenchida automaticamente.</div>';
+  return h.replace('<div class="split">', aviso + '<div class="split">');
+};
+
 /* ---------- MAPA DO PROCESSO PENAL (fases, quem decide, prazos e reações) ---------- */
 var MPP = [
   { id: 'not', nome: 'Notícia do crime', curto: 'Notícia', quem: 'Ministério Público e órgãos de polícia criminal', tema: 'queixa',
@@ -17727,7 +18052,7 @@ Store.connect();
 </script>
 <script>
 /* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='0322459f6b90';window.__LXV=B;function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
+(function(){var B='dbd59f50ff1f';window.__LXV=B;function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>
