@@ -1971,6 +1971,33 @@ html.dark .ch-li,html.dark .ch-e{background:#1A2233;border-color:#2C3548}html.da
 .robo-av{display:grid;place-items:center;background:#EEF0F5!important;color:inherit!important;font-size:14px}.pd-rk-l.robo,.seq-rk-l.robo{cursor:default}.seq-rk-l.robo:hover{background:none}
 .robo-chip{margin-left:6px;font-size:11px}.robo-tag{font-size:10.5px;color:#6B7280;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
 html.dark .robo-av{background:#1A2233!important}html.dark .robo-tag{color:#A9B1C2}
+/* ---- Simulador: dificuldade, esquema e exame real ---- */
+.ex-n{font-size:11px;opacity:.6;margin-left:2px}.ex-qtd{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.ex-livre{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}.ex-livre .in{width:84px;padding:7px 10px}.ex-livre.on .in{border-color:#7B1E2B}
+.ex-real-cta{display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:18px;margin-bottom:16px;background:linear-gradient(135deg,#FBEFF1,#fff);border:1px solid #E6C9CE}
+.ex-real-cta h2{margin:2px 0 4px;font-size:18px}.ex-real-cta p{margin:0;font-size:14px;color:#4B5563;line-height:1.5;max-width:760px}
+@media (max-width:700px){.ex-real-cta{flex-direction:column;align-items:flex-start}}
+.ex-dif{margin-left:8px;font-size:11px}.ex-dif.d1{background:#ECFDF3;color:#15803D}.ex-dif.d3{background:#FBEFF1;color:#7B1E2B}
+.ex-esq{display:flex;flex-direction:column;gap:14px}.ex-esq .ch-pa{grid-template-columns:28px minmax(0,1fr)}.ex-ul{margin:4px 0;padding-left:18px;line-height:1.6;font-size:14px}.ex-epi{color:#6B7280;font-size:13px}
+.exr-drop{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;padding:34px 18px;border:2px dashed #D6D9E0;border-radius:16px;cursor:pointer;background:#FAFBFC;transition:border-color .15s,background .15s}
+.exr-drop:hover,.exr-drop.on{border-color:#7B1E2B;background:#FBEFF1}.exr-drop b{font-size:15px}.exr-drop span{font-size:13px;color:#6B7280}.exr-ic svg{width:28px;height:28px}
+.exr-prog{display:flex;flex-direction:column;gap:6px;font-size:13px;color:#4B5563;margin-top:4px}
+.exr-passos{margin:4px 0 0;padding-left:20px;font-size:14px;line-height:1.6;color:#374151}
+.exr-kpi{margin-bottom:16px}.exr-kpi .card{gap:4px}.exr-kpi b{font-size:20px}.exr-kpi b small{font-size:14px;color:#6B7280}.exr-kpi span:last-child{font-size:13px;color:#6B7280}
+.exr-h3{margin:14px 0 8px;font-size:14px}.exr-chips{display:flex;flex-wrap:wrap;gap:6px}.exr-chips .chip{cursor:pointer;border:0;font:inherit;font-size:12.5px}
+.exr-barra{position:sticky;top:76px;z-index:5;display:flex;align-items:center;gap:14px;justify-content:space-between;padding:10px 16px;margin-bottom:14px;border-radius:14px;background:#0F1B3D;color:#fff}
+.exr-barra b{font:800 18px var(--sans)}.exr-barra .ch-sm{color:#C9D0DE}.exr-barra span.fim b{color:#FCA5A5}
+@media (max-width:700px){.exr-barra{top:8px}.exr-barra .ch-sm{display:none}}
+.exr-g{gap:14px;margin-bottom:14px}.exr-enun{padding:14px 16px;border-radius:12px;background:#F7F8FB;font-size:14.5px;line-height:1.65;white-space:pre-wrap}
+.exr-q{display:flex;flex-direction:column;gap:8px}.exr-q label,.exr-q p{font-size:14.5px;line-height:1.55;margin:0}.exr-cot{color:#6B7280;font-size:12.5px;white-space:nowrap}
+.exr-ta{min-height:150px;resize:vertical;font:inherit;line-height:1.6}.exr-ops{display:flex;flex-direction:column;gap:6px}
+.exr-c{gap:12px;margin-bottom:14px}.exr-c h2{font-size:15.5px;line-height:1.45;margin:0}
+.exr-sua summary{cursor:pointer;font-size:13.5px;color:#6B7280}.exr-sua p{font-size:14px;line-height:1.6;background:#F7F8FB;padding:10px 12px;border-radius:10px}
+.exr-ck{display:flex;flex-wrap:wrap;gap:6px}.exr-ck span{font-size:12.5px;padding:3px 9px;border-radius:99px}.exr-ck .ok{background:#ECFDF3;color:#15803D}.exr-ck .no{background:#FEF2F2;color:#B91C1C}
+html.dark .ex-real-cta{background:linear-gradient(135deg,rgba(123,30,43,.22),transparent);border-color:#4A2A33}html.dark .ex-real-cta p,html.dark .exr-passos{color:#C9D0DE}
+html.dark .exr-drop{background:#1A2233;border-color:#2C3548}html.dark .exr-enun,html.dark .exr-sua p{background:#1A2233}html.dark .exr-barra{background:#0B1222;border:1px solid #2C3548}
+html.dark .exr-ck .ok{background:rgba(21,128,61,.18);color:#86EFAC}html.dark .exr-ck .no{background:rgba(185,28,28,.18);color:#FCA5A5}
+.exr-up+.a .li .tx b,.exr-c h2{word-break:break-word}.ex-esq+*{margin-top:0}.split .ch-tb td:first-child{white-space:nowrap}
 
 </style>
 </head>
@@ -15811,6 +15838,387 @@ A['cx-del'] = function (el) { var v = cxV('cumulo'); v.penas.splice(Number(el.da
   window.addEventListener('unhandledrejection', function (ev) { var r = ev && ev.reason; registar('Promessa rejeitada: ' + (r && (r.message || r)) , '', 0, 0, r && r.stack); });
 })();
 
+/* ---------- SIMULADOR DE EXAMES: dificuldade, quantidade, esquema de resolução e exame real carregado pelo utilizador ---------- */
+/* ===== 1. Dificuldade das questões (estimada a partir da própria questão) ===== */
+var EX_DIF = null, EX_DIF_LBL = { 1: 'Básico', 2: 'Intermédio', 3: 'Avançado' };
+function exPal(t) { return String(t || '').split(/\s+/).filter(Boolean).length; }
+function exRefs(t) { if (typeof leiLinkify !== 'function') return []; var mt = LEI.meta; LEI.meta = null; var h; try { h = leiLinkify(t); } finally { LEI.meta = mt; } var m = h.match(/data-id="[^"]+"/g) || []; return m.map(function (x) { return x.slice(9, -1); }).filter(function (x, i, l) { return l.indexOf(x) === i; }); }
+function exNumArts(t) { return (String(t || '').match(/\bart(?:igo|s)?\.?\s*\d+/gi) || []).length; }
+function exDifCalc() {
+  if (EX_DIF) return EX_DIF;
+  var sc = QUESTOES.map(function (q) {
+    var ops = (q.o || []).map(exPal), med = ops.length ? ops.reduce(function (a, b) { return a + b; }, 0) / ops.length : 0;
+    var s = exPal(q.q) + med * 1.6 + exNumArts(q.e) * 5 + (/\b(exceto|salvo|não é|nenhuma|incorreta|falsa)\b/i.test(q.q) ? 8 : 0) + (/\b\d+(,\d+)?\s*%|\b\d+\s*(dias|meses|anos)\b/.test((q.o || []).join(' ')) ? 4 : 0);
+    return [q.id, s];
+  }).sort(function (a, b) { return a[1] - b[1]; });
+  EX_DIF = {}; var n = sc.length;
+  sc.forEach(function (x, i) { EX_DIF[x[0]] = i < n / 3 ? 1 : i < 2 * n / 3 ? 2 : 3; });
+  return EX_DIF;
+}
+function exDif(id) { return exDifCalc()[id] || 2; }
+var _estPoolEX = estPool;
+estPool = function (c) { var l = _estPoolEX(c); return c && c.dif && c.dif !== 'todas' ? l.filter(function (q) { return exDif(q.id) === Number(c.dif); }) : l; };
+
+var _vExamesSetupEX = vExamesSetup;
+vExamesSetup = function () {
+  if (S.exr) return vExameReal();
+  var c = S.examCfg; if (!c.dif) c.dif = 'todas';
+  var h = _vExamesSetupEX();
+  var base = _estPoolEX(c), cont = function (d) { return d === 'todas' ? base.length : base.filter(function (q) { return exDif(q.id) === d; }).length; };
+  var dif = '<div style="display:flex;flex-direction:column;gap:8px"><span class="eyebrow">Dificuldade</span><div class="seg" role="group" aria-label="Dificuldade">' +
+    [['todas', 'Misto'], [1, 'Básico'], [2, 'Intermédio'], [3, 'Avançado']].map(function (d) { return '<button class="' + (String(c.dif) === String(d[0]) ? 'on' : '') + '" data-a="cfg-dif" data-id="' + d[0] + '">' + d[1] + ' <span class="ex-n">' + cont(d[0]) + '</span></button>'; }).join('') + '</div></div>';
+  var nOps = [5, 10, 20, 30, 50, 0], livre = nOps.indexOf(c.n) < 0;
+  var qtd = '<div style="display:flex;flex-direction:column;gap:8px"><span class="eyebrow">Número de questões</span><div class="ex-qtd"><div class="seg" role="group" aria-label="Número de questões">' + nOps.map(function (n) { return '<button class="' + (c.n === n ? 'on' : '') + '" data-a="cfg-n" data-id="' + n + '">' + (n ? n : 'Todas') + '</button>'; }).join('') +
+    '</div><label class="ex-livre' + (livre ? ' on' : '') + '">Outro<input class="in" type="number" min="1" max="500" inputmode="numeric" id="ex-n-livre" value="' + (livre ? c.n : '') + '" aria-label="Outro número de questões"></label></div><span style="font-size:12px;color:var(--muted)">' + estPool(c).length + ' questões disponíveis nesta seleção.</span></div>';
+  h = h.replace(/<div style="display:flex;flex-direction:column;gap:8px"><span class="eyebrow">Número de questões<\/span>[\s\S]*?nesta seleção\.<\/span><\/div>/, dif + qtd);
+  var real = '<section class="card ex-real-cta"><div><span class="eyebrow">Novo</span><h2>Treinar com um exame real</h2><p>Carregue um enunciado (PDF, Word ou fotografia). O LEXDESK analisa a estrutura, os temas e as normas e prepara um exame-modelo do mesmo tipo para resolver por escrito, com esquemas de resolução.</p></div><button class="btn wine" data-a="exr-abrir">Carregar exame</button></section>';
+  return h.replace('<div class="split">', real + '<div class="split">');
+};
+A['cfg-dif'] = function (el) { S.examCfg.dif = el.dataset.id === 'todas' ? 'todas' : Number(el.dataset.id); render(); };
+document.addEventListener('change', function (ev) { if (ev.target && ev.target.id === 'ex-n-livre') { var n = Math.max(1, Math.min(500, parseInt(ev.target.value, 10) || 0)); if (n) { S.examCfg.n = n; render(); } } });
+
+/* ===== 2. Esquema de resolução de cada questão ===== */
+function exEpigrafes(refs, alvo) {
+  if (typeof leiArt !== 'function' || !SB) return;
+  refs.forEach(function (r) { var p = r.split('|'); leiArt(p[0], p[1]).then(function (x) { var el = document.querySelector('[data-epi="' + alvo + '|' + r + '"]'); if (el && x) el.textContent = x.epigrafe ? '— ' + x.epigrafe : ''; }, function () { }); });
+}
+function exDo(dip) { return /^(crp|losj|lgt|jp)$/.test(dip) ? 'da' : 'do'; }
+function exSigla(dip) { var d = typeof leiDipInfo === 'function' ? leiDipInfo(dip) : null; return d ? d.sigla : dip.toUpperCase(); }
+function exGlossario(t, d) {
+  if (typeof GLOSS === 'undefined') return [];
+  var n = norm(t), out = [];
+  GLOSS.forEach(function (g) { if (out.length >= 3 || (d && g[1] !== d)) return; var ks = [g[0]].concat(g[4] || []); if (ks.some(function (k) { k = norm(k); return k.length > 4 && n.indexOf(k) >= 0; })) out.push(g); });
+  return out;
+}
+function exEsquemaQuestao(q, sel) {
+  var refs = exRefs(q.q + ' ' + q.e), gl = exGlossario(q.q + ' ' + q.e, q.d), tem = q.t && typeof guiaTem === 'function' && guiaTem(q.d, q.t), alvo = 'q' + q.id;
+  var h = '<div class="ex-esq">';
+  h += '<section class="ch-pa"><span class="ch-n">1</span><div><h3>Identificar a questão</h3><p>' + esc(DISC[q.d] ? DISC[q.d].nome : '') + (q.t ? ' · ' + esc(temaNome(q.d, q.t)) : '') + '. Pergunta-se: <i>' + esc(q.q) + '</i></p></div></section>';
+  h += '<section class="ch-pa"><span class="ch-n">2</span><div><h3>Normas aplicáveis</h3>' + (refs.length ? '<ul class="ex-ul">' + refs.map(function (r) { var p = r.split('|'); return '<li><button class="lnk lei-lk" data-a="lei-ver" data-id="' + esc(r) + '">Art. ' + esc(p[1]) + '.º ' + exDo(p[0]) + ' ' + esc(exSigla(p[0])) + '</button> <span class="ex-epi" data-epi="' + alvo + '|' + esc(r) + '"></span></li>'; }).join('') + '</ul>' : '<p class="ch-sm">Esta questão não remete para um artigo concreto: a resposta resulta dos princípios e do regime explicados abaixo e no guia do tema.</p>') + '</div></section>';
+  if (tem || gl.length) h += '<section class="ch-pa"><span class="ch-n">3</span><div><h3>Fontes de estudo</h3>' + (tem ? '<p><button class="lnk" data-a="exq-guia" data-id="' + q.d + '|' + q.t + '">Matéria explicada: ' + esc(temaNome(q.d, q.t)) + ' ›</button></p>' : '') + gl.map(function (g) { return '<p class="ch-sm"><b>' + esc(g[0]) + '</b> — ' + esc(g[2]) + (g[3] ? ' (' + leiLinkify(g[3]) + ')' : '') + '</p>'; }).join('') + '</div></section>';
+  var n = tem || gl.length ? 4 : 3;
+  h += '<section class="ch-pa"><span class="ch-n">' + n + '</span><div><h3>Aplicar a norma</h3><p>' + leiLinkify(q.e) + '</p></div></section>';
+  h += '<section class="ch-pa"><span class="ch-n">' + (n + 1) + '</span><div><h3>Concluir</h3><p class="ch-ok"><b>' + esc(q.o[q.a]) + '</b></p>' + (sel != null && sel !== q.a ? '<p class="ch-sm">A opção que escolheu («' + esc(q.o[sel]) + '») não corresponde ao regime da norma acima: confronte-a, palavra a palavra, com o texto do artigo.</p>' : '') + '<p class="ch-sm">Método: identifique a questão, localize a norma, verifique os pressupostos e só depois elimine as opções que os contrariam.</p></div></section>';
+  return h + '</div>';
+}
+A['q-esquema'] = function (el) {
+  var p = el.dataset.id.split('|'), q = QMAP[p[0]]; if (!q) return;
+  if (typeof leiMetaCarregar === 'function') leiMetaCarregar();
+  openModal('Esquema de resolução', exEsquemaQuestao(q, p[1] === '' || p[1] == null ? null : Number(p[1])), '<button class="btn pri" data-a="close">Fechar</button>');
+  exEpigrafes(exRefs(q.q + ' ' + q.e), 'q' + q.id);
+};
+A['exq-guia'] = function (el) { closeModal(); A['guia-abrir'](el); };
+var _vExameEX = vExame;
+vExame = function () {
+  var e = S.exam, q = QMAP[e.ids[e.i]], h = _vExameEX(), conf = e.mode === 'estudo' && e.conf[q.id];
+  h = h.replace('<span style="font-weight:600;color:var(--bronze)">Questão ' + (e.i + 1) + ' de ' + e.ids.length + '</span>', '$&<span class="chip gray ex-dif d' + exDif(q.id) + '">' + EX_DIF_LBL[exDif(q.id)] + '</span>');
+  if (conf) h = h.replace('<button class="lnk q-rep" data-a="q-reportar"', '<button class="lnk" data-a="q-esquema" data-id="' + q.id + '|' + (e.ans[q.id] == null ? '' : e.ans[q.id]) + '">Esquema de resolução</button> · <button class="lnk q-rep" data-a="q-reportar"');
+  return h;
+};
+var _vResultadoEX = vResultado;
+vResultado = function () {
+  var r = S.examResult, h = _vResultadoEX(), i = 0;
+  return h.replace(/<button class="lnk q-rep" data-a="q-reportar" data-id="([^"]+)">Reportar erro<\/button>/g, function (m, id) { var a = r.answers.filter(function (x) { return x.id === id; })[0]; return '<button class="lnk" data-a="q-esquema" data-id="' + id + '|' + (a && a.sel != null ? a.sel : '') + '">Esquema de resolução</button> · ' + m; });
+};
+
+/* ===== 3. Exame real: carregar, analisar e gerar um exame-modelo para resolver por escrito ===== */
+var EXR_LIB = { pdf: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js', pdfw: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js', docx: 'https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js', ocr: 'https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js' };
+var EXR_LOAD = {};
+function exrScript(u) { if (!EXR_LOAD[u]) EXR_LOAD[u] = new Promise(function (ok, ko) { var s = document.createElement('script'); s.src = u; s.async = true; s.onload = ok; s.onerror = function () { delete EXR_LOAD[u]; ko(new Error('Não foi possível carregar o leitor de ficheiros. Verifique a ligação à Internet.')); }; document.head.appendChild(s); }); return EXR_LOAD[u]; }
+function exrEstado(t, pct) { S.exrProg = { t: t, p: pct }; var el = $('#exr-prog'); if (el) el.innerHTML = exrProgHtml(); }
+function exrProgHtml() { var p = S.exrProg; return p ? '<div class="exr-prog"><span>' + esc(p.t) + '</span><span class="bar" style="height:6px"><i style="width:' + Math.round((p.p || 0) * 100) + '%"></i></span></div>' : ''; }
+function exrOCR(fonte, pre) {
+  return exrScript(EXR_LIB.ocr).then(function () {
+    return Tesseract.recognize(fonte, 'por', { logger: function (m) { if (m.status === 'recognizing text') exrEstado(pre + 'a reconhecer o texto…', m.progress); } }).then(function (r) { return r.data.text || ''; });
+  });
+}
+function exrLerPdf(buf) {
+  return exrScript(EXR_LIB.pdf).then(function () {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = EXR_LIB.pdfw;
+    return pdfjsLib.getDocument({ data: buf }).promise;
+  }).then(function (pdf) {
+    var n = Math.min(pdf.numPages, 25), txt = [], i = 1;
+    var uma = function () {
+      if (i > n) return Promise.resolve();
+      exrEstado('A ler a página ' + i + ' de ' + n + '…', i / n);
+      return pdf.getPage(i).then(function (pg) { return pg.getTextContent().then(function (tc) { var y = null, l = ''; tc.items.forEach(function (it) { var yy = Math.round(it.transform[5]); if (y !== null && Math.abs(yy - y) > 3) { l += '\n'; } l += it.str + (it.hasEOL ? '\n' : ' '); y = yy; }); txt.push(l); i++; return uma(); }); });
+    };
+    return uma().then(function () {
+      var t = txt.join('\n\n');
+      if (t.replace(/\s/g, '').length > 150) return t;
+      // PDF digitalizado: reconhecimento de texto página a página (até 6 páginas)
+      var m = Math.min(pdf.numPages, 6), out = [], k = 1;
+      var ocr = function () {
+        if (k > m) return Promise.resolve(out.join('\n\n'));
+        return pdf.getPage(k).then(function (pg) { var vp = pg.getViewport({ scale: 2 }), cv = document.createElement('canvas'); cv.width = vp.width; cv.height = vp.height; return pg.render({ canvasContext: cv.getContext('2d'), viewport: vp }).promise.then(function () { return exrOCR(cv, 'Página ' + k + ' de ' + m + ': '); }).then(function (t2) { out.push(t2); k++; return ocr(); }); });
+      };
+      return ocr();
+    });
+  });
+}
+function exrLer(f) {
+  var nome = (f.name || '').toLowerCase();
+  if (f.size > 25 * 1024 * 1024) return Promise.reject(new Error('O ficheiro tem mais de 25 MB.'));
+  if (/\.pdf$/.test(nome) || f.type === 'application/pdf') return f.arrayBuffer().then(exrLerPdf);
+  if (/\.docx$/.test(nome)) return exrScript(EXR_LIB.docx).then(function () { exrEstado('A ler o documento…', 0.5); return f.arrayBuffer(); }).then(function (b) { return mammoth.extractRawText({ arrayBuffer: b }); }).then(function (r) { return r.value || ''; });
+  if (/^image\//.test(f.type) || /\.(png|jpe?g|webp|heic|bmp)$/.test(nome)) return exrOCR(f, '');
+  if (/\.doc$/.test(nome)) return Promise.reject(new Error('Os ficheiros .doc antigos não são suportados: guarde-o como .docx ou PDF.'));
+  return Promise.reject(new Error('Formato não suportado. Use PDF, Word (.docx) ou uma fotografia.'));
+}
+/* --- análise --- */
+var EXR_STOP = ' de da do das dos e o a os as em no na nos nas um uma por para com sem que se ao aos à às ou seu sua seus suas pelo pela pelos pelas entre sobre direito direitos regime geral especial lei '.split(' ');
+function exrPalavras(t) { return norm(t).replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(function (w) { return w.length > 3 && EXR_STOP.indexOf(' ' + w + ' ') < 0 && EXR_STOP.indexOf(w) < 0; }); }
+function exrTemaChaves(d, t) {
+  var g = (typeof GUIAS !== 'undefined' && GUIAS[d] && GUIAS[d][t]) || {}, txt = temaNome(d, t) + ' ' + temaNome(d, t) + ' ' + (g.conceitos || []).map(function (c) { return c[0]; }).join(' ') + ' ' + (g.regime || []).map(function (r) { return r[0]; }).join(' ');
+  var m = {}; exrPalavras(txt).forEach(function (w) { m[w.slice(0, 7)] = (m[w.slice(0, 7)] || 0) + 1; }); return m;
+}
+function exrCCDisc(n) { n = parseInt(n, 10); return n <= 396 ? 'tgdc' : n <= 1250 ? 'obr' : n <= 1575 ? 'reais' : n <= 2023 ? 'fam' : 'suc'; }
+var EXR_DIP_DISC = { cpc: 'pc', cpp: 'pp', cp: 'pen', crp: 'con', ct: 'trab', cpt: 'trab', csc: 'com', ccom: 'com', cpa: 'adm', cpta: 'adm', lgt: 'fisc', cirs: 'fisc', circ: 'fisc', civa: 'fisc', cppt: 'fisc', rgicsf: 'banc', rjcs: 'banc', sorca: 'banc', rcc: 'banc', rcci: 'banc', persi: 'banc', smb: 'banc', cheque: 'banc', locfin: 'banc', factoring: 'banc', garfin: 'banc', segcred: 'banc', rcp: 'pc', losj: 'pc', citel: 'pc' };
+function exrTipo(t) {
+  var n = norm(t);
+  if ((n.match(/(^|\n)\s*[a-d]\)\s/g) || []).length >= 3 && /assinale|escolha|selecione|indique a (opcao|resposta)|verdadeir|correta/.test(n)) return 'multipla';
+  if (/quid iuris|resolva|hipotese|aprecie|caso pratico|pronuncie-se sobre (as|a) (questo|pretens)|quid juris/.test(n) || ((t.match(/\b[A-Z][a-zçãéáíóú]{2,}\b/g) || []).filter(function (w) { return !/^(Grupo|Parte|Responda|Tribunal|Lei|Código|Artigo|Direito|Estado|Ministério|República|Supremo|Relação|Considere|Imagine|Suponha|Admita|Em|No|Na|O|A|Os|As|Se|Para|Com|De|Do|Da|Quid|Iuris|Questão|Pergunta|Exame|Época|Faculdade|Universidade|Cotação|Duração)$/.test(w); }).length >= 3 && exPal(t) > 60)) return 'pratica';
+  return 'teorica';
+}
+function exrCotacao(t) { var m = t.match(/\(\s*(\d+(?:[.,]\d+)?)\s*(?:valores|valor|val\.?|v\.?)\s*\)/i) || t.match(/cota[cç][aã]o\s*[:\-–]?\s*(\d+(?:[.,]\d+)?)/i); return m ? parseFloat(m[1].replace(',', '.')) : null; }
+function exrAnalisar(txt) {
+  var t = String(txt || '').replace(/\r/g, '').replace(/[ \t]+/g, ' ').replace(/\n{3,}/g, '\n\n').trim(), n = norm(t);
+  var a = { chars: t.length, palavras: exPal(t) };
+  // duração
+  var md = n.match(/(?:duracao|tempo)[^\n]{0,40}?(\d+(?:[.,]\d+)?)\s*(h|hora|horas|min|minutos)\b(?:\s*(?:e\s*)?(\d+)\s*(?:min|minutos))?/) || n.match(/\b(\d+)\s*(horas?|minutos)\b/);
+  a.duracao = md ? Math.round(/^h/.test(md[2]) ? parseFloat(md[1].replace(',', '.')) * 60 + (md[3] ? +md[3] : 0) : +md[1]) : null;
+  if (a.duracao && (a.duracao < 20 || a.duracao > 360)) a.duracao = null;
+  // grupos e perguntas
+  var gr = t.split(/\n(?=\s*(?:grupo|parte)\s+(?:[IVX]+|\d+)\b)/i).filter(function (x) { return x.trim(); });
+  if (gr.length > 1 && !/^\s*(?:grupo|parte)\s/i.test(gr[0]) && exPal(gr[0]) < 120) { a.cabecalho = gr.shift(); }
+  if (gr.length === 1) gr = [gr[0]];
+  a.grupos = gr.slice(0, 8).map(function (g, gi) {
+    var tit = (g.match(/^\s*((?:grupo|parte)\s+(?:[IVX]+|\d+))/i) || [null, 'Parte ' + (gi + 1)])[1];
+    var corpo = g.replace(/^\s*(?:grupo|parte)\s+(?:[IVX]+|\d+)\b[^\n]*\n?/i, '');
+    var ps = corpo.split(/\n(?=\s*(?:\d{1,2}\s*[.)\-–]|[a-h]\)\s|pergunta\s+\d+))/i).filter(function (x) { return exPal(x) >= 3; }).filter(function (x) { return !(/^\s*(responda|escolha|considere a seguinte|leia|atente)/i.test(x) && exPal(x) < 25 && x.indexOf('?') < 0); });
+    var tipoG = exrTipo(corpo), enun = '';
+    if (tipoG === 'pratica' && ps.length > 1 && exPal(ps[0]) > 40 && !/^\s*\d{1,2}\s*[.)]/.test(ps[0])) enun = ps.shift();
+    if (!ps.length) ps = [corpo];
+    var perg = ps.slice(0, 12).map(function (p) { return { tipo: tipoG === 'pratica' ? 'pratica' : exrTipo(p), cot: exrCotacao(p), pal: exPal(p), refs: exRefs(p), txt: p }; });
+    return { tit: tit.replace(/\s+/g, ' '), tipo: tipoG, cot: exrCotacao(g.split('\n')[0]) || null, enun: !!enun, enunTxt: enun, perg: perg, refs: exRefs(g) };
+  });
+  // normas citadas e disciplina
+  a.refs = exRefs(t);
+  var sc = {};
+  Object.keys(DISC).forEach(function (k) { sc[k] = 0; var d = DISC[k]; [d.nome].concat(d.chave || []).forEach(function (c) { var w = norm(c); if (w.length > 4 && n.indexOf(w) >= 0) sc[k] += 6; }); });
+  a.refs.forEach(function (r) { var p = r.split('|'), k = p[0] === 'cc' ? exrCCDisc(p[1]) : EXR_DIP_DISC[p[0]]; if (k && sc[k] != null) sc[k] += 3; });
+  var pal = exrPalavras(t), freq = {}; pal.forEach(function (w) { freq[w.slice(0, 7)] = (freq[w.slice(0, 7)] || 0) + 1; });
+  Object.keys(TEMAS).forEach(function (k) { if (sc[k] == null) return; TEMAS[k].forEach(function (tm) { var ch = exrTemaChaves(k, tm[0]); Object.keys(ch).forEach(function (w) { if (freq[w]) sc[k] += Math.min(freq[w], 4) * 0.5; }); }); });
+  var ord = Object.keys(sc).filter(function (k) { return QUESTOES.some(function (q) { return q.d === k; }) || CASOS.some(function (c) { return c.d === k; }); }).sort(function (x, y) { return sc[y] - sc[x]; });
+  a.disc = ord[0]; a.discAlt = ord.slice(1, 4); a.conf = sc[ord[0]] ? Math.min(0.95, sc[ord[0]] / (sc[ord[0]] + (sc[ord[1]] || 0) + 4)) : 0;
+  exrTemas(a, t);
+  return a;
+}
+function exrTemas(a, t) {
+  var d = a.disc, lista = TEMAS[d] || [], tot = {};
+  var marca = function (txt) { var f = {}; exrPalavras(txt).forEach(function (w) { f[w.slice(0, 7)] = (f[w.slice(0, 7)] || 0) + 1; }); var best = null, bs = 0; lista.forEach(function (tm) { var ch = exrTemaChaves(d, tm[0]), s = 0; Object.keys(ch).forEach(function (w) { if (f[w]) s += Math.min(f[w], 3) * ch[w]; }); if (s > bs) { bs = s; best = tm[0]; } }); return bs >= 2 ? best : null; };
+  a.grupos.forEach(function (g) { g.perg.forEach(function (p) { p.tema = marca((g.enunTxt || '') + ' ' + p.txt) || marca(g.enunTxt || '') || null; if (p.tema) tot[p.tema] = (tot[p.tema] || 0) + 1; }); });
+  a.temas = Object.keys(tot).sort(function (x, y) { return tot[y] - tot[x]; }).slice(0, 6).map(function (k) { return [k, tot[k]]; });
+}
+/* --- exame-modelo --- */
+function exrTeorica(d, t, k) {
+  var g = (GUIAS[d] && GUIAS[d][t]) || null, nome = temaNome(d, t);
+  if (!g) return { tipo: 'teorica', d: d, t: t, enun: 'Exponha, com fundamento legal, o regime de «' + nome + '».', chaves: [] };
+  var cs = g.conceitos || [], es = g.erros || [], v = k % 4;
+  var enun, foco = [];
+  if (v === 0 && cs.length >= 2) { var i = (k * 3) % (cs.length - 1); enun = 'Distinga «' + cs[i][0] + '» de «' + cs[i + 1][0] + '», no âmbito de ' + nome.toLowerCase() + '.'; foco = [cs[i], cs[i + 1]]; }
+  else if (v === 1 && es.length) { var e = es[k % es.length]; enun = 'Comente criticamente o seguinte equívoco, frequente em exames de ' + nome.toLowerCase() + ': «' + e.replace(/\.$/, '') + '».'; foco = cs.slice(0, 2); }
+  else if (v === 2 && (g.regime || []).length) { var r = g.regime[k % g.regime.length]; enun = 'Explique, com indicação das normas aplicáveis, ' + r[0].charAt(0).toLowerCase() + r[0].slice(1) + ' no regime de ' + nome.toLowerCase() + '.'; foco = [r]; }
+  else { var c = cs[k % Math.max(1, cs.length)] || [nome, g.ideia]; enun = 'Defina «' + c[0] + '» e explique a sua relevância prática, com exemplos.'; foco = [c]; }
+  return { tipo: 'teorica', d: d, t: t, enun: enun, foco: foco.map(function (f) { return f[0]; }) };
+}
+function exrGerar(a) {
+  var d = a.disc, usados = {}, k = 0, casos = shuffle(CASOS.filter(function (c) { return c.d === d; })), qs = shuffle(QUESTOES.filter(function (q) { return q.d === d; }));
+  var temasD = (TEMAS[d] || []).map(function (x) { return x[0]; }).filter(function (t) { return GUIAS[d] && GUIAS[d][t]; });
+  var temaPara = function (p) { return p && p.tema && GUIAS[d] && GUIAS[d][p.tema] ? p.tema : temasD[(k++) % Math.max(1, temasD.length)]; };
+  var casoPara = function (tema) {
+    var sc = function (c) { if (!tema) return 0; var ch = exrTemaChaves(d, tema), f = {}; exrPalavras(c.enunciado + ' ' + c.perguntas.join(' ') + ' ' + c.topicos.join(' ')).forEach(function (w) { f[w.slice(0, 7)] = 1; }); return Object.keys(ch).filter(function (w) { return f[w]; }).length; };
+    var l = casos.filter(function (c) { return !usados[c.id]; }).sort(function (x, y) { return sc(y) - sc(x); }); var c = l[0] || casos[0]; if (c) usados[c.id] = 1; return c;
+  };
+  var grupos = a.grupos.map(function (g, gi) {
+    var itens = [];
+    if (g.tipo === 'pratica') {
+      var tema = (g.perg.filter(function (p) { return p.tema; })[0] || {}).tema, c = casoPara(tema);
+      if (c) { var np = Math.max(1, Math.min(c.perguntas.length, g.perg.length || c.perguntas.length)); itens.push({ tipo: 'pratica', caso: c.id, perg: c.perguntas.slice(0, np).map(function (p, i) { return { enun: p, i: i, cot: (g.perg[i] && g.perg[i].cot) || null }; }) }); }
+      else g.perg.forEach(function (p) { itens.push(exrTeorica(d, temaPara(p), k)); });
+    } else if (g.tipo === 'multipla') {
+      var tema2 = (g.perg[0] || {}).tema, l = qs.filter(function (q) { return !usados[q.id] && (!tema2 || q.t === tema2); }); if (l.length < g.perg.length) l = l.concat(qs.filter(function (q) { return !usados[q.id] && l.indexOf(q) < 0; }));
+      l.slice(0, Math.max(3, g.perg.length)).forEach(function (q) { usados[q.id] = 1; itens.push({ tipo: 'multipla', q: q.id, cot: null }); });
+    } else g.perg.forEach(function (p) { var it = exrTeorica(d, temaPara(p), k); it.cot = p.cot; itens.push(it); });
+    return { tit: g.tit, tipo: g.tipo, itens: itens, cot: g.cot };
+  });
+  // cotações: as do original ou 20 valores repartidos pelo peso de cada resposta
+  var resp = []; grupos.forEach(function (g) { g.itens.forEach(function (it) { if (it.tipo === 'pratica') it.perg.forEach(function (p) { resp.push(p); }); else resp.push(it); }); });
+  var tot = resp.reduce(function (s, r) { return s + (r.cot || 0); }, 0);
+  var conh = resp.filter(function (r) { return r.cot > 0; }), som = conh.reduce(function (x, r) { return x + r.cot; }, 0), falt = resp.filter(function (r) { return !(r.cot > 0); });
+  if (conh.length && falt.length && som < 20) { falt.forEach(function (r) { r.cot = Math.max(0.5, Math.round((20 - som) / falt.length * 2) / 2); }); }
+  else if (!(tot > 0) || falt.length) { var peso = function (r) { return r.tipo === 'multipla' ? 0.5 : r.tipo === 'teorica' ? 2 : 1.6; }; var sp = resp.reduce(function (s, r) { return s + peso(r.tipo ? r : { tipo: 'pratica' }); }, 0); resp.forEach(function (r) { r.cot = Math.round(20 * peso(r.tipo ? r : { tipo: 'pratica' }) / sp * 2) / 2; }); }
+  var soma = resp.reduce(function (x, r) { return x + r.cot; }, 0), alvo = Math.round(soma) === soma && soma >= 19 && soma <= 21 ? 20 : null;
+  if (alvo && resp.length) resp[resp.length - 1].cot = Math.max(0.5, Math.round((resp[resp.length - 1].cot + alvo - soma) * 2) / 2);
+  if (!alvo && soma > 18 && soma < 22 && resp.length) resp[resp.length - 1].cot = Math.max(0.5, Math.round((resp[resp.length - 1].cot + 20 - soma) * 2) / 2);
+  return { disc: d, duracao: a.duracao || Math.min(180, Math.max(60, resp.length * 15)), grupos: grupos };
+}
+/* --- avaliação automática da resposta escrita --- */
+function exrChaves(it, sub) {
+  var d = it.d, out = [];
+  var addRefs = function (t) { exRefs(t).forEach(function (r) { var p = r.split('|'); out.push({ k: 'art', r: r, lbl: 'art. ' + p[1] + '.º ' + exDo(p[0]) + ' ' + exSigla(p[0]), alt: [p[1] + '.º', 'artigo ' + p[1]] }); }); };
+  if (it.tipo === 'pratica') {
+    var c = CASOS.filter(function (x) { return x.id === it.caso; })[0]; if (!c) return out;
+    addRefs(c.topicos[sub.i] || ''); var mod = (typeof CASOS_MODELO !== 'undefined' && CASOS_MODELO[c.id] && CASOS_MODELO[c.id][sub.i]) || []; addRefs(mod.join ? mod.join(' ') : String(mod));
+    exGlossario((c.topicos[sub.i] || '') + ' ' + (mod.join ? mod.join(' ') : ''), c.d).filter(function (g) { return g[0].length >= 10 || /\s/.test(g[0]); }).forEach(function (g) { out.push({ k: 'conc', lbl: g[0], alt: [g[0]].concat(g[4] || []) }); });
+  } else if (it.tipo === 'teorica') {
+    var g = GUIAS[d] && GUIAS[d][it.t]; if (!g) return out;
+    (it.foco || []).forEach(function (f) { out.push({ k: 'conc', lbl: f, alt: [f] }); });
+    var txt = (g.conceitos || []).filter(function (c) { return (it.foco || []).indexOf(c[0]) >= 0; }).map(function (c) { return c[1]; }).join(' ') + ' ' + (g.regime || []).filter(function (r) { return it.enun.indexOf(r[0].slice(1, 25)) >= 0 || !(it.foco || []).length; }).map(function (r) { return r[1]; }).join(' ');
+    addRefs(txt || (g.regime || []).map(function (r) { return r[1]; }).join(' '));
+  }
+  var vis = {}; return out.filter(function (x) { var k = norm(x.lbl); if (vis[k]) return false; vis[k] = 1; return true; }).slice(0, 8);
+}
+function exrCobre(txt, ch) { var n = norm(txt); return ch.alt.some(function (a) { a = norm(a); if (/^\d/.test(a) || /^artigo/.test(a)) { var num = a.match(/\d+(-[a-z])?/)[0]; var nn = num.replace('-', '\\-'); return new RegExp('art(igo|s|\\.)?[^a-z0-9]{0,3}[^.]{0,40}?\\b' + nn + '\\b').test(n) || new RegExp('\\b' + nn + '\\s*\\.?\\s*º').test(n) || n.indexOf('artigo ' + num) >= 0; } var w = exrPalavras(a); return w.length && w.filter(function (x) { return n.indexOf(x.slice(0, 6)) >= 0; }).length >= Math.ceil(w.length * 0.7); }); }
+function exrEsquemaEscrita(it, sub) {
+  var h = '';
+  if (it.tipo === 'pratica') {
+    var c = CASOS.filter(function (x) { return x.id === it.caso; })[0], mod = (typeof CASOS_MODELO !== 'undefined' && CASOS_MODELO[c.id] && CASOS_MODELO[c.id][sub.i]) || [];
+    h += '<div class="ch-pa"><span class="ch-n">1</span><div><h3>Questão a resolver</h3><p>' + esc(sub.enun) + '</p></div></div>';
+    h += '<div class="ch-pa"><span class="ch-n">2</span><div><h3>Tópicos de correção</h3><p>' + leiLinkify(c.topicos[sub.i] || '') + '</p></div></div>';
+    h += '<div class="ch-pa"><span class="ch-n">3</span><div><h3>Resolução-modelo</h3>' + (mod.length ? (mod.map ? mod : [mod]).map(function (p) { return '<p>' + leiLinkify(p) + '</p>'; }).join('') : '<p class="ch-sm">Sem resolução-modelo para esta alínea.</p>') + '</div></div>';
+  } else {
+    var g = GUIAS[it.d] && GUIAS[it.d][it.t];
+    h += '<div class="ch-pa"><span class="ch-n">1</span><div><h3>Enquadramento</h3><p>' + (g ? leiLinkify(g.ideia || g.sub || '') : '') + '</p></div></div>';
+    var cs = g ? (g.conceitos || []).filter(function (c) { return (it.foco || []).indexOf(c[0]) >= 0; }) : [];
+    if (cs.length) h += '<div class="ch-pa"><span class="ch-n">2</span><div><h3>Conceitos a desenvolver</h3>' + cs.map(function (c) { return '<p><b>' + esc(c[0]) + '.</b> ' + leiLinkify(c[1]) + '</p>'; }).join('') + '</div></div>';
+    var rg = g ? (g.regime || []).slice(0, 3) : [];
+    if (rg.length) h += '<div class="ch-pa"><span class="ch-n">' + (cs.length ? 3 : 2) + '</span><div><h3>Regime e normas</h3>' + rg.map(function (r) { return '<p><b>' + esc(r[0]) + '.</b> ' + leiLinkify(r[1]) + '</p>'; }).join('') + '</div></div>';
+    if (g && g.erros && g.erros.length) h += '<div class="ch-pa"><span class="ch-n">!</span><div><h3>Erros a evitar</h3><ul class="ex-ul">' + g.erros.slice(0, 3).map(function (e) { return '<li>' + leiLinkify(e) + '</li>'; }).join('') + '</ul></div></div>';
+    if (g) h += '<p><button class="lnk" data-a="exq-guia" data-id="' + it.d + '|' + it.t + '">Ler o guia completo: ' + esc(temaNome(it.d, it.t)) + ' ›</button></p>';
+  }
+  return h;
+}
+/* --- vistas --- */
+function exrLista() { return Store.all('exreal').sort(function (a, b) { return b.createdAt - a.createdAt; }); }
+function exrAtual() { return S.exr && S.exr.id ? Store.get(S.exr.id) : null; }
+function exrRespostas(m) { var l = []; m.grupos.forEach(function (g, gi) { g.itens.forEach(function (it, ii) { if (it.tipo === 'pratica') it.perg.forEach(function (p, pi) { l.push({ k: gi + '.' + ii + '.' + pi, it: it, sub: p, cot: p.cot }); }); else l.push({ k: gi + '.' + ii, it: it, sub: null, cot: it.cot }); }); }); return l; }
+function vExameReal() {
+  var x = exrAtual(), h = '<div class="head"><div><span class="crumb"><button data-a="exr-sair">Simulador de exames</button> / Exame real</span><h1>' + (x ? esc(x.titulo) : 'Treinar com um exame real') + '</h1><p class="sub">' + (x ? 'Exame-modelo de ' + esc(DISC[x.modelo.disc] ? DISC[x.modelo.disc].nome : '') + ' gerado a partir do seu enunciado.' : 'O ficheiro é lido no seu dispositivo e não é enviado para nenhum servidor nem partilhado.') + '</p></div></div>';
+  if (!x) return h + exrVistaCarregar();
+  if (x.fase === 'escrever') return h + exrVistaEscrever(x);
+  if (x.fase === 'corrigido') return h + exrVistaCorrecao(x);
+  return h + exrVistaAnalise(x);
+}
+function exrVistaCarregar() {
+  var l = exrLista();
+  var h = '<div class="split"><section class="card b exr-up"><h2>1. Carregue o enunciado</h2><label class="exr-drop" id="exr-drop"><input type="file" id="exr-file" accept=".pdf,.docx,image/*" hidden><span class="exr-ic">' + (I.upload || I.file || '') + '</span><b>Escolha um ficheiro ou arraste-o para aqui</b><span>PDF com texto, PDF digitalizado, Word (.docx) ou fotografia (até 25 MB)</span></label><div id="exr-prog">' + exrProgHtml() + '</div>' +
+    '<ol class="exr-passos"><li><b>Análise</b>: disciplina, duração, grupos, cotações, tipo de perguntas, temas e normas citadas.</li><li><b>Exame-modelo</b>: um exame novo com a mesma estrutura, com casos e perguntas do LEXDESK sobre os mesmos temas.</li><li><b>Resolução por escrito</b>, com tempo contado, e depois o <b>esquema de resolução</b> de cada pergunta, com as normas e as fontes.</li></ol>' +
+    '<p class="ch-av">As fotografias e os PDF digitalizados passam por reconhecimento de texto no seu navegador: pode demorar um minuto e há erros de leitura em imagens desfocadas.</p></section>';
+  h += '<aside class="card a"><h2>Os meus exames</h2>' + (l.length ? '<div class="list">' + l.map(function (e) { var p = e.nota != null ? ' · ' + String(e.nota).replace('.', ',') + ' val.' : ''; return '<div class="li"><button class="tx" data-a="exr-ver" data-id="' + e.id + '" style="all:unset;cursor:pointer;display:flex;flex-direction:column;flex:1"><b>' + esc(e.titulo) + '</b><span>' + quando(e.createdAt) + ' · ' + (e.fase === 'corrigido' ? 'corrigido' + p : e.fase === 'escrever' ? 'em resolução' : 'analisado') + '</span></button><button class="lnk" data-a="exr-del" data-id="' + e.id + '" aria-label="Apagar">✕</button></div>'; }).join('') + '</div>' : '<div class="empty">Ainda não carregou nenhum exame.</div>') + '</aside></div>';
+  return h;
+}
+function exrVistaAnalise(x) {
+  var a = x.analise, m = x.modelo, tipos = { pratica: 'Hipótese prática', teorica: 'Pergunta teórica', multipla: 'Escolha múltipla' };
+  var nP = a.grupos.reduce(function (s, g) { return s + g.perg.length; }, 0), cnt = { pratica: 0, teorica: 0, multipla: 0 }; a.grupos.forEach(function (g) { g.perg.forEach(function (p) { cnt[p.tipo]++; }); });
+  var h = '<div class="grid exr-kpi"><div class="card"><span class="eyebrow">Disciplina</span><b>' + esc(DISC[a.disc] ? DISC[a.disc].nome : '—') + '</b><span>' + (a.conf >= 0.6 ? 'identificação segura' : a.conf >= 0.35 ? 'identificação provável' : 'identificação incerta: confirme abaixo') + '</span></div>' +
+    '<div class="card"><span class="eyebrow">Estrutura</span><b>' + plural(a.grupos.length, 'grupo', 'grupos') + ' · ' + plural(nP, 'pergunta', 'perguntas') + '</b><span>' + ['pratica', 'teorica', 'multipla'].filter(function (k) { return cnt[k]; }).map(function (k) { return Math.round(100 * cnt[k] / nP) + '% ' + tipos[k].toLowerCase(); }).join(' · ') + '</span></div>' +
+    '<div class="card"><span class="eyebrow">Duração</span><b>' + (a.duracao ? exrMin(a.duracao) : 'não indicada') + '</b><span>' + (a.duracao ? 'lida no enunciado' : 'o modelo usa ' + exrMin(m.duracao)) + '</span></div></div>';
+  h += '<div class="split"><section class="card b"><h2>Análise do enunciado</h2><div class="ch-tb"><table><thead><tr><th>Grupo</th><th>Tipo</th><th>Perguntas</th><th>Temas</th><th>Cotação</th></tr></thead><tbody>' + a.grupos.map(function (g) {
+    var ts = g.perg.map(function (p) { return p.tema; }).filter(function (t, i, l) { return t && l.indexOf(t) === i; }), cot = g.cot || g.perg.reduce(function (s, p) { return s + (p.cot || 0); }, 0);
+    return '<tr><td>' + esc(g.tit) + '</td><td>' + tipos[g.tipo] + (g.enun ? ' <span class="ch-sm">(com enunciado)</span>' : '') + '</td><td>' + g.perg.length + '</td><td class="cx-w">' + (ts.length ? ts.map(function (t) { return esc(temaNome(a.disc, t)); }).join('; ') : '<span class="ch-sm">—</span>') + '</td><td>' + (cot ? String(cot).replace('.', ',') + ' val.' : '—') + '</td></tr>';
+  }).join('') + '</tbody></table></div>';
+  if (a.temas.length) h += '<h3 class="exr-h3">Temas mais testados</h3><div class="exr-chips">' + a.temas.map(function (t) { return '<button class="chip wine" data-a="exq-guia" data-id="' + a.disc + '|' + t[0] + '">' + esc(temaNome(a.disc, t[0])) + (t[1] > 1 ? ' ×' + t[1] : '') + '</button>'; }).join('') + '</div>';
+  if (a.refs.length) h += '<h3 class="exr-h3">Normas citadas no enunciado</h3><div class="exr-chips">' + a.refs.slice(0, 24).map(function (r) { var p = r.split('|'); return '<button class="chip gray lei-lk" data-a="lei-ver" data-id="' + esc(r) + '">Art. ' + esc(p[1]) + '.º ' + esc(exSigla(p[0])) + '</button>'; }).join('') + '</div>';
+  h += '<p class="ch-av">Análise automática: confirme a disciplina e a estrutura. O texto do enunciado não é guardado; ficam só estes resultados.</p></section>';
+  var ds = discsAtivas().filter(function (k) { return CASOS.some(function (c) { return c.d === k; }) || (GUIAS[k] && Object.keys(GUIAS[k]).length); });
+  h += '<aside class="card a"><h2>2. Exame-modelo</h2><label class="f">Disciplina<select class="in" id="exr-disc">' + ds.map(function (k) { return '<option value="' + k + '"' + (k === m.disc ? ' selected' : '') + '>' + esc(DISC[k].nome) + '</option>'; }).join('') + '</select></label>' +
+    '<p class="ch-sm">Mesma estrutura (' + plural(exrRespostas(m).length, 'resposta', 'respostas') + ', ' + exrMin(m.duracao) + '), com casos práticos e perguntas do LEXDESK sobre os temas identificados.</p>' +
+    '<div class="row" style="gap:8px;flex-wrap:wrap"><button class="btn wine" data-a="exr-comecar">Começar a resolver</button><button class="btn" data-a="exr-regerar">Gerar outro modelo</button></div></aside></div>';
+  return h;
+}
+function exrMin(m) { m = Math.round(m); return m >= 60 ? Math.floor(m / 60) + ' h' + (m % 60 ? ' ' + m % 60 + ' min' : '') : m + ' min'; }
+function exrVistaEscrever(x) {
+  var m = x.modelo, rs = x.resp || {}, fim = x.inicio + m.duracao * 60000, n = 0;
+  var h = '<div class="exr-barra"><span>' + (I.clock || '') + ' <b id="exr-rel">' + mmss(Math.max(0, fim - Date.now())) + '</b> restantes</span><span class="ch-sm">As respostas são guardadas automaticamente.</span><button class="btn wine" data-a="exr-entregar">Entregar</button></div>';
+  h += m.grupos.map(function (g, gi) {
+    return '<section class="card exr-g"><h2>' + esc(g.tit) + '</h2>' + g.itens.map(function (it, ii) {
+      if (it.tipo === 'pratica') { var c = CASOS.filter(function (y) { return y.id === it.caso; })[0]; return '<div class="exr-enun">' + esc(c ? c.enunciado : '') + '</div>' + it.perg.map(function (p, pi) { var k = gi + '.' + ii + '.' + pi; n++; return '<div class="exr-q"><label for="exr-r-' + k + '"><b>' + n + '.</b> ' + esc(p.enun) + ' <span class="exr-cot">(' + String(p.cot).replace('.', ',') + ' val.)</span></label><textarea class="in exr-ta" id="exr-r-' + k + '" data-exr="' + k + '" rows="7" placeholder="Identifique o problema, indique as normas, aplique-as aos factos e conclua.">' + esc(rs[k] || '') + '</textarea></div>'; }).join(''); }
+      var k2 = gi + '.' + ii; n++;
+      if (it.tipo === 'multipla') { var q = QMAP[it.q]; return '<div class="exr-q"><p><b>' + n + '.</b> ' + esc(q.q) + ' <span class="exr-cot">(' + String(it.cot).replace('.', ',') + ' val.)</span></p><div class="exr-ops">' + q.o.map(function (o, oi) { return '<label class="check"><input type="radio" name="exr-' + k2 + '" data-exr="' + k2 + '" value="' + oi + '"' + (String(rs[k2]) === String(oi) ? ' checked' : '') + '> ' + esc(o) + '</label>'; }).join('') + '</div></div>'; }
+      return '<div class="exr-q"><label for="exr-r-' + k2 + '"><b>' + n + '.</b> ' + esc(it.enun) + ' <span class="exr-cot">(' + String(it.cot).replace('.', ',') + ' val.)</span></label><textarea class="in exr-ta" id="exr-r-' + k2 + '" data-exr="' + k2 + '" rows="8">' + esc(rs[k2] || '') + '</textarea></div>';
+    }).join('') + '</section>';
+  }).join('');
+  return h + '<div class="row" style="justify-content:flex-end"><button class="btn wine" data-a="exr-entregar">Entregar o exame</button></div>';
+}
+function exrCorrigir(x) {
+  var tot = 0, max = 0, det = {};
+  exrRespostas(x.modelo).forEach(function (r) {
+    var txt = (x.resp || {})[r.k] || '', cot = r.cot || 0; max += cot;
+    if (r.it.tipo === 'multipla') { var ok = String(txt) === String(QMAP[r.it.q].a); det[r.k] = { pct: ok ? 1 : 0 }; tot += ok ? cot : 0; return; }
+    var ch = exrChaves(r.it, r.sub), feitos = ch.filter(function (c) { return exrCobre(txt, c); }), pal = exPal(txt);
+    var pct = ch.length ? feitos.length / ch.length : (pal > 60 ? 0.5 : 0); if (pal < 25) pct = Math.min(pct, 0.2); if (pal > 120 && ch.length) pct = Math.min(1, pct + 0.1);
+    det[r.k] = { pct: pct, ch: ch.map(function (c) { return [c.lbl, exrCobre(txt, c)]; }), pal: pal }; tot += cot * pct;
+  });
+  return { det: det, nota: Math.round(tot * 2) / 2, max: max };
+}
+function exrVistaCorrecao(x) {
+  var c = x.correcao, n = 0;
+  var h = '<div class="grid exr-kpi"><div class="card"><span class="eyebrow">Estimativa</span><b>' + String(c.nota).replace('.', ',') + ' <small>/ ' + String(c.max).replace('.', ',') + '</small></b><span>pelos elementos-chave encontrados</span></div><div class="card"><span class="eyebrow">Tempo usado</span><b>' + exrMin((x.entregue - x.inicio) / 60000) + '</b><span>de ' + exrMin(x.modelo.duracao) + '</span></div><div class="card"><span class="eyebrow">Próximo passo</span><b>Rever os esquemas</b><span>compare cada resposta com o esquema</span></div></div>';
+  h += '<p class="ch-dif">A estimativa verifica se a sua resposta menciona as normas e os conceitos essenciais. Não avalia o raciocínio nem a escrita: leia o esquema de cada pergunta e corrija-se com honestidade.</p>';
+  h += exrRespostas(x.modelo).map(function (r) {
+    n++; var d = c.det[r.k] || { pct: 0 }, txt = (x.resp || {})[r.k] || '', enun = r.it.tipo === 'pratica' ? r.sub.enun : r.it.tipo === 'multipla' ? QMAP[r.it.q].q : r.it.enun;
+    var corpo = r.it.tipo === 'multipla' ? exEsquemaQuestao(QMAP[r.it.q], txt === '' ? null : Number(txt)) : exrEsquemaEscrita(r.it, r.sub);
+    return '<section class="card exr-c"><div class="row" style="justify-content:space-between;gap:10px"><h2>' + n + '. ' + esc(enun) + '</h2><span class="chip ' + (d.pct >= 0.6 ? 'ok' : d.pct >= 0.3 ? 'gray' : 'bad') + '">' + Math.round(d.pct * 100) + '%</span></div>' +
+      (r.it.tipo !== 'multipla' ? '<details class="exr-sua"><summary>A sua resposta (' + plural(d.pal || 0, 'palavra', 'palavras') + ')</summary><p>' + (txt ? esc(txt).replace(/\n/g, '<br>') : '<i>Sem resposta.</i>') + '</p></details>' + (d.ch && d.ch.length ? '<div class="exr-ck">' + d.ch.map(function (k) { return '<span class="' + (k[1] ? 'ok' : 'no') + '">' + (k[1] ? '✓' : '✗') + ' ' + esc(k[0]) + '</span>'; }).join('') + '</div>' : '') : '') +
+      '<div class="ex-esq">' + corpo + '</div></section>';
+  }).join('');
+  return h + '<div class="row" style="justify-content:flex-end;gap:8px"><button class="btn" data-a="exr-sair">Voltar ao simulador</button><button class="btn wine" data-a="exr-novo-mod">Fazer outro modelo do mesmo exame</button></div>';
+}
+/* --- ações --- */
+var exrTimer = null;
+function exrRelogio() { clearInterval(exrTimer); exrTimer = setInterval(function () { var x = exrAtual(), el = $('#exr-rel'); if (!x || x.fase !== 'escrever' || !el) { if (!x || x.fase !== 'escrever') clearInterval(exrTimer); return; } var r = x.inicio + x.modelo.duracao * 60000 - Date.now(); el.textContent = mmss(Math.max(0, r)); el.parentNode.classList.toggle('fim', r < 600000); if (r <= 0) { clearInterval(exrTimer); toast('Terminou o tempo. Pode ainda entregar o exame.'); } }, 1000); }
+function exrProcessar(f) {
+  if (!f) return;
+  S.exrProg = { t: 'A abrir ' + f.name + '…', p: 0.05 }; render();
+  exrLer(f).then(function (txt) {
+    if (String(txt).replace(/\s/g, '').length < 80) throw new Error('Não foi possível ler texto suficiente neste ficheiro.');
+    exrEstado('A analisar o enunciado…', 0.95);
+    var a = exrAnalisar(txt);
+    if (!a.disc) throw new Error('Não consegui identificar a disciplina deste exame.');
+    a.grupos.forEach(function (g) { delete g.enunTxt; g.perg.forEach(function (p) { delete p.txt; }); });
+    var tit = (f.name || 'Exame').replace(/\.[a-z0-9]+$/i, '').replace(/[_-]+/g, ' ').trim().slice(0, 60); tit = tit.charAt(0).toUpperCase() + tit.slice(1);
+    var o = Store.put({ id: uid('exr'), kind: 'exreal', titulo: tit, fase: 'analise', analise: a, modelo: exrGerar(a), resp: {} });
+    S.exrProg = null; S.exr = { id: o.id }; render(); window.scrollTo(0, 0);
+  }).catch(function (e) { S.exrProg = null; render(); toast(e && e.message ? e.message : 'Não foi possível ler o ficheiro.'); });
+}
+document.addEventListener('change', function (ev) {
+  var t = ev.target; if (!t) return;
+  if (t.id === 'exr-file') exrProcessar(t.files && t.files[0]);
+  if (t.id === 'exr-disc') { var x = exrAtual(); if (!x) return; x = clone(x); x.analise.disc = t.value; exrTemasSemTexto(x.analise); x.modelo = exrGerar(x.analise); Store.put(x); render(); }
+  if (t.dataset && t.dataset.exr && t.type === 'radio') exrGuardarResp(t.dataset.exr, t.value);
+});
+function exrTemasSemTexto(a) { a.temas = []; a.grupos.forEach(function (g) { g.perg.forEach(function (p) { p.tema = null; }); }); }
+var exrGT = null;
+function exrGuardarResp(k, v) { var x = exrAtual(); if (!x) return; x.resp = x.resp || {}; x.resp[k] = v; clearTimeout(exrGT); exrGT = setTimeout(function () { var y = exrAtual(); if (!y) return; y = clone(y); y.resp = Object.assign({}, y.resp, x.resp); Store.data[y.id] = y; Store.saveLocal(); if (Store.mode === 'cloud' && Store.col) Store.col.doc(y.id).set(y).catch(Store.cloudFail); }, 600); }
+document.addEventListener('input', function (ev) { var t = ev.target; if (t && t.dataset && t.dataset.exr && t.tagName === 'TEXTAREA') exrGuardarResp(t.dataset.exr, t.value); });
+document.addEventListener('dragover', function (ev) { if (ev.target && ev.target.closest && ev.target.closest('#exr-drop')) { ev.preventDefault(); ev.target.closest('#exr-drop').classList.add('on'); } });
+document.addEventListener('dragleave', function (ev) { var d = ev.target && ev.target.closest && ev.target.closest('#exr-drop'); if (d) d.classList.remove('on'); });
+document.addEventListener('drop', function (ev) { var d = ev.target && ev.target.closest && ev.target.closest('#exr-drop'); if (!d) return; ev.preventDefault(); d.classList.remove('on'); exrProcessar(ev.dataTransfer && ev.dataTransfer.files && ev.dataTransfer.files[0]); });
+A['exr-abrir'] = function () { S.exr = {}; S.examResult = null; render(); window.scrollTo(0, 0); };
+A['exr-sair'] = function () { S.exr = null; clearInterval(exrTimer); render(); };
+A['exr-ver'] = function (el) { S.exr = { id: el.dataset.id }; render(); if ((exrAtual() || {}).fase === 'escrever') exrRelogio(); };
+A['exr-del'] = function (el) { var id = el.dataset.id; openModal('Apagar exame', '<p style="margin:0">Apagar este exame, a análise e as respostas? Não é possível desfazer.</p>', '<button class="btn" data-a="close">Cancelar</button><button class="btn wine" data-a="exr-del-ok" data-id="' + id + '">Apagar</button>'); };
+A['exr-del-ok'] = function (el) { Store.del(el.dataset.id); closeModal(); toast('Exame apagado.'); };
+A['exr-regerar'] = function () { var x = clone(exrAtual()); x.modelo = exrGerar(x.analise); Store.put(x); toast('Novo exame-modelo gerado.'); };
+A['exr-comecar'] = function () { var x = clone(exrAtual()); x.fase = 'escrever'; x.inicio = Date.now(); x.resp = {}; Store.put(x); render(); window.scrollTo(0, 0); exrRelogio(); };
+A['exr-entregar'] = function () {
+  var x = exrAtual(), rs = exrRespostas(x.modelo), falta = rs.filter(function (r) { return !String((x.resp || {})[r.k] || '').trim(); }).length;
+  openModal('Entregar o exame', '<p style="margin:0">' + (falta ? 'Tem ' + plural(falta, 'resposta', 'respostas') + ' em branco. ' : '') + 'Depois de entregar, verá o esquema de resolução de cada pergunta e uma estimativa da nota.</p>', '<button class="btn" data-a="close">Continuar a escrever</button><button class="btn wine" data-a="exr-entregar-ok">Entregar</button>');
+};
+A['exr-entregar-ok'] = function () { closeModal(); clearTimeout(exrGT); var x = clone(exrAtual()); document.querySelectorAll('[data-exr]').forEach(function (t) { if (t.tagName === 'TEXTAREA') x.resp[t.dataset.exr] = t.value; else if (t.checked) x.resp[t.dataset.exr] = t.value; }); x.fase = 'corrigido'; x.entregue = Date.now(); x.correcao = exrCorrigir(x); x.nota = x.correcao.nota; clearInterval(exrTimer); Store.put(x); if (typeof leiMetaCarregar === 'function') leiMetaCarregar(); window.scrollTo(0, 0); };
+A['exr-novo-mod'] = function () { var x = clone(exrAtual()); var n = Store.put({ id: uid('exr'), kind: 'exreal', titulo: x.titulo.replace(/ \(\d+\)$/, '') + ' (' + (exrLista().filter(function (e) { return e.titulo.indexOf(x.titulo.replace(/ \(\d+\)$/, '')) === 0; }).length + 1) + ')', fase: 'analise', analise: x.analise, modelo: exrGerar(x.analise), resp: {} }); S.exr = { id: n.id }; render(); window.scrollTo(0, 0); };
+
 /* ---------- MAPA DO PROCESSO PENAL (fases, quem decide, prazos e reações) ---------- */
 var MPP = [
   { id: 'not', nome: 'Notícia do crime', curto: 'Notícia', quem: 'Ministério Público e órgãos de polícia criminal', tema: 'queixa',
@@ -16781,7 +17189,7 @@ Store.connect();
 </script>
 <script>
 /* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='cff920ddb4ff';window.__LXV=B;function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
+(function(){var B='4e6649496733';window.__LXV=B;function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>

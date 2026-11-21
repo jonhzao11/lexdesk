@@ -64,6 +64,12 @@ async def nova_pagina(b, W, H, escuro=False, movel=False):
     pg.on('dialog', lambda d: asyncio.ensure_future(d.dismiss()))
     await pg.route('**/supabase.js', lambda r: r.fulfill(body=MOCK, content_type='application/javascript'))
     await pg.route('**/*.supabase.co/**', lambda r: r.abort())
+    if os.environ.get('LIBS_DIR'):   # cópias locais das bibliotecas do CDN (para correr sem Internet)
+        async def _lib(route):
+            nome = route.request.url.split('/')[-1]
+            alvo = next(pathlib.Path(os.environ['LIBS_DIR']).rglob(nome), None)
+            await (route.fulfill(path=str(alvo), content_type='application/javascript') if alvo else route.abort())
+        await pg.route('https://cdn.jsdelivr.net/**', _lib)
     await pg.goto(URL)
     await pg.wait_for_timeout(2000)
     if await pg.locator('[data-a="bv-cont"]').count():
@@ -234,6 +240,71 @@ async def estudante(b):
         problema('estudante', 'simulador de exames', 'botão em falta', 'não há botão para iniciar a simulação')
     for e in tirar_erros(pg):
         problema('estudante', 'simulador de exames', 'erro de JavaScript', e)
+    # dificuldade e esquema de resolução
+    await ir(pg, 'exames')
+    if await pg.locator('[data-a="exam-back"]').count():
+        await pg.locator('[data-a="exam-back"]').first.click(); await pg.wait_for_timeout(200)
+    for dif in ('1', '2', '3', 'todas'):
+        loc = pg.locator(f'[data-a="cfg-dif"][data-id="{dif}"]')
+        if not await loc.count():
+            problema('estudante', 'simulador de exames', 'opção em falta', f'dificuldade {dif}')
+            continue
+        await loc.first.click(); await pg.wait_for_timeout(120)
+    await pg.locator('[data-a="exam-start"]').first.click(); await pg.wait_for_timeout(300)
+    await pg.locator('[data-a="exam-pick"]').first.click(); await pg.wait_for_timeout(80)
+    if await pg.locator('[data-a="exam-confirm"]').count():
+        await pg.locator('[data-a="exam-confirm"]').first.click(); await pg.wait_for_timeout(150)
+    if await pg.locator('[data-a="q-esquema"]').count():
+        await pg.locator('[data-a="q-esquema"]').first.click(); await pg.wait_for_timeout(300)
+        t = await pg.evaluate("(document.querySelector('#ov') || {}).innerText || ''")
+        if 'Normas aplicáveis' not in t or 'Concluir' not in t:
+            problema('estudante', 'esquema de resolução', 'esquema incompleto', t[:160])
+        else:
+            feito['estudante'] += 1
+        await fechar_modal(pg)
+    else:
+        problema('estudante', 'simulador de exames', 'botão em falta', 'sem «Esquema de resolução» depois de confirmar')
+    for e in tirar_erros(pg):
+        problema('estudante', 'esquema de resolução', 'erro de JavaScript', e)
+    # exame real (Word de exemplo): análise, exame-modelo, resolução e correção
+    if (AQUI / 'exame-exemplo.docx').exists():
+        await ir(pg, 'exames')
+        if await pg.locator('[data-a="exam-finish"]').count():
+            await pg.locator('[data-a="exam-finish"]').first.click(); await pg.wait_for_timeout(250)
+            if await pg.locator('#ov .btn.wine, #ov .btn.pri').count():
+                await pg.locator('#ov .btn.wine, #ov .btn.pri').last.click(); await pg.wait_for_timeout(250)
+        if await pg.locator('[data-a="exam-back"]').count():
+            await pg.locator('[data-a="exam-back"]').first.click(); await pg.wait_for_timeout(250)
+        if await pg.locator('[data-a="exr-abrir"]').count():
+            await pg.locator('[data-a="exr-abrir"]').first.click(); await pg.wait_for_timeout(300)
+            await pg.set_input_files('#exr-file', str(AQUI / 'exame-exemplo.docx'))
+            for _ in range(40):
+                await pg.wait_for_timeout(500)
+                if await pg.locator('[data-a="exr-comecar"]').count():
+                    break
+            if not await pg.locator('[data-a="exr-comecar"]').count():
+                problema('estudante', 'exame real', 'análise não terminou', (await pg.evaluate("document.querySelector('.main').innerText"))[:200])
+            else:
+                txt = await pg.evaluate("document.querySelector('.main').innerText")
+                if 'Processual Civil' not in txt:
+                    problema('estudante', 'exame real', 'disciplina mal identificada', txt[:200])
+                await pg.locator('[data-a="exr-comecar"]').first.click(); await pg.wait_for_timeout(300)
+                tas = pg.locator('textarea[data-exr]')
+                for i in range(await tas.count()):
+                    await tas.nth(i).fill('Nos termos do art. 71.º do CPC, a ação corre no tribunal do domicílio do réu.')
+                await pg.locator('[data-a="exr-entregar"]').first.click(); await pg.wait_for_timeout(200)
+                await pg.locator('[data-a="exr-entregar-ok"]').first.click(); await pg.wait_for_timeout(500)
+                txt = await pg.evaluate("document.querySelector('.main').innerText")
+                if 'Estimativa' not in txt and 'ESTIMATIVA' not in txt:
+                    problema('estudante', 'exame real', 'correção não apareceu', txt[:200])
+                else:
+                    feito['estudante'] += 1
+                await verificar_vista(pg, 'estudante', 'exame real (correção)', 1440)
+        else:
+            problema('estudante', 'exame real', 'botão em falta', 'não há «Carregar exame»')
+        for e in tirar_erros(pg):
+            problema('estudante', 'exame real', 'erro de JavaScript', e)
+        await ir(pg, 'painel')
     # flashcards
     await ir(pg, 'flashcards')
     if await pg.locator('[data-a="fc-ini"]:not([disabled])').count():
