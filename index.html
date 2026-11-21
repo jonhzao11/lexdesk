@@ -4456,8 +4456,8 @@ var CASOS_MODELO = {
   C('caso-banc2', 'A casa, o seguro de vida e a avaria',
     'Daniel e Eva pediram ao Banco Beta 180.000 € para comprar casa própria permanente, com taxa variável. O banco aprovou o crédito porque «o apartamento vale 250.000 €», sem analisar os rendimentos do casal. Exigiu que contratassem o seguro de vida da seguradora do grupo e um cartão de crédito. No questionário de saúde, Daniel não indicou uma diabetes que controlava com medicação, por pensar que não era relevante. Cinco anos depois, Daniel morre de complicações da diabetes.',
     ['Que irregularidades cometeu o banco na concessão do crédito?', 'A seguradora pode recusar pagar o capital em dívida?', 'Se, antes da morte, o casal quisesse amortizar 50.000 €, que comissão máxima podia o banco cobrar?'],
-    ['Avaliação de solvabilidade (art. 16.º do DL n.º 74-A/2017) e vendas associadas obrigatórias.', 'Declaração inicial do risco (arts. 24.º a 26.º do RJCS) e incontestabilidade (art. 188.º).', 'Comissão de reembolso antecipado (art. 23.º do DL n.º 74-A/2017).'],
-    [['A avaliação de solvabilidade não pode assentar predominantemente no facto de o valor do imóvel exceder o do crédito (art. 16.º do DL n.º 74-A/2017): o banco tinha de analisar rendimentos, encargos e capacidade de pagamento. Além disso, condicionar o crédito à aquisição de um cartão de crédito é uma venda associada obrigatória, proibida. Quanto ao seguro de vida, o banco pode exigir a sua existência, mas não pode impor a seguradora do grupo: o cliente pode escolher outra com coberturas equivalentes.'],
+    ['Avaliação de solvabilidade (art. 16.º do DL n.º 74-A/2017) e vendas associadas (art. 11.º).', 'Declaração inicial do risco (arts. 24.º a 26.º do RJCS) e incontestabilidade (art. 188.º).', 'Comissão de reembolso antecipado (art. 23.º do DL n.º 74-A/2017).'],
+    [['A avaliação de solvabilidade não pode assentar predominantemente no facto de o valor do imóvel exceder o do crédito (art. 16.º do DL n.º 74-A/2017): o banco tinha de analisar rendimentos, encargos e capacidade de pagamento. Além disso, condicionar o crédito à aquisição de um cartão de crédito é uma venda associada obrigatória, proibida. Quanto ao seguro de vida, o banco pode exigir que exista, mas tem de aceitar o de outra seguradora que ofereça garantia equivalente (art. 11.º, n.os 1 e 2, do DL n.º 74-A/2017).'],
       ['Daniel omitiu uma circunstância relevante para a apreciação do risco (art. 24.º do RJCS). A sua convicção de que não era relevante aponta para negligência, não dolo. Ora, nos seguros de vida, decorridos dois anos sobre a celebração, o segurador não pode invocar omissões ou inexatidões negligentes (art. 188.º). Passados cinco anos, a seguradora só pode recusar se provar que a omissão foi dolosa (art. 25.º); não o conseguindo, tem de pagar o capital ao banco, nos termos do contrato.'],
       ['Em período de taxa variável, a comissão de reembolso antecipado não pode exceder 0,5% do capital reembolsado (art. 23.º do DL n.º 74-A/2017): no máximo 250 € sobre 50.000 €. Se o reembolso resultasse de morte, desemprego ou deslocação profissional, não haveria comissão.']]);
 
@@ -4485,6 +4485,7 @@ var CASOS_MODELO = {
   N('credito', 'bq13', 'No crédito documentário, o banco verifica:', ['A conformidade dos documentos apresentados', 'A qualidade da mercadoria', 'A solvência do comprador final', 'O preço de mercado'], 'O banco limita-se a cumprir o mandato contra documentos.');
   N('habit', 'bq14', 'Em período de taxa variável, a comissão de reembolso antecipado no crédito à habitação não pode exceder:', ['0,5% do capital reembolsado', '2% do capital reembolsado', '5% do capital em dívida', '1% do valor do imóvel'], 'Art. 23.º do DL n.º 74-A/2017.');
   N('habit', 'bq15', 'A avaliação de solvabilidade do consumidor no crédito à habitação:', ['Não pode basear-se predominantemente no valor do imóvel', 'Pode basear-se só no valor do imóvel', 'É facultativa', 'Só se faz depois do contrato'], 'Art. 16.º do DL n.º 74-A/2017.');
+  N('habit', 'bq30', 'No crédito à habitação, o banco só pode exigir toda a dívida se, entre outros requisitos, faltarem:', ['Três prestações sucessivas, com prazo suplementar de pelo menos 30 dias', 'Duas prestações que excedam 10% do crédito', 'Uma prestação', 'Seis prestações'], 'Art. 27.º do DL n.º 74-A/2017.');
   N('habit', 'bq16', 'Condicionar o crédito à habitação à contratação de outro produto financeiro é:', ['Uma venda associada obrigatória, proibida', 'Sempre permitido', 'Uma venda associada facultativa', 'Obrigatório por lei'], 'Distinção entre vendas associadas obrigatórias e facultativas.');
   N('financ', 'bq17', 'Na locação financeira, quem suporta, em regra, o risco de o bem se perder ou estragar?', ['Do locatário', 'Do locador', 'Do vendedor', 'Da seguradora'], 'Art. 15.º do DL n.º 149/95.');
   N('financ', 'bq18', 'No factoring sem recurso:', ['O fator assume o risco de os devedores não pagarem', 'O aderente garante sempre o pagamento', 'Não há cessão de créditos', 'O fator só cobra as faturas'], 'Factoring próprio.');
@@ -4521,14 +4522,14 @@ GUIAS.banc.sist = {
   sub: 'Os três pilares do sistema financeiro, os supervisores, os tipos de instituições e a reserva de atividade.',
   ideia: 'O sistema financeiro assenta em três setores que se cruzam cada vez mais: a banca, o mercado de capitais e os seguros. Cada um tem um supervisor próprio e regras de acesso exigentes, porque lida com o dinheiro do público. A peça central da banca é o RGICSF, o diploma-base que rege bancos e sociedades financeiras desde 1992 (DL n.º 298/92), a que muitos chamam «lei bancária».',
   conceitos: [
-    ['Supervisores', 'O Banco de Portugal supervisiona as instituições de crédito e as sociedades financeiras; a CMVM, os mercados e instrumentos financeiros; a ASF, as seguradoras e os fundos de pensões. No espaço do euro, os grandes bancos são supervisionados diretamente pelo BCE, no Mecanismo Único de Supervisão.'],
-    ['Instituições de crédito', 'Empresas cuja atividade consiste em receber do público depósitos ou outros fundos reembolsáveis e conceder crédito por conta própria. Incluem os bancos, as caixas económicas e as caixas de crédito agrícola mútuo, entre outras.'],
+    ['Supervisores', 'O Banco de Portugal supervisiona bancos e sociedades financeiras; a CMVM, os mercados e instrumentos financeiros; a ASF, as seguradoras e os fundos de pensões. No espaço do euro, os grandes bancos são supervisionados diretamente pelo BCE, no Mecanismo Único de Supervisão.'],
+    ['Instituições de crédito', 'Empresas que captam junto do público depósitos ou fundos a restituir e os aplicam, por sua conta, na concessão de crédito. Incluem os bancos, as caixas económicas, as caixas de crédito agrícola mútuo e as instituições financeiras de crédito, entre outras (art. 3.º do RGICSF).'],
     ['Sociedades financeiras', 'Entidades que, não sendo instituições de crédito, exercem atividades financeiras específicas, como certas sociedades de gestão ou de intermediação.'],
     ['Reserva de atividade', 'Só as instituições de crédito podem receber depósitos do público (art. 8.º do RGICSF). Quem o faça sem autorização incorre em ilícito grave.'],
     ['Central de Responsabilidades de Crédito', 'Registo, a cargo do Banco de Portugal, dos créditos concedidos a cada pessoa, efetivos e potenciais. Não é uma «lista negra»: regista também os créditos cumpridos e serve para avaliar o risco.']
   ],
   regime: [
-    ['Acesso à atividade', 'A constituição de uma instituição de crédito depende de autorização prévia e de requisitos de capital, idoneidade dos titulares de participações qualificadas e adequação dos membros dos órgãos de administração e fiscalização.', 'A supervisão é contínua: prudencial (solvabilidade, liquidez, governo interno) e comportamental (relação com os clientes).'],
+    ['Acesso à atividade', 'A constituição de uma instituição de crédito depende de autorização prévia e de requisitos de capital, idoneidade dos titulares de participações qualificadas e aptidão de quem administra e fiscaliza a instituição.', 'A supervisão é contínua: prudencial (solvabilidade, liquidez, governo interno) e comportamental (relação com os clientes).'],
     ['Deveres de conduta', 'As instituições devem atuar com competência técnica, diligência, neutralidade, lealdade e respeito pelos interesses dos clientes, e prestar-lhes informação clara e completa (arts. 73.º a 77.º do RGICSF).', 'Estes deveres valem antes e durante o contrato e fundamentam responsabilidade civil e contraordenacional.'],
     ['Riscos do sistema', 'Os principais riscos são o de crédito (o devedor não paga), de liquidez, de mercado, de taxa de juro, cambial, operacional, de país e o sistémico (contágio que ameaça todo o sistema).', 'O risco sistémico justifica a supervisão macroprudencial e os mecanismos de resolução bancária.']
   ],
@@ -4538,7 +4539,7 @@ GUIAS.banc.sist = {
     ['Seguros e fundos de pensões', 'ASF', 'Lei n.º 147/2015 (acesso à atividade) e RJCS (DL n.º 72/2008)']
   ] },
   exemplo: ['Uma empresa de eletrodomésticos anuncia que aceita «depósitos» dos clientes, remunerados a 5% ao ano, para financiar a expansão da loja. Pode fazê-lo?',
-    'Não. Receber do público depósitos ou outros fundos reembolsáveis é atividade reservada às instituições de crédito (art. 8.º do RGICSF). A empresa não está autorizada nem supervisionada pelo Banco de Portugal.',
+    'Não. Captar depósitos ou outros fundos a restituir junto do público é atividade reservada às instituições de crédito (art. 8.º do RGICSF). A empresa não está autorizada nem supervisionada pelo Banco de Portugal.',
     'Os contratos celebrados ficam expostos à invalidade e a empresa incorre em responsabilidade contraordenacional e, eventualmente, criminal. Se quiser financiar-se junto do público, terá de recorrer a instrumentos próprios do mercado de capitais (por exemplo, uma emissão de obrigações), com as regras de informação respetivas.']
   ,
   erros: [
@@ -4551,7 +4552,7 @@ GUIAS.banc.sist = {
 
 GUIAS.banc.mercados = {
   sub: 'Mercados monetário e de capitais, mercado primário e secundário, valores mobiliários, derivados e organismos de investimento coletivo.',
-  ideia: 'Além do crédito bancário, as empresas financiam-se no mercado de capitais, emitindo ações ou obrigações que os investidores compram. É também aí que os aforradores aplicam poupanças, diretamente ou através de fundos de investimento. O Código dos Valores Mobiliários e o Regime da Gestão de Ativos (Decreto-Lei n.º 27/2023) regulam estas operações sob supervisão da CMVM.',
+  ideia: 'Além do crédito bancário, as empresas financiam-se no mercado de capitais, emitindo ações ou obrigações que os investidores compram. É também aí que os aforradores aplicam poupanças, diretamente ou através de fundos de investimento. O Código dos Valores Mobiliários e o regime de gestão de ativos de 2023 (DL n.º 27/2023) regulam estas operações sob supervisão da CMVM.',
   conceitos: [
     ['Mercado primário e secundário', 'No primário, os títulos são subscritos no momento da emissão e o dinheiro vai para o emitente. No secundário, os investidores negoceiam entre si os títulos já emitidos; é o que acontece em bolsa.'],
     ['Mercado monetário e de capitais', 'O monetário é de curto prazo (liquidez entre instituições, bilhetes do Tesouro, papel comercial); o de capitais, de médio e longo prazo (ações, obrigações).'],
@@ -4562,7 +4563,7 @@ GUIAS.banc.mercados = {
   regime: [
     ['Forma dos OIC', 'Podem ter forma contratual (fundos de investimento, sem personalidade jurídica, mas com personalidade judiciária, art. 12.º do CPC) ou societária (sociedades de investimento coletivo, com personalidade jurídica).', 'Nos fundos, os investidores chamam-se participantes e detêm unidades de participação; nas sociedades, são acionistas.'],
     ['Abertos e fechados', 'Nos OIC abertos, o número de unidades de participação varia e os investidores podem subscrever e resgatar livremente. Nos fechados, o número é fixo e o resgate só ocorre no fim do prazo ou por venda em mercado.', 'Nos fechados, os participantes têm maior influência na gestão, através da assembleia.'],
-    ['Informação ao investidor', 'A comercialização de OIC exige documentos informativos, nomeadamente o prospeto e o documento com as informações fundamentais destinadas aos investidores.', 'A violação dos deveres de informação pode fundar responsabilidade do intermediário financeiro.']
+    ['Informação ao investidor', 'A comercialização de OIC exige documentos informativos, como o prospeto e um documento curto com a informação essencial para o investidor.', 'A violação dos deveres de informação pode fundar responsabilidade do intermediário financeiro.']
   ],
   esquema: { tipo: 'tabela', cab: ['Figura', 'Natureza', 'Exemplo'], linhas: [
     ['Ação', 'Valor mobiliário representativo de capital', 'Participação numa sociedade cotada'],
@@ -4594,7 +4595,7 @@ GUIAS.banc.conta = {
     ['Segredo bancário', 'Os membros dos órgãos e os trabalhadores das instituições de crédito não podem revelar factos relativos à vida da instituição ou às relações com os clientes de que tenham conhecimento por causa das suas funções (art. 78.º do RGICSF). As exceções estão no art. 79.º (por exemplo, autorização do cliente, Banco de Portugal, autoridade tributária nos termos da lei, processo penal).']
   ],
   regime: [
-    ['Serviços mínimos bancários', 'Qualquer pessoa singular que não tenha conta à ordem (ou que converta a única que tem) pode abrir uma conta de serviços mínimos, com cartão de débito, homebanking e operações básicas na União Europeia, por um custo anual limitado a 1% do indexante dos apoios sociais (Decreto-Lei n.º 27-C/2000).', 'O banco não pode recusar a abertura a quem preencha os requisitos, e a conversão de uma conta normal em conta de serviços mínimos não tem custos.'],
+    ['Serviços mínimos bancários', 'Qualquer pessoa singular que não tenha conta à ordem (ou que converta a única que tem) pode abrir uma conta de serviços mínimos, com cartão de débito, homebanking e operações básicas na União Europeia, por um custo anual limitado a 1% do indexante dos apoios sociais (art. 3.º do Decreto-Lei n.º 27-C/2000).', 'O banco não pode recusar a abertura a quem preencha os requisitos, e a conversão de uma conta normal em conta de serviços mínimos não tem custos.'],
     ['Encerramento', 'O cliente pode pedir o encerramento a todo o tempo; se a conta for coletiva, o pedido é subscrito por todos. O banco só pode encerrar por sua iniciativa se o contrato o previr e com pré-aviso.', 'Uma conta pode ainda ser bloqueada por ordem judicial ou por força da lei (penhora, insolvência, óbito).'],
     ['Pagamentos não autorizados', 'Nos serviços de pagamento (incluindo homebanking), se o cliente negar ter autorizado uma operação, cabe ao banco provar que ela foi autenticada e não foi afetada por avaria. A responsabilidade do cliente só existe em caso de fraude ou de violação dolosa ou com negligência grave dos seus deveres de segurança (Decreto-Lei n.º 91/2018).', 'É a regra que resolve os casos de phishing: o cliente só suporta a perda se tiver atuado com negligência grave.']
   ],
@@ -4691,14 +4692,14 @@ GUIAS.banc.habit = {
   conceitos: [
     ['Âmbito', 'Contratos de crédito a consumidores garantidos por hipoteca ou outro direito sobre imóvel, ou destinados a adquirir ou manter direitos de propriedade sobre imóveis. O crédito para obras sem hipoteca segue o regime geral do crédito aos consumidores.'],
     ['FINE', 'Ficha de Informação Normalizada Europeia: documento que o banco entrega antes do contrato, com as condições personalizadas do crédito, de modo a permitir comparar propostas.'],
-    ['Proposta vinculativa e reflexão', 'O banco fica vinculado à proposta durante pelo menos 30 dias, e o consumidor não a pode aceitar nos primeiros sete, para garantir um período mínimo de reflexão.'],
+    ['Proposta vinculativa e reflexão', 'O banco fica vinculado à proposta durante pelo menos 30 dias, e o consumidor não a pode aceitar nos primeiros sete, para garantir um período mínimo de reflexão (art. 13.º, n.os 4 e 5).'],
     ['Avaliação de solvabilidade', 'Antes de conceder crédito, o banco avalia se o consumidor consegue pagar; essa avaliação não pode basear-se predominantemente no valor do imóvel nem na expectativa de que ele se valorize (art. 16.º).'],
-    ['Vendas associadas', 'São proibidas as vendas associadas obrigatórias (condicionar o crédito à compra de outro produto); são admitidas as facultativas, em que o produto adicional melhora as condições, mas o crédito também é oferecido sem ele.']
+    ['Vendas associadas', 'O banco não pode condicionar o crédito à compra de outros produtos (art. 11.º, n.º 1). Só pode exigir uma conta à ordem, aceitando-a noutro banco, e seguros adequados, aceitando os de outra seguradora com garantia equivalente (n.º 2). Produtos que apenas baixam o spread são vendas facultativas, com TAEG própria (n.º 3).']
   ],
   regime: [
-    ['Reembolso antecipado', 'O consumidor pode reembolsar a todo o tempo, total ou parcialmente. A comissão não pode exceder 0,5% do capital reembolsado em período de taxa variável, nem 2% em período de taxa fixa (art. 23.º).', 'Não há comissão em caso de reembolso por morte, desemprego ou deslocação profissional, nos termos do mesmo artigo; o mutuante tem ainda deveres de colaboração na transferência do crédito para outro banco.'],
+    ['Reembolso antecipado', 'O consumidor pode reembolsar a todo o tempo, total ou parcialmente. A comissão não pode exceder 0,5% do capital reembolsado em período de taxa variável, nem 2% em período de taxa fixa (art. 23.º).', 'Não há comissão em caso de reembolso por morte, desemprego ou deslocação profissional para mais de 50 km (art. 23.º, n.os 9 a 11); o mutuante tem ainda deveres de colaboração na transferência do crédito para outro banco.'],
     ['Taxa de juro negativa', 'Se a soma do indexante com o spread der um valor negativo, esse valor tem de ser refletido no contrato, podendo o banco optar por criar um crédito a favor do cliente, a abater aos juros futuros (art. 21.º-A).', 'Foi a resposta legislativa ao período de Euribor negativa.'],
-    ['Incumprimento e PERSI', 'Perante o atraso, o banco deve integrar o cliente no PERSI, o procedimento extrajudicial para regularizar incumprimentos previsto no DL n.º 227/2012, antes de recorrer a tribunal.', 'Enquanto o cliente estiver em PERSI, o banco não pode, em regra, resolver o contrato nem propor ações judiciais para cobrar o crédito.']
+    ['Incumprimento: requisitos e PERSI', 'O banco só pode exigir toda a dívida ou resolver o contrato se faltarem três prestações sucessivas e se, depois de conceder pelo menos 30 dias para pagar, com aviso expresso das consequências, o cliente não regularizar (art. 27.º). Antes disso, deve integrar o cliente no PERSI, o procedimento extrajudicial para regularizar incumprimentos previsto no DL n.º 227/2012, antes de recorrer a tribunal.', 'Enquanto o cliente estiver em PERSI, o banco não pode, em regra, resolver o contrato nem propor ações judiciais para cobrar o crédito. Note a diferença face ao crédito ao consumo (duas prestações, 10% e 15 dias).']
   ],
   esquema: { tipo: 'passos', itens: [
     ['Publicidade', 'Com TAEG em destaque (art. 10.º).'],
@@ -4706,6 +4707,7 @@ GUIAS.banc.habit = {
     ['Solvabilidade', 'Avaliação séria, não baseada só no valor do imóvel (art. 16.º).'],
     ['Avaliação do imóvel', 'Por perito independente (art. 18.º).'],
     ['Vida do contrato', 'Reembolso antecipado (art. 23.º), juro negativo (art. 21.º-A).'],
+    ['Atrasos graves', 'Três prestações e 30 dias de aviso (art. 27.º).'],
     ['Atrasos', 'PERSI antes da via judicial (DL n.º 227/2012).']
   ] },
   exemplo: ['Maria tem um crédito à habitação com taxa variável e quer amortizar 30.000 € para reduzir a prestação. O banco exige uma comissão de 1% e a subscrição de um seguro de vida novo, mais caro. Pode?',
@@ -4715,7 +4717,8 @@ GUIAS.banc.habit = {
   erros: [
     'Confundir a comissão máxima da taxa variável (0,5%) com a da taxa fixa (2%).',
     'Admitir que o banco aprove o crédito só porque o imóvel vale mais do que o empréstimo.',
-    'Esquecer o PERSI antes da execução.'
+    'Esquecer o PERSI antes da execução.',
+    'Aplicar ao crédito à habitação a regra das duas prestações do crédito ao consumo: aqui são três, com 30 dias de aviso (art. 27.º).'
   ],
   artigos: []
 };
@@ -4731,7 +4734,7 @@ GUIAS.banc.financ = {
     ['Titularização', 'Agrupamento de créditos de uma instituição que são cedidos a uma entidade que, para os pagar, emite valores mobiliários colocados junto de investidores.']
   ],
   regime: [
-    ['Riscos na locação financeira', 'O locador não responde pelos vícios do bem nem pela sua inadequação aos fins do contrato (art. 12.º do DL n.º 149/95), e é o locatário quem suporta o risco de o bem se perder ou estragar (art. 15.º).', 'Em contrapartida, o locatário pode exercer contra o vendedor ou o empreiteiro os direitos relativos ao bem (art. 13.º).'],
+    ['Riscos na locação financeira', 'O locador fica livre de responder por defeitos do bem ou por ele não servir para o fim pretendido (art. 12.º do DL n.º 149/95), e é o locatário quem suporta o risco de o bem se perder ou estragar (art. 15.º).', 'Em contrapartida, o locatário pode reclamar diretamente do fornecedor ou do construtor os direitos ligados ao bem (art. 13.º).'],
     ['Obrigações do locatário', 'Pagar as rendas, usar e conservar o bem, fazer o seguro contra a sua perda ou deterioração e restituí-lo em bom estado se não o comprar (art. 10.º do DL n.º 149/95).', 'A falta de pagamento das rendas permite ao locador resolver o contrato e recuperar o bem.'],
     ['Factoring e devedores cedidos', 'A cessão produz efeitos em relação ao devedor a partir da notificação ou aceitação (art. 583.º do CC), e o devedor pode opor ao fator os meios de defesa que tinha contra o aderente (art. 585.º do CC).', 'Por isso as faturas cedidas trazem normalmente a indicação de que devem ser pagas ao fator.']
   ],
@@ -4743,7 +4746,7 @@ GUIAS.banc.financ = {
     ['Titularização', 'Liquidez de carteiras de créditos', 'Os investidores']
   ] },
   exemplo: ['A Têxtil Norte, Lda., tem em locação financeira uma máquina que comprou por indicação sua a um fornecedor alemão. A máquina avaria por defeito de fabrico. A empresa deixa de pagar as rendas ao banco, dizendo que este lhe entregou uma máquina defeituosa. Tem razão?',
-    'Não. Na locação financeira, o locador não responde pelos vícios do bem nem pela sua inadequação aos fins do contrato (art. 12.º do DL n.º 149/95): a sua função é financeira.',
+    'Não. Na locação financeira, o locador fica livre de responder por defeitos do bem ou por ele não servir para o fim pretendido (art. 12.º do DL n.º 149/95): a sua função é financeira.',
     'A empresa deve continuar a pagar as rendas e exercer os seus direitos diretamente contra o fornecedor, a quem pode exigir a reparação ou a substituição (art. 13.º). Se deixar de pagar, o banco pode resolver o contrato e reaver a máquina.']
   ,
   erros: [
@@ -4796,10 +4799,10 @@ GUIAS.banc.seguro = {
     ['Solvência II', 'Regime baseado no risco, assente em três pilares: requisitos quantitativos de capital, sistema de governação (gestão de riscos, conformidade, auditoria interna e função atuarial) e informação e transparência perante supervisor e mercado.'],
     ['Forma', 'O contrato de seguro não exige forma especial para ser válido (art. 32.º do RJCS); o segurador deve, porém, entregar a apólice, que documenta o contrato.'],
     ['Prémio', 'Contrapartida paga pelo tomador. Vale a regra «sem prémio não há cobertura»: o segurador só cobre o risco se o prémio tiver sido pago antes (art. 59.º do RJCS).'],
-    ['Sub-rogação', 'Pago o sinistro, o segurador fica sub-rogado nos direitos do segurado contra o terceiro responsável, até ao valor que pagou (art. 136.º do RJCS).']
+    ['Sub-rogação', 'Pago o sinistro, o segurador assume, por sub-rogação, os direitos que o segurado tinha contra quem causou o dano, até ao valor que pagou (art. 136.º do RJCS).']
   ],
   regime: [
-    ['Declaração inicial do risco', 'O tomador ou o segurado tem de declarar com exatidão, antes do contrato, as circunstâncias que conheça e razoavelmente deva ter por significativas para a apreciação do risco (art. 24.º). Se a omissão ou inexatidão for dolosa, o contrato é anulável por declaração do segurador (art. 25.º).', 'Se for negligente, o segurador pode, em três meses, propor uma alteração ou fazer cessar o contrato; se o sinistro ocorrer antes e for influenciado pelo facto omitido, paga proporcionalmente ou, se nunca teria contratado, apenas devolve o prémio (art. 26.º). Nos seguros de vida, passados dois anos, o segurador já não pode invocar omissões negligentes (art. 188.º).'],
+    ['Declaração inicial do risco', 'O tomador ou o segurado tem de declarar com exatidão, antes do contrato, tudo o que saiba e deva razoavelmente considerar importante para o segurador avaliar o risco (art. 24.º). Se a omissão ou inexatidão for dolosa, o contrato é anulável por declaração do segurador (art. 25.º).', 'Se for negligente, o segurador pode, em três meses, propor uma alteração ou fazer cessar o contrato; se o sinistro ocorrer antes e for influenciado pelo facto omitido, paga proporcionalmente ou, se nunca teria contratado, apenas devolve o prémio (art. 26.º). Nos seguros de vida, passados dois anos, o segurador já não pode invocar omissões negligentes (art. 188.º).'],
     ['Falta de pagamento do prémio', 'Se o prémio inicial não for pago na data do vencimento, o contrato resolve-se automaticamente desde a celebração (art. 61.º, n.º 1); a falta de pagamento de prémios seguintes impede a prorrogação do contrato (art. 61.º, n.º 2).', 'O segurador tem de avisar o tomador, com antecedência, da data e das consequências da falta de pagamento.'],
     ['Agravamento, sinistro e livre resolução', 'O agravamento do risco deve ser comunicado em 14 dias (art. 93.º); o sinistro, no prazo do contrato ou, na falta, em 8 dias (art. 100.º). A falta de participação só reduz ou exclui a prestação nos termos do art. 101.º.', 'O tomador pessoa singular pode resolver livremente, em 30 dias, seguros de vida, acidentes pessoais e saúde de duração igual ou superior a seis meses, e em 14 dias os contratos celebrados à distância (art. 118.º).']
   ],
@@ -4827,7 +4830,7 @@ GUIAS.banc.auto = {
   ideia: 'O seguro de responsabilidade civil automóvel é obrigatório porque os acidentes de viação são um problema social: o legislador não quis que a vítima dependesse da solvência do responsável. O regime está no Decreto-Lei n.º 291/2007 (SORCA). Ao lado do seguro, o Fundo de Garantia Automóvel (FGA) indemniza quando não há seguro válido ou o responsável é desconhecido.',
   conceitos: [
     ['Obrigação de segurar', 'Quem possa ser civilmente responsável por danos causados a terceiros por um veículo com estacionamento habitual em Portugal tem de os cobrir por seguro para que o veículo possa circular (art. 4.º); a obrigação recai sobre o proprietário, ou sobre o usufrutuário, o adquirente com reserva de propriedade ou o locatário financeiro (art. 6.º).'],
-    ['Pessoas cobertas', 'O seguro garante a responsabilidade do tomador, dos obrigados a segurar e dos legítimos detentores e condutores do veículo (art. 15.º).'],
+    ['Pessoas cobertas', 'O seguro garante a responsabilidade do tomador, dos obrigados a segurar e de quem, legitimamente, tenha o veículo ou o conduza (art. 15.º).'],
     ['Exclusões', 'Ficam fora do seguro obrigatório, entre outros, os danos corporais do condutor responsável e os danos no próprio veículo seguro; os danos materiais de certos familiares do condutor e do tomador também são excluídos (art. 14.º).'],
     ['Capital mínimo', 'O seguro cobre, por acidente, pelo menos os capitais mínimos fixados na lei para danos corporais e materiais (art. 12.º).'],
     ['FGA', 'Fundo que garante as indemnizações por danos causados por responsável desconhecido, isento de seguro ou sem seguro válido (art. 47.º), até ao capital mínimo do seguro obrigatório.']
@@ -16309,7 +16312,7 @@ Store.connect();
 </script>
 <script>
 /* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='c52f17954ab0';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
+(function(){var B='0f0745adc901';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>
