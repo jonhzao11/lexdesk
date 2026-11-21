@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Robôs de teste do LEXDESK.
+"""Contas automáticas de teste do LEXDESK: Lex, Ratio e Codex.
 
 Abrem o site com uma base de dados simulada (nunca tocam nos dados reais) e:
-  - Robô Explorador: percorre todas as páginas (computador e telemóvel, claro e escuro) e carrega nos botões;
-  - Robô Calculista: testa as calculadoras com valores normais, extremos e inválidos, e confere resultados conhecidos;
-  - Robô Estudante: faz uma simulação de exame, uma sessão de flashcards e abre casos práticos.
+  - Lex (explorador): percorre todas as páginas (computador e telemóvel, claro e escuro) e carrega nos botões;
+  - Ratio (calculista): testa as calculadoras com valores normais, extremos e inválidos, e confere resultados conhecidos;
+  - Codex (estudante): faz uma simulação de exame, uma sessão de flashcards e abre casos práticos.
 
 Uso:  python tests/robos.py [caminho/para/index.html] [--rapido]
 Gera robos-relatorio.json e robos-relatorio.md e termina com código 1 se encontrar erros.
@@ -43,6 +43,7 @@ def servir():
 URL = None
 problemas = []   # {robo, onde, tipo, detalhe}
 feito = {'explorador': 0, 'calculista': 0, 'estudante': 0}
+NOMES = {'explorador': 'Lex', 'calculista': 'Ratio', 'estudante': 'Codex'}
 
 
 def problema(robo, onde, tipo, detalhe):
@@ -279,7 +280,7 @@ async def main():
         exe = os.environ.get('CHROME_PATH')
         b = await p.chromium.launch(executable_path=exe, args=['--no-sandbox']) if exe else await p.chromium.launch(args=['--no-sandbox'])
         for nome, f in (('explorador', explorador), ('calculista', calculista), ('estudante', estudante)):
-            print(f'— Robô {nome.capitalize()}', flush=True)
+            print(f'— {NOMES[nome]} ({nome})', flush=True)
             try:
                 await f(b)
             except Exception as e:
@@ -296,13 +297,13 @@ async def main():
             eventos.append({'robo': r, 'tipo': 'erro_encontrado', 'pontos': 10, 'ref': f'{r}:{hoje}:erro:{hashlib.md5((p["onde"] + p["tipo"]).encode()).hexdigest()[:10]}'})
     rel = {'data': hoje, 'segundos': round(time.time() - t0), 'verificacoes': feito, 'problemas': problemas, 'eventos': eventos}
     (pathlib.Path.cwd() / 'robos-relatorio.json').write_text(json.dumps(rel, ensure_ascii=False, indent=1), encoding='utf-8')
-    md = [f'## Robôs de teste — {hoje}', '', '| Robô | Verificações | Problemas |', '|---|---|---|']
+    md = [f'## Testes automáticos — {hoje}', '', '| Conta | Verificações | Problemas |', '|---|---|---|']
     for r in feito:
-        md.append(f'| {r.capitalize()} | {feito[r]} | {len(por_robo[r])} |')
+        md.append(f'| {NOMES[r]} ({r}) | {feito[r]} | {len(por_robo[r])} |')
     md.append('')
     if problemas:
-        md += ['### Problemas encontrados', '', '| Robô | Onde | Tipo | Detalhe |', '|---|---|---|---|']
-        md += [f"| {p['robo']} | {p['onde']} | {p['tipo']} | {p['detalhe'][:200].replace('|', '/').replace(chr(10), ' ')} |" for p in problemas[:80]]
+        md += ['### Problemas encontrados', '', '| Conta | Onde | Tipo | Detalhe |', '|---|---|---|---|']
+        md += [f"| {NOMES.get(p['robo'], p['robo'])} | {p['onde']} | {p['tipo']} | {p['detalhe'][:200].replace('|', '/').replace(chr(10), ' ')} |" for p in problemas[:80]]
     else:
         md.append('✅ Nenhum problema encontrado.')
     (pathlib.Path.cwd() / 'robos-relatorio.md').write_text('\n'.join(md) + '\n', encoding='utf-8')
