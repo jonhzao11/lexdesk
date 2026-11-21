@@ -1943,6 +1943,32 @@ body.vini .jn-lead{height:100%}
   body.vini .main>.card{padding:16px}
 }
 
+/* ---- Calculadoras jurídicas ---- */
+.cx-nav{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px 12px;margin-bottom:18px}
+.cx-g{display:flex;flex-direction:column;gap:6px}.cx-g .eyebrow{margin:0 0 2px 2px}
+.cx-t{display:flex;flex-direction:column;gap:2px;text-align:left;padding:10px 12px;border-radius:12px;border:1px solid #E5E7EB;background:#fff;cursor:pointer;font:inherit;color:inherit;transition:border-color .15s,background .15s}
+.cx-t b{font-size:14px;color:#0F1B3D}.cx-t span{font-size:12px;color:#6B7280;line-height:1.4}
+.cx-t:hover{border-color:#C9A227}.cx-t.on{border-color:#7B1E2B;background:#FBEFF1}.cx-t.on b{color:#7B1E2B}
+.cx-big{display:flex;flex-direction:column;gap:2px;padding:14px 16px;border-radius:14px;background:#0F1B3D;color:#fff}
+.cx-big span{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#C9D0DE}.cx-big b{font:800 26px/1.15 var(--serif,Georgia,serif);color:#fff}.cx-big em{font-style:normal;font-size:13px;color:#E8C77A}
+.cx-base{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border-radius:12px;background:#F7F8FB;font-size:13.5px}.cx-base .eyebrow{margin:0 0 2px}
+.cx-ul{margin:4px 0;padding-left:18px;font-size:14px;line-height:1.55}
+.cx-lista{display:flex;flex-direction:column;gap:8px}
+.cx-pn{display:grid;grid-template-columns:24px 110px 1fr 1fr 24px;gap:8px;align-items:end;padding:10px;border-radius:12px;background:#F7F8FB}.cx-pn .f{margin:0}.cx-pn select{align-self:end}
+.cx-r3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cx-grid .ch-out{min-height:200px}
+@media (max-width:640px){.cx-nav{grid-template-columns:1fr 1fr;gap:10px 8px}.cx-t{padding:9px 10px}.cx-t span{display:none}.cx-pn{grid-template-columns:22px 1fr 1fr;}.cx-pn select{grid-column:2/4}.cx-pn .lnk{grid-column:3;justify-self:end}.cx-big b{font-size:22px}}
+html.dark .cx-t{background:#1A2233;border-color:#2C3548}html.dark .cx-t b{color:#F1F3F8}html.dark .cx-t span{color:#A9B1C2}
+html.dark .cx-t.on{background:rgba(123,30,43,.25);border-color:#B4475A}html.dark .cx-t.on b{color:#F3C1C9}
+html.dark .cx-big{background:#0B1222;border:1px solid #2C3548}
+html.dark .cx-base,html.dark .cx-pn{background:#1A2233}
+html.dark .ch-pa h3,html.dark .ch-e b{color:#F1F3F8}html.dark .ch-f{background:#1A2233;color:#E6EAF2}
+html.dark .ch-tb th{color:#A9B1C2;border-color:#2C3548}html.dark .ch-tb td{border-color:#2C3548}
+html.dark .ch-sm,html.dark .ch-why,html.dark .ch-e span{color:#A9B1C2}html.dark .ch-dif{background:rgba(217,119,6,.12)}html.dark .ch-ok{background:rgba(21,128,61,.14)}
+html.dark .ch-li,html.dark .ch-e{background:#1A2233;border-color:#2C3548}html.dark .ch-e.on{background:rgba(123,30,43,.25)}
+.cx-grid .ch-pa{grid-template-columns:28px minmax(0,1fr)}.ch-tb td.cx-w{white-space:normal;min-width:180px}
+@media (min-width:1100px){.cx-nav{grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}.cx-t{padding:9px 11px}.cx-t span{display:none}.cx-t b{font-size:13.5px}}
+
 </style>
 </head>
 <body>
@@ -2460,7 +2486,9 @@ var DIPLOMAS = [
   { id: 'jp', sigla: 'LJP', nome: 'Lei dos Julgados de Paz', fonte: 'Lei n.º 78/2001, de 13 de julho (alterada pela Lei n.º 54/2013, de 31 de julho)', area: 'Organização judiciária',
     url: DRE, arts: [['8.º', 'Competência em razão do valor (até 15.000 €)'], ['9.º', 'Competência em razão da matéria']] },
   { id: 'rcp', sigla: 'RCP', nome: 'Regulamento das Custas Processuais', fonte: 'Decreto-Lei n.º 34/2008, de 26 de fevereiro', area: 'Processo Civil',
-    url: 'https://diariodarepublica.pt/dr/detalhe/decreto-lei/34-2008-247448', arts: [] },
+    url: 'https://diariodarepublica.pt/dr/legislacao-consolidada/decreto-lei/2008-34454975', arts: [['5.º', 'Unidade de conta'], ['6.º', 'Regras gerais de fixação da taxa de justiça'], ['7.º', 'Regras especiais'], ['13.º', 'Responsáveis passivos'], ['14.º', 'Oportunidade do pagamento'], ['14.º-A', 'Não pagamento da segunda prestação']] },
+  { id: 'citel', sigla: 'CitEl', nome: 'Citações e Notificações Eletrónicas', fonte: 'Decreto-Lei n.º 91/2024, de 22 de novembro', area: 'Processo Civil',
+    url: 'https://diariodarepublica.pt/dr/detalhe/decreto-lei/91-2024-897548402', arts: [['2.º', 'Área de Serviços Digitais dos Tribunais'], ['3.º', 'Registo do endereço de correio eletrónico'], ['4.º', 'Serviço público de notificações eletrónicas'], ['5.º', 'Plataforma PERTO']] },
   { id: 'eoa', sigla: 'EOA', nome: 'Estatuto da Ordem dos Advogados', fonte: 'Lei n.º 145/2015, de 9 de setembro', area: 'Deontologia',
     url: 'https://diariodarepublica.pt/dr/detalhe/lei/145-2015-70236273', arts: [['92.º', 'Segredo profissional']] },
   { id: 'rgpd', sigla: 'RGPD', nome: 'Regulamento Geral sobre a Proteção de Dados', fonte: 'Regulamento (UE) 2016/679, de 27 de abril de 2016', area: 'Proteção de dados',
@@ -9338,7 +9366,7 @@ Store.attach = function (session) {
 };
 
 /* ---------- estado da interface ---------- */
-var VIEWS = ['painel', 'reputacao', 'flashcards', 'aula', 'lei', 'guias', 'guia', 'glossario', 'calcheranca', 'mapapp', 'mapapc', 'meet', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
+var VIEWS = ['painel', 'reputacao', 'flashcards', 'aula', 'lei', 'guias', 'guia', 'glossario', 'calcheranca', 'calculadoras', 'mapapp', 'mapapc', 'meet', 'instituicoes', 'atualidade', 'connect', 'chat', 'mensagens', 'salas', 'legal', 'bemvindo', 'prazos', 'agenda', 'dissertacao', 'ordem', 'docente', 'apontamentos', 'cadeiras', 'workspaces', 'biblioteca', 'exames', 'casos', 'minutas'];
 var S = {
   view: 'painel', wsId: null, wsTab: '01', wsQ: '', q: '',
   libQ: '', libArea: 'Todas', libOpen: { cpc: true },
@@ -9466,6 +9494,7 @@ function render() {
     else if (v === 'guias') h = vGuias();
     else if (v === 'glossario') h = vGlossario();
     else if (v === 'calcheranca') h = vCalcHeranca();
+    else if (v === 'calculadoras') h = vCalculadoras();
     else if (v === 'mapapp') h = vMapaPP();
     else if (v === 'mapapc') h = vMapaPC();
     else if (v === 'meet') h = vMeet();
@@ -12426,16 +12455,16 @@ var MOD_PERFIL = {
   doc: ['docente', 'atualidade'],
   outro: ['kpis', 'progresso', 'calendario', 'horario', 'atualidade', 'continuar', 'ferramentas']
 };
-var NAV = { painel: ['Início', 'grid'], guias: ['Matéria explicada', 'book'], glossario: ['Glossário jurídico', 'book'], calcheranca: ['Calculadora da herança', 'grid'], mapapp: ['Mapa do processo penal', 'book'], mapapc: ['Mapa do processo declarativo', 'book'], aula: ['Sala de aula', 'aula'], flashcards: ['Flashcards', 'layers'], atualidade: ['Atualidade jurídica', 'news'], biblioteca: ['Biblioteca jurídica', 'book'], instituicoes: ['Instituições', 'uni'], workspaces: ['Legal Workspaces', 'folder'], minutas: ['Gerador de minutas', 'file'], cadeiras: ['Cadeiras', 'layers'], apontamentos: ['Apontamentos', 'note'], exames: ['Estudar e praticar', 'check'], casos: ['Casos práticos', 'scale'], prazos: ['Contador de prazos', 'hour'], agenda: ['Agenda de diligências', 'cal'], dissertacao: ['Dissertação', 'cap'], ordem: ['Treino para a Ordem', 'badge'], docente: ['Ensino', 'pen'] };
+var NAV = { painel: ['Início', 'grid'], guias: ['Matéria explicada', 'book'], glossario: ['Glossário jurídico', 'book'], calcheranca: ['Calculadora da herança', 'grid'], calculadoras: ['Calculadoras jurídicas', 'grid'], mapapp: ['Mapa do processo penal', 'book'], mapapc: ['Mapa do processo declarativo', 'book'], aula: ['Sala de aula', 'aula'], flashcards: ['Flashcards', 'layers'], atualidade: ['Atualidade jurídica', 'news'], biblioteca: ['Biblioteca jurídica', 'book'], instituicoes: ['Instituições', 'uni'], workspaces: ['Legal Workspaces', 'folder'], minutas: ['Gerador de minutas', 'file'], cadeiras: ['Cadeiras', 'layers'], apontamentos: ['Apontamentos', 'note'], exames: ['Estudar e praticar', 'check'], casos: ['Casos práticos', 'scale'], prazos: ['Contador de prazos', 'hour'], agenda: ['Agenda de diligências', 'cal'], dissertacao: ['Dissertação', 'cap'], ordem: ['Treino para a Ordem', 'badge'], docente: ['Ensino', 'pen'] };
 var COMUN = ['chat', 'mensagens', 'salas', 'connect'];
 var NAV_PERFIL = {
-  lic: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'glossario', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos', 'calcheranca', 'mapapp', 'mapapc']], ['Trabalho', ['workspaces', 'minutas']]],
-  licd: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Próximo passo', ['ordem', 'prazos', 'minutas', 'workspaces']]],
+  lic: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'glossario', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos', 'calcheranca', 'calculadoras', 'mapapp', 'mapapc']], ['Trabalho', ['workspaces', 'minutas']]],
+  licd: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Próximo passo', ['ordem', 'prazos', 'calculadoras', 'minutas', 'workspaces']]],
   mest: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Investigação', ['dissertacao', 'workspaces', 'apontamentos']]],
-  estag: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Prática', ['prazos', 'agenda', 'minutas', 'workspaces']], ['Preparação', ['ordem', 'casos']]],
-  prof: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Prática', ['prazos', 'agenda', 'minutas', 'workspaces']]],
+  estag: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Prática', ['prazos', 'calculadoras', 'agenda', 'minutas', 'workspaces']], ['Preparação', ['ordem', 'casos']]],
+  prof: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Prática', ['prazos', 'calculadoras', 'agenda', 'minutas', 'workspaces']]],
   doc: [['Geral', ['painel', 'atualidade', 'biblioteca']], ['Ensino', ['docente', 'casos', 'exames']]],
-  outro: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'glossario', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos', 'calcheranca', 'mapapp', 'mapapc']], ['Trabalho', ['workspaces', 'minutas', 'prazos', 'agenda']]]
+  outro: [['Geral', ['painel', 'atualidade', 'biblioteca', 'instituicoes']], ['Estudo', ['guias', 'glossario', 'aula', 'cadeiras', 'apontamentos', 'exames', 'flashcards', 'casos', 'calcheranca', 'calculadoras', 'mapapp', 'mapapc']], ['Trabalho', ['workspaces', 'minutas', 'prazos', 'agenda']]]
 };
 var AREAS_OPC = ['Civil', 'Processo Civil', 'Penal', 'Constitucional', 'Administrativo', 'Comercial', 'Fiscal', 'Laboral', 'Migrações', 'Institucional'];
 
@@ -14820,19 +14849,19 @@ function leiTextoHtml(t) {
   return esc(t || '').split(/\n+/).map(function (l) { l = l.trim(); if (!l) return ''; var m = l.match(/^(\d+\s*[-.]|[a-z]\)|[ivx]+\))\s*/i); return '<p' + (m ? ' class="' + (/^\d/.test(m[1]) ? 'n' : 'al') + '"' : '') + '>' + l + '</p>'; }).join('');
 }
 function leiDipInfo(dip) { return DIPLOMAS.filter(function (d) { return d.id === dip; })[0] || { id: dip, sigla: dip.toUpperCase(), nome: dip, url: '#' }; }
-function leiFonteNota(dip) { var m = LEI.meta && LEI.meta[dip]; if (m && m.fonte && m.fonte.indexOf('diariodarepublica.pt') < 0) return 'Versão consolidada não oficial (o Diário da República não publica versão consolidada deste código)' + (m.extraido_em ? ', obtida a ' + new Date(m.extraido_em).toLocaleDateString('pt-PT') : '') + '. Confirme sempre no texto oficial.'; return 'Versão consolidada do Diário da República' + (m && m.extraido_em ? ', obtida a ' + new Date(m.extraido_em).toLocaleDateString('pt-PT') : '') + '. Confirme alterações posteriores no texto oficial.'; }
+function leiFonteNota(dip) { var m = LEI.meta && LEI.meta[dip]; if (m && m.fonte && m.fonte.indexOf('/dr/detalhe/') > 0) return 'Texto publicado no Diário da República (sem alterações posteriores)' + (m.extraido_em ? ', obtido a ' + new Date(m.extraido_em).toLocaleDateString('pt-PT') : '') + '. Confirme no texto oficial.'; if (m && m.fonte && m.fonte.indexOf('diariodarepublica.pt') < 0) return 'Versão consolidada não oficial (o Diário da República não publica versão consolidada deste código)' + (m.extraido_em ? ', obtida a ' + new Date(m.extraido_em).toLocaleDateString('pt-PT') : '') + '. Confirme sempre no texto oficial.'; return 'Versão consolidada do Diário da República' + (m && m.extraido_em ? ', obtida a ' + new Date(m.extraido_em).toLocaleDateString('pt-PT') : '') + '. Confirme alterações posteriores no texto oficial.'; }
 /* ligações automáticas nas explicações: «art. 569.º do CPC» abre o artigo */
-var LEI_SIG = { CRP: 'crp', CC: 'cc', CPC: 'cpc', CP: 'cp', CPP: 'cpp', CT: 'ct', CSC: 'csc', CPA: 'cpa', CPTA: 'cpta', ETAF: 'etaf', CCom: 'ccom', LGT: 'lgt', CPPT: 'cppt', CIRS: 'cirs', CIRC: 'circ', CIVA: 'civa', CPT: 'cpt', RGIT: 'rgit', CIS: 'cis', CIMI: 'cimi', CIMT: 'cimt', RGICSF: 'rgicsf', RJCS: 'rjcs', SORCA: 'sorca' };
+var LEI_SIG = { CRP: 'crp', CC: 'cc', CPC: 'cpc', CP: 'cp', CPP: 'cpp', CT: 'ct', CSC: 'csc', CPA: 'cpa', CPTA: 'cpta', ETAF: 'etaf', CCom: 'ccom', LGT: 'lgt', CPPT: 'cppt', CIRS: 'cirs', CIRC: 'circ', CIVA: 'civa', CPT: 'cpt', RGIT: 'rgit', CIS: 'cis', CIMI: 'cimi', CIMT: 'cimt', RGICSF: 'rgicsf', RJCS: 'rjcs', SORCA: 'sorca', RCP: 'rcp', LOSJ: 'losj' };
 /* diplomas avulsos citados pelo número («art. 17.º do DL n.º 133/2009») */
-var LEI_DL = { '298/92': 'rgicsf', '72/2008': 'rjcs', '291/2007': 'sorca', '149/95': 'locfin', '105/2004': 'garfin', '27-C/2000': 'smb', '454/91': 'cheque', '74-A/2017': 'rcci', '133/2009': 'rcc', '171/95': 'factoring', '183/88': 'segcred', '227/2012': 'persi' };
+var LEI_DL = { '298/92': 'rgicsf', '72/2008': 'rjcs', '291/2007': 'sorca', '149/95': 'locfin', '105/2004': 'garfin', '27-C/2000': 'smb', '454/91': 'cheque', '74-A/2017': 'rcci', '133/2009': 'rcc', '171/95': 'factoring', '183/88': 'segcred', '227/2012': 'persi', '34/2008': 'rcp', '91/2024': 'citel' };
 function leiSigDip(sig) { if (LEI_SIG[sig]) return LEI_SIG[sig]; var m = /(\d+(?:-[A-Z])?\/\d+)$/.exec(sig); return m ? LEI_DL[m[1]] : null; }
 function leiLinkify(txt) {
   var h = esc(txt || '');
-  h = h.replace(/\b([Aa]rts\.\s*)((?:\d+\.?º(?:-[A-Z])?\s*(?:,|\be\b|\ba\b)\s*)+\d+\.?º(?:-[A-Z])?)(\s*(?:do|da)\s+)(RGICSF|RJCS|SORCA|CRP|CCom|CC|CPC|CPPT|CPP|CPTA|CPT|CPA|CP|CT|CSC|ETAF|LGT|CIRS|CIRC|CIVA|RGIT|CIS|CIMI|CIMT|(?:DL|Decreto-Lei) n\.\s?º \d+(?:-[A-Z])?\/\d+)\b/g, function (m, a0, lista, mid, sig) {
+  h = h.replace(/\b([Aa]rts\.\s*)((?:\d+\.?º(?:-[A-Z])?\s*(?:,|\be\b|\ba\b)\s*)+\d+\.?º(?:-[A-Z])?)(\s*(?:do|da)\s+)(RGICSF|RJCS|SORCA|RCP|LOSJ|CRP|CCom|CC|CPC|CPPT|CPP|CPTA|CPT|CPA|CP|CT|CSC|ETAF|LGT|CIRS|CIRC|CIVA|RGIT|CIS|CIMI|CIMT|(?:DL|Decreto-Lei) n\.\s?º \d+(?:-[A-Z])?\/\d+)\b/g, function (m, a0, lista, mid, sig) {
     var dip = leiSigDip(sig); if (!dip || (LEI.meta && !LEI.meta[dip])) return m;
     return a0 + lista.replace(/(\d+)\.?º(-[A-Z])?/g, function (x, n, suf) { return '<a href="#" class="lei-lk" data-a="lei-ver" data-id="' + dip + '|' + n + (suf || '') + '" title="Ler o artigo">' + x + '</a>'; }) + mid + sig;
   });
-  return h.replace(/\b([Aa]rt(?:igo|s)?\.?\s*)(\d+)\.?º(-[A-Z])?((?:,\s*n\.?\s?(?:º|os)[^,;]*?)?(?:,\s*al[^,;]*?)?,?\s*(?:do|da)\s+)(RGICSF|RJCS|SORCA|CRP|CCom|CC|CPC|CPPT|CPP|CPTA|CPT|CPA|CP|CT|CSC|ETAF|LGT|CIRS|CIRC|CIVA|RGIT|CIS|CIMI|CIMT|(?:DL|Decreto-Lei) n\.\s?º \d+(?:-[A-Z])?\/\d+)\b/g, function (m, a, n, suf, mid, sig) {
+  return h.replace(/\b([Aa]rt(?:igo|s)?\.?\s*)(\d+)\.?º(-[A-Z])?((?:,\s*n\.?\s?(?:º|os)[^;]{0,40}?)?(?:,\s*al[^,;]*?)?,?\s*(?:do|da)\s+)(RGICSF|RJCS|SORCA|RCP|LOSJ|CRP|CCom|CC|CPC|CPPT|CPP|CPTA|CPT|CPA|CP|CT|CSC|ETAF|LGT|CIRS|CIRC|CIVA|RGIT|CIS|CIMI|CIMT|(?:DL|Decreto-Lei) n\.\s?º \d+(?:-[A-Z])?\/\d+)\b/g, function (m, a, n, suf, mid, sig) {
     var dip = leiSigDip(sig); if (!dip || (LEI.meta && !LEI.meta[dip])) return m;
     return '<a href="#" class="lei-lk" data-a="lei-ver" data-id="' + dip + '|' + n + (suf || '') + '" title="Ler o artigo">' + m + '</a>';
   });
@@ -14848,7 +14877,7 @@ A['lei-abrir'] = function (el) { var p = el.dataset.id.split('|'); closeModal();
 function vLei() {
   leiMetaCarregar();
   var L = S.lei || (S.lei = { dip: 'crp', num: '1' }), d = leiDipInfo(L.dip), dips = LEI.meta ? Object.keys(LEI.meta) : [];
-  var ordem = ['crp', 'cc', 'cpc', 'cp', 'cpp', 'ct', 'csc', 'cpa', 'rgicsf', 'rjcs', 'sorca', 'rcc', 'rcci', 'persi', 'smb', 'cheque', 'locfin', 'factoring', 'garfin', 'segcred']; dips.sort(function (a, b) { var x = ordem.indexOf(a), y = ordem.indexOf(b); return (x < 0 ? 99 : x) - (y < 0 ? 99 : y); }); if (0) dips.sort(function (a, b) { return ordem.indexOf(a) - ordem.indexOf(b); });
+  var ordem = ['crp', 'cc', 'cpc', 'cp', 'cpp', 'ct', 'csc', 'cpa', 'rgicsf', 'rjcs', 'sorca', 'rcc', 'rcci', 'persi', 'smb', 'cheque', 'locfin', 'factoring', 'garfin', 'segcred', 'rcp', 'losj', 'citel']; dips.sort(function (a, b) { var x = ordem.indexOf(a), y = ordem.indexOf(b); return (x < 0 ? 99 : x) - (y < 0 ? 99 : y); }); if (0) dips.sort(function (a, b) { return ordem.indexOf(a) - ordem.indexOf(b); });
   var h = '<div class="head"><div><span class="crumb"><button data-go="biblioteca">Biblioteca</button> / Texto integral</span><h1>' + esc(d.nome) + '</h1><p class="sub">' + esc(leiFonteNota(L.dip)) + '</p></div></div>';
   h += '<div class="lei-top"><div class="seg" role="group" aria-label="Diploma">' + dips.map(function (k) { return '<button class="' + (k === L.dip ? 'on' : '') + '" data-a="lei-dip" data-id="' + k + '">' + esc(leiDipInfo(k).sigla) + '</button>'; }).join('') + '</div>' +
     '<label class="search lei-q">' + I.search + '<span class="sr">Procurar no diploma</span><input type="search" id="lei-q" placeholder="N.º do artigo ou palavras (ex.: 483, usucapião)…" value="' + esc(L.q || '') + '"></label></div>';
@@ -15371,6 +15400,391 @@ vGuia = function () {
   return h;
 };
 
+/* ---------- CALCULADORAS JURÍDICAS (custas, recursos, competência, juros, prazos, crédito, penal, trabalho, IMT) ---------- */
+var CX_UC = 102, CX_RMMG = 920;
+function cxEst() {
+  if (!S.cx) { var g = null; try { g = JSON.parse(localStorage.getItem('lexdesk_calcs') || 'null'); } catch (e) { } S.cx = g && g.v ? g : { t: 'custas', v: {} }; }
+  return S.cx;
+}
+function cxGuardar() { try { localStorage.setItem('lexdesk_calcs', JSON.stringify(S.cx)); } catch (e) { } }
+function cxV(id) { var c = cxEst(); if (!c.v[id]) c.v[id] = JSON.parse(JSON.stringify(CX[id].ini || {})); return c.v[id]; }
+function cxN(v) { var n = parseFloat(String(v == null ? '' : v).replace(/\s/g, '').replace(/\.(?=\d{3}(\D|$))/g, '').replace(',', '.')); return isFinite(n) ? n : 0; }
+function cxE(v) { v = Math.round((v || 0) * 100) / 100; return v.toLocaleString('pt-PT', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €'; }
+function cxP(v, d) { return (Math.round(v * 1e4) / 1e4).toLocaleString('pt-PT', { maximumFractionDigits: d == null ? 3 : d }) + ' %'; }
+function cxUC(v) { return v.toLocaleString('pt-PT', { maximumFractionDigits: 2 }) + ' UC'; }
+function cxD(s) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || ''); return m ? new Date(Date.UTC(+m[1], +m[2] - 1, +m[3], 12)) : null; }
+function cxIso(d) { return d.toISOString().slice(0, 10); }
+function cxHoje() { return cxIso(new Date(Date.UTC(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 12))); }
+/* art. 279.º, al. c), do CC: termina no dia correspondente; se não existir, no último dia do mês */
+function cxAddYM(d, y, m) { var t = d.getUTCFullYear() * 12 + d.getUTCMonth() + y * 12 + m, ano = Math.floor(t / 12), mes = t % 12, ult = new Date(Date.UTC(ano, mes + 1, 0, 12)).getUTCDate(); return new Date(Date.UTC(ano, mes, Math.min(d.getUTCDate(), ult), 12)); }
+function cxAddD(d, n) { return new Date(d.getTime() + n * 864e5); }
+function cxDias(a, b) { return Math.round((b - a) / 864e5); }
+function cxFd(d) { return d.toLocaleDateString('pt-PT', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }); }
+function cxL(t) { return typeof leiLinkify === 'function' ? leiLinkify(t) : esc(t); }
+/* blocos de interface */
+function cxIn(k, lbl, v, o) { o = o || {}; return '<label class="f">' + esc(lbl) + '<input class="in" ' + (o.type === 'date' ? 'type="date"' : 'inputmode="decimal"') + ' data-cx="' + k + '" value="' + esc(String(v == null ? '' : v)) + '"' + (o.ph ? ' placeholder="' + esc(o.ph) + '"' : '') + '>' + (o.ajuda ? '<span class="ch-why">' + esc(o.ajuda) + '</span>' : '') + '</label>'; }
+function cxSel(k, lbl, v, ops) { return '<label class="f">' + esc(lbl) + '<select class="in" data-cx="' + k + '">' + ops.map(function (o) { return '<option value="' + o[0] + '"' + (String(v) === String(o[0]) ? ' selected' : '') + '>' + esc(o[1]) + '</option>'; }).join('') + '</select></label>'; }
+function cxCk(k, lbl, v) { return '<label class="check"><input type="checkbox" data-cx="' + k + '"' + (v ? ' checked' : '') + '> ' + esc(lbl) + '</label>'; }
+function cxBig(lbl, val, sub) { return '<div class="cx-big"><span>' + esc(lbl) + '</span><b>' + val + '</b>' + (sub ? '<em>' + sub + '</em>' : '') + '</div>'; }
+function cxPasso(n, tit, corpo) { return '<section class="ch-pa"><span class="ch-n">' + n + '</span><div><h3>' + esc(tit) + '</h3>' + corpo + '</div></section>'; }
+function cxBase(l) { return '<div class="cx-base"><span class="eyebrow">Base legal</span>' + l.map(function (t) { return '<span>' + cxL(t) + '</span>'; }).join('') + '</div>'; }
+function cxNota(t) { return '<p class="ch-av">' + esc(t) + '</p>'; }
+function cxVazio(t) { return '<div class="empty"><span>' + esc(t) + '</span></div>'; }
+
+var CX = {};
+/* 1. Taxa de justiça */
+CX.custas = {
+  nome: 'Taxa de justiça', area: 'Processo', d: 'Tabela I do RCP: ação, recurso ou especial complexidade',
+  ini: { valor: '30000', tab: 'A', el: false },
+  form: function (c) {
+    return cxIn('valor', 'Valor da causa (€)', c.valor) +
+      cxSel('tab', 'Tipo de impulso', c.tab, [['A', 'Ação, reconvenção ou oposição (Tabela I-A)'], ['B', 'Recurso (Tabela I-B)'], ['C', 'Especial complexidade (Tabela I-C)']]) +
+      cxCk('el', 'Parte sem mandatário que entrega todas as peças por via eletrónica (redução para 90%)', c.el);
+  },
+  res: function (c) {
+    var v = cxN(c.valor); if (v <= 0) return cxVazio('Indique o valor da causa.');
+    var T = [[2000, 1, .5, 1.5], [8000, 2, 1, 3], [16000, 3, 1.5, 4.5], [24000, 4, 2, 6], [30000, 5, 2.5, 7.5], [40000, 6, 3, 9], [60000, 7, 3.5, 10.5], [80000, 8, 4, 12], [100000, 9, 4.5, 13.5], [150000, 10, 5, 15], [200000, 12, 6, 18], [250000, 14, 7, 21], [275000, 16, 8, 24]];
+    var col = { A: 1, B: 2, C: 3 }[c.tab] || 1, extra = [0, 3, 1.5, 4.5][col], esc_ = null, uc, rem = 0, fr = 0;
+    for (var i = 0; i < T.length; i++) if (v <= T[i][0]) { esc_ = i; break; }
+    if (esc_ !== null) uc = T[esc_][col]; else { uc = T[12][col]; fr = Math.ceil((v - 275000) / 25000); rem = fr * extra; }
+    var f = c.el ? 0.9 : 1, eur = uc * CX_UC * f, duas = c.tab !== 'B';
+    var h = cxBig('Taxa de justiça a pagar no impulso', cxE(eur), cxUC(uc * f) + ' × ' + CX_UC + ' €' + (rem ? ' · remanescente a final: ' + cxE(rem * CX_UC * f) : ''));
+    h += cxPasso(1, 'Escalão da tabela', '<p>' + (esc_ !== null ? 'O valor de ' + cxE(v) + ' cabe no ' + (esc_ + 1) + '.º escalão da Tabela I-' + c.tab + ': <b>' + cxUC(uc) + '</b>.' : 'O valor excede 275 000 €: aplica-se o último escalão (' + cxUC(uc) + ') e, a final, acrescem ' + cxUC(extra) + ' por cada 25 000 € ou fração — ' + fr + ' × ' + cxUC(extra) + ' = <b>' + cxUC(rem) + '</b>.') + '</p>' + (rem ? '<p class="ch-sm">' + cxL('O juiz pode dispensar o pagamento deste remanescente, atendendo à complexidade da causa e à conduta das partes (art. 6.º, n.º 7, do RCP).') + '</p>' : ''));
+    h += cxPasso(2, 'Montante', '<p>' + cxUC(uc) + ' × ' + CX_UC + ' € (valor da UC)' + (c.el ? ' × 90%' : '') + ' = <b>' + cxE(eur) + '</b></p>');
+    h += cxPasso(3, 'Como se paga', duas ? '<p>Em duas prestações iguais de <b>' + cxE(eur / 2) + '</b>: a primeira até à prática do ato (com a peça); a segunda nos 10 dias seguintes à notificação para a audiência final.</p><p class="ch-sm">' + cxL('A segunda prestação não é devida, por exemplo, se a ação terminar antes de designada a audiência final (art. 14.º-A do RCP).') + '</p>' : '<p>De uma só vez: o recorrente paga com as alegações e o recorrido que contra-alegue paga com as contra-alegações.</p>');
+    h += cxBase(['art. 6.º, n.os 1, 2 e 5, do RCP (tabelas)', 'art. 13.º, n.º 2, do RCP (duas prestações)', 'art. 14.º do RCP (momento do pagamento)', 'art. 7.º, n.º 2, do RCP (recursos)', 'art. 5.º do RCP (unidade de conta)']);
+    return h + cxNota('UC de ' + CX_UC + ' €. Não cobre a Tabela II (injunções, execuções, incidentes e procedimentos cautelares) nem o regime das sociedades com 200 ou mais ações por ano, que pagam pela Tabela I-C (art. 13.º, n.º 3, do RCP).');
+  }
+};
+/* 2. Alçadas e recurso */
+CX.recurso = {
+  nome: 'Alçadas e recurso', area: 'Processo', d: 'Cabe recurso? Valor da causa, sucumbência e dupla conforme',
+  ini: { valor: '12000', suc: '', de: '1' },
+  form: function (c) {
+    return cxIn('valor', 'Valor da causa (€)', c.valor) + cxIn('suc', 'Valor em que a decisão é desfavorável ao recorrente (€)', c.suc, { ph: 'Se não souber, deixe em branco', ajuda: 'Havendo dúvida fundada sobre a sucumbência, atende-se só ao valor da causa.' }) +
+      cxSel('de', 'Recorre-se de', c.de, [['1', 'Decisão da 1.ª instância (apelação para a Relação)'], ['2', 'Acórdão da Relação (revista para o STJ)']]);
+  },
+  res: function (c) {
+    var v = cxN(c.valor); if (v <= 0) return cxVazio('Indique o valor da causa.');
+    var s = cxN(c.suc), usaS = s > 0, alc = c.de === '2' ? 30000 : 5000, metade = alc / 2, okV = v > alc, okS = usaS ? s > metade : true, ok = okV && okS;
+    var para = c.de === '2' ? 'o Supremo Tribunal de Justiça (revista)' : 'o Tribunal da Relação (apelação)';
+    var h = cxBig('Recurso ordinário para ' + para, ok ? 'Admissível' : 'Não admissível', ok ? 'pelo critério do valor' : 'salvo nos casos em que o recurso é sempre admissível');
+    h += cxPasso(1, 'Alçada do tribunal recorrido', '<p>A alçada ' + (c.de === '2' ? 'da Relação' : 'da 1.ª instância') + ' é de <b>' + cxE(alc) + '</b>. O valor da causa (' + cxE(v) + ') ' + (okV ? '<b>excede</b>' : '<b>não excede</b>') + ' a alçada.</p>');
+    h += cxPasso(2, 'Sucumbência', usaS ? '<p>A decisão é desfavorável em ' + cxE(s) + ', o que ' + (okS ? '<b>excede</b>' : '<b>não excede</b>') + ' metade da alçada (' + cxE(metade) + ').</p>' : '<p class="ch-sm">Sem valor de sucumbência indicado, atende-se apenas ao valor da causa.</p>');
+    var sempre = '<ul class="cx-ul"><li>Violação das regras de competência internacional, em razão da matéria ou da hierarquia, ou ofensa de caso julgado;</li><li>Decisões sobre o valor da causa com o fundamento de que excede a alçada;</li><li>Decisões contra jurisprudência uniformizada do STJ.</li>' + (c.de === '1' ? '<li>Para a Relação: ações sobre a validade, subsistência ou cessação de arrendamentos (salvo os não permanentes ou transitórios) e indeferimento liminar da petição.</li>' : '') + '</ul>';
+    h += cxPasso(3, 'Casos em que cabe sempre recurso', sempre);
+    if (c.de === '2') h += cxPasso(4, 'Dupla conforme', '<p>' + cxL('Mesmo com valor suficiente, não há revista se a Relação confirmar a decisão da 1.ª instância sem voto de vencido e sem fundamentação essencialmente diferente (art. 671.º, n.º 3, do CPC), salvo revista excecional (art. 672.º do CPC).') + '</p>');
+    h += cxBase(['art. 44.º, n.º 1, da LOSJ (alçadas)', 'art. 629.º, n.os 1 a 3, do CPC', 'art. 671.º do CPC (revista)']);
+    return h + cxNota('Em matéria criminal não há alçada: a recorribilidade segue as regras do processo penal (art. 44.º, n.º 2, da LOSJ).');
+  }
+};
+/* 3. Tribunal competente */
+CX.tribunal = {
+  nome: 'Tribunal competente', area: 'Processo', d: 'Juízo pelo valor e foro territorial no processo civil',
+  ini: { valor: '60000', tipo: 'cumpr', rpc: false, am: false },
+  form: function (c) {
+    return cxIn('valor', 'Valor da causa (€)', c.valor) +
+      cxSel('tipo', 'Tipo de ação', c.tipo, [['cumpr', 'Cumprimento, indemnização por incumprimento ou resolução de contrato'], ['resp', 'Responsabilidade civil por facto ilícito ou pelo risco'], ['imov', 'Direitos reais sobre imóveis, despejo, preferência, divisão de coisa comum'], ['div', 'Divórcio ou separação de pessoas e bens'], ['geral', 'Outra ação (regra geral)']]) +
+      (c.tipo === 'cumpr' ? cxCk('rpc', 'O réu é uma pessoa coletiva', c.rpc) + cxCk('am', 'Credor e réu têm domicílio na mesma área metropolitana (Lisboa ou Porto)', c.am) : '');
+  },
+  res: function (c) {
+    var v = cxN(c.valor), h = '';
+    if (c.tipo === 'div') h += cxBig('Juízo competente', 'Juízo de família e menores', 'competência especializada');
+    else if (v > 0) h += cxBig('Juízo competente', v > 50000 ? 'Juízo central cível' : 'Juízo local cível', v > 50000 ? 'ações de processo comum de valor superior a 50 000 €' : 'ou juízo de competência genérica, onde não haja juízo local cível');
+    else h += cxVazio('Indique o valor da causa para saber o juízo.');
+    if (v > 0 && v <= 15000 && c.tipo !== 'div') h += '<p class="ch-ok">Valor até 15 000 €: se a matéria couber na sua competência, pode também recorrer a um julgado de paz.</p>';
+    var foro = {
+      cumpr: ['Tribunal do domicílio do réu', (c.rpc || c.am) ? 'O credor pode optar pelo tribunal do lugar onde a obrigação devia ser cumprida, porque ' + (c.rpc ? 'o réu é pessoa coletiva' : 'ambos têm domicílio na mesma área metropolitana') + '.' : 'Sem opção pelo lugar do cumprimento: o réu não é pessoa coletiva e não estão ambos na mesma área metropolitana.', 'art. 71.º, n.º 1, do CPC'],
+      resp: ['Tribunal do lugar onde o facto ocorreu', 'Vale para a responsabilidade extracontratual, por facto ilícito ou pelo risco.', 'art. 71.º, n.º 2, do CPC'],
+      imov: ['Tribunal da situação dos bens', 'Se houver imóveis em várias circunscrições, conta a do imóvel de maior valor matricial.', 'art. 70.º, n.os 1 e 3, do CPC'],
+      div: ['Tribunal do domicílio ou da residência do autor', 'Regra própria das ações de divórcio e de separação.', 'art. 72.º do CPC'],
+      geral: ['Tribunal do domicílio do réu', 'Se o réu não tiver residência habitual, for incerto ou ausente, é demandado no domicílio do autor.', 'art. 80.º do CPC']
+    }[c.tipo];
+    h += cxPasso(1, 'Competência em razão do valor', c.tipo === 'div' ? '<p>As ações de divórcio cabem aos juízos de família e menores, independentemente do valor.</p>' : '<p>' + (v > 50000 ? 'O valor excede 50 000 €: a ação declarativa de processo comum é preparada e julgada no juízo central cível.' : 'O valor não excede 50 000 €: a ação cabe ao juízo local cível ou, na sua falta, ao de competência genérica.') + '</p>');
+    h += cxPasso(2, 'Competência territorial', '<p><b>' + esc(foro[0]) + '</b></p><p class="ch-sm">' + esc(foro[1]) + '</p>');
+    h += cxBase(['art. 117.º, n.º 1, da LOSJ (juízos centrais cíveis)', 'art. 130.º da LOSJ (juízos locais)', foro[2]]);
+    return h + cxNota('Verifique sempre se existe juízo especializado (comércio, trabalho, execução) ou regra especial que afaste estas regras.');
+  }
+};
+/* 4. Juros de mora */
+CX.juros = {
+  nome: 'Juros de mora', area: 'Obrigações', d: 'Juros civis ou comerciais entre duas datas',
+  ini: { cap: '5000', ini: '', fim: '', tx: 'civ', out: '' },
+  form: function (c) {
+    return cxIn('cap', 'Capital em dívida (€)', c.cap) + '<div class="ch-row">' + cxIn('ini', 'Constituição em mora', c.ini, { type: 'date' }) + cxIn('fim', 'Data do cálculo', c.fim || cxHoje(), { type: 'date' }) + '</div>' +
+      cxSel('tx', 'Taxa', c.tx, [['civ', 'Juros civis — 4%'], ['com', 'Comerciais — 9,40% (2.º semestre de 2026)'], ['tc', 'Transações comerciais (DL n.º 62/2013) — 10,40% (2.º semestre de 2026)'], ['out', 'Outra taxa (convencionada)']]) +
+      (c.tx === 'out' ? cxIn('out', 'Taxa anual (%)', c.out) : '');
+  },
+  res: function (c) {
+    var C = cxN(c.cap), a = cxD(c.ini), b = cxD(c.fim || cxHoje());
+    if (C <= 0 || !a || !b) return cxVazio('Indique o capital e a data de constituição em mora.');
+    if (b <= a) return cxVazio('A data do cálculo tem de ser posterior à constituição em mora.');
+    var t = { civ: 4, com: 9.4, tc: 10.4 }[c.tx]; if (c.tx === 'out') t = cxN(c.out);
+    var d = cxDias(a, b), j = C * t / 100 * d / 365;
+    var h = cxBig('Juros vencidos', cxE(j), 'total em dívida: ' + cxE(C + j));
+    h += cxPasso(1, 'Período', '<p>De ' + cxFd(a) + ' a ' + cxFd(b) + ': <b>' + plural(d, 'dia', 'dias') + '</b>.</p>');
+    h += cxPasso(2, 'Cálculo', '<p class="ch-f">' + cxE(C) + ' × ' + cxP(t, 2) + ' × ' + d + ' / 365 = ' + cxE(j) + '</p>');
+    h += cxPasso(3, 'Fundamento', '<p>' + cxL('Na obrigação pecuniária, a indemnização pela mora corresponde aos juros desde o dia da constituição em mora, à taxa legal, salvo juro superior já devido ou convencionado (art. 806.º do CC).') + '</p>');
+    var base = ['art. 806.º do CC', 'art. 559.º do CC (taxa fixada por portaria: 4%)'];
+    if (c.tx === 'com' || c.tx === 'tc') base.push('art. 102.º do CCom (juros comerciais)');
+    h += cxBase(base);
+    return h + cxNota('As taxas comerciais mudam em cada semestre (aviso publicado em janeiro e julho). Se o período atravessar vários semestres, divida o cálculo por períodos. Não calcula juros compostos.');
+  }
+};
+/* 5. Prescrição e caducidade */
+CX.prescr = {
+  nome: 'Prescrição e caducidade', area: 'Obrigações', d: 'Data-limite para exercer o direito, civil ou penal',
+  ini: { tipo: 'p3', ini: '', pena: '5' },
+  ops: { ord: [20, 0, 'Prescrição ordinária', 'art. 309.º do CC', 'Regra para os direitos sem prazo especial.'], p5: [5, 0, 'Prescrição de 5 anos', 'art. 310.º do CC', 'Rendas, juros, quotas de amortização, pensões alimentícias vencidas e outras prestações periodicamente renováveis.'], p3: [3, 0, 'Responsabilidade civil — 3 anos', 'art. 498.º do CC', 'Conta-se desde que o lesado conheceu o seu direito, sem prejuízo da ordinária a contar do facto.'], enr: [3, 0, 'Enriquecimento sem causa — 3 anos', 'art. 482.º do CC', 'Conta-se do conhecimento do direito e da pessoa do responsável.'], p2: [2, 0, 'Prescrição presuntiva de 2 anos', 'art. 317.º do CC', 'Créditos de comerciantes a não comerciantes, profissões liberais, estabelecimentos de ensino. Presume o pagamento.'], p6m: [0, 6, 'Prescrição presuntiva de 6 meses', 'art. 316.º do CC', 'Alojamento, comidas ou bebidas fornecidas por estabelecimentos.'], anul: [1, 0, 'Anulabilidade — 1 ano (caducidade)', 'art. 287.º do CC', 'Conta-se da cessação do vício; se o negócio não estiver cumprido, pode ser arguida a todo o tempo.'], pref: [0, 6, 'Ação de preferência — 6 meses (caducidade)', 'art. 1410.º do CC', 'Conta-se do conhecimento dos elementos essenciais da alienação; o preço deve ser depositado nos 15 dias seguintes.'], pen: [0, 0, 'Procedimento criminal', 'art. 118.º do CP', ''] },
+  form: function (c) {
+    var o = CX.prescr.ops;
+    return cxSel('tipo', 'Direito ou procedimento', c.tipo, Object.keys(o).map(function (k) { return [k, o[k][2]]; })) +
+      (c.tipo === 'pen' ? cxIn('pena', 'Limite máximo da pena de prisão do crime (anos)', c.pena, { ajuda: 'Sem agravantes nem atenuantes; se a pena for de prisão ou multa, conta a prisão.' }) : '') +
+      cxIn('ini', c.tipo === 'pen' ? 'Data da consumação do crime' : 'Início da contagem', c.ini, { type: 'date' });
+  },
+  res: function (c) {
+    var o = CX.prescr.ops[c.tipo] || CX.prescr.ops.ord, a = cxD(c.ini), anos = o[0], meses = o[1], base = [o[3]], extra = '';
+    if (c.tipo === 'pen') {
+      var p = cxN(c.pena); if (p <= 0) return cxVazio('Indique o limite máximo da pena.');
+      anos = p > 10 ? 15 : p >= 5 ? 10 : p >= 1 ? 5 : 2;
+      extra = '<p>Pena máxima de ' + p.toLocaleString('pt-PT') + ' anos → prazo de <b>' + anos + ' anos</b> (' + (p > 10 ? 'superior a 10 anos' : p >= 5 ? 'entre 5 e 10 anos' : p >= 1 ? 'entre 1 e 5 anos' : 'restantes casos') + ').</p>';
+      base.push('art. 119.º do CP (início do prazo)', 'arts. 120.º e 121.º do CP (suspensão e interrupção)');
+    } else base.push('art. 279.º do CC (contagem)', c.tipo === 'anul' || c.tipo === 'pref' ? 'art. 328.º do CC (a caducidade não se suspende nem interrompe)' : 'arts. 318.º a 327.º do CC (suspensão e interrupção)');
+    if (!a) return cxVazio('Indique a data a partir da qual o prazo corre.');
+    var fim = cxAddYM(a, anos, meses), dur = anos ? plural(anos, 'ano', 'anos') : plural(meses, 'mês', 'meses');
+    var hoje = cxD(cxHoje()), falta = cxDias(hoje, fim);
+    var h = cxBig('O prazo termina em', cxFd(fim), falta >= 0 ? 'faltam ' + plural(falta, 'dia', 'dias') : 'terminou há ' + plural(-falta, 'dia', 'dias'));
+    h += cxPasso(1, o[2], (extra || '<p>Prazo de <b>' + dur + '</b>.</p>') + (o[4] ? '<p class="ch-sm">' + esc(o[4]) + '</p>' : ''));
+    h += cxPasso(2, 'Contagem', '<p>' + cxFd(a) + ' + ' + dur + ' = <b>' + cxFd(fim) + '</b>. O prazo termina no dia correspondente; se não existir, no último dia do mês.</p>');
+    if (c.tipo === 'pen') { var lim = cxAddYM(a, Math.floor(anos * 1.5), (anos * 1.5 % 1) * 12); h += cxPasso(3, 'Limite máximo', '<p>Mesmo com interrupções, o procedimento prescreve sempre ao fim do prazo normal acrescido de metade, ressalvado o tempo de suspensão: <b>' + cxFd(lim) + '</b>.</p>'); }
+    else h += cxPasso(3, 'Atenção', '<p class="ch-sm">' + (c.tipo === 'anul' || c.tipo === 'pref' ? 'É um prazo de caducidade: só o impede a prática do ato (propor a ação) dentro do prazo.' : 'A citação ou notificação judicial interrompe a prescrição e o prazo volta a correr do início; certas relações (entre cônjuges, por exemplo) suspendem-na.') + '</p>');
+    h += cxBase(base);
+    return h + cxNota('Confirme sempre o início do prazo (conhecimento, vencimento, consumação), que depende do caso concreto.');
+  }
+};
+/* 6. Usura */
+CX.usura = {
+  nome: 'Usura no crédito ao consumo', area: 'Banca', d: 'A TAEG ultrapassa o limite legal?',
+  ini: { taeg: '18', lim: '16,5', mt: '', mg: '' },
+  form: function (c) {
+    return cxIn('taeg', 'TAEG do contrato (%)', c.taeg) + cxIn('lim', 'Limite máximo publicado pelo Banco de Portugal (%)', c.lim, { ph: 'Ex.: 17,9', ajuda: 'O Banco de Portugal divulga em cada trimestre o limite por tipo de crédito.' }) +
+      '<p class="ch-sm">Ou calcule o limite a partir das médias do trimestre anterior:</p><div class="ch-row">' + cxIn('mt', 'TAEG média deste tipo de crédito (%)', c.mt) + cxIn('mg', 'TAEG média global do crédito ao consumo (%)', c.mg) + '</div>';
+  },
+  res: function (c) {
+    var t = cxN(c.taeg), L = cxN(c.lim), mt = cxN(c.mt), mg = cxN(c.mg), via = '';
+    if (!(L > 0)) { var cand = []; if (mt > 0) cand.push(mt * 1.25); if (mg > 0) cand.push(mg * 1.5); if (cand.length) { L = Math.min.apply(null, cand); via = 'médias'; } }
+    if (t <= 0 || !(L > 0)) return cxVazio('Indique a TAEG e o limite máximo (ou as médias do trimestre anterior).');
+    var us = t > L, red = L / 2;
+    var h = cxBig('O contrato é', us ? 'Usurário' : 'Dentro do limite', us ? 'a TAEG fica reduzida a ' + cxP(red, 2) : 'margem de ' + cxP(L - t, 2));
+    if (via) h += cxPasso(1, 'Limite legal', '<p>' + (mt > 0 ? 'TAEG média do tipo + 1/4: ' + cxP(mt, 2) + ' × 1,25 = ' + cxP(mt * 1.25, 2) + '. ' : '') + (mg > 0 ? 'TAEG média global + 50%: ' + cxP(mg, 2) + ' × 1,5 = ' + cxP(mg * 1.5, 2) + '. ' : '') + 'Vale o mais baixo: <b>' + cxP(L, 2) + '</b>.</p>');
+    else h += cxPasso(1, 'Limite legal', '<p>Limite máximo publicado: <b>' + cxP(L, 2) + '</b>.</p>');
+    h += cxPasso(2, 'Comparação', '<p>TAEG de ' + cxP(t, 2) + (us ? ' <b>excede</b> ' : ' <b>não excede</b> ') + 'o limite de ' + cxP(L, 2) + '.</p>');
+    if (us) h += cxPasso(3, 'Consequência', '<p>A TAEG considera-se automaticamente reduzida a metade do limite máximo: ' + cxP(L, 2) + ' ÷ 2 = <b>' + cxP(red, 2) + '</b>, sem prejuízo de responsabilidade criminal.</p>');
+    h += cxBase(['art. 28.º, n.os 1 a 3 e 6, do DL n.º 133/2009']);
+    return h + cxNota('O limite é o do trimestre em que o contrato foi celebrado. As facilidades de descoberto e as ultrapassagens de crédito têm regras próprias (art. 28.º, n.os 4 e 5).');
+  }
+};
+/* 7. Prestação e TAEG */
+CX.prest = {
+  nome: 'Prestação e TAEG', area: 'Banca', d: 'Prestação mensal, plano de amortização e custo total',
+  ini: { cap: '150000', tan: '3,5', meses: '360', ci: '', cm: '' },
+  form: function (c) {
+    return cxIn('cap', 'Montante do crédito (€)', c.cap) + '<div class="ch-row">' + cxIn('tan', 'TAN (%)', c.tan) + cxIn('meses', 'Prazo (meses)', c.meses) + '</div>' +
+      '<div class="ch-row">' + cxIn('ci', 'Comissões iniciais (€)', c.ci, { ph: '0' }) + cxIn('cm', 'Encargos mensais fixos (€)', c.cm, { ph: 'seguros, comissões' }) + '</div>';
+  },
+  res: function (c) {
+    var C = cxN(c.cap), tan = cxN(c.tan), n = Math.round(cxN(c.meses)), ci = Math.max(0, cxN(c.ci)), cm = Math.max(0, cxN(c.cm));
+    if (C <= 0 || n <= 0 || n > 600 || tan < 0) return cxVazio('Indique o montante, a TAN e o prazo (até 600 meses).');
+    var i = tan / 1200, P = i ? C * i / (1 - Math.pow(1 + i, -n)) : C / n, totJ = P * n - C;
+    var f = function (X) { var s = 0; for (var k = 1; k <= n; k++) s += (P + cm) / Math.pow(1 + X, k / 12); return s - (C - ci); };
+    var lo = 0, hi = 5; for (var it = 0; it < 80; it++) { var mid = (lo + hi) / 2; if (f(mid) > 0) lo = mid; else hi = mid; }
+    var taeg = (lo + hi) / 2 * 100, total = P * n + cm * n + ci;
+    var h = cxBig('Prestação mensal', cxE(P), 'TAEG ' + cxP(taeg, 2) + ' · custo total ' + cxE(total));
+    h += cxPasso(1, 'Prestação constante', '<p class="ch-f">P = C × i ÷ (1 − (1 + i)<sup>−n</sup>), com i = ' + cxP(tan, 3) + ' ÷ 12</p><p>' + cxE(C) + ' em ' + n + ' prestações de <b>' + cxE(P) + '</b>; juros totais de <b>' + cxE(totJ) + '</b>.</p>');
+    h += cxPasso(2, 'TAEG', '<p>Taxa anual que iguala o montante efetivamente disponibilizado (' + cxE(C - ci) + ') ao valor atual de tudo o que o consumidor paga (prestações' + (cm ? ' e encargos mensais' : '') + '): <b>' + cxP(taeg, 2) + '</b>.</p>');
+    var anos = Math.ceil(n / 12), sal = C, rows = '';
+    for (var a = 1; a <= anos; a++) { var jA = 0, kA = 0; for (var m = (a - 1) * 12 + 1; m <= Math.min(n, a * 12); m++) { var jm = sal * i; jA += jm; kA += P - jm; sal -= P - jm; } if (a <= 5 || a === anos || anos <= 8) rows += '<tr><td>' + a + '.º ano</td><td>' + cxE(jA) + '</td><td>' + cxE(kA) + '</td><td>' + cxE(Math.max(0, sal)) + '</td></tr>'; else if (a === 6) rows += '<tr><td colspan="4" class="ch-sm">…</td></tr>'; }
+    h += cxPasso(3, 'Plano de amortização (por ano)', '<div class="ch-tb"><table><thead><tr><th>Ano</th><th>Juros</th><th>Capital</th><th>Em dívida</th></tr></thead><tbody>' + rows + '</tbody></table></div>');
+    h += cxBase(['art. 24.º do DL n.º 133/2009 (cálculo da TAEG)', 'art. 4.º do DL n.º 133/2009 (definições)']);
+    return h + cxNota('Simulação com taxa constante. Não inclui o Imposto do Selo sobre o crédito e os juros, nem a variação da Euribor.');
+  }
+};
+/* 8. Comissão de reembolso antecipado */
+CX.reemb = {
+  nome: 'Reembolso antecipado', area: 'Banca', d: 'Comissão máxima no crédito à habitação e ao consumo',
+  ini: { tipo: 'hab', cap: '50000', reg: 'var', mot: false, rest: 'mais', jur: '' },
+  form: function (c) {
+    return cxSel('tipo', 'Tipo de crédito', c.tipo, [['hab', 'Crédito à habitação ou com garantia sobre imóvel'], ['cons', 'Crédito aos consumidores']]) + cxIn('cap', 'Capital a reembolsar antecipadamente (€)', c.cap) +
+      cxSel('reg', 'Regime de taxa no momento do reembolso', c.reg, [['var', 'Taxa variável'], ['fixa', 'Taxa fixa']]) +
+      (c.tipo === 'hab' ? cxCk('mot', 'Reembolso por morte, desemprego ou deslocação profissional', c.mot) :
+        cxSel('rest', 'Tempo até ao termo do contrato', c.rest, [['mais', 'Mais de um ano'], ['menos', 'Um ano ou menos']]) + cxIn('jur', 'Juros que pagaria até ao fim do período de taxa fixa (€, opcional)', c.jur));
+  },
+  res: function (c) {
+    var K = cxN(c.cap); if (K <= 0) return cxVazio('Indique o capital a reembolsar.');
+    var pct = 0, porque = '', base = [], h = '';
+    if (c.tipo === 'hab') {
+      if (c.mot) { porque = 'Em caso de morte, desemprego ou deslocação profissional não pode ser cobrada comissão.'; base.push('art. 23.º, n.º 9, do DL n.º 74-A/2017'); }
+      else { pct = c.reg === 'fixa' ? 2 : 0.5; porque = 'Período de taxa ' + (c.reg === 'fixa' ? 'fixa: até 2%' : 'variável: até 0,5%') + ' do capital reembolsado.'; base.push('art. 23.º, n.º 5, do DL n.º 74-A/2017'); }
+      base.push('art. 23.º, n.os 2 e 3, do DL n.º 74-A/2017 (pré-aviso de 7 ou 10 dias úteis)');
+    } else {
+      if (c.reg !== 'fixa') { porque = 'Com taxa variável não há comissão.'; base.push('art. 19.º, n.º 5, al. c), do DL n.º 133/2009'); }
+      else { pct = c.rest === 'menos' ? 0.25 : 0.5; porque = 'Taxa fixa e ' + (c.rest === 'menos' ? 'um ano ou menos' : 'mais de um ano') + ' até ao termo: até ' + cxP(pct, 2) + ' do capital.'; base.push('art. 19.º, n.os 3 e 4, do DL n.º 133/2009'); }
+      base.push('art. 19.º, n.º 2, do DL n.º 133/2009 (pré-aviso de 30 dias)');
+    }
+    var com = K * pct / 100, jur = cxN(c.jur), teto = c.tipo === 'cons' && pct && jur > 0 && jur < com;
+    if (teto) { com = jur; base.push('art. 19.º, n.º 6, do DL n.º 133/2009 (teto dos juros)'); }
+    h += cxBig('Comissão máxima', cxE(com), pct ? cxP(pct, 2) + ' de ' + cxE(K) + (teto ? ' · limitada aos juros' : '') : 'sem comissão');
+    h += cxPasso(1, 'Regra aplicável', '<p>' + esc(porque) + '</p>' + (teto ? '<p class="ch-sm">A comissão nunca pode exceder os juros que o consumidor pagaria até ao fim do período de taxa fixa.</p>' : ''));
+    h += cxPasso(2, 'Outros encargos', '<p class="ch-sm">O banco não pode cobrar outras despesas pelo reembolso, além de encargos de terceiros (registos, notários, impostos) devidamente justificados.</p>');
+    h += cxBase(base);
+    return h + cxNota('Os valores são máximos: o contrato pode prever isenção ou comissão inferior.');
+  }
+};
+/* 9. Cúmulo jurídico */
+CX.cumulo = {
+  nome: 'Cúmulo jurídico', area: 'Penal', d: 'Moldura da pena única no concurso de crimes',
+  ini: { penas: [{ t: 'p', a: '3', m: '0' }, { t: 'p', a: '2', m: '6' }, { t: 'p', a: '1', m: '0' }] },
+  form: function (c) {
+    return '<div class="cx-lista">' + c.penas.map(function (p, i) {
+      return '<div class="cx-pn"><span class="ch-i">' + (i + 1) + '</span><select class="in" data-cx="penas.' + i + '.t"><option value="p"' + (p.t === 'p' ? ' selected' : '') + '>Prisão</option><option value="m"' + (p.t === 'm' ? ' selected' : '') + '>Multa</option></select>' +
+        (p.t === 'm' ? '<label class="f">Dias de multa<input class="in" inputmode="numeric" data-cx="penas.' + i + '.a" value="' + esc(p.a) + '"></label><span></span>' : '<label class="f">Anos<input class="in" inputmode="numeric" data-cx="penas.' + i + '.a" value="' + esc(p.a) + '"></label><label class="f">Meses<input class="in" inputmode="numeric" data-cx="penas.' + i + '.m" value="' + esc(p.m || '') + '"></label>') +
+        '<button class="lnk" data-a="cx-del" data-id="' + i + '" aria-label="Remover pena">✕</button></div>';
+    }).join('') + '</div><button class="btn sm" data-a="cx-add">+ Pena parcelar</button>';
+  },
+  res: function (c) {
+    var pr = c.penas.filter(function (p) { return p.t === 'p'; }).map(function (p) { return Math.round(cxN(p.a) * 12 + cxN(p.m)); }).filter(function (x) { return x > 0; });
+    var mu = c.penas.filter(function (p) { return p.t === 'm'; }).map(function (p) { return Math.round(cxN(p.a)); }).filter(function (x) { return x > 0; });
+    if (pr.length + mu.length < 2) return cxVazio('Indique pelo menos duas penas parcelares.');
+    var am = function (m) { var a = Math.floor(m / 12), r = m % 12; return (a ? plural(a, 'ano', 'anos') : '') + (a && r ? ' e ' : '') + (r ? plural(r, 'mês', 'meses') : (a ? '' : '0 meses')); };
+    var h = '', n = 1;
+    if (pr.length) { var minP = Math.max.apply(null, pr), som = pr.reduce(function (s, x) { return s + x; }, 0), maxP = Math.min(som, 300); h += cxBig('Moldura da pena única de prisão', am(minP) + ' a ' + am(maxP), 'soma das penas: ' + am(som)); h += cxPasso(n++, 'Prisão', '<p>Mínimo: a pena parcelar mais elevada (<b>' + am(minP) + '</b>). Máximo: a soma das penas (' + am(som) + ')' + (som > 300 ? ', limitada a <b>25 anos</b>' : ' — <b>' + am(maxP) + '</b>') + '.</p>'); }
+    if (mu.length) { var minM = Math.max.apply(null, mu), somM = mu.reduce(function (s, x) { return s + x; }, 0), maxM = Math.min(somM, 900); h += cxBig('Moldura da pena única de multa', minM + ' a ' + maxM + ' dias', 'soma: ' + somM + ' dias'); h += cxPasso(n++, 'Multa', '<p>Mínimo: <b>' + minM + ' dias</b>. Máximo: a soma (' + somM + ' dias)' + (somM > 900 ? ', limitada a <b>900 dias</b>' : '') + '.</p>'); }
+    if (pr.length && mu.length) h += cxPasso(n++, 'Penas de natureza diferente', '<p>Havendo penas de prisão e de multa, mantém-se a diferente natureza de cada uma na pena única.</p>');
+    h += cxPasso(n, 'Medida concreta', '<p>Dentro da moldura, o tribunal considera em conjunto os factos e a personalidade do agente.</p>');
+    h += cxBase(['art. 77.º, n.os 1 a 3, do CP', 'art. 78.º do CP (conhecimento superveniente do concurso)']);
+    return h + cxNota('Pressupõe que todos os crimes foram praticados antes do trânsito em julgado da condenação por qualquer deles.');
+  }
+};
+/* 10. Liberdade condicional */
+CX.lc = {
+  nome: 'Liberdade condicional', area: 'Penal', d: 'Datas de metade, dois terços e cinco sextos da pena',
+  ini: { a: '6', m: '0', d: '', ini: '', desc: '' },
+  form: function (c) {
+    return '<div class="cx-r3">' + cxIn('a', 'Anos', c.a) + cxIn('m', 'Meses', c.m) + cxIn('d', 'Dias', c.d) + '</div>' + cxIn('ini', 'Início do cumprimento', c.ini, { type: 'date' }) + cxIn('desc', 'Dias a descontar (detenção, prisão preventiva, OPHVE)', c.desc, { ph: '0' });
+  },
+  res: function (c) {
+    var a = Math.round(cxN(c.a)), m = Math.round(cxN(c.m)), dd = Math.round(cxN(c.d)), i0 = cxD(c.ini), ds = Math.max(0, Math.round(cxN(c.desc)));
+    if (!(a || m || dd) || !i0) return cxVazio('Indique a pena e a data de início do cumprimento.');
+    var ini = cxAddD(i0, -ds), fim = cxAddD(cxAddYM(ini, a, m), dd), T = cxDias(ini, fim), seis = cxAddYM(ini, 0, 6), mais6 = a * 12 + m > 72 || (a * 12 + m === 72 && dd > 0);
+    var M = a * 12 + m, fr = function (n, d) { var mm = M * n / d, wm = Math.floor(mm + 1e-9), dias = Math.ceil((mm - wm) * 30 + dd * n / d - 1e-9); return cxAddD(cxAddYM(ini, 0, wm), dias); }, mx = function (x, y) { return x > y ? x : y; };
+    var d12 = mx(fr(1, 2), seis), d23 = mx(fr(2, 3), seis), d56 = fr(5, 6);
+    var rows = '<tr><td>Metade</td><td>' + cxFd(d12) + '</td><td class="cx-w">Facultativa: exige juízo de prognose favorável e compatibilidade com a defesa da ordem jurídica e da paz social</td></tr>' +
+      '<tr><td>Dois terços</td><td>' + cxFd(d23) + '</td><td class="cx-w">Facultativa: basta o juízo de prognose favorável</td></tr>' +
+      (mais6 ? '<tr><td>Cinco sextos</td><td>' + cxFd(d56) + '</td><td class="cx-w">Obrigatória (pena superior a 6 anos)</td></tr>' : '') +
+      '<tr><td>Termo da pena</td><td>' + cxFd(fim) + '</td><td>—</td></tr>';
+    var pen = [a ? plural(a, 'ano', 'anos') : '', m ? plural(m, 'mês', 'meses') : '', dd ? plural(dd, 'dia', 'dias') : ''].filter(Boolean).join(', ');
+    var h = cxBig('Termo da pena', cxFd(fim), 'pena de ' + pen + (ds ? ' · ' + ds + ' dias descontados' : ''));
+    h += cxPasso(1, 'Marcos da liberdade condicional', '<div class="ch-tb"><table><thead><tr><th>Marco</th><th>Data</th><th>Pressupostos</th></tr></thead><tbody>' + rows + '</tbody></table></div><p class="ch-sm">Em todos os casos é necessário o consentimento do condenado e o cumprimento mínimo de 6 meses.</p>');
+    h += cxPasso(2, 'Duração', '<p>A liberdade condicional dura o tempo de prisão que falte cumprir, até ao máximo de 5 anos.</p>');
+    h += cxBase(['art. 61.º do CP', 'art. 80.º do CP (desconto)', 'art. 479.º do CPP (contagem do tempo de prisão)']);
+    return h + cxNota('Cálculo de estudo: as frações são contadas em meses e, no resto, em dias (mês de 30 dias). A liquidação oficial da pena é feita no processo.');
+  }
+};
+/* 11. Compensação por cessação do contrato de trabalho */
+CX.desp = {
+  nome: 'Compensação por despedimento', area: 'Trabalho', d: 'Despedimento coletivo, caducidade do termo ou ilícito',
+  ini: { tipo: 'obj', adm: '', fim: '', ret: '1200', dias: '30' },
+  form: function (c) {
+    return cxSel('tipo', 'Situação', c.tipo, [['obj', 'Despedimento coletivo, extinção do posto ou inadaptação'], ['termo', 'Caducidade de contrato a termo'], ['ilic', 'Despedimento ilícito: indemnização em vez de reintegração']]) +
+      '<div class="ch-row">' + cxIn('adm', 'Data de admissão', c.adm, { type: 'date' }) + cxIn('fim', 'Data da cessação', c.fim, { type: 'date' }) + '</div>' + cxIn('ret', 'Retribuição base + diuturnidades (€/mês)', c.ret) +
+      (c.tipo === 'ilic' ? cxIn('dias', 'Dias por ano fixados pelo tribunal (15 a 45)', c.dias) : '');
+  },
+  res: function (c) {
+    var a = cxD(c.adm), b = cxD(c.fim), R = cxN(c.ret);
+    if (!a || !b || R <= 0) return cxVazio('Indique as datas e a retribuição.');
+    if (b <= a) return cxVazio('A data da cessação tem de ser posterior à admissão.');
+    var anos = 0; while (cxAddYM(a, anos + 1, 0) <= b) anos++;
+    var restD = cxDias(cxAddYM(a, anos, 0), b), frac = restD / 365, h = '', base = [];
+    if (c.tipo === 'ilic') {
+      var dpa = Math.min(45, Math.max(15, Math.round(cxN(c.dias)) || 30)), nA = anos + (restD > 0 ? 1 : 0), v = R / 30 * dpa * nA, min = R * 3, tot = Math.max(v, min);
+      h += cxBig('Indemnização', cxE(tot), dpa + ' dias por ano · ' + plural(nA, 'ano', 'anos') + (tot > v ? ' · mínimo de 3 meses' : ''));
+      h += cxPasso(1, 'Antiguidade', '<p>' + plural(anos, 'ano completo', 'anos completos') + (restD ? ' e ' + plural(restD, 'dia', 'dias') + ' — a fração conta como ano completo' : '') + ': <b>' + nA + '</b>.</p><p class="ch-sm">O tempo decorrido até ao trânsito em julgado da decisão também conta.</p>');
+      h += cxPasso(2, 'Cálculo', '<p class="ch-f">' + cxE(R) + ' ÷ 30 × ' + dpa + ' × ' + nA + ' = ' + cxE(v) + '</p>' + (tot > v ? '<p>Aplica-se o mínimo de 3 meses de retribuição: <b>' + cxE(min) + '</b>.</p>' : ''));
+      base.push('art. 391.º do CT');
+    } else {
+      var dpa2 = c.tipo === 'termo' ? 24 : 14, Rc = Math.min(R, 20 * CX_RMMG), dia = Rc / 30, bruto = dia * dpa2 * (anos + frac), teto = R > 20 * CX_RMMG ? 240 * CX_RMMG : 12 * R, tot2 = Math.min(bruto, teto);
+      h += cxBig('Compensação', cxE(tot2), dpa2 + ' dias por ano de antiguidade' + (tot2 < bruto ? ' · limitada ao teto legal' : ''));
+      h += cxPasso(1, 'Antiguidade', '<p>' + plural(anos, 'ano completo', 'anos completos') + ' e ' + plural(restD, 'dia', 'dias') + ' (fração de ' + (Math.round(frac * 1000) / 1000).toLocaleString('pt-PT') + ' ano, paga proporcionalmente).</p>');
+      h += cxPasso(2, 'Retribuição diária', '<p>' + (R > Rc ? 'A retribuição considerada não pode exceder 20 × RMMG (' + cxE(20 * CX_RMMG) + '). ' : '') + cxE(Rc) + ' ÷ 30 = <b>' + cxE(dia) + '</b>.</p>');
+      h += cxPasso(3, 'Cálculo', '<p class="ch-f">' + cxE(dia) + ' × ' + dpa2 + ' × ' + (Math.round((anos + frac) * 1000) / 1000).toLocaleString('pt-PT') + ' = ' + cxE(bruto) + '</p><p class="ch-sm">Teto: ' + (R > 20 * CX_RMMG ? '240 × RMMG' : '12 × retribuição mensal') + ' = ' + cxE(teto) + '.</p>');
+      base.push(c.tipo === 'termo' ? 'art. 344.º, n.º 2, do CT (termo certo)' : 'arts. 372.º e 379.º do CT (remissão)', c.tipo === 'termo' ? 'art. 345.º, n.º 4, do CT (termo incerto)' : 'art. 366.º do CT', 'art. 366.º, n.º 2, do CT (limites)');
+    }
+    h += cxBase(base);
+    return h + cxNota('Usa a redação atual do Código do Trabalho e a RMMG de ' + CX_RMMG + ' € (2026). Para contratos antigos e para a antiguidade anterior às alterações de 2013 e de 2023 aplicam-se regimes transitórios, que esta calculadora não considera.');
+  }
+};
+/* 12. IMT e Imposto do Selo */
+CX.imt = {
+  nome: 'IMT e Imposto do Selo', area: 'Fiscal', d: 'Impostos na compra de imóvel no continente (2026)',
+  ini: { v: '250000', tipo: 'hpp', jov: false, cred: '' },
+  form: function (c) {
+    return cxIn('v', 'Valor (o maior entre o preço e o VPT) (€)', c.v) +
+      cxSel('tipo', 'Imóvel', c.tipo, [['hpp', 'Habitação própria e permanente'], ['hab', 'Habitação secundária ou para arrendar'], ['rus', 'Prédio rústico'], ['out', 'Outro prédio urbano (comércio, serviços, terreno)']]) +
+      (c.tipo === 'hpp' ? cxCk('jov', 'Comprador com 35 anos ou menos, primeira habitação, não dependente para IRS', c.jov) : '') +
+      cxIn('cred', 'Crédito à habitação (€, opcional)', c.cred, { ph: '0' });
+  },
+  res: function (c) {
+    var v = cxN(c.v); if (v <= 0) return cxVazio('Indique o valor do imóvel.');
+    var imt = 0, como = '', base = ['art. 17.º do CIMT (taxas)'], jov = c.tipo === 'hpp' && c.jov;
+    var tab = function (T, lim6) { if (v > 1150853) { como = 'Taxa única de 7,5%.'; return v * 0.075; } if (v > lim6) { como = 'Taxa única de 6%.'; return v * 0.06; } for (var i = 0; i < T.length; i++) if (v <= T[i][0]) { como = 'Taxa marginal de ' + T[i][1] + '%' + (T[i][2] ? ' com parcela a abater de ' + cxE(T[i][2]) : '') + '.'; return Math.max(0, v * T[i][1] / 100 - T[i][2]); } return 0; };
+    if (jov) { imt = tab([[330539, 0, 0], [660982, 8, 26443.12]], 660982); base.push('art. 9.º, n.os 2 e 3, do CIMT (jovens)'); }
+    else if (c.tipo === 'hpp') { imt = tab([[106346, 0, 0], [145470, 2, 2126.92], [198347, 5, 6491.02], [330539, 7, 10457.96], [660982, 8, 13763.35]], 660982); if (v <= 106346) base.push('art. 9.º, n.º 1, do CIMT (isenção)'); }
+    else if (c.tipo === 'hab') imt = tab([[106346, 1, 0], [145470, 2, 1063.46], [198347, 5, 5427.56], [330539, 7, 9394.5], [633931, 8, 12699.89]], 633931);
+    else { var tx = c.tipo === 'rus' ? 5 : 6.5; imt = v * tx / 100; como = 'Taxa proporcional de ' + tx.toLocaleString('pt-PT') + '%.'; }
+    var is = v * 0.008, ded = jov ? Math.min(is, 330539 * 0.008) : 0, isF = is - ded, cr = cxN(c.cred), isC = cr > 0 ? cr * 0.006 : 0;
+    if (jov) base.push('art. 7.º-A do CIS (dedução para jovens)');
+    var h = cxBig('Total de impostos', cxE(imt + isF + isC), 'IMT ' + cxE(imt) + ' · IS aquisição ' + cxE(isF) + (isC ? ' · IS crédito ' + cxE(isC) : ''));
+    h += cxPasso(1, 'IMT', '<p>' + esc(como) + ' <b>' + cxE(imt) + '</b>' + (imt ? ' (taxa efetiva de ' + cxP(imt / v * 100, 2) + ')' : '') + '.</p>' + (jov ? '<p class="ch-sm">Isenção até 330 539 €; acima disso, só o excedente é tributado a 8% até 660 982 €.</p>' : ''));
+    h += cxPasso(2, 'Imposto do Selo na aquisição', '<p>0,8% × ' + cxE(v) + ' = ' + (ded ? cxE(is) + ' − dedução de ' + cxE(ded) + ' = ' : '') + '<b>' + cxE(isF) + '</b>.</p>');
+    if (isC) h += cxPasso(3, 'Imposto do Selo no crédito', '<p>0,6% × ' + cxE(cr) + ' = <b>' + cxE(isC) + '</b> (crédito por prazo igual ou superior a 5 anos).</p>');
+    base.push('verba 1.1 da TGIS (0,8%)'); if (isC) base.push('verba 17.1 da TGIS (crédito)');
+    h += cxBase(base);
+    return h + cxNota('Tabelas de 2026 para o continente. As regiões autónomas têm escalões próprios; adquirentes com domicílio em regime fiscal privilegiado pagam 10%.');
+  }
+};
+var CX_EXT = [['prazos', 'Prazos processuais', 'Contagem com dilações e férias judiciais'], ['calcheranca', 'Calculadora da herança', 'Legítima, quota disponível e redução'], ['minutas', 'Gerador de minutas', 'Peças processuais e contratos']];
+var CX_AREAS = ['Processo', 'Obrigações', 'Banca', 'Penal', 'Trabalho', 'Fiscal'];
+function vCalculadoras() {
+  var c = cxEst(), id = CX[c.t] ? c.t : 'custas', T = CX[id], v = cxV(id);
+  var h = '<div class="head"><div><span class="crumb">Ferramentas</span><h1>Calculadoras jurídicas</h1><p class="sub">Contas de processo, obrigações, banca, penal, trabalho e fiscal, com o raciocínio passo a passo e ligação aos artigos.</p></div></div>';
+  h += '<nav class="cx-nav" aria-label="Calculadoras">' + CX_AREAS.map(function (ar) {
+    return '<div class="cx-g"><span class="eyebrow">' + ar + '</span>' + Object.keys(CX).filter(function (k) { return CX[k].area === ar; }).map(function (k) { return '<button class="cx-t' + (k === id ? ' on' : '') + '" data-a="cx-ir" data-id="' + k + '" aria-pressed="' + (k === id) + '"><b>' + esc(CX[k].nome) + '</b><span>' + esc(CX[k].d) + '</span></button>'; }).join('') + '</div>';
+  }).join('') + '<div class="cx-g"><span class="eyebrow">Outras ferramentas</span>' + CX_EXT.map(function (x) { return '<button class="cx-t" data-go="' + x[0] + '"><b>' + esc(x[1]) + ' ›</b><span>' + esc(x[2]) + '</span></button>'; }).join('') + '</div></nav>';
+  h += '<div class="ch-grid cx-grid"><div class="ch-in"><section class="card ch-c"><h2>' + esc(T.nome) + '</h2><p class="ch-sm">' + esc(T.d) + '</p>' + T.form(v) + '<div class="row" style="gap:8px;margin-top:4px"><button class="btn sm" data-a="cx-limpar">Repor exemplo</button></div></section></div>' +
+    '<div class="card ch-out" id="cx-out" aria-live="polite"><div class="ch-res">' + cxRes(id) + '</div></div></div>';
+  return h;
+}
+function cxRes(id) { try { return CX[id].res(cxV(id)); } catch (e) { return cxVazio('Não foi possível calcular com estes dados.'); } }
+function cxSet(path, val) {
+  var c = cxEst(), v = cxV(c.t), p = path.split('.');
+  if (p.length === 1) v[p[0]] = val; else v[p[0]][Number(p[1])][p[2]] = val;
+  cxGuardar();
+}
+function cxAtualizar() { var o = $('#cx-out'); if (o) o.innerHTML = '<div class="ch-res">' + cxRes(cxEst().t) + '</div>'; }
+document.addEventListener('input', function (ev) {
+  var t = ev.target; if (!t.dataset || !t.dataset.cx || t.type === 'checkbox' || t.tagName === 'SELECT') return;
+  cxSet(t.dataset.cx, t.value); cxAtualizar();
+});
+document.addEventListener('change', function (ev) {
+  var t = ev.target; if (!t.dataset || !t.dataset.cx) return;
+  if (t.type === 'checkbox') cxSet(t.dataset.cx, t.checked); else if (t.tagName === 'SELECT') cxSet(t.dataset.cx, t.value); else return;
+  render();
+});
+A['cx-ir'] = function (el) { cxEst().t = el.dataset.id; cxGuardar(); render(); var o = $('.cx-grid'); if (o && window.innerWidth < 1000) o.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+A['cx-limpar'] = function () { var c = cxEst(); c.v[c.t] = JSON.parse(JSON.stringify(CX[c.t].ini || {})); cxGuardar(); render(); };
+A['cx-add'] = function () { var v = cxV('cumulo'); v.penas.push({ t: 'p', a: '', m: '' }); cxGuardar(); render(); };
+A['cx-del'] = function (el) { var v = cxV('cumulo'); v.penas.splice(Number(el.dataset.id), 1); cxGuardar(); render(); };
+
 /* ---------- MAPA DO PROCESSO PENAL (fases, quem decide, prazos e reações) ---------- */
 var MPP = [
   { id: 'not', nome: 'Notícia do crime', curto: 'Notícia', quem: 'Ministério Público e órgãos de polícia criminal', tema: 'queixa',
@@ -15550,6 +15964,7 @@ var N2 = {
       ['flashcards', 'Flashcards', 'Repetição espaçada para memorizar', 'layers'],
       ['casos', 'Casos práticos', 'Hipóteses com método e resolução-modelo', 'scale'],
       ['calcheranca', 'Calculadora da herança', 'Legítima e quota disponível, passo a passo', 'calc'],
+      ['calculadoras', 'Calculadoras jurídicas', 'Custas, juros, prazos, crédito, penas, IMT', 'calc'],
       ['minutas', 'Minutas', 'Gerador de peças processuais e contratos', 'file']] },
     { id: 'lei', curto: 'Lei', nome: 'Legislação', ic: 'lei', direto: 'biblioteca', vistas: ['biblioteca', 'lei'] },
     { id: 'comunidade', nome: 'Comunidade', ic: 'users', cor: 'c4', lema: 'Estudar com os colegas', itens: [
@@ -16092,7 +16507,7 @@ A['tema'] = function () { var n = temaEscuro() ? 'claro' : 'escuro'; lsSet('lexd
 try { if (window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () { if (!lsGet('lexdesk_tema')) temaAplicar(temaPref()); }); } catch (e) { }
 
 /* ---------- INTERATIVIDADE: animações, gráficos, pesquisa rápida (Ctrl+K), arrastar e largar ---------- */
-var VIEW_LBL = { painel: ['Início', I.grid], guias: ['Matéria explicada', I.book], guia: ['Guia de estudo', I.book], glossario: ['Glossário jurídico', I.book], mapapp: ['Mapa do processo penal', I.book], mapapc: ['Mapa do processo declarativo', I.book], calcheranca: ['Calculadora da herança', I.grid], meet: ['LexDesk Meet', I.grid], reputacao: ['Reputação', I.badge], flashcards: ['Flashcards', I.layers], aula: ['Sala de aula', I.note], lei: ['Texto integral da lei', I.book], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Estudar e praticar', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
+var VIEW_LBL = { painel: ['Início', I.grid], guias: ['Matéria explicada', I.book], guia: ['Guia de estudo', I.book], glossario: ['Glossário jurídico', I.book], mapapp: ['Mapa do processo penal', I.book], mapapc: ['Mapa do processo declarativo', I.book], calculadoras: ['Calculadoras jurídicas', I.calc || I.grid], calcheranca: ['Calculadora da herança', I.grid], meet: ['LexDesk Meet', I.grid], reputacao: ['Reputação', I.badge], flashcards: ['Flashcards', I.layers], aula: ['Sala de aula', I.note], lei: ['Texto integral da lei', I.book], atualidade: ['Atualidade jurídica', I.news], biblioteca: ['Biblioteca jurídica', I.book], instituicoes: ['Instituições', I.uni], workspaces: ['Legal Workspaces', I.folder], minutas: ['Gerador de minutas', I.file], cadeiras: ['Cadeiras', I.layers], apontamentos: ['Apontamentos', I.note], exames: ['Estudar e praticar', I.check], casos: ['Casos práticos', I.scale], connect: ['Mentoria e explicações', I.users], chat: ['Chat da comunidade', I.chat], mensagens: ['Mensagens', I.mail], salas: ['Salas de estudo', I.door], prazos: ['Contador de prazos', I.hour], agenda: ['Agenda de diligências', I.cal], dissertacao: ['Dissertação', I.cap], ordem: ['Treino para a Ordem', I.badge], docente: ['Ensino', I.pen] };
 var isMac = /Mac|iPhone|iPad/.test(navigator.platform || '');
 
 /* ===== animação de entrada e contadores ===== */
@@ -16340,7 +16755,7 @@ Store.connect();
 </script>
 <script>
 /* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='04f1e7fe20cc';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
+(function(){var B='73ddd40465e2';function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>
