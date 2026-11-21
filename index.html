@@ -2832,10 +2832,13 @@ function discsAtivas() { return Object.keys(DISC).filter(function (k) { return !
     D[k] = DISC[k];
     if (k === 'adm') { D.trab = { nome: 'Direito do Trabalho', curto: 'Trabalho', chave: ['trabalho', 'laboral'] }; D.fisc = { nome: 'Direito Fiscal', curto: 'Fiscal', chave: ['fiscal', 'tributário', 'finanças públicas'] }; }
     if (k === 'com') { D.dip = { nome: 'Direito Internacional Público', curto: 'Internacional Público', chave: ['internacional público'] }; D.dipr = { nome: 'Direito Internacional Privado', curto: 'Internacional Privado', chave: ['internacional privado', 'conflitos de leis'] }; D.banc = { nome: 'Direito da Banca e dos Seguros', curto: 'Banca e Seguros', chave: ['banca', 'bancário', 'seguros'] }; }
+    if (k === 'pp') { D.pj = { nome: 'Prática Judiciária', curto: 'Prática Judiciária', chave: ['prática judiciária', 'prática processual', 'peças processuais', 'prática forense'] }; }
     if (k === 'pc') { D.pex = { nome: 'Processo Executivo', curto: 'Processo Executivo', chave: ['processo executivo', 'ação executiva', 'acção executiva'] }; }
   });
   DISC = D;
-  DISC.pc.chave = ['processual civil', 'processo civil', 'prática judiciária', 'teoria geral do processo', 'processo declarativo'];
+  DISC.pc.chave = ['processual civil', 'processo civil', 'teoria geral do processo', 'processo declarativo'];
+  if (DISC.pp && DISC.pp.chave) DISC.pp.chave = DISC.pp.chave.filter(function (c) { return c !== 'prática judiciária'; });
+  TEMAS.pj = [['pi', 'Petição inicial'], ['contest', 'Contestação e reconvenção'], ['resp', 'Resposta às exceções e réplica'], ['acmp', 'Acusação do Ministério Público'], ['acass', 'Acusação do assistente'], ['acpart', 'Acusação particular'], ['pic', 'Pedido de indemnização civil']];
   TEMAS.pc = TEMAS.pc.filter(function (t) { return t[0] !== 'exec'; });
   TEMAS.trab = [['fontes', 'Fontes e princípios'], ['contr', 'Contrato de trabalho e modalidades'], ['temp', 'Tempo de trabalho, férias e retribuição'], ['disc', 'Poder disciplinar'], ['cess', 'Cessação do contrato'], ['colet', 'Direito coletivo']];
   TEMAS.fisc = [['princ', 'Princípios e fontes'], ['rel', 'Relação jurídica tributária'], ['proc', 'Procedimento e garantias'], ['cont', 'Contencioso e execução fiscal'], ['imp', 'Impostos em especial']];
@@ -4594,6 +4597,85 @@ var CASOS_MODELO = {
     GLOSS.push(['Prémio de seguro', 'banc', 'Contrapartida paga pelo tomador ao segurador pela cobertura do risco; sem pagamento prévio não há cobertura.', 'arts. 59.º e 61.º do RJCS', ['prémio']]);
     GLOSS.push(['Fundo de Garantia Automóvel', 'banc', 'Fundo que indemniza vítimas de acidentes causados por responsável desconhecido ou sem seguro válido, até ao capital mínimo do seguro obrigatório.', 'arts. 47.º e seguintes do DL n.º 291/2007', ['FGA']]);
     GLOSS.push(['PERSI', 'banc', 'Procedimento fora dos tribunais para regularizar atrasos de pagamento, que o banco tem de seguir antes de avançar para tribunal contra um consumidor em atraso.', 'DL n.º 227/2012', []]);
+  }
+})();
+
+/* ---------- PRÁTICA JUDICIÁRIA: casos com resolução-modelo, questões e glossário (texto original do LEXDESK; nomes fictícios) ---------- */
+(function () {
+  function C(id, titulo, enunciado, perguntas, topicos, modelo) { CASOS.push({ id: id, d: 'pj', titulo: titulo, enunciado: enunciado, perguntas: perguntas, topicos: topicos }); CASOS_MODELO[id] = modelo; }
+
+  C('caso-pj1', 'A moradia de Aveiro: preparar a petição de despejo',
+    'Inês Valente é dona de uma moradia em Aveiro, com rés-do-chão e primeiro andar, que em 2021 arrendou a Paulo Serrano para habitação, por cinco anos e com a renda de 600 € mensais, paga no dia 1 de cada mês para o mês seguinte. Há três meses soube que Paulo instalou no rés-do-chão uma oficina de reparação de bicicletas, aberta ao público aos fins de semana. Paulo não paga a renda desde há quatro meses e tem a viver na casa cinco estudantes universitários, a quem cobra 300 € mensais a cada um por alojamento, pequeno-almoço e limpeza. Inês reside em Coimbra e procura o seu escritório.',
+    ['Em que tribunal deve ser proposta a ação e qual o seu valor?', 'Que fundamentos de resolução pode Inês invocar e que pedidos deve cumular?', 'Que deve constar do requerimento probatório?'],
+    ['Foro da situação do imóvel (art. 70.º, n.º 1, do CPC); valor nas ações de despejo (art. 298.º, n.º 1); juízo pelo valor (art. 117.º da LOSJ).', 'Fim diverso (arts. 1038.º, al. c), e 1083.º, n.º 2, al. c), do CC); hospedagem acima do limite (art. 1093.º, n.º 1, al. b)); falta de pagamento (art. 1083.º, n.º 3); rendas vencidas e vincendas; indemnização pelo atraso na restituição (art. 1045.º).', 'Rol de testemunhas, documentos e depoimento de parte (art. 552.º, n.º 6, e art. 452.º, n.º 2, do CPC).'],
+    [['A ação de despejo é proposta no tribunal da situação do imóvel, isto é, na comarca de Aveiro, e não no domicílio da autora ou do réu (art. 70.º, n.º 1, do CPC). O valor corresponde a dois anos e meio de renda (30 × 600 € = 18 000 €), acrescido das rendas em dívida (4 × 600 € = 2 400 €), num total de 20 400 € (art. 298.º, n.º 1). Como não excede 50 000 €, a ação corre no juízo local cível (o central só julga ações de processo comum de valor superior, art. 117.º, n.º 1, al. a), da LOSJ).'],
+      ['Há três fundamentos autónomos. A oficina aberta ao público desvia o prédio do fim acordado e infringe o dever do arrendatário (art. 1038.º, al. c), do CC) e é causa de resolução (art. 1083.º, n.º 2, al. c)). Os cinco estudantes, que pagam por alojamento e serviços, são hóspedes; o arrendatário só pode ter até três (art. 1093.º, n.º 1, al. b)), salvo cláusula diferente. A mora de quatro meses é superior aos três meses que tornam inexigível a manutenção do contrato (art. 1083.º, n.º 3).',
+        'A petição deve cumular: a) a resolução do contrato e a condenação na entrega do imóvel livre de pessoas e bens; b) o pagamento das rendas vencidas (2 400 €) e juros de mora; c) o pagamento das rendas que se vencerem até à entrega; d) a indemnização pelo atraso na restituição, igual ao dobro da renda a partir da mora (art. 1045.º, n.os 1 e 2, do CC). Os fundamentos do n.º 2 do art. 1083.º exigem resolução judicial (art. 1084.º, n.º 1).'],
+      ['No fim da petição, Inês apresenta o rol de testemunhas (por exemplo, vizinhos que viram a oficina aberta e os estudantes a entrar e sair), junta a certidão predial, a caderneta e o contrato, e pode requerer o depoimento de parte do réu, indicando logo os factos sobre que deve recair (arts. 552.º, n.º 6, e 452.º, n.º 2, do CPC). Se Paulo contestar, poderá alterar o requerimento nos 10 dias seguintes à notificação da contestação.']]);
+
+  C('caso-pj2', 'A defesa do inquilino: ilegitimidade, hóspedes e rendas não cobradas',
+    'Citado para a ação proposta por Inês Valente (caso anterior), Paulo Serrano conta ao seu advogado o seguinte: casou em 2023, em regime de separação de bens, com Marta, e é na moradia que o casal vive; a oficina funcionou apenas durante três fins de semana, num evento solidário da junta de freguesia; dos cinco «estudantes», dois são sobrinhos de Marta, que vivem com o casal desde a morte dos pais, e um é afilhado de Paulo, que come e vive com eles como se fosse filho; as rendas não foram pagas porque, segundo o contrato, deviam ser pagas na casa do inquilino e a senhoria deixou de aparecer.',
+    ['Que exceção dilatória pode Paulo invocar e com que consequência?', 'Como deve impugnar a matéria dos hóspedes e da oficina?', 'Que defesa tem quanto às rendas e como deve concluir a contestação?'],
+    ['Ações que tenham por objeto a casa de morada de família: litisconsórcio necessário dos cônjuges (art. 34.º, n.os 1 e 3, do CPC); ilegitimidade (arts. 33.º e 577.º, al. e)); suprimento (art. 6.º, n.º 2).', 'Economia comum (art. 1093.º, n.os 1, al. a), e 2, do CC); uso isolado não configura fim diverso; ónus de impugnação (art. 574.º do CPC).', 'Presunção do art. 1039.º, n.º 2, do CC; exceção perentória (art. 576.º, n.º 3, do CPC); conclusões em cascata.'],
+    [['A ação tem por objeto, ainda que indiretamente, a casa de morada de família do casal e devia ter sido proposta contra ambos os cônjuges, em litisconsórcio necessário passivo (art. 34.º, n.os 1 e 3, do CPC). A preterição do litisconsórcio gera ilegitimidade, que é exceção dilatória (art. 577.º, al. e)). Paulo pede a absolvição da instância, mas deve saber que o vício é sanável: o juiz providencia oficiosamente pelo chamamento de Marta (art. 6.º, n.º 2), pelo que a exceção pode apenas atrasar a ação.'],
+      ['Paulo deve tomar posição sobre cada facto (art. 574.º do CPC). Quanto aos hóspedes, alega que três das cinco pessoas vivem com o casal em economia comum: os sobrinhos da mulher, parentes afins em linha colateral no 3.º grau, consideram-se sempre em economia comum (art. 1093.º, n.º 2, do CC), e o afilhado, integrado na família, também. Restam, no máximo, dois hóspedes, abaixo do limite de três. Quanto à oficina, impugna motivadamente: tratou-se de uma utilização episódica, num evento solidário, que não altera o fim habitacional do locado.'],
+      ['Quanto às rendas, invoca uma exceção perentória: se a renda devia ser paga no domicílio do locatário e não o foi, presume-se que o senhorio não foi nem mandou receber (art. 1039.º, n.º 2, do CC), havendo mora do credor e não do devedor. A contestação conclui em cascata: a) absolvição da instância por ilegitimidade; b) caso assim não se entenda, improcedência da ação quanto à resolução, pela matéria de impugnação; c) procedência da exceção de mora do credor quanto às rendas, com absolvição parcial do pedido.']]);
+
+  C('caso-pj3', 'A assembleia da associação: acusação particular e pedido de indemnização',
+    'Na assembleia-geral do Clube Recreativo Vale Verde, perante cerca de trinta sócios, o tesoureiro Henrique Soares dirigiu-se ao sócio Vasco Teles e disse-lhe: «És um vigarista e um parasita.» Dois dias depois, escreveu no grupo de mensagens do clube, com mais de oitenta membros, que Vasco «desviou o dinheiro do torneio de verão», sabendo que as contas do torneio tinham sido aprovadas sem reparos. Vasco apresentou queixa um mês depois, constituiu-se assistente e foi agora notificado pelo Ministério Público, que considera haver indícios suficientes. Vasco ficou sem dormir durante semanas e deixou de frequentar o clube.',
+    ['Que crimes estão em causa e qual a sua natureza?', 'Em que prazo e como deve Vasco acusar?', 'Pode pedir indemnização no mesmo processo? Com que conteúdo?'],
+    ['Injúria (art. 181.º do CP) e difamação (art. 180.º) com publicidade e calúnia (art. 183.º, n.º 1, alíneas a) e b)); natureza particular (art. 188.º).', 'Acusação particular em 10 dias (art. 285.º, n.º 1, do CPP); requisitos do art. 283.º, n.º 3 (por remissão do art. 285.º, n.º 3); multa do art. 107.º-A; tribunal singular (art. 16.º, n.º 2, al. b)).', 'Adesão (art. 71.º do CPP); pedido na acusação ou no seu prazo (art. 77.º, n.º 1); danos não patrimoniais (art. 496.º do CC); juros (art. 805.º, n.º 3).'],
+    [['As palavras dirigidas diretamente a Vasco na assembleia constituem um crime de injúria (art. 181.º do CP). A mensagem enviada ao grupo, dirigida a terceiros e imputando um facto desonroso, constitui difamação (art. 180.º), agravada porque o meio facilita a divulgação e porque Henrique conhecia a falsidade da imputação (art. 183.º, n.º 1, alíneas a) e b)). Ambos são crimes particulares: o procedimento depende de queixa, constituição de assistente e acusação particular (art. 188.º do CP; art. 50.º do CPP). A queixa foi tempestiva, dentro dos seis meses (art. 115.º, n.º 1, do CP).'],
+      ['Vasco tem 10 dias, a contar da notificação, para deduzir acusação particular (art. 285.º, n.º 1, do CPP); se falhar o prazo, pode ainda fazê-lo nos três dias úteis seguintes, pagando multa (art. 107.º-A). A peça segue os requisitos da acusação pública: identificação do arguido, narração por artigos dos factos (datas, local, presentes, palavras exatas entre aspas), elemento subjetivo, normas aplicáveis e prova (art. 283.º, n.º 3, por remissão do art. 285.º, n.º 3). Requer o julgamento em processo comum, por tribunal singular, dado que as penas máximas não excedem 5 anos (art. 16.º, n.º 2, al. b)).'],
+      ['Sim. Pelo princípio de adesão, o pedido é deduzido no processo penal (art. 71.º do CPP) e, sendo apresentado pelo assistente, faz-se na acusação ou em requerimento articulado no mesmo prazo (art. 77.º, n.º 1). Vasco poderia também optar pela ação civil em separado, por se tratar de crime particular (art. 72.º, n.º 1, al. c)). O pedido deve descrever factos que mostrem a gravidade dos danos não patrimoniais — as noites sem dormir, o afastamento do clube, a exposição perante os sócios (art. 496.º, n.º 1, do CC) — e pedir juros desde a notificação (art. 805.º, n.º 3).']]);
+
+  C('caso-pj4', 'A carta de condução estrangeira: redigir a acusação pública',
+    'Numa operação de fiscalização na A1, Daniel Couto, de 34 anos, exibiu aos militares da GNR uma carta de condução emitida, aparentemente, por um Estado da União Europeia. Os militares notaram que o holograma era uma simples impressão. A perícia confirmou que o documento é contrafeito e que Daniel nunca obteve título de condução em qualquer país. Daniel declarou que comprou a carta pela Internet por 800 €, «para poder trabalhar como motorista». O inquérito está concluído.',
+    ['Que crime deve ser imputado e que tribunal é competente?', 'Que factos não podem faltar na narração da acusação?', 'Que outras indicações deve conter a acusação?'],
+    ['Falsificação de documento, uso de documento autêntico falso (art. 256.º, n.os 1, al. e), e 3, do CP); tribunal singular (art. 16.º, n.º 2, al. b), do CPP); eventual condução sem habilitação legal.', 'Tempo, lugar, modo, exibição, falsidade, conhecimento e intenção (art. 283.º, n.º 3, al. b), do CPP; art. 14.º do CP).', 'Disposições legais, prova até 20 testemunhas, perícia, medidas de coação e perda do documento (art. 283.º, n.º 3, do CPP).'],
+    [['Ao exibir, sabendo que era falsa, uma carta de condução — documento autêntico — para se fazer passar por condutor habilitado, Daniel comete um crime de falsificação de documento na modalidade de uso (art. 256.º, n.º 1, al. e), do CP), agravado por se tratar de documento autêntico (n.º 3), punível com prisão de seis meses a cinco anos ou multa. Como a pena máxima não excede cinco anos, julga o tribunal singular (art. 16.º, n.º 2, al. b), do CPP). Deve ainda ponderar-se o crime de condução sem habilitação legal, previsto em legislação rodoviária própria, se ficar provado que conduzia.'],
+      ['A narração deve dizer quando e onde ocorreu a fiscalização, que documento foi exibido, porque é falso (resultado da perícia), como e quando Daniel o obteve, que sabia da sua falsidade e que o usou para obter um benefício ilegítimo — trabalhar e circular como condutor habilitado. Termina com o elemento subjetivo: agiu livre, deliberada e conscientemente, sabendo que a conduta era proibida e punida por lei (art. 14.º do CP).'],
+      ['A acusação indica as disposições legais aplicáveis, a prova (testemunhas militares da GNR, auto de notícia, auto de apreensão, relatório pericial), mantém o termo de identidade e residência e requer que o documento apreendido seja declarado perdido a favor do Estado. A falta de qualquer dos elementos do art. 283.º, n.º 3, do CPP gera nulidade.']]);
+
+  function N(t, id, q, o, e) { QUESTOES.push({ id: id, d: 'pj', t: t, q: q, o: o, a: 0, e: e }); }
+  N('pi', 'pjq1', 'Nas ações de despejo, o valor da causa corresponde:', ['A dois anos e meio de renda, mais as rendas em dívida ou a indemnização pedida, consoante o que for superior', 'À renda de um ano', 'Ao valor patrimonial do imóvel', 'Às rendas em dívida, apenas'], 'Art. 298.º, n.º 1, do CPC.');
+  N('pi', 'pjq2', 'A ação de despejo deve ser proposta no tribunal:', ['Da situação do imóvel', 'Do domicílio do réu', 'Do domicílio do autor', 'Escolhido pelo autor'], 'Art. 70.º, n.º 1, do CPC.');
+  N('pi', 'pjq3', 'A petição é inepta quando:', ['Falta ou é ininteligível o pedido ou a causa de pedir', 'Falta o rol de testemunhas', 'Não indica o valor da causa', 'Não junta a procuração'], 'Art. 186.º, n.º 2, al. a), do CPC.');
+  N('pi', 'pjq4', 'Se o réu contestar, o autor pode alterar o requerimento probatório:', ['Na réplica, havendo-a, ou nos 10 dias seguintes à notificação da contestação', 'Apenas na audiência final', 'Nunca', 'Até ao trânsito em julgado'], 'Art. 552.º, n.º 6, do CPC.');
+  N('pi', 'pjq5', 'A secretaria recusa a petição inicial, entre outros casos, quando:', ['Não está assinada', 'Não indica testemunhas', 'Tem mais de 100 artigos', 'Não cita jurisprudência'], 'Art. 558.º, n.º 2, al. b), do CPC.');
+  N('contest', 'pjq6', 'O prazo para contestar no processo comum é de:', ['30 dias a contar da citação, acrescidos da dilação, se a houver', '15 dias', '20 dias', '10 dias'], 'Art. 569.º, n.º 1, do CPC.');
+  N('contest', 'pjq7', 'A ilegitimidade de uma das partes é:', ['Uma exceção dilatória', 'Uma exceção perentória', 'Uma forma de impugnação', 'Uma nulidade da sentença'], 'Art. 577.º, al. e), do CPC.');
+  N('contest', 'pjq8', 'As exceções perentórias conduzem:', ['À absolvição total ou parcial do pedido', 'À absolvição da instância', 'À remessa para outro tribunal', 'À suspensão da instância'], 'Art. 576.º, n.º 3, do CPC.');
+  N('contest', 'pjq9', 'A reconvenção deve:', ['Ser identificada e deduzida separadamente, com pedido e valor próprios', 'Ser deduzida em processo autónomo', 'Ser apresentada na audiência prévia', 'Dispensar a indicação de valor'], 'Art. 583.º, n.os 1 e 2, do CPC.');
+  N('contest', 'pjq10', 'Os factos alegados pelo autor que o réu não impugne:', ['Consideram-se, em regra, admitidos por acordo', 'Têm de ser provados pelo autor na mesma', 'Consideram-se impugnados', 'São irrelevantes'], 'Art. 574.º, n.º 2, do CPC.');
+  N('contest', 'pjq11', 'A ação que tem por objeto a casa de morada de família deve, em regra, ser proposta:', ['Contra ambos os cônjuges', 'Só contra o arrendatário', 'Contra o cônjuge mais velho', 'Contra quem pagar a renda'], 'Art. 34.º, n.os 1 e 3, do CPC.');
+  N('resp', 'pjq12', 'No processo comum, a réplica só é admissível para:', ['O autor se defender da reconvenção ou, nas ações de simples apreciação negativa, impugnar os factos constitutivos do réu', 'Responder a qualquer exceção', 'Alterar o pedido livremente', 'Juntar novos documentos'], 'Art. 584.º do CPC.');
+  N('resp', 'pjq13', 'O prazo da réplica é de:', ['30 dias a contar da notificação da contestação', '10 dias', '15 dias', '20 dias'], 'Art. 585.º do CPC.');
+  N('resp', 'pjq14', 'Quem requer o depoimento de parte deve:', ['Indicar logo, de forma discriminada, os factos sobre que há de recair', 'Juntar declaração escrita da parte', 'Pagar taxa suplementar', 'Indicar testemunhas abonatórias'], 'Art. 452.º, n.º 2, do CPC.');
+  N('resp', 'pjq15', 'O rol de testemunhas pode ser aditado ou alterado:', ['Até 20 dias antes da audiência final', 'Até ao início da audiência final', 'Só na petição e na contestação', 'Até 5 dias antes da audiência'], 'Art. 598.º, n.º 2, do CPC.');
+  N('acmp', 'pjq16', 'Os indícios são suficientes quando:', ['Resulta deles uma possibilidade razoável de vir a ser aplicada uma pena ou medida de segurança', 'Há prova plena do crime', 'O arguido confessa', 'Existem pelo menos duas testemunhas'], 'Art. 283.º, n.º 2, do CPP.');
+  N('acmp', 'pjq17', 'Na acusação, o rol de testemunhas tem no máximo:', ['20 testemunhas', '10 testemunhas', '5 testemunhas', 'Não tem limite'], 'Art. 283.º, n.º 3, al. e), i), do CPP.');
+  N('acmp', 'pjq18', 'Um crime com pena máxima abstrata de 12 anos é, em regra, julgado:', ['Pelo tribunal coletivo', 'Pelo tribunal singular', 'Pelo juiz de instrução', 'Pelo tribunal do júri obrigatoriamente'], 'Art. 14.º, n.º 2, al. b), do CPP.');
+  N('acass', 'pjq19', 'O assistente pode acusar nos crimes públicos:', ['Até 10 dias após a notificação da acusação do Ministério Público', 'Antes do Ministério Público', 'Até à audiência de julgamento', 'Só se o Ministério Público arquivar'], 'Art. 284.º, n.º 1, do CPP.');
+  N('acass', 'pjq20', 'Perante o arquivamento de um crime público, o assistente deve:', ['Requerer a abertura da instrução em 20 dias', 'Deduzir acusação particular', 'Interpor recurso para a Relação', 'Apresentar nova queixa'], 'Art. 287.º, n.º 1, al. b), do CPP.');
+  N('acass', 'pjq21', 'A acusação do assistente não pode trazer factos que:', ['Importem alteração substancial dos acusados pelo Ministério Público', 'Desenvolvam o modo de execução', 'Sejam instrumentais', 'Constem já dos autos'], 'Art. 284.º, n.º 1, do CPP; art. 1.º, al. f).');
+  N('acpart', 'pjq22', 'Nos crimes particulares, o assistente é notificado para acusar no prazo de:', ['10 dias', '20 dias', '30 dias', '5 dias'], 'Art. 285.º, n.º 1, do CPP.');
+  N('acpart', 'pjq23', 'A injúria distingue-se da difamação porque:', ['O agente se dirige ao próprio ofendido', 'Só pode ser cometida por escrito', 'Exige imputação de factos', 'É um crime público'], 'Arts. 180.º e 181.º do CP.');
+  N('acpart', 'pjq24', 'O direito de queixa extingue-se, em regra, em:', ['Seis meses a contar do conhecimento do facto e dos seus autores', 'Um ano a contar do facto', 'Trinta dias', 'Dois anos'], 'Art. 115.º, n.º 1, do CP.');
+  N('acpart', 'pjq25', 'Apresentada a acusação particular, o Ministério Público pode acusar pelos mesmos factos:', ['Nos cinco dias seguintes', 'Nos dez dias seguintes', 'Nunca', 'Até ao julgamento'], 'Art. 285.º, n.º 4, do CPP.');
+  N('pic', 'pjq26', 'Pelo princípio de adesão, o pedido de indemnização fundado num crime:', ['É deduzido no processo penal, salvo os casos de pedido em separado', 'É sempre deduzido no tribunal civil', 'Só pode ser pedido pelo Ministério Público', 'Depende da condenação prévia'], 'Arts. 71.º e 72.º do CPP.');
+  N('pic', 'pjq27', 'O lesado que não é assistente e foi notificado da acusação deduz o pedido:', ['Em 20 dias', 'Em 10 dias', 'Na audiência de julgamento', 'Em 30 dias'], 'Art. 77.º, n.º 2, do CPP.');
+  N('pic', 'pjq28', 'Num pedido de valor não superior à alçada da Relação, podem arrolar-se até:', ['5 testemunhas', '10 testemunhas', '20 testemunhas', '3 testemunhas'], 'Art. 79.º, n.º 2, do CPP.');
+
+  if (typeof GLOSS !== 'undefined') {
+    GLOSS.push(['Articulado', 'pj', 'Peça escrita em que as partes expõem, por artigos numerados, os factos e os fundamentos da ação e da defesa: petição inicial, contestação e réplica.', 'art. 147.º do CPC', ['articulados']]);
+    GLOSS.push(['Réplica', 'pj', 'Articulado do autor para se defender da reconvenção ou, nas ações de simples apreciação negativa, impugnar os factos constitutivos alegados pelo réu.', 'arts. 584.º e 585.º do CPC', []]);
+    GLOSS.push(['Ónus de impugnação', 'pj', 'Dever de a parte tomar posição definida sobre os factos alegados pela outra; os não impugnados consideram-se, em regra, admitidos.', 'art. 574.º do CPC', []]);
+    GLOSS.push(['Acusação particular', 'pj', 'Acusação deduzida pelo assistente nos crimes particulares, como a injúria e a difamação, sem a qual não há julgamento.', 'art. 285.º do CPP', []]);
+    GLOSS.push(['Pedido de indemnização civil', 'pj', 'Pedido de reparação dos danos causados por um crime, deduzido em regra no próprio processo penal.', 'arts. 71.º e 77.º do CPP', ['PIC']]);
+    GLOSS.push(['Alteração substancial dos factos', 'pj', 'Alteração que imputa ao arguido um crime diverso ou agrava os limites máximos das sanções aplicáveis.', 'art. 1.º, al. f), do CPP', []]);
+    GLOSS.push(['Indícios suficientes', 'pj', 'Indícios dos quais resulta uma possibilidade razoável de ao arguido vir a ser aplicada uma pena ou medida de segurança em julgamento.', 'art. 283.º, n.º 2, do CPP', []]);
+    GLOSS.push(['Depoimento de parte', 'pj', 'Meio de prova pelo qual uma parte é ouvida sobre factos que lhe são desfavoráveis, com vista à sua confissão.', 'art. 452.º do CPC', []]);
   }
 })();
 
@@ -7845,6 +7927,273 @@ GUIAS.pen.extin = {
   artigos: ['art. 116.º do CP', 'art. 118.º do CP', 'art. 119.º do CP', 'art. 120.º do CP', 'art. 121.º do CP', 'art. 122.º do CP', 'art. 127.º do CP', 'art. 128.º do CP']
 };
 
+/* Matéria explicada — Prática Judiciária: peças processuais cíveis e penais (texto original do LEXDESK) */
+var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
+GUIAS.pj = GUIAS.pj || {};
+
+GUIAS.pj.pi = {
+  sub: 'Como se constrói a peça que abre a ação: cabeçalho, partes, factos, direito, pedido, valor e prova.',
+  minuta: 'pi',
+  ideia: 'A petição inicial é o primeiro articulado do processo e fixa o que o tribunal vai julgar: quem litiga, com base em que factos e para obter que efeito. Tudo o que não estiver na petição dificilmente entra depois, porque o juiz só conhece, em regra, dos factos essenciais alegados pelas partes. Uma boa petição conta uma história clara, por artigos curtos, e termina num pedido que decorre logicamente dela.',
+  conceitos: [
+    ['Causa de pedir', 'O facto jurídico concreto de que nasce a pretensão do autor: o contrato celebrado e incumprido, o acidente, a ocupação do imóvel. Não é a norma invocada, mas os acontecimentos da vida que a norma valora (art. 581.º, n.º 4, do CPC).'],
+    ['Pedido', 'O efeito jurídico que o autor quer obter do tribunal: a condenação no pagamento, a declaração de um direito, a resolução de um contrato. Determina a espécie de ação — de simples apreciação, de condenação ou constitutiva (art. 10.º do CPC).'],
+    ['Factos essenciais e instrumentais', 'Os essenciais constituem a causa de pedir e têm de ser alegados pelo autor; os instrumentais servem apenas para os provar e podem surgir durante a instrução (art. 5.º do CPC).'],
+    ['Valor da causa', 'Representa a utilidade económica do pedido e decide a competência, a forma de execução e a recorribilidade (art. 296.º do CPC). Nas ações de despejo, corresponde a dois anos e meio de renda, mais as rendas em dívida ou a indemnização pedida, consoante o que for maior (art. 298.º, n.º 1).'],
+    ['Ineptidão', 'Vício que torna nulo todo o processo: falta ou ininteligibilidade do pedido ou da causa de pedir, contradição entre ambos ou cumulação de pedidos incompatíveis (art. 186.º do CPC).']
+  ],
+  regime: [
+    ['Requisitos', 'A petição designa o tribunal e o juízo, identifica as partes (nome, domicílio, números de identificação civil e fiscal e, quanto ao autor, o local de trabalho), indica o domicílio profissional do mandatário e a forma do processo, expõe os factos e as razões de direito, formula o pedido, declara o valor e designa quem promove a citação (art. 552.º, n.º 1, do CPC).'],
+    ['Prova', 'No fim da petição o autor apresenta o rol de testemunhas e requer os outros meios de prova; se o réu contestar, pode alterar esse requerimento na réplica ou nos 10 dias seguintes à notificação da contestação (art. 552.º, n.º 6, do CPC).'],
+    ['Recusa pela secretaria', 'A secretaria recusa a petição, por exemplo, sem prova do pagamento da taxa de justiça ou do apoio judiciário, sem assinatura ou não redigida em português (art. 558.º do CPC).'],
+    ['Competência', 'Escolha primeiro o tribunal competente em razão do território (por exemplo, o da situação do imóvel nas ações de despejo, art. 70.º do CPC) e depois o juízo em razão do valor: acima de 50 000 € no processo comum, o juízo central cível (art. 117.º da LOSJ).']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['Endereço', 'Tribunal judicial da comarca e juízo competentes.'],
+    ['Identificação do autor', 'Nome, estado, profissão, números de identificação civil e fiscal, local de trabalho e residência.'],
+    ['Fórmula de abertura', '«vem propor ação declarativa, sob a forma de processo comum, contra…», seguida da identificação do réu.'],
+    ['Factos', 'Por artigos numerados, um facto por artigo, com conectores que guiam o leitor («Sucede que», «Acresce que», «Isto posto»).'],
+    ['Direito', 'As normas que qualificam os factos e sustentam o pedido; pode remeter para os artigos de facto («face ao alegado em 7 a 11…»).'],
+    ['Pedido', '«Termos em que deve a ação ser julgada procedente e, em consequência:», com alíneas para cada pedido cumulado.'],
+    ['Valor', 'Em algarismos e por extenso, segundo os critérios dos arts. 297.º e 298.º do CPC.'],
+    ['Prova e anexos', 'Rol de testemunhas, documentos, depoimento de parte; junta procuração e comprovativo da taxa de justiça.'],
+    ['Assinatura', 'Advogado, com domicílio profissional.']
+  ] },
+  exemplo: ['Inês é senhoria de uma moradia em Aveiro arrendada para habitação por 600 € mensais. O inquilino deixou de pagar há quatro meses, instalou no rés-do-chão uma oficina de reparação de bicicletas aberta ao público e aloja cinco estudantes que lhe pagam mensalidade. Que pedidos deve a petição conter?',
+    'Cumula-se: a resolução do contrato com fundamento em uso do prédio para fim diverso e em hospedagem acima do permitido (arts. 1083.º, n.º 2, al. c), e 1093.º, n.º 1, al. b), do CC), bem como na falta de pagamento por mais de três meses (art. 1083.º, n.º 3); a condenação a entregar o imóvel livre de pessoas e bens; a condenação no pagamento das rendas vencidas, com juros, e das que se vencerem até à entrega; e a indemnização pelo atraso na restituição, que sobe para o dobro da renda a partir da mora (art. 1045.º do CC). A ação corre no tribunal da situação do imóvel (art. 70.º do CPC).',
+    'Valor: 30 rendas (18 000 €) mais as rendas em dívida (2 400 €) = 20 400 € — juízo local cível.'],
+  erros: [
+    'Escrever conclusões («o réu violou o contrato») em vez de factos concretos (o que fez, quando e onde).',
+    'Esquecer o valor da causa ou calculá-lo sem os critérios especiais (nas ações de despejo, o art. 298.º do CPC).',
+    'Formular um pedido que não decorre dos factos alegados, o que pode gerar ineptidão (art. 186.º do CPC).',
+    'Propor a ação de despejo no tribunal do domicílio do réu em vez do da situação do imóvel (art. 70.º do CPC).',
+    'Juntar o rol de testemunhas sem a morada completa ou sem indicar quem deve ser notificado.'
+  ],
+  artigos: ['art. 5.º do CPC', 'art. 10.º do CPC', 'art. 70.º do CPC', 'art. 186.º do CPC', 'art. 296.º do CPC', 'art. 298.º do CPC', 'art. 552.º do CPC', 'art. 558.º do CPC']
+};
+
+GUIAS.pj.contest = {
+  sub: 'Defesa do réu: impugnação, exceções dilatórias e perentórias, reconvenção e a ordem das conclusões.',
+  minuta: 'contestacao',
+  ideia: 'A contestação é o momento único da defesa: tudo o que o réu tem para opor deve ser dito aqui, sob pena de não o poder dizer mais tarde (art. 573.º do CPC). O réu pode negar os factos (impugnação), invocar factos que impedem o tribunal de conhecer do mérito (exceções dilatórias) ou que destroem o direito do autor (exceções perentórias) e, verificados certos requisitos, contra-atacar com um pedido próprio (reconvenção).',
+  conceitos: [
+    ['Defesa por impugnação', 'O réu contradiz os factos alegados pelo autor ou afirma que deles não resulta o efeito pretendido. Deve tomar posição definida sobre cada facto: os que não forem impugnados consideram-se, em regra, admitidos (art. 574.º do CPC).'],
+    ['Exceção dilatória', 'Obsta a que o tribunal conheça do mérito e leva à absolvição da instância ou à remessa para outro tribunal: incompetência, ilegitimidade, falta de personalidade judiciária, entre outras (arts. 576.º, n.º 2, e 577.º do CPC).'],
+    ['Exceção perentória', 'Factos que impedem, modificam ou extinguem o efeito pretendido pelo autor — pagamento, prescrição, mora do credor, anulabilidade — e levam à absolvição total ou parcial do pedido (art. 576.º, n.º 3, do CPC).'],
+    ['Litisconsórcio necessário', 'Situação em que a ação tem de ser proposta por ou contra várias pessoas. É o caso das ações que tenham por objeto a casa de morada de família, que devem envolver ambos os cônjuges (art. 34.º do CPC); a sua falta gera ilegitimidade, sanável com o chamamento do cônjuge (art. 6.º, n.º 2).'],
+    ['Reconvenção', 'Pedido autónomo do réu contra o autor, admissível nos casos do art. 266.º, n.º 2, do CPC (por exemplo, quando emerge do facto jurídico que serve de fundamento à ação ou à defesa).']
+  ],
+  regime: [
+    ['Prazo', '30 dias a contar da citação, acrescidos da dilação quando a haja (art. 569.º, n.º 1, do CPC). Sem contestação, consideram-se confessados os factos articulados pelo autor (art. 567.º).'],
+    ['Elementos', 'Individualizar a ação, expor as razões de facto e de direito da oposição, especificar separadamente as exceções e apresentar a prova (art. 572.º do CPC).'],
+    ['Reconvenção', 'Deve ser expressamente identificada e deduzida em separado, com fundamentos, pedido e valor próprio (art. 583.º do CPC). Só há taxa de justiça suplementar se o pedido do réu for distinto do do autor (art. 530.º, n.º 2).'],
+    ['Ordem das conclusões', 'Primeiro as exceções dilatórias (absolvição da instância); depois, «caso assim não se entenda», as perentórias e a impugnação (absolvição do pedido); por fim, a reconvenção (condenação do autor).']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['Endereço e identificação do processo', 'Tribunal, juízo, n.º do processo e partes.'],
+    ['Fórmula de abertura', '«…, réu na ação acima identificada, apresenta a sua contestação com os seguintes fundamentos:»'],
+    ['Por exceção dilatória', 'Factos e normas; pedido de absolvição da instância.'],
+    ['Por exceção perentória', 'Factos impeditivos, modificativos ou extintivos.'],
+    ['Por impugnação', 'Posição sobre cada facto do autor: aceita, nega ou desconhece (art. 574.º, n.º 3).'],
+    ['Reconvenção', 'Em capítulo próprio, com causa de pedir, pedido e valor.'],
+    ['Conclusões em cascata', 'Pedidos subsidiários («caso assim não se entenda…»).'],
+    ['Prova e anexos', 'Rol, documentos, procuração e taxa de justiça.']
+  ] },
+  exemplo: ['Rui comprou a Tiago um automóvel clássico por 28 000 €, pagou 8 000 € e recusou pagar o resto ao descobrir que o conta-quilómetros tinha sido adulterado pelo vendedor para mostrar metade dos quilómetros reais. Tiago pede o restante preço. Como se organiza a contestação?',
+    'Por exceção perentória, invoca-se a anulabilidade do contrato por dolo (art. 253.º do CC): o vendedor induziu o comprador em erro sobre uma qualidade determinante. Como o negócio não está cumprido, a anulabilidade pode ser arguida por via de exceção sem dependência de prazo (art. 287.º, n.º 2). Em reconvenção, pede-se a restituição dos 8 000 € pagos (art. 289.º, n.º 1), contra a devolução do automóvel, e indemnização pelos danos sofridos.',
+    'A reconvenção é admissível porque emerge do facto jurídico que serve de fundamento à defesa (art. 266.º, n.º 2, al. a), do CPC) e deve indicar o seu valor (art. 583.º, n.º 2).'],
+  erros: [
+    'Impugnar de forma genérica («impugna-se tudo o que foi alegado»), deixando factos sem posição definida.',
+    'Misturar exceções e impugnação sem as especificar separadamente (art. 572.º, al. c), do CPC).',
+    'Pedir a absolvição do pedido com base numa exceção dilatória, cujo efeito é a absolvição da instância.',
+    'Deduzir reconvenção sem lhe atribuir valor ou sem a identificar como tal.',
+    'Esquecer que a defesa não deduzida na contestação fica, em regra, precludida (art. 573.º do CPC).'
+  ],
+  artigos: ['art. 6.º do CPC', 'art. 34.º do CPC', 'art. 266.º do CPC', 'art. 567.º do CPC', 'art. 569.º do CPC', 'art. 572.º do CPC', 'art. 573.º do CPC', 'art. 574.º do CPC', 'art. 576.º do CPC', 'art. 577.º do CPC', 'art. 583.º do CPC']
+};
+
+GUIAS.pj.resp = {
+  sub: 'O que o autor pode dizer depois da contestação: réplica, resposta às exceções e alteração da prova.',
+  minuta: 'resposta',
+  ideia: 'No processo comum, a réplica deixou de ser a regra: só existe para o autor se defender da reconvenção ou, nas ações de simples apreciação negativa, para contrariar os factos constitutivos alegados pelo réu (art. 584.º do CPC). Às exceções deduzidas no último articulado o autor responde, em princípio, na audiência prévia ou no início da audiência final (art. 3.º, n.º 4); o juiz pode, porém, no âmbito da gestão processual, convidá-lo a fazê-lo por escrito.',
+  conceitos: [
+    ['Réplica', 'Articulado do autor destinado à defesa contra a reconvenção (ou, nas ações de simples apreciação negativa, à impugnação dos factos constitutivos do réu). Apresenta-se em 30 dias a contar da notificação da contestação (art. 585.º do CPC).'],
+    ['Resposta às exceções', 'Tomada de posição do autor sobre as exceções deduzidas pelo réu, em cumprimento do contraditório (art. 3.º, n.os 3 e 4, do CPC).'],
+    ['Ónus de impugnação do autor', 'A falta de impugnação dos novos factos alegados pelo réu tem o mesmo efeito de admissão previsto para a contestação (art. 587.º, n.º 1, do CPC).'],
+    ['Depoimento de parte', 'Meio de prova destinado a obter a confissão da parte contrária; quem o requer indica logo, de forma discriminada, os factos sobre que deve recair (art. 452.º, n.º 2, do CPC).']
+  ],
+  regime: [
+    ['Alteração do requerimento probatório', 'Se o réu contestar, o autor pode alterar o requerimento probatório na réplica ou nos 10 dias seguintes à notificação da contestação (art. 552.º, n.º 6, do CPC).'],
+    ['Aditamento do rol', 'O rol de testemunhas pode ainda ser aditado ou alterado até 20 dias antes da audiência final (art. 598.º, n.º 2, do CPC).'],
+    ['Gestão processual', 'O juiz dirige o processo e pode adaptar a tramitação às especificidades da causa (arts. 6.º e 547.º do CPC), designadamente fixando prazo para resposta escrita às exceções.']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['Identificação do processo', 'Tribunal, juízo, n.º de processo e qualidade da parte.'],
+    ['Fórmula de abertura', '«…, autor na ação à margem identificada, notificado para o efeito, vem apresentar a sua resposta à matéria de exceção (ou réplica)…»'],
+    ['Resposta exceção a exceção', 'Contradizer os factos novos e mostrar por que razão a exceção não procede.'],
+    ['Contra a reconvenção (réplica)', 'Impugnação e exceções contra o pedido reconvencional.'],
+    ['Conclusão', 'Improcedência das exceções e, havendo réplica, da reconvenção.'],
+    ['Alteração do requerimento probatório', 'Novas testemunhas, depoimento de parte com indicação dos factos, documentos.']
+  ] },
+  exemplo: ['Numa ação de cobrança de três faturas, o réu alega, por exceção, que pagou 5 000 €. O autor reconhece ter recebido essa quantia, mas afirma que o próprio réu a destinou a uma quarta fatura, mais antiga e não reclamada. Como responder?',
+    'Na resposta, o autor admite o recebimento mas impugna o efeito extintivo invocado: o pagamento foi expressamente imputado pelo devedor a outra dívida (art. 783.º, n.º 1, do CC), pelo que as faturas pedidas continuam em dívida. Junta o recibo com a menção da fatura paga e requer o depoimento de parte do réu sobre essa imputação, indicando os factos.',
+    'Conclui pela improcedência da exceção perentória de pagamento.'],
+  erros: [
+    'Apresentar «réplica» para responder a meras exceções quando não houve reconvenção nem convite do juiz.',
+    'Requerer o depoimento de parte sem indicar os factos sobre que deve recair (art. 452.º, n.º 2, do CPC).',
+    'Deixar sem resposta os factos novos alegados pelo réu, que se podem considerar admitidos (art. 587.º do CPC).',
+    'Perder o prazo de 10 dias para alterar o requerimento probatório depois da contestação.'
+  ],
+  artigos: ['art. 3.º do CPC', 'art. 6.º do CPC', 'art. 452.º do CPC', 'art. 547.º do CPC', 'art. 552.º do CPC', 'art. 584.º do CPC', 'art. 585.º do CPC', 'art. 587.º do CPC', 'art. 598.º do CPC']
+};
+
+GUIAS.pj.acmp = {
+  sub: 'O despacho que encerra o inquérito e leva o arguido a julgamento: requisitos, estrutura e tribunal competente.',
+  minuta: 'acusacao_mp',
+  ideia: 'Findo o inquérito, o Ministério Público acusa quando há indícios suficientes, isto é, uma possibilidade razoável de vir a ser aplicada uma pena ao arguido em julgamento (art. 283.º, n.os 1 e 2, do CPP). A acusação fixa o objeto do processo: o arguido só pode ser condenado pelos factos nela descritos, salvo as alterações que a lei admite. Por isso tem de narrar os factos com tempo, lugar e modo, incluindo o elemento subjetivo.',
+  conceitos: [
+    ['Indícios suficientes', 'Os que permitem concluir que é mais provável a condenação do que a absolvição (art. 283.º, n.º 2, do CPP).'],
+    ['Elemento subjetivo', 'Os factos que descrevem o dolo: o arguido conhecia os elementos do crime, quis realizá-los e sabia que a conduta era proibida (art. 14.º do CP).'],
+    ['Tribunal singular e coletivo', 'Em regra, o tribunal singular julga crimes com pena máxima até 5 anos (art. 16.º do CPP); acima disso, o coletivo (art. 14.º, n.º 2, al. b)).'],
+    ['Acusação manifestamente infundada', 'Pode ser rejeitada pelo juiz, por exemplo quando não narra os factos ou não indica as disposições legais aplicáveis (art. 311.º do CPP).']
+  ],
+  regime: [
+    ['Prazo do inquérito', 'Oito meses sem arguidos presos ou em obrigação de permanência na habitação; seis meses com eles, com os alargamentos legais (art. 276.º do CPP).'],
+    ['Conteúdo obrigatório', 'Sob pena de nulidade: identificação do arguido; narração por artigos dos factos, com lugar, tempo, motivação e grau de participação; circunstâncias relevantes para a pena; disposições legais aplicáveis; provas, com o rol até 20 testemunhas (art. 283.º, n.º 3, do CPP).'],
+    ['Depois da acusação', 'O assistente pode acusar em 10 dias (art. 284.º do CPP) e o arguido ou o assistente podem requerer a abertura da instrução em 20 dias (art. 287.º).']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['Despacho de encerramento', 'Declara encerrado o inquérito e decide questões pendentes (apreensões, medidas de coação).'],
+    ['Fórmula', '«O Ministério Público acusa, para julgamento em processo comum e com intervenção do tribunal singular (ou coletivo):»'],
+    ['Identificação do arguido', 'Nome, filiação, data de nascimento, naturalidade, profissão e residência.'],
+    ['Factos', 'Por artigos: o que fez, quando, onde, como e com que fim; termina com o dolo e a consciência da ilicitude.'],
+    ['Qualificação jurídica', '«Praticou, assim, como autor material e de forma consumada, o crime de…, que o art. … pune»'],
+    ['Prova', 'Testemunhal, documental e pericial, com remissão para as folhas dos autos.'],
+    ['Medidas de coação e perda', 'Manutenção do termo de identidade e residência; pedido de perda de instrumentos ou vantagens.'],
+    ['Notificações', 'Arguido, defensor, assistente e lesados (para o pedido de indemnização civil).']
+  ] },
+  exemplo: ['Numa operação de fiscalização rodoviária, Marco exibe uma carta de condução estrangeira cujo selo de segurança é uma impressão a jato de tinta. A perícia confirma a contrafação. Como se qualificam os factos na acusação?',
+    'A carta de condução é um documento autêntico. Ao usá-la sabendo que era falsa, para se fazer passar por condutor habilitado, Marco comete um crime de falsificação de documento na modalidade de uso (art. 256.º, n.º 1, al. e), do CP), agravado por se tratar de documento autêntico (n.º 3). A acusação deve descrever a exibição, a falsidade, o conhecimento dela e a intenção de obter um benefício ilegítimo.',
+    'A pena do n.º 3 (até 5 anos) aponta para o tribunal singular (art. 16.º, n.º 2, al. b), do CPP).'],
+  erros: [
+    'Descrever conclusões jurídicas («o arguido falsificou») sem os factos concretos que as preenchem.',
+    'Esquecer o elemento subjetivo ou a consciência da ilicitude no fim da narração.',
+    'Indicar o tribunal errado em função da pena máxima abstrata.',
+    'Arrolar mais de 20 testemunhas ou não discriminar as que depõem apenas sobre a personalidade do arguido.'
+  ],
+  artigos: ['art. 14.º do CPP', 'art. 16.º do CPP', 'art. 276.º do CPP', 'art. 283.º do CPP', 'art. 287.º do CPP', 'art. 311.º do CPP', 'art. 14.º do CP', 'art. 256.º do CP']
+};
+
+GUIAS.pj.acass = {
+  sub: 'Quando e como o assistente acusa ao lado do Ministério Público nos crimes públicos e semipúblicos.',
+  minuta: 'acusacao_assistente',
+  ideia: 'Nos crimes públicos e semipúblicos é o Ministério Público quem acusa. O assistente pode, nos 10 dias seguintes à notificação dessa acusação, deduzir a sua: pelos mesmos factos, por parte deles ou por outros que não importem alteração substancial (art. 284.º, n.º 1, do CPP). Pode limitar-se a aderir à acusação pública e só indica as provas que nela não constem.',
+  conceitos: [
+    ['Assistente', 'Sujeito processual que colabora com o Ministério Público. Podem constituir-se, entre outros, os ofendidos maiores de 16 anos (art. 68.º, n.º 1, al. a), do CPP); é sempre representado por advogado (art. 70.º).'],
+    ['Alteração substancial dos factos', 'A que tenha por efeito imputar ao arguido um crime diverso ou agravar os limites máximos das sanções (art. 1.º, al. f), do CPP). O assistente não a pode introduzir na sua acusação.'],
+    ['Mera adesão', 'A acusação do assistente pode limitar-se a aderir à do Ministério Público (art. 284.º, n.º 2, al. a), do CPP).'],
+    ['Instrução a requerimento do assistente', 'Se o Ministério Público arquivar ou não acusar por certos factos, o caminho do assistente não é acusar, mas requerer a abertura da instrução em 20 dias (art. 287.º, n.º 1, al. b), do CPP).']
+  ],
+  regime: [
+    ['Prazo', '10 dias após a notificação da acusação do Ministério Público (art. 284.º, n.º 1, do CPP).'],
+    ['Conteúdo', 'Aplicam-se os requisitos do art. 283.º, n.º 3 (identificação, factos, normas, prova), com as modificações do art. 284.º, n.º 2.'],
+    ['Pedido de indemnização civil', 'O assistente formula o pedido na própria acusação ou em requerimento articulado no mesmo prazo (art. 77.º, n.º 1, do CPP).']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['Endereço', 'Juiz ou Procurador do processo, consoante a fase; n.º do processo.'],
+    ['Identificação', 'Assistente (com remissão para os autos) e arguido.'],
+    ['Fórmula', '«…, notificado da acusação do Ministério Público, vem, nos termos do art. 284.º do CPP, deduzir acusação…»'],
+    ['Factos', 'Os da acusação pública, por remissão ou desenvolvidos, e eventuais factos novos sem alteração substancial.'],
+    ['Direito', 'Crime, autoria, forma de consumação e normas.'],
+    ['Prova', 'Só a que não consta da acusação pública.'],
+    ['Pedido de indemnização civil', 'No mesmo articulado ou em anexo.']
+  ] },
+  exemplo: ['O Ministério Público acusou Sílvia de furto de um portátil no escritório onde trabalhava. A ofendida, assistente, sabe que Sílvia usou para entrar uma chave que lhe tinha sido confiada e quer acrescentar esse pormenor e duas testemunhas novas. Pode fazê-lo?',
+    'Pode, desde que o facto acrescentado não implique crime diverso nem agrave o limite máximo da pena. Se a forma de entrada não altera a qualificação jurídica, a assistente deduz acusação nos 10 dias, desenvolve os factos e indica apenas as testemunhas novas (art. 284.º do CPP). Se o pormenor conduzisse a um crime mais grave, estaríamos perante alteração substancial, que o juiz não aceitaria na acusação do assistente (art. 311.º, n.º 2, al. b), do CPP).',
+    'O pedido de indemnização pelo valor do portátil pode ser deduzido no mesmo articulado.'],
+  erros: [
+    'Usar a acusação do assistente para acrescentar crimes que o Ministério Público não acusou.',
+    'Repetir na acusação as provas que já constam da acusação pública.',
+    'Confundir a acusação do assistente (art. 284.º do CPP) com a acusação particular (art. 285.º).',
+    'Esquecer que, perante arquivamento, o meio próprio é o requerimento de abertura da instrução.'
+  ],
+  artigos: ['art. 1.º do CPP', 'art. 68.º do CPP', 'art. 70.º do CPP', 'art. 77.º do CPP', 'art. 283.º do CPP', 'art. 284.º do CPP', 'art. 287.º do CPP', 'art. 311.º do CPP']
+};
+
+GUIAS.pj.acpart = {
+  sub: 'Crimes particulares (injúria, difamação): queixa, assistente, acusação em 10 dias e estrutura da peça.',
+  minuta: 'acusacao_particular',
+  ideia: 'Nos crimes particulares, como a injúria e a difamação (art. 188.º do CP), o Ministério Público não pode avançar sozinho: o ofendido tem de apresentar queixa, constituir-se assistente e, findo o inquérito, deduzir acusação particular (art. 50.º, n.º 1, do CPP). Notificado pelo Ministério Público, que indica se há indícios suficientes, o assistente tem 10 dias para acusar (art. 285.º, n.os 1 e 2).',
+  conceitos: [
+    ['Injúria e difamação', 'Na injúria, o agente dirige-se ao próprio ofendido (art. 181.º do CP); na difamação, dirige-se a terceiros, imputando factos ou formulando juízos ofensivos da honra (art. 180.º).'],
+    ['Publicidade e calúnia', 'As penas sobem um terço quando a ofensa é praticada por meios que facilitem a divulgação ou quando o agente conhecia a falsidade dos factos imputados (art. 183.º, n.º 1, do CP).'],
+    ['Prova da verdade', 'Na difamação, a conduta não é punível se a imputação servir interesses legítimos e o agente provar a verdade ou tiver fundamento sério para a julgar verdadeira (art. 180.º, n.º 2, do CP).'],
+    ['Prazo de queixa', 'Seis meses a contar do conhecimento do facto e dos seus autores (art. 115.º, n.º 1, do CP).']
+  ],
+  regime: [
+    ['Legitimidade', 'Queixa, constituição de assistente e acusação particular (art. 50.º do CPP; art. 68.º, n.º 1, al. b)). O assistente é representado por advogado (art. 70.º).'],
+    ['Conteúdo', 'Aplicam-se os requisitos da acusação pública (art. 283.º, n.º 3, por remissão do art. 285.º, n.º 3, do CPP).'],
+    ['Intervenção do Ministério Público', 'Nos cinco dias seguintes, pode acusar pelos mesmos factos ou por outros sem alteração substancial (art. 285.º, n.º 4, do CPP).'],
+    ['Fora de prazo', 'O ato pode ainda ser praticado nos três dias úteis seguintes ao termo do prazo, mediante pagamento de multa (art. 107.º-A do CPP).']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['Endereço', 'Procurador da República do DIAP onde corre o inquérito; n.º do processo.'],
+    ['Fórmula', '«…, assistente, tendo sido notificado ao abrigo do n.º 1 do art. 285.º do CPP, deduz acusação particular contra…»'],
+    ['Factos', 'Data, hora, local, quem estava presente e as palavras exatas, entre aspas; depois o efeito na honra.'],
+    ['Elemento subjetivo', 'Atuação livre, voluntária e consciente, com conhecimento da proibição.'],
+    ['Direito', 'Crime(s), autoria, consumação e agravação (art. 183.º do CP), se for o caso.'],
+    ['Requerimento final', 'Que a acusação seja recebida e o arguido julgado e condenado, em processo comum e tribunal singular.'],
+    ['Prova', 'Declarações do assistente, testemunhas presentes, documentos (mensagens, cartas).'],
+    ['Pedido de indemnização civil', 'No mesmo articulado ou em anexo (art. 77.º, n.º 1, do CPP).']
+  ] },
+  exemplo: ['Numa assembleia de condóminos, Abel chamou «ladra» e «incompetente» à administradora, Clara, perante doze condóminos. No dia seguinte, escreveu no grupo de mensagens do prédio que Clara «desvia o dinheiro das obras». Que crimes devem constar da acusação particular?',
+    'As palavras dirigidas diretamente a Clara na assembleia integram um crime de injúria (art. 181.º do CP). A mensagem no grupo, dirigida aos restantes condóminos e imputando um facto desonroso, integra um crime de difamação (art. 180.º), e o meio usado facilita a divulgação, o que justifica pedir a agravação do art. 183.º, n.º 1, al. a). Ambos dependem de acusação particular (art. 188.º).',
+    'Se Abel não conseguir provar a verdade da imputação nem ter fundamento sério para nela acreditar, não beneficia da exclusão do art. 180.º, n.º 2.'],
+  erros: [
+    'Esquecer que sem constituição de assistente não há acusação particular possível.',
+    'Resumir as expressões em vez de as transcrever: o tribunal tem de as conhecer para avaliar o seu caráter ofensivo.',
+    'Qualificar como difamação o que foi dito diretamente ao ofendido (e vice-versa).',
+    'Deixar esgotar o prazo de 10 dias para acusar (art. 285.º do CPP) sem usar a faculdade do art. 107.º-A.'
+  ],
+  artigos: ['art. 50.º do CPP', 'art. 68.º do CPP', 'art. 70.º do CPP', 'art. 285.º do CPP', 'art. 115.º do CP', 'art. 180.º do CP', 'art. 181.º do CP', 'art. 183.º do CP', 'art. 188.º do CP']
+};
+
+GUIAS.pj.pic = {
+  sub: 'A indemnização dos danos causados pelo crime no próprio processo penal: quem pede, quando e como.',
+  minuta: 'pic',
+  ideia: 'O pedido de indemnização fundado num crime é deduzido, em regra, no processo penal (princípio de adesão, art. 71.º do CPP); só pode correr em separado nos casos do art. 72.º. Substancialmente aplica-se a lei civil: responsabilidade por factos ilícitos, danos patrimoniais e não patrimoniais (arts. 483.º e 496.º do CC). Processualmente, é uma peça articulada como uma petição inicial.',
+  conceitos: [
+    ['Lesado', 'Quem sofreu danos causados pelo crime, mesmo que não seja ou não possa ser assistente (art. 74.º, n.º 1, do CPP).'],
+    ['Pedido em separado', 'Admitido, entre outros casos, quando o procedimento depende de queixa ou de acusação particular ou quando o processo penal não chega à acusação em oito meses (art. 72.º do CPP).'],
+    ['Danos não patrimoniais', 'Indemnizáveis quando, pela sua gravidade, mereçam a tutela do direito (art. 496.º, n.º 1, do CC).'],
+    ['Demandante e demandado', 'Designações das partes no pedido civil; os demandados são representados por advogado (art. 76.º, n.º 2, do CPP).']
+  ],
+  regime: [
+    ['Prazo', 'Pelo Ministério Público ou pelo assistente, na acusação ou em requerimento articulado no prazo desta; pelo lesado notificado, em 20 dias após a notificação da acusação ou da pronúncia (art. 77.º do CPP).'],
+    ['Provas', 'Requeridas com o articulado; até 10 testemunhas, ou 5 se o pedido não exceder a alçada da Relação (art. 79.º do CPP).'],
+    ['Juros', 'Nas obrigações de indemnização ilíquidas, a mora conta-se, em regra, da citação ou notificação do pedido (art. 805.º, n.º 3, do CC).']
+  ],
+  esquema: { tipo: 'passos', itens: [
+    ['Identificação', 'Demandante (lesado) e demandado (arguido e eventuais responsáveis civis).'],
+    ['Remissão para os factos', '«Dá-se por reproduzida a matéria dos artigos … da acusação.»'],
+    ['Danos patrimoniais', 'Discriminados e quantificados (despesas, perdas, lucros cessantes).'],
+    ['Danos não patrimoniais', 'Sofrimento, vexame, perturbação, com factos que os demonstrem.'],
+    ['Nexo de causalidade e direito', 'Arts. 483.º, 496.º e 562.º e seguintes do CC.'],
+    ['Pedido', 'Montante global, com juros desde a notificação.'],
+    ['Valor, prova e anexos', 'Valor do pedido, rol de testemunhas, documentos.']
+  ] },
+  exemplo: ['Joana foi agredida e partiu os óculos (350 €), pagou 120 € de consultas e esteve dez dias sem trabalhar, perdendo 600 € de salário. Sente vergonha por ter sido agredida em público. Como se estrutura o pedido?',
+    'Pede-se 1 070 € de danos patrimoniais (350 + 120 + 600), discriminados com documentos, e uma quantia pelos danos não patrimoniais, descrevendo factos concretos que mostrem a sua gravidade (art. 496.º do CC). Ao total acrescem juros desde a notificação do pedido. Se Joana for assistente, o pedido é deduzido na acusação ou no prazo desta (art. 77.º, n.º 1, do CPP).',
+    'Como o pedido não excede a alçada da Relação, podem arrolar-se até cinco testemunhas (art. 79.º, n.º 2, do CPP).'],
+  erros: [
+    'Pedir danos não patrimoniais sem descrever factos que os demonstrem.',
+    'Não discriminar os danos patrimoniais nem juntar os documentos que os provam.',
+    'Deixar passar o prazo do art. 77.º do CPP, pensando que o pedido pode ser feito no julgamento.',
+    'Pedir juros desde a data do crime em danos ainda ilíquidos, sem fundamentar.'
+  ],
+  artigos: ['art. 71.º do CPP', 'art. 72.º do CPP', 'art. 74.º do CPP', 'art. 76.º do CPP', 'art. 77.º do CPP', 'art. 79.º do CPP', 'art. 483.º do CC', 'art. 496.º do CC', 'art. 805.º do CC']
+};
+
 /* Matéria explicada — Direito Processual Penal (texto original do LEXDESK) */
 var GUIAS = typeof GUIAS !== 'undefined' ? GUIAS : {};
 GUIAS.pp = {
@@ -9127,7 +9476,7 @@ var MINUTAS = [
       var out = ['Exmo.(a) Senhor(a) Juiz(a) de Direito do', _v(p.tribunal, 'TRIBUNAL'), _v(p.juizo, 'JUÍZO'), '',
         _ident(p, 'a_') + ',', '', 'vem propor contra', '', _ident(p, 'r_') + ',', '',
         'AÇÃO DECLARATIVA ' + (p.especie || 'de condenação').toUpperCase() + ', SOB A FORMA DE PROCESSO COMUM,', '',
-        'o que faz nos termos e com os fundamentos seguintes:', '', 'I — DOS FACTOS', ''];
+        'pelos motivos de facto e de direito expostos a seguir:', '', 'I — DOS FACTOS', ''];
       if (factos.length) factos.forEach(function (f) { n++; out.push(n + '.º', f, ''); }); else { n++; out.push(n + '.º', '[EXPOSIÇÃO DOS FACTOS ESSENCIAIS QUE CONSTITUEM A CAUSA DE PEDIR]', ''); }
       out.push('II — DO DIREITO', '');
       if (dir.length) dir.forEach(function (f) { n++; out.push(n + '.º', f, ''); }); else { n++; out.push(n + '.º', '[RAZÕES DE DIREITO QUE SERVEM DE FUNDAMENTO À AÇÃO]', ''); }
@@ -9140,33 +9489,212 @@ var MINUTAS = [
     }
   },
   {
-    id: 'contestacao', nome: 'Contestação', area: 'Processo Civil',
-    desc: 'Defesa do réu no processo comum, por exceção e por impugnação.',
-    base: 'Prazo: 30 dias a contar da citação (art. 569.º, n.º 1, do CPC). Defesa por impugnação e por exceção: art. 571.º. Elementos da contestação: art. 572.º. Concentração da defesa: art. 573.º.',
+    id: 'contestacao', nome: 'Contestação (com reconvenção)', area: 'Processo Civil',
+    desc: 'Defesa do réu no processo comum: exceções dilatórias, perentórias, impugnação e, se for o caso, reconvenção.',
+    base: 'Prazo: 30 dias a contar da citação (art. 569.º, n.º 1, do CPC). Elementos: art. 572.º (exceções especificadas separadamente). Ónus de impugnação: art. 574.º. Concentração da defesa: art. 573.º. Reconvenção: arts. 266.º e 583.º (pedido e valor próprios).',
     campos: [
       { k: 'tribunal', l: 'Tribunal e juízo', ph: 'Tribunal Judicial da Comarca do Porto — Juízo Local Cível do Porto' }, { k: 'proc', l: 'N.º do processo' },
       { k: 'reu', l: 'Nome do Réu' }, { k: 'autor', l: 'Nome do Autor' },
-      { k: 'excecoes', l: 'Defesa por exceção (um artigo por linha; deixe vazio se não houver)', t: 'area' },
+      { k: 'excecoes', l: 'Exceções dilatórias (um artigo por linha; vazio se não houver)', t: 'area', ph: 'O Réu é casado e o locado é a casa de morada de família…' },
+      { k: 'perentorias', l: 'Exceções perentórias (um artigo por linha; vazio se não houver)', t: 'area' },
       { k: 'impugnacao', l: 'Defesa por impugnação (um artigo por linha)', t: 'area' },
+      { k: 'reconv', l: 'Reconvenção — fundamentos (um artigo por linha; vazio se não houver)', t: 'area' },
+      { k: 'reconvped', l: 'Pedido reconvencional', ph: 'ser o Autor condenado a pagar ao Réu a quantia de 8.000,00 €, acrescida de juros' },
+      { k: 'reconvval', l: 'Valor da reconvenção (€)' },
       { k: 'testemunhas', l: 'Rol de testemunhas (uma por linha)', t: 'area' },
       { k: 'local', l: 'Local', ph: 'Porto' }
     ],
     gerar: function (p) {
-      var exc = _linhas(p.excecoes), imp = _linhas(p.impugnacao), test = _linhas(p.testemunhas), n = 0;
+      var dil = _linhas(p.excecoes), per = _linhas(p.perentorias), imp = _linhas(p.impugnacao), rec = _linhas(p.reconv), test = _linhas(p.testemunhas), n = 0, cap = 0, R = ['I', 'II', 'III', 'IV', 'V'];
       var out = ['Exmo.(a) Senhor(a) Juiz(a) de Direito', _v(p.tribunal, 'TRIBUNAL E JUÍZO'), 'Processo n.º ' + _v(p.proc, 'N.º DO PROCESSO'), '',
         _v(p.reu, 'RÉU') + ', Réu nos autos de ação declarativa, sob a forma de processo comum, que lhe move ' + _v(p.autor, 'AUTOR') + ', tendo sido citado para o efeito, vem apresentar a sua', '',
-        'CONTESTAÇÃO,', '', 'o que faz nos termos e com os fundamentos seguintes:', ''];
-      if (exc.length) { out.push('I — DEFESA POR EXCEÇÃO', ''); exc.forEach(function (f) { n++; out.push(n + '.º', f, ''); }); }
-      out.push((exc.length ? 'II' : 'I') + ' — DEFESA POR IMPUGNAÇÃO', '');
-      if (imp.length) imp.forEach(function (f) { n++; out.push(n + '.º', f, ''); }); else { n++; out.push(n + '.º', '[RAZÕES DE FACTO E DE DIREITO POR QUE SE OPÕE À PRETENSÃO DO AUTOR]', ''); }
-      out.push('Nestes termos e nos melhores de direito, que V. Ex.ª doutamente suprirá, ' + (exc.length ? 'deve(m) a(s) exceção(ões) deduzida(s) ser julgada(s) procedente(s), com as legais consequências, e, em qualquer caso, ' : 'deve ') + 'a ação ser julgada improcedente, por não provada, absolvendo-se o Réu do pedido.', '',
-        'Junta: procuração forense e comprovativo do pagamento da taxa de justiça.', '', 'PROVA', '', 'Rol de testemunhas:');
+        'CONTESTAÇÃO' + (rec.length ? ' E RECONVENÇÃO' : '') + ',', '', 'pelos motivos de facto e de direito expostos a seguir:', ''];
+      var bloco = function (tit, l) { out.push(R[cap++] + ' — ' + tit, ''); l.forEach(function (f) { n++; out.push(n + '.º', f, ''); }); };
+      if (dil.length) bloco('POR EXCEÇÃO DILATÓRIA', dil);
+      if (per.length) bloco('POR EXCEÇÃO PERENTÓRIA', per);
+      bloco('POR IMPUGNAÇÃO', imp.length ? imp : ['[POSIÇÃO DEFINIDA SOBRE CADA FACTO ALEGADO PELO AUTOR: ACEITA, NEGA OU DESCONHECE, COM A VERSÃO DO RÉU]']);
+      if (rec.length) bloco('RECONVENÇÃO', rec);
+      out.push('Termos em que, e nos melhores de direito que V. Ex.ª doutamente suprirá:', '');
+      var al = 'abcdefgh'.split(''), k = 0;
+      if (dil.length) out.push(al[k++] + ') Deve a exceção dilatória ser julgada procedente e o Réu absolvido da instância;', '', 'Caso assim não se entenda,', '');
+      if (per.length) out.push(al[k++] + ') Deve a exceção perentória ser julgada procedente, absolvendo-se o Réu do pedido, total ou parcialmente;', '');
+      out.push(al[k++] + ') Deve, em qualquer caso, a ação ser julgada improcedente, por não provada, absolvendo-se o Réu do pedido;', '');
+      if (rec.length) out.push(al[k++] + ') Deve a reconvenção ser julgada procedente e, em consequência, ' + _v(p.reconvped, 'PEDIDO RECONVENCIONAL') + '.', '', 'Valor da reconvenção: ' + _euros(p.reconvval) + '.', '');
+      out.push('Junta: procuração forense e comprovativo do pagamento da taxa de justiça.', '', 'PROVA', '', 'Rol de testemunhas (a notificar):');
       if (test.length) test.forEach(function (t, i) { out.push((i + 1) + '. ' + t); }); else out.push('1. [NOME, PROFISSÃO E MORADA]');
       out.push('', _v(p.local, 'LOCAL') + ', ' + _hoje() + '.', '', 'O(A) Advogado(a),', '', '_______________________________');
       return out.join('\n');
     }
   }
 ];
+
+/* LEXDESK — minutas de prática judiciária: resposta às exceções, acusações e pedido de indemnização civil (modelos originais) */
+(function () {
+  if (typeof MINUTAS === 'undefined') return;
+  var art = function (l, out, n) { l.forEach(function (f) { n.v++; out.push(n.v + '.º', f, ''); }); };
+  var rol = function (l, out, vazio) { if (l.length) l.forEach(function (t, i) { out.push((i + 1) + '. ' + t); }); else out.push('1. ' + (vazio || '[NOME, PROFISSÃO E MORADA]')); };
+
+  MINUTAS.push({
+    id: 'resposta', nome: 'Resposta às exceções / Réplica', area: 'Processo Civil',
+    desc: 'Tomada de posição do autor sobre as exceções e os factos novos da contestação; réplica quando houve reconvenção.',
+    base: 'Réplica só para a defesa contra a reconvenção ou nas ações de simples apreciação negativa (art. 584.º do CPC), em 30 dias (art. 585.º). Resposta às exceções: audiência prévia ou início da audiência final (art. 3.º, n.º 4), salvo convite do juiz (arts. 6.º e 547.º). Alteração do requerimento probatório: art. 552.º, n.º 6. Depoimento de parte com factos discriminados: art. 452.º, n.º 2.',
+    campos: [
+      { k: 'tribunal', l: 'Tribunal e juízo' }, { k: 'proc', l: 'N.º do processo' }, { k: 'autor', l: 'Nome do Autor' },
+      { k: 'tipo', l: 'Peça', t: 'select', o: ['Resposta à matéria de exceção', 'Réplica (defesa contra a reconvenção)'] },
+      { k: 'corpo', l: 'Resposta às exceções / factos novos (um artigo por linha)', t: 'area' },
+      { k: 'reconv', l: 'Defesa contra a reconvenção (um artigo por linha; só na réplica)', t: 'area' },
+      { k: 'dep', l: 'Depoimento de parte do Réu — factos (ex.: artigos 8.º a 11.º da petição)', ph: 'artigos 8.º a 11.º da petição e 5.º a 9.º desta peça' },
+      { k: 'testemunhas', l: 'Testemunhas a aditar (uma por linha)', t: 'area' }, { k: 'docs', l: 'N.º de documentos juntos' },
+      { k: 'local', l: 'Local', ph: 'Porto' }
+    ],
+    gerar: function (p) {
+      var rep = /^Réplica/.test(p.tipo || ''), c = _linhas(p.corpo), r = _linhas(p.reconv), t = _linhas(p.testemunhas), n = { v: 0 };
+      var out = ['Exmo.(a) Senhor(a) Juiz(a) de Direito', _v(p.tribunal, 'TRIBUNAL E JUÍZO'), 'Processo n.º ' + _v(p.proc, 'N.º DO PROCESSO'), '',
+        _v(p.autor, 'AUTOR') + ', Autor nos autos à margem identificados, ' + (rep ? 'notificado da contestação com reconvenção, vem apresentar a sua' : 'notificado para o efeito, vem apresentar a sua'), '',
+        (rep ? 'RÉPLICA' : 'RESPOSTA À MATÉRIA DE EXCEÇÃO') + ',', '', 'nos termos e com os fundamentos seguintes:', ''];
+      out.push('I — ' + (rep ? 'DA MATÉRIA DE EXCEÇÃO E DOS FACTOS NOVOS' : 'DAS EXCEÇÕES DEDUZIDAS PELO RÉU'), '');
+      art(c.length ? c : ['[POSIÇÃO SOBRE CADA EXCEÇÃO E SOBRE OS FACTOS NOVOS ALEGADOS PELO RÉU, COM A VERSÃO DO AUTOR]'], out, n);
+      if (rep) { out.push('II — DA RECONVENÇÃO', ''); art(r.length ? r : ['[IMPUGNAÇÃO DOS FUNDAMENTOS DO PEDIDO RECONVENCIONAL E EXCEÇÕES QUE LHE SEJAM OPONÍVEIS]'], out, n); }
+      out.push('Termos em que devem as exceções deduzidas ser julgadas improcedentes' + (rep ? ' e a reconvenção julgada improcedente, por não provada, absolvendo-se o Autor do pedido reconvencional' : '') + ', prosseguindo a ação os seus termos.', '');
+      out.push('ALTERAÇÃO DO REQUERIMENTO PROBATÓRIO (art. 552.º, n.º 6, do CPC)', '');
+      if ((p.dep || '').trim()) out.push('— Depoimento de parte do Réu, sobre a matéria dos ' + p.dep.trim() + '.');
+      if (t.length) { out.push('— Aditamento ao rol de testemunhas (a notificar):'); rol(t, out); }
+      if ((p.docs || '').trim()) out.push('— Prova documental: ' + p.docs.trim() + ' documento(s).');
+      if (!(p.dep || '').trim() && !t.length && !(p.docs || '').trim()) out.push('— [NOVOS MEIOS DE PROVA, SE OS HOUVER]');
+      out.push('', _v(p.local, 'LOCAL') + ', ' + _hoje() + '.', '', 'O(A) Advogado(a),', '', '_______________________________');
+      return out.join('\n');
+    }
+  });
+
+  MINUTAS.push({
+    id: 'acusacao_mp', nome: 'Acusação do Ministério Público', area: 'Processo Penal',
+    desc: 'Despacho de acusação no fim do inquérito, com os requisitos do art. 283.º, n.º 3, do CPP (modelo de estudo).',
+    base: 'Indícios suficientes: art. 283.º, n.os 1 e 2, do CPP. Conteúdo, sob pena de nulidade: art. 283.º, n.º 3 (identificação, factos por artigos, circunstâncias da pena, normas, prova com até 20 testemunhas). Tribunal: arts. 14.º e 16.º do CPP.',
+    campos: [
+      { k: 'diap', l: 'DIAP / Secção', ph: 'DIAP de Aveiro — 1.ª Secção' }, { k: 'proc', l: 'N.º do inquérito' },
+      { k: 'trib', l: 'Tribunal de julgamento', t: 'select', o: ['tribunal singular', 'tribunal coletivo', 'tribunal do júri'] },
+      { k: 'arg', l: 'Identificação do arguido (nome, filiação, nascimento, naturalidade, profissão, residência)', t: 'area' },
+      { k: 'factos', l: 'Factos (um artigo por linha: tempo, lugar, modo)', t: 'area' },
+      { k: 'dolo', l: 'Incluir o parágrafo do elemento subjetivo (dolo e consciência da ilicitude)', t: 'check' },
+      { k: 'crime', l: 'Qualificação jurídica', ph: 'um crime de falsificação de documento, previsto e punido pelo art. 256.º, n.os 1, al. e), e 3, do Código Penal' },
+      { k: 'test', l: 'Prova testemunhal (uma por linha)', t: 'area' }, { k: 'doc', l: 'Prova documental (uma por linha)', t: 'area' }, { k: 'per', l: 'Prova pericial (uma por linha)', t: 'area' },
+      { k: 'coacao', l: 'Medida de coação', ph: 'O arguido aguarda os ulteriores termos do processo sujeito a termo de identidade e residência.' },
+      { k: 'perda', l: 'Requerimento de perda (opcional)', ph: 'Requer-se que o documento apreendido seja declarado perdido a favor do Estado.' },
+      { k: 'local', l: 'Local', ph: 'Aveiro' }
+    ],
+    gerar: function (p) {
+      var f = _linhas(p.factos), out = [_v(p.diap, 'DIAP'), 'Inquérito n.º ' + _v(p.proc, 'N.º DO INQUÉRITO'), '', 'Declaro encerrado o inquérito.', '',
+        'O Ministério Público acusa, para julgamento em processo comum e com intervenção do ' + (p.trib || 'tribunal singular') + ':', '', _v(p.arg, 'IDENTIFICAÇÃO COMPLETA DO ARGUIDO'), '', 'porquanto:', ''], n = { v: 0 };
+      art(f.length ? f : ['[NO DIA …, PELAS … HORAS, EM …, O ARGUIDO …]'], out, n);
+      if (p.dolo) { n.v++; out.push(n.v + '.º', 'O arguido agiu de forma livre, deliberada e consciente, querendo realizar os factos descritos e ciente de que tal conduta é proibida e criminalmente punida.', ''); }
+      out.push('Praticou, assim, o arguido, como autor material e de forma consumada, ' + _v(p.crime, 'CRIME E NORMAS APLICÁVEIS') + '.', '', 'PROVA:', '');
+      var b = function (tit, l) { var x = _linhas(l); if (!x.length) return; out.push(tit); x.forEach(function (y) { out.push('— ' + y); }); out.push(''); };
+      b('Testemunhal:', p.test); b('Documental:', p.doc); b('Pericial:', p.per);
+      if (!_linhas(p.test).length && !_linhas(p.doc).length && !_linhas(p.per).length) out.push('[INDICAÇÃO DAS PROVAS, COM REMISSÃO PARA AS FOLHAS DOS AUTOS]', '');
+      out.push('MEDIDAS DE COAÇÃO:', _v(p.coacao, 'O arguido aguarda os ulteriores termos do processo sujeito a termo de identidade e residência'), '');
+      if ((p.perda || '').trim()) out.push(p.perda.trim(), '');
+      out.push('Notifique o arguido, o defensor, o assistente e os lesados, estes para os efeitos do art. 77.º do CPP.', '', _v(p.local, 'LOCAL') + ', ' + _hoje() + '.', '', 'O(A) Procurador(a) da República,', '', '_______________________________');
+      return out.join('\n');
+    }
+  });
+
+  MINUTAS.push({
+    id: 'acusacao_assistente', nome: 'Acusação do assistente', area: 'Processo Penal',
+    desc: 'Acusação do assistente nos crimes públicos e semipúblicos, por adesão ou com desenvolvimento dos factos.',
+    base: 'Prazo: 10 dias após a notificação da acusação do Ministério Público (art. 284.º, n.º 1, do CPP). Pode limitar-se a mera adesão e só indica provas novas (art. 284.º, n.º 2). Sem alteração substancial dos factos (art. 1.º, al. f)). Pedido civil na acusação ou no mesmo prazo (art. 77.º, n.º 1).',
+    campos: [
+      { k: 'trib', l: 'Tribunal / DIAP', ph: 'Tribunal Judicial da Comarca de Lisboa — DIAP de Lisboa' }, { k: 'proc', l: 'N.º do processo' },
+      { k: 'ass', l: 'Nome do assistente' }, { k: 'arg', l: 'Nome do arguido' },
+      { k: 'modo', l: 'Modalidade', t: 'select', o: ['Adesão à acusação do Ministério Público', 'Acusação com desenvolvimento dos factos'] },
+      { k: 'factos', l: 'Factos acrescentados ou desenvolvidos (um artigo por linha)', t: 'area' },
+      { k: 'crime', l: 'Crime', ph: 'um crime de furto, previsto e punido pelo art. 203.º, n.º 1, do Código Penal' },
+      { k: 'test', l: 'Provas novas — testemunhas (uma por linha)', t: 'area' },
+      { k: 'pic', l: 'Deduz pedido de indemnização civil em requerimento autónomo, no mesmo prazo', t: 'check' },
+      { k: 'local', l: 'Local', ph: 'Lisboa' }
+    ],
+    gerar: function (p) {
+      var ad = /^Adesão/.test(p.modo || 'Adesão'), f = _linhas(p.factos), n = { v: 0 };
+      var out = ['Exmo.(a) Senhor(a) Juiz(a) de Direito', _v(p.trib, 'TRIBUNAL'), 'Processo n.º ' + _v(p.proc, 'N.º DO PROCESSO'), '',
+        _v(p.ass, 'ASSISTENTE') + ', assistente nos autos à margem referenciados, notificado(a) da acusação do Ministério Público, deduz, nos termos do art. 284.º do Código de Processo Penal, a sua', '', 'ACUSAÇÃO', '', 'contra ' + _v(p.arg, 'ARGUIDO') + ', melhor identificado(a) nos autos, nos termos seguintes:', ''];
+      if (ad) out.push('1.º', 'O(A) assistente adere integralmente à acusação deduzida pelo Ministério Público, cujos factos, qualificação jurídica e prova aqui se dão por reproduzidos (art. 284.º, n.º 2, al. a), do CPP).', '');
+      else { out.push('1.º', 'Dá-se por reproduzida a factualidade constante da acusação do Ministério Público.', ''); n.v = 1; art(f.length ? f : ['[FACTOS DESENVOLVIDOS OU ACRESCENTADOS, SEM ALTERAÇÃO SUBSTANCIAL]'], out, n); }
+      out.push('Termos em que deve a presente acusação ser recebida e o(a) arguido(a) julgado(a) em processo comum e, a final, condenado(a) como autor(a) material de ' + _v(p.crime, 'CRIME E NORMAS') + '.', '');
+      var t = _linhas(p.test); out.push('PROVA (para além da indicada na acusação do Ministério Público):'); if (t.length) rol(t, out); else out.push('— Nenhuma prova adicional.');
+      if (p.pic) out.push('', 'Mais informa que deduz, em requerimento autónomo apresentado no mesmo prazo, pedido de indemnização civil (art. 77.º, n.º 1, do CPP).');
+      out.push('', _v(p.local, 'LOCAL') + ', ' + _hoje() + '.', '', 'O(A) Advogado(a),', '', '_______________________________');
+      return out.join('\n');
+    }
+  });
+
+  MINUTAS.push({
+    id: 'acusacao_particular', nome: 'Acusação particular (injúria / difamação)', area: 'Processo Penal',
+    desc: 'Acusação do assistente nos crimes particulares, com requerimento de julgamento e, se quiser, pedido de indemnização civil.',
+    base: 'Crimes particulares: art. 188.º do CP; art. 50.º do CPP. Prazo: 10 dias após a notificação do Ministério Público (art. 285.º, n.º 1, do CPP), ou nos três dias úteis seguintes com multa (art. 107.º-A). Requisitos do art. 283.º, n.º 3, por remissão do art. 285.º, n.º 3. Pedido civil: art. 77.º, n.º 1.',
+    campos: [
+      { k: 'diap', l: 'DIAP', ph: 'DIAP de Aveiro' }, { k: 'proc', l: 'N.º do inquérito' },
+      { k: 'ass', l: 'Nome do assistente' }, { k: 'arg', l: 'Nome do arguido' },
+      { k: 'crime', l: 'Crime', t: 'select', o: ['injúria (art. 181.º do CP)', 'difamação (art. 180.º do CP)', 'injúria e difamação (arts. 180.º e 181.º do CP)'] },
+      { k: 'agr', l: 'Agravação por publicidade e/ou calúnia (art. 183.º, n.º 1, do CP)', t: 'check' },
+      { k: 'factos', l: 'Factos: data, hora, local, presentes e expressões exatas (um artigo por linha)', t: 'area' },
+      { k: 'test', l: 'Testemunhas (uma por linha)', t: 'area' }, { k: 'docs', l: 'Documentos (uma por linha)', t: 'area' },
+      { k: 'pic', l: 'Deduzir também pedido de indemnização civil', t: 'check' },
+      { k: 'danos', l: 'Danos não patrimoniais (um artigo por linha)', t: 'area' }, { k: 'valor', l: 'Indemnização pedida (€)' },
+      { k: 'local', l: 'Local', ph: 'Aveiro' }
+    ],
+    gerar: function (p) {
+      var f = _linhas(p.factos), n = { v: 0 }, cr = p.crime || 'injúria (art. 181.º do CP)';
+      var out = ['Ex.mo(a) Sr.(a) Procurador(a) da República', _v(p.diap, 'DIAP'), 'Inquérito n.º ' + _v(p.proc, 'N.º DO INQUÉRITO'), '',
+        _v(p.ass, 'ASSISTENTE') + ', assistente nos autos à margem identificados, notificado(a) ao abrigo do n.º 1 do art. 285.º do Código de Processo Penal, deduz', '', 'ACUSAÇÃO PARTICULAR' + (p.pic ? '' : ', REQUERENDO JULGAMENTO,'), (p.pic ? 'E PEDIDO DE INDEMNIZAÇÃO CIVIL' : ''), '',
+        'contra ' + _v(p.arg, 'ARGUIDO') + ', melhor identificado(a) nos autos, para julgamento em processo comum e com intervenção do tribunal singular, nos termos seguintes:', '', 'I — DOS FACTOS', ''];
+      art(f.length ? f : ['No dia [DATA], pelas [HORA], em [LOCAL], na presença de [PESSOAS PRESENTES], o(a) arguido(a), dirigindo-se ao(à) assistente, disse-lhe em voz alta: «[EXPRESSÕES EXATAS]».'], out, n);
+      n.v++; out.push(n.v + '.º', 'O(A) arguido(a) atuou livre e conscientemente, com a intenção de atingir a honra e a consideração do(a) assistente, ciente de que tal conduta é proibida e criminalmente punida.', '');
+      out.push('II — DO DIREITO', ''); n.v++;
+      out.push(n.v + '.º', 'Praticou, assim, o(a) arguido(a), como autor(a) material e de forma consumada, ' + (/e difama/.test(cr) ? 'um crime de injúria e um crime de difamação' : 'um crime de ' + cr.split(' (')[0]) + ', previsto(s) e punido(s) pelo(s) ' + cr.replace(/^[^(]*\(|\)$/g, '') + (p.agr ? ', agravado(s) nos termos do art. 183.º, n.º 1, do mesmo Código' : '') + '.', '');
+      if (p.pic) {
+        out.push('III — DO PEDIDO DE INDEMNIZAÇÃO CIVIL', '', (n.v + 1) + '.º', 'Dá-se por reproduzida a matéria de facto supra alegada.', ''); n.v++;
+        art(_linhas(p.danos).length ? _linhas(p.danos) : ['[DESCRIÇÃO CONCRETA DOS DANOS NÃO PATRIMONIAIS: SOFRIMENTO, VEXAME, PERTURBAÇÃO NA VIDA PESSOAL, FAMILIAR E PROFISSIONAL]'], out, n);
+        n.v++; out.push(n.v + '.º', 'Tais danos, pela sua gravidade, merecem a tutela do direito e devem ser compensados pelo(a) demandado(a) (artigos 483.º e 496.º do CC).', '');
+      }
+      out.push('Termos em que requer que a presente acusação seja recebida, designando-se data para julgamento, e que o(a) arguido(a) seja, a final, condenado(a) pela prática do(s) crime(s) imputado(s)' + (p.pic ? ' e no pagamento ao(à) demandante da quantia de ' + _euros(p.valor) + ', a título de danos não patrimoniais, acrescida de juros de mora à taxa legal desde a notificação até integral pagamento' : '') + '.', '');
+      out.push('PROVA', '', 'Declarações do(a) assistente.', '', 'Testemunhas (a notificar):'); rol(_linhas(p.test), out);
+      var d = _linhas(p.docs); if (d.length) { out.push('', 'Documental:'); d.forEach(function (x) { out.push('— ' + x); }); }
+      out.push('', 'Junta: comprovativo do pagamento da taxa de justiça e duplicados legais.', '', _v(p.local, 'LOCAL') + ', ' + _hoje() + '.', '', 'O(A) Advogado(a),', '', '_______________________________');
+      return out.filter(function (x, i, l) { return !(x === '' && l[i - 1] === ''); }).join('\n');
+    }
+  });
+
+  MINUTAS.push({
+    id: 'pic', nome: 'Pedido de indemnização civil', area: 'Processo Penal',
+    desc: 'Pedido do lesado no processo penal: danos patrimoniais discriminados, danos não patrimoniais e juros.',
+    base: 'Princípio de adesão: art. 71.º do CPP (exceções: art. 72.º). Lesado: art. 74.º. Prazo: na acusação ou no seu prazo, pelo assistente; 20 dias, pelo lesado notificado (art. 77.º). Provas com o articulado; até 10 ou 5 testemunhas (art. 79.º). Danos: arts. 483.º, 496.º e 562.º e seguintes do CC.',
+    campos: [
+      { k: 'trib', l: 'Tribunal / DIAP' }, { k: 'proc', l: 'N.º do processo' },
+      { k: 'dem', l: 'Demandante (lesado)' }, { k: 'qual', l: 'Qualidade', t: 'select', o: ['assistente', 'lesado'] }, { k: 'reu', l: 'Demandado(s)' },
+      { k: 'arts', l: 'Artigos da acusação que se dão por reproduzidos', ph: '1.º a 9.º' },
+      { k: 'patr', l: 'Danos patrimoniais — «descrição; valor» (um por linha)', t: 'area', ph: 'Óculos partidos; 350\nConsultas médicas; 120' },
+      { k: 'npatr', l: 'Danos não patrimoniais (um artigo por linha)', t: 'area' }, { k: 'npv', l: 'Valor pedido por danos não patrimoniais (€)' },
+      { k: 'test', l: 'Testemunhas (uma por linha)', t: 'area' }, { k: 'local', l: 'Local', ph: 'Porto' }
+    ],
+    gerar: function (p) {
+      var pt = _linhas(p.patr).map(function (l) { var x = l.split(';'); return { d: x[0].trim(), v: Number(String(x[1] || '').replace(/\./g, '').replace(',', '.')) || 0 }; }), tp = pt.reduce(function (s, x) { return s + x.v; }, 0), npv = Number(String(p.npv || '').replace(/\./g, '').replace(',', '.')) || 0, n = { v: 0 };
+      var out = ['Exmo.(a) Senhor(a) Juiz(a) de Direito', _v(p.trib, 'TRIBUNAL'), 'Processo n.º ' + _v(p.proc, 'N.º DO PROCESSO'), '',
+        _v(p.dem, 'DEMANDANTE') + ', ' + (p.qual || 'assistente') + ' nos autos à margem identificados, vem, nos termos dos arts. 71.º e 77.º do Código de Processo Penal, deduzir', '', 'PEDIDO DE INDEMNIZAÇÃO CIVIL', '', 'contra ' + _v(p.reu, 'DEMANDADO'), '', 'nos termos e com os fundamentos seguintes:', '', 'I — DOS FACTOS', ''];
+      art(['Dá-se aqui por integralmente reproduzida a matéria de facto constante dos artigos ' + _v(p.arts, 'ARTIGOS') + ' da acusação.', 'Em consequência direta e necessária da conduta do(a) demandado(a), o(a) demandante sofreu os danos que seguem.'], out, n);
+      out.push('II — DOS DANOS PATRIMONIAIS', '');
+      if (pt.length) { pt.forEach(function (x) { n.v++; out.push(n.v + '.º', x.d + ', no valor de ' + _euros(String(x.v).replace('.', ',')) + '.', ''); }); n.v++; out.push(n.v + '.º', 'Os danos patrimoniais ascendem, assim, a ' + _euros(String(tp).replace('.', ',')) + '.', ''); }
+      else art(['[DANOS PATRIMONIAIS DISCRIMINADOS, COM O VALOR DE CADA UM E O DOCUMENTO QUE O PROVA]'], out, n);
+      out.push('III — DOS DANOS NÃO PATRIMONIAIS', '');
+      art(_linhas(p.npatr).length ? _linhas(p.npatr) : ['[FACTOS CONCRETOS QUE MOSTRAM O SOFRIMENTO, O VEXAME E A PERTURBAÇÃO DA VIDA DO(A) DEMANDANTE]'], out, n);
+      n.v++; out.push(n.v + '.º', 'Tais danos, pela sua gravidade, merecem a tutela do direito (art. 496.º, n.º 1, do Código Civil), sendo adequada a compensação de ' + _euros(p.npv) + '.', '');
+      out.push('IV — DO DIREITO', ''); n.v++;
+      out.push(n.v + '.º', 'O(A) demandado(a) atuou de forma ilícita e culposa, constituindo-se na obrigação de indemnizar todos os danos causados (arts. 483.º, 562.º e 566.º do Código Civil).', '');
+      out.push('Termos em que deve o presente pedido ser julgado procedente e o(a) demandado(a) condenado(a) a pagar ao(à) demandante a quantia global de ' + (tp + npv ? _euros(String(tp + npv).replace('.', ',')) : '[VALOR]') + ', acrescida de juros de mora à taxa legal desde a notificação deste pedido até integral pagamento.', '',
+        'Valor do pedido: ' + (tp + npv ? _euros(String(tp + npv).replace('.', ',')) : '[VALOR]') + '.', '', 'PROVA', '', 'Testemunhas (a notificar):');
+      rol(_linhas(p.test), out); out.push('', 'Documental: os documentos que se juntam.', '', _v(p.local, 'LOCAL') + ', ' + _hoje() + '.', '', 'O(A) Advogado(a),', '', '_______________________________');
+      return out.join('\n');
+    }
+  });
+})();
 
 </script>
 <script>
@@ -14959,7 +15487,7 @@ libList = function () {
 setTimeout(leiMetaCarregar, 1500);
 
 /* ===== Matéria explicada: guias de estudo por tema ===== */
-var GUIA_ORD = ['obr', 'fam', 'pen', 'pp', 'pc', 'pex', 'con', 'trab', 'reais', 'com', 'tgdc', 'dipr', 'banc'];
+var GUIA_ORD = ['obr', 'fam', 'pen', 'pp', 'pc', 'pj', 'pex', 'con', 'trab', 'reais', 'com', 'tgdc', 'dipr', 'banc'];
 function guiasDe(d) { return (typeof GUIAS !== 'undefined' && GUIAS[d]) || {}; }
 function guiaTem(d, t) { return !!guiasDe(d)[t]; }
 function guiaN(d) { return Object.keys(guiasDe(d)).length; }
@@ -16220,6 +16748,15 @@ A['exr-entregar'] = function () {
 A['exr-entregar-ok'] = function () { closeModal(); clearTimeout(exrGT); var x = clone(exrAtual()); document.querySelectorAll('[data-exr]').forEach(function (t) { if (t.tagName === 'TEXTAREA') x.resp[t.dataset.exr] = t.value; else if (t.checked) x.resp[t.dataset.exr] = t.value; }); x.fase = 'corrigido'; x.entregue = Date.now(); x.correcao = exrCorrigir(x); x.nota = x.correcao.nota; clearInterval(exrTimer); Store.put(x); if (typeof leiMetaCarregar === 'function') leiMetaCarregar(); window.scrollTo(0, 0); };
 A['exr-novo-mod'] = function () { var x = clone(exrAtual()); var n = Store.put({ id: uid('exr'), kind: 'exreal', titulo: x.titulo.replace(/ \(\d+\)$/, '') + ' (' + (exrLista().filter(function (e) { return e.titulo.indexOf(x.titulo.replace(/ \(\d+\)$/, '')) === 0; }).length + 1) + ')', fase: 'analise', analise: x.analise, modelo: exrGerar(x.analise), resp: {} }); S.exr = { id: n.id }; render(); window.scrollTo(0, 0); };
 
+/* ---------- PRÁTICA JUDICIÁRIA: ligação entre guias e minutas ---------- */
+var _vGuiaPJ = vGuia;
+vGuia = function () {
+  var h = _vGuiaPJ(), g = S.guia || {}, G = (typeof GUIAS !== 'undefined' && GUIAS[g.d] && GUIAS[g.d][g.t]) || null;
+  if (!G || !G.minuta || typeof MINUTAS === 'undefined') return h;
+  var m = MINUTAS.filter(function (x) { return x.id === G.minuta; })[0]; if (!m) return h;
+  return h.replace('<aside class="gu-side">', '<aside class="gu-side"><button class="card ch-cta" data-a="min-open" data-id="' + m.id + '"><b>📝 Minuta: ' + esc(m.nome) + '</b><span>Preencha os campos e obtenha a peça estruturada, pronta a rever.</span></button>');
+};
+
 /* ---------- MAPA DO PROCESSO PENAL (fases, quem decide, prazos e reações) ---------- */
 var MPP = [
   { id: 'not', nome: 'Notícia do crime', curto: 'Notícia', quem: 'Ministério Público e órgãos de polícia criminal', tema: 'queixa',
@@ -17190,7 +17727,7 @@ Store.connect();
 </script>
 <script>
 /* Atualização automática: garante que se vê sempre a versão mais recente (o GitHub Pages guarda cópias em cache) */
-(function(){var B='aeb1757892d1';window.__LXV=B;function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
+(function(){var B='0322459f6b90';window.__LXV=B;function ver(){if(!window.fetch)return;fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||!j.v||j.v===B)return;var k='lx_upd_'+j.v;try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1')}catch(e){}var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.value)return;fetch(location.pathname,{cache:'reload'}).then(function(){location.reload()},function(){location.reload()})}).catch(function(){})}ver();document.addEventListener('visibilitychange',function(){if(!document.hidden)ver()});setInterval(ver,600000)})();
 </script>
 </body>
 </html>
