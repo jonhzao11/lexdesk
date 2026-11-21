@@ -12,6 +12,6 @@ Três contas automáticas percorrem o site todos os dias e a cada publicação (
 - **Inês Carvalho** (calculista) — as calculadoras jurídicas, com valores normais, extremos e inválidos, e resultados conhecidos;
 - **Rodrigo Matos** (estudante) — uma simulação de exame, uma sessão de flashcards e os casos práticos.
 
-Usam uma base de dados simulada (`tests/mock_supabase.js`) e nunca tocam nos dados reais. O relatório fica no resumo de cada execução e, se houver problemas, abre-se um aviso (issue). Com o segredo `ROBOS_TOKEN` definido, as contas somam pontos no ranking (até 30 por dia cada uma, assinaladas como «Conta de teste») e o relatório inclui os erros registados no navegador dos utilizadores nas últimas 24 horas.
+Usam uma base de dados simulada (`tests/mock_supabase.js`) e nunca tocam nos dados reais. O relatório fica no resumo de cada execução e, se houver problemas, abre-se um aviso (issue). Com o segredo `ROBOS_TOKEN` definido, as contas somam pontos no ranking (até 30 por dia cada uma, assinaladas com o ícone 🤖) e o relatório inclui os erros registados no navegador dos utilizadores nas últimas 24 horas.
 
 Para correr localmente: `pip install playwright && python -m playwright install chromium && python tests/robos.py`.
